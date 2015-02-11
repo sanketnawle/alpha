@@ -371,6 +371,11 @@ div#fbar_wrapper.fbar_group{
     left:0;
     right:0;
     height: 148px;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
 }
 
 body.body_school .blur_section{

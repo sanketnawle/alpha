@@ -200,7 +200,7 @@
                     <div id = "feed_column" class = "feed_column_group">
                         <div id = "stream_holder" class = "stream_holder_home">
                             <div id = "fbar_wrapper" class = "fbar_home">
-                                <?php echo $this->renderPartial('/partial/school_status_bar',array('user'=>$user,'origin_type'=>'school','origin_id'=>$school->school_id,'pg_src'=>'school.php','target_type'=>'school','is_admin'=>false)); ?>
+                                <?php echo $this->renderPartial('/partial/school_status_bar',array('user'=>$user,'origin_type'=>'school','origin_id'=>$school->school_id,'pg_src'=>'school.php','target_type'=>'school','is_admin'=>false,'origin'=>$school)); ?>
                             </div>
 
                             <div id = "feed_wrapper" class = "feed_wrapper_home">

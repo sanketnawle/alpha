@@ -13,6 +13,10 @@
                 <span class="branding_left"></span>
                 <div id="modal_label">Profile <span class = "white_vertical_line"></span> Professor</div>
                 <a class="close_modal"></a>
+                <div class = "help_div dark">
+                    <div class = "wedge"></div>
+                    <div class = "box">Press Esc to close</div>
+                </div>
             </div>
 
 
@@ -22,6 +26,10 @@
                 <span class="branding_left"></span>
                 <div id="modal_label">Profile <span class = "white_vertical_line"></span> Student</div>
                 <a class="close_modal"></a>
+                <div class = "help_div dark">
+                    <div class = "wedge"></div>
+                    <div class = "box">Press Esc to close</div>
+                </div>                
             </div>
 
             {{/if}}
@@ -158,8 +166,12 @@
                 <div id="cancel_edit_button"></div>
             </div>
             <div id="name_info_wrapper">
-                <div id="name_info">{{#if professor}}Professor {{firstname}} {{lastname}}
-                    {{else}} {{firstname}} {{lastname}} {{year_truncated}}{{/if}}</div>
+                <div id="name_info">
+                    {{#if professor}}Professor {{firstname}} {{lastname}}
+                    {{else}} {{firstname}} {{lastname}} 
+                         {{#if year_truncated}}'{{year_truncated}}
+                         {{/if}}
+                    {{/if}}</div>
                 {{#if professor}}
                     {{#if office_hours}}
                         <div id="office_hours_info"><span class = "office_hours_label">Office Hours:</span> {{office_hours}}</div>

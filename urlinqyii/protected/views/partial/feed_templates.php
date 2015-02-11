@@ -1095,6 +1095,24 @@
 
                                 
                             </div>
+                            <div class = 'post_functions event_functions'>
+                                <div class = 'post_functions_showr shower'>
+                                </div>
+                                <div class = 'post_functions_box'>
+                                    {{#ifCond pownership '||' '<?php echo $is_admin;?>'}}
+                                    <hr class = 'post_options_hr'>
+                                    <div class = 'post_functions_option option_delete'>Delete</div>
+                                    {{else}}
+                                    <div class = 'post_functions_option option_hide'>
+                                        I don&#39;t want to see this
+                                    </div>
+                                    <hr class = 'post_options_hr'>
+                                    <div class = 'post_functions_option option_report'>
+                                        Report this Post
+                                    </div>
+                                    {{/ifCond}}
+                                </div>
+                            </div>
                         </div>
                     </div>
 

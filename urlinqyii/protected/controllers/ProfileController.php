@@ -1004,7 +1004,7 @@ class ProfileController extends Controller
         }
         $data = array();
         $data['user_id']=intval($user->user_id);
-        $data['own_profile']= (intval($user->user_id) == intval($this->get_current_user()->user_id));
+        $data['own_profile']= (intval($user->user_id) === intval($this->get_current_user()->user_id));
         $data['firstname']=$user->firstname;
         $data['lastname']=$user->lastname;
         $data['bio']=$user->user_bio;

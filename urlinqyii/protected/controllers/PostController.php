@@ -494,7 +494,8 @@ class PostController extends Controller
                     $post_data['pownership'] = true;
 
 
-                    $post_data['update_timestamp'] = strtotime(gmdate('Y-m-d H:i:s'));
+                    //$post_data['update_timestamp'] = strtotime(gmdate('Y-m-d H:i:s'));
+                    $post_data['update_timestamp'] =strtotime("now");
                     $post_data['user_info'] = $this->get_model_associations($user, array('pictureFile'));
 
                     $return_data = array('success'=>true,'post'=>$post_data);
@@ -1028,7 +1029,8 @@ class PostController extends Controller
                         'down_vote'=>$reply->down_vote,
                         'file_id'=>$reply->file_id,
                         'anon'=>$reply->anon,
-                        'update_timestamp'=>strtotime(gmdate('Y-m-d H:i:s')),
+                        //'update_timestamp'=>strtotime(gmdate('Y-m-d H:i:s')),
+                        'update_timestamp'=>$reply->update_timestamp,
                         'user_info'=>array(
                             'user_id'=>$reply_user_id,
                             'user_name'=>$reply_user->firstname . ' ' . $reply_user->lastname,

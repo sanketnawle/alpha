@@ -1443,16 +1443,16 @@ margin-left: 5px;
 }
 
 .post_own_post{
-    opacity:0;
     -webkit-transition: opacity 0.218s;
     -moz-transition: opacity 0.218s;
     -ms-transition: opacity 0.218s;
     -o-transition: opacity 0.218s;
     transition: opacity 0.218s;
+    opacity:1!important;
 }
 
 div.post:hover .post_own_post{
-    opacity:1!important;
+    
 }
 
 .post_user_icon_anonymous{
@@ -3326,9 +3326,11 @@ cursor: pointer;
 }
 
 .seemore_anchor a{
-color:rgb(20, 24, 35);
+color: #2885B6;
 display:block;
 }
+
+.seemore_anchor a:hover{text-decoration: underline;}
 
 .delete-comment:hover {
 background-color: #313234;

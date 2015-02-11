@@ -38,7 +38,7 @@ $(document).ready(function(){
     
 
     var w = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-    var y = ["Sunday","Monday","Tueday","Wednesday","Thursday","Friday","Saturday"];
+    var y = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     var z = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     var s = ["st", "nd", "rd", "th"];
     var d = new Date();
@@ -544,6 +544,11 @@ function show_event(event,event_div_id){
 //    alert("DATETIME TO STRING "+ datetime_to_time_string(local_event_start_time));
 //    alert("START TIME: " + time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time)));
     event['start_time'] = time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time));
+    if(event_div_id=="#future_events"){
+        event['future'] = true;
+    }else{
+        event['future'] = false;
+    }
 
     var source   = $("#event_template").html();
     var template = Handlebars.compile(source);
@@ -630,6 +635,7 @@ function add_event(event_json){
 //    }
 
     if(event_datetime > tomorrows_date){
+
         if(!$("#future_events_header").is(":visible")){
             show_future_label();
         }
