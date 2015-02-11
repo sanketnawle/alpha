@@ -211,6 +211,37 @@ class EventController extends Controller
 
     }
 
+    public function actionGetClassSyllabus() {
+        if (!isset($_GET['class_id'])) {
+            $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'all data is not set');
+            $this->renderJSON($data);
+            return;
+        }
+        $user = $this->get_current_user($_GET);
+        if (!$user) {
+            $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $class = ClassModel::model()->find('class_id=:id', array(':id'=>$_GET['class_id']));
+
+        if (!$class) {
+            $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'not a valid class');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $class_id = $_GET['class_id'];
+
+        $sql = 'SELECT * FROM `event` WHERE event_type = Syllabus AND origin_type = class AND origin_id = $class_id';
+
+        $events = Event::model()->findAllBySql($sql);
+
+        $data = array('success'=>true, 'events'->$events);
+        $this->renderJSON($data);
+        return;
+    }
 
     public function actionSearchEventsTitle() {
         if (!isset($_GET['q'])) {
