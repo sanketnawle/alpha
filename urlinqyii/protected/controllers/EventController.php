@@ -443,7 +443,9 @@ class EventController extends Controller
                 $events = $this->add_event_data($events, $user);
 
             }else{
-                $events = Event::model()->findAllBySql('select * from event e where e.end_date>=:start_date and (e.user_id=:user_id or exists (select * from event_user eu where eu.user_id=:user_id and eu.event_id=e.event_id)) and e.complete=:complete limit 8',array(':start_date'=>$start_date,':user_id'=>$user->user_id, ':complete'=>0));
+                //$events = Event::model()->findAllBySql('select * from event e where e.end_date>=:start_date and (e.user_id=:user_id or exists (select * from event_user eu where eu.user_id=:user_id and eu.event_id=e.event_id)) and e.complete=:complete limit 8',array(':start_date'=>$start_date,':user_id'=>$user->user_id, ':complete'=>0));
+                $events = Yii::app()->db->createCommand("select * from event e where e.end_date>='" . $start_date . "' and (e.user_id=" . $user->user_id . " or exists (select * from event_user eu where eu.user_id=" . $user->user_id . " and eu.event_id=e.event_id)) and e.complete=0 limit 8")->queryAll();
+                $events = $this->add_event_data($events, $user);
             }
 
 
