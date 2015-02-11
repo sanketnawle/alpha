@@ -1011,7 +1011,7 @@ class PostController extends Controller
                 if ($user->user_id != $reply_user->user_id) {
 
                     include_once "notification/notification.php"
-                    $this->send_notification("reply", $user->user_id, $reply_user->user_id, $post, "post");
+                    send_notification('reply', $user->user_id, $reply_user->user_id, $post, 'post');
 
                 }
 
