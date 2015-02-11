@@ -231,9 +231,12 @@ class PostController extends Controller
                         if($event->origin_type == 'club' || $event->origin_type == 'group'){
                             $group = Group::model()->find('group_id=:id', array(':id'=>$event->origin_id));
                             if($group){
+                                $has_admin=GroupUser::model()->exists('group_id=:group_id and is_admin=true',array(':group_id'=>$group->group_id));
+
 
                                 $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$group->group_id));
-                                if($group_user && $group_user->is_admin){
+
+                                if($group_user && $group_user->is_admin || !$has_admin){
                                     foreach($group->members as $member){
                                         if($member->user_id != $user->user_id){
                                             include_once 'color/color.php';
@@ -250,8 +253,10 @@ class PostController extends Controller
                             $class = ClassModel::model()->find('class_id=:id', array(':id'=>$event->origin_id));
                             if($class){
 
+                                $has_admin=ClassUser::model()->exists('class_id=:group_id and is_admin=true',array(':class_id'=>$class->class_id));
+
                                 $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$class->class_id));
-                                if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id){
+                                if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id || !$has_admin){
 
                                     foreach($class->students as $member){
                                         if($member->user_id != $user->user_id){
