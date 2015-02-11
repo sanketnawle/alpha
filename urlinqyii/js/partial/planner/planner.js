@@ -871,7 +871,7 @@ $(document).on('click','#create_todo_form',function(e){
 $(window).load(function(){
 
         $('#event_list').slimScroll({
-            height: '214px'
+            height: '340px'
         });
 
 
