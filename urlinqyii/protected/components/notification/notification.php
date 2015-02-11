@@ -19,7 +19,7 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
     $message = get_notification_text($notification_array, $user, $notification);
 
-    notifyAlliOSDevicesForUserID($user_id, $message, $notification['origin']);
+    notifyAlliOSDevicesForUserID($user_id, $message, renderJSON($notification['origin']));
 
 }
 
