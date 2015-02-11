@@ -134,7 +134,7 @@
                                 <span class='event_name'>{{title}}</span>
                                 <div class = "planner_event_date">
                                 {{#if future}}
-                                    <div class="event_date_time date">{{start_date}}</div>
+                                    <div class="event_date_time date">{{formatted_date_time}}</div>
                                 {{/if}}
                                 {{#if start_time}}
                                 <div class='event_date_time'>at {{start_time}}</div>

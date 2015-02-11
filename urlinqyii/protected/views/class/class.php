@@ -156,7 +156,12 @@
                 <div class = "group_name">
 
                     <?php if($class->professor){ ?>
-                        <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->professor->pictureFile->file_url; ?>');"></div><div class = "professor_name">Professor <?php echo $class->professor->firstname; ?> <?php echo $class->professor->lastname; ?></div></div>
+                        <div class = "center_admin">
+                            <div class="profile_link" data-user_id="<?php echo $class->professor->user_id; ?>">
+                                <div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->professor->pictureFile->file_url; ?>');"></div>
+                                <div class = "professor_name">Professor <?php echo $class->professor->firstname; ?> <?php echo $class->professor->lastname; ?></div>
+                            </div>
+                        </div>
                     <?php }else{ ?>
                     <?php } ?>
                     <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name . ' (' . $class->course->course_tag . ') '; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
