@@ -248,7 +248,7 @@
         <!--        <div id="right_menu_panel">-->
         <!---->
         <!--        </div>-->
-        <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>'user', 'user_id'=>$user->user_id)); ?>
+        <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>'user', 'user_id'=>$user->user_id,'is_admin'=>false)); ?>
     </body>
 
 
