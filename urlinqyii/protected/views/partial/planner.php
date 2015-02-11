@@ -129,7 +129,10 @@
                             <div class='event_data_holder'>
                                 
                                 {{#ifCond origin_type '!=' 'user'}}
-                                    <span class = "event_origin"><span class = "origin_vert_line" style = "color:{{color.hex}}">&#x7c; </span><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></span> 
+                                     <?php if($origin_type==="home"){?>
+                                    <div class = "event_origin"><span class = "origin_vert_line" style = "color:{{color.hex}}">&#x7c; </span><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
+                                    <?php }?>
+
                                 {{/ifCond}}
                                 <span class='event_name'>{{title}}</span>
                                 <div class = "planner_event_date">
