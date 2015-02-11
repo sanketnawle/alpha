@@ -334,6 +334,10 @@ function get_notifications_data($user, $notifications){
         return $row;
     }
 
+        function is_assoc($array) {
+        return (bool)count(array_filter(array_keys($array), 'is_string'));
+    }
+
 function renderJSON($data)
     {
         header('Content-type: application/json');
