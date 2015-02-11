@@ -238,7 +238,7 @@ class EventController extends Controller
 
         $events = Event::model()->findAllBySql($sql);
 
-        $data = array('success'=>true, 'events'->$events);
+        $data = array('success'=>true, 'events'=>$events);
         $this->renderJSON($data);
         return;
     }
