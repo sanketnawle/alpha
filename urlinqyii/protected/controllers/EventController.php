@@ -234,7 +234,7 @@ class EventController extends Controller
 
         $class_id = $_GET['class_id'];
 
-        $sql = 'SELECT * FROM `event` WHERE event_type = Syllabus AND origin_type = class AND origin_id = $class_id';
+        $sql = 'SELECT * FROM `event` WHERE event_type = `Syllabus` AND origin_type = `class` AND origin_id = $class_id';
 
         $events = Event::model()->findAllBySql($sql);
 
