@@ -803,7 +803,7 @@
                                     </div>
                                     <div class = "about_header_body">
                                         <div class = "floatRight">
-                                            <div class = "join_button group_user_action_button non_member" data-action_url="/join"><span "white_plus_sign"></span>Join Club</div>
+                                            <div class = "join_button group_user_action_button non_member" data-action_url="/join"><span "white_plus_sign"></span>Join Group</div>
                                         </div>
                                         <div class = "about_header_data">
                                             <p>To see this groups's feed, events, and files, sign up now <span class = "non_member_join_pointer small_icon_map"></span></p>

@@ -309,7 +309,7 @@
                                         </label>
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
-                                    <a class='reply_button fresh_green_button'>
+                                    <a class='reply_button'>
                                         Post Reply
                                     </a>
                                 </div>
@@ -322,7 +322,7 @@
                                         </label>
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
-                                    <a class = 'reply_button fresh_green_button'>
+                                    <a class = 'reply_button'>
                                         Post Reply
                                     </a>
                             </form>
@@ -870,7 +870,7 @@
                                         </label>
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
-                                    <a class='reply_button fresh_green_button'>
+                                    <a class='reply_button'>
                                         Add Comment
                                     </a>
                                 </div>
@@ -883,7 +883,7 @@
                                 </label>
                                 <span class = 'comment_anon_text'>Post Anonymously</span>
                             </div>
-                            <a class = 'reply_button fresh_green_button'>
+                            <a class = 'reply_button'>
                                 Add Comment
                             </a>
                         </form>
@@ -1093,26 +1093,26 @@
                                     {{/if}}
                                 </div>
 
-                                
-                            </div>
-                            <div class = 'post_functions event_functions'>
-                                <div class = 'post_functions_showr shower'>
-                                </div>
-                                <div class = 'post_functions_box'>
-                                    {{#ifCond pownership '||' '<?php echo $is_admin;?>'}}
-                                    <hr class = 'post_options_hr'>
-                                    <div class = 'post_functions_option option_delete'>Delete</div>
-                                    {{else}}
-                                    <div class = 'post_functions_option option_hide'>
-                                        I don&#39;t want to see this
+                                <div class = 'post_functions event_functions'>
+                                    <div class = 'post_functions_showr shower'>
                                     </div>
-                                    <hr class = 'post_options_hr'>
-                                    <div class = 'post_functions_option option_report'>
-                                        Report this Post
+                                    <div class = 'post_functions_box'>
+                                        {{#ifCond pownership '||' '<?php echo $is_admin;?>'}}
+                                        <hr class = 'post_options_hr'>
+                                        <div class = 'post_functions_option option_delete'>Delete</div>
+                                        {{else}}
+                                        <div class = 'post_functions_option option_hide'>
+                                            I don&#39;t want to see this
+                                        </div>
+                                        <hr class = 'post_options_hr'>
+                                        <div class = 'post_functions_option option_report'>
+                                            Report this Post
+                                        </div>
+                                        {{/ifCond}}
                                     </div>
-                                    {{/ifCond}}
-                                </div>
+                                </div>                                
                             </div>
+
                         </div>
                     </div>
 
@@ -1218,7 +1218,7 @@
                                         </label>
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
-                                    <a class = 'reply_button fresh_green_button'>
+                                    <a class = 'reply_button'>
                                         Post Reply
                                     </a>
                                 </div>
@@ -1232,7 +1232,7 @@
                                     </label>
                                     <span class = 'comment_anon_text'>Post Anonymously</span>
                                 </div>
-                                <a class = 'reply_button fresh_green_button'>
+                                <a class = 'reply_button'>
                                     Add Comment
                                 </a>
                         </div>
@@ -1524,7 +1524,7 @@
                                         </label>
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
-                                    <a class = 'reply_button fresh_green_button'>
+                                    <a class = 'reply_button'>
                                         Post Reply
                                     </a>
                                 </div>
@@ -1538,7 +1538,7 @@
                                     </label>
                                     <span class = 'comment_anon_text'>Post Anonymously</span>
                                 </div>
-                                <a class = 'reply_button fresh_green_button'>
+                                <a class = 'reply_button'>
                                     Add Comment
                                 </a>
                         </div>

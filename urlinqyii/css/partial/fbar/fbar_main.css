@@ -340,6 +340,11 @@ div.form_wrapper section.post_form_template#discussion_form:before {
     right: 12px;
 }
 
+body.body_school div.form_wrapper section.post_form_template#discussion_form:before {
+    right: 30px;
+}
+
+
 div.form_wrapper section.post_form_template#event_form:before {
     right: 16px;
 }
@@ -1070,6 +1075,10 @@ input.submission_input{
     width: 190px;
     margin-left: 40px;
     padding: 6px 7px;
+}
+
+body.body_department ul.privacy_dropdown_club_fbar.privacy_dropdown{
+width:182px;
 }
 
 div.upload_half {
