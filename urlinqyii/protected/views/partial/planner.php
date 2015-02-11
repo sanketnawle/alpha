@@ -129,7 +129,9 @@
                             <div class='event_data_holder'>
                                 <div class='event_name'>{{title}}</div>
                                 {{#ifCond origin_type '!=' 'user'}}
+                                     <?php if($origin_type==="home"){?>
                                     <div class = "event_origin"><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
+                                    <?php }?>
                                 {{/ifCond}}
                                 {{#if future}}
                                     <div class="event_date_time date">{{formatted_date_time}}</div>

@@ -594,6 +594,11 @@ $(document).ready(function(){
         $("span.create_planner_message").css({"left":"12px", "width":"202px"})
     }
 
+    $(document).on('click','.edit_about',function(){
+        $('.panel.active').removeClass('active');
+        $('#panel_6').addClass('active'); //about tab
+        $('#edit_club_description').click();
+    });
     $(document).on('click','#edit_club_description',function(){
         var $edit_button = $(this);
         if($edit_button.hasClass('editing')){

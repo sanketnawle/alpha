@@ -243,7 +243,9 @@
 
                                     <div class="classic_about_box" id="group_about_box">
                                         <h5>About</h5>
-
+                                        <?php if($is_admin){?>
+                                        <span class="edit_about">edit</span>
+                                        <?php } ?>
                                         <div class="class_description_holder"><?php echo $club->group_desc; ?></div>
 
                                     </div>
