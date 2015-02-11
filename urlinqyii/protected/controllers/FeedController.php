@@ -634,7 +634,7 @@ class FeedController extends Controller
 
 
         // check if the current user is the admin of the class
-        if ($cl_mod = ClassUser::model()->findbypk(array('class_id' => $_GET['id'], 'user_id' => self::$cur_user_id))) {
+        if ($cl_mod = ClassUser::model()->findbypk(array('class_id' => $_GET['id'], 'user_id' => $user->user_id))) {
             $is_member = TRUE;
             if ($cl_mod->is_admin == 1)
                 $is_admin = TRUE;
