@@ -232,7 +232,7 @@ class EventController extends Controller
 
         $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE user_id = $user_id AND LOWER(title) LIKE LOWER('%" . $query . "%') LIMIT 5");
 
-        $results = $this->add_event_data($this->models_to_array($events), $user);
+        //$results = $this->add_event_data($this->models_to_array($events), $user);
 
         $data = array('success'=>true, 'results'=>$results);
 
