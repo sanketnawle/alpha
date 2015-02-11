@@ -57,13 +57,13 @@
                     <div class="planner_header">
                         <?php
                             if($origin_type === 'club'){
-                                echo 'Group Planner';
+                                echo 'Group ';
                             }
                             if($origin_type === 'class'){
-                                echo 'Class Planner';
+                                echo 'Class ';
                             }
                             if($origin_type === 'department'){
-                                echo 'Department Planner';
+                                echo 'Department ';
                             }
                             else{
                                 echo 'Planner';
