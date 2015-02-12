@@ -13,15 +13,15 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
     include_once 'iOSPushNotifications.php';
     $notification = Notification::model()->find('notification_id=:id', array(':id'=>$notification->notification_id));
     $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
-    $notification_array = array_for_notification_model($notification);
-    $message = get_notification_text($notification_array, $user);
+    //$notification_array = array_for_notification_model($notification);
+    //$message = get_notification_text($notification_array, $user);
 
 //$thing = get_notifications_data($user, array($notification_array));
 
-    notifyAlliOSDevicesForUserID($user_id, $message);
+    //notifyAlliOSDevicesForUserID($user_id, $message);
 
 }
-
+/*
 function array_for_notification_model($notification) {
     return array("type"=>$notification->type, "actor_id"=>$notification->actor_id, "user_id"=>$notification->user_id, "origin_id"=>$notification->origin_id, "origin_type"=>$notification->origin_type);
 }
@@ -350,6 +350,6 @@ function renderJSON($data)
         }
         Yii::app()->end();
     }
-
+*/
 
 ?>

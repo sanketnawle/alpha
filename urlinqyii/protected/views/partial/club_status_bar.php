@@ -29,9 +29,10 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/planner/datepicker.css"/>
 
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
-<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/date_selector/date_selector.js" type="text/javascript"></script>
-<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
-
+<!--
+<script src="<?php// echo Yii::app()->getBaseUrl(true); ?>/js/date_selector/date_selector.js" type="text/javascript"></script>
+<script src="<?php //echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
+-->
 <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/render_post.js"> </script>
 
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/status_bar/fbar.js"></script>
@@ -210,7 +211,7 @@
 
 <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
 
-<div id = "calLayer" style="display: none;">
+<div id = "calLayer"  class = "fbar" style="display: none;">
     <section id = "mounth" class="mounth">
         <header class="minical-header">
             <h1 class="minical-h1"></h1>
