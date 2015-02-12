@@ -51,6 +51,10 @@
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/reminders/reminders.css' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
 
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
+        <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/date_selector/date_selector.js" type="text/javascript"></script>
+
 
     </head>
 

@@ -220,6 +220,20 @@ div.about_box{
     padding-bottom: 8px;
 }
 
+span.edit_about{
+    font-family: Avenir;
+    font-size: 11.5px;
+    color: #029acf;
+    cursor:pointer; 
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+span.edit_about:hover{
+    text-decoration: underline;
+}
+
 div.about_box div.slimScrollDiv{
     padding-bottom:10px;
 }

@@ -62,7 +62,9 @@
             <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_people/invite_people.css" type = "text/css" rel = "stylesheet">
         <?php } ?>
 
-
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
+        <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/date_selector/date_selector.js" type="text/javascript"></script>
 
     </head>
 
@@ -937,7 +939,7 @@
 
  <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
 
-    <div id = "calLayer" style="display: none;">
+   <!-- <div id = "calLayer" style="display: none;">
         <section id = "mounth" class="mounth">
             <header class="minical-header">
                 <h1 class="minical-h1"></h1>
@@ -1004,7 +1006,7 @@
                 </div>
             </article>
         </section>
-    </div>
+    </div>-->
 
 
 
