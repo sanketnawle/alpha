@@ -66,9 +66,12 @@ $(document).ready(function(){
         }
 
 
+        console.log(jQuery('#calLayer').css("display"));
+        //alert(jQuery('#calLayer').css("display"));
+
 
         if(jQuery(this).is($recent_date_input) && jQuery('#calLayer').css("display") == 'block'){
-            jQuery('#calLayer').hide();
+            //jQuery('#calLayer').hide();
         } else {
 
             $recent_date_input = jQuery(this);

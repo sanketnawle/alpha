@@ -1532,20 +1532,30 @@ function fbar_ready(origin_id) {
         function init(){
 
 
-            if(globals.origin_type == 'club' || globals.origin_type == 'department'){
+            if(globals.origin_type == 'club' || globals.origin_type == 'department' || globals.origin_type == 'group'){
                 //get the current datetime object
                 var datetime = new Date();
+
+                var end_datetime_object = datetime;
+
 
 
                 var $start_date_input = $('#event_start_date');
                 $start_date_input.attr('data-date', date_to_string(datetime));
                 $start_date_input.val(date_to_day_of_week_string(datetime));
 
+                var end_time_hours = datetime.getHours() + 1;
+
+                if(parseInt(end_time_hours) >= 24){
+                    end_time_hours -= 24;
+                    end_datetime_object.setDate(datetime.getDate() + 1);
+                }
+
 
 
                 var $end_date_input = $('#event_end_date');
-                $end_date_input.attr('data-date', date_to_string(datetime));
-                $end_date_input.val(date_to_day_of_week_string(datetime));
+                $end_date_input.attr('data-date', date_to_string(end_datetime_object));
+                $end_date_input.val(date_to_day_of_week_string(end_datetime_object));
 
 
                 //sql formatted timestring
@@ -1558,7 +1568,10 @@ function fbar_ready(origin_id) {
 
 
 
-                var end_time_string = ints_to_time(datetime.getHours() + 1,datetime.getMinutes(),datetime.getSeconds());
+
+
+
+                var end_time_string = ints_to_time(end_time_hours,datetime.getMinutes(),datetime.getSeconds());
 
                 //Set the default time for the time_inputs
                 var $end_time_input = $('#event_end_time');
@@ -1604,18 +1617,57 @@ function fbar_ready(origin_id) {
                         var end_date = new_date(date_to_string(end_datetime_object));
 
 
-                        if(start_date == end_date){
-                            var new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
+
+//                        console.log(start_date);
+//                        console.log(end_date);
+//                        alert('????');
+                        if(start_date.getTime() == end_date.getTime()){
+                            //alert('EUQLAAAA');
+//                            var new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
+//                            //make the time an hour from the start time
+//                            $event_end_time.attr('data-time', new_end_time_string);
+//                            $event_end_time.val(time_string_to_am_pm_string(new_end_time_string));
+
+
+                            var end_time_hours = parseInt(start_datetime_object.getHours()) + 1;
+
+                            if(end_time_hours >= 24){
+                                end_time_hours -= 24;
+                                end_datetime_object.setDate(end_datetime_object.getDate() + 1);
+
+
+                                $event_end_date.val(date_to_day_of_week_string(end_datetime_object));
+                                $event_end_date.attr('data-date', date_to_string(end_datetime_object));
+                            }
+
+                            var new_end_time_string = ints_to_time(end_time_hours, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
+
                             //make the time an hour from the start time
                             $event_end_time.attr('data-time', new_end_time_string);
                             $event_end_time.val(time_string_to_am_pm_string(new_end_time_string));
+
+
                         }else if(start_date > end_date){
+
+
+                            end_datetime_object = start_datetime_object;
+
+                            var end_time_hours = parseInt(end_datetime_object.getHours()) + 1;
+
+                            if(end_time_hours >= 24){
+                                end_time_hours -= 24;
+                                end_datetime_object.setDate(end_datetime_object.getDate() + 1);
+                            }
+
                             //If the start date is greater than the end date,
                             //make the end date the start date
-                            $event_end_date.val(date_to_day_of_week_string(start_date));
-                            $event_end_time.attr('data-date', date_to_string(start_date));
+                            $event_end_date.val(date_to_day_of_week_string(end_datetime_object));
+                            $event_end_date.attr('data-date', date_to_string(end_datetime_object));
 
-                            var new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
+
+
+
+                            var new_end_time_string = ints_to_time(end_time_hours, end_datetime_object.getMinutes(), end_datetime_object.getSeconds());
                             //make the time an hour from the start time
                             $event_end_time.attr('data-time', new_end_time_string);
                             $event_end_time.val(time_string_to_am_pm_string(new_end_time_string));

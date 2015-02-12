@@ -418,9 +418,9 @@ border-image: none;
 
 }
 
-#calLayer{
-    position:absolute!important;
-}
+/*#calLayer{*/
+    /*position:absolute!important;*/
+/*}*/
 
 input.event_title{
     width: 206px;
