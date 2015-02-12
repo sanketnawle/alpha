@@ -259,6 +259,12 @@ div#modal_controls.student_modal_controls_student{
     display: inline-block;
     padding-left: 10px;
     font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 577px;
+    white-space: nowrap;
+    position: relative;
+    top: 3px;
 }
 #profile_tab_bar{
     left: 20px;

@@ -518,31 +518,30 @@
                                     if(response['success']){
                                         window.location.replace(globals.base_url + '/home');
                                     }else{
-                                        console.log(response['error_id']);
                                         $('#login_error_popup').remove();
                                         var email_position = $('input#login_email').offset();
                                         var $error_div = $("<div id='login_error_popup'></div>");
-                                        $error_div.css({'top': email_position.top + 50});
+                                        $error_div.css({'top': email_position.top + 48});
                                         $error_div.css({'left': email_position.left});
                                         if(response['error_id'] == 2){
                                             //alert('Email is not supported');
-                                            $error_div.text('Email is not supported');
+                                            $error_div.text('Incorrect login information');
 
 
                                         }else if(response['error_id'] == 3){
 
-                                            $error_div.text('Account does not exist for this email');
+                                            $error_div.text('Incorrect login information');
 
 
 
                                             $('body').append($error_div);
                                         }else if(response['error_id'] == 4){
                                             //alert('Invalid login');
-                                            $error_div.text('Invalid login');
+                                            $error_div.text('Incorrect password');
                                             var $forgot_password_div = $("<button id='forgot_password'>Forgot Password? </button>" +
                                             "                   <form id='reset_password' style='display:none;'>" +
-                                            "                        <input id='reset_password_email' type='text' name='email' placeholder='email'/>" +
-                                            "                        <input type='submit' value='submit'/>" +
+                                            "                        <input id='reset_password_email' type='text' name='email' placeholder='Enter account email...'/>" +
+                                            "                        <input class = 'forgot_password_submit_button' type='submit' value='submit'/>" +
                                             "                   </form> ");
                                             $error_div.append($forgot_password_div);
 
@@ -560,9 +559,18 @@
                         });
 
                         $(document).on('click','#forgot_password',function(){
-                            $('#forgot_password').fadeOut(250);
-                            $('form#reset_password').fadeIn(250);
+                            $("#login_error_popup").css({"font-size":"0px"});
+                            $('#forgot_password').hide();
+                            $('form#reset_password').show();
                             $('form#reset_password input#email').val($('input#login_email').val());
+                        });
+
+                        $(document).on('click','.forgot_password_2',function(){
+                            $('#login_error_popup').remove();
+                            var email_position = $('input#login_email').offset();
+                            var $error_div = $("<div id='login_error_popup'></div>");
+                            $error_div.css({'top': email_position.top + 48});
+                            $error_div.css({'left': email_position.left + 70});
                         });
 
                       </script>
@@ -573,10 +581,13 @@
                       <input type="hidden" id="offset" name="offset" value="" >
                        <button name = "submit" id = "submit" type = "submit" class = "rounded Button SignIn smallBtn">
                           <span class = "buttonText">
-                            Sign In
+                            Log In
                           </span>
                         </button>
-                        
+                        <div class = "forgot_password_2">
+                          Forgot your password?
+                        </div>
+
                         <!--<div class = "fb_signin_wrap">
                           <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
                             <em class = "fb_icon">
@@ -675,11 +686,11 @@
 
           <ul class = "color-border">
             <li style = "background-color:rgba(0,0,0,.35);"><a style = "color: white; text-decoration:none" class = "cb-link1" href="http://urlinq.com/beta/lp_beta.php">Home</a></li>
-          <li><a style = "color: #1DA7D3; text-decoration:none" class = "cb-link2" href="http://urlinq.com/blog">Blog</a></li>
-          <li><a style = "color: rgba(253, 112, 45, 0.74); text-decoration:none" class = "cb-link3" href="https://urlinq.com/team/jobs">Jobs</a></li>
-          <li><a style = "color: rgba(177, 104, 226, 0.8); text-decoration:none" class = "cb-link4" href="https://urlinq.com/team/contact">Team</a></li>
-          <li><a style = "color: #ff5a5f; text-decoration:none" class = "cb-link5" href="https://urlinq.com/about/legal/privacy">Privacy</a></li>
-          <li><p>&#169; 2015 Urlinq</p></li>
+          <li><a style = "color: #fff; text-decoration:none" class = "cb-link2" href="http://urlinq.com/blog">Blog</a></li>
+          <li><a style = "color: #fff; text-decoration:none" class = "cb-link3" href="https://urlinq.com/team/jobs">Jobs</a></li>
+          <li><a style = "color: #fff; text-decoration:none" class = "cb-link4" href="https://urlinq.com/team/contact">Team</a></li>
+          <li><a style = "color: #fff; text-decoration:none" class = "cb-link5" href="https://urlinq.com/about/legal/privacy">Privacy</a></li>
+          <li style = "cursor:default!important;"><p style = "color:#fff!important; cursor:default!important;">&#169; 2015 Urlinq</p></li>
           </ul>
           
           </div>
