@@ -111,23 +111,43 @@ class SiteController extends Controller
 
 
 
+    function actionSendResetPasswordEmailFunction(){
+
+
+        if(!isset($_POST['to_email']) || !isset($_POST['subject']) || !isset($_POST['message']) || !isset($_POST['from_email']) || !isset($_POST['key'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $key = $_POST['key'];
+        $to_email = $_POST['to_email'];
+        $subject = $_POST['subject'];
+        $from_email = $_POST['from_email'];
+        $message = $_POST['message'];
+
+
+        if (ERunActions::runBackground())
+		{
+
+
+            ERunActions::runScript('send_reset_password_email',$params=array('to_email'=>$to_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from_email, 'key'=>$key),$scriptPath=null);
+
+            Yii::log('lol wtf');
+
+            $data = array('success'=>true,'error_id'=>'run');
+            $this->renderJSON($data);
+            return;
+		}
+		else
+		{
+
+		}
+    }
+
+
+
     function actionSendVerificationEmailFunction(){
-
-//        $user = $this->get_current_user();
-//        if(!$user){
-//            $data = array('success'=>false);
-//            $this->renderJSON($data);
-//            return;
-//        }
-
-//
-//        if($user->status != 'unverified'){
-//            $data = array('success'=>false);
-//            $this->renderJSON($data);
-//            return;
-//        }
-
-
 
 
         if(!isset($_POST['to_email']) || !isset($_POST['subject']) || !isset($_POST['message']) || !isset($_POST['from_email']) || !isset($_POST['key'])){
@@ -1415,7 +1435,7 @@ public function actionSendReset(){
                     $message = Yii::app()->getBaseUrl(true) . '/reset?key=' . $user_recovery_test['recovery_key'];
                     $from = 'team@urlinq.com';
 
-                    ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery_test->recovery_key),$contentType=null);
+                    ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendResetPasswordEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery_test->recovery_key),$contentType=null);
                     $data = array('success'=>true);
                     $this->renderJSON($data);
                     return;
@@ -1434,7 +1454,7 @@ public function actionSendReset(){
                         $message = Yii::app()->getBaseUrl(true) . '/reset?key=' . $user_recovery->recovery_key;
                         $from = 'team@urlinq.com';
 
-                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery->recovery_key),$contentType=null);
+                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendResetPasswordEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery->recovery_key),$contentType=null);
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
