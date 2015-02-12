@@ -123,10 +123,13 @@ div.group_info_divider.half_divider{
 div.group_info_data.open_look{
     background: none;
 
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    -moz-box-shadow: none;    
+    position: relative;  
+    border-radius: 5px;
+    padding: 5px 7px;
     border: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
 }
 
 div.group_info_data.half_data{
@@ -134,7 +137,7 @@ div.group_info_data.half_data{
     
     display: block;
     font-size: 14.5px;
-    padding-bottom: 25px;
+    padding-bottom: 4px;
     padding-top: 0;
     margin: 0 auto;
     position: relative;
@@ -439,9 +442,16 @@ p#edit_club_description{
 }
 .group_textarea{
     resize: none;
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    line-height: 17px;
+    height: 120px;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    padding: 5px 8px;
     margin-top: 10px;
-    width: 100%;
-    height: 77px;
+    border-radius: 5px;
 }
 div.group_display_icon{
     width: 78px;

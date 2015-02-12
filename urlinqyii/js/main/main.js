@@ -21,6 +21,7 @@ $(document).ready(function(){
         var panel_id = $tab.attr('data-panel_id');
         //Change active tab
         $('.tab.active').removeClass('active');
+        $('.other_views_tab').removeClass('active');
         $tab.addClass('active');
         //Find the current active panel and remove its active class
         $('.panel.active').removeClass('active');
@@ -596,6 +597,7 @@ $(document).ready(function(){
 
     $(document).on('click','.edit_about',function(){
         $('.panel.active').removeClass('active');
+        $('.tab.active').removeClass('active');
         $('#panel_6').addClass('active'); //about tab
         $('#edit_club_description').click();
     });
