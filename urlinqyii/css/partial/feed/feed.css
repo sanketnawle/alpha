@@ -3756,18 +3756,19 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 123, 232, 0.5);
 }
 
 .post_event_calendar_button.added:hover{
-    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
-    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 123, 232, 0.5);
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 123, 232, 0.5);
     background: #EEE;
-    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 123, 232, 0.5);
     cursor:default;
 }
 
 .post_event_calendar_button.added:active{
-    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
-    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 123, 232, 0.5);
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 123, 232, 0.5);
     background: #EEE;
-    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 123, 232, 0.5);
+    cursor:default;
 }
 
 .post_event_calendar_button:active{

@@ -774,7 +774,7 @@
                   </div>-->
                   <div class = "lp_terms">
                     <p class = "lp_terms_p">
-                      By clicking Create Your Account, you agree to our <a href = "/legal/terms" target = "_blank">Terms</a> and that you have read our <a href = "/legal/privacy" target = "_blank">Data Use Policy</a>.
+                      By clicking Create Your Account, you agree to our <a href = "https://urlinq.com/about/legal/terms" target = "_blank">Terms</a> and that you have read our <a href = "https://urlinq.com/about/legal/privacy" target = "_blank">Privacy Policy</a>.
                     </p>
                   </div>
               </div>

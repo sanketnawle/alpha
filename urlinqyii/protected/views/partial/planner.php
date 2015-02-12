@@ -57,20 +57,35 @@
                     <div class="planner_header">
                         <?php
                             if($origin_type === 'club'){
-                                echo 'Group ';
+                                echo 'Group Planner';
                             }
-                            if($origin_type === 'class'){
-                                echo 'Class ';
+                            elseif($origin_type === 'class'){
+                                echo 'Class Planner';
                             }
-                            if($origin_type === 'department'){
-                                echo 'Department ';
+                            elseif($origin_type === 'department'){
+                                echo 'Department Planner';
                             }
                             else{
                                 echo 'Planner';
                             }
                          ?>
                          <div class="entry_field_placeholder" id="add_todo">
-                            <span id = "add_todo_text">Add Todo</span>
+                            <span id = "add_todo_text">
+                            <?php
+                            if($origin_type === 'class'){
+                                echo 'Add Todo';
+                            }
+                            elseif($origin_type === 'club'){
+                                echo 'Add Event';
+                            } 
+                            elseif($origin_type === 'department'){
+                                echo '';
+                            }  
+                            else{
+                                echo 'Add Todo';
+                            }
+                            ?>
+                            </span>
                             <div class="nav-icon">
                               <div class="nav-icon-plus"></div>
                             </div>
