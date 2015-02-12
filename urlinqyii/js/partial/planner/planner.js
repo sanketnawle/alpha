@@ -698,6 +698,7 @@ function hide_planner_creation_form(){
     $(".nav-icon-plus").removeClass('hide-plus');
     $(".nav-icon").removeClass('bounce-minus');  
     $(".entry_field_placeholder").css({"width":"75px"});
+    $('#calLayer.planner').hide();
 }
 
 
