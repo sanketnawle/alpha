@@ -477,13 +477,22 @@
                           var $form = $(this);
                           e.preventDefault();
                           e.stopPropagation();
+
+                          var email = $('#reset_password_email').val();
+
+
                           var post_url = globals.base_url + '/sendReset';
-                          var post_data = $form.serializeArray();
+                          var post_data = {email: email};
                           $.post(
                             post_url,
                             post_data,
                             function(response){
-                              //alert(JSON.stringify(response));
+                                if(response['success']){
+                                    alert('Reset password email sent');
+                                }else{
+                                    //error sending reset password email
+                                    alert(JSON.stringify(response));
+                                }
                             }, 'json'
                           );
                         });
@@ -532,7 +541,7 @@
                                             $error_div.text('Invalid login');
                                             var $forgot_password_div = $("<button id='forgot_password'>Forgot Password? </button>" +
                                             "                   <form id='reset_password' style='display:none;'>" +
-                                            "                        <input id='email' type='text' name='email' placeholder='email'/>" +
+                                            "                        <input id='reset_password_email' type='text' name='email' placeholder='email'/>" +
                                             "                        <input type='submit' value='submit'/>" +
                                             "                   </form> ");
                                             $error_div.append($forgot_password_div);
