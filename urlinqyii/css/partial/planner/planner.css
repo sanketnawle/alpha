@@ -308,6 +308,33 @@ border-color: #C0C0C0 #D9D9D9 #D9D9D9;
 border-image: none;
 }
 
+body.body_group .event_date{
+width: 104px;
+height: 30px;
+cursor: pointer;
+background-repeat: no-repeat;
+background-image: url("../../../assets/partial/planner/calendar.png");
+margin-left: 4px;
+background-position: 85px 9px;
+background-size: 13px auto;
+border-radius: 2px;
+outline: medium none;
+transition: all 0.2s ease 0s;
+-moz-osx-font-smoothing: grayscale;
+padding: 3px 0px 2px 5px;
+font-size: 13px;
+font-weight: 400;
+border-width: 1px;
+border-style: solid;
+border-right: 1px solid #D9D9D9;
+border-color: #C0C0C0 #D9D9D9 #D9D9D9;
+-moz-border-top-colors: none;
+-moz-border-right-colors: none;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+border-image: none;
+}
+
 .event_time{
     color: #999;
     font-weight: normal;
@@ -383,12 +410,16 @@ border-image: none;
     
     
 
-    /*top: -10px;*/
+    top: 0px;
 
     position: relative;
 
     overflow: hidden;
 
+}
+
+#calLayer{
+    position:absolute!important;
 }
 
 input.event_title{
@@ -402,15 +433,21 @@ input.event_title{
     padding-left: 6px;
 }
 
+body.body_group input.event_title{
+    width: 215px;
+    height: 30px;
+}
+
 
 
 .event{
     display: block;
     position: relative;
-    height: 34px;
+    height: auto;
 
-    margin-bottom: 4px;
-    padding-bottom: 8px;
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+    padding-top: 2px;
 }
 
 #planner_header_holder {
@@ -564,10 +601,9 @@ input.event_title{
 
 .event_data_holder {
     display: inline-block;
-    float: left;
     width: 80%;
     margin-top: 3px;
-    margin-left: 8px;
+    margin-left: 10px;
 
     font-size: 12px;
     font-weight: 600;
@@ -719,7 +755,8 @@ label.planner_checkbox_label:after{
     pointer-events: none;
     z-index: 99;
     right: 30px;
-    margin-top: 1px;
+    margin-top: -10px;
+    top: 50%;
 }
 .hint_wedge{
     display: block;
@@ -762,8 +799,9 @@ margin-left: 20px;
 border: 1px solid rgba(184, 184, 184, 0.61);
 box-shadow: inset 0px 0px 2px 0px rgba(205, 205, 205, 0.12);
 background: white;
-margin-top: 3px;
+margin-top: -8px;
 margin-left: 7px;
+top: 50%;
 }
 
 .event_checkbox_input{
@@ -796,20 +834,21 @@ margin-left: 7px;
 }
 
 /*If the event is completed, strike out its name*/
-.event.complete div.event_name {
+.event.complete span.event_name {
     text-decoration: line-through;
     color:#999!important;
 }
 
 
 .event_name {
-    font-size: 13.5px;
+    font-size: 13px;
 
-    color: #222;
+    color: #121314;
     text-transform: capitalize;
     padding-bottom: 2px;
     -moz-osx-font-smoothing: grayscale; 
     -webkit-font-smoothing: antialiased;
+    font-weight: 600;
 }
 /* Set the background colors for the different types of events */
 
@@ -830,9 +869,36 @@ margin-left: 7px;
     margin-top: -2px;
 }
 
-#past_events div.event div.event_name{
+#past_events div.event span.event_name{
     color:rgb(211, 11, 11);
     margin-top: 4px;
+}
+
+div.event_origin{
+    font-family: Avenir;
+    padding-right:2px;
+    line-height: 14px;
+}
+
+div.event:hover div.event_origin > a{
+    color: #029acf;
+    
+}
+
+div.event_origin > a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+span.event_origin > a:active{
+    opacity:.8;
+}
+
+span.event_origin > a{
+    font-family: Avenir;
+    
+    font-weight: 400;
+    color: #777;
 }
 
 #past_events div.event div.event_date_time{
@@ -843,7 +909,7 @@ div.event.complete{
     background: #F5F5F5!important;
 }
 
-div.event.complete div.event_name, div.event.complete div.event_date_time{
+div.event.complete span.event_name, div.event.complete div.event_date_time{
     color:#999!important;
 }
 
@@ -858,11 +924,11 @@ div.event.complete div.event_name, div.event.complete div.event_date_time{
 }
 
 .event_date_time{
-    font-size: 10.5px;
-    font-weight: 600;
-    /* font-family: Avenir; */
-    color: #222;
+    font-size: 10.4px;
+    font-weight: 400;
+    font-family: Avenir;
     display: inline-block;
+    color: #525557;
 }
 
 #todays_events{
@@ -1007,6 +1073,7 @@ div.event.complete div.event_name, div.event.complete div.event_date_time{
     color: #333;
     border: 1px solid #d9d9d9; border-top-color: #c0c0c0;
 }
+
 .tp1:focus{
     outline: none;
 }
@@ -1033,15 +1100,26 @@ opacity:1;
     display:none;
 }
 
-.slimScrollDiv {
+.planner_container .slimScrollDiv {
     width:100% !important;
-    top: 0px;
+    top: -8px;
 }
 
 .slimScrollBar {
    /* margin-top: -10px;*/
 }
 
+.origin_vert_line{
+    position: relative;
+
+    top: -1px;
+    font-weight: 800;
+    font-family: Avenir;
+}
+
+div.event_origin{
+    display: inline-block;
+}
 
 #event_date {
 
@@ -1050,4 +1128,10 @@ opacity:1;
 #tp1 {
     padding: 6px 7px;
     width: 57px;
+}
+
+body.body_group #tp1{
+padding: 6px 7px;
+width: 75px;
+margin-left: 2px;
 }

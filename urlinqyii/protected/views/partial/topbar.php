@@ -181,7 +181,6 @@
                     {{/if}}
                 {{/ifCond}}
 
-                <div class="dismiss">Dismiss</div>
                 <div class="close"></div>
             </div>
 

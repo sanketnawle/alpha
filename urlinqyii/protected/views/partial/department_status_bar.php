@@ -164,8 +164,8 @@
                                 <li class = "no_relative">
                                     <a class = "privacy_dropdown_link"></a>
                                     <ul class = "privacy_dropdown privacy_dropdown_club_fbar">
-                                        <li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>All Club Members</a><span></span></li>
-                                        <li class = "privacy_list" style = "position:relative;"><a>Club Admins</a><span></span></li>
+                                        <li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>All Department Members</a><span></span></li>
+                                        <li class = "privacy_list" style = "position:relative;"><a>Department Admins</a><span></span></li>
                                         <!--<li class = "privacy_list" style = "position:relative;"><a>Members</a><span></span></li>-->
                                         <div class="help-wedge">
                                         </div>
