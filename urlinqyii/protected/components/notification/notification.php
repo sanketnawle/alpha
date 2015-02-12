@@ -17,7 +17,7 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
     $notification_data = get_notifications_data($user, array($notification_array)[0]);
 
-    $message = get_notification_text($notification_array, $user, $notification_data);
+    //$message = get_notification_text($notification_array, $user, $notification_data);
 
     //notifyAlliOSDevicesForUserID($user_id, $message, renderJSON($notification_data['origin']));
 
