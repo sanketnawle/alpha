@@ -14,7 +14,7 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
     $notification = Notification::model()->find('notification_id=:id', array(':id'=>$notification->notification_id));
     $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
 
-    $notification_data = get_notifications_data($user, array(model_to_array($notification)))[0];
+//    $notification_data = get_notifications_data($user, array(model_to_array($notification)))[0];
 
 
     //$message = get_notification_text($notification_array, $user, $notification_data);
