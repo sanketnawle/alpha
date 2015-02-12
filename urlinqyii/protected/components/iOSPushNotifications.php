@@ -1,23 +1,23 @@
 <?php
 
-        function notifyAlliOSDevicesForUserID($user_id, $message, $origin) {
+        function notifyAlliOSDevicesForUserID($user_id, $message) {
 
             $sql = "SELECT * FROM ios_notifications WHERE user_id = $user_id;";
             $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
 
             foreach($device_notification_ids as $notification_id) {
-                pushNotify($message, $notification_id->notification_id, $origin);
+                pushNotify($message, $notification_id->notification_id);
             }
         }
          
-        function pushNotify($message, $notification_id, $origin) {
+        function pushNotify($message, $notification_id) {
 
             $deviceToken = $notification_id;
             $passphrase = 'URPNCC@MondayCertificate';
             $message = $message;
 
             $ctx = stream_context_create();
-            stream_context_set_option($ctx, 'ssl', 'local_cert', '/home6/campusla/public_html/urlinq/alpha/urlinqyii/protected/components/7ed48ded2e412732011227722ff356e9ca5bca05ck.pem');
+            stream_context_set_option($ctx, 'ssl', 'local_cert', '7ed48ded2e412732011227722ff356e9ca5bca05ck.pem');
             stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
 
             $fp = stream_socket_client(
@@ -29,8 +29,7 @@
 
             $body['aps'] = array(
                 'alert' => $message,
-                'sound' => 'default',
-                'ios_push_notification_urlinq_origin_ef75a66abbc5de5dc4697d7205e21e535155fdf7' => $origin
+                'sound' => 'default'
                 );
 
             $payload = json_encode($body);
