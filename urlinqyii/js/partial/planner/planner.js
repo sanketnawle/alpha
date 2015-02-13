@@ -694,10 +694,10 @@ function hide_planner_creation_form(){
     $('.timepicker').css('display', 'none');
     $('.event_time').text('Add time');
     $("#planner_bottom_holder").show();
-    $("#add_todo_text").text("Add Todo");
+    $("#add_todo_text").text("Add");
     $(".nav-icon-plus").removeClass('hide-plus');
     $(".nav-icon").removeClass('bounce-minus');  
-    $(".entry_field_placeholder").css({"width":"75px"});
+    $(".entry_field_placeholder").css({"width":"47px"});
     $('#calLayer.planner').hide();
 }
 
