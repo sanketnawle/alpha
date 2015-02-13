@@ -1233,6 +1233,22 @@ function fbar_ready(origin_id) {
 
 
 
+                var start_datetime_object = local_to_utc(new_datetime(start_date + ' ' + start_time));
+                var end_datetime_object = local_to_utc(new_datetime(end_date + ' ' + end_time));
+
+
+
+                start_date = date_to_string(start_datetime_object);
+                start_time = datetime_to_time_string(start_datetime_object);
+
+                end_date = date_to_string(end_datetime_object);
+                end_time = datetime_to_time_string(end_datetime_object);
+
+
+
+
+
+
                 //Convert dates from local to UTC
 //                var start_datetime = new_datetime(start_date + ' ' + start_time);
 //                var end_datetime = new_datetime(end_date + ' ' + end_time);
@@ -1253,6 +1269,10 @@ function fbar_ready(origin_id) {
 //
 //                console.log('UTC ENDTIME');
 //                console.log(end_datetime);
+
+
+
+
 
 
 
@@ -1279,6 +1299,15 @@ function fbar_ready(origin_id) {
                 var end_time = $('#opportunity_start_time').attr('data-time');
                 var title = $('#opportunity_title').val();
                 var description = $('.opportunity_textarea').find('.post_text_area').val();
+
+
+                var end_datetime_object = local_to_utc(new_datetime(end_date + ' ' + end_time));
+
+
+
+                end_date = date_to_string(end_datetime_object);
+                end_time = datetime_to_time_string(end_datetime_object);
+
 
                 post_data['opportunity']['title'] = title;
                 post_data['opportunity']['description'] = description;
