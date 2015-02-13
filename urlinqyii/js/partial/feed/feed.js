@@ -329,7 +329,52 @@ function ready(globals){
     });
 
 
+    $(document).on('click','.option_hide',function(){
+        var $hide_button = $(this);
 
+        var $post = $hide_button.closest('.post');
+
+        var post_id = $post.attr('data-post_id');
+
+        var post_data = {'post_id':post_id};
+
+        $.post(
+            globals.base_url + '/post/hide',
+            post_data,
+            function(response) {
+
+                if(response['success']){
+                    console.log('Successfully hid post ' + post_id);
+                    $post.remove();
+                }else{
+                    alert('Error hiding this post');
+                }
+            }, 'json'
+        );
+    });
+    $(document).on('click','.option_report',function(){
+        var $report_button = $(this);
+
+        var $post = $report_button.closest('.post');
+
+        var post_id = $post.attr('data-post_id');
+
+        var post_data = {'post_id':post_id};
+
+        $.post(
+            globals.base_url + '/post/report',
+            post_data,
+            function(response) {
+
+                if(response['success']){
+                    console.log('Successfully reported post ' + post_id);
+                   // $post.remove();
+                }else{
+                    alert('Error reporting this post, please try again later');
+                }
+            }, 'json'
+        );
+    });
     $(document).on('click', '.option_delete', function(){
 
         var $delete_button = $(this);
