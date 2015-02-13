@@ -796,11 +796,80 @@ class PostController extends Controller
             return;
         }
 
-
-
-
-
 	}
+    // param post_id
+    public function actionHide(){
+        if(!isset($_POST['post_id'])){
+            $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        $user = $this->get_current_user($_POST);
+        if(!$user){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+
+        if(!$post){
+            $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'post doesnt exist');
+            $this->renderJSON($return_data);
+            return;
+        }
+        $post_hide = new PostHide();
+        $post_hide->post_id = $_POST['post_id'];
+        $post_hide->user_id =  $user->user_id;
+        if(!$post_hide->save()) {
+            $return_data = array('success' => false, 'error_id' => 5, 'error_msg' => 'error hiding post');
+            $this->renderJSON($return_data);
+            return;
+        }else{
+                $return_data = array('success'=>true);
+                $this->renderJSON($return_data);
+                return;
+        }
+    }
+
+    // param post_id
+    public function actionReport(){
+        if(!isset($_POST['post_id'])){
+            $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        $user = $this->get_current_user($_POST);
+        if(!$user){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+
+        if(!$post){
+            $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'post doesnt exist');
+            $this->renderJSON($return_data);
+            return;
+        }
+        $post_report = new PostReport();
+        $post_report->post_id = $_POST['post_id'];
+        $post_report->user_id =  $user->user_id;
+        if(!$post_report->save()) {
+            $return_data = array('success' => false, 'error_id' => 5, 'error_msg' => 'error reporting post');
+            $this->renderJSON($return_data);
+            return;
+        }else{
+            $return_data = array('success'=>true);
+            $this->renderJSON($return_data);
+            return;
+        }
+    }
 
 
     //ERROR ID's
