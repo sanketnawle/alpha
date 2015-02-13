@@ -21,10 +21,7 @@
 
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/planner/datepicker.css"/>
 
-<!--
-<script src="<?php// echo Yii::app()->getBaseUrl(true); ?>/js/date_selector/date_selector.js" type="text/javascript"></script>
-<script src="<?php //echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
--->
+
 <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
 
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/status_bar/fbar.js"></script>

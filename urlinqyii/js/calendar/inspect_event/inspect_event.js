@@ -19,7 +19,7 @@ function hide_inspect(){
     jQuery('.event_holder').each(function(){
         var $event_holder = jQuery(this);
         var $holder_color_block = jQuery($event_holder).find(".white_bg_line_blocker");
-        var event_holder_hex = $event_holder.attr("data-hex");
+        var event_holder_hex = jQuery($event_holder).attr("data-hex");
         var event_holder_rgb_r = hexToRgb(event_holder_hex).r;
         var event_holder_rgb_g = hexToRgb(event_holder_hex).g;
         var event_holder_rgb_b = hexToRgb(event_holder_hex).b;

@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var $recent_date_input = null;
-    var $calLayer=null;
+    var $calLayer=jQuery('#calLayer');
     var blinkflag = 0;
 
     var w = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -34,6 +34,8 @@ $(document).ready(function(){
     jQuery('#calLayer.fbar').attr('data-year', d.getFullYear());
     jQuery('#calLayer.planner').attr('data-month', d.getMonth());
     jQuery('#calLayer.planner').attr('data-year', d.getFullYear());
+    jQuery('#calLayer').attr('data-month', d.getMonth());
+    jQuery('#calLayer').attr('data-year', d.getFullYear());
 
 
 
@@ -77,6 +79,8 @@ $(document).ready(function(){
         }else if(jQuery(this).hasClass('fbar_date_time')){
             $calLayer = jQuery('#calLayer.fbar');
             jQuery('#calLayer.planner').hide();
+        }else{
+            $calLayer = jQuery('#calLayer');
         }
 
         if(jQuery(this).is($recent_date_input) && $calLayer.css("display") == 'block'){
@@ -102,11 +106,13 @@ $(document).ready(function(){
                     });
                 }
 
-            }
-            if(jQuery(this).hasClass('planner')){
+            }else if(jQuery(this).hasClass('planner')){
                 console.log("planner");
                 $calLayer.css({'z-index': '9999',position:'absolute', top: '121px', left: $recent_date_input.position().left+12});
+            }else{
+                jQuery('#calLayer').css({'z-index': '9999',position:'absolute', top: $recent_date_input.offset().top + $recent_date_input.outerHeight()-50, left: $recent_date_input.offset().left-23});
             }
+
             $calLayer.show();
         }
 
@@ -125,10 +131,12 @@ $(document).ready(function(){
             year--;
             jQuery('#calLayer.planner').attr('data-year', year.toString());
             jQuery('#calLayer.fbar').attr('data-year', year.toString());
+            jQuery('#calLayer').attr('data-year', year.toString());
         }
 
         jQuery('#calLayer.planner').attr('data-month', month.toString());
         jQuery('#calLayer.fbar').attr('data-month', month.toString());
+        jQuery('#calLayer').attr('data-month', month.toString());
 
     });
 
@@ -146,10 +154,12 @@ $(document).ready(function(){
             year++;
             jQuery('#calLayer.planner').attr('data-year', year.toString());
             jQuery('#calLayer.fbar').attr('data-year', year.toString());
+            jQuery('#calLayer').attr('data-year', year.toString());
         }
 
         jQuery('#calLayer.planner').attr('data-month', month.toString());
         jQuery('#calLayer.fbar').attr('data-month', month.toString());
+        jQuery('#calLayer').attr('data-month', month.toString());
 
     });
 
@@ -160,7 +170,10 @@ $(document).ready(function(){
 
 
     jQuery(document).on('click', function(){
-        $calLayer.hide();
+        if($calLayer){
+            $calLayer.hide();
+        }
+
     });
 
 

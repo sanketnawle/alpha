@@ -195,7 +195,7 @@ class UserController extends Controller
                 $invite = Invite::model()->find('user_id=:user_id and origin_id=:origin_id and origin_type=:origin_type', array(':user_id'=>$user->user_id, ':origin_id'=>$notification['origin_id'], ':origin_type'=>$origin));
 
                 if(!$invite){
-                    $notification_model->delete;
+                    $notification_model->delete();
                     $data = array('success'=>false,'error_id'=>3,'error_msg'=>'invalid invite');
                     $this->renderJSON($data);
                     return;
@@ -208,7 +208,7 @@ class UserController extends Controller
                 if($notification['origin_type'] == 'event'){
                     $event = Event::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
                     if(!$event){
-                        $notification_model->delete;
+                        $notification_model->delete();
                         $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
                         $this->renderJSON($data);
                         return;
@@ -242,10 +242,10 @@ class UserController extends Controller
 
                     $notification['origin'] = $event;
                 }else if($notification['origin_type'] == 'class'){
-                    $notification_model->delete;
+                    $notification_model->delete();
                     $class = ClassModel::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
                     if(!$class){
-                        $notification_model->delete;
+                        $notification_model->delete();
                         $data = array('success'=>false,'error_id'=>2,'error_msg'=>'class doesnt exist');
                         $this->renderJSON($data);
                         return;
@@ -256,7 +256,7 @@ class UserController extends Controller
                 }else if($notification['origin_type'] == 'club' || $notification['origin_type'] == 'group'){
                     $group = Group::model()->find("group_id=:group_id", array(":group_id"=>$origin_id));
                     if(!$group){
-                        $notification_model->delete;
+                        $notification_model->delete();
                         $data = array('success'=>false,'error_id'=>2,'error_msg'=>'group doesnt exist');
                         $this->renderJSON($data);
                         return;
@@ -270,7 +270,7 @@ class UserController extends Controller
                 $follow = User::model()->find("user_id=:user_id", array(":user_id"=>$origin_id));
 
                 if(!$follow){
-                    $notification_model->delete;
+                    $notification_model->delete();
                     $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
                     $this->renderJSON($data);
                     return;
@@ -283,7 +283,7 @@ class UserController extends Controller
             elseif($notification_type == 'reply'){
                 $reply = Reply::model()->find("reply_id=:reply_id", array(":reply_id"=>$origin_id));
                 if(!$reply){
-                    $notification_model->delete;
+                    $notification_model->delete();
                     $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
                     $this->renderJSON($data);
                     return;
@@ -297,7 +297,7 @@ class UserController extends Controller
             elseif($notification_type == 'like' || $notification_type == 'post'){
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$origin_id));
                 if(!$post){
-                    $notification_model->delete;
+                    $notification_model->delete();
                     $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
                     $this->renderJSON($data);
                     return;
