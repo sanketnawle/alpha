@@ -1110,7 +1110,7 @@ function fbar_ready(origin_id) {
             //Reset the post type
             $fbar_holder.attr('data-post_type','');
 
-
+            $('#calLayer.fbar').hide();
             close_fbar();
         }
 

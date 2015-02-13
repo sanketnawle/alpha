@@ -357,7 +357,6 @@ form.top_search_bar_form{
     top: 1.5px;
     opacity: .9;
     position: relative;
-    border: 1px solid transparent!important;
     display: inline-block;
 }
 
