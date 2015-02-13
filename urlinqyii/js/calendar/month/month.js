@@ -313,7 +313,13 @@ jQuery(document).ready(function(){
 
 
         var event_todo = false;
-        var event_all_day = true;
+        var event_all_day = false;
+
+
+        if(event_start_time == '0-1:00:00'){
+            event_all_day = true;
+        }
+
 
 
         //Convert to UTC for the database
@@ -327,6 +333,12 @@ jQuery(document).ready(function(){
         event_end_date = date_to_string(event_end_datetime);
         event_end_time = datetime_to_time_string(event_end_datetime);
 
+
+
+        if(event_all_day){
+            event_start_date = event_end_date;
+            event_start_time = event_end_time;
+        }
 
         var post_data = {
             event:{
