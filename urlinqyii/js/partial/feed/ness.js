@@ -70,11 +70,14 @@ $(document).ready(function(e) {
         $post_functions_showr.closest(".post_functions").addClass("functions_active");
     });
 
-    $(document).delegate(".post_functions_showr.hider", "mousedown", function () {
-        var $post_functions_showr = $(this);
-        $post_functions_showr.removeClass("hider");
-        $post_functions_showr.addClass("shower");
-        $post_functions_showr.closest(".post_functions").removeClass("functions_active");
+    $(document).on("click",function (e) {
+        if($(e.target).closest('.post_functions').length === 0){
+            var $post_functions_showr = $('.post_functions_showr.hider');
+            $post_functions_showr.removeClass("hider");
+            $post_functions_showr.addClass("shower");
+            $post_functions_showr.closest(".post_functions").removeClass("functions_active");
+        }
+
     });
 
 
