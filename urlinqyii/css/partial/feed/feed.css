@@ -3334,8 +3334,11 @@ cursor: pointer;
 }
 
 .seemore_anchor a{
-color: #2885B6;
-display:block;
+color: #27a9d6;
+display: block;
+white-space: normal;
+word-break: break-word;
+word-wrap: break-word;
 }
 
 .seemore_anchor a:hover{text-decoration: underline;}
