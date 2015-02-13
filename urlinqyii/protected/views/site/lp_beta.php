@@ -584,9 +584,9 @@
                             Log In
                           </span>
                         </button>
-                        <div class = "forgot_password_2">
+                        <!--<div class = "forgot_password_2">
                           Forgot your password?
-                        </div>
+                        </div>-->
 
                         <!--<div class = "fb_signin_wrap">
                           <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
