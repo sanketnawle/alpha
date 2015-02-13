@@ -165,7 +165,7 @@ class UserController extends Controller
 
 
         $notifications_new = array();
-        foreach ($notifications as $notification_model) {
+        foreach ($notifications as $i=>$notification_model) {
             $notification = $this->model_to_array($notification_model);
             $notification_type = $notification['type'];
             $origin = $notification['origin_type'];
@@ -277,9 +277,6 @@ class UserController extends Controller
                 }
                 $notification['origin'] = $this->get_model_associations($follow,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
             }
-            elseif($notification_type == 'invite'){
-
-            }
             elseif($notification_type == 'reply'){
                 $reply = Reply::model()->find("reply_id=:reply_id", array(":reply_id"=>$origin_id));
                 if(!$reply){
@@ -329,10 +326,46 @@ class UserController extends Controller
 
 
             }
+            elseif($notification_type == 'event'){
+                $event = Event::model()->find('event_id=:event_id',array(':event_id'=>$notification['origin_id']));
+
+                if(!$event){
+                    $notification_model->delete();
+                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Event associated with notification doesnt exist. Notification was deleted', 'notification'=>$notification);
+                    $this->renderJSON($data);
+                    return;
+                }
+
+                $notification['origin'] = $this->model_to_array($event);
+
+                if($event->origin_type == 'class'){
+                    $class = ClassModel::model()->find('class_id=:id', array(':id'=>$event->origin_id));
+                    $notification['origin']['event_origin'] = $this->model_to_array($class);
+                    $notification['origin']['event_origin']['name'] = $class->class_name;
+                }else if($event->origin_type == 'group' || $event->origin_type == 'club'){
+                    $group = Group::model()->find('group_id=:id', array(':id'=>$event->origin_id));
+                    $notification['origin']['event_origin'] = $this->model_to_array($group);
+                    $notification['origin']['event_origin']['name'] = $group->group_name;
+                }else if($event->origin_type == 'department'){
+                    $department = Department::model()->find('department_id=:id', array(':id'=>$event->origin_id));
+                    $notification['origin']['event_origin'] = $this->model_to_array($department);
+                    $notification['origin']['event_origin']['name'] = $department->department_name;
+                }else if($event->origin_type == 'school'){
+                    $school = School::model()->find('school_id=:id', array(':id'=>$event->origin_id));
+                    $notification['origin']['event_origin'] = $this->model_to_array($school);
+                    $notification['origin']['event_origin']['name'] = $school->school_name;
+                }else{
+                    $notification['origin']['event_origin'] = null;
+                }
+            }
             else{
-                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'database doesnt support this kind of notification');
-                //$this->renderJSON($data);
-                return $data;
+                //This notification isnt supported, so just skip this
+                unset($notifications[$i]);
+                continue;
+
+//                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'database doesnt support this kind of notification', 'notification'=>$notification);
+//                //$this->renderJSON($data);
+//                return $data;
             }
             array_push($notifications_new, $notification);
         }
