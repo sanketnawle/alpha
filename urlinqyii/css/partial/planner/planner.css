@@ -91,17 +91,20 @@ hr.future_events_top_line{
 
 .entry_field_placeholder{
     position: relative;
-    width: 75px;
+    width: 100px;
     float: right;
     font-size: 11px;
-
     font-weight: 7000;
     height: 24px;
     text-transform: capitalize;
     top: -8px;
     cursor: pointer;
     padding-top: 8px;
-    left: 7px;
+    left: 8px;
+}
+
+body#body_home .entry_field_placeholder{
+    width:75px;
 }
 
 .entry_field_placeholder span{
