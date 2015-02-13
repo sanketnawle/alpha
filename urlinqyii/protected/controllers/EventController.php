@@ -743,7 +743,13 @@ class EventController extends Controller
             $event->start_time = $event_data['start_time'];
             $event->end_time = $event_data['end_time'];
             $event->location = $event_data['location'];
-            $event->all_day = $event_data['all_day'];
+
+            $all_day = 0;
+            if($event_data['all_day'] === true || $event_data['all_day'] == 'true'){
+                $all_day = 1;
+            }
+
+            $event->all_day = $all_day;
 
             $event->save(false);
 

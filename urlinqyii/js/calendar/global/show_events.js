@@ -18,15 +18,26 @@ function show_day_event(event_json){
     event_json['end_date'] = date_to_string(event_end_datetime);
     event_json['end_time'] = datetime_to_time_string(event_end_datetime);
 
-
-    event_json['formatted_start_time'] = time_string_to_am_pm_string(event_json['start_time']);
+    if(event_json['all_day'] == '1'){
+        event_json['formatted_start_time'] = 'All day';
+    }else{
+        event_json['formatted_start_time'] = time_string_to_am_pm_string(event_json['start_time']);
+    }
     var generated_html = template(event_json);
     var html_object = jQuery(generated_html);
     var color_block = html_object.find('.white_bg_line_blocker');
 
-    //formatted start time
-    var event_time_text = time_string_to_am_pm_string(event_json['start_time']) + " - " + time_string_to_am_pm_string(event_json['end_time']);
-    html_object.find('.event_start_time').text(event_time_text);
+//    //formatted start time
+//    var event_time_text = '';
+//    if(event_json['all_day']){
+//        event_time_text = 'All day';
+//    }else{
+//        event_time_text = time_string_to_am_pm_string(event_json['start_time']) + " - " + time_string_to_am_pm_string(event_json['end_time']);
+//    }
+//
+//    html_object.find('.event_start_time').text(event_time_text);
+
+
 
 
     var start_time_hour = ints_to_time(parseInt(event_json['start_time'].substring(0,2)),0,0);
@@ -43,7 +54,13 @@ function show_day_event(event_json){
 //            return;
 //        }
 
-    var $grid_item_selector = jQuery("div.day_grid_item[data-time='" + start_time_hour + "']");
+    var $grid_item_selector = null;
+    //alert(event_json['all_day']);
+    if(event_json['all_day'] == '1'){
+        $grid_item_selector = jQuery("div.day_grid_item.all_day");
+    }else{
+        $grid_item_selector = jQuery("div.day_grid_item[data-time='" + start_time_hour + "']");
+    }
     //Make sure this div exists b4 we do anything
     if($grid_item_selector){
 
@@ -108,7 +125,11 @@ function show_day_event(event_json){
 
 
         html_object.css({'position':'absolute'});
-        html_object.css({'top': top_pixels.toString() + 'px'});
+
+        if(event_json['all_day'] == '0'){
+            html_object.css({'top': top_pixels.toString() + 'px'});
+        }
+
         html_object.css({'left': left_pixels + 'px'});
         html_object.css({'height':event_height.toString() + 'px'});
         html_object.css({'z-index':time_range_height.toString()});
@@ -146,7 +167,13 @@ function show_week_day_event(event_json){
     event_json['end_time'] = datetime_to_time_string(event_end_datetime);
 
 
-    event_json['formatted_start_time'] = time_string_to_am_pm_string(event_json['start_time']);
+    if(event_json['all_day'] == '1'){
+        event_json['formatted_start_time'] = 'All day';
+    }else{
+        event_json['formatted_start_time'] = time_string_to_am_pm_string(event_json['start_time']);
+    }
+
+
 
     //alert(event_json);
 
@@ -154,9 +181,11 @@ function show_week_day_event(event_json){
     var html_object = jQuery(generated_html);
     var color_block = html_object.find('.white_bg_line_blocker');
 
-    //formatted start time
-    var event_time_text = time_string_to_am_pm_string(event_json['start_time']) + " - " + time_string_to_am_pm_string(event_json['end_time']);
-    html_object.find('.event_start_time').text(event_time_text);
+
+    //handlebars is already doing this for us so doesnt make sense to use the dom to set the text
+//    //formatted start time
+//    var event_time_text = time_string_to_am_pm_string(event_json['start_time']) + " - " + time_string_to_am_pm_string(event_json['end_time']);
+//    html_object.find('.event_start_time').text(event_time_text);
 
     event_json['color']['rgb'] = hexToRgb(event_json['color']['hex']);
     var start_time_hour = ints_to_time(parseInt(event_json['start_time'].substring(0,2)),0,0);
@@ -173,14 +202,16 @@ function show_week_day_event(event_json){
 //            return;
 //        }
 
-    var $grid_item_selector = jQuery("div.grid-item[data-time='" + start_time_hour + "'][data-date='" + event_json['start_date'] + "']");
+    var $grid_item_selector = null;
+    //alert(event_json['all_day']);
+    if(event_json['all_day'] == '1'){
+        $grid_item_selector = jQuery("div.grid-item.all_day_week_grid_item[data-date='" + event_json['start_date'] + "']");
+    }else{
+        $grid_item_selector = jQuery("div.grid-item[data-time='" + start_time_hour + "'][data-date='" + event_json['start_date'] + "']");
+    }
     //Make sure this div exists b4 we do anything
     if($grid_item_selector){
 
-
-
-
-        //Size in pixels of the time ranges
         var time_range_height = 50;
 
         //Start after the all day events + 15 for the padding bottom
@@ -241,7 +272,12 @@ function show_week_day_event(event_json){
         //html_object.css({'left': left_pixels + 'px'});
         html_object.css({'height':event_height.toString() + 'px'});
         html_object.css({'z-index':event_height.toString()});
-        html_object.css({'width': width.toString() + 'px'});
+        if(width){
+            html_object.css({'width': width.toString() + 'px'});
+        }else{
+            //alert('Width is null for event: ' + JSON.stringify(event_json));
+        }
+
 
         color_block.css({'background-color':"rgba(" + event_json['color']['rgb']['r'] + "," + event_json['color']['rgb']['g'] + "," + event_json['color']['rgb']['b'] + ", .1)"});
 
@@ -294,13 +330,21 @@ function show_month_event(event_json){
     event_json['end_date'] = date_to_string(event_end_datetime);
     event_json['end_time'] = datetime_to_time_string(event_end_datetime);
 
-
-    event_json['formatted_start_time'] = time_string_to_am_pm_string(event_json['start_time']);
+    var $grid_item_selector = null;
+    //alert(event_json['all_day']);
+    if(event_json['all_day'] == '1'){
+        event_json['formatted_start_time'] = 'All day';
+    }else{
+        event_json['formatted_start_time'] = time_string_to_am_pm_string(event_json['start_time']);
+    }
 
 
     var generated_html = template(event_json);
-    //            var grid_item_selector = ele.querySelector("div.grid-item.prem[data-date='" + event_json['start_date'] + "']");
+
+
+
     var $grid_item_selector = jQuery("div.grid-item[data-date='" + event_json['start_date'] + "']");
+
 
     if($grid_item_selector){
 

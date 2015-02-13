@@ -478,6 +478,7 @@ overflow: hidden;
     -webkit-transition: box-shadow .188s cubic-bezier(0.550,0.085,0.680,0.530), border .188s cubic-bezier(0.550,0.085,0.680,0.530);  
     transition: box-shadow .188s ease, border .188s ease; 
     -moz-transition: box-shadow .188s cubic-bezier(0.550,0.085,0.680,0.530), border .188s cubic-bezier(0.550,0.085,0.680,0.530); 
+    margin-left: -3px;
 }
 
 .embedly_box:hover{

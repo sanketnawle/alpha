@@ -21,6 +21,14 @@ body.body_club .planner_container{
 margin-top: 15px;
 }
 
+hr.future_events_top_line{
+    border-radius: 0;
+    
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 2px 10px 0;
+}
+
 .planner_header_panel{
     font-family: Avenir;
     font-size: 14px;

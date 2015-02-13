@@ -20,17 +20,26 @@ function hide_inspect(){
         var $event_holder = jQuery(this);
         var $holder_color_block = jQuery($event_holder).find(".white_bg_line_blocker");
         var event_holder_hex = jQuery($event_holder).attr("data-hex");
-        var event_holder_rgb_r = hexToRgb(event_holder_hex).r;
-        var event_holder_rgb_g = hexToRgb(event_holder_hex).g;
-        var event_holder_rgb_b = hexToRgb(event_holder_hex).b;
-        if($event_holder.hasClass('colorfied') && $event_holder.hasClass('month_day_event')){
-            $event_holder.css({"background-color":"transparent"});
-            $event_holder.removeClass('colorfied');
-        }          
-        else if($event_holder.hasClass('colorfied')){
-            $holder_color_block.css({"background-color":"rgba(" + event_holder_rgb_r + "," + event_holder_rgb_g + "," + event_holder_rgb_b + ", .1)"});
-            $event_holder.removeClass('colorfied');
+        try{
+            var event_holder_rgb_r = hexToRgb(event_holder_hex).r;
+            var event_holder_rgb_g = hexToRgb(event_holder_hex).g;
+            var event_holder_rgb_b = hexToRgb(event_holder_hex).b;
+
+
+            if($event_holder.hasClass('colorfied') && $event_holder.hasClass('month_day_event')){
+                $event_holder.css({"background-color":"transparent"});
+                $event_holder.removeClass('colorfied');
+            }
+            else if($event_holder.hasClass('colorfied')){
+                $holder_color_block.css({"background-color":"rgba(" + event_holder_rgb_r + "," + event_holder_rgb_g + "," + event_holder_rgb_b + ", .1)"});
+                $event_holder.removeClass('colorfied');
+            }
+        }catch(err){
+            //alert('ERROR ON ' + event_holder_hex);
+            console.log("Error on hex" + event_holder_hex);
         }
+
+
 
     });
 }
