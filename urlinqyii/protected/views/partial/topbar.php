@@ -216,7 +216,12 @@
             {{/ifCond}}
 
             {{#ifCond type '==' 'reply'}}
-                <div class="message">{{actor.firstname}} {{actor.lastname}} replied to your post: {{origin.reply_msg}}</div>
+
+                {{#ifCond origin.user_id '==' '<?php echo $user->user_id; ?>'}}
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} replied to your post{{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{reply.reply_msg}}</div>
+                {{else}}
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} replied to a post{{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{reply.reply_msg}}</div>
+                {{/ifCond}}
             {{/ifCond}}
 
             {{#ifCond type '==' 'post'}}
