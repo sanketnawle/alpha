@@ -301,12 +301,20 @@ jQuery(document).ready(function(){
 
     });
 
-    jQuery(document).on('click', '.add_people_button', function(e){
+    jQuery(document).on('click', '.add_people_button.invite', function(e){
         $(this).hide();
         $(".help_div.dark").hide();
         $("#invite_holder").show();
+        $("#remove_button").hide();
         $("#invite_holder .invite_input").focus();
     });
+    jQuery(document).on('click', '#done_inviting_button', function(e){
+        $(".help_div.dark").hide();
+        $("#invite_holder").hide();
+        $("#remove_button").show();
+        $(".add_people_button.invite").show();
+    });
+
 
 
 

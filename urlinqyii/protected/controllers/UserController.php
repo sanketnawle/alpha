@@ -209,9 +209,8 @@ class UserController extends Controller
                     $event = Event::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
                     if(!$event){
                         $notification_model->delete();
-                        $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                        $this->renderJSON($data);
-                        return;
+                        unset($notifications[$i]);
+                        continue;
                     }
 
                     $event = $this->model_to_array($event);
@@ -257,9 +256,8 @@ class UserController extends Controller
                     $group = Group::model()->find("group_id=:group_id", array(":group_id"=>$origin_id));
                     if(!$group){
                         $notification_model->delete();
-                        $data = array('success'=>false,'error_id'=>2,'error_msg'=>'group doesnt exist');
-                        $this->renderJSON($data);
-                        return;
+                        unset($notifications[$i]);
+                        continue;
                     }
 
                     $notification['origin'] = $this->model_to_array($group);
@@ -271,9 +269,8 @@ class UserController extends Controller
 
                 if(!$follow){
                     $notification_model->delete();
-                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                    $this->renderJSON($data);
-                    return;
+                    unset($notifications[$i]);
+                    continue;
                 }
                 $notification['origin'] = $this->get_model_associations($follow,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
             }
@@ -281,9 +278,8 @@ class UserController extends Controller
                 $reply = Reply::model()->find("reply_id=:reply_id", array(":reply_id"=>$origin_id));
                 if(!$reply){
                     $notification_model->delete();
-                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                    $this->renderJSON($data);
-                    return;
+                    unset($notifications[$i]);
+                    continue;
                 }
 
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$reply->post_id));
@@ -295,9 +291,8 @@ class UserController extends Controller
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$origin_id));
                 if(!$post){
                     $notification_model->delete();
-                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                    $this->renderJSON($data);
-                    return;
+                    unset($notifications[$i]);
+                    continue;
                 }
 
                 $notification['origin'] = $this->model_to_array($post);
@@ -331,9 +326,13 @@ class UserController extends Controller
 
                 if(!$event){
                     $notification_model->delete();
-                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Event associated with notification doesnt exist. Notification was deleted', 'notification'=>$notification);
-                    $this->renderJSON($data);
-                    return;
+
+                    unset($notifications[$i]);
+                    continue;
+
+//                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Event associated with notification doesnt exist. Notification was deleted', 'notification'=>$notification);
+//                    $this->renderJSON($data);
+//                    return;
                 }
 
                 $notification['origin'] = $this->model_to_array($event);

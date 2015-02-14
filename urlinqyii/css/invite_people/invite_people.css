@@ -60,9 +60,15 @@ box-shadow: inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(
 
 .tab_members #invite_holder{
     position:relative;
-    width: 310px;
+    width: 373px;
     margin-top: 3px;
     display:none;
+}
+
+#done_inviting_button{
+    float:right;
+    margin-left: 5px;
+    margin-top: 4px;
 }
 
 .tab_members #invite_popup{
