@@ -230,10 +230,6 @@ div.remove#done_removing_button span{
     box-shadow: inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
 }
 
-.remove_members_state div.regular_member div.members_card div.user_card_button_holder div.follow_button_wrapper{
-    display:none!important;
-}
-
 div.remove_member_button{
     display:none;
     background: #de445d!important;
@@ -288,7 +284,7 @@ div.remove_state_controls{
 .tab_members .help_div.dark{
     top: 49px;
 
-    margin-left: -59px;
+    margin-left: 92px;
 }
 
 .tab_members .help_div.dark .box{
