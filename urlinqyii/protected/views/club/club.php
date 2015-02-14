@@ -169,8 +169,8 @@
                                     <div class="tab_img"></div>
                                     <div class="tab_text">Members</div>
                                     <div class = "tab_amount">
-                                        <?php if(count($club->members)>0){
-                                            echo count($club->members);
+                                        <?php if(count($club->users)>0){
+                                            echo count($club->users);
                                         } ?>
                                     </div>
                                 </div>
@@ -413,7 +413,25 @@
                             <div class="tab_content_holder">
                                 <div class="tab_header"> 
                                     <div class = "float_Right">
-                                        <div class = "add_people_button">
+                                        <?php if($is_admin){ ?>
+                                            <div class = "admin_member_controls">
+                                                <div class = "add_people_button remove" id = "remove_button">
+                                                    Remove People
+                                                </div>
+                                            </div>
+                                            <div class = "remove_state_controls">
+                                                <span class ="removed_count"></span>
+                                                <div class = "remove" id = "done_removing_button">
+                                                    <em></em>
+                                                    <span>Done</span>
+                                                </div>
+                                            </div>
+                                            <!--<div class = "add_people_button">
+                                                Add Members
+                                            </div>-->
+
+                                        <?php } ?>
+                                        <div class = "add_people_button invite">
                                             Add Members
                                         </div>
                                         <div class = "help_div dark">
@@ -440,6 +458,7 @@
                                                 <em class = "successful_invite_icon"></em>
                                                 <input id="invite_input" name="event_invite_input" placeholder="Add a new member" class="text_input invite_input small_search_input">
                                                 <em class = "invite_people_icon"></em>
+                                                <div id="done_inviting_button" class="add_people_button">Done</div>
                                                 <div id="create_event_invite_button" class="invite_people_button">Send Invite</div>
 
 
@@ -487,8 +506,8 @@
                                 <div class = "members_tab_content tab_content">
 
                                     <?php foreach($club->users as $member){ ?>
-                                        <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
-                                            <div class = "members_card admin normal_size">
+                                        <div class = "members_card_wrapper regular_member" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
+                                            <div class = "members_card <?php if($member->isAdmin($club)) echo 'admin';?> normal_size">
                                                 <div class = "members_card_img profile_link" data-user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 
                                                     <?php if($member->user_type == 'p'){ ?>
@@ -505,13 +524,15 @@
                                                     <a class = "name profile_link" data-user_id='<?php echo $member->user_id; ?>'><?php echo $member->full_name(); ?></a>
                                                 </div>
                                                 <div class = "user_more_info">
-                                                    <a class = "department_link"><?php echo $member->department->department_name; ?></a>
+                                                    <a href="<?php echo Yii::app()->getBaseUrl()."/department/".$member->department->department_id; ?>" class = "department_link"><?php echo $member->department->department_name; ?></a>
                                                 </div>
 
 
                                                 <?php if($user->user_id !== $member->user_id){ ?>
                                                 <div class = "user_card_button_holder">
-
+                                                    <?php if($is_admin){ ?>
+                                                        <div class="remove_member_button">Remove</div>
+                                                    <?php } ?>
                                                     <?php if($user->is_following($member->user_id)){ ?>
                                                         <div class = "follow_button_wrapper following_wrapper">
                                                             <div class = "user_follow_button following">Following</div>

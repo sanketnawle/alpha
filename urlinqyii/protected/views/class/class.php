@@ -866,9 +866,9 @@
 
                     <?php } ?>
 
-                    <?php foreach($class->students as $member){ ?>
+                    <?php foreach($class->users as $member){ ?>
                         <div class = "members_card_wrapper regular_member" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->full_name(); ?>">
-                            <div class = "members_card admin normal_size">
+                            <div class = "members_card <?php if($member->isAdmin($class)) echo 'admin';?> normal_size">
                                 <div class = "members_card_img profile_link" data-user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 
                                     <?php if($member->user_type == 'p'){ ?>
@@ -885,11 +885,13 @@
                                     <a class = "name profile_link" data-user_id='<?php echo $member->user_id; ?>'><?php echo $member->firstname . ' ' . $member->lastname; ?></a>
                                 </div>
                                 <div class = "user_more_info">
-                                    <a class = "department_link"><?php echo $member->department->department_name; ?></a>
+                                    <a href="<?php echo Yii::app()->getBaseUrl()."/department/".$member->department->department_id; ?>" class = "department_link"><?php echo $member->department->department_name; ?></a>
                                 </div>
                                 <?php if($user->user_id !== $member->user_id){ ?>
                                 <div class = "user_card_button_holder">
-
+                                    <?php if($is_admin){ ?>
+                                        <div class="remove_member_button">Remove</div>
+                                    <?php } ?>
                                     <?php if($user->is_following($member->user_id)){ ?>
                                     <div class = "follow_button_wrapper following_wrapper">
                                         <div class = "user_follow_button following">Following</div>

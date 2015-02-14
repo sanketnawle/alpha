@@ -69,7 +69,7 @@ height: 19px;
 background-position: -44px -463px;
 position: relative;
 left: 6px;
-top: 11px;
+top: 5px;
 opacity: .8;
 }
 
@@ -191,7 +191,7 @@ text-decoration: none;
 .post_owner, .post_group{
 color: #333; 
 font-size: 15.5px;
-top: 9px;
+top: 8px;
 position: relative;
 cursor: pointer;
 /* font-weight: bold; */
@@ -199,7 +199,12 @@ cursor: pointer;
 -moz-osx-font-smoothing: grayscale;
 left: 4px;
 display: inline-block;
--webkit-transition: color .218s; -moz-transition: color .218s; -o-transition: color .218s; transition: color .218s;
+-webkit-transition: color .218s; -moz-transition: color .218s; -o-transition: color .218s; text-transform: capitalize;
+transition: color .218s;
+max-width: 50%;
+text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
 }
 
 div.post:hover .post_owner, div.post:hover .post_group, div.post:hover span.post_group > a, div.comments:hover .comment_owner{
@@ -239,17 +244,16 @@ margin-left: 82px;
 span.time_icon{
     background-image: url(../../../assets/small_icons.png);
     
-    background-size: auto;
+    background-size: corve;
     background-repeat: no-repeat;
     display: inline-block;
-    width: 21px;
+    width: 23px;
     height: 21px;
     background-position: -78px -955px;
-    position: relative;
-    top: 4px;  
+    position: relative;  
     left: 2px;
-    top: 4px;
-    opacity: .25;
+    top: -2px;
+    opacity: 1;
 }
 
 .post_msg{
@@ -2475,7 +2479,10 @@ position: relative;
 
 time.timeago{
     font-weight: 200;
-    letter-spacing: .6px;
+    letter-spacing: .2px;
+    top: -6px;
+    position: relative;
+    color: #777;
 }
 
 span.post_group > a{
@@ -3334,11 +3341,8 @@ cursor: pointer;
 }
 
 .seemore_anchor a{
-color: #27a9d6;
-display: block;
-white-space: normal;
-word-break: break-word;
-word-wrap: break-word;
+color: #2885B6;
+display:block;
 }
 
 .seemore_anchor a:hover{text-decoration: underline;}
@@ -3786,10 +3790,10 @@ cursor: default;
 }
 
 .post_event_calendar_button:active{
-    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
-    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 123, 232, 0.5);
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 123, 232, 0.5);
     background: #EEE;
-    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 123, 232, 0.5);
 }
 
 .post_event_location_holder{

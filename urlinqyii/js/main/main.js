@@ -181,30 +181,53 @@ $(document).ready(function(){
 
     $("#remove_button").click(function(){
         var $remove_button = $(".admin_member_controls");
-        var $add_button = $(".add_people_button");
-        var $members_tab = $("#members_tab_content");
+        var $add_button = $(".add_people_button.invite");
+        var $members_tab = $(".members_tab_content");
         var $remove_state_controls = $(".remove_state_controls");
 
         $add_button.hide();
         $remove_button.hide();
         $remove_state_controls.css({"display":"inline-block"});
         $members_tab.addClass("remove_members_state");
+        $('.members_card').not('.admin').find('.remove_member_button').show();
+
+        $('.members_card').not('.admin').find('.follow_button_wrapper').hide();
+
     });
 
     $(".remove_member_button").click(function(){
-        $(this).closest(".regular_member").fadeOut(250);
+        var $member_card = $(this).closest(".regular_member");
+        var user_card_id = $member_card.attr('data-user_id');
+
+        var post_url = globals.base_url + '/' + globals.origin_type + '/removeMember';
+        var post_data = {user_id:user_card_id, group_id: globals.origin_id};
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                if(response['success']){
+                    $member_card.fadeOut(250);
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+
+        );
+        //$(this).closest(".regular_member").fadeOut(250);
     });
 
     $("#done_removing_button").click(function(){
         var $remove_button = $(".admin_member_controls");
-        var $add_button = $(".add_people_button");
-        var $members_tab = $("#members_tab_content");
+        var $add_button = $(".add_people_button.invite");
+        var $members_tab = $(".members_tab_content");
         var $remove_state_controls = $(".remove_state_controls");
 
         $remove_state_controls.hide();
         $add_button.show();
         $remove_button.show();
         $members_tab.removeClass("remove_members_state");
+        $('.regular_member').find('.remove_member_button').hide();
+        $('.regular_member').find('.follow_button_wrapper').show();
 
     });
 

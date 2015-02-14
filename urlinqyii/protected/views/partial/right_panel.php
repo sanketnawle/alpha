@@ -91,7 +91,7 @@
                     </div>
                 {{/if}}
             {{else}}
-                <div class = "suggestion_btn_wrapper">
+                <div class = "suggestion_btn_wrapper" data-user_id={{id}}>
                     <a role = "button" class = "suggested_user_follow_button">
                         <span class = "follow_icon"></span>Follow
                     </a>

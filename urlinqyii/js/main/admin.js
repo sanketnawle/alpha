@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 
 
-    $('#create_class_school_input').click(function(e){
+    $('.school_input').click(function(e){
         e.preventDefault();
         e.stopPropagation();
         //Check if univ id has been set
@@ -201,7 +201,7 @@ $(document).ready(function(){
 
 
 
-
+    
 
 
     $(document).on('submit', '#create_class_form', function(e){
@@ -292,7 +292,80 @@ $(document).ready(function(){
 
 
 
+    
 
+    $(document).on('submit', '#create_course_form', function(e){
+        e.preventDefault();
+
+        var university_id = $('#create_course_university_input').attr('data-id') ? $('#create_course_university_input').attr('data-id') : '';
+        var school_id = $('#create_course_school_input').attr('data-id') ? $('#create_course_school_input').attr('data-id') : '';
+        var department_id = $('#create_course_department_input').attr('data-id') ? $('#create_course_department_input').attr('data-id') : '';
+
+
+        var course_name = $('#create_course_name_input').val();
+        var course_tag = $('#create_course_tag_input').val();
+        var course_description = $('#create_course_description_input').val();
+
+        var course_credits = $('#create_course_credits_input').val();
+
+
+        if(university_id == '' || university_id == '0'){
+            alert('Input university');
+            return;
+        }
+
+        if(school_id == '' || school_id == '0'){
+            alert('Input school');
+            return;
+        }
+
+        if(department_id == '' || department_id == '0'){
+            alert('Input department');
+            return;
+        }
+
+        if(course_name == ''){
+            alert('input course name');
+            return;
+        }
+
+
+
+        var post_url = globals.base_url + '/course/create';
+
+
+        var post_data = {
+            university_id: university_id,
+            school_id: school_id,
+            department_id: department_id,
+            course_id: course_id,
+            course_name: course_name,
+            course_tag: course_tag,
+            course_description: course_description,
+            course_credits: course_credits
+        };
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                alert(JSON.stringify(response));
+
+
+                if(response['success']){
+
+                }else{
+
+                }
+
+            },'json'
+        );
+
+
+
+
+
+    });
 
 
 

@@ -43,7 +43,7 @@
             <label for="create_class_school_input">School</label>
             <br>
 
-            <input type="text" id="create_class_school_input" placeholder="school" data-id="0">
+            <input type="text" class="school_input" id="create_class_school_input" placeholder="school" data-id="0">
 
             <br>
 
@@ -87,8 +87,69 @@
 
 
     </div>
+    
+    
+    
+    
+    
+    <div id="create_course">
+        <h1>Create course</h1>
+        <form id="create_course_form">
+            <label for="create_course_university_input">University</label>
+            <br>
+            <input type="text" name="" id="create_course_university_input" placeholder="NYU" value="NYU" data-id="1">
+
+            <br>
+
+            <label for="create_course_school_input">School</label>
+            <br>
+
+            <input type="text" class="school_input" id="create_course_school_input" placeholder="school" data-id="0">
+
+            <br>
 
 
+            <label for="create_course_department_input">Department</label>
+            <br>
+
+            <input type="text" id="create_course_department_input" placeholder="department" data-id="0">
+
+            <br>
+
+
+<!--            <input type="text" id="create_course_course_tag_input" placeholder="course tag (MA-UY 1121)">-->
+
+            <br>
+
+
+            <input type="text" id="create_course_name_input" placeholder="course name">
+
+            <input type="text" id="create_course_tag_input" placeholder="tag (eg MA-UY 5001">
+
+            <input type="text" id="create_course_description_input" placeholder="description">
+
+            <input type="text" id="create_course_credits_input" placeholder="credits">
+
+            <button type="submit">Create course</button>
+
+        </form>
+
+
+    </div>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div id="input_dropdown">
 
 

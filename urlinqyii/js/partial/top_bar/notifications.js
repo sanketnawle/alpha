@@ -198,8 +198,61 @@ $(document).ready(function(){
     }
 
 
+    $(document).on('click', '.notification_link', function(){
+        var $notification = $(this);
 
-    $(document).on('click', 'div#notifications div.accept_invite_button', function(){
+
+        window.location.href = $notification.attr('data-url');
+    });
+
+
+
+
+    $(document).on('click', '.delete_notification', function(e){
+        e.stopPropagation();
+        var $button = $(this);
+
+        var $notification = $button.closest('.notification');
+
+        var notification_id = $notification.attr('data-id') ? $notification.attr('data-id') : '';
+
+        var post_url = globals.base_url + '/notification/delete';
+
+        var post_data = {
+            notification_id: notification_id
+        };
+
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+
+                if(response['success']){
+                    console.log('successfully deleted notification');
+                }else{
+                    console.log('error deleting notification');
+                }
+
+
+
+                $notification.fadeOut( "fast", function() {
+                    $notification.remove();
+                });
+
+
+            },'json'
+        );
+
+    });
+
+
+
+
+
+    $(document).on('click', 'div#notifications div.accept_invite_button', function(e){
+        e.stopPropagation();
+
         var $accept_invite_button = $(this);
 
         var origin_type = $accept_invite_button.attr('data-origin_type');

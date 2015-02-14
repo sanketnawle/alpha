@@ -278,20 +278,6 @@ class ClassController extends Controller
             $this->renderJSON($data);
             return;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 
 
@@ -656,6 +642,85 @@ class ClassController extends Controller
         }
     }
 
+
+    public function actionRemoveMember(){
+        if(!isset($_POST['group_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_to_remove = User::model()->find('user_id = :uid',array(':uid'=>$_POST['user_id']));
+        if(!$user_to_remove){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'invalid user');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $current_user_id = $user->user_id;
+
+        $class_id = $_POST['group_id'];
+        $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$current_user_id));
+        //Check if the current user is even in this group
+        if($class_user){
+            //Check if current user is an admin of this group
+            if($class_user->is_admin){
+                $class_user_to_remove = ClassUser::model()->find('user_id=:uid and class_id=:cid',array(':cid'=>$class_id,':uid'=>$user_to_remove->user_id));
+                //Check if we destroy this shit successfully
+                if($class_user_to_remove->delete()){
+
+
+                    //Loop through all events this user has for this group and delete them
+                    //Or else the database will get fucked up
+                    $user_events = EventUser::model()->findAllBySql("SELECT * FROM `event_user` JOIN `event` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " .$user_to_remove->user_id . " AND event.origin_type = 'class' AND event.origin_id = " . $class_id);
+                    foreach($user_events as $event){
+                        $event->delete();
+                    }
+
+                    //Get the events that this
+                    $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE event.user_id = " . $user_to_remove->user_id . " AND event.origin_type = 'class' AND event.origin_id = " . $class_id);
+
+
+                    foreach($events as $event){
+                        $event->delete();
+                    }
+
+                    //We also need to delete all posts from this user in this group
+                    $posts = Post::model()->findAllBySql('SELECT * FROM `post` WHERE  user_id = '.$user_to_remove->user_id.' AND origin_type = "class" AND origin_id = ' . $class_id);
+                    foreach($posts as $post){
+                        $post->delete();
+                    }
+
+                    $data = array('success'=>true);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error deleting user');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                //user is not an admin of this group
+                $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not an admin');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }else{
+            //user is not a part of this group
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not in the group');
+            $this->renderJSON($data);
+            return;
+        }
+    }
 
     public function actionRemoveFile(){
         if(!isset($_POST['file_id']) || !isset($_GET['id'])){
