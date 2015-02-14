@@ -4,7 +4,7 @@ div#right_panel_content_holder{
 }
 
 div#panel_header{
-    border-bottom: 1px solid #D8D8D8;  margin-left: 0px;    
+    border-bottom: 1px solid #eaeaea;  margin-left: 0px;    
 
     font-size: 18px; font-family: Avenir; font-weight: 500;  
     padding-top: 30px;
@@ -17,6 +17,7 @@ div#panel_header{
     font-family: Avenir; font-weight: 500; font-size: 13.5px; 
     color: #444; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     text-transform: uppercase;
+    -moz-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset; -webkit-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset; box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset;
 }
 
 span.right_panel_assets{
@@ -132,9 +133,11 @@ div#right_panel_bottom_section{
     padding: 14px 10px;
     right: 0px;
     padding-right: 0px;
-    border-top: 1px solid #D8D8D8;
+    border-top: 1px solid #FFFFFF;
     margin-right: 10px;
     padding-top: 10px;
+    -moz-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset; -webkit-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset; 
+    box-shadow: 0 1px 0px #eaeaea inset;
 }
 
 div#right_panel_bottom_section h6{
@@ -148,36 +151,44 @@ div#right_panel_bottom_section h6{
 }
 
 div#right_panel_bottom_section > div.suggestion_type{
-    border: 1px solid #EEE;
+    border: 1px solid transparent;
     padding: 2px 4px;
     margin-bottom: 6px;
     background-color: #fafafa;
-    border-radius: 4px;
-    opacity: .5;
-    height: 30px;
-    color: #989898;
+    border-radius: 3px;
+    opacity: .45;
+    height: 30px;   
+    -webkit-transition: box-shadow .188s ease, opacity .188s ease; 
+    transition: box-shadow .188s ease, opacity .188s ease; 
+    -moz-transition: box-shadow .188s ease, opacity .188s ease; box-shadow: 0 1px 1px rgba(0,0,0,0.06);
+    color: #333;
     cursor: pointer;
 }
 
 div#right_panel_bottom_section > div.suggestion_type:hover{
     opacity: 1;
     
-    color: #555;
-    background-color: #f8f8f8;
+    color: #777;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 
 div#right_panel_bottom_section > div.suggestion_type.active{
-    background-color: #f5f5f5;
+    background-color: #fff;
     
-    border-color: #EFEFEF;
+    border-color: transparent;
     opacity: 1;
-    cursor: default;
+    cursor: default;  
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12); cursor: pointer; 
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
 }
 
 div#right_panel_bottom_section > div.suggestion_type.active:hover{
     cursor: default;
     
-    background-color: #f5f5f5; border-color: #EFEFEF;
+    background-color: #FFFFFF; 
+    border-color: transparent;
     opacity: 1;
 }
 

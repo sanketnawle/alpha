@@ -41,13 +41,13 @@
                     <div class="planner_header">
                         <?php
                             if($origin_type === 'club'){
-                                echo 'Group Planner';
+                                echo 'Planner';
                             }
                             elseif($origin_type === 'class'){
-                                echo 'Class Planner';
+                                echo 'Planner';
                             }
                             elseif($origin_type === 'department'){
-                                echo 'Department Planner';
+                                echo 'Planner';
                             }
                             else{
                                 echo 'Planner';
@@ -57,13 +57,13 @@
                             <span id = "add_todo_text">
                             <?php
                             if($origin_type === 'class'){
-                                echo 'Add Todo';
+                                echo 'Add class task';
                             }
                             elseif($origin_type === 'club'){
-                                echo 'Add Event';
+                                echo 'Add club event';
                             } 
                             elseif($origin_type === 'department'){
-                                echo '';
+                                echo 'Add event';
                             }  
                             else{
                                 echo 'Add Todo';

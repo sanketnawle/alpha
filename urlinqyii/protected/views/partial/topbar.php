@@ -198,7 +198,7 @@
             {{/ifCond}}
 
             {{#ifCond type '==' 'post'}}
-                <div class="message">{{actor.firstname}} {{actor.lastname}} posted{{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{origin.text}}</div>
+                <div class="message">{{actor.firstname}} {{actor.lastname}} posted{{#if origin.post_origin}} in <a href='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}'>{{origin.post_origin.name}}</a>{{/if}}: {{origin.text}}</div>
             {{/ifCond}}
 
             {{#ifCond type '==' 'invite'}}
@@ -243,6 +243,11 @@
                     {{/ifCond}}
                 {{/ifCond}}
 
+            {{/ifCond}}
+
+
+            {{#ifCond type '==' 'event'}}
+                <div class="message">{{actor.firstname}} {{actor.lastname}} created event {{origin.title}} in <a href='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}'>{{origin.event_origin.name}}</a></div>
             {{/ifCond}}
 
 

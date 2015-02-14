@@ -19,9 +19,24 @@
     box-shadow: 0px 0 3px rgba(0,0,0,0.5);
     cursor: default;
     z-index: 10000000;
-    -moz-transition: background-color .15s ease-;
+    -moz-transition: background-color .15s ease;
     -webkit-transition: background-color .15s ease;
     transition: background-color .15s ease;    
+}
+
+.nav_bar_no_repeat{
+    opacity:0;
+    z-index: -1;
+    -moz-transition: opacity .250s linear;
+    -ms-transition: opacity .250s linear;
+    -o-transition: opacity .250s linear;
+    -webkit-transition: opacity .250s linear;
+    transition: opacity .250s linear;
+}
+
+body.body_group div#nav_bar:hover .nav_bar_no_repeat{
+    opacity:1;
+    z-index:1;
 }
 
 body#body_home div#content_panel div#nav_bar{

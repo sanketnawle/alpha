@@ -271,7 +271,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    Show All
+                                    Read more
                                 </div>
                             {{/if}}
 
@@ -490,7 +490,7 @@
 
                      {{/each}}
                                 <div id='show_more' class='morecmt_bar'>
-                                            Show All
+                                            Read all
                                 </div>
 
             </script>
@@ -839,7 +839,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    Show All
+                                    Read all
                                 </div>
                              {{/if}}
 
@@ -1183,7 +1183,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    Show All
+                                    Read All
                                 </div>
                             {{/if}}
 
@@ -1489,7 +1489,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    Show All
+                                    Read All
                                 </div>
                             {{/if}}
 

@@ -10,6 +10,9 @@ div#content_panel div#nav_bar{
 	top: 63px!important;
 	border-radius: 4px;
 	width: 551px;
+	-webkit-box-shadow: none!important;
+	-moz-box-shadow: none!important;
+	box-shadow: none!important;
 	margin-left: 15px;
 }
 
