@@ -1,6 +1,5 @@
 div#fbar_new {
     background: #fff;
-    border: 1px solid #DFDFDF;
     margin-bottom: 12px;
     border-radius: 5px;
     position: relative;
@@ -10,9 +9,10 @@ div#fbar_new {
     -moz-transition: height 450ms ease, box-shadow 250 ease;
     -webkit-transition: height 450ms ease, box-shadow 250 ease;
     transition: height 450ms ease, box-shadow 250 ease;
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.0);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.0);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.0);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);  
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); 
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07);;
+    border-top: 1px solid #eee;
 }
 
 #fbar_button_announcement{
@@ -281,8 +281,9 @@ div.form_wrapper header img#fbar_user_icon {
 div.form_wrapper header div#audience_select {
     position: relative;
     display: inline-block;
-    width: auto;
+    max-width: 130px;
     height: 15px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     color: #222;
     font-size: 13.1px;
     padding-top: 6px;
@@ -338,6 +339,11 @@ div.form_wrapper section.post_form_template#notes_form:before {
 div.form_wrapper section.post_form_template#discussion_form:before {
     right: 12px;
 }
+
+body.body_school div.form_wrapper section.post_form_template#discussion_form:before {
+    right: 30px;
+}
+
 
 div.form_wrapper section.post_form_template#event_form:before {
     right: 16px;
@@ -636,8 +642,6 @@ input.multiple_choice_answer {
     height: 17px;
     background-color: white;
     border: 1px solid #efefef;
-    -webkit-box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.15);
-    box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.15);
     margin-left: 0px;
     margin-left: 1px;
     margin-top: 0px;
@@ -742,6 +746,19 @@ em.down_arrow {
 
 /* FORM TYPE SELECTORS TO SHOW DIFFERENT POST TYPE TEMPLATES */
 
+#post_anon{
+    display: inline-block;
+    float: left;
+    position: relative;
+    top: 10px;
+}
+#post_anon .comment_anon_text{
+    margin-top:1px;
+    cursor: default;
+}
+#post_anon .flat7b{
+    margin-top:7px;
+}
 #post_anonymously {
     display: inline-block;
 
@@ -766,6 +783,9 @@ div.event_form_hide_content {
 }
 
 #fbar_holder.event div.event_form_hide_content {
+    display: none!important;
+}
+#fbar_holder.opportunity div.opportunity_form_hide_content {
     display: none!important;
 }
 
@@ -1058,6 +1078,10 @@ input.submission_input{
     padding: 6px 7px;
 }
 
+body.body_department ul.privacy_dropdown_club_fbar.privacy_dropdown{
+width:182px;
+}
+
 div.upload_half {
     width: 260px;
 
@@ -1122,7 +1146,7 @@ div.upload_half > div > div.upload_button {
     border-radius: 2px;
     cursor: pointer;
     border: 1px solid;
-    margin-left: 36px;
+    margin-left: 82px;
     border-color: #Ddd;
     box-shadow: 0px -1px #fff inset, rgba(0, 0, 0, 0.0980392) 0px 1px 0px 0px;
     color: #575757 !important;
@@ -1328,14 +1352,14 @@ input.event_location {
     border-radius: 2px;
 }
 
-#fbar_holder.events_more_options .fbar_date_time#event_location {
+/*#fbar_holder.events_more_options .fbar_date_time#event_location {
     width: 270px;
 
 }
 
 #fbar_holder.events_more_options .location_matches_list {
     width: 268px;
-}
+}*/
 
 .fbar_date_time#event_location.gray_bg {
     background: #f5f5f5;
@@ -1393,6 +1417,7 @@ div#fbar_holder.events_more_options div.event_input_hidden, div#fbar_holder.opps
 
 div#fbar_holder.events_more_options div.event_input_hidden.repeat_event_input {
     display: inline-block;
+    display:none;
 }
 
 div.event_more_options, div.opportunity_more_options{
@@ -1544,6 +1569,4 @@ div.photo_flier_upload_box {
     background-image: url(http://localhost/alpha/urlinqyii/assets/small_icons.png);
 }
 
-input.error {
-    background-color: red;
-}
+

@@ -86,7 +86,9 @@ jQuery(document).ready(function(){
         event.stopPropagation();
         hide_inspect();
         var $inspect_event_popup_month = jQuery('#inspect_event_popup_month');
-        var event_id = last_clicked_event_id;
+        var event_id = $inspect_event_popup_month.attr('data-event_id');
+
+
 
         var post_url = base_url + '/event/' + event_id + '/delete';
 
@@ -127,7 +129,7 @@ jQuery(document).ready(function(){
 
         var $window = $(window);
         var windowsize = $window.width();
-        var click_x_difference = windowsize - event.pageX;
+        var click_x_difference = event.pageX;
 
         //Add the event_id to the inspect_event_popup_month for easy access
         $create_month_day_event_popup.attr('data-date', this_date);
@@ -138,7 +140,7 @@ jQuery(document).ready(function(){
                 $create_month_day_event_popup.css('top', event.pageY + 15);
                 jQuery($create_month_day_event_popup).addClass("top_position");
                 if(click_x_difference <= 187){
-                    $create_month_day_event_popup.css('left', event.pageX - 328.5);
+                    $create_month_day_event_popup.css('right', event.pageX - 328.5);
                     jQuery($create_month_day_event_popup).addClass("right_position");
                 }
                 else{
@@ -149,7 +151,7 @@ jQuery(document).ready(function(){
                 $create_month_day_event_popup.css('top', event.pageY - 230);
                 jQuery($create_month_day_event_popup).removeClass("top_position");
                 if(click_x_difference <= 187){
-                    $create_month_day_event_popup.css('left', event.pageX - 328.5);
+                    $create_month_day_event_popup.css('right', event.pageX - 328.5);
                     jQuery($create_month_day_event_popup).addClass("right_position");
                 }
                 else{
@@ -175,7 +177,7 @@ jQuery(document).ready(function(){
                     $create_month_day_event_popup.css('top', event.pageY + 15);
                     jQuery($create_month_day_event_popup).addClass("top_position");
                     if(click_x_difference <= 187){
-                        $create_month_day_event_popup.css('left', event.pageX - 328.5);
+                        $create_month_day_event_popup.css('right', event.pageX - 328.5);
                         jQuery($create_month_day_event_popup).addClass("right_position");
                     }
                     else{
@@ -186,7 +188,7 @@ jQuery(document).ready(function(){
                     $create_month_day_event_popup.css('top', event.pageY - 230);
                     jQuery($create_month_day_event_popup).removeClass("top_position");
                     if(click_x_difference <= 187){
-                        $create_month_day_event_popup.css('left', event.pageX - 328.5);
+                        $create_month_day_event_popup.css('right', event.pageX - 328.5);
                         jQuery($create_month_day_event_popup).addClass("right_position");
                     }
                     else{
@@ -311,7 +313,13 @@ jQuery(document).ready(function(){
 
 
         var event_todo = false;
-        var event_all_day = true;
+        var event_all_day = false;
+
+
+        if(event_start_time == '0-1:00:00'){
+            event_all_day = true;
+        }
+
 
 
         //Convert to UTC for the database
@@ -325,6 +333,12 @@ jQuery(document).ready(function(){
         event_end_date = date_to_string(event_end_datetime);
         event_end_time = datetime_to_time_string(event_end_datetime);
 
+
+
+        if(event_all_day){
+            event_start_date = event_end_date;
+            event_start_time = event_end_time;
+        }
 
         var post_data = {
             event:{

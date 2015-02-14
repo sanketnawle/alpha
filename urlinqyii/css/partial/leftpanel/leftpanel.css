@@ -12,18 +12,36 @@ body.left_panel_hidden_p2 #LeftPanel_Holder, body.left_panel_hidden_p2 #left_pan
     display:none;
     overflow: hidden;
 }
+
+
+
 #left_panel_change_picture_button{
     position: absolute;
     /* bottom: 10px; */
-    /* left: 10px; */
-    width: 32px;
-    top: 97px;
+    left: 0px;
+    width: 52px;
+    top: 0px;
     border: none;
-    height: 32px;
-    background-color: transparent;
+    border-radius: 500px;
+    height: 52px;
+    background-color: rgba(18, 19, 20, 0.4);
     background-repeat: no-repeat;
     background-size: auto;
+    display:block;
     background-image: url('../../../assets/camera_icon.png');
+    background-position: 16px;
+    opacity:0;
+    -moz-transition:opacity .2s linear;
+    -webkit-transition:opacity .2s linear;
+    transition:opacity .2s linear;
+}
+
+#left_panel_change_picture_button:hover{
+    opacity:.85;
+}
+
+#left_panel_change_picture_button:active{
+    opacity:.6;
 }
 
 #LeftPanel_Holder{
@@ -108,10 +126,12 @@ a.MyBox_SO.edit_profile:hover{
 }
 
 .SectionHeader_holder{
-    border-bottom: 1px solid #dbdcdc;
+    border-bottom: 1px solid #EAEAEA;
 
-    height: 26px;
-    -moz-box-shadow: 0px -1px 0px rgba(255, 255, 255, 1) inset; 
+    height: 26px; 
+    -moz-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset;
+    -webkit-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset;
+    box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset;
 }
 
 .SectionHeader_holder div h4{
@@ -199,12 +219,13 @@ em.SectionHeader_ribbon.LeftPanel_icons {}
 
     width: 48px!important;
     cursor: pointer;
+    position: relative;
 }
 
-a.MyBox_PictureLink img.MyBox_Picture{
-    height: 48px!important;
-
-    width: 48px!important;
+a.MyBox_PictureLink div.MyBox_Picture{
+    height: 52px!important;
+    background-size:cover;
+    width: 52px!important;
     border-radius: 500px;
 }
 
@@ -220,9 +241,8 @@ div.MyBox_text div.MyBox_textcontent{
 }
 
 div.MyBox_textcontent div.MyBox_NameSO{
-    padding-left: 7px;
-
-    padding-top: 2px;
+padding-left: 12px;
+padding-top: 3px;
 }
 
 a.MyBox_ProfileLink{
@@ -339,25 +359,38 @@ ul.LeftPanel_GroupsList li a{
     color: #27292b;
     cursor:pointer;
     outline:none;
-    font-size: 13px;
+    font-size: 12.5px;
     padding: 4px 6px;
     width: 220px;
     font-weight: 500;
     border-radius: 3px;
     text-decoration: none;
+    background: transparent;
     display: block;
     padding-right: 0px;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     font-family: 'Open Sans', sans-serif;
+    -moz-transition:.035s ease color, .035s ease background;
+    -webkit-transition:.035s ease color, .035s ease background;
+    transition: .035s ease color, .035s ease background;
+
 }
 
 ul.LeftPanel_GroupsList li a:hover{
-color: #029acf;
+color: #111;
+background: rgba(232, 232, 232, 0.56);
 }
 
 ul.LeftPanel_GroupsList li a:active
 {
 background: #E8E8E8;
+color: #111;
+}
+
+ul.LeftPanel_GroupsList li a:focus
+{
+background: #E8E8E8;
+color: #111;
 }
 
 ul.LeftPanel_GroupsList li a.current_group, ul.LeftPanel_GroupsList li a.current_group:hover, ul.LeftPanel_GroupsList li a.current_group:active{

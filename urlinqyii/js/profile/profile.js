@@ -16,6 +16,14 @@ $(document).ready(function() {
     });
 
     $(document).on('click', '.close_modal', function(){
+        close_profile();
+    });
+    $(document).keyup(function(e) {
+        if (e.keyCode == 27) {
+            close_profile();
+        }   // esc
+    });
+    function close_profile(){
         globals.origin_id = old_origin_id;
         globals.origin_type = old_origin_type;
         globals.profile_open = false;
@@ -24,8 +32,7 @@ $(document).ready(function() {
         $("#page").removeClass("profile_stop_scroll");
         $("body").removeClass("profile_stop_scroll");
         $("body#body_home").removeClass("profile_stop_scroll");
-
-    });
+    }
     function open_profile(base_url,user_id,edit_mode){
         //  var numShowcase;
         $.getJSON( base_url + "/profile/json",{id: user_id}, function( json_profile_data ) {
@@ -63,20 +70,7 @@ $(document).ready(function() {
             dataType:'html',
             success: function(html) {
 
-                $.getJSON( base_url + '/profile/'+data.user_id+'/feed', function( json_feed_data ) {
-                    if(json_feed_data['success']){
-                        //alert(JSON.stringify(json_feed_data));
-//                alert(JSON.stringify(json_feed_data));
-                        if(json_feed_data['feed'].length == 0){
-                            var $posts_container = $("#profile_posts");
-                            $posts_container.html("<div class = 'no_posts_container'><div class = 'no_posts_icon small_icon_map'></div><div class = 'no_posts_message'><div class = 'message_header'>It is the very start of this feed.</div><div class = 'message_sub'>Be the first to make a post.</div></div></div>");
-                        }else{
-                            render_posts(json_feed_data['feed']);
-                        }
-                    }else{
-                        console.log('failed to get feed');
-                    }
-                });
+                //get fbar
                 $.ajax({ url: base_url + '/profile/returnFbar?user='+data.user_id,
                     dataType:'html',
                     success: function(html) {
@@ -85,8 +79,22 @@ $(document).ready(function() {
                         globals.$fbar.find('.privacy_menu').dropit({});
                         populate_audience_select();
                         set_dropzone();
+                        //get feed
+                        $.getJSON( base_url + '/profile/'+data.user_id+'/feed', function( json_feed_data ) {
+                            if(json_feed_data['success']){
+                                if(json_feed_data['feed'].length == 0){
+                                    var $posts_container = $("#profile_posts");
+                                    $posts_container.html("<div class = 'no_posts_container'><div class = 'no_posts_icon small_icon_map'></div><div class = 'no_posts_message'><div class = 'message_header'>It is the very start of this feed.</div><div class = 'message_sub'>Be the first to make a post.</div></div></div>");
+                                }else{
+                                    render_posts(json_feed_data['feed']);
+                                }
+                            }else{
+                                console.log('failed to get feed');
+                            }
+                        });
                     }
                 });
+
 
                 numShowcase=data.showcase_size;
                 var template = Handlebars.compile(html);
@@ -369,6 +377,7 @@ $(document).ready(function() {
                 post['replies'][i]['update_timestamp'] = moment(post['replies'][i]['update_timestamp'], "X").fromNow(true);
 
             }
+            add_embedly_to_replies(post['replies']);
 
             if(post['post_type'] == 'question' && post['question']['question_type'] == 'multiple_choice'){
                 var alphabet= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -390,11 +399,58 @@ $(document).ready(function() {
         });
     }
 
+    function add_embedly_to_replies(replies){
+        $.each(replies,function(index,reply){
+            if(findUrlInPost(reply['reply_msg'])) {
+                var url = findUrlInPost(reply['reply_msg']);
+                //  post['replies'][index]['reply_msg']=reply['reply_msg'].replace(url,'<a href="'+url+'">'+url+'</a>');
+                $.embedly.oembed(url,{
+                    key:'94c0f53c0cbe422dbc32e78d899fa4c5',
+                    query:{
+                        maxwidth: 400,
+                        maxheight: 400,
+                        chars: 100
+                    }}).done(function(results){
+                        if(!results.invalid){
+                            embedly_info = results[0];
+                            console.log(embedly_info);
+                            append_embedly(reply['reply_id'],embedly_info);
+                        }
+                    }
+                );
+            }
+        });
+    }
+    function append_embedly(reply_id, embedly_info){
+        console.log('append embedly to reply '+reply_id);
+        var source;
+
+
+
+        if(embedly_info.type == "link"){
+            source = $('#embedly_link_template').html();
+        }else if(embedly_info.type == "video"){
+            source = $('#embedly_video_template').html();
+
+        }else if(embedly_info.type == "photo"){
+            source = $('#embedly_photo_template').html();
+        }
+        var template = Handlebars.compile(source);
+        console.log(reply_id);
+        console.log(globals.profile_open);
+        if(globals.profile_open){
+            $('#profile_wrapper').find('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        }else{
+            $('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        }
+
+    }
     function render_post_with_url(single_post){
 
         single_post.embed_link = findUrlInPost();
 
     }
+
 
     /*function profile_render_post(single_post){
         console.log('asdf');
@@ -711,6 +767,36 @@ $(document).ready(function() {
             }
         });
     }
+    $(document).on('click','.add_field_button',function(){
+        var $section = $(this).parent();
+
+        if($section.attr('id')=="major_section"){
+            if($section.find('input.edit_field').length==3){
+                return;
+            }
+            $section.append('<input type="text" class="edit_field major additional" style="display:inline-block">'+
+            '<button class="delete_field_button delete_major_button"></button>');
+        }else if($section.attr('id')=="minor_section"){
+            if($section.find('input.edit_field').length==3){
+                return;
+            }
+            $section.append('<input type="text" class="edit_field minor additional" style="display:inline-block">'+
+            '<button class="delete_field_button delete_minor_button"></button>');
+        }else if($section.attr('id')=="research_section"){
+            $section.append('<input type="text" class="edit_field research additional" style="display:inline-block">'+
+            '<button class="delete_field_button delete_research_button"></button>');
+        }
+    });
+    $(document).on('click','.delete_field_button',function(){
+        $(this).prev('span.ui-helper-hidden-accessible').remove();
+        $(this).prev('input.edit_field').remove();
+        if($(this).closest('.info_section').attr('id') == "major_section"){
+            major_changed = true;
+        }else if($(this).closest('.info_section').attr('id') == "minor_section"){
+            minor_changed = true;
+        }
+        $(this).remove();
+    });
     //add showcase code
     $(document).on('click','#upload_link_button',function(){
         $('#upfile').click();
@@ -851,6 +937,9 @@ $(document).ready(function() {
         $('.info_name').hide();
         $('.headers').show();
         $('.edit_field').show();
+        $(".edit_field.additional").remove();
+        $(".delete_field_button").remove();
+        $('.add_field_button').show();
         //school
 
         $.getJSON( base_url + "/profile/getSchools",{user: globals.user_id}, function( result) {
@@ -878,24 +967,47 @@ $(document).ready(function() {
         $('#year_section').show();
         $('#level_dropdown').val($('#level_name').text());
         //majors
+        var major_text;
         $('.info_name.major').each(function(i){
             if(!$(this).hasClass('undeclared')){
-                $('.edit_field.major:eq('+i+')').val($(this).text());
+                major_text = $(this).text();
+                if(i==0){
+                    $('.edit_field.major').val(major_text);
+                }else{
+                    $('#major_section').append('<input type="text" class="edit_field major additional"'+
+                    ' value="'+major_text+'" style="display:inline-block">'+
+                    '<button class="delete_field_button delete_major_button"></button>');
+                }
             }
         });
 
         //minors
         any_minor=$('#minor_section').is(':visible');
         $('#minor_section').show();
+        var minor_text;
         $('.info_name.minor').each(function(i){
-            $('.edit_field.minor:eq('+i+')').val($(this).text());
+            minor_text = $(this).text();
+            if(i==0){
+                $('.edit_field.minor').val(minor_text);
+            }else{
+                $('#minor_section').append('<input type="text" class="edit_field minor additional"'+
+                ' value="'+minor_text+'" style="display:inline-block">'+
+                '<button class="delete_field_button delete_minor_button"></button>');
+            }
         });
         //research
         any_research=$('#research_section').is(':visible');
         $('#research_section').show();
-
+        var research_text;
         $('.info_name.research').each(function(i){
-            $('.edit_field.research:eq('+i+')').val($(this).text());
+            research_text = $(this).text();
+            if(i==0){
+                $('.edit_field.research').val(research_text);
+            }else{
+                $('#research_section').append('<input type="text" class="edit_field research additional"'+
+                ' value="'+research_text+'" style="display:inline-block">'+
+                '<button class="delete_field_button delete_research_button"></button>');
+            }
         });
 
         //bio
@@ -941,6 +1053,8 @@ $(document).ready(function() {
         data.append('email',$('#email_input').val());
         data.append('gender',$('.edit_field.gender:checked').val());
         data.append('bio',$('#bio_input').val());
+
+        data.append('user_id', $('#profile_wrapper').attr('data-user_id'));
 
         if($('#year_section').length){
             if($('#year_dropdown').val()){
@@ -1017,7 +1131,7 @@ $(document).ready(function() {
                         $('#year_info').text($('#level_dropdown').val()+' at '+match[1]);
                     }
                 }else if(result.year_name){
-                    alert(result.year_name);
+                    alert(JSON.stringiy(result.year_name));
                     any_errors = true;
                 }
                 if(result.year == "success"){
@@ -1027,17 +1141,17 @@ $(document).ready(function() {
                         $('#name_info').text(match[1] + " " + (parseInt($('#year').text()) % 100));
                     }
                 }else if(result.year){
-                    alert(result.year);
+                    alert(JSON.stringify(result.year));
                     any_errors = true;
                 }
                 if(result.bio == "success"){
                     $('#bio').text($('#bio_input').val());
                 }else if(result.bio){
-                    alert(result.bio);
+                    alert(JSON.stringify(result.bio));
                     any_errors = true;
                 }
                 if(result.gender && result.gender != "success"){
-                    alert(result.gender);
+                    alert(JSON.stringify(result.gender));
                     any_errors = true;
                 }
                 if(result.major == "success"){
@@ -1189,10 +1303,14 @@ $(document).ready(function() {
         if(!any_year){
             $('#year_section').hide();
         }
+
+
         $('.headers').hide();
         $('.info_section.account').hide();
         $('.info_name').not('.undeclared').show();
         $('.edit_field').hide();
+        $('.add_field_button').hide();
+        $('.delete_field_button').remove();
         //$('#edit_profile_button').css('margin-left','15px');
         $('#edit_profile_button').text('Edit Profile');
         $('#cancel_edit_button').hide();
@@ -1237,6 +1355,7 @@ $(document).ready(function() {
         var data = new FormData();
 
         data.append("file", upload_file);
+        data.append('user_id', $('#profile_wrapper').attr('data-user_id'));
         //data.append("user", globals.user_id);
         $.ajax({
             url: base_url+'/profile/changeProfilePicture',
@@ -1251,7 +1370,8 @@ $(document).ready(function() {
                 if(data.status == "success"){
                     $('#profile_picture').css('background-image','url('+data.file_url+')');
                     $('.post_user_icon[data-user_id='+globals.user_id+']').css('background-image','url('+data.file_url+')');
-                    $('img.MyBox_Picture').attr('src',data.file_url);
+                    $('.comment_owner_container[data-user_id='+globals.user_id+']').css('background-image','url('+data.file_url+')');
+                    $('.MyBox_Picture').css('background-image','url('+data.file_url+')');
                     $('.members_card_img[data-user_id='+globals.user_id+']').css('background-image','url('+data.file_url+')');
                 }else{
                     //alert(data.message);
@@ -1304,7 +1424,6 @@ $(document).ready(function() {
                     }
 
                 }else{
-                    alert(data.message);
                 }
             },
             error: function(jqXHR, textStatus, errorThrown)
@@ -1419,7 +1538,6 @@ $(document).ready(function() {
         var post_url = base_url + '/user/' + user_id + '/' + verb;
 
 
-        alert(post_url);
 
 
         var post_data = {user_id: user_id};
@@ -1429,7 +1547,7 @@ $(document).ready(function() {
             post_data,
             function (response) {
                 if (response['success']) {
-                    var own_profile = $('#profile_wrapper').attr('data-user_id');
+                    var own_profile = $('#profile_wrapper').attr('data-user_id') == globals.user_id;
                     var $other_follow_button;
                     var following_count;
                     if($follow_button_wrapper.closest('.user_wrapper').attr('id')=="followers_list"){
@@ -1466,7 +1584,6 @@ $(document).ready(function() {
                     }
 
                 } else {
-                    alert(JSON.stringify(response));
                 }
             }, 'json'
         );
@@ -1570,6 +1687,12 @@ $(document).ready(function() {
             next();
 
         });
+    }
+    function isScriptAlreadyIncluded(src){
+        var scripts = document.getElementsByTagName("script");
+        for(var i = 0; i < scripts.length; i++)
+            if(scripts[i].getAttribute('src') == src) return true;
+        return false;
     }
 });
 

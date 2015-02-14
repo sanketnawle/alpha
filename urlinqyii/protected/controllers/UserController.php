@@ -35,6 +35,12 @@ class UserController extends Controller
 
             //If we successfully create the userconnection, return true
             if($user_connection){
+                include_once "notification/notification.php";
+                if($user_connection->from_user_id != $user_connection->to_user_id){
+                   send_notification('follow',$user_connection->from_user_id,$user_connection->to_user_id,$user_connection->from_user_id,'user');
+                }
+
+
                 $data = array('success'=>true);
                 $this->renderJSON($data);
                 return;
@@ -159,8 +165,8 @@ class UserController extends Controller
 
 
         $notifications_new = array();
-        foreach ($notifications as $notification) {
-            $notification = $this->model_to_array($notification);
+        foreach ($notifications as $i=>$notification_model) {
+            $notification = $this->model_to_array($notification_model);
             $notification_type = $notification['type'];
             $origin = $notification['origin_type'];
             $origin_id = $notification['origin_id'];
@@ -186,24 +192,25 @@ class UserController extends Controller
 
             if($notification_type == 'invite'){
 
-                $invite = Invite::model()->find('user_id=:user_id and origin_id=:origin_id', array(':user_id'=>$user->user_id, ':origin_id'=>$notification['origin_id']));
+                $invite = Invite::model()->find('user_id=:user_id and origin_id=:origin_id and origin_type=:origin_type', array(':user_id'=>$user->user_id, ':origin_id'=>$notification['origin_id'], ':origin_type'=>$origin));
 
                 if(!$invite){
+                    $notification_model->delete();
                     $data = array('success'=>false,'error_id'=>3,'error_msg'=>'invalid invite');
                     $this->renderJSON($data);
                     return;
                 }
 
                 $notification['invite_id'] = $invite->invite_id;
-                $notification['invite_choice'] = $invite->choice;
+                $notification['invite_choice'] = intval($invite->choice);
 
 
                 if($notification['origin_type'] == 'event'){
                     $event = Event::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
                     if(!$event){
-                        $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                        $this->renderJSON($data);
-                        return;
+                        $notification_model->delete();
+                        unset($notifications[$i]);
+                        continue;
                     }
 
                     $event = $this->model_to_array($event);
@@ -234,8 +241,10 @@ class UserController extends Controller
 
                     $notification['origin'] = $event;
                 }else if($notification['origin_type'] == 'class'){
+                    $notification_model->delete();
                     $class = ClassModel::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
                     if(!$class){
+                        $notification_model->delete();
                         $data = array('success'=>false,'error_id'=>2,'error_msg'=>'class doesnt exist');
                         $this->renderJSON($data);
                         return;
@@ -244,11 +253,11 @@ class UserController extends Controller
                     $notification['origin'] = $this->model_to_array($class);
                     $notification['origin']['name'] = $class->class_name;
                 }else if($notification['origin_type'] == 'club' || $notification['origin_type'] == 'group'){
-                    $group = Group::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
+                    $group = Group::model()->find("group_id=:group_id", array(":group_id"=>$origin_id));
                     if(!$group){
-                        $data = array('success'=>false,'error_id'=>2,'error_msg'=>'group doesnt exist');
-                        $this->renderJSON($data);
-                        return;
+                        $notification_model->delete();
+                        unset($notifications[$i]);
+                        continue;
                     }
 
                     $notification['origin'] = $this->model_to_array($group);
@@ -259,21 +268,18 @@ class UserController extends Controller
                 $follow = User::model()->find("user_id=:user_id", array(":user_id"=>$origin_id));
 
                 if(!$follow){
-                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                    $this->renderJSON($data);
-                    return;
+                    $notification_model->delete();
+                    unset($notifications[$i]);
+                    continue;
                 }
                 $notification['origin'] = $this->get_model_associations($follow,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
-            }
-            elseif($notification_type == 'invite'){
-
             }
             elseif($notification_type == 'reply'){
                 $reply = Reply::model()->find("reply_id=:reply_id", array(":reply_id"=>$origin_id));
                 if(!$reply){
-                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                    $this->renderJSON($data);
-                    return;
+                    $notification_model->delete();
+                    unset($notifications[$i]);
+                    continue;
                 }
 
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$reply->post_id));
@@ -284,9 +290,9 @@ class UserController extends Controller
             elseif($notification_type == 'like' || $notification_type == 'post'){
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$origin_id));
                 if(!$post){
-                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                    $this->renderJSON($data);
-                    return;
+                    $notification_model->delete();
+                    unset($notifications[$i]);
+                    continue;
                 }
 
                 $notification['origin'] = $this->model_to_array($post);
@@ -315,10 +321,50 @@ class UserController extends Controller
 
 
             }
+            elseif($notification_type == 'event'){
+                $event = Event::model()->find('event_id=:event_id',array(':event_id'=>$notification['origin_id']));
+
+                if(!$event){
+                    $notification_model->delete();
+
+                    unset($notifications[$i]);
+                    continue;
+
+//                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Event associated with notification doesnt exist. Notification was deleted', 'notification'=>$notification);
+//                    $this->renderJSON($data);
+//                    return;
+                }
+
+                $notification['origin'] = $this->model_to_array($event);
+
+                if($event->origin_type == 'class'){
+                    $class = ClassModel::model()->find('class_id=:id', array(':id'=>$event->origin_id));
+                    $notification['origin']['event_origin'] = $this->model_to_array($class);
+                    $notification['origin']['event_origin']['name'] = $class->class_name;
+                }else if($event->origin_type == 'group' || $event->origin_type == 'club'){
+                    $group = Group::model()->find('group_id=:id', array(':id'=>$event->origin_id));
+                    $notification['origin']['event_origin'] = $this->model_to_array($group);
+                    $notification['origin']['event_origin']['name'] = $group->group_name;
+                }else if($event->origin_type == 'department'){
+                    $department = Department::model()->find('department_id=:id', array(':id'=>$event->origin_id));
+                    $notification['origin']['event_origin'] = $this->model_to_array($department);
+                    $notification['origin']['event_origin']['name'] = $department->department_name;
+                }else if($event->origin_type == 'school'){
+                    $school = School::model()->find('school_id=:id', array(':id'=>$event->origin_id));
+                    $notification['origin']['event_origin'] = $this->model_to_array($school);
+                    $notification['origin']['event_origin']['name'] = $school->school_name;
+                }else{
+                    $notification['origin']['event_origin'] = null;
+                }
+            }
             else{
-                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'database doesnt support this kind of notification');
-                //$this->renderJSON($data);
-                return $data;
+                //This notification isnt supported, so just skip this
+                unset($notifications[$i]);
+                continue;
+
+//                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'database doesnt support this kind of notification', 'notification'=>$notification);
+//                //$this->renderJSON($data);
+//                return $data;
             }
             array_push($notifications_new, $notification);
         }
@@ -329,32 +375,40 @@ class UserController extends Controller
 
 
 
-    public function actionNotifications(){
-        $user = $this->get_current_user($_GET);
-        if($user) {
+        public function actionNotifications(){
+            $user = $this->get_current_user($_GET);
+            if($user) {
 
-//            $data = array('success'=>true,'notifications'=>$user->notifications);
-//            $this->renderJSON($data);
-//            return;
+    //            $data = array('success'=>true,'notifications'=>$user->notifications);
+    //            $this->renderJSON($data);
+    //            return;
+
+                if (isset($_GET['last_notification_id'])) {
+                    $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id < ' . $_GET['last_notification_id'] . ' ORDER BY notification_id DESC limit 10');
+                } else {
+                    $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
+                }
+
+                if ($notifications) {
+                    //$data = array('success'=>true,'notifications'=>$notifications);
+
+                    $data = array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications));
+                    $this->renderJSON($data);
+                    return;
+                } else {
+                    $data = array('success'=>true,'notifications'=>array());
+                    $this->renderJSON($data);
+                    return;
+                }
 
 
-            $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
-
-            if ($notifications) {
-                $this->renderJSON($this->get_notifications_data($user, $notifications));
-                return;
-            } else {
-                $data = array('success'=>true,'notifications'=>array());
+            }
+            else{
+                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user doesnt exist');
                 $this->renderJSON($data);
                 return;
             }
         }
-        else{
-            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user doesnt exist');
-            $this->renderJSON($data);
-            return;
-        }
-    }
 
 
 
@@ -380,9 +434,9 @@ class UserController extends Controller
 
             $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id > ' . $last_notification_id . ' ORDER BY notification_id DESC limit 0,5');
             if ($notifications) {
-                $this->renderJSON($this->get_notifications_data($user, $notifications));
+                $data = array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications));
+                $this->renderJSON($data);
                 return;
-
             } else {
                 $data = array('success'=>true,'notifications'=>array());
                 $this->renderJSON($data);
@@ -675,7 +729,7 @@ class UserController extends Controller
 
 
 
-            $user_data = $this->get_model_associations($user,array('classes','groups'));
+            $user_data = $this->get_model_associations($user,array('classes','clubs','groups'));
 
 
 
@@ -687,6 +741,18 @@ class UserController extends Controller
                 $color = Color::model()->find('color_id=:id',array(':id'=>$class_user->color_id));
 
                 $user_data['classes'][$i]['color'] = array('hex'=>$color->hex);
+            }
+
+
+            for($i = 0;$i < count($user_data['clubs']);++$i){
+                $user_data['clubs'][$i] = $this->model_to_array($user_data['clubs'][$i]);
+                $user_data['clubs'][$i]['color'] = array('hex'=>'#FABBB3');
+
+                $club_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id,':group_id'=>$user_data['clubs'][$i]['group_id']));
+                $color = Color::model()->find('color_id=:id',array(':id'=>$club_user->color_id));
+
+                $user_data['clubs'][$i]['color'] = array('hex'=>$color->hex);
+
             }
 
 

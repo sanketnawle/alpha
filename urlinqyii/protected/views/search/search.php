@@ -63,7 +63,7 @@
 
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
-    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
+
 
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css">
 
@@ -184,7 +184,7 @@
                                     <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name">
-                                    <span class = "filter_on_indicator">Showing </span><span>Clubs</span>
+                                    <span class = "filter_on_indicator">Showing </span><span>Groups</span>
                                 </div>
                                 <div class = "filter_inputs">
                                     <div class = "filter_dropdown last">
@@ -436,7 +436,7 @@
     <div class = "group_box group_course_box club_box" data-group_id='{{group_id}}' data-school_id='{{school_id}}'>
         <div class = "float_Left group_image">
             <a class = "group_link">{{group_name}}</a>
-            <span class = "group_type group_with_button">Club</span>
+            <span class = "group_type group_with_button">Group</span>
 
         </div>
         <div class = "group_box_main_info">
@@ -444,7 +444,7 @@
             <div class = "float_Right">
                 <div class = "group_bar_button_holder">
                     <div class = "join_button_wrapper">
-                        <div class = "group_join_button nonmember"><em class = "white_add_icon"></em>Join Club</div>
+                        <div class = "group_join_button nonmember"><em class = "white_add_icon"></em>Join Group</div>
                     </div>
                 </div>
             </div>
@@ -602,7 +602,7 @@
     </div>
 </script>
 
-    <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>'user', 'user_id'=>$user->user_id)); ?>
+    <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>'user', 'user_id'=>$user->user_id,'is_admin'=>false)); ?>
 </body>
 
 

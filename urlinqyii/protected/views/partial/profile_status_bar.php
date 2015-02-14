@@ -200,7 +200,13 @@
                             </div>
                         </div>
                     </div>
-
+                    <div id="post_anon" class='check_wrap event_form_hide_content opportunity_form_hide_content'>
+                        <input type='checkbox' id='flat_0' class='flat7c'/>
+                        <label for='flat7' class='flat7b'>
+                            <span class='move'></span>
+                        </label>
+                        <span class = 'comment_anon_text'>Post Anonymously</span>
+                    </div>
                     <div style = "-webkit-user-select: none;" class = "post_btn fresh_green_button" id = "post_btn">
                         Post
                     </div>
@@ -229,7 +235,7 @@
 </script>
 
 
-<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id)); ?>
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id, 'is_admin'=>$is_admin)); ?>
 
 
 

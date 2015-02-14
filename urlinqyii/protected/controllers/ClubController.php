@@ -399,7 +399,7 @@ class ClubController extends Controller
                 }
 
                 //We also need to delete all posts that have the type event from this user in this group
-                $posts = Post::model()->findAllBySql('SELECT * FROM `post` WHERE post_type = "event" AND  origin_type = "club" AND origin_id = ' . $group_id);
+                $posts = Post::model()->findAllBySql('SELECT * FROM `post` WHERE post_type = "event" AND user_id = '.$user->user_id.'  AND  origin_type = "club" AND origin_id = ' . $group_id);
                 foreach($posts as $post){
                     $post->delete();
                 }
@@ -439,12 +439,82 @@ class ClubController extends Controller
     }
 
     public function actionRemoveMember(){
+        if(!isset($_POST['group_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_to_remove = User::model()->find('user_id = :uid',array(':uid'=>$_POST['user_id']));
+        if(!$user_to_remove){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'invalid user');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $current_user_id = $user->user_id;
+
+        $group_id = $_POST['group_id'];
+        $group_user = GroupUser::model()->find('group_id=:id and user_id=:user_id', array(':id'=>$group_id,':user_id'=>$current_user_id));
+        //Check if the current user is even in this group
+        if($group_user){
+            //Check if current user is an admin of this group
+            if($group_user->is_admin){
+                $group_user_to_remove = GroupUser::model()->find('user_id=:uid and group_id=:gid',array(':gid'=>$group_id,':uid'=>$user_to_remove->user_id));
+                //Check if we destroy this shit successfully
+                if($group_user_to_remove->delete()){
 
 
+                    //Loop through all events this user has for this group and delete them
+                    //Or else the database will get fucked up
+                    $user_events = EventUser::model()->findAllBySql("SELECT * FROM `event_user` JOIN `event` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " .$user_to_remove->user_id . " AND event.origin_type = 'club' AND event.origin_id = " . $group_id);
+                    foreach($user_events as $event){
+                        $event->delete();
+                    }
 
-        $data = array('success'=>true);
+                    //Get the events that this
+                    $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE event.user_id = " . $user_to_remove->user_id . " AND event.origin_type = 'club' AND event.origin_id = " . $group_id);
 
-        $this->renderJSON($data);
+
+                    foreach($events as $event){
+                        $event->delete();
+                    }
+
+                    //We also need to delete all posts from this user in this group
+                    $posts = Post::model()->findAllBySql('SELECT * FROM `post` WHERE  user_id = '.$user_to_remove->user_id.' AND origin_type = "club" AND origin_id = ' . $group_id);
+                    foreach($posts as $post){
+                        $post->delete();
+                    }
+
+                    $data = array('success'=>true);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error deleting user');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                //user is not an admin of this group
+                $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not an admin');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }else{
+            //user is not apart of this group
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not in the group');
+            $this->renderJSON($data);
+            return;
+        }
     }
 
 
@@ -830,6 +900,52 @@ class ClubController extends Controller
         }
     }
 
+    function actionEditDescription(){
+        $user = $this->get_current_user();
+        $club = Group::model()->find('group_id=:id',array(':id'=>$_POST['club_id']));
+        if($club){
+            $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
+            if($club_user || (strpos($user->user_email,'@urlinq.com') !== false)){
+                if($club_user->is_admin || (strpos($user->user_email,'@urlinq.com') !== false)){
+                    $club->group_desc = $_POST['description'];
+                    if($club->save(false)){
+                        $this->renderJSON(array('success'=>true));
+                    }else{
+                        $this->renderJSON(array('success'=>false,'message'=>'error saving clubs'));
+                    }
+                }else{
+                    $this->renderJSON(array('success'=>false,'message'=>'you are not an admin of this club'));
+                }
+            }else{
+                $this->renderJSON(array('success'=>false,'message'=>'you are not part of this club'));
+            }
+        }else{
+            $this->renderJSON(array('success'=>false,'message'=>'invalid club'));
+        }
+    }
+    function actionEditMission(){
+        $user = $this->get_current_user();
+        $club = Group::model()->find('group_id=:id',array(':id'=>$_POST['club_id']));
+        if($club){
+            $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
+            if($club_user  || (strpos($user->user_email,'@urlinq.com') !== false)){
+                if($club_user->is_admin  || (strpos($user->user_email,'@urlinq.com') !== false)){
+                    $club->mission_statement = $_POST['mission'];
+                    if($club->save(false)){
+                        $this->renderJSON(array('success'=>true));
+                    }else{
+                        $this->renderJSON(array('success'=>false,'message'=>'error saving clubs'));
+                    }
+                }else{
+                    $this->renderJSON(array('success'=>false,'message'=>'you are not an admin of this club'));
+                }
+            }else{
+                $this->renderJSON(array('success'=>false,'message'=>'you are not part of this club'));
+            }
+        }else{
+            $this->renderJSON(array('success'=>false,'message'=>'invalid club'));
+        }
+    }
 
 
 

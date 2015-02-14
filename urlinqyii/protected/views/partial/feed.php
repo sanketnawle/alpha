@@ -2,7 +2,7 @@
 <head>
     <title> Feed </title>
     <script>
-        var globals = {};
+        //var globals = {};
 
 
 
@@ -12,6 +12,7 @@
 
         globals.origin_type = '<?php echo $origin_type; ?>';
         globals.origin_id = '<?php echo $origin_id; ?>';
+
         globals.user_id = '<?php echo $user->user_id; ?>';
 
 
@@ -58,7 +59,7 @@
 
 
 
-                <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type,'user_id'=>$user->user_id)); ?>
+                <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type,'user_id'=>$user->user_id,'is_admin'=>$is_admin)); ?>
 
                 <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/feed.js"> </script>
             </div>

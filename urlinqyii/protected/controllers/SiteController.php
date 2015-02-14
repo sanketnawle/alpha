@@ -111,23 +111,43 @@ class SiteController extends Controller
 
 
 
+    function actionSendResetPasswordEmailFunction(){
+
+
+        if(!isset($_POST['to_email']) || !isset($_POST['subject']) || !isset($_POST['message']) || !isset($_POST['from_email']) || !isset($_POST['key'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $key = $_POST['key'];
+        $to_email = $_POST['to_email'];
+        $subject = $_POST['subject'];
+        $from_email = $_POST['from_email'];
+        $message = $_POST['message'];
+
+
+        if (ERunActions::runBackground())
+		{
+
+
+            ERunActions::runScript('send_reset_password_email',$params=array('to_email'=>$to_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from_email, 'key'=>$key),$scriptPath=null);
+
+            Yii::log('lol wtf');
+
+            $data = array('success'=>true,'error_id'=>'run');
+            $this->renderJSON($data);
+            return;
+		}
+		else
+		{
+
+		}
+    }
+
+
+
     function actionSendVerificationEmailFunction(){
-
-//        $user = $this->get_current_user();
-//        if(!$user){
-//            $data = array('success'=>false);
-//            $this->renderJSON($data);
-//            return;
-//        }
-
-//
-//        if($user->status != 'unverified'){
-//            $data = array('success'=>false);
-//            $this->renderJSON($data);
-//            return;
-//        }
-
-
 
 
         if(!isset($_POST['to_email']) || !isset($_POST['subject']) || !isset($_POST['message']) || !isset($_POST['from_email']) || !isset($_POST['key'])){
@@ -307,6 +327,100 @@ class SiteController extends Controller
 
 
     }
+
+
+
+
+    function actionSendUrlinqInviteEmailFunction(){
+
+        if(!isset($_POST['to_email']) || !isset($_POST['from_email']) || !isset($_POST['actor_name'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $actor_name = $_POST['actor_name'];
+        $to_email = $_POST['to_email'];
+        $from_email = $_POST['from_email'];
+
+
+
+
+
+
+        if (ERunActions::runBackground())
+        {
+
+            ERunActions::runScript('send_invite_email',$params=array('to_email'=>$to_email, 'from_email'=>$from_email, 'actor_name'=>$actor_name),$scriptPath=null);
+
+            Yii::log('Sending urlinq invite to ' . $to_email);
+
+            $data = array('success'=>true,'error_id'=>'run');
+            $this->renderJSON($data);
+            return;
+        }
+        else
+        {
+
+            $data = array('success'=>false,'error_id'=>'error running in background');
+            $this->renderJSON($data);
+            return;
+
+        }
+
+
+    }
+
+
+
+
+
+
+    public function actionSendUrlinqInviteEmail(){
+
+        if(!isset($_POST['email']) || !isset($_POST['origin_type']) || !isset($_POST['origin_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user = $this->get_current_user();
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user not defined');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+
+        $email = $_POST['email'];
+        $origin_type = $_POST['origin_type'];
+        $origin_id = $_POST['origin_id'];
+
+
+        if(!$this->valid_email($email)){
+            $data = array('success'=>false,'error_id'=>3,'error_msg'=>'Invalid email address');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $actor_name = $user->firstname . ' ' . $user->lastname;
+
+        $from_email = 'team@urlinq.com';
+
+
+        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendUrlinqInviteEmailFunction',$postData=array('to_email'=>$email,'from_email'=>$from_email, 'actor_name'=>$actor_name),$contentType=null);
+
+
+        $data = array('success'=>true);
+        $this->renderJSON($data);
+        return;
+    }
+
+
 
 
     public function actionSendVerificationEmail(){
@@ -714,7 +828,7 @@ class SiteController extends Controller
         $picture_file_id = $_POST['picture_file_id'];
 
 
-        if($gender != 'M' && $gender != 'F'){
+        if($gender != 'M' && $gender != 'F' && $gender != null){
             $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'invalid gender');
             $this->renderJSON($data);
             return;
@@ -762,7 +876,7 @@ class SiteController extends Controller
             }
         }else{
 
-            if($user->user_type == 'p'){
+          /*  if($user->user_type == 'p'){
                 //Check if professor is the current professor of any classes.
                 //If not, return an error
                 $class = ClassModel::model()->find('professor_id=:id',array(':id'=>$user->user_id));
@@ -775,7 +889,7 @@ class SiteController extends Controller
                 $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'must register in atleast one class');
                 $this->renderJSON($data);
                 return;
-            }
+            }*/
         }
 
 
@@ -908,8 +1022,10 @@ class SiteController extends Controller
 
 
         } else if($user->user_type == 's'){
-            if(isset($_POST['graduation_date'])){
+            if(isset($_POST['graduation_date'])) {
                 $graduation_date = $_POST['graduation_date'];
+            }else{
+                $graduation_date = null;
             }
             $student_attribute = StudentAttributes::model()->find('user_id=:id',array(':id'=>$user->user_id));
             if($student_attribute){
@@ -1136,6 +1252,16 @@ class SiteController extends Controller
                 $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
                 if($user){
 
+                    //Update with the info they just input
+//                    $user->user_email = $email;
+//                    $user->user_type = $user_type;
+                    $user->firstname = $firstname;
+                    $user->lastname = $lastname;
+//                    $user->school_id = null;
+//                    $user->department_id = null;
+                    //$user->status = 'unverified';
+                    $user->save(false);
+
                     Yii::app()->session['user_type'] = 's';
                     Yii::app()->session['onboarding_step'] = 0;
 
@@ -1309,7 +1435,7 @@ public function actionSendReset(){
                     $message = Yii::app()->getBaseUrl(true) . '/reset?key=' . $user_recovery_test['recovery_key'];
                     $from = 'team@urlinq.com';
 
-                    ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery_test->recovery_key),$contentType=null);
+                    ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendResetPasswordEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery_test->recovery_key),$contentType=null);
                     $data = array('success'=>true);
                     $this->renderJSON($data);
                     return;
@@ -1328,7 +1454,7 @@ public function actionSendReset(){
                         $message = Yii::app()->getBaseUrl(true) . '/reset?key=' . $user_recovery->recovery_key;
                         $from = 'team@urlinq.com';
 
-                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery->recovery_key),$contentType=null);
+                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendResetPasswordEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery->recovery_key),$contentType=null);
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
@@ -1399,5 +1525,39 @@ public function actionSendReset(){
             return;
         }
     }
+
+
+
+    public function actionAdmin(){
+
+        $user = $this->get_current_user();
+
+        if(!$user){
+            $data = array('success'=>false);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+//        if(!$this->is_urlinq_admin($user)){
+//            $data = array('success'=>false, 'error_msg'=>'Not an admin');
+//            $this->renderJSON($data);
+//            return;
+//        }
+
+
+
+
+
+
+
+
+
+
+        $this->render('admin',array('user'=>$user));
+        return;
+    }
+
 
 }

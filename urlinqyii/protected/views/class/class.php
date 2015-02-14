@@ -35,9 +35,9 @@
     <title><?php echo $class->class_name; ?></title>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
-
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"> </script>
-
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/render_post.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
 
@@ -54,6 +54,7 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
     <!--BELOW ARE SCRIPTS AND LINKS FOR DROPDOWN MENU API -->
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropit.js'></script>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/dropit.css" type="text/css" />
@@ -90,6 +91,12 @@
       <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/chrono.js"></script>
       <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/application.js"></script>
       <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/uiscripts.js"></script>
+
+
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/date_selector/date_selector.js" type="text/javascript"></script>
+
      <style>
 
     .calendar-icon{
@@ -107,7 +114,7 @@
 
 </head>
 
-    <body class = "body_group">
+    <body class = "body_group body_class">
 
 
 
@@ -148,12 +155,20 @@
 
 
             <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
+                <div class = "blur_section_overflow_container">
+                    <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
+                    </div>
+                </div>
                 <div class = "group_name">
 
                     <?php if($class->professor){ ?>
-                        <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->professor->pictureFile->file_url; ?>');"></div><div class = "professor_name">Professor <?php echo $class->professor->firstname; ?> <?php echo $class->professor->lastname; ?></div></div>
+                        <div class = "center_admin">
+                            <div class="profile_link" data-user_id="<?php echo $class->professor->user_id; ?>">
+                                <div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->professor->pictureFile->file_url; ?>');"></div>
+                                <div class = "professor_name">Professor <?php echo $class->professor->firstname; ?> <?php echo $class->professor->lastname; ?></div>
+                            </div>
+                        </div>
                     <?php }else{ ?>
-                        <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . '/assets/avatars/3.png' ?>');"></div><div class = "professor_name">Unknown Professor</div></div>
                     <?php } ?>
                     <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name . ' (' . $class->course->course_tag . ') '; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
                 </div>
@@ -164,18 +179,20 @@
                         <span><?php echo $class->location; ?></span>
 
                         <br>
+                        <?php if($class->class_datetime) { ?>
                         <em class ="small_icon_time"></em>
                         <span><?php echo $class->class_datetime; ?></span>
+                        <?php } else { }?>
                     </div>
                     <?php } else { }?>
-
-                    <?php if($is_admin){ ?>
-                    <div class = "group_info_block" id = "class_schedule">
-                        <div class="upload_cover_photo_button">Upload cover photo</div>
-                    </div>
-                    <?php } ?>
                     
                 </div>
+
+                <?php if($is_admin){ ?>
+                <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                    <div class="upload_cover_photo_text">Change cover</div>
+                </div>
+                <?php } ?>                
 
 
             </div>
@@ -280,6 +297,9 @@
 
         <?php if($is_member){ ?>
         <div class="panel active panel_feed" id="panel_1">
+        <?php }else{ ?>
+        <div class="panel panel_feed" id="panel_1" style="display:none">
+        <?php } ?>
             <div id = "planner_column" class = "planner_column_group">
                 <div id = "right_column_specs">
                     <div id = "fixed_element" class = "planner_group">
@@ -292,11 +312,11 @@
             <div id = "feed_column" class = "feed_column_group">
                 <div id = "stream_holder" class = "stream_holder_home">
                     <div id = "fbar_wrapper" class = "fbar_home">
-                        <?php echo $this->renderPartial('/partial/class_status_bar',array('user'=>$user, 'origin_type'=>'class','origin_id'=>$class->class_id, 'origin'=>$class)); ?>
+                        <?php echo $this->renderPartial('/partial/class_status_bar',array('user'=>$user, 'origin_type'=>'class','origin_id'=>$class->class_id, 'origin'=>$class,'is_admin'=>$is_admin)); ?>
                     </div>
 
                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/' . $class->class_id . '/feed', 'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
+                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/' . $class->class_id . '/feed', 'origin_type'=>'class','origin_id'=>$class->class_id,'is_admin'=>$is_admin)); ?>
                     </div>
 
 
@@ -304,7 +324,11 @@
             </div>
         </div>
 
+        <?php if($is_member){ ?>
         <div class="panel tab_syllabus" id="panel_2">
+        <?php }else{ ?>
+        <div class="panel tab_syllabus" id="panel_2" style="display:none">
+        <?php } ?>
             <div class = "class_syllabus_tab">
                 <div class = "syllabus_tab_holder">
                     <div class = "full_syllabus_box syllabus_tagger">
@@ -528,7 +552,11 @@
             </div>
         </div>
 
+        <?php if($is_member){ ?>
         <div class="panel tab_files" id="panel_3">
+        <?php }else{ ?>
+        <div class="panel tab_files" id="panel_3" style="display:none">
+        <?php } ?>
         <!--<form action="/file-upload" class="dropzone" id="my-awesome-dropzone">-->
         <div class="tab_content_holder">
         <div class="tab_header">
@@ -760,9 +788,7 @@
         <!--</form>-->
         </div>
 
-        
 
-        <?php } ?>
 
         <div class="panel tab_members" id="panel_4">
             <div class="tab_content_holder">
@@ -782,9 +808,9 @@
                                     <span>Done</span>
                                 </div>
                             </div>
-                            <div class = "add_people_button">
+                            <!--<div class = "add_people_button">
                                 Add Members
-                            </div>
+                            </div>-->
 
                         <?php } ?>
                         <div class="fade_input_small small_search">
@@ -812,10 +838,10 @@
                                 <span class = "title">Professor</span>
                                 <div class = "user_main_info">
                                     <a class = "name profile_link" data-user_id="<?php echo $professor->user_id; ?>"><?php echo $professor->full_name(); ?></a>
-                                    <span class = "office_hours in_office">
+                                    <!--<span class = "office_hours in_office">
                                         <em></em>
                                         <span>In office</span>
-                                    </span>
+                                    </span>-->
                                 </div>
                                 <div class = "user_more_info">
                                     <span class = "label">Department <br> </span><a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $professor->department->department_id; ?>" class = "data department_link"><?php echo $professor->department->department_name; ?></a>
@@ -840,9 +866,9 @@
 
                     <?php } ?>
 
-                    <?php foreach($class->students as $member){ ?>
+                    <?php foreach($class->users as $member){ ?>
                         <div class = "members_card_wrapper regular_member" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->full_name(); ?>">
-                            <div class = "members_card admin normal_size">
+                            <div class = "members_card <?php if($member->isAdmin($class)) echo 'admin';?> normal_size">
                                 <div class = "members_card_img profile_link" data-user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 
                                     <?php if($member->user_type == 'p'){ ?>
@@ -859,11 +885,13 @@
                                     <a class = "name profile_link" data-user_id='<?php echo $member->user_id; ?>'><?php echo $member->firstname . ' ' . $member->lastname; ?></a>
                                 </div>
                                 <div class = "user_more_info">
-                                    <a class = "department_link"><?php echo $member->department->department_name; ?></a>
+                                    <a href="<?php echo Yii::app()->getBaseUrl()."/department/".$member->department->department_id; ?>" class = "department_link"><?php echo $member->department->department_name; ?></a>
                                 </div>
                                 <?php if($user->user_id !== $member->user_id){ ?>
                                 <div class = "user_card_button_holder">
-
+                                    <?php if($is_admin){ ?>
+                                        <div class="remove_member_button">Remove</div>
+                                    <?php } ?>
                                     <?php if($user->is_following($member->user_id)){ ?>
                                     <div class = "follow_button_wrapper following_wrapper">
                                         <div class = "user_follow_button following">Following</div>

@@ -19,9 +19,24 @@
     box-shadow: 0px 0 3px rgba(0,0,0,0.5);
     cursor: default;
     z-index: 10000000;
-    -moz-transition: background-color .15s ease-;
+    -moz-transition: background-color .15s ease;
     -webkit-transition: background-color .15s ease;
     transition: background-color .15s ease;    
+}
+
+.nav_bar_no_repeat{
+    opacity:0;
+    z-index: -1;
+    -moz-transition: opacity .250s linear;
+    -ms-transition: opacity .250s linear;
+    -o-transition: opacity .250s linear;
+    -webkit-transition: opacity .250s linear;
+    transition: opacity .250s linear;
+}
+
+body.body_group div#nav_bar:hover .nav_bar_no_repeat{
+    opacity:1;
+    z-index:1;
 }
 
 body#body_home div#content_panel div#nav_bar{
@@ -99,7 +114,7 @@ div.nav_section div.nav_text {
 
     margin-left: 5px;
 
-    max-width: 210px;
+    max-width: 208px;
     height: 30px;
     /*position: relative;*/
     /*top: 50%;*/
@@ -113,10 +128,6 @@ div.nav_section div.nav_text {
     display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
-
-
-
-
 }
 
 
@@ -199,6 +210,16 @@ body#body_home div#content_panel div#nav_bar div#nav_drop_down_container {
     
 }
 
+body#body_home div#content_panel div#nav_bar div#nav_drop_down_container.last_nav_drop_down_home{
+    border-top-right-radius: 10px;
+    border-top: none;
+    margin-top: -3px;
+    border-left: none;
+    padding-top: 2px;
+}
+
+
+
 .nav_drop_down_section{
     padding-top: 6px;
     padding-left: 10px;
@@ -261,7 +282,7 @@ div#nav_drop_down_see_all_button:hover{
     cursor: pointer
 }
 
-div#nav_drop_down_see_all_button:hover #nav_drop_down_see_all_courses_text,div#nav_drop_down_see_all_button:hover #nav_drop_down_see_all_departments_text{
+div#nav_drop_down_see_all_button:hover #nav_drop_down_see_all_courses_text,div#nav_drop_down_see_all_button:hover #nav_drop_down_see_all_departments_text, div#nav_drop_down_see_all_button:hover #nav_drop_down_see_all_clubs_text{
     text-decoration: underline;
 }
 

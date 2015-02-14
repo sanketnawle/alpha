@@ -44,8 +44,8 @@ $(document).ready(function () {
     }
 
     var progress_bar = ["14%", "28%", "43%", "57%", "71%", "86%", "100%"];
-    var btn_text = ["Join your School", "Join your Department", "Resend Verification (Check spam)", "Continue", "Continue", "Continue", "Let's Get Started"];
-    var hint_text = ["Select your School", "Join your Department", "Verify your Email", "Join your Classes", "Who do you know on campus?", "Find your Clubs", "Complete your Profile"];
+    var btn_text = ["Join your School", "Join your Major/Department", "Resend Verification", "Continue", "Continue", "Continue", "Let's Get Started"];
+    var hint_text = ["Select your School", "Select your Major/Department", "Verify .edu Email", "Sign up for Courses - Pick your Section", "Who inspires you on campus?", "Find your Group", "Add a Photo"];
     var progress_bar_color = ["rgb(186, 81, 228)", "#009ed3", "rgb(110, 56, 169)", "rgb(0, 173, 61)", "rgb(242, 110, 0)", "#ec3856", "rgb(39, 178, 78)"];
 
     var canvas_hint = ["", "", "", "Here are some of the most popular classes in your department.", "Share your notes, take part in discussions, and see what they are up to.", "These are some of the most active clubs at your school.", ""];
@@ -153,11 +153,16 @@ $(document).ready(function () {
             $(".progress_footer_glyph_0").hide();
         }
 
-        if (curr <= 2) { $(".skip_progress").hide(); } else {
+        if (curr <= 2) {
+            $(".skip_progress").hide();
+            $(".full_skip").hide();
+        } else {
             if (curr != 6) {
                 $(".skip_progress").show();
+                $(".full_skip").show();
             } else {
                 $(".skip_progress").hide();
+                $(".full_skip").hide();
             }
         }
 
@@ -184,9 +189,11 @@ $(document).ready(function () {
 
 
         $(".progress_hint_0").text(hint_text[curr]);
-
         var curr_act = parseInt(curr) + 1;
-        $(".progress_hint_1").html("Step <span class='curr_step'>" + curr_act + "</span> of <span>7</span>");
+        if(curr == 3 || curr == 4 || curr == 5){
+            $(".progress_hint_1").show();
+            $(".progress_hint_1").html("Step <span class='curr_step'>" + curr_act + "</span> of <span>7</span>");
+        }
         if (curr == 6) { $(".progress_hint_1").html("Last Step"); };
 
         if (curr == 6) {
@@ -225,6 +232,7 @@ $(document).ready(function () {
 
 
          $('.skip_progress').show();
+         $(".full_skip").show();
          $(".canvas_banner").remove();
 
         console.log("CURR " + curr.toString());
@@ -248,6 +256,7 @@ $(document).ready(function () {
             }
 
             $('.skip_progress').hide();
+            $(".full_skip").hide();
 
 
         }else if (curr == 1) {
@@ -268,18 +277,20 @@ $(document).ready(function () {
             }
 
             $('.skip_progress').hide();
+            $(".full_skip").hide();
 
 
         } else if (curr == 2) {
-            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq. (check your spam folder)</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'</div>");
+            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'</div>");
             $('.skip_progress').hide();
+            $(".full_skip").hide();
         } else if (curr == 3) {
             $canvas.show();
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
 
             //hide skp button
-            $('.skip_progress').hide();
+            //$('.skip_progress').hide();
 
 
             $canvas.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[progress_flag] + "</div><div class='right_txt'><span>0</span> selected</div></div>");
@@ -328,6 +339,7 @@ $(document).ready(function () {
 
         }else if (curr == 4) {
             $('.skip_progress').show();
+            $(".full_skip").show();
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
             $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt right_txt_adjust'><span class='follow_all_btn'>Follow All</span></div></div>");
@@ -354,6 +366,7 @@ $(document).ready(function () {
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
             $('.skip_progress').show();
+            $(".full_skip").show();
             $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt'><span>0</span> joined</div></div>");
 
 
@@ -381,6 +394,7 @@ $(document).ready(function () {
 
         }else if (curr == 6) {
             $('.skip_progress').hide();
+            $(".full_skip").hide();
 
             var data = {base_url: base_url, user_type: user_type};
 
@@ -492,13 +506,16 @@ $(document).ready(function () {
         e.stopPropagation();
 
         var gender = $('input[name=gender]:checked').val();
-        //Check if gender is null
         if(!gender){
+            gender = null;
+        }
+        //Check if gender is null
+        /*if(!gender){
             alert('Please select a gender');
             return;
-        }
+        }*/
 
-
+        /*
         if(selected_data["classes"].length == 0){
             if(user_type == 'p'){
                 if(professor_classes.length == 0){
@@ -511,9 +528,12 @@ $(document).ready(function () {
                 return;
             }
         }
+        */
 
 
-
+        if(selected_data['classes'].length == 0){
+            selected_data['classes'] = null;
+        }
         if(selected_data['clubs'].length == 0){
             selected_data['clubs'] = null;
         }
@@ -777,6 +797,21 @@ $(document).ready(function () {
             content_paint(progress_flag);
         }
     });
+
+    $(document).delegate(".full_skip", "click", function () {
+        if(progress_flag>2){
+            if(!selected_data['classes']){
+                selected_data['classes'] = [];
+            }
+            if(!selected_data['clubs']){
+                selected_data['clubs'] = [];
+            }
+
+            $(".next_progress").addClass("last_step_btn");
+            $('.last_step_btn').click();
+        }
+    });
+
 
     $(document).delegate(".progress_goback", "click", function () {
         if ((progress_flag > 0) && (progress_flag != 3)) {

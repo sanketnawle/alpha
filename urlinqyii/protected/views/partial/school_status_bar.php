@@ -43,14 +43,14 @@
             <div class = "fbar_buttonwrapper fbar_twoprong fbar_button_last" id = "fbar_button_discuss" data-post_button_type = "discuss">
                 <i class = "fbar_button_icon" id = "fbar_icon_discuss2">
                 </i>
-                <p class = "fbar_button_text discussion_button_text">Disccusion</p>
+                <p class = "fbar_button_text discussion_button_text">Discussion</p>
             </div>
         </section>
         <section id = "fbar_postbox">
             <form id = "fbar_form">
                 <div class = "form_wrapper">
                     <header id = "fbar_header" class = "fbar_contents_fix">
-                        <a class = "audience_default"><div id = "audience_select"><span>To <span class = "selected_audience">School</span></span></div></a>
+                        <a class = "audience_default"><div id = "audience_select"><span>To <span class = "selected_audience"><?php echo $origin->school_name;?></span></span></div></a>
                         <div id = "discussion_form_content" class = "post_type_header active post_type_discussion"><span>Discussion</span></div>  
                         <div id = "event_form_content" class = "post_type_header active post_type_events"><span>Event</span></div> 
                         <div id = "notes_form_content" class = "post_type_header active post_type_notes"><span>Notes/Files</span></div>                 
@@ -94,8 +94,8 @@
                                 <li class = "no_relative">
                                     <a class = "privacy_dropdown_link"></a>
                                     <ul class = "privacy_dropdown privacy_dropdown_club_fbar">
-                                        <li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>All Club Members</a><span></span></li>
-                                        <li class = "privacy_list" style = "position:relative;"><a>Club Admins</a><span></span></li>
+                                        <li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>All School Members</a><span></span></li>
+                                        <li class = "privacy_list" style = "position:relative;"><a>School Admins</a><span></span></li>
                                         <!--<li class = "privacy_list" style = "position:relative;"><a>Members</a><span></span></li>-->
                                         <div class="help-wedge">
                                         </div>
@@ -128,6 +128,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="post_anon" class='check_wrap'>
+                            <input type='checkbox' id='flat_0' class='flat7c'/>
+                            <label for='flat7' class='flat7b'>
+                                <span class='move'></span>
+                            </label>
+                            <span class = 'comment_anon_text'>Post Anonymously</span>
+                        </div>
                         <div style = "display:none" class = "event_form_content event_more_options">More options</div>
 
                         <div style = "-webkit-user-select: none;" class = "post_btn fresh_green_button" id = "post_btn">
@@ -158,7 +165,7 @@
 
 
 
-<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id)); ?>
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id,'is_admin'=>false)); ?>
 
 
 

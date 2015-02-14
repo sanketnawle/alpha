@@ -21,7 +21,7 @@
 
     </script>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
-  <title>Welcome to Urlinq</title>
+  <title>Urlinq</title>
   <meta name="google-site-verification" content="qv_TWutBCtliggYTCBDzJeXCNfJ3Dd3L5SkIhBSxm5Y" />
   <meta name="viewport" content="width=device-width, initial-scale=.68">
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta.css" />
@@ -136,47 +136,8 @@
   });
   /*error handling end*/
 
-  setTimeout(function() {
-    $('div.icon_section.icon_green').addClass('animated fadeInLeft');
-    $('div.icon_section.icon_green').css({"opacity":"1"});
-  },1000);
-
-  setTimeout(function() {
-    $('div.icon_section.icon_red').addClass('animated fadeInLeft');
-    $('div.icon_section.icon_red').css({"opacity":"1"});
-  },1300);
-
-  setTimeout(function() {
-    $('div.icon_section.icon_blue').addClass('animated fadeInLeft');
-    $('div.icon_section.icon_blue').css({"opacity":"1"});
-  },1600);
-
-  $(window).scroll(function() {
 
 
-    var y=$(window).scrollTop()*0.1;
-    var x=$(window).scrollTop()*0.1;
-
-    
-    
-    $(".signup-container").css({"transform":"translateY("+y+"px)"});
-    
-
-
-    if($(window).scrollTop()>=105){
-      $(".color-changing-div").css("background-color","#02e2a7");
-      
-
-    }
-    else{
-      $(".color-changing-div").css("background-color","#1DA7D3");
-
-    }
-
-
-
-
-  });
 
 
 
@@ -356,7 +317,9 @@
 
 });
 
-  $(document).delegate(".account-type","click",function(){
+  $('.account-type').bind('touchstart touchend', function(e) {
+      e.preventDefault();
+
     if($(this).hasClass("student")){
       $(".faculty").removeClass("account-type-chosen");
       $(this).addClass("account-type-chosen");
@@ -374,6 +337,25 @@
       
     }
   });
+
+  $(document).delegate(".account-type","click",function(){
+    if($(this).hasClass("student")){
+      $(".faculty").removeClass("account-type-chosen");
+      $(this).addClass("account-type-chosen");
+      $("#student").prop("checked", true);
+      $("#faculty").prop("checked", false);
+      //$(this).val('s');
+    }
+    if($(this).hasClass("faculty")){
+      $(".student").removeClass("account-type-chosen");
+      $(this).addClass("account-type-chosen");
+      $("#faculty").prop("checked", true);
+      $("#student").prop("checked", false);
+      //$(this).val('p');
+    }
+
+  });
+
 
   $(".announce_support_input").keyup(function(event){
     if(event.keyCode == 13){
@@ -469,13 +451,22 @@
                           var $form = $(this);
                           e.preventDefault();
                           e.stopPropagation();
+
+                          var email = $('#reset_password_email').val();
+
+
                           var post_url = globals.base_url + '/sendReset';
-                          var post_data = $form.serializeArray();
+                          var post_data = {email: email};
                           $.post(
                             post_url,
                             post_data,
                             function(response){
-                              //alert(JSON.stringify(response));
+                                if(response['success']){
+                                    alert('Reset password email sent');
+                                }else{
+                                    //error sending reset password email
+                                    alert(JSON.stringify(response));
+                                }
                             }, 'json'
                           );
                         });
@@ -501,31 +492,30 @@
                                     if(response['success']){
                                         window.location.replace(globals.base_url + '/home');
                                     }else{
-                                        console.log(response['error_id']);
                                         $('#login_error_popup').remove();
                                         var email_position = $('input#login_email').offset();
                                         var $error_div = $("<div id='login_error_popup'></div>");
-                                        $error_div.css({'top': email_position.top + 50});
+                                        $error_div.css({'top': email_position.top + 48});
                                         $error_div.css({'left': email_position.left});
                                         if(response['error_id'] == 2){
                                             //alert('Email is not supported');
-                                            $error_div.text('Email is not supported');
+                                            $error_div.text('Incorrect login information');
 
 
                                         }else if(response['error_id'] == 3){
 
-                                            $error_div.text('Account does not exist for this email');
+                                            $error_div.text('Incorrect login information');
 
 
 
                                             $('body').append($error_div);
                                         }else if(response['error_id'] == 4){
                                             //alert('Invalid login');
-                                            $error_div.text('Invalid login');
+                                            $error_div.text('Incorrect password');
                                             var $forgot_password_div = $("<button id='forgot_password'>Forgot Password? </button>" +
                                             "                   <form id='reset_password' style='display:none;'>" +
-                                            "                        <input id='email' type='text' name='email' placeholder='email'/>" +
-                                            "                        <input type='submit' value='submit'/>" +
+                                            "                        <input id='reset_password_email' type='text' name='email' placeholder='Enter account email...'/>" +
+                                            "                        <input class = 'forgot_password_submit_button' type='submit' value='submit'/>" +
                                             "                   </form> ");
                                             $error_div.append($forgot_password_div);
 
@@ -543,9 +533,18 @@
                         });
 
                         $(document).on('click','#forgot_password',function(){
-                            $('#forgot_password').fadeOut(250);
-                            $('form#reset_password').fadeIn(250);
+                            $("#login_error_popup").css({"font-size":"0px"});
+                            $('#forgot_password').hide();
+                            $('form#reset_password').show();
                             $('form#reset_password input#email').val($('input#login_email').val());
+                        });
+
+                        $(document).on('click','.forgot_password_2',function(){
+                            $('#login_error_popup').remove();
+                            var email_position = $('input#login_email').offset();
+                            var $error_div = $("<div id='login_error_popup'></div>");
+                            $error_div.css({'top': email_position.top + 48});
+                            $error_div.css({'left': email_position.left + 70});
                         });
 
                       </script>
@@ -556,10 +555,13 @@
                       <input type="hidden" id="offset" name="offset" value="" >
                        <button name = "submit" id = "submit" type = "submit" class = "rounded Button SignIn smallBtn">
                           <span class = "buttonText">
-                            Sign In
+                            Log In
                           </span>
                         </button>
-                        
+                        <!--<div class = "forgot_password_2">
+                          Forgot your password?
+                        </div>-->
+
                         <!--<div class = "fb_signin_wrap">
                           <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
                             <em class = "fb_icon">
@@ -613,27 +615,34 @@
               </video>
               <div class = "about_section">
                 <div class = "focus_area">
-                  <div class = "icon_section icon_green" style = "opacity:0">
+                  <div class = "icon_section icon_green">
                     <em class = "icon_img icon_img_g">
                     </em>
-                    <h5>
-                      The planner that plans for you - it's never been easier to keep track of everything happening in your academic life. 
+                    <h5 style = "top:18px;">
+                      Keep track of everything with a planner that automatically fills itself out.
                     </h5>
                   </div>
-                  <div class = "icon_section icon_red" style = "opacity:0">
+                  <div class = "icon_section icon_red">
                     <em class = "icon_img icon_img_r">
                     </em>
-                    <h5 style = "top:20px;">
-                      Ask questions, share notes, and discover events with the students and professors at your school.
+                    <h5 style = "top:18px;">
+                      Ask questions, share notes, and discover events with your peers and professors.
                     </h5>
                   </div>
-                  <div class = "icon_section icon_blue" style = "opacity:0">
+                  <div class = "icon_section icon_blue">
                     <em class = "icon_img icon_img_b">
                     </em>
-                    <h5>
-                      Search your university - nothing is off limits when you can search for classes, clubs, departments, and your friends within them. 
+                    <h5 style = "top:18px;">
+                      Search and navigate your entire University - nothing is off limits. 
                     </h5>
                   </div>
+                  <div class = "icon_section icon_orange">
+                    <em class = "icon_img icon_img_o">
+                    </em>
+                    <h5 style = "top:18px;">
+                      Get reminders about upcoming homeworks, meetings, and exams. 
+                    </h5>
+                  </div>                  
                 </div>
               </div>
              
@@ -650,12 +659,12 @@
 
 
           <ul class = "color-border">
-            <li style = "background-color:#565a5c;"><a style = "color: white; text-decoration:none" class = "cb-link1" href="http://urlinq.com/beta/lp_beta.php">Home</a></li>
-          <li><a style = "color: #1DA7D3; text-decoration:none" class = "cb-link2" href="http://urlinq.com/blog">Blog</a></li>
-          <li><a style = "color: rgba(253, 112, 45, 0.74); text-decoration:none" class = "cb-link3" href="https://urlinq.com/team/jobs">Jobs</a></li>
-          <li><a style = "color: rgba(177, 104, 226, 0.8); text-decoration:none" class = "cb-link4" href="https://urlinq.com/team/contact">Team</a></li>
-          <li><a style = "color: #ff5a5f; text-decoration:none" class = "cb-link5" href="https://urlinq.com/about/legal/privacy">Privacy</a></li>
-          <li><p>&#169; 2014 Urlinq</p></li>
+            <li style = "background-color:rgba(0,0,0,.35);"><a style = "color: white; text-decoration:none" class = "cb-link1" href="http://urlinq.com/beta/lp_beta.php">Home</a></li>
+          <li><a style = "color: #fff; text-decoration:none" class = "cb-link2" href="http://urlinq.com/blog">Blog</a></li>
+          <li><a style = "color: #fff; text-decoration:none" class = "cb-link3" href="https://urlinq.com/team/jobs">Jobs</a></li>
+          <li><a style = "color: #fff; text-decoration:none" class = "cb-link4" href="https://urlinq.com/team/contact">Team</a></li>
+          <li><a style = "color: #fff; text-decoration:none" class = "cb-link5" href="https://urlinq.com/about/legal/privacy">Privacy</a></li>
+          <li style = "cursor:default!important;"><p style = "color:#fff!important; cursor:default!important;">&#169; 2015 Urlinq</p></li>
           </ul>
           
           </div>
@@ -668,7 +677,7 @@
                       <h4 class = "header">Sign Up
                     </div>
                     <div class = "header-sec-right">
-                      <div class = "time-to-signup">30 seconds to get started</div>
+                      <div class = "time-to-signup">Your digital campus awaits</div>
                       <!--<div class = "signup-slog">seconds to get started</div>-->
                     </div>
                   </div>
@@ -728,7 +737,7 @@
                                         }                                            
                                   ?>">
                       </div>
-                      <div class = "registration-sec-texts">
+                      <div class = "registration-sec-texts signup_password_field">
                         <input type = "password" name = "password" id = "password" placeholder = "Password">
                         <?php 
                            //session_destroy();
@@ -759,7 +768,7 @@
                   </div>-->
                   <div class = "lp_terms">
                     <p class = "lp_terms_p">
-                      By clicking Create Your Account, you agree to our <a href = "/legal/terms" target = "_blank">Terms</a> and that you have read our <a href = "/legal/privacy" target = "_blank">Data Use Policy</a>.
+                      By clicking Create Your Account, you agree to our <a href = "https://urlinq.com/about/legal/terms" target = "_blank">Terms</a> and that you have read our <a href = "https://urlinq.com/about/legal/privacy" target = "_blank">Privacy Policy</a>.
                     </p>
                   </div>
               </div>

@@ -35,6 +35,10 @@ class ProfileController extends Controller
 
 
 
+
+
+
+
         $following = $userProfile->usersFollowed;
         $followers = $userProfile->usersFollowing;
 
@@ -79,6 +83,10 @@ class ProfileController extends Controller
       //  $majors = $command->queryAll();
        // $showcase_files= $$userProfile->showcase_files;
 
+
+        if($this->is_urlinq_admin($currentUser)){
+            $is_user = true;
+        }
 
 
         $this->render('profile',array('user'=>$currentUser,'userProfile'=>$userProfile,'school'=>$school,'university'=>$university,'department'=>$department
@@ -503,6 +511,21 @@ class ProfileController extends Controller
             //$user = User::model()->find('user_id=:uid', array(':uid' => $user_id));
             $user = $this->get_current_user();
             if($user){
+
+
+                if($this->is_urlinq_admin($user)){
+                    if(isset($_POST['user_id'])){
+                        $user = User::model()->find('user_id=:id', array(':id'=>$_POST['user_id']));
+                        if(!$user){
+                            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'invalid user id passed in');
+                            $this->renderJSON($data);
+                            return;
+                        }
+                    }
+                }
+
+
+
                 if (isset($_POST['bio'])) {
                     $user->user_bio = $_POST['bio'];
                     if ($user->save()) {
@@ -777,6 +800,14 @@ class ProfileController extends Controller
                 $userFollow->to_user_id = $_POST['user_to_follow'];
                 $userFollow->timestamp = new CDbExpression('NOW()');
                 if($userFollow->save()){
+
+                    include_once "notification/notification.php";
+                    if($userFollow->from_user_id != $userFollow->to_user_id){
+                       send_notification('follow',$userFollow->from_user_id,$userFollow->to_user_id,$userFollow->from_user_id,'user');
+                    }
+
+
+
                     $user = $this->get_current_user();
                     $result['status']="success";
                     $result['user_name']=$user->firstname." ".$user->lastname;
@@ -819,12 +850,60 @@ class ProfileController extends Controller
                 $result = file_upload($_FILES,"profile/");
                 //$user= User::model()->find('user_id = :uid',array(':uid'=>$_POST['user']));
                 $user = $this->get_current_user();
-                $user->picture_file_id = $result['file_id'];
-                if($user->save()){
-                    $this->renderJSON(array('status'=>'success','file_url'=>Yii::app()->getBaseUrl(true).$user->pictureFile->file_url));
+
+
+
+
+                if(isset($_POST['user_id'])){
+                    if($_POST['user_id'] != $user->user_id){
+                        //If this user has a @urlinq.com, email
+                        //change the pic for the user id sent
+                        if($this->is_urlinq_admin($user)){
+                            $other_user = User::model()->find('user_id=:id', array(':id'=>$_POST['user_id']));
+                            if($other_user){
+
+                                $other_user->picture_file_id = $result['file_id'];
+
+                                if($other_user->save(false)){
+                                    $this->renderJSON(array('status'=>'success','file_url'=>Yii::app()->getBaseUrl(true).$other_user->pictureFile->file_url));
+                                }else{
+                                    $this->renderJSON(array('status'=>'failure','message'=>$other_user->getErrors()));
+                                }
+
+                            }else{
+                                $this->renderJSON(array('status'=>'failure','message'=>'user with user id doesnt exist'));
+                                return;
+                            }
+
+                        }else{
+                            $this->renderJSON(array('status'=>'failure','message'=>'user is not an admin'));
+                            return;
+                        }
+                    }
+
+                    $user->picture_file_id = $result['file_id'];
+
+
+                    if($user->save()){
+                        $this->renderJSON(array('status'=>'success','file_url'=>Yii::app()->getBaseUrl(true).$user->pictureFile->file_url));
+                    }else{
+                        $this->renderJSON(array('status'=>'failure','message'=>$user->getErrors()));
+                    }
+
+
                 }else{
-                    $this->renderJSON(array('status'=>'failure','message'=>$user->getErrors()));
+
+                    $user->picture_file_id = $result['file_id'];
+
+                    if($user->save()){
+                        $this->renderJSON(array('status'=>'success','file_url'=>Yii::app()->getBaseUrl(true).$user->pictureFile->file_url));
+                    }else{
+                        $this->renderJSON(array('status'=>'failure','message'=>$user->getErrors()));
+                    }
                 }
+
+
+
             }else{
                 $this->renderJSON(array('status'=>'failure','message'=>'file is not a picture'));
             }
@@ -925,7 +1004,7 @@ class ProfileController extends Controller
         }
         $data = array();
         $data['user_id']=intval($user->user_id);
-        $data['own_profile']= (intval($user->user_id) == intval($this->get_current_user()->user_id));
+        $data['own_profile']= (intval($user->user_id) === intval($this->get_current_user()->user_id));
         $data['firstname']=$user->firstname;
         $data['lastname']=$user->lastname;
         $data['bio']=$user->user_bio;
@@ -959,6 +1038,26 @@ class ProfileController extends Controller
             $data['classes'][$i]['class_picture']= ($class->pictureFile) ?
                 Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
         }
+        $index = sizeof($data['classes']);
+        if($user->user_type === "p"){
+            $classesTaught = ClassModel::model()->findAll('professor_id=:pid',array(':pid'=>$user->user_id));
+            foreach($classesTaught as $i=>$class){
+                if($class->course){
+                    $data['classes'][$i+$index]['course_name']=$class->course->course_name;
+                    $data['classes'][$i+$index]['description']= $class->course->course_desc;
+                }
+                if($class->department){
+                    $data['classes'][$i+$index]['department_name']=$class->department->department_name;
+                    $data['classes'][$i+$index]['department_link']=Yii::app()->getBaseUrl(true).'/department/'.$class->department->department_id;
+                }
+                $data['classes'][$i+$index]['section']=$class->section_id;
+                $data['classes'][$i+$index]['class_id']=$class->class_id;
+                $data['classes'][$i+$index]['class_picture']= ($class->pictureFile) ?
+                    Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
+
+            }
+        }
+
 
         foreach($user->clubs as $i=>$club){
             $data['clubs'][$i]['club_name']=$club->group_name;
@@ -1080,10 +1179,17 @@ class ProfileController extends Controller
         $data['profile_pic'] = ($user->pictureFile) ?
             Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
         $data['background_pic'] = Yii::app()->getBaseUrl(true).'/assets/nice_background.jpg';
-        $data['num_classes'] = sizeof($user->classes);
+        $data['num_classes'] = sizeof($data['classes']);
         $data['num_clubs'] = sizeof($user->clubs);
         $data['num_following'] = sizeof($user->usersFollowed);
         $data['num_followers'] = sizeof($user->usersFollowing);
+
+
+        /*if($this->is_urlinq_admin($this->get_current_user())){
+            $data['own_profile'] = true;
+        }*/
+
+
         $this->renderJSON($data);
     }
 
@@ -1137,7 +1243,8 @@ class ProfileController extends Controller
     public function  actionReturnFbar(){
         if(isset($_GET['user'])){
             $user = User::model()->findByPk($_GET['user']);
-            $this->renderPartial('/partial/profile_status_bar',array('user'=>$this->get_current_user(),'origin_type'=>'user','origin_id'=>$user->user_id,'pg_src'=>'profile.html','target_type'=>'user'));
+            $is_admin = $user->user_id == $this->get_current_user_id();
+            $this->renderPartial('/partial/profile_status_bar',array('user'=>$this->get_current_user(),'origin_type'=>'user','origin_id'=>$user->user_id,'is_admin'=>$is_admin));
         }
 
     }

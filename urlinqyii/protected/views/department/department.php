@@ -25,7 +25,7 @@
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
-
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
@@ -39,9 +39,13 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
 
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/date_selector/date_selector.js" type="text/javascript"></script>
+
 </head>
 
-<body class = "body_group" id = "body_department">
+<body class = "body_group body_department" id = "body_department">
 
 <?php echo Yii::app()->runController('partial/topbar'); ?>
 <div id="wrapper">
@@ -78,9 +82,13 @@
 
 
                         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
+                            <div class = "blur_section_overflow_container">
+                                <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
+                                </div>
+                            </div>                           
                             <div class = "group_name">
                                 <div class = "center_admin"><div class = "department_of">Department of</div></div>
-                                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></span></p></div>
+                                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name; ?></span></p></div>
                             </div>
                             <div class = "group_right_info group_info_boxes">
                                 <div class = "group_info_block" id = "location">
@@ -143,13 +151,13 @@
 
                         <!-- #group_user_action_button performs either join/leave or follow/unfollow depending on context -->
                         <?php if($is_following ){ ?>
-<!--                            <div id="group_user_action_button" class="member" data-action_url="/leave">-->
-<!--                                <div id="group_user_action_button_text">Member</div>-->
-<!--                            </div>-->
+                            <div id="group_user_action_button" class="member" data-action_url="leave">
+                                <div id="group_user_action_button_text">Following</div>
+                            </div>
                         <?php }else{ ?>
-<!--                            <div id="group_user_action_button" class="non_member" data-action_url="/join">-->
-<!--                                <div id="group_user_action_button_text">Follow</div>-->
-<!--                            </div>-->
+                            <div id="group_user_action_button" class="non_member" data-action_url="join">
+                                <div id="group_user_action_button_text">Follow</div>
+                            </div>
                         <?php } ?>
 
 
@@ -172,11 +180,11 @@
                         <div id = "feed_column" class = "feed_column_group">
                             <div id = "stream_holder" class = "stream_holder_home">
                                 <div id = "fbar_wrapper" class = "fbar_home">
-                                    <?php echo $this->renderPartial('/partial/department_status_bar',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id)); ?>
+                                    <?php echo $this->renderPartial('/partial/department_status_bar',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id,'is_admin'=>false,'origin'=>$department)); ?>
                                 </div>
 
                                 <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                    <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/department/'.$department->department_id.'/feed', 'origin_type'=>'department','origin_id'=>$department->department_id)); ?>
+                                    <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/department/'.$department->department_id.'/feed', 'origin_type'=>'department','origin_id'=>$department->department_id,'is_admin'=>false)); ?>
                                 </div>
 
 
@@ -186,7 +194,7 @@
 
                     <div class="panel tab_group_info" id="panel_2">
                         <div class = "tab_content_holder">
-                            <div class="tab_header"> 
+                            <div class="tab_header tab_header_courses"> 
                                 <div class = "float_Right">
 
 <!--                                    <span class = "sort_label">Order:</span>-->
@@ -195,22 +203,24 @@
 <!--                                        <em class = "dropdown_arrow">-->
 <!--                                        </em>-->
 <!--                                    </div>-->
-                                    <div class = "small_search fade_input_small">
+                                    <div class = "small_search fade_input_small course_search">
                                         <em id = "left_search_icon">
                                         </em>
                                         <input type = "text" name = "people_search_input" placeholder = "Search courses" class = "name_search_input small_search_input">
                                     </div>                                        
                                 </div>
                                 <div class = "header_sentence">
-                                    Courses this Semester
+                                    Courses in <?php echo $department->department_name; ?>
                                 </div>
                             </div>
                             <div class = "group_info_tab_content tab_content">
 
                                 <?php foreach($department->courses as $course){ ?>
                                     <div class = "group_box group_course_box" data-name="<?php echo $course->course_name; ?>">
-                                        <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url; ?>');">
-                                        </div>
+                                        <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_image_link">
+                                            <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url; ?>');">
+                                            </div>
+                                        </a>
                                         <div class = "group_box_main_info">
                                             <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></a>
                                             <div class = "float_Right">
@@ -247,7 +257,7 @@
                                     </div>                                        
                                 </div>
                                 <div class = "header_sentence">
-                                   Faculty
+                                   <?php echo $department->department_name; ?> Faculty
                                 </div>
                             </div>
                             <div class = "members_tab_content tab_content" id="department_admins_members_tab_content">
@@ -320,7 +330,7 @@
                                     </div>                                        
                                 </div>
                                 <div class = "header_sentence">
-                                    Students
+                                    <?php echo $department->department_name; ?> Students
                                 </div>
                             </div>
                             <div class = "members_tab_content tab_content" id="department_students_members_tab_content">
@@ -385,7 +395,7 @@
         </div>
 
         <div id="right_panel" class = "group_responsiveness">
-            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'department','origin_id'=>'')); ?>   
+            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id)); ?>
         </div>
 
         <!--            <div id="div1" style="height: 500px;position:relative;">-->
@@ -399,9 +409,10 @@
     <!--            --><?php //echo Yii::app()->runController('partial/rightmenu'); ?>
 </div>
 
-</body>
 
- <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
+     <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
+
+     <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
 
     <div id = "calLayer" style="display: none;">
         <section id = "mounth" class="mounth">
@@ -558,6 +569,13 @@ Set the class name on your input to 'time_input' -->
 
 
 </div>
+
+
+
+
+</body>
+
+
 
 
 </html>

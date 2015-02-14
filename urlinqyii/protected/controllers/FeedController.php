@@ -179,6 +179,8 @@ class FeedController extends Controller
                         $replies[$j]['down_vote'] = intval($reply1['down_vote']);
 
                         $replies[$j]['update_timestamp'] = strtotime($reply1['update_timestamp']);
+                        //$replies[$j]['update_timestamp'] = strtotime(gmdate('Y-m-d H:i:s',strtotime($reply1['update_timestamp']." EST")));
+
 
                         $replies[$j]['user_info'] = self::getUserInfo($reply1['user_id'],"reply");
                         //                    echo "***".$j." ".$reply1['user_id']." ".self::$cur_user_id."***";
@@ -270,16 +272,34 @@ class FeedController extends Controller
             }
             elseif($post['origin_type']=="class"){
                 $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post['origin_id']));
+
+                if(!$class){
+                    unset($posts[$i]);
+                    continue;
+                }
+
                 $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($class,array('pictureFile')));
                 $posts[$i]['origin']['name'] = $posts[$i]['origin']['class_name'];
             }
             elseif($post['origin_type']=="course"){
                 $course = Course::model()->find('course_id=:id', array(':id'=>$post['origin_id']));
+
+                if(!$course){
+                    unset($posts[$i]);
+                    continue;
+                }
+
                 $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($course,array('pictureFile')));
                 $posts[$i]['origin']['name'] = $posts[$i]['origin']['course_name'];
             }
             elseif($post['origin_type']=="department"){
                 $department = Department::model()->find('department_id=:id', array(':id'=>$post['origin_id']));
+                if(!$department){
+                    unset($posts[$i]);
+                    continue;
+                }
+
+
                 $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($department,array('pictureFile')));
                 $posts[$i]['origin']['name'] = $posts[$i]['origin']['department_name'];
             }
@@ -291,7 +311,14 @@ class FeedController extends Controller
             }
             elseif($post['origin_type'] == "group" || $post['origin_type'] == 'club'){
                 $group = Group::model()->find('group_id=:id', array(':id'=>$post['origin_id']));
-                if($group->privacy){
+
+                $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$group->group_id));
+
+
+                //If this group is private and the current user
+                //is not apart of the group,
+                //dont show this post
+                if($group->privacy && !$group_user){
                     unset($posts[$i]);
                     continue;
                 }else{
@@ -366,10 +393,12 @@ class FeedController extends Controller
                 $post_model = Post::model()->find('post_id=:id', array(':id'=>$post['post_id']));
 
 
-
-
                 $post_event = PostEvent::model()->find('post_id=:id',array(':id'=>$post['post_id']));
 
+                if(!$post_event){
+                    unset($posts[$i]);
+                    continue;
+                }
 
                 $event = $post_event->event;
 
@@ -422,6 +451,7 @@ class FeedController extends Controller
 
             $posts[$i]['last_activity'] = strtotime($post['last_activity']);
             $posts[$i]['update_timestamp'] = strtotime($post['created_at']);
+            //$posts[$i]['update_timestamp'] = strtotime(gmdate('Y-m-d H:i:s',strtotime($post['created_at']." EST")));
         }
 //        self::getReplies($posts);
         return $posts;
@@ -481,12 +511,39 @@ class FeedController extends Controller
 
                               or (origin_type = 'university' and origin_id = " . $user->school_id . ")
                               or (origin_type = 'department' and origin_id = " . $user->department_id .")
+
+
+                              or (origin_type = 'club' and origin_id IN (SELECT group_user.group_id
+                                                                         from `group_user`
+                                                                         join `group`
+                                                                         on (group_user.group_id = group.group_id)
+                                                                         where group_user.user_id = " . $user->user_id . "))
+
+                              or (origin_type = 'group' and origin_id IN (SELECT group_user.group_id
+                                                                         from `group_user`
+                                                                         join `group`
+                                                                         on (group_user.group_id = group.group_id)
+                                                                         where group_user.user_id = " . $user->user_id . "))
+
+                              or (origin_type = 'department' and origin_id IN (SELECT department_follow.department_id
+                                                                         from `department_follow`
+                                                                         join `department`
+                                                                         on (department_follow.department_id = department.department_id)
+                                                                         where department_follow.user_id = " . $user->user_id . "))
+
+
                               or (origin_type = 'class' and origin_id IN (SELECT cu.class_id
                                                                             from class_user cu join class cs
                                                                               on (cu.class_id = cs.class_id)
                                                                               where user_id = " . $user->user_id . " and cs.semester = '" . self::$cur_sem . "' and cs.`year` = ".date('Y').")))
+
+
+
+
+
                               and (post.privacy = '' or (post.privacy = '" . $privacy_type . "') or (post.privacy != '" . $privacy_type . "' and post.user_id = " . $user->user_id . "))
 
+                              and not exists (select * from post_hide where user_id= " . $user->user_id . " and post_id = post.post_id)
                               and created_at < '" . $created_at . "'
                               ORDER BY created_at DESC
                               LIMIT ".self::$start_rec.",".self::POST_LIMIT;
@@ -538,6 +595,7 @@ class FeedController extends Controller
         $posts_sql_profile = "SELECT distinct *
 				  from post p
 				  where p.created_at < '" . $created_at . "' and (p.origin_type = 'user' and p.origin_id = ".$_GET['id'].")
+				  and not exists (select * from post_hide where user_id= " . $user->user_id . " and post_id = p.post_id)
 					ORDER BY last_activity DESC	LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 
         $command = Yii::app()->db->createCommand($posts_sql_profile);
@@ -578,7 +636,7 @@ class FeedController extends Controller
 
 
         // check if the current user is the admin of the class
-        if ($cl_mod = ClassUser::model()->findbypk(array('class_id' => $_GET['id'], 'user_id' => self::$cur_user_id))) {
+        if ($cl_mod = ClassUser::model()->findbypk(array('class_id' => $_GET['id'], 'user_id' => $user->user_id))) {
             $is_member = TRUE;
             if ($cl_mod->is_admin == 1)
                 $is_admin = TRUE;
@@ -594,6 +652,7 @@ class FeedController extends Controller
         $posts_sql_class = "SELECT distinct *
 		  from post p
 		  where (p.origin_type = 'class' and p.origin_id = '".$_GET['id']."') and created_at < '" . $created_at ."'
+		  and not exists (select * from post_hide where user_id= " . $user->user_id . " and post_id = p.post_id)
 			order by last_activity DESC	LIMIT " . self::$start_rec . "," . self::POST_LIMIT;
 
         $command = Yii::app()->db->createCommand($posts_sql_class);
@@ -683,40 +742,52 @@ class FeedController extends Controller
 		  from post p
 		  where ((p.origin_type = 'group' or p.origin_type = 'club') and p.origin_id = '". $_GET['id'] ."')
 		    and created_at < '" . $created_at ."'
+		    and not exists (select * from post_hide where user_id= " . $user->user_id . " and post_id = p.post_id)
 			order by created_at DESC
-			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
+			LIMIT 10";
 
-        $command = Yii::app()->db->createCommand($posts_sql_club);
+        //$command = Yii::app()->db->createCommand($posts_sql_club);
 
-        if($posts = $command->queryAll()){
 
-            // check if the current user is an admin to this group/club feed
-            if ($g_mod = GroupUser::model()->findbypk(array('group_id' => $_GET['id'], 'user_id' => self::$cur_user_id))) {
-                $is_member = TRUE;
-                if ($g_mod->is_admin == 1)
-                    $is_admin = TRUE;
-                else
-                    $is_admin = FALSE;
-            }
-            else{
-                $is_member = FALSE;
-                $is_admin = FALSE;
-            }
-            // check ends
+        $posts = $this->models_to_array(Post::model()->findAllBySql($posts_sql_club));
+        $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
+        return;
 
-            $command = Yii::app()->db->createCommand($posts_sql_club);
-            if($posts = $command->queryAll()){
-                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
-                return;
-            }else{
-                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
-                return;
-            }
-        }
-        else{
-            $this->renderJSON(array('success'=>true,'feed'=>array()));
-            return;
-        }
+
+//        if($posts = $command->queryAll()){
+//
+//            // check if the current user is an admin to this group/club feed
+////            if ($g_mod = GroupUser::model()->findbypk(array('group_id' => $_GET['id'], 'user_id' => self::$cur_user_id))) {
+////                $is_member = TRUE;
+////                if ($g_mod->is_admin == 1)
+////                    $is_admin = TRUE;
+////                else
+////                    $is_admin = FALSE;
+////            }
+////            else{
+////                $is_member = FALSE;
+////                $is_admin = FALSE;
+////            }
+//            // check ends
+//
+//
+//            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
+//            return;
+//
+//
+////            $command = Yii::app()->db->createCommand($posts_sql_club);
+////            if($posts = $command->queryAll()){
+////                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
+////                return;
+////            }else{
+////                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
+////                return;
+////            }
+//        }
+//        else{
+//            $this->renderJSON(array('success'=>true,'feed'=>array()));
+//            return;
+//        }
 
 
 
@@ -755,6 +826,7 @@ class FeedController extends Controller
 		  from post p
 		  where (p.origin_type = 'department' and p.origin_id = '" . $_GET['id'] . "')
 		    and created_at < '" . $created_at ."'
+		    and not exists (select * from post_hide where user_id= " . $user->user_id . " and post_id = p.post_id)
 			order by last_activity DESC
 			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 
@@ -808,6 +880,7 @@ class FeedController extends Controller
 		  from post p
 		  where (p.origin_type = 'school' and p.origin_id = '".$_GET['id']."')
 		    and created_at < '" . $created_at ."'
+		    and not exists (select * from post_hide where user_id= " . $user->user_id . " and post_id = p.post_id)
 			order by last_activity DESC
 			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 

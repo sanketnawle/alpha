@@ -1,6 +1,6 @@
 
 $(document).ready(ready(globals));
-
+//$.embedly.defaults.key = '94c0f53c0cbe422dbc32e78d899fa4c5';
 
 function ready(globals){
 
@@ -113,6 +113,18 @@ function ready(globals){
             //if(jsonData[key]['user_id'] === '0') jsonData[key]['user_id'] = '';
             //var time = new Date(jsonData[key]['created_time']);
             //jsonData[key]['created_time'] = time
+
+
+
+
+
+
+
+
+            for(i = 0; i < post['replies'].length; i++){
+                post['replies'][i]['update_timestamp'] = moment(post['replies'][i]['update_timestamp'], "X").fromNow();
+            }
+            add_embedly_to_replies(post['replies']);
             if(post['reply_count'] >  2) {
                 post.show_more = true;
 
@@ -123,11 +135,6 @@ function ready(globals){
             }
 
 
-
-            for(i = 0; i < post['replies'].length; i++){
-                post['replies'][i]['update_timestamp'] = moment(post['replies'][i]['update_timestamp'], "X").fromNow(true);
-
-            }
 
             if(post['post_type'] == 'question' && post['question']['question_type'] == 'multiple_choice'){
                 var alphabet= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -146,6 +153,7 @@ function ready(globals){
 
 
             render_post(post);
+
         });
     }
 
@@ -160,7 +168,10 @@ function ready(globals){
 
     function render_post_with_url(single_post){
 
-        single_post.embed_link = findUrlInPost();
+        var url = findUrlInPost(single_post['text']);
+        console.log(url);
+        single_post['text'].replace(url,'<a href="'+url+'">'+url+'</a>');
+        single_post.embed_link = url;
 
     }
 
@@ -234,6 +245,7 @@ function ready(globals){
         var id = $(this).parent(".master_comments").attr("id");
         var array = {'replies' : [replies[id][0],replies[id][1]]};
         $(this).parent(".master_comments").html(template(array));
+        add_embedly_to_replies(replies[id]);
     });
 
 
@@ -244,6 +256,8 @@ function ready(globals){
         var id = $(this).parent(".master_comments").attr("id");
         var array = {'replies' : replies[id]};
         $(this).parent(".master_comments").html(template(array));
+        add_embedly_to_replies(replies[id]);
+
     });
 
 
@@ -315,20 +329,71 @@ function ready(globals){
     });
 
 
+    $(document).on('click','.option_hide',function(){
+        var $hide_button = $(this);
 
+        var $post = $hide_button.closest('.post');
+
+        var post_id = $post.attr('data-post_id');
+
+        var post_data = {'post_id':post_id};
+
+        $.post(
+            globals.base_url + '/post/hide',
+            post_data,
+            function(response) {
+
+                if(response['success']){
+                    console.log('Successfully hid post ' + post_id);
+                    $post.remove();
+                }else{
+                    alert('Error hiding this post');
+                }
+            }, 'json'
+        );
+    });
+    $(document).on('click','.option_report',function(){
+        var $report_button = $(this);
+
+        var $post = $report_button.closest('.post');
+
+        var post_id = $post.attr('data-post_id');
+
+        var post_data = {'post_id':post_id};
+
+        $.post(
+            globals.base_url + '/post/report',
+            post_data,
+            function(response) {
+
+                if(response['success']){
+                    console.log('Successfully reported post ' + post_id);
+                   // $post.remove();
+                }else{
+                    alert('Error reporting this post, please try again later');
+                }
+            }, 'json'
+        );
+    });
     $(document).on('click', '.option_delete', function(){
 
         var $delete_button = $(this);
-
 
 
         var $post = $delete_button.closest('.post');
 
         var post_id = $post.attr('data-post_id');
 
+        var event_id=null;
+        if($post.is('[data-event_id]')){
+            event_id = $post.attr('data-event_id');
+        }
 
         var post_data = {'post_id': post_id};
 
+        if(event_id !=null){
+            post_data.event_id = event_id;
+        }
 
         $.post(
             globals.base_url + '/post/delete',
@@ -358,12 +423,15 @@ function ready(globals){
         }
 
 
-        var anonymous = false;
+        var anonymous = $reply_form.find('.check_wrap .flat7b').hasClass('flat_checked') ? 1:0;
         var reply_user_id = globals.user_id;
         var $reply_count = $reply_form.closest(".post").find('.reply_number');
 
         var post_data = {post_id: post_id, reply_text: reply_text, reply_user_id: reply_user_id, anonymous: anonymous};
-
+        if(findUrlInPost(post_data['reply_text'])) {
+            var url = findUrlInPost(post_data['reply_text']);
+            post_data['reply_text']=post_data['reply_text'].replace(url,'<a href="'+url+'" target = "_blank" >'+url+'</a>');
+        }
         var post_url = globals.base_url + '/post/reply';
 
         console.log('SENDING POST REPLY');
@@ -376,6 +444,7 @@ function ready(globals){
                 if(response['success']){
                     var source   = $("#one_reply_template").html();
                     var template = Handlebars.compile(source);
+                    response['reply']['update_timestamp'] = moment(response['reply']['update_timestamp'], "X").fromNow();
                     $reply_form.closest(".post").find('.master_comments').append(template(response['reply']));
                     $reply_form.find('.reply_text_textarea').val('');
 
@@ -384,18 +453,78 @@ function ready(globals){
                     }else{
                         $reply_form.closest(".post").find('.post_comment_btn').append('<div class = "reply_number">1</div>');
                     }
+                    if(url){
+                        $.embedly.oembed(url,{
+                            key:'94c0f53c0cbe422dbc32e78d899fa4c5',
+                            query:{
+                                maxwidth: 400,
+                                maxheight: 400,
+                                chars: 100
+                            }}).done(function(results){
+                                if(!results.invalid){
+                                    embedly_info = results[0];
+                                    append_embedly(response['reply']['reply_id'],embedly_info);
+                                }
+                            }
+                        );
+                    }
+
                 }else{
                     alert(JSON.stringify(response));
                 }
             }, 'json'
         );
     });
+    function add_embedly_to_replies(replies){
+        $.each(replies,function(index,reply){
+            if(findUrlInPost(reply['reply_msg'])) {
+                var url = findUrlInPost(reply['reply_msg']);
+                //  post['replies'][index]['reply_msg']=reply['reply_msg'].replace(url,'<a href="'+url+'">'+url+'</a>');
+                $.embedly.oembed(url,{
+                    key:'94c0f53c0cbe422dbc32e78d899fa4c5',
+                    query:{
+                        maxwidth: 400,
+                        maxheight: 400,
+                        chars: 100
+                    }}).done(function(results){
+                        if(!results.invalid){
+                            embedly_info = results[0];
+                            console.log(embedly_info);
+                            append_embedly(reply['reply_id'],embedly_info);
+                        }
+                    }
+                );
+            }
+        });
+    }
+    function append_embedly(reply_id, embedly_info){
+        console.log('append embedly to reply '+reply_id);
+        var source;
 
+
+
+        if(embedly_info.type == "link"){
+            source = $('#embedly_link_template').html();
+        }else if(embedly_info.type == "video"){
+            source = $('#embedly_video_template').html();
+
+        }else if(embedly_info.type == "photo"){
+            source = $('#embedly_photo_template').html();
+        }
+        var template = Handlebars.compile(source);
+
+        if(globals.profile_open){
+            $('#profile_wrapper').find('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        }else{
+            $('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        }
+
+    }
 
 
     $(document).on('click', '.post_event_calendar_button', function(){
 
-
+        alert('aslkdjaasdasdsd');
 
 
         var $calendar_button = $(this);
@@ -406,6 +535,10 @@ function ready(globals){
 
         var $event_post = $calendar_button.closest('.post[data-post_type="event"]');
 
+        if(!$event_post){
+            $event_post = $calendar_button.closest('.post[data-post_type="opportunity"]');
+        }
+
         var event_id = $event_post.attr('data-event_id');
 
         //alert(event_id);
@@ -415,7 +548,9 @@ function ready(globals){
 
 
         var post_url = globals.base_url + '/event/attend';
+
         var post_data = {event_id: event_id};
+
 
         $.post(
             post_url,

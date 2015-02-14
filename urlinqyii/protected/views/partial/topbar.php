@@ -93,7 +93,7 @@
                 <div class="notify board">
                     <div class="button">
                         <div class="icon"></div>
-                        <div class = "icon_text">Notifications</div>
+                        <div class = "icon_text">Notices</div>
                     </div>
 
 
@@ -107,7 +107,8 @@
                     <div class="notify-window" id="notifications" style="display: none;">
                         <div class="wedge"></div>
                         <div class="window">
-                            <div class="header">Notifications</div>
+                            <div class="header">Notices</div>
+                            <span class = "noti_header_hint">These will help you stay in the loop of your groups and classes</span>
                             <ul class="entries">
 
 
@@ -121,6 +122,11 @@
                     </div>
 
                 </div>
+                <div class = "topbar_profile_link profile_link" data-user_id="<?php echo $user->user_id?>">
+                    <div class = "topbar_profile_picture" style="background-image:url(<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>)"></div>
+                    <div class = "icon_text">Me</div>
+                </div>
+
             </div>
         </div>
         <div class = "calendar_link">
@@ -130,7 +136,7 @@
                 <div class = "quick_cal_arrow">
                 </div>
             </a>
-        </div>
+        </div> 
     </div>
 
 <script id="search_result_template" type="text/x-handlebars-template">
@@ -175,7 +181,6 @@
                     {{/if}}
                 {{/ifCond}}
 
-                <div class="dismiss">Dismiss</div>
                 <div class="close"></div>
             </div>
 
@@ -193,7 +198,7 @@
             {{/ifCond}}
 
             {{#ifCond type '==' 'post'}}
-                <div class="message">{{actor.firstname}} {{actor.lastname}} posted{{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{origin.text}}</div>
+                <div class="message">{{actor.firstname}} {{actor.lastname}} posted{{#if origin.post_origin}} in <a href='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}'>{{origin.post_origin.name}}</a>{{/if}}: {{origin.text}}</div>
             {{/ifCond}}
 
             {{#ifCond type '==' 'invite'}}
@@ -238,6 +243,11 @@
                     {{/ifCond}}
                 {{/ifCond}}
 
+            {{/ifCond}}
+
+
+            {{#ifCond type '==' 'event'}}
+                <div class="message">{{actor.firstname}} {{actor.lastname}} created event {{origin.title}} in <a href='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}'>{{origin.event_origin.name}}</a></div>
             {{/ifCond}}
 
 

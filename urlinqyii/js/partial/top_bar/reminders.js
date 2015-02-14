@@ -133,7 +133,7 @@ $(document).ready(function(){
 
 
 
-    $(document).on('click', '.accept_invite_button', function(){
+    $(document).on('click', '#reminders_section div.accept_invite_button', function(){
         var $accept_invite_button = $(this);
 
         var origin_type = $accept_invite_button.attr('data-origin_type');

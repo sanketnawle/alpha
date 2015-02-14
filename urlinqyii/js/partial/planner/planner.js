@@ -38,7 +38,7 @@ $(document).ready(function(){
     
 
     var w = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-    var y = ["Sunday","Monday","Tueday","Wednesday","Thursday","Friday","Saturday"];
+    var y = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     var z = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     var s = ["st", "nd", "rd", "th"];
     var d = new Date();
@@ -541,9 +541,15 @@ function show_event(event,event_div_id){
 
     //Convert the utc times to local
     var local_event_start_time = utc_to_local(new_datetime(event['start_date'] + ' ' + event['start_time']));
-//    alert("DATETIME TO STRING "+ datetime_to_time_string(local_event_start_time));
+   // alert("DATETIME TO STRING "+ datetime_to_time_string(local_event_start_time));
 //    alert("START TIME: " + time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time)));
     event['start_time'] = time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time));
+    event['formatted_date_time'] = date_to_month_and_day_string(local_event_start_time);
+    if(event_div_id=="#future_events"){
+        event['future'] = true;
+    }else{
+        event['future'] = false;
+    }
 
     var source   = $("#event_template").html();
     var template = Handlebars.compile(source);
@@ -630,6 +636,7 @@ function add_event(event_json){
 //    }
 
     if(event_datetime > tomorrows_date){
+
         if(!$("#future_events_header").is(":visible")){
             show_future_label();
         }
@@ -687,10 +694,11 @@ function hide_planner_creation_form(){
     $('.timepicker').css('display', 'none');
     $('.event_time').text('Add time');
     $("#planner_bottom_holder").show();
-    $("#add_todo_text").text("Add Todo");
+    $("#add_todo_text").text("Add");
     $(".nav-icon-plus").removeClass('hide-plus');
     $(".nav-icon").removeClass('bounce-minus');  
-    $(".entry_field_placeholder").css({"width":"75px"});
+    $(".entry_field_placeholder").css({"width":"47px"});
+    $('#calLayer.planner').hide();
 }
 
 
@@ -864,7 +872,7 @@ $(document).on('click','#create_todo_form',function(e){
 $(window).load(function(){
 
         $('#event_list').slimScroll({
-            height: '214px'
+            height: '340px'
         });
 
 

@@ -22,6 +22,16 @@ margin-top: 58px;
 border-radius: 5px;
 box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 }
+#profile_wrapper .users_wrapper{
+    width: 570px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.user_wrapper{
+    width: 570px;
+    margin: 5px auto;
+}
 
 #profile_wrapper .search_bar{
     height: 33px;
@@ -46,7 +56,7 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     position: relative;
     float: left;
     z-index: 20;
-    background-color: #f5f5f5;
+    background-color: #EFEFEF;
     padding-bottom: 20px;
 }
 #tab_contents{
@@ -59,7 +69,8 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     height: auto;
     position: relative;
     border-radius: 0px 0px 5px 5px;
-    background-color: #fafafa;
+    background-color: #f5f5f5;
+    padding-bottom: 30px;
 }
 #modal_header{
     height: 220px;
@@ -69,10 +80,34 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.2),0 1px 3px rgba(0,0,0,.5)inset; -moz-box-shadow: 0 1px 0 rgba(255,255,255,.2),0 1px 3px rgba(0,0,0,.5)inset; box-shadow: 0 1px 0 rgba(255,255,255,.2),0 1px 3px rgba(0,0,0,.5)inset;
 }
 
+#profile_wrapper .help_div{
+    right: -66px;
+
+    top: 41px;
+}
+
+#profile_wrapper a.close_modal:hover ~ .help_div{
+z-index: 1;
+opacity:1;
+}
+
+
+#profile_wrapper .help_div .wedge{
+    border-bottom-color: rgba(34, 34, 34, 0.95);
+
+}
+
+#profile_wrapper .help_div .box{
+    width: 98px;
+    
+    background-color: rgba(34, 34, 34, 0.95);
+    font-weight: 600;
+}
+
 span.white_vertical_line{
     display: inline-block;
     
-    width: 1px;
+    width: 2px;
     height: 27px;
     position: relative;
     background: #fff;
@@ -84,12 +119,19 @@ div#modal_controls.student_modal_controls_professor{
     background-color: #1CC782;
 
     border-bottom: 1px solid #08AD6A;
+    background-image: -ms-linear-gradient(#1DD38A, #0EB873);
+    background-image: -webkit-linear-gradient(#1DD38A, #0EB873);
+    background-image: linear-gradient(#1DD38A, #0EB873);
+    background-image: -moz-linear-gradient(#1DD38A, #0EB873);
 }
 
 div#modal_controls.student_modal_controls_student{
     background-color: #1da7d2;
 
+    background-image: -webkit-linear-gradient(#029acf, #0888B0);
     border-bottom: 1px solid #057FA5;
+    background-image: linear-gradient(#029acf, #0888B0);
+    background-image: -moz-linear-gradient(#029acf, #0888B0);
 }
 
 .controls{
@@ -181,8 +223,8 @@ div#modal_controls.student_modal_controls_student{
 }
 #change_picture_button{
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 6px;
+    left: 8px;
     width: 32px;
     border: none;
 
@@ -190,7 +232,8 @@ div#modal_controls.student_modal_controls_student{
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: auto;
-    background-image: url('../../assets/camera_icon.png');
+    background-image: url('../../assets/small_icons.png');
+    background-position: 0px -1124px;
 }
 
 #profile_picture{
@@ -216,6 +259,12 @@ div#modal_controls.student_modal_controls_student{
     display: inline-block;
     padding-left: 10px;
     font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 577px;
+    white-space: nowrap;
+    position: relative;
+    top: 3px;
 }
 #profile_tab_bar{
     left: 20px;
@@ -228,7 +277,7 @@ div#modal_controls.student_modal_controls_student{
 }
 
 .info_section{
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid #E5E5E5;
     font-weight: 10px;
     padding-bottom: 7px;
 }
@@ -417,7 +466,7 @@ div#mock_left_bar{
     position: absolute;
     top: 0px;
     bottom: 0px;
-    background-color: #f5f5f5;
+    background-color: #EFEFEF;
     left: 0px;
     z-index: 1;
     border-radius: 0px 0px 0px 5px;
@@ -463,7 +512,7 @@ span.follow_icon_profile_page{
     display: none;
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 86%;
+    width: 82%;
     /*white-space: nowrap;*/
     margin-bottom: 3px;
     border-radius: 2px;
@@ -528,7 +577,38 @@ div.profile_tab div.profile_tab_content{
 
 .profile_panel.active{
     display: block;
-
+}
+.add_field_button{
+    background-image: url(../../assets/small_icons.png);
+    background-size: auto;
+    background-position: -2px -1186px;
+    border: none;
+    display: inline-block;
+    background-color: transparent;
+    width: 22px;
+    height: 24px;
+    position: relative;
+    top: 1px;
+    cursor:pointer;
+}
+.delete_field_button{
+    background-position: 32px -34px;
+    background-size: 217%;
+    background-image: url('../../assets/ProfilePageIconMap.png');
+    display: inline-block;
+    top: 3px;
+    position: relative;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    width: 22px;
+    cursor: pointer;
+}
+.info_label.inline{
+    display:inline-block;
+}
+.edit_field.dropdown{
+    width: 85.6%;
 }
 .profile_tab_text{
     float: left;
@@ -562,7 +642,7 @@ span.profile_tab_amount{
     top: -2px;
     left: 5px;
     padding: 4px 7px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.66);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.2);
     position: relative;
     background: rgba(18, 19, 20, 0.61);
 }
@@ -583,7 +663,7 @@ div.profile_tab.active{
 }
 div.profile_tab.active div.profile_tab_content div.profile_tab_text{
 
-    border-bottom: 3px solid #333333;
+    border-bottom: 3px solid rgba(18, 19, 20, 0.61);
 }
 
 div.profile_tab:hover{
@@ -853,6 +933,7 @@ button.add_showcase_button:active{
 .edit_showcase_button.cancel{
     background-position: 0px -17px;
     background-size: 217%;
+    background-image: url('../../assets/ProfilePageIconMap.png');
     left:350px;
     display: none;
 }
@@ -920,6 +1001,8 @@ div.members_card_wrapper {
     width: 166px;
     display: inline-block;
     margin-top: 10px;
+    float: left;
+    margin-top: 16px;
 }
 /*classes*/
 #profile_wrapper .info_line.info_about{
@@ -936,6 +1019,7 @@ div.members_card_wrapper {
     width: 30%;
     height: 96%;
     margin-top: 3px;
+    background-position: center center;
     margin-left: 3px;
     border-radius: 2px;
     cursor: pointer;

@@ -289,4 +289,13 @@ class User extends CActiveRecord
         }
         return false;
     }
+
+    public function isAdmin($group){
+        foreach($group->admins as $admin){
+            if($admin->user_id == $this->user_id){
+                return true;
+            }
+        }
+        return false;
+    }
 }

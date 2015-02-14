@@ -6,7 +6,7 @@ font-family: 'Open Sans', sans-serif;
 background: #fff;
 border-radius: 5px;
 display: block;
-padding-bottom: 3px;
+padding-bottom: 0px;
 -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0, 0, 0, 0.07);
 -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0, 0, 0, 0.07);
 box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0, 0, 0, 0.07);
@@ -19,6 +19,14 @@ body#body_group #time_selector, body#body_home #time_selector{
 
 body.body_club .planner_container{
 margin-top: 15px;
+}
+
+hr.future_events_top_line{
+    border-radius: 0;
+    
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 2px 10px 0;
 }
 
 .planner_header_panel{
@@ -149,8 +157,10 @@ em.pl_blue_circle{
     display: none;
 }
 #eventImg{
-    padding: 33px 0px 32px 46px;
-    width: 140px;
+    width: 120px;
+    position: absolute;
+    top: 63px;
+    left: 57px;
 }
 
 span.create_planner_message {}
@@ -163,28 +173,34 @@ span.create_planner_message {}
     position: absolute;
     font-size: 13.2px;
     margin: 0 auto;
-    top: 123px;
-    left: 59px;
-    font-family: Avenir;
+    top: 217px;
+    padding: 3.3px 5px 3.3px 7px;
+    left: 54px;
+    font-size: 17px;
 }
 .create_planner_message{
-    color: #333;
+    color: #029acf;
     cursor: pointer;
     text-decoration: none;
-    width: auto;
+    font-family: Avenir;
+    width: 127px;
     
 }
 
 .point{
     display: block;
 
-    font-size: 11px;
+    font-size: 14.5px!important;
     text-align: left;
     position: absolute;
-    width: 150px;
-    left: 58px;
+    background: #FFFFFF;
+    padding: 3.3px 5px 3.3px 7px!important;
+    width: auto;
     margin: 0 auto;
-    top: 143px;
+    top: 127px!important;
+    border-radius: 2.5px;
+    left: 33px!important;
+    font-family: avenir;
     color: #545454;
 } 
 
@@ -194,11 +210,13 @@ span.create_planner_message {}
     border-radius: 999px;
     width: 3px;
     height: 3px;
-    display: inline-block;
+    display: none!important;
 }
 
 .point.point1{
+    top: 185px!important;
 
+    left: 26px!important;
 }
 
 .point.point2{
@@ -206,8 +224,9 @@ span.create_planner_message {}
 }
 
 .point.point2 {
-    top: 162px;
+    top: 156px!important;
 
+    left: 19px!important;
 }
 
 
@@ -297,6 +316,33 @@ border-color: #C0C0C0 #D9D9D9 #D9D9D9;
 border-image: none;
 }
 
+body.body_group .event_date{
+width: 104px;
+height: 30px;
+cursor: pointer;
+background-repeat: no-repeat;
+background-image: url("../../../assets/partial/planner/calendar.png");
+margin-left: 4px;
+background-position: 85px 9px;
+background-size: 13px auto;
+border-radius: 2px;
+outline: medium none;
+transition: all 0.2s ease 0s;
+-moz-osx-font-smoothing: grayscale;
+padding: 3px 0px 2px 5px;
+font-size: 13px;
+font-weight: 400;
+border-width: 1px;
+border-style: solid;
+border-right: 1px solid #D9D9D9;
+border-color: #C0C0C0 #D9D9D9 #D9D9D9;
+-moz-border-top-colors: none;
+-moz-border-right-colors: none;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+border-image: none;
+}
+
 .event_time{
     color: #999;
     font-weight: normal;
@@ -365,20 +411,24 @@ border-image: none;
 
     max-height: 345px;
 
-    padding-top: 5px;
+    padding-top: 0px;
     
 
 
     
     
 
-    /*top: -10px;*/
+    top: 0px;
 
     position: relative;
 
     overflow: hidden;
 
 }
+
+/*#calLayer{*/
+    /*position:absolute!important;*/
+/*}*/
 
 input.event_title{
     width: 206px;
@@ -391,15 +441,21 @@ input.event_title{
     padding-left: 6px;
 }
 
+body.body_group input.event_title{
+    width: 215px;
+    height: 30px;
+}
+
 
 
 .event{
     display: block;
     position: relative;
-    height: 34px;
+    height: auto;
 
-    margin-bottom: 4px;
-    padding-bottom: 8px;
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+    padding-top: 2px;
 }
 
 #planner_header_holder {
@@ -497,6 +553,8 @@ input.event_title{
 
 
 .hide-plus{
+  -webkit-animation: hidePlus .2s 1;
+  -webkit-animation-fill-mode:forwards;     
   animation: hidePlus .2s 1;
   animation-fill-mode:forwards; 
 }
@@ -514,6 +572,8 @@ input.event_title{
 }
 
 .bounce-minus{
+  -webkit-animation: bounceMinus .2s 1;
+  -webkit-animation-fill-mode:forwards;    
   animation: bounceMinus .2s 1;
   animation-fill-mode:forwards; 
   -webkit-backface-visibility: hidden;
@@ -549,10 +609,9 @@ input.event_title{
 
 .event_data_holder {
     display: inline-block;
-    float: left;
     width: 80%;
     margin-top: 3px;
-    margin-left: 8px;
+    margin-left: 10px;
 
     font-size: 12px;
     font-weight: 600;
@@ -704,7 +763,8 @@ label.planner_checkbox_label:after{
     pointer-events: none;
     z-index: 99;
     right: 30px;
-    margin-top: 1px;
+    margin-top: -10px;
+    top: 50%;
 }
 .hint_wedge{
     display: block;
@@ -739,16 +799,17 @@ cursor: pointer;
 position: absolute;
 width: 16px;
 height: 16px;
-border-radius: 1px;
+border-radius: 2px;
 border-style: solid;
 border-width: 1px;
 padding: 0;
 margin-left: 20px;
-border: 2px solid #CFCFCF;
-/* box-shadow: inset 0px 0px 1px 1px rgba(190, 189, 189, 0.21); */
+border: 1px solid rgba(184, 184, 184, 0.61);
+box-shadow: inset 0px 0px 2px 0px rgba(205, 205, 205, 0.12);
 background: white;
-margin-top: 3px;
+margin-top: -8px;
 margin-left: 7px;
+top: 50%;
 }
 
 .event_checkbox_input{
@@ -765,13 +826,13 @@ margin-left: 7px;
 .event:hover label:after{
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     filter: alpha(opacity=30);
-    opacity: 0.15;
+    opacity: 0.0;
 }
 
 .event label:hover:after{
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     filter: alpha(opacity=30);
-    opacity: 0.35;
+    opacity: 0.1;
 }
 
 .event input[type=checkbox]:checked + label:after{
@@ -781,34 +842,87 @@ margin-left: 7px;
 }
 
 /*If the event is completed, strike out its name*/
-.event.complete div.event_name {
+.event.complete span.event_name {
     text-decoration: line-through;
     color:#999!important;
 }
 
+.event.complete:hover div.event_origin > a{
+    color:#999;
+}
+
+div.event_origin > a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    color:#029acf!important;
+}
+
 
 .event_name {
-    font-size: 13.5px;
+    font-size: 13px;
 
-    color: #222;
+    color: #121314;
     text-transform: capitalize;
     padding-bottom: 2px;
     -moz-osx-font-smoothing: grayscale; 
     -webkit-font-smoothing: antialiased;
+    font-weight: 600;
+    cursor: default;
 }
 /* Set the background colors for the different types of events */
 
 #past_events div.event{
-    /*
-    background-color: #FFE0E8;
-    background-image: -owg-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -webkit-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -moz-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -o-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-size: 20px 20px;*/
+    text-shadow: 0 1px 1px rgba(123, 123, 123, 0.05);
+    height: auto;
+}
+
+#past_events .checkbox_hint{
+    margin-top:-5px;
+}
+
+#past_events div.events_data_holder{
+    margin-top: 6px;
+}
+
+#past_events label.planner_checkbox_label{
+}
+
+#past_events div.event span.event_name{
+    color:rgb(211, 11, 11);
+    margin-top: 4px;
+}
+
+div.event_origin{
+    font-family: Avenir;
+    padding-right:2px;
+    line-height: 14px;
+}
+
+div.event:hover div.event_origin > a{
+    color: #029acf;
+    
+}
+
+span.event_origin > a:active{
+    opacity:.8;
+}
+
+span.event_origin > a{
+    font-family: Avenir;
+    
+    font-weight: 400;
+    color: #777;
+}
+
+#past_events div.event div.event_date_time{
+    display:none;
 }
 
 div.event.complete{
     background: #F5F5F5!important;
 }
 
-div.event.complete div.event_name, div.event.complete div.event_date_time{
+div.event.complete span.event_name, div.event.complete div.event_date_time{
     color:#999!important;
 }
 
@@ -823,10 +937,11 @@ div.event.complete div.event_name, div.event.complete div.event_date_time{
 }
 
 .event_date_time{
-    font-size: 10.5px;
-    font-weight: 600;
-    /* font-family: Avenir; */
-    color: #222;
+    font-size: 10.4px;
+    font-weight: 400;
+    font-family: Avenir;
+    display: inline-block;
+    color: #525557;
 }
 
 #todays_events{
@@ -971,6 +1086,7 @@ div.event.complete div.event_name, div.event.complete div.event_date_time{
     color: #333;
     border: 1px solid #d9d9d9; border-top-color: #c0c0c0;
 }
+
 .tp1:focus{
     outline: none;
 }
@@ -985,6 +1101,10 @@ z-index:1;
 opacity:1;
 }
 
+#free_planner_wrap{
+    height:242px;
+}
+
 /* MINICAL CSS START */
 .calLayer {
     position: absolute;
@@ -993,13 +1113,27 @@ opacity:1;
     display:none;
 }
 
-.slimScrollDiv {
+.planner_container .slimScrollDiv {
     width:100% !important;
-    top:-9px;
+    top: -8px;
 }
 
 .slimScrollBar {
    /* margin-top: -10px;*/
+}
+
+.origin_vert_line{
+    position: relative;
+
+    top: -1px;
+    font-weight: 800;
+    font-family: Avenir;
+    cursor: default;
+}
+
+
+div.event_origin{
+    display: inline-block;
 }
 
 
@@ -1010,4 +1144,10 @@ opacity:1;
 #tp1 {
     padding: 6px 7px;
     width: 57px;
+}
+
+body.body_group #tp1{
+padding: 6px 7px;
+width: 75px;
+margin-left: 2px;
 }

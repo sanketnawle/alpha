@@ -31,17 +31,52 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
         <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
-           <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
 
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
 
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
+
+        <!--these are for feed and fbar in the profile-->
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/fbar/fbar_main.css" type = "text/css">
+
+
+        <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/render_post.js"> </script>
+
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/status_bar/fbar.js"></script>
+        <!--BELOW ARE SCRIPTS AND LINKS FOR DROPDOWN MENU API -->
+        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropit.js'></script>
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/dropit.css" type="text/css" />
+        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/jquery.autosize.js'></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/ness.js"> </script>
+        <script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/embedly.js"> </script>
+        <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/moment.js"> </script>
+        <script>
+            moment().format();
+        </script>
+        <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/feed.js"> </script>
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/feed/feed.css"> </link>
+
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
+
+
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+
+
+
+
     </head>
 
     <body class = "body_group">
@@ -73,6 +108,10 @@
                 <div id="content_panel" class = "course_content_panel group_responsiveness">
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'course','origin_id'=>$course->course_id,'origin'=>$course)); ?>
                     <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url ?>');">
+                        <div class = "blur_section_overflow_container">
+                            <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url ?>');">
+                            </div>
+                        </div>                            
                         <div class = "group_name">
                             <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></span></p></div>
                         </div>
@@ -140,8 +179,10 @@
                                 <?php foreach($course->classes as $class){ ?>
                                     <?php $class_students = $class->students; ?>
                                     <div class = "group_box group_course_box" data-class_id="<?php echo $class->class_id; ?>" data-section_id="<?php echo $class->section_id; ?>" data-name="<?php echo $class->class_name; ?>" data-student_count="<?php echo count($class_students ); ?>">
-                                        <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->pictureFile->file_url; ?>');">
-                                        </div>
+                                        <a href='<?php echo Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id;?>'>
+                                            <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->pictureFile->file_url; ?>');">
+                                            </div>
+                                        </a>
                                         <div class = "group_box_main_info">
                                             <a href='<?php echo Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id;?>' class = "group_link"><?php echo $class->class_name; ?></a>
                                             <div class = "float_Right">
@@ -207,7 +248,7 @@
         <!--        <div id="right_menu_panel">-->
         <!---->
         <!--        </div>-->
-
+        <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>'user', 'user_id'=>$user->user_id,'is_admin'=>false)); ?>
     </body>
 
 

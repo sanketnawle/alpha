@@ -42,7 +42,11 @@
                 	post_url,
                     post_data,
                     function(response){
-                       	alert(JSON.stringify(response));
+                        if(response['success']){
+                            window.location.href = globals.base_url + "/home";
+                        }else{
+                            alert(JSON.stringify(response));
+                        }
                     }, 'json'
                 );
             });

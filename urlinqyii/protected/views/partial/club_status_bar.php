@@ -7,7 +7,7 @@
     globals.user_id = '<?php echo $user->user_id; ?>';
 
     globals.origin_type = '<?php echo $origin_type; ?>';
-    globals.origin_id = '<?php echo $origin_id; ?>';
+    globals.origin_id = "<?php echo $origin_id; ?>";
 
 
 
@@ -29,8 +29,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/planner/datepicker.css"/>
 
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
-<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/date_selector/date_selector.js" type="text/javascript"></script>
-<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
 
 <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/render_post.js"> </script>
 
@@ -99,13 +97,13 @@
 
                             <div class = "upload_half half_1">
                                 <div><p class = "upload_hint">From your computer</p></div>
-                                <div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
+                                <div><div class = "upload_button">Choose File</div><!--<p class = "drag_hint">or drag &#x26; drop</p>--></div>
                             </div>
 
-                            <div class = "upload_half half_2">
+                            <!--<div class = "upload_half half_2">
                                 <div><em class = "google_drive"></em><p class = "upload_hint">From your Google Drive</p></div>
                                 <div><div class = "upload_button upload_button_alone">Choose File</div></div>
-                            </div>
+                            </div>-->
 
                         </div>  
 
@@ -125,9 +123,9 @@
                         <div class = "input_wrap" style = "position:relative;">
                             <label for = "event_location">Where:</label><input placeholder = "Enter a location" id = "event_location" class = "gray_bg location_input autocomplete_location fbar_date_time" type = "text" name = "event_location"><span class = "where_icon"></span>
                             <div class = "location_matches_list"></div>
-                            <div class = "input_wrap event_input_hidden repeat_event_input"> 
+                            <!--<div class = "input_wrap event_input_hidden repeat_event_input"> 
                                 <label style = "margin-left: 30px;" for = "event_repeat">Repeat:</label><div class = "repeat_activator">No repeat <em class = "down_arrow"></em></div>
-                            </div>
+                            </div>-->
                         </div>
 
 
@@ -183,6 +181,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="post_anon" class='check_wrap event_form_hide_content opportunity_form_hide_content'>
+                            <input type='checkbox' id='flat_0' class='flat7c'/>
+                            <label for='flat7' class='flat7b'>
+                                <span class='move'></span>
+                            </label>
+                            <span class = 'comment_anon_text'>Post Anonymously</span>
+                        </div>
                         <div style = "display:none" class = "event_form_content event_more_options">More options</div>
 
                         <div style = "-webkit-user-select: none;" class = "post_btn fresh_green_button" id = "post_btn">
@@ -203,7 +208,7 @@
 
 <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
 
-<div id = "calLayer" style="display: none;">
+<div id = "calLayer"  class = "fbar" style="display: none;">
     <section id = "mounth" class="mounth">
         <header class="minical-header">
             <h1 class="minical-h1"></h1>
@@ -374,7 +379,7 @@ Set the class name on your input to 'time_input' -->
 
 
 
-<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id)); ?>
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id,'is_admin'=>$is_admin)); ?>
 
 
 

@@ -17,14 +17,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"></script>
-<!--		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
-<!--		<script src="jquery-ui-1.11.0/jquery-ui.min.js"></script>-->
 
-<!--        <script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
-<!---->
-<!--        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
-
-<!--        <script src="--><?php //echo Yii::app()->getBaseUrl(true); ?><!--/js/jquery.min.js" type="text/javascript"></script>-->
 
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.10.2.custom.min.js"></script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar_selector.js" type="text/javascript"></script>
@@ -38,15 +31,6 @@
         <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
 
 
-
-        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
-        <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
-
-
-        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/date_selector/date_selector.js" type="text/javascript"></script>
-
-        <!--old planner.js file, I leave it here for your reference-->
-        <!--<script src="js/planner.js" type="text/javascript"></script>-->
 	</head>
 	<body>
 		<div class="planner_container">
@@ -56,14 +40,36 @@
                 <div class="planner_header_panel">
                     <div class="planner_header">
                         <?php
-                            if($origin_type == 'home'){
-                                echo '';
-                            }else{
-                                echo ucfirst($origin_type);
+                            if($origin_type === 'club'){
+                                echo 'Planner';
                             }
-                         ?> Planner
+                            elseif($origin_type === 'class'){
+                                echo 'Planner';
+                            }
+                            elseif($origin_type === 'department'){
+                                echo 'Planner';
+                            }
+                            else{
+                                echo 'Planner';
+                            }
+                         ?>
                          <div class="entry_field_placeholder" id="add_todo">
-                            <span id = "add_todo_text">Add Todo</span>
+                            <span id = "add_todo_text">
+                            <?php
+                            if($origin_type === 'class'){
+                                echo 'Add class task';
+                            }
+                            elseif($origin_type === 'club'){
+                                echo 'Add club event';
+                            } 
+                            elseif($origin_type === 'department'){
+                                echo 'Add event';
+                            }  
+                            else{
+                                echo 'Add Todo';
+                            }
+                            ?>
+                            </span>
                             <div class="nav-icon">
                               <div class="nav-icon-plus"></div>
                             </div>
@@ -80,7 +86,7 @@
                         <input class="event_title" id="event_name" name="event_name" placeholder="Title (e.g. Physics HW)" maxlength="100"></input>
                         <div class="event_time_wrap">
                             Due:
-                            <input class="event_date date_input" id="event_date" name="event_date" value="none" readonly>
+                            <input class="event_date date_input planner" id="event_date" name="event_date" value="none" readonly>
 
 
 
@@ -110,9 +116,10 @@
             <div id="planner_body_holder">
                 <div id="free_planner_wrap" style="display: none;">
                     <img id="eventImg" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/eventImg.png" />
-                    <span class="create_planner_message" style = "opacity:1">   Fill out your planner</span>
-                    <span class="point point1" style = "opacity:1"> <em></em> classwork reminders</span>
-                    <span class="point point2" style = "opacity:1"> <em></em> syncs with cal</span>
+                    <span class="create_planner_message" style = "opacity:1">   Plan your Week</span>
+                    <span class="point point1" style = "opacity:1"> <em></em> Invite your friends to join in</span>
+                    <span class="point point2" style = "opacity:1"> <em></em> Receive classwork reminders</span>
+                    <span class="point point3" style = "opacity:1"> <em></em> Syncs with your calendar</span>
                 </div>
 
                 <div id="event_list">
@@ -121,10 +128,24 @@
                     <!--    Add btn to delete event from planner                -->
                     <script id="event_template" type="text/x-handlebars-template">
 
-                        <div class='event {{complete}}' data-event_id='{{event_id}}' data-start_date="{{start_date}}" data-start_time="{{start_time}}" data-end_date="{{end_date}}" data-end_time="{{end_time}}">
+                        <div class='event {{complete}}' data-event_id='{{event_id}}' data-start_date="{{start_date}}" data-start_time="{{start_time}}" data-end_date="{{end_date}}" data-end_time="{{end_time}}" data-color_hex="{{color.hex}}">
                             <div class='event_data_holder'>
-                                <div class='event_name'>{{title}}</div>
-                                <div class='event_date_time'>{{start_time}}</div>
+                                
+                                {{#ifCond origin_type '!=' 'user'}}
+                                     <?php if($origin_type==="home"){?>
+                                    <div class = "event_origin"><span class = "origin_vert_line" style = "color:{{color.hex}}">&#x7c; </span><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
+                                    <?php }?>
+
+                                {{/ifCond}}
+                                <span class='event_name'>{{title}}</span>
+                                <div class = "planner_event_date">
+                                {{#if future}}
+                                    <div class="event_date_time date">{{formatted_date_time}}</div>
+                                {{/if}}
+                                {{#if start_time}}
+                                <div class='event_date_time'>at {{start_time}}</div>
+                                {{/if}}
+                                </div>
                             </div>
                             <div class='event_checkbox_holder'>
 
@@ -208,11 +229,6 @@
 
 
 
-                    <div class='planner_event_header' id='future_events_header' style="display: none;">
-                        <div class="planner_event_header_label">Future</div>
-                        <div class="planner_event_header_date" id="future_date"></div>
-                    </div>
-
                     <div id='future_events'>
 
                     </div>
@@ -238,7 +254,78 @@
 
 
 
-	</body>
+
+        <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
+
+        <div id = "calLayer"  class = "planner" style="display: none;">
+            <section id = "mounth" class="mounth">
+                <header class="minical-header">
+                    <h1 class="minical-h1"></h1>
+
+                    <nav role="padigation">
+                        <span class="m-prev"></span>
+                        <span class="m-next"></span>
+                    </nav>
+                </header>
+
+                <article>
+                    <div class="days">
+                        <b>SU</b>
+                        <b>MO</b>
+                        <b>TU</b>
+                        <b>WE</b>
+                        <b>TH</b>
+                        <b>FR</b>
+                        <b>SA</b>
+                    </div>
+                    <div class="dates">
+                        <span id="calcell_su_0" class="calcell disable cl_0"></span>
+                        <span id="calcell_mo_1" class="calcell disable cl_1"></span>
+                        <span id="calcell_tu_2" class="calcell disable cl_2"></span>
+                        <span id="calcell_we_3" class="calcell disable cl_3"></span>
+                        <span id="calcell_th_4" class="calcell disable cl_4"></span>
+                        <span id="calcell_fr_5" class="calcell disable cl_5"></span>
+                        <span id="calcell_sa_6" class="calcell disable cl_6"></span>
+                        <span id="calcell_su_7" class="calcell disable cl_7"></span>
+                        <span id="calcell_mo_8" class="calcell disable cl_8"></span>
+                        <span id="calcell_tu_9" class="calcell disable cl_9"></span>
+                        <span id="calcell_we_10" class="calcell disable cl_10"></span>
+                        <span id="calcell_th_11" class="calcell disable cl_11"></span>
+                        <span id="calcell_fr_12" class="calcell disable cl_12"></span>
+                        <span id="calcell_sa_13" class="calcell disable cl_13"></span>
+                        <span id="calcell_su_14" class="calcell disable cl_14"></span>
+                        <span id="calcell_mo_15" class="calcell disable cl_15"></span>
+                        <span id="calcell_tu_16" class="calcell disable cl_16"></span>
+                        <span id="calcell_we_17" class="calcell disable cl_17"></span>
+                        <span id="calcell_th_18" class="calcell disable cl_18"></span>
+                        <span id="calcell_fr_19" class="calcell disable cl_19"></span>
+                        <span id="calcell_sa_20" class="calcell disable cl_20"></span>
+                        <span id="calcell_su_21" class="calcell disable cl_21"></span>
+                        <span id="calcell_mo_22" class="calcell disable cl_22"></span>
+                        <span id="calcell_tu_23" class="calcell disable cl_23"></span>
+                        <span id="calcell_we_24" class="calcell disable cl_24"></span>
+                        <span id="calcell_th_25" class="calcell disable cl_25"></span>
+                        <span id="calcell_fr_26" class="calcell disable cl_26"></span>
+                        <span id="calcell_sa_27" class="calcell disable cl_27"></span>
+                        <span id="calcell_su_28" class="calcell disable cl_28"></span>
+                        <span id="calcell_mo_29" class="calcell disable cl_29"></span>
+                        <span id="calcell_tu_30" class="calcell disable cl_30"></span>
+                        <span id="calcell_we_31" class="calcell disable cl_31"></span>
+                        <span id="calcell_th_32" class="calcell disable cl_32"></span>
+                        <span id="calcell_fr_33" class="disable calcell cl_33"></span>
+                        <span id="calcell_sa_34" class="disable calcell cl_34"></span>
+                        <span id="calcell_su_35" class="disable calcell cl_35"></span>
+                        <span id="calcell_mo_36" class="disable calcell cl_36"></span>
+                        <span id="calcell_tu_37" class="disable calcell cl_37"></span>
+                        <span id="calcell_we_38" class="disable calcell cl_38"></span>
+                        <span id="calcell_th_39" class="disable calcell cl_39"></span>
+                        <span id="calcell_fr_40" class="disable calcell cl_40"></span>
+                        <span id="calcell_sa_41" class="disable calcell cl_41"></span>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </body>
 
 
 

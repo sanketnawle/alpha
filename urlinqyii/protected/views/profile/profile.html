@@ -13,6 +13,10 @@
                 <span class="branding_left"></span>
                 <div id="modal_label">Profile <span class = "white_vertical_line"></span> Professor</div>
                 <a class="close_modal"></a>
+                <div class = "help_div dark">
+                    <div class = "wedge"></div>
+                    <div class = "box">Press Esc to close</div>
+                </div>
             </div>
 
 
@@ -22,6 +26,10 @@
                 <span class="branding_left"></span>
                 <div id="modal_label">Profile <span class = "white_vertical_line"></span> Student</div>
                 <a class="close_modal"></a>
+                <div class = "help_div dark">
+                    <div class = "wedge"></div>
+                    <div class = "box">Press Esc to close</div>
+                </div>                
             </div>
 
             {{/if}}
@@ -158,8 +166,12 @@
                 <div id="cancel_edit_button"></div>
             </div>
             <div id="name_info_wrapper">
-                <div id="name_info">{{#if professor}}Professor {{firstname}} {{lastname}}
-                    {{else}} {{firstname}} {{lastname}} {{year_truncated}}{{/if}}</div>
+                <div id="name_info">
+                    {{#if professor}}Professor {{firstname}} {{lastname}}
+                    {{else}} {{firstname}} {{lastname}} 
+                         {{#if year_truncated}}'{{year_truncated}}
+                         {{/if}}
+                    {{/if}}</div>
                 {{#if professor}}
                     {{#if office_hours}}
                         <div id="office_hours_info"><span class = "office_hours_label">Office Hours:</span> {{office_hours}}</div>
@@ -230,7 +242,7 @@
                         School:
                     </div>
                     <a href="{{base_url}}/school/{{school_id}}" class="info_name" id="school_name">{{school}}</a>
-                    <select class="edit_field" id="school_dropdown"></select>
+                    <select class="edit_field dropdown" id="school_dropdown"></select>
                 </div>
 
                 <div class="info_section" id = "department_section">
@@ -238,7 +250,7 @@
                         Department:
                     </div>
                     <a href="{{base_url}}/department/{{department_id}}" class="info_name" id="department_name">{{department}} {{department_tag}}</a>
-                    <select class="edit_field" id="department_dropdown"></select>
+                    <select class="edit_field dropdown" id="department_dropdown"></select>
                 </div>
 
                 {{#if professor}}
@@ -259,27 +271,31 @@
                     </div>
                 {{else}}
                     <div class="info_section" id = "major_section">
-                        <div class="info_label" id = "major_label">
+                        <div class="info_label inline" id = "major_label">
                             Major:
                         </div>
+                        <button class="add_field_button" id="add_major_button" style="display: none;"></button>
                         {{#each majors}}
                         <div class="info_name major">{{name}}</div>
                         {{/each}}
                         <div class="info_name undeclared" style="display:none">Undeclared</div>
                         <input type="text" class="edit_field major">
-                        <input type="text" class="edit_field major" placeholder="double major">
-                        <input type="text" class="edit_field major" placeholder="triple major">
+                        <!--<input type="text" class="edit_field major" placeholder="double major">
+                        <input type="text" class="edit_field major" placeholder="triple major">-->
                     </div>
                     <div class="info_section" id = "minor_section">
-                        <div class="info_label" id = "minor_label">
+                        <div class="info_label inline" id = "minor_label">
                             Minor:
                         </div>
+                        <button class="add_field_button" id="add_minor_button" style="display: none;"></button>
                         {{#each minors}}
                         <div class="info_name minor">{{name}}</div>
                         {{/each}}
                         <input type="text" class="edit_field minor">
+                        <!--<input type="text" class="edit_field minor">
+                        <button class="delete_field_button delete_minor_button"></button>
                         <input type="text" class="edit_field minor">
-                        <input type="text" class="edit_field minor">
+                        <button class="delete_field_button delete_minor_button"></button>-->
                     </div>
 
                     <div class="info_section" id = "level_section">
@@ -287,7 +303,7 @@
                             Academic Level:
                         </div>
                         <div class="info_name" id="level_name">{{year_name}}</div>
-                        <select class="edit_field" id="level_dropdown">
+                        <select class="edit_field dropdown" id="level_dropdown">
                             <option value="Freshman">Freshman</option>
                             <option value="Sophomore">Sophomore</option>
                             <option value="Junior">Junior</option>
@@ -301,7 +317,7 @@
                             Year of Graduation:
                         </div>
                         <div class="info_name" id="year">{{grad_year}}</div>
-                        <select class="edit_field" id="year_dropdown">
+                        <select class="edit_field dropdown" id="year_dropdown">
                             <option value="2014">2014</option>
                             <option value="2015">2015</option>
                             <option value="2016">2016</option>
@@ -313,15 +329,16 @@
                     </div>
                 {{/if}}
                 <div class="info_section" id = "research_section">
-                    <div class="info_label" id = "research_label">
+                    <div class="info_label inline" id = "research_label">
                         Research Interests:
                     </div>
+                    <button class="add_field_button" id="add_research_button" style="display: none;"></button>
                     {{#each research}}
                     <div class="info_name research">{{name}}</div>
                     {{/each}}
                     <input type="text" class="edit_field research">
-                    <input type="text" class="edit_field research">
-                    <input type="text" class="edit_field research">
+                    <!--<input type="text" class="edit_field research">
+                    <input type="text" class="edit_field research">-->
                 </div>
 
 

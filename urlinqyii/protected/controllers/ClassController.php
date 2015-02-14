@@ -59,6 +59,11 @@ class ClassController extends Controller
 
 
 
+//        if($this->is_urlinq_admin($user)){
+//            $is_admin = true;
+//        }
+
+
 
         if(strpos($user->user_email,'@urlinq.com') !== false){
             $is_admin = true;
@@ -190,6 +195,91 @@ class ClassController extends Controller
 	{
 		$this->render('class');
 	}
+
+
+
+
+    public function actionCreate() {
+        if(!isset($_POST['school_id']) || !isset($_POST['school_id']) || !isset($_POST['department_id']) || !isset($_POST['course_id']) || !isset($_POST['class_name']) || !isset($_POST['professor_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'all data not set', '_files'=>$_FILES,'_post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        $school_id = $_POST['school_id'];
+        $department_id = $_POST['department_id'];
+        $course_id = $_POST['course_id'];
+        $class_name = $_POST['class_name'];
+        $professor_id = $_POST['professor_id'];
+
+
+        $component = '';
+        if(isset($_POST['component'])){
+            $component = $_POST['component'];
+        }
+
+
+        $location = '';
+        if(isset($_POST['location'])){
+            $location = $_POST['location'];
+        }
+
+
+        $datetime = '';
+        if(isset($_POST['datetime'])){
+            $datetime = $_POST['datetime'];
+        }
+
+
+        $picture_file_id = 3;
+
+
+
+
+
+
+        //Get the picture file id from the department
+        $department = Department::model()->find('department_id=:id', array(':id'=>$department_id));
+        if($department){
+            $picture_file_id = $department->cover_file_id;
+        }
+
+
+
+
+        include_once "color/color.php";
+
+
+        $class = new ClassModel;
+        $class->school_id = $school_id;
+        $class->department_id = $department_id;
+        $class->course_id = $course_id;
+        $class->class_name = $class_name;
+        $class->professor_id = $professor_id;
+        $class->component = $component;
+        $class->location = $location;
+        $class->class_datetime = $datetime;
+        $class->color_id = get_random_color();
+        $class->cover_file_id = $picture_file_id;
+        $class->picture_file_id = $picture_file_id;
+
+
+
+
+
+        if($class->save(false)){
+            $data = array('success'=>true, 'class'=>$class);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'error saving class', '_files'=>$_FILES,'_post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+	}
+
 
 
     public function actionFileUpload(){
@@ -552,6 +642,85 @@ class ClassController extends Controller
         }
     }
 
+
+    public function actionRemoveMember(){
+        if(!isset($_POST['group_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_to_remove = User::model()->find('user_id = :uid',array(':uid'=>$_POST['user_id']));
+        if(!$user_to_remove){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'invalid user');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $current_user_id = $user->user_id;
+
+        $class_id = $_POST['group_id'];
+        $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$current_user_id));
+        //Check if the current user is even in this group
+        if($class_user){
+            //Check if current user is an admin of this group
+            if($class_user->is_admin){
+                $class_user_to_remove = ClassUser::model()->find('user_id=:uid and class_id=:cid',array(':cid'=>$class_id,':uid'=>$user_to_remove->user_id));
+                //Check if we destroy this shit successfully
+                if($class_user_to_remove->delete()){
+
+
+                    //Loop through all events this user has for this group and delete them
+                    //Or else the database will get fucked up
+                    $user_events = EventUser::model()->findAllBySql("SELECT * FROM `event_user` JOIN `event` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " .$user_to_remove->user_id . " AND event.origin_type = 'class' AND event.origin_id = " . $class_id);
+                    foreach($user_events as $event){
+                        $event->delete();
+                    }
+
+                    //Get the events that this
+                    $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE event.user_id = " . $user_to_remove->user_id . " AND event.origin_type = 'class' AND event.origin_id = " . $class_id);
+
+
+                    foreach($events as $event){
+                        $event->delete();
+                    }
+
+                    //We also need to delete all posts from this user in this group
+                    $posts = Post::model()->findAllBySql('SELECT * FROM `post` WHERE  user_id = '.$user_to_remove->user_id.' AND origin_type = "class" AND origin_id = ' . $class_id);
+                    foreach($posts as $post){
+                        $post->delete();
+                    }
+
+                    $data = array('success'=>true);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error deleting user');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                //user is not an admin of this group
+                $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not an admin');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }else{
+            //user is not a part of this group
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not in the group');
+            $this->renderJSON($data);
+            return;
+        }
+    }
 
     public function actionRemoveFile(){
         if(!isset($_POST['file_id']) || !isset($_GET['id'])){

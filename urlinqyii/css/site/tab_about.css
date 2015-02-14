@@ -1,16 +1,147 @@
 div.about_tab_header{
-    background: #FFF;
-
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    background: #FFF; 
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); 
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07); 
     border-radius: 5px;
 }
+
+div.about_tab_header_content{
+margin-top: 2px;
+}
+
 
 .about_header_sentence{ 
     border-bottom: 1px solid #eee;
 
     border-radius: 5px 5px 0 0;
     margin: 0 7px;
+    position: relative;
+    width: 100%;
     height: 36px;
+}
+
+.about_header_sentence.no_underline{
+    height: auto;
+    
+    width: 99%;
+    border-bottom: none;
+}
+
+.no_underline .about_box_headers{
+    position:absolute;
+    top: -45px;
+    left: 1px;
+    color: #333;
+    text-transform: capitalize;
+    z-index: 10000;
+    font-size: 19px;
+    height: 30px;
+    padding-top: 1px;
+    font-weight: 500;  
+    font-size: 17px; -webkit-font-smoothing: antialiased; 
+    line-height: 48px;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 500; 
+    color: #333;
+    font-family: Avenir;
+}
+
+.no_underline.non_member .about_box_headers{
+top: -27px;
+display: none;
+}
+
+div.group_info_divider{ margin: 1.5rem 0; 
+    line-height: 1.2rem; font-size: 1rem; 
+    color: #555459; font-weight: 900; text-align: center; cursor: default; 
+    width: 94%;
+    display: block; position: relative;
+
+    height: 18px;
+    padding-bottom: 9px; margin-bottom: 14px;
+ margin-top: 20px; padding-top: 20px; margin: 0 auto;}
+
+hr.separator{
+
+}
+
+div.group_info_divider_label{ 
+    font-weight: 400;
+    padding: 2px .45rem; 
+    letter-spacing: .5px;
+    display: inline-block; margin: 0 auto; 
+    font-size: 11.5px;
+    position: relative;
+
+    text-transform: uppercase;
+    color: #999;
+    font-family: 'Open Sans', sans-serif;
+    background: #F5F5F5;
+    -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale; font-weight: 500; color: #333; font-family: Avenir;
+}
+
+.group_info_divider_label {}
+
+p#edit_club_description{
+
+}
+
+span.edit_icon{
+    position: absolute;
+
+    top: -10px;
+}
+
+div.group_info_data{
+    background: #FFF;
+
+    border-radius: 5px;  
+    padding: 2px;
+    margin: 0 auto;
+    width: 90%;   ;;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);  
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); 
+    border-bottom: 1px solid rgba(219, 219, 219, 0.49); 
+    border-right: 1px solid rgba(226, 226, 226, 0.31); 
+    border-left: 1px solid rgba(226, 226, 226, 0.3); position: relative; border-radius: 0 0 2px 2px; 
+    border-top: 1px solid rgba(215, 215, 215, 0.29);
+    padding: 4px 3px;
+    border-radius: 501px;
+}
+
+div.group_info_divider.half_divider{
+    width: 94%;
+
+    display: block;
+    height: 11px;
+    margin: 0 auto;
+}
+
+
+div.group_info_data.open_look{
+    background: none;
+
+    -moz-box-shadow: none;    
+    position: relative;  
+    border-radius: 5px;
+    padding: 5px 7px;
+    border: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
+
+div.group_info_data.half_data{
+    width: 90%;
+    
+    display: block;
+    font-size: 14.5px;
+    padding-bottom: 4px;
+    padding-top: 0;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 15px;
 }
 
 .about_header_sentence > p{
@@ -23,6 +154,17 @@ div.about_tab_header{
     font-weight: bold;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     color: #575757;
+}
+
+
+p.about_box_headers{
+font-weight: 500;
+font-family: Avenir;
+float: left;
+font-size: 15px;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+display: inline-block;
 }
 
 div.admin_text_data_box{
@@ -40,6 +182,7 @@ div.admin_text_data_box div.admin_name{
 .about_header_body{
     padding: 12px 10px 14px 10px;
 }
+
 
 .floatRight > div.join_button{
     height: 28px; color: #fff; padding-left: 3px; 
@@ -79,10 +222,13 @@ div.class_description_holder{
 div#group_about_box div.class_description_holder {
     border: none;
     height: 103px !important;
+    padding-top: 8px;
+    margin-top: 0px;
 }
 
 #group_about_box .slimScrollDiv{
-    top: -7px;
+    top: 3px;
+    margin-top: -8px;
 }
 #group_about_box .slimScrollDiv .slimScrollBar {
     margin-top: 7px;
@@ -90,6 +236,7 @@ div#group_about_box div.class_description_holder {
 div.panel.tab_about{
     padding: 0 6px;
     font-family: 'Open Sans', sans-serif;
+    padding-top: 22px;
 }
 
 div.panel.tab_about div.tab_content_holder{
@@ -216,7 +363,7 @@ div.about_tab_middle div.cool_members_box{
 
 div.cool_members_box > div > h5, div.classic_about_box > h5{
 font-family: Avenir;
-font-size: 14px;
+font-size: 16.5px;
 background-color: transparent;
 color: #999;
 margin-top: 0;
@@ -225,13 +372,14 @@ position: relative;
 border-radius: 4px 4px 0px 0px;
 border-bottom: 1px solid #dbdcdc;
 font-weight: 500;
-font-size: 14.5px;
+font-size: 16.5px;
 margin: 0 10px;
 color: #444;
 padding: 14px 0px 2px;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 text-transform: uppercase;
+margin-bottom: 6px;
 }
 
 div.cool_members_box div.admin_about_section{
@@ -255,7 +403,7 @@ div.cool_members_box div.members_about_section{
     font-weight: 500;
 
     background-color: white;
-    height: 150px;
+    height: 160px;
     margin-top: 0px;
 
     outline-color: rgb(51, 51, 51);
@@ -265,4 +413,122 @@ div.cool_members_box div.members_about_section{
 
     width: 235px;
     zoom: 1;
+}
+
+.group_info_divider hr{
+    position: absolute;
+    border: none;
+    width: 99.4%;
+    top: 1.96rem;  
+    border-top: 1px solid rgba(255, 255, 255, 0.45);
+    margin: 0;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+p#edit_club_description{
+    font-weight: 400;
+    padding: 2px .45rem;
+    letter-spacing: .5px;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 11.5px;
+    position: relative;
+    text-transform: uppercase;
+    color: #999;
+    cursor: pointer;
+    background: #f5f5f5;
+    color: #029acf;
+    margin-top: -2px;
+}
+.group_textarea{
+    resize: none;
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    line-height: 17px;
+    height: 120px;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    padding: 5px 8px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+div.group_display_icon{
+    width: 78px;
+
+    margin-left: 7px;
+    display: inline-block;
+    border-radius: 1.5px;
+    float: left;
+    position: relative;
+    margin-top: 6px;
+    height: 78px;
+    border-radius: 105px;
+}
+
+a#edit_club_icon{
+    position: absolute; /* bottom: 10px; */ left: 0px; 
+    width: 78px; top: 0px; border: none; border-radius: 500px; 
+    height: 78px; background-color: rgba(18, 19, 20, 0.4); background-repeat: no-repeat; background-size: auto; display: block; 
+    background-image: url('../../assets/camera_icon.png'); 
+    background-position: 30px; opacity: 0; -moz-transition: opacity .2s linear; -webkit-transition: opacity .2s linear; transition: opacity .2s linear;
+}
+
+a#edit_club_icon:hover{
+    opacity: 1;
+
+}
+
+a#edit_club_icon:active{
+    
+}
+
+
+span.photo_edit_icon{
+
+}
+
+h4.group_name_text{
+    margin: 0;
+    
+    display: inline-block;
+    font-size: 22px;
+    height: 95px;
+    width: calc(90% - 92px);
+    color: #555;
+    font-weight: 300;
+    margin-top: -5px;
+    line-height: 63px;
+    padding-left: 17px;
+}
+
+.group_info_divider_label:hover > p{
+    opacity: 1!important;
+}
+
+.group_info_divider_label > p:hover{
+    color:#029acf;
+    text-decoration: underline;
+}
+
+p#edit_club_name{
+    top: -27px;
+position: absolute;
+text-transform: capitalize;
+left: 7px;
+color: #575757;
+    opacity: 0;
+    display: none;
+}
+
+p#edit_club_mission{
+    font-weight: 400; padding: 2px .45rem; letter-spacing: .5px; display: inline-block; margin: 0 auto; font-size: 11.5px; position: relative; text-transform: uppercase; color: #999; 
+    cursor: pointer; 
+    background: #f5f5f5;
+    color: #029acf;
+    margin-top: -2px;
+}
+
+#edit_club_description span.edit_icon{
+    
 }

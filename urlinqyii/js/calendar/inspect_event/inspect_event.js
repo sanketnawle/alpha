@@ -19,18 +19,27 @@ function hide_inspect(){
     jQuery('.event_holder').each(function(){
         var $event_holder = jQuery(this);
         var $holder_color_block = jQuery($event_holder).find(".white_bg_line_blocker");
-        var event_holder_hex = $event_holder.attr("data-hex");
-        var event_holder_rgb_r = hexToRgb(event_holder_hex).r;
-        var event_holder_rgb_g = hexToRgb(event_holder_hex).g;
-        var event_holder_rgb_b = hexToRgb(event_holder_hex).b;
-        if($event_holder.hasClass('colorfied') && $event_holder.hasClass('month_day_event')){
-            $event_holder.css({"background-color":"transparent"});
-            $event_holder.removeClass('colorfied');
-        }          
-        else if($event_holder.hasClass('colorfied')){
-            $holder_color_block.css({"background-color":"rgba(" + event_holder_rgb_r + "," + event_holder_rgb_g + "," + event_holder_rgb_b + ", .1)"});
-            $event_holder.removeClass('colorfied');
+        var event_holder_hex = jQuery($event_holder).attr("data-hex");
+        try{
+            var event_holder_rgb_r = hexToRgb(event_holder_hex).r;
+            var event_holder_rgb_g = hexToRgb(event_holder_hex).g;
+            var event_holder_rgb_b = hexToRgb(event_holder_hex).b;
+
+
+            if($event_holder.hasClass('colorfied') && $event_holder.hasClass('month_day_event')){
+                $event_holder.css({"background-color":"transparent"});
+                $event_holder.removeClass('colorfied');
+            }
+            else if($event_holder.hasClass('colorfied')){
+                $holder_color_block.css({"background-color":"rgba(" + event_holder_rgb_r + "," + event_holder_rgb_g + "," + event_holder_rgb_b + ", .1)"});
+                $event_holder.removeClass('colorfied');
+            }
+        }catch(err){
+            //alert('ERROR ON ' + event_holder_hex);
+            console.log("Error on hex" + event_holder_hex);
         }
+
+
 
     });
 }
@@ -59,7 +68,7 @@ jQuery(document).ready(function(){
         jQuery($event_div).addClass("colorfied");
         var $window = $(window);
         var windowsize = $window.width();
-        var click_x_difference = windowsize - event.pageX;      
+        var click_x_difference = event.pageX;      
 
         if($event_div.hasClass('month_day_event')){
             jQuery($event_div).css({"background-color": event_div_hex});
@@ -110,7 +119,7 @@ jQuery(document).ready(function(){
                 $inspect_event_popup.css('top', event.pageY + 15);
                 jQuery($inspect_event_popup).addClass("top_position");
                 if(click_x_difference <= 187){
-                    $inspect_event_popup.css('left', event.pageX - 328.5);
+                    $inspect_event_popup.css('right', event.pageX - 328.5);
                     jQuery($inspect_event_popup).addClass("right_position");
                 }
                 else{
@@ -121,7 +130,7 @@ jQuery(document).ready(function(){
                 $inspect_event_popup.css('top', event.pageY - 230);
                 jQuery($inspect_event_popup).removeClass("top_position");
                 if(click_x_difference <= 187){
-                    $inspect_event_popup.css('left', event.pageX - 328.5);
+                    $inspect_event_popup.css('right', event.pageX - 328.5);
                     jQuery($inspect_event_popup).addClass("right_position");
                 }
                 else{
@@ -153,7 +162,7 @@ jQuery(document).ready(function(){
                     $inspect_event_popup.css('top', event.pageY + 15);
                     jQuery($inspect_event_popup).addClass("top_position");
                     if(click_x_difference <= 187){
-                        $inspect_event_popup.css('left', event.pageX - 328.5);
+                        $inspect_event_popup.css('right', event.pageX - 328.5);
                         jQuery($inspect_event_popup).addClass("right_position");
                     }
                     else{
@@ -164,7 +173,7 @@ jQuery(document).ready(function(){
                     $inspect_event_popup.css('top', event.pageY - 230);
                     jQuery($inspect_event_popup).removeClass("top_position");
                     if(click_x_difference <= 187){
-                        $inspect_event_popup.css('left', event.pageX - 328.5);
+                        $inspect_event_popup.css('right', event.pageX - 328.5);
                         jQuery($inspect_event_popup).addClass("right_position");
                     }
                     else{

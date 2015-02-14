@@ -1,6 +1,6 @@
 
 <script>
-    var globals = {};
+   // var globals = {};
 
     globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
 
@@ -8,6 +8,8 @@
 
     globals.origin_type = '<?php echo $origin_type; ?>';
     globals.origin_id = '<?php echo $origin_id; ?>';
+
+
 
 
 </script>
@@ -19,9 +21,6 @@
 
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/planner/datepicker.css"/>
 
-
-<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/date_selector/date_selector.js" type="text/javascript"></script>
-<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
 
 <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
 
@@ -68,7 +67,7 @@
             <form id = "fbar_form">
                 <div class = "form_wrapper">
                     <header id = "fbar_header" class = "fbar_contents_fix">
-                        <a class = "audience_default"><div id = "audience_select"><span>To <span class = "selected_audience">Department Name</span></span></div></a>
+                        <a class = "audience_default"><div id = "audience_select"><span>To <span class = "selected_audience"><?php echo $origin->department_name;?></span></span></div></a>
                         <div id = "discussion_form_content" class = "post_type_header active post_type_discussion"><span>Post</span></div>  
                         <div id = "event_form_content" class = "post_type_header active post_type_events"><span>Event</span></div> 
                         <div id = "opportunity_form_content" class = "post_type_header active post_type_opportunity"><span>Opportunity - Job/Research/Project</span></div>                 
@@ -86,7 +85,7 @@
 
                             <div class = "upload_half half_1">
                                 <div><p class = "upload_hint">From your computer</p></div>
-                                <div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
+                                <div><div class = "upload_button">Choose File</div><!--<p class = "drag_hint">or drag &#x26; drop</p></div>-->
                             </div>
 
                             <div class = "upload_half half_2">
@@ -116,13 +115,13 @@
                         <div class = "submission_inputs_wrap opportunity_input_hidden">
                             <div class = "upload_half half_1">
                                 <div><p class = "upload_hint">Upload Application</p></div>
-                                <div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
+                                <div><div class = "upload_button">Choose File</div><!--<p class = "drag_hint">or drag &#x26; drop</p></div>-->
                             </div>
 
-                            <div class = "upload_half half_2">
+                            <!--<div class = "upload_half half_2">
                                 <div><p class = "upload_hint">Submission Link/Email</p></div>
                                 <div><input placeholder = "Web or email address" class = "fbar_date_time submission_input"></div>
-                            </div>
+                            </div>-->
                         </div>
 
 
@@ -162,8 +161,8 @@
                                 <li class = "no_relative">
                                     <a class = "privacy_dropdown_link"></a>
                                     <ul class = "privacy_dropdown privacy_dropdown_club_fbar">
-                                        <li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>All Club Members</a><span></span></li>
-                                        <li class = "privacy_list" style = "position:relative;"><a>Club Admins</a><span></span></li>
+                                        <li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>All Department Members</a><span></span></li>
+                                        <li class = "privacy_list" style = "position:relative;"><a>Department Admins</a><span></span></li>
                                         <!--<li class = "privacy_list" style = "position:relative;"><a>Members</a><span></span></li>-->
                                         <div class="help-wedge">
                                         </div>
@@ -196,6 +195,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="post_anon" class='check_wrap event_form_hide_content opportunity_form_hide_content'>
+                            <input type='checkbox' id='flat_0' class='flat7c'/>
+                            <label for='flat7' class='flat7b'>
+                                <span class='move'></span>
+                            </label>
+                            <span class = 'comment_anon_text'>Post Anonymously</span>
+                        </div>
                         <div style = "display:none" class = "event_form_content event_more_options">More options</div>
                         <div style = "display:none" class = "opportunity_form_content opportunity_more_options">More options</div>
 
@@ -210,21 +216,11 @@
             </form>
         </section>
     </div>
-</div> 
-
-
-<script id='post_file_template' type="text/x-handlebars-template">
-
-        <div class='{{file_type}} post_attachment_review fbar_file' data-name='{{name}}' style='float: none' data-file_name='{{name}}' data-last_modified='{{lastModified}}'>{{name}}</div>
-
-</script>
-
-
-
+</div>
 
 <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
 
-<div id = "calLayer" style="display: none;">
+<div id = "calLayer" class = "fbar" style="display: none;">
     <section id = "mounth" class="mounth">
         <header class="minical-header">
             <h1 class="minical-h1"></h1>
@@ -293,92 +289,16 @@
     </section>
 </div>
 
-<!--Include this and js/time_selector/time_selector.js to use this.
-Set the class name on your input to 'time_input' -->
-<div id="time_selector">
-    <div class='time_selector_div' data-time='00:00:00' value="00:00:00">12:00am</div>
-    <div class='time_selector_div' data-time='00:30:00' value="00:30:00">12:30am</div>
 
-    <div class='time_selector_div' data-time='01:00:00' value="01:00:00">1:00am</div>
-    <div class='time_selector_div' data-time='01:30:00' value="01:30:00">1:30am</div>
+<script id='post_file_template' type="text/x-handlebars-template">
 
-    <div class='time_selector_div' data-time='02:00:00' value="02:00:00">2:00am</div>
-    <div class='time_selector_div' data-time='02:30:00' value="02:30:00">2:30am</div>
+        <div class='{{file_type}} post_attachment_review fbar_file' data-name='{{name}}' style='float: none' data-file_name='{{name}}' data-last_modified='{{lastModified}}'>{{name}}</div>
 
-    <div class='time_selector_div' data-time='03:00:00' value="03:00:00">3:00am</div>
-    <div class='time_selector_div' data-time='03:30:00' value="03:30:00">3:30am</div>
-
-    <div class='time_selector_div' data-time='04:00:00' value="04:00:00">4:00am</div>
-    <div class='time_selector_div' data-time='04:30:00' value="04:30:00">4:30am</div>
-
-    <div class='time_selector_div' data-time='05:00:00' value="05:00:00">5:00am</div>
-    <div class='time_selector_div' data-time='05:30:00' value="05:30:00">5:30am</div>
-
-    <div class='time_selector_div' data-time='06:00:00' value="06:00:00">6:00am</div>
-    <div class='time_selector_div' data-time='06:30:00' value="06:30:00">6:30am</div>
-
-    <div class='time_selector_div' data-time='07:00:00' value="06:00:00">7:00am</div>
-    <div class='time_selector_div' data-time='07:30:00' value="06:30:00">7:30am</div>
-
-
-    <div class='time_selector_div' data-time='08:00:00' value="08:00:00">8:00am</div>
-    <div class='time_selector_div' data-time='08:30:00' value="08:30:00">8:30am</div>
-
-    <div class='time_selector_div' data-time='09:00:00' value="09:00:00">9:00am</div>
-    <div class='time_selector_div' data-time='09:30:00' value="09:30:00">9:30am</div>
-
-    <div class='time_selector_div' data-time='10:00:00' value="10:00:00">10:00am</div>
-    <div class='time_selector_div' data-time='10:30:00' value="10:30:00">10:30am</div>
-
-    <div class='time_selector_div' data-time='11:00:00' value="11:00:00">11:00am</div>
-    <div class='time_selector_div' data-time='11:30:00' value="11:30:00">11:30am</div>
-
-
-    <!-- NOON -->
-    <div class='time_selector_div' data-time='12:00:00' value="12:00:00">12:00pm</div>
-    <div class='time_selector_div' data-time='12:30:00' value="12:30:00">12:30pm</div>
+</script>
 
 
 
-    <div class='time_selector_div' data-time='13:00:00' value="13:00:00">1:00pm</div>
-    <div class='time_selector_div' data-time='13:30:00' value="13:30:00">1:30pm</div>
-
-    <div class='time_selector_div' data-time='14:00:00' value="14:00:00">2:00pm</div>
-    <div class='time_selector_div' data-time='14:30:00' value="14:30:00">2:30pm</div>
-
-    <div class='time_selector_div' data-time='15:00:00' value="15:00:00">3:00pm</div>
-    <div class='time_selector_div' data-time='15:30:00' value="15:30:00">3:30pm</div>
-
-    <div class='time_selector_div' data-time='16:00:00' value="16:00:00">4:00pm</div>
-    <div class='time_selector_div' data-time='16:30:00' value="16:30:00">4:30pm</div>
-
-    <div class='time_selector_div' data-time='17:00:00' value="17:00:00">5:00pm</div>
-    <div class='time_selector_div' data-time='17:30:00' value="17:30:00">5:30pm</div>
-
-    <div class='time_selector_div' data-time='18:00:00' value="18:00:00">6:00pm</div>
-    <div class='time_selector_div' data-time='18:30:00' value="18:30:00">6:30pm</div>
-
-    <div class='time_selector_div' data-time='19:00:00' value="19:00:00">7:00pm</div>
-    <div class='time_selector_div' data-time='19:30:00' value="19:30:00">7:30pm</div>
-
-
-    <div class='time_selector_div' data-time='20:00:00' value="20:00:00">8:00pm</div>
-    <div class='time_selector_div' data-time='20:30:00' value="20:30:00">8:30pm</div>
-
-    <div class='time_selector_div' data-time='21:00:00' value="21:00:00">9:00pm</div>
-    <div class='time_selector_div' data-time='21:30:00' value="21:30:00">9:30pm</div>
-
-    <div class='time_selector_div' data-time='22:00:00' value="22:00:00">10:00pm</div>
-    <div class='time_selector_div' data-time='22:30:00' value="22:30:00">10:30pm</div>
-
-    <div class='time_selector_div' data-time='23:00:00' value="23:00:00">11:00pm</div>
-    <div class='time_selector_div' data-time='23:30:00' value="23:30:00">11:30pm</div>
-
-
-</div>
-
-
-<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id)); ?>
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id,'is_admin'=>false)); ?>
 
 
 

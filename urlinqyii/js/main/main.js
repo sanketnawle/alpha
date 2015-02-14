@@ -16,21 +16,38 @@ $(document).ready(function(){
         });
     });
 
-
     $('.tab').click(function(){
         var $tab = $(this);
         var panel_id = $tab.attr('data-panel_id');
         //Change active tab
         $('.tab.active').removeClass('active');
+        $('.other_views_tab').removeClass('active');
         $tab.addClass('active');
-
-
         //Find the current active panel and remove its active class
         $('.panel.active').removeClass('active');
         $('#panel_' + panel_id).addClass('active');
     });
 
+    $('#nav_drop_down_see_all_button.courses').click(function(){
+        $('.tab.active').removeClass('active');
+        $(".tab.courses").addClass('active');
+        $('.panel.active').removeClass('active');
+        $('#panel_2').addClass('active');        
+    });
+
+    $('#nav_drop_down_see_all_button.departments').click(function(){
+        $('.tab.active').removeClass('active');
+        $(".tab.departments").addClass('active');
+        $('.panel.active').removeClass('active');
+        $('#panel_2').addClass('active');        
+    });
     
+    $('#nav_drop_down_see_all_button.clubs').click(function(){
+        $('.tab.active').removeClass('active');
+        $(".tab.clubs").addClass('active');
+        $('.panel.active').removeClass('active');
+        $('#panel_3').addClass('active');        
+    });
 
     $( "#page" ).scroll(function() {
 //        alert('SCROLL');
@@ -164,30 +181,53 @@ $(document).ready(function(){
 
     $("#remove_button").click(function(){
         var $remove_button = $(".admin_member_controls");
-        var $add_button = $(".add_people_button");
-        var $members_tab = $("#members_tab_content");
+        var $add_button = $(".add_people_button.invite");
+        var $members_tab = $(".members_tab_content");
         var $remove_state_controls = $(".remove_state_controls");
 
         $add_button.hide();
         $remove_button.hide();
         $remove_state_controls.css({"display":"inline-block"});
         $members_tab.addClass("remove_members_state");
+        $('.members_card').not('.admin').find('.remove_member_button').show();
+
+        $('.members_card').not('.admin').find('.follow_button_wrapper').hide();
+
     });
 
     $(".remove_member_button").click(function(){
-        $(this).closest(".regular_member").fadeOut(250);
+        var $member_card = $(this).closest(".regular_member");
+        var user_card_id = $member_card.attr('data-user_id');
+
+        var post_url = globals.base_url + '/' + globals.origin_type + '/removeMember';
+        var post_data = {user_id:user_card_id, group_id: globals.origin_id};
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                if(response['success']){
+                    $member_card.fadeOut(250);
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+
+        );
+        //$(this).closest(".regular_member").fadeOut(250);
     });
 
     $("#done_removing_button").click(function(){
         var $remove_button = $(".admin_member_controls");
-        var $add_button = $(".add_people_button");
-        var $members_tab = $("#members_tab_content");
+        var $add_button = $(".add_people_button.invite");
+        var $members_tab = $(".members_tab_content");
         var $remove_state_controls = $(".remove_state_controls");
 
         $remove_state_controls.hide();
         $add_button.show();
         $remove_button.show();
         $members_tab.removeClass("remove_members_state");
+        $('.regular_member').find('.remove_member_button').hide();
+        $('.regular_member').find('.follow_button_wrapper').show();
 
     });
 
@@ -224,14 +264,24 @@ $(document).ready(function(){
     $('#group_user_action_button').mouseenter(function(){
         var $action_button = $(this);
         if($action_button.hasClass('member')){
-            $action_button.find("#group_user_action_button_text").text('Leave');
+            if(globals.origin_type === "department"){
+                $action_button.find("#group_user_action_button_text").text('Unfollow');
+            }else{
+                $action_button.find("#group_user_action_button_text").text('Leave');
+            }
+
+
         }
     });
 
     $('#group_user_action_button').mouseleave(function(){
         var $action_button = $(this);
         if($action_button.hasClass('member')){
-            $action_button.find("#group_user_action_button_text").text('Member');
+            if(globals.origin_type === "department"){
+                $action_button.find("#group_user_action_button_text").text('Following');
+            }else{
+                $action_button.find("#group_user_action_button_text").text('Member');
+            }
         }
     });
 
@@ -260,46 +310,56 @@ $(document).ready(function(){
 
 
 
-        var $quote = $("#group_name > #name_title");
-        var $class_title_info = $(".class_title_info");
-        
-        var $numWords = $quote.text().split("").length;
-        
-        if (($numWords >= 1) && ($numWords < 10)) {
-            $quote.css("font-size", "48.5px");
-            $quote.css("letter-spacing", "1.55px;");
-        }
-        else if (($numWords >= 10) && ($numWords < 20)) {
-            $quote.css("font-size", "42px");
-            $quote.css("letter-spacing", "1.35px;");
-            $class_title_info.css("font-size","15.6px");
-            $class_title_info.css("margin-top","7px");
-            $class_title_info.css("line-height","18.4px");
-        }
-        else if (($numWords >= 20) && ($numWords < 30)) {
-            $quote.css("font-size", "37.6px");
-            $quote.css("letter-spacing", "1.18px;");
-            $class_title_info.css("font-size","14px");
-            $class_title_info.css("margin-top","7px");
-            $class_title_info.css("line-height","16.2px");
-        }
-        else if (($numWords >= 30) && ($numWords < 38)) {
-            $quote.css("font-size", "32.5px");
-        }
-        else {
-            $quote.css("font-size", "27.5px");
-            $class_title_info.css("font-size","10.4px");
-            $class_title_info.css("margin-top","4px");
-            $class_title_info.css("line-height","12.8px");
-        }    
 
-        var group_name_left = $("p#group_name").position().left;
-        $("div.center_admin").css({"left":group_name_left});
 
-        $(window).on('resize', function(){
-             var group_name_left = $("p#group_name").position().left;
-            $("div.center_admin").css({"left":group_name_left})
-        });          
+            $(window).on('resize', function(){
+                var group_name_left = $("p#group_name").position().left;
+                $("div.center_admin").css({"left":group_name_left})
+            });          
+
+            setTimeout(function(){
+                var $quote = $("#group_name > #name_title");
+                var $class_title_info = $(".class_title_info");
+                
+                var $numWords = $quote.text().split("").length;
+                
+                if (($numWords >= 1) && ($numWords < 10)) {
+                    $quote.css("font-size", "48.5px");
+                    $quote.css("letter-spacing", "1.55px;");
+                }
+                else if (($numWords >= 10) && ($numWords < 20)) {
+                    $quote.css("font-size", "46px");
+                    $quote.css("letter-spacing", "1.35px;");
+                    $class_title_info.css("font-size","15.6px");
+                    $class_title_info.css("margin-top","7px");
+                    $class_title_info.css("line-height","18.4px");
+                }
+                else if (($numWords >= 20) && ($numWords < 30)) {
+                    $quote.css("font-size", "37.6px");
+                    $quote.css("letter-spacing", "1.18px;");
+                    $class_title_info.css("font-size","14px");
+                    $class_title_info.css("margin-top","7px");
+                    $class_title_info.css("line-height","16.2px");
+                }
+                else if (($numWords >= 30) && ($numWords < 38)) {
+                    $quote.css("font-size", "32.5px");
+                }
+                else {
+                    $quote.css("font-size", "27.5px");
+                    $class_title_info.css("font-size","10.4px");
+                    $class_title_info.css("margin-top","4px");
+                    $class_title_info.css("line-height","12.8px");
+                }    
+
+                var group_name_left = $("p#group_name").position().left;
+                var group_name_left = $("p#group_name").position().left;
+                $("div.center_admin").css({"left":group_name_left});  
+                setTimeout(function(){          
+                    $("div.group_name").css({"opacity":"1"});
+                }, 200);
+            }, 450);
+
+
 
 
 
@@ -403,8 +463,6 @@ $(document).ready(function(){
     $(document).on('click','.group_user_action_button, #group_user_action_button',function(e){
         e.stopPropagation();
 
-
-
         var $group_user_action_button = $(this);
 
         var verb = '';
@@ -416,7 +474,7 @@ $(document).ready(function(){
 
 
 
-        if(verb == 'leave'){
+        if(verb == 'leave' && globals.origin_type != 'department'){
             var r = confirm("Are you sure you want to leave?");
             if (r == false) {
                 return;
@@ -437,7 +495,11 @@ $(document).ready(function(){
                 if(response['success']){
                     var $group_user_action_button_text_div = $('#group_user_action_button_text');
                     if(verb == 'join'){
-                        $group_user_action_button_text_div.text('Member');
+                        if(globals.origin_type == 'department'){
+                            $group_user_action_button_text_div.text('Following');
+                        }else{
+                            $group_user_action_button_text_div.text('Member');
+                        }
                         $group_user_action_button.removeClass('non_member');
                         $group_user_action_button.addClass('member');
 
@@ -449,7 +511,11 @@ $(document).ready(function(){
                         }
 
                     }else if(verb == 'leave'){
-                        $group_user_action_button_text_div.text('Join');
+                        if(globals.origin_type == 'department'){
+                            $group_user_action_button_text_div.text('Follow');
+                        }else{
+                            $group_user_action_button_text_div.text('Join');
+                        }
                         $group_user_action_button.removeClass('member');
                         $group_user_action_button.addClass('non_member');
 
@@ -535,13 +601,108 @@ $(document).ready(function(){
 
 
 
-    if($("body").hasClass("body_group") == true){
+    if($("body").hasClass("body_class") == true){
 
-        $("span.create_planner_message").css({"left":"27px"}).text("Add tasks to this group planner");
-        $(".point").css({"left":"40px","font-size":"13px"})
+        $("span.create_planner_message").css({"left":"27px"}).text("Plan this class's schedule");
+        $("span.create_planner_message").css({"left":"18px", "width":"192px"})
     }
 
+    if($("body").hasClass("body_department") == true){
 
+        $("span.create_planner_message").css({"left":"27px"}).text("Schedule group events");
+        $("span.create_planner_message").css({"left":"22px", "width":"192px"})
+    }
+    if($("body").hasClass("body_club") == true){
+
+        $("span.create_planner_message").css({"left":"27px"}).text("Plan this group's schedule");
+        $("span.create_planner_message").css({"left":"12px", "width":"202px"})
+    }
+
+    $(document).on('click','.edit_about',function(){
+        $('.panel.active').removeClass('active');
+        $('.tab.active').removeClass('active');
+        $('#panel_6').addClass('active'); //about tab
+        $('#edit_club_description').click();
+    });
+    $(document).on('click','#edit_club_description',function(){
+        var $edit_button = $(this);
+        if($edit_button.hasClass('editing')){
+            var post_url = globals.base_url+"/club/editDescription";
+            var description = $('#group_description_input').val();
+            var post_data = {description: description, club_id: globals.origin_id};
+            $.post(
+                post_url,
+                post_data,
+                function(response){
+                    if(response['success']){
+                        if(description.length){
+                            $edit_button.parent().html('Description <p id = "edit_club_description"><span class = "edit_icon small_icon_map"></span>Edit</p>')
+                            $('#group_description').text(description);
+                        }else{
+                            $edit_button.parent().html('<p id = "edit_club_description"><span class = "add_icon small_icon_map"></span>Edit Description</p>');
+                            $('#group_description').text("Provide a description of this group.");
+                        }
+                    }else{
+                        alert(JSON.stringify(response));
+                    }
+                }
+            )
+
+            $('#group_description_input').hide();
+            $('#group_description').fadeIn(250);
+            $edit_button.removeClass('editing');
+        }else{
+            $edit_button.text('Done Editing');
+            $('#group_description').hide();
+            $('#group_description_input').fadeIn(250);
+            var description = $.trim($('#group_description').text());
+            if(description != "Provide a description of this group.") {
+                $('#group_description_input').val(description);
+            }
+            $edit_button.addClass('editing');
+        }
+    });
+    $(document).on('click','#edit_club_mission',function(){
+        var $edit_button = $(this);
+        if($edit_button.hasClass('editing')){
+            var post_url = globals.base_url+"/club/editMission";
+            var mission = $('#group_mission_input').val();
+            var post_data = {mission: mission, club_id: globals.origin_id};
+            $.post(
+                post_url,
+                post_data,
+                function(response){
+                    if(response['success']){
+                        if(mission.length){
+                            $edit_button.parent().html(' Purpose <p id = "edit_club_mission"><span class = "edit_icon small_icon_map"></span>Edit</p>')
+                            $('#group_mission').text(mission);
+                        }else{
+                            $edit_button.parent().html('<p id = "edit_club_mission"><span class = "add_icon small_icon_map"></span>Edit Group Purpose</p>');
+                            $('#group_mission').text("Give your group a 240-character purpose that describes what it will be used for.");
+                        }
+                    }else{
+                        alert(JSON.stringify(response));
+                    }
+                }
+            )
+            $('#group_mission_input').hide();
+            $('#group_mission').fadeIn(250);
+
+
+
+            $edit_button.removeClass('editing');
+        }else{
+            $edit_button.text('Done Editing');
+            $('#group_mission').hide();
+            $('#group_mission_input').fadeIn(250);
+            var mission = $.trim($('#group_mission').text());
+            if(mission != "Give your group a 240-character purpose that describes what it will be used for."){
+                $('#group_mission_input').val(mission);
+            }
+
+            $edit_button.addClass('editing');
+        }
+    });
 
 
 

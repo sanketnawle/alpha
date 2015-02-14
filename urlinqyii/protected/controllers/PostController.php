@@ -125,7 +125,7 @@ class PostController extends Controller
 
 
 
-            $user = $this->get_current_user();
+            $user = $this->get_current_user($_POST);
             if(!$user){
                 $return_data = array('success'=>false, 'error_id'=>2, 'error_msg' => 'user is not logged in');
                 $this->renderJSON($return_data);
@@ -144,11 +144,13 @@ class PostController extends Controller
     //            $model->last_activity =  = NOW();
 
 
-
-
-
-                $model->save(false);
+//
+//
+//
+//                $model->save(false);
                 $model->last_activity = $model->created_at;
+
+
 
                 $model->save(false);
 
@@ -178,8 +180,6 @@ class PostController extends Controller
 
                         foreach ($file_ary as $file) {
 
-
-
                             $file_data = file_upload2($file, 'post_files/');
 
 
@@ -207,15 +207,22 @@ class PostController extends Controller
                         $event->title = $_POST['post']['event']['title'];
                         $event->description = $_POST['post']['event']['description'];
                         $event->event_type = 'event';
-                        $event->user_id = $this->get_current_user_id();
-                        $event->origin_type = $_POST['post']['event']['origin_id'];
+                        $event->user_id = $user->user_id;
+                        $event->origin_type = $_POST['post']['event']['origin_type'];
                         $event->origin_id = $_POST['post']['event']['origin_id'];
                         $event->start_date = $_POST['post']['event']['start_date'];
                         $event->end_date = $_POST['post']['event']['end_date'];
                         $event->start_time = $_POST['post']['event']['start_time'];
                         $event->end_time = $_POST['post']['event']['end_time'];
                         $event->location = $_POST['post']['event']['location'];
-                        $event->all_day = '';
+
+                        $all_day = 0;
+                        if($_POST['post']['event']['all_day'] == true){
+                            $all_day = 1;
+                        }
+
+
+                        $event->all_day = $all_day;
 
                         $event->save(false);
 
@@ -224,6 +231,56 @@ class PostController extends Controller
                         $post_event->post_id = $model->post_id;
                         $post_event->event_id = $event->event_id;
                         $post_event->save(false);
+
+
+
+
+                        if($event->origin_type == 'club' || $event->origin_type == 'group'){
+                            $group = Group::model()->find('group_id=:id', array(':id'=>$event->origin_id));
+                            if($group){
+                                $has_admin=GroupUser::model()->exists('group_id=:group_id and is_admin=true',array(':group_id'=>$group->group_id));
+
+
+                                $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$group->group_id));
+
+                                if($group_user && $group_user->is_admin || !$has_admin){
+                                    foreach($group->members as $member){
+                                        if($member->user_id != $user->user_id){
+                                            include_once 'color/color.php';
+                                            $event_user = new EventUser;
+                                            $event_user->user_id = $member->user_id;
+                                            $event_user->event_id = $event->event_id;
+                                            $event_user->color_id = get_random_color();
+                                            $event_user->save(false);
+                                        }
+                                    }
+                                }
+                            }
+                        }else if($event->origin_type == 'class'){
+                            $class = ClassModel::model()->find('class_id=:id', array(':id'=>$event->origin_id));
+                            if($class){
+
+                                $has_admin=ClassUser::model()->exists('class_id=:group_id and is_admin=true',array(':class_id'=>$class->class_id));
+
+                                $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$class->class_id));
+                                if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id || !$has_admin){
+
+                                    foreach($class->students as $member){
+                                        if($member->user_id != $user->user_id){
+                                            include_once 'color/color.php';
+                                            $event_user = new EventUser;
+                                            $event_user->user_id = $member->user_id;
+                                            $event_user->event_id = $event->event_id;
+                                            $event_user->color_id = get_random_color();
+                                            $event_user->save(false);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+
+
 
                         $post_data['event'] = $this->model_to_array($event);
                     }else if($model->post_type == 'opportunity'){
@@ -236,7 +293,7 @@ class PostController extends Controller
                         $event->title = $_POST['post']['opportunity']['title'];
                         $event->description = $_POST['post']['opportunity']['description'];
                         $event->event_type = 'event';
-                        $event->user_id = $this->get_current_user_id();
+                        $event->user_id = $user->user_id;
                         $event->origin_type = $_POST['post']['origin_type'];
                         $event->origin_id = $_POST['post']['origin_id'];
                         $event->start_date = $now->format('Y-m-d');
@@ -244,7 +301,9 @@ class PostController extends Controller
                         $event->start_time = $now->format('H:i:s');
                         $event->end_time = $_POST['post']['opportunity']['end_time'];
                         $event->location = '';
-                        $event->all_day = '';
+                        $all_day = 0;
+
+                        $event->all_day = $all_day;
 
                         $event->save(false);
 
@@ -357,6 +416,15 @@ class PostController extends Controller
                                         send_notification('post',$user->user_id,$department_user->user_id,$post_data['post_id'],'post');
                                     }
                                 }
+                                /* not sure if this should be added
+                                //Send a notification to everyone following this department
+                                foreach($department->followers as $department_follower){
+                                    if($department_follower->user_id != $user->user_id){
+                                        send_notification('post',$user->user_id,$department_follower->user_id,$post_data['post_id'],'post');
+                                    }
+                                }
+                                */
+
 
                             }else{
                                 $return_data = array('success'=>false,'error_msg'=>'department doesnt exist');
@@ -404,7 +472,7 @@ class PostController extends Controller
                                 }
 
                             }else{
-                                $return_data = array('success'=>false,'error_msg'=>'school doesnt exist');
+                                $return_data = array('success'=>false,'error_msg'=>'group doesnt exist');
                                 $this->renderJSON($return_data);
                                 return;
                             }
@@ -440,7 +508,8 @@ class PostController extends Controller
                     $post_data['pownership'] = true;
 
 
-
+                    //$post_data['update_timestamp'] = strtotime(gmdate('Y-m-d H:i:s'));
+                    $post_data['update_timestamp'] =strtotime("now");
                     $post_data['user_info'] = $this->get_model_associations($user, array('pictureFile'));
 
                     $return_data = array('success'=>true,'post'=>$post_data);
@@ -586,7 +655,7 @@ class PostController extends Controller
             return;
         }
 
-        $user = $this->get_current_user($_GET);
+        $user = $this->get_current_user($_POST);
 
         if(!$user){
             $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
@@ -668,7 +737,7 @@ class PostController extends Controller
         }
 
 
-        $user = $this->get_current_user();
+        $user = $this->get_current_user($_POST);
         if(!$user){
             $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
             $this->renderJSON($return_data);
@@ -682,17 +751,51 @@ class PostController extends Controller
             $this->renderJSON($return_data);
             return;
         }
+        if($post->post_type == "event"){
+            if(!isset($_POST['event_id'])){
+                $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+                $this->renderJSON($return_data);
+                return;
+            }else{
+                $event = Event::model()->find('event_id=:eid',array(':eid'=>$_POST['event_id']));
+            }
+
+        }
 
         //Make sure this user created this post
         if($post->user_id != $user->user_id){
-            $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'User is not authorized to delete this post');
-            $this->renderJSON($return_data);
-            return;
+            if($post->origin_type == "club"){
+                $origin = Group::model()->findByPk($post->origin_id);
+            }else if($post->origin_type == "class"){
+                $origin = ClassModel::model()->findByPk($post->origin_id);
+            }else if($post->origin_type == "department"){
+                $origin = Department::model()->findByPk($post->origin_id);
+            }
+            $is_admin=false;
+            foreach($origin->admins as $admin){
+                if($user->user_id == $admin->user_id){
+                    $is_admin = true;
+                }
+            }if($is_admin == false){
+                $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'User is not authorized to delete this post');
+                $this->renderJSON($return_data);
+                return;
+            }
+
         }
 
 
         //If all goes well, delete the post
         if($post->delete()){
+            if(isset($event)){
+                if(!$event->delete()){
+                    $return_data = array('success'=>false,'error_id'=>5, 'error_msg'=>'Error deleting event');
+                    $this->renderJSON($return_data);
+                    return;
+                }
+            }
+
+
             $return_data = array('success'=>true);
             $this->renderJSON($return_data);
             return;
@@ -702,11 +805,80 @@ class PostController extends Controller
             return;
         }
 
-
-
-
-
 	}
+    // param post_id
+    public function actionHide(){
+        if(!isset($_POST['post_id'])){
+            $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        $user = $this->get_current_user($_POST);
+        if(!$user){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+
+        if(!$post){
+            $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'post doesnt exist');
+            $this->renderJSON($return_data);
+            return;
+        }
+        $post_hide = new PostHide();
+        $post_hide->post_id = $_POST['post_id'];
+        $post_hide->user_id =  $user->user_id;
+        if(!$post_hide->save()) {
+            $return_data = array('success' => false, 'error_id' => 5, 'error_msg' => 'error hiding post');
+            $this->renderJSON($return_data);
+            return;
+        }else{
+                $return_data = array('success'=>true);
+                $this->renderJSON($return_data);
+                return;
+        }
+    }
+
+    // param post_id
+    public function actionReport(){
+        if(!isset($_POST['post_id'])){
+            $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        $user = $this->get_current_user($_POST);
+        if(!$user){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+
+        if(!$post){
+            $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'post doesnt exist');
+            $this->renderJSON($return_data);
+            return;
+        }
+        $post_report = new PostReport();
+        $post_report->post_id = $_POST['post_id'];
+        $post_report->user_id =  $user->user_id;
+        if(!$post_report->save()) {
+            $return_data = array('success' => false, 'error_id' => 5, 'error_msg' => 'error reporting post');
+            $this->renderJSON($return_data);
+            return;
+        }else{
+            $return_data = array('success'=>true);
+            $this->renderJSON($return_data);
+            return;
+        }
+    }
 
 
     //ERROR ID's
@@ -796,7 +968,6 @@ class PostController extends Controller
                     $post->like_count = $post->like_count + 1;
                     $post->save(false);
                     if($post){
-                        include_once "notification/notification.php";
                         if($post->user_id != $user->user_id){
                            send_notification('like',$user->user_id,$post->user_id,$post->post_id,'post');
                         }
@@ -884,6 +1055,14 @@ class PostController extends Controller
             return;
         }
 
+        $user = $this->get_current_user($_POST);
+
+        if (!$user) {
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'not a valid user.');
+            $this->renderJSON($data);
+            return;
+        }
+
         try{
             //$post_id = $_POST['post_id'];
             $post_id = $_POST['post_id'];
@@ -905,6 +1084,13 @@ class PostController extends Controller
                 $reply->save(false);
 
                 if($reply){
+
+                if ($user->user_id != $reply_user->user_id) {
+
+                    //include_once "notification/notification.php"
+                    send_notification('reply', $user->user_id, $reply_user->user_id, $post->post_id, 'post');
+
+                }
 
 //                {
 //                  "reply_id": "1",
@@ -932,13 +1118,14 @@ class PostController extends Controller
                         'down_vote'=>$reply->down_vote,
                         'file_id'=>$reply->file_id,
                         'anon'=>$reply->anon,
+                        //'update_timestamp'=>strtotime(gmdate('Y-m-d H:i:s')),
                         'update_timestamp'=>$reply->update_timestamp,
                         'user_info'=>array(
                             'user_id'=>$reply_user_id,
                             'user_name'=>$reply_user->firstname . ' ' . $reply_user->lastname,
-                            'picture_file_id'=>$reply_user->picture_file_id
+                            'pictureFile'=>$reply_user->pictureFile
                         ),
-                        'cownership'=>false,
+                        'cownership'=>true,
                         'vote_status'=>null
                     );
                     $data = array('success'=>true,'reply'=>$reply_data);
@@ -974,6 +1161,42 @@ class PostController extends Controller
             echo "Notification created successfully";
         else
             var_dump($model->getErrors());
+    }
+
+    public function actionGetPostComments() {
+        if (!isset($_GET['post_id'])) {
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'required values not set');
+            $this->renderJSON($data);
+            return;
+        }
+        
+        $user = $this->get_current_user($_GET);
+        if (!$user) {
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'not a valid user.');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $post_id = $_GET['post_id'];
+
+        $sql = "SELECT * FROM reply WHERE post_id = $post_id;";
+
+        $replies = Reply::model()->findAllBySql($sql);
+
+        $replies_with_users = array();
+
+        foreach ($replies as $reply) {
+
+            $reply = $this->model_to_array($reply);
+            $reply_user = User::model()->find("user_id=:user_id",array(":user_id"=>$reply['user_id']));
+            $reply['user_info'] = $reply_user;
+            array_push($replies_with_users, $reply);
+        }
+
+        $data = array('success'=>true,'replies'=>$replies_with_users);
+        $this->renderJSON($data);
+        return;
+
     }
 
 	/**

@@ -31,7 +31,7 @@ jQuery(document).ready(function(){
 
         var $window = $(window);
         var windowsize = $window.width();
-        var click_x_difference = windowsize - event.pageX;
+        var click_x_difference = event.pageX;
         //Add the event_id to the inspect_event_popup_week for easy access
         $create_week_day_event_popup.attr('data-date', this_date);
         //Add the event_id to the inspect_event_popup_week for easy access
@@ -42,7 +42,7 @@ jQuery(document).ready(function(){
                 $create_week_day_event_popup.css('top', event.pageY + 15);
                 jQuery($create_week_day_event_popup).addClass("top_position");
                 if(click_x_difference <= 187){
-                    $create_week_day_event_popup.css('left', event.pageX - 328.5);
+                    $create_week_day_event_popup.css('right', event.pageX - 328.5);
                     jQuery($create_week_day_event_popup).addClass("right_position");
                 }
                 else{
@@ -53,7 +53,7 @@ jQuery(document).ready(function(){
                 $create_week_day_event_popup.css('top', event.pageY - 230);
                 jQuery($create_week_day_event_popup).removeClass("top_position");
                 if(click_x_difference <= 187){
-                    $create_week_day_event_popup.css('left', event.pageX - 328.5);
+                    $create_week_day_event_popup.css('right', event.pageX - 328.5);
                     jQuery($create_week_day_event_popup).addClass("right_position");
                 }
                 else{
@@ -65,7 +65,14 @@ jQuery(document).ready(function(){
             
 
     //            Mon, January 5, 4:30pm – 5:30pm
-            var inspect_event_text = format_event_date_text(this_date_obj) + ' ' + date_to_am_pm_string(new_datetime(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new_datetime(this_date + ' ' + end_time));
+            var inspect_event_text = '';
+            if(this_time == '0-1:00:00'){
+                inspect_event_text = format_event_date_text(this_date_obj) + ' All day';
+            }else{
+                inspect_event_text = format_event_date_text(this_date_obj) + ' ' + date_to_am_pm_string(new_datetime(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new_datetime(this_date + ' ' + end_time));
+            }
+
+
             $create_week_day_event_popup.find('#create_week_day_event_when').text(inspect_event_text);
 
 
@@ -81,7 +88,7 @@ jQuery(document).ready(function(){
                     $create_week_day_event_popup.css('top', event.pageY + 15);
                     jQuery($create_week_day_event_popup).addClass("top_position");
                     if(click_x_difference <= 187){
-                        $create_week_day_event_popup.css('left', event.pageX - 328.5);
+                        $create_week_day_event_popup.css('right', event.pageX - 328.5);
                         jQuery($create_week_day_event_popup).addClass("right_position");
                     }
                     else{
@@ -92,7 +99,7 @@ jQuery(document).ready(function(){
                     $create_week_day_event_popup.css('top', event.pageY - 230);
                     jQuery($create_week_day_event_popup).removeClass("top_position");
                     if(click_x_difference <= 187){
-                        $create_week_day_event_popup.css('left', event.pageX - 328.5);
+                        $create_week_day_event_popup.css('right', event.pageX - 328.5);
                         jQuery($create_week_day_event_popup).addClass("right_position");
                     }
                     else{
@@ -102,7 +109,13 @@ jQuery(document).ready(function(){
 
                 }
 
-                var inspect_event_text = format_event_date_text(this_date_obj) + ' ' + date_to_am_pm_string(new Date(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new Date(this_date + ' ' + end_time));
+
+                var inspect_event_text = '';
+                if(this_time == '0-1:00:00'){
+                    inspect_event_text = format_event_date_text(this_date_obj) + ' All day';
+                }else{
+                    inspect_event_text = format_event_date_text(this_date_obj) + ' ' + date_to_am_pm_string(new_datetime(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new_datetime(this_date + ' ' + end_time));
+                }
                 $create_week_day_event_popup.find('#create_week_day_event_when').text(inspect_event_text);
 
             }else{
@@ -142,6 +155,10 @@ jQuery(document).ready(function(){
         var event_start_date = $create_week_day_event_popup.attr('data-date');
         var event_start_time = $create_week_day_event_popup.attr('data-start_time');
 
+
+
+
+
         var event_end_date = event_start_date;
         var event_end_time = $create_week_day_event_popup.attr('data-end_time');
 
@@ -156,7 +173,13 @@ jQuery(document).ready(function(){
 
 
         var event_todo = false;
-        var event_all_day = true;
+        var event_all_day = false;
+
+
+
+        if(event_start_time == '0-1:00:00'){
+            event_all_day = true;
+        }
 
 
 
@@ -165,11 +188,20 @@ jQuery(document).ready(function(){
         var event_start_datetime = local_to_utc(new_datetime(event_start_date + ' ' + event_start_time));
         var event_end_datetime = local_to_utc(new_datetime(event_end_date + ' ' + event_end_time));
 
-        event_start_date = date_to_string(event_start_datetime);
+        event_start_date = date_to_string(event_end_datetime);
         event_start_time = datetime_to_time_string(event_start_datetime);
 
         event_end_date = date_to_string(event_end_datetime);
         event_end_time = datetime_to_time_string(event_end_datetime);
+
+
+
+        if(event_all_day){
+            event_start_date = event_end_date;
+            event_start_time = event_end_time;
+        }
+
+
 
         var post_data = {
             event:{

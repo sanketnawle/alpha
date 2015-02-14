@@ -78,7 +78,7 @@
             <div class="nav_picture"></div>
             <div class="nav_text">Clubs</div>
             <div id="nav_down_arrow"></div>
-            <div id="nav_drop_down_container" class="home_nav_dropdown closed">
+            <div id="nav_drop_down_container" class="last_nav_drop_down_home home_nav_dropdown closed">
                 <div class="nav_drop_down_scrollable">
 
                     <?php
@@ -213,10 +213,10 @@
         </div>
 
 
-        <div class="nav_arrow nav_arrow_white"></div>
+        <div class="nav_arrow nav_arrow_white nav_bar_no_repeat"></div>
 
         <!-- Store the link type so we can use it in the js        -->
-        <div class="nav_section drop_down" data-link_url="/<?php echo 'course/' . $origin_id; ?>" data-link_type="course">
+        <div class="nav_section drop_down nav_bar_no_repeat" data-link_url="/<?php echo 'course/' . $origin_id; ?>" data-link_type="course">
             <div class="nav_picture"></div>
             <div class="nav_text">Courses</div>
             <div id="nav_down_arrow"></div>
@@ -233,8 +233,8 @@
 
                 <div id="nav_drop_down_bar_line"></div>
 
-                <div id="nav_drop_down_see_all_button">
-                    <div id="nav_drop_down_see_all_courses_text">See all courses</div>
+                <div id="nav_drop_down_see_all_button" class = "courses">
+                    <div id="nav_drop_down_see_all_courses_text" data-panel_id="2">See all courses</div>
                 </div>
             </div>
         </div>
@@ -253,11 +253,11 @@
             <div class="nav_text"><?php echo $origin->school_name; ?></div>
         </div>
 
-        <div class="nav_arrow nav_arrow_white"></div>
+        <div class="nav_arrow nav_arrow_white nav_bar_no_repeat"></div>
 
 
         <!-- Store the link type so we can use it in the js        -->
-        <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'department/' . $origin_id; ?>" data-link_type="department">
+        <div class="nav_section drop_down nav_bar_no_repeat" id="home_nav" data-link_url="/<?php echo 'department/' . $origin_id; ?>" data-link_type="department">
             <div class="nav_picture"></div>
             <div class="nav_text">Departments</div>
             <div id="nav_down_arrow"></div>
@@ -290,15 +290,15 @@
 
                 <div id="nav_drop_down_bar_line"></div>
 
-                <div id="nav_drop_down_see_all_button">
+                <div id="nav_drop_down_see_all_button" class = "departments">
                     <div id="nav_drop_down_see_all_departments_text">See all departments</div>
                 </div>
             </div>
         </div>
 
-        <div class="nav_arrow"></div>
+        <div class="nav_arrow nav_bar_no_repeat"></div>
 
-        <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'club/' . $origin_id; ?>" data-link_type="club">
+        <div class="nav_section drop_down nav_bar_no_repeat" id="home_nav" data-link_url="/<?php echo 'club/' . $origin_id; ?>" data-link_type="club">
             <div class="nav_picture"></div>
             <div class="nav_text">Clubs</div>
             <div id="nav_down_arrow"></div>
@@ -325,7 +325,7 @@
                 </div>
                 <div id="nav_drop_down_bar_line"></div>
 
-                <div id="nav_drop_down_see_all_button">
+                <div id="nav_drop_down_see_all_button" class = "clubs">
                     <div id="nav_drop_down_see_all_clubs_text">See all clubs</div>
                 </div>
             </div>

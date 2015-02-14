@@ -7,3 +7,4 @@ RewriteCond %{HTTP_HOST} ^beta\.campuslayers\.com$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.beta\.campuslayers\.com$
 RewriteRule ^/?$ "http\:\/\/beta\.urlinq\.com" [R=301,L]
 
+

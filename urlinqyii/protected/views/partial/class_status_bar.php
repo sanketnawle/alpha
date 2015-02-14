@@ -74,13 +74,13 @@
 
 							<div class = "upload_half half_1">
 								<div><p class = "upload_hint">From your computer</p></div>
-								<div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
+								<div><div class = "upload_button">Choose File</div><!--<p class = "drag_hint">or drag &#x26; drop</p>--></div>
 							</div>
 
-							<div class = "upload_half half_2">
+							<!--<div class = "upload_half half_2">
 								<div><em class = "google_drive"></em><p class = "upload_hint">From your Google Drive</p></div>
 								<div><div class = "upload_button upload_button_alone">Choose File</div></div>
-							</div>
+							</div>-->
 
 						</div>	
 
@@ -194,11 +194,11 @@
 
 
 
-	                        <div id = "privacy_tooltip" class="help-div fbar_helpers">
+	                        <!--<div id = "privacy_tooltip" class="help-div fbar_helpers">
                                 <div class="help-box">Edit privacy</div>
                                 <div class="help-wedge">
                                 </div>
-                            </div>
+                            </div>-->
 						</div>
 						<div id = "post_attachments" class = "notes_form_hide_content help_div_shower">
 							<span></span>
@@ -208,6 +208,13 @@
                                 </div>
                             </div>
 						</div>
+                        <div id="post_anon" class='check_wrap'>
+                            <input type='checkbox' id='flat_0' class='flat7c'/>
+                            <label for='flat7' class='flat7b'>
+                                <span class='move'></span>
+                            </label>
+                            <span class = 'comment_anon_text'>Post Anonymously</span>
+                        </div>
 
 						<div style = "-webkit-user-select: none;" class = "post_btn fresh_green_button" id = "post_btn">
 							Post
@@ -246,7 +253,7 @@
 
 
 
-<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id)); ?>
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id,'is_admin'=>$is_admin)); ?>
 
 
 

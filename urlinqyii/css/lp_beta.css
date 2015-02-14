@@ -13,8 +13,12 @@ border-top: none;
 
 border-bottom: none;
 font-family: 'Open Sans', sans-serif;
-overflow-x:hidden; 
-background:#edefed;;
+
+
+overflow: hidden; 
+
+
+background: rgba(18, 19, 20, 0.85);;
 
 
 position: relative;
@@ -23,15 +27,23 @@ position: relative;
 #login_error_popup{
     position: absolute;
     display: inline-block;
-    border: 1px solid black;
-    background-color: rgba(39, 41, 43, 0.92);
-    padding: 10px;
-    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(39, 41, 43, 0.64);
+    padding: 8px 10px;
+    border-radius: 4px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    font-weight: 500;
+    font-family: Avenir;
+    transition: 0;
+    font-size: 14px;
+    max-height: 25px;
     color: white;
-
+    width: auto;
 }
+
 #reset_password{
     display: inline-block;
+    margin-left: 0px;
 }
 #register_error_popup{
     position: absolute;
@@ -47,14 +59,15 @@ position: relative;
 .fb-like{
   position: absolute!important;
 right: 20px;
-bottom: 20px;
-display:block!important;
+bottom: 10px;
+
+  display: none!important;
 }
 
 div.lp_terms{
     position: absolute; 
     left: 16px; 
-    bottom: 12px; 
+    bottom: 7px; 
     width: 320px;
 
 }
@@ -64,6 +77,7 @@ div.lp_terms p.lp_terms_p{
 
     font-size: 10.8px;
     color: #777;
+    text-shadow: none;
 }
 
 div.lp_terms p.lp_terms_p a{
@@ -127,7 +141,6 @@ div.lp-main{
   bottom: 0px;
    
 
-  background-color: transparent;
 
 }
 
@@ -208,18 +221,19 @@ cursor:pointer;
 .registration-sec-texts{
     position: relative;
   
-    margin-top: 12px;
+    margin-top: 19px;
     padding: 0px 10px;
 }
 
 .registration-sec-texts input{
   border: 1px solid #d7d7d7;
   border-radius: 3px;
-  height: 36px;
+  height: 43px;
   color: rgb(41, 47, 51);
-  font-size: 14px; 
-  width: 308px;
-  padding: 8px 10px;
+  font-size: 16px; 
+  width: 368px;
+  padding: 10px 10px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); -webkit-transition: border linear .2s,box-shadow linear .2s; -moz-transition: border linear .2s,box-shadow linear .2s; -o-transition: border linear .2s,box-shadow linear .2s; transition: border linear .2s,box-shadow linear .2s;
 }
 
 button.FacebookConnect em{
@@ -268,7 +282,8 @@ margin: 0 auto;
 border:0;
 height: 60px;
 padding:0;
-max-width: 1140px;
+max-width: calc(57% + 275px);
+margin-left: 90px;
 }
 
 div.header{
@@ -287,6 +302,7 @@ img.logo{
   top: 15.5px;
   display: inline-block;
   float: left;
+  margin-left:10px;
   height: 32px;
 }
 
@@ -305,10 +321,10 @@ div.main-market-area{
   right: 0px;
   
 
-  height: 585px;
+  height: 100%;
   
 
-  /* overflow: hidden; */
+  overflow: hidden;
 
   top: 0px;
   
@@ -327,10 +343,10 @@ div.main-market-area{
 .main-content-wrap{
   background: transparent;
 
-  height: 585px;
+  height: 100%;
   /* overflow: hidden; */
   position: relative;
-  top: 0px;        
+  top: -60px;        
 }
 
 .footer-area{
@@ -347,17 +363,18 @@ div.main-market-area{
 div.signup-container{
     display: block;
     position: absolute;
-    width: 340.656315px;
-    top: 120px;
+    width: 400px;
+    top: 180px;
     border-radius: 8px;
-    left: 57%;
+    left: 50%;
     /* background: rgba(255, 255, 255, 0); */ padding: 4px;  z-index: 100;  
+    margin-left: -200px;
 }
 
 div.signup-form-wrap{
     border-radius: 6px; 
     background-color: rgba(255, 255, 255, 0.95); 
-    height: 425px;
+    height: 380px;
     position: relative;
     padding: 5px;  
     border: 1px solid rgba(105, 105, 105, 0.17);
@@ -427,31 +444,54 @@ div.signup-form-wrap div.footer-sec{
 div.header-sec-left h4.header{
     margin: 0;
  
-    font-weight: 200;
+    font-weight: 900;
     font-size: 32px;
     line-height: 44px;
-    color: rgb(49, 49, 49);
+    color: #fff;
     padding-left: 8px;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     font-family: Avenir;
+    font-size: 3.6em; letter-spacing: -2px; 
 }
 
 div.header-sec-left{
     display: inline-block;
 
     float: left;
-    width: 132px;
-    border-right: 2px solid rgba(49, 49, 49, 1);
+    width: auto;
     height: 42px;
-    padding-left: 33px;
+    padding-left: 0px;
+    padding-right: 19px;
 }
 
 div.header-sec{
-    top: 14px;
+    top: -72px;
 
     position: relative;
     height: 40px;
     margin-bottom: 20px;
+}
+
+div.forgot_password_2{
+    color: #FFF;
+
+    font-family: Avenir;
+    font-size: 12px;
+    font-weight: 100;
+    opacity: .8;
+    right: -13px;
+    float: right;
+    cursor: pointer;
+    top: 51px;
+    position: absolute;
+}
+
+div.forgot_password_2:hover{
+    opacity: 1;
+    text-decoration: underline;
+}
+div.forgot_password_2:active{
+    opacity: .5;
 }
 
 div.header-sec div.header-sec-right{
@@ -463,14 +503,14 @@ div.header-sec div.header-sec-right{
 
 div.header-sec-right div.time-to-signup{
 
-    font-size: 18px;
-    padding-left: 13px;
+    font-size: 22px;
+    
     
 
-    font-weight: 100;
+    font-weight: 400;
     
 
-    color: rgba(49, 49, 49, 1);
+    color: #fff;
     display: inline-block;
     float: left;
     
@@ -479,7 +519,7 @@ div.header-sec-right div.time-to-signup{
     font-family: Avenir;
     
 
-    width: 126px;
+    width: 148px;
 
     padding-top: 2px;
 
@@ -502,10 +542,11 @@ div.signup-slog{rgb(79, 82, 93)
 div.about_section{
 height: 270px;
 left: 100px;
-top: 87px;
+top: 68px;
 width: 485px;
 z-index:9999;
 position: absolute;
+display: none;
 }
 
 div.focus_area{
@@ -519,57 +560,45 @@ div.icon_section{
 height: 30%;
 margin-bottom: 28px;
 position: relative;
-width: 81px;
 border: 3px solid;
-border-radius: 3px;
+border-radius: 8px;
+width:100%;
+background: rgba(0, 0, 0, 0.45);
 }
 
 div.icon_section h5{
-  opacity:0;
   margin: 0px;
-  display:none;
   font-family: Avenir;
   top: 9px;
   width: 380px;
   color: rgba(255, 255, 255, 0.92);
   font-weight: 400;
-  font-size: 17px;
+  font-size: 19px;
+    opacity:1;
+  display:inline-block;
+
   left: 18px;
+  left: 92px;
   position: absolute;
   text-shadow: rgba(0, 0, 0, 1) 0 1px 0;
 }
 
-div.icon_section:hover h5{
-  display:inline-block;
-  opacity:1;
-  left: 92px;
-  -webkit-transition: opacity 550ms cubic-bezier(0.0, 0.0, 0.0, 1), left 550ms cubic-bezier(0.23, 0.5, 0.32, 1);
-  
-  transition: opacity 550ms cubic-bezier(0.0, 0.0, 0.0, 1), left 550ms cubic-bezier(0.23, 0.5, 0.32, 1);
-  
-}
-
-div.icon_section:hover{
-  width:100%;
-
-}
-
 div.icon_section.icon_green{
-    border-color: #01BE8D;
+    border-color: #2cd67c;
 
-    background: rgba(0, 39, 29, 0.7);
 }
 
 div.icon_section.icon_blue{
-    border-color: #22acd6;
+    border-color: #29afde;
   
-    background: rgba(0, 38, 50, 0.7);
 }
 
 div.icon_section.icon_red{
-    border-color: #de445d;
-  
-    background: rgba(60, 0, 10, 0.7);
+    border-color: #ff2674;
+}
+
+div.icon_section.icon_orange{
+    border-color: #FD793A;
 }
 
 div.icon_section em.icon_img{
@@ -594,22 +623,34 @@ em.icon_img.icon_img_b{
     height: 69px; 
     background-size: 82%!important;
     background-position: 11px -54px;
-  
+}
+
+em.icon_img.icon_img_o{
+    width: 80px; 
+    height: 69px; 
+    background-size: 82%!important;
+    background-position: 13px -174px;
 }
 
 em.icon_img.icon_img_r{
     width: 80px; 
-    height: 78px; 
-    background-position: 11px -112px;
+    height: 63px; 
+    background-position: 11px -115px;
   
 }
 
 div.registration-form{
+    position: relative;
 
+    top: -50px;
 }
 
 div.registration-form form.register{
 
+}
+
+.signup_password_field{
+  margin-top:11px!important;
 }
 
 #countdown{
@@ -655,9 +696,8 @@ div.registration-sec ul.account-types{
 list-style: none;
 margin: 0;
 padding: 0;
-margin-top: 0px;
 margin-left: 9px;
-position: absolute;
+position: relative;
 
 border:1px solid transparent; 
 }
@@ -668,9 +708,9 @@ div.fname-lname-sec input.lname{
 }
 
 ul.account-types li.account-type #account-type-label{
-    font-weight: 600; 
-    font-size: 14px; 
-    top: 38px; position: absolute;  
+    font-weight: 500; 
+    font-size: 16px; 
+    top: 41px; position: absolute;  
     pointer-events: none;
     cursor: pointer;
 
@@ -683,10 +723,10 @@ box-sizing: border-box;
 float: left;
 border: 1px solid #d7d7d7; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;    background: #fff;
 color: rgb(161, 163, 165);
-height: 62px;
+height: 68px;
 border-radius: 4px;
 position: relative;
-width: 154px;
+width: 184px;
 }
 
 ul.account-types li.account-type:hover{
@@ -715,9 +755,8 @@ ul.account-types li.account-type-chosen #account-type-label{
 }
 
 div.registration-sec-texts input:focus{
-outline: 5px auto -webkit-focus-ring-color;
-outline-offset: -2px;
-outline-color: #3B99FC;
+outline: none;
+border-color: #ccc;
 }
 
 [placeholder]::-webkit-input-placeholder {
@@ -731,7 +770,7 @@ outline-color: #3B99FC;
 
 button.SignUp{
 
-  width: 310px;
+  width: 369px;
   text-align: center;
 position: relative;
 display: block;
@@ -818,16 +857,18 @@ ul.account-types li.student label{
     background-image: url(../assets/account_type_icons.png); 
     background-position: center -9px;
 
-    margin-top: -1px;
+    margin-top: 1px;
     width: 76px;
     height: 38px;
-    margin-left: 37px;
+    margin-left: 49px;
     background-size: auto;
 }
 
 ul.account-types li.faculty label{
     background-image: url(../assets/account_type_icons.png); 
-    background-position: center -86px; margin-top: -1px; width: 76px; height: 38px; margin-left: 37px; background-size: auto;
+    background-position: center -86px; 
+    margin-top: 1px; width: 76px; height: 38px; 
+    margin-left: 49px; background-size: auto;
  
  
 }
@@ -897,16 +938,19 @@ position: relative;
   padding-left: 10px;
 
   padding-top: 14px;
-padding-bottom: 4px;
-font-size: 13px;
 
+  padding-bottom: 8px;
+
+  font-size: 14.5px;
+
+  margin-top: -10px;
   font-weight: 500;
 
   color: #222020;
 }
 
 div.fname-lname-sec input{
-    width: 149px;
+    width: 180px;
   
 }
 
@@ -914,6 +958,7 @@ div.fname-lname-sec{
     position: relative;
 
     height: 35px;
+    margin-top: 13px;
 }
 
 input#fname{
@@ -930,14 +975,14 @@ input#lname{
 div.signin-wrap{
   float: right;
   margin-top: 17px;
-  width: 50%;
+  width: auto;
   min-width: 378px;
   max-width: 644px;
   position:relative;
 }
 
 form#login{
-  width: 100%;
+    margin-top: -2px;
 }
 
 div.forgotPassword{
@@ -946,6 +991,57 @@ div.forgotPassword{
     float: right;
     top: 24px;
     position: relative;
+}
+
+input.forgot_password_submit_button{
+  background: none;
+font-size: 13.5px;
+color: #FFF;
+border: none;
+
+  margin-left: 4px;
+  font-family: Avenir;
+font-weight: 500;
+text-transform: capitalize;
+  padding-right: 0;
+}
+
+input.forgot_password_submit_button:hover{}
+input.forgot_password_submit_button:active{}
+
+input#reset_password_email{
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33);
+-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33);
+border: none;
+
+  padding: 5px 6px;
+
+  outline: none;
+  border-radius: 4px;
+font-size: 13.5px;
+}
+
+button#forgot_password{
+  margin-left: 12px;
+  background: none;
+  border: none;
+  color: #FFF;
+  font-family: Avenir;
+  padding: 0;
+  font-weight: 600;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+  opacity:.8;
+  font-size: 13px;
+  border-bottom:1px solid transparent;
+}
+
+button#forgot_password:hover{ 
+opacity:1;
+border-bottom: 1px solid #fff;
 }
 
 div.forgotPassword a{
@@ -980,6 +1076,9 @@ font-size: 12.5px;
 width: 33%;
 display: inline-block;
 padding: 8px 10px;
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33); 
+-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33); 
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33);    
 border: none;
 }
 
@@ -998,6 +1097,7 @@ border: none;
 margin-left: 10px;
 
 padding: 8px 10px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33); -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33);
 }
 
 button.SignIn{
@@ -1006,35 +1106,25 @@ position: relative;
 background-clip: padding-box;
 outline: none;
 border: none;
-padding-top: 6px;
-padding-bottom: 6px;
+padding-top: 8px;
+padding-bottom: 8px;
 overflow: hidden;
 height: auto;
 -moz-transition: all .1s ease;
 -webkit-transition: all .1s ease;
 transition: all .1s ease;
 right: -9px;
-text-shadow: 0 -1px rgba(213, 213, 213, 0.25);
 color: #FFFFFF;
 display: inline-block;
-
-  margin-left: 6px;
-  -moz-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
-
-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
-
--webkit-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
-margin-top: -3px;
 border-radius: 4px;
 font-size: 12.5px;
 border: 1px solid;
-background-color: rgba(71, 71, 71, 0.49);
-border-color: #868686 #8F8F8F #797979;
 font-weight: bold;
 text-align: center;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
-font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
+font-family: Avenir;
+background-color: rgba(71, 71, 71, 0.49); border-color: #000; -moz-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46); box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46); -webkit-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
 }
 
 button.SignIn:hover{
@@ -1249,16 +1339,14 @@ div.feature-description h1{
 }
 
 div.bottom-container{
-    position: relative;
+    position: absolute;
   
     width: 100%;
-    bottom: 0px;
-    left: -43px;
-    bottom: 0px;
-    height: 100px;
-    right: 0px; 
-    background-color: rgba(237, 239, 237, 0);
+    height: 100px; 
+    margin: 0 auto;
     z-index:100;
+    margin-top: -10px;
+    top: 90%;
 }
 
 /*
@@ -1313,7 +1401,6 @@ ul.color-border{
   font-size: 12px;
   margin: 0 auto;
   position: relative;
-  background: rgba(0, 0, 0, 0.21);
   padding: 0;
   margin-top: 29px;
   width: 360px;
@@ -1472,15 +1559,18 @@ display:none;
   left: 0px;
   min-width: 1300px;
   right: 0px;
+  -o-filter: blur(4.5px);
+  -ms-filter: blur(4.5px);
+  -moz-filter: blur(4.5px);
+  -webkit-filter: blur(4.5px);
+  filter: blur(4.5px);
   max-width: 100%;
   top: -60px;
   bottom:0px;
-  min-height:100%;
+  min-height: 100%;
   height:auto;
   width:auto;
   z-index:-100;
-  background-size:cover;
-  background-image:url(../assets/videoStart.jpg);
 }
 
 div.text-switcher{
@@ -1601,7 +1691,7 @@ div.grabber div.grabber-container{
 
 @media(max-width:1250px){
   div.signup-container{
-    left:652px;
+    left: 50%;
   }
   div.grabber{
 
@@ -1616,10 +1706,6 @@ div.grabber div.grabber-container{
     right: 20px;
   }
 
-  div.about_section{
-    display:none;
-  }
-
   div.main-market-area div.announcement_board{
     top: 70px;
     margin-left: -300px;
@@ -1628,28 +1714,30 @@ div.grabber div.grabber-container{
 
 @media(max-width:1080px){
   div.signup-container{
-    left:602px;
+    left: 50%;
   }
   div.grabber{
     left: 50%;
   }
+
 }
 
 
 
 @media(max-width:980px){
  div.signup-container{
-    left:572px;
+    left: 50%;
   
 }
+  div.about_section{
+    left:33px;
+  }
   div.grabber{
     left: 50%;
     text-align: center;
   }
 
-  div.about_section{
-    display:none;
-  }
+
 
 
   }
@@ -1669,6 +1757,10 @@ div.grabber div.grabber-container{
   }
   div.grabber{
     left: 50%;
+  }
+
+  div.about_section{
+    left:15px;
   }
 
   }
@@ -1781,6 +1873,10 @@ div.urlinq-marketing{
   height: 130px;
 }
 
+  div.about_section{
+    display:none;
+  }
+
 
 div.grabber{
   left: 50%;
@@ -1799,7 +1895,7 @@ div.signin-wrap{
   margin-left: 20px;
   width: 75%;
   right: -24px;
-  margin-top: 31px;
+  margin-top: 15px;
 }
 
 div.footer-sec button.FacebookConnect {
@@ -1807,7 +1903,7 @@ width: 409px;
 }
 button.SignUp{
   width:409px;
-  top:6px;
+  top: 14px;
 }
 
 div.or-head {
@@ -1816,6 +1912,7 @@ div.or-head {
 
 div.header-sec-right div.time-to-signup{
   padding-left: 22px;
+  padding-top: 6px;
 }
 
 ul.account-types li.student label {
@@ -1824,11 +1921,11 @@ margin-left: 64px;
 
 
 div.header-sec-left {
-width: 112px;
+width: auto;
 }
 
 div.header-sec-left h4.header{
-  margin-left: -30px;
+  margin-left: 0px;
 }
 div.fname-lname-sec input {
 width: 199px;
@@ -1850,14 +1947,14 @@ ul.account-types li.faculty label{
 div.signup-form-wrap {
 border-radius: 6px;
 background-color: #fff;
-height: 430px;
+height: 380px;
 padding: 5px;
 border: 1px solid rgba(105, 105, 105, 0.17);
 }
 
 img.logo {
-    padding-left:5px;
-  
+    padding-left:10px;
+    margin-left:10px;
     height: 27px;
     width: auto;
 }
@@ -1868,16 +1965,15 @@ position: fixed;
   position:absolute;
 
 width: 440px;
-top: 120px;
+top: 170px;
 margin-left: -220px;
 border-radius: 8px;
 left: 50%;
-background: rgba(255, 255, 255, 0);
+/* background: rgba(255, 255, 255, 0); */
 padding: 4px;
--webkit-box-shadow: 0 0 16px 4px rgba(0, 0, 0, .2);
--moz-box-shadow: 0 0 16px 4px rgba(0, 0, 0, .2);
+/* -webkit-box-shadow: 0 0 16px 4px rgba(0, 0, 0, .2); */
 z-index: 100;
-box-shadow: 0 0 16px 4px rgba(0, 0, 0, .2);
+/* box-shadow: 0 0 16px 4px rgba(0, 0, 0, .2); */
 }
 
 button.FacebookConnect span.buttonText{
@@ -1886,7 +1982,7 @@ button.FacebookConnect span.buttonText{
 
 .main-content-wrap {
 background: transparent;
-height: 650px;
+height: 100%;
 position: relative;
 }
 div.main-market-area{
@@ -1897,6 +1993,7 @@ div.main-market-area{
 {
 padding-left: 22px;
 padding-right: 22px;
+margin-left: 0px;
 }
 
 }
@@ -1906,13 +2003,17 @@ padding-right: 22px;
   display:none;
   } 
 
+  div.signin-wrap{
+    margin-top:25px;
+  }
+
   .top-bar{
     height:77px;
   }
 
   img.logo{
     height: 26px;
-    padding-top: 11px;
+    padding-top: 13px;
   }
 
   .announcement_board_writtable h4{
@@ -1967,8 +2068,8 @@ font-size: 14px!important;
 }
 
 body{
-  background-image:url(/src/videoStart.jpg);
   background-size:cover;
+  background: rgba(18, 19, 20, 0.85);
 }
 
 #countdown p.smallCD{
@@ -2040,6 +2141,8 @@ padding: 5px;
 
 
 }
+
+
 
 .announcement_board_writtable h4{
 font-family: Avenir;
@@ -2271,7 +2374,7 @@ height: 801px;
 }
 
 .top-bar{
-  height:100px;
+  height:77px;
 }
 
 img.logo{

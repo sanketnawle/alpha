@@ -33,6 +33,7 @@
         }
 
         public function actionAddNotificationID() {
+
             if(!isset($_POST['user_id']) || !isset($_POST['notification_id'])){
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
                 $this->renderJSON($data);
@@ -55,7 +56,30 @@
                 return;            
             }
 
-            $notification_id = str_replace(array(" "), "", $_POST['notification_id']);
+            $notification_id = str_replace(array(" ", "<", ">"), "", $_POST['notification_id']);
+
+
+            /*$sql = "SELECT * FROM IosNotifications WHERE notification_id = $notification_id;";
+            $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
+
+            foreach($device_notification_ids as $notification_id) {
+                $notification_id->delete;
+            }*/
+
+  //          $notiModel = IosNotifications::model()->find("notification_id=:notification_id", array(":notification_id"=>$notification_id));
+//            $notiModel->delete;
+
+
+
+$ios_notification = IosNotifications::model()->find('notification_id = :notification_id', array(':notification_id'=>$notification_id));
+if($ios_notification){
+    $ios_notification->user_id = $user_id;
+    $data = array('success'=>true);
+    $this->renderJSON($data);
+    return;
+}
+
+
             $ios_notification = new IosNotifications;
             $ios_notification->user_id = $user_id;
             $ios_notification->notification_id = $notification_id;
@@ -92,6 +116,7 @@
             $user_id = $_POST['user_id'];
             $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
 
+
             if (!$user) {
                 $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
                 $this->renderJSON($data);
@@ -105,6 +130,8 @@
                 return;   
             }
 
+            $notification_id = $_POST['notification_id'];
+
             $sql = "SELECT * FROM IosNotifications WHERE notification_id = $notification_id;";
             $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
 
@@ -114,55 +141,9 @@
 
         }
 
-        function notifyAlliOSDevicesForUserID($user_id, $message) {
-
-            $sql = "SELECT notification_id FROM IosNotifications WHERE user_id = $user_id;";
-            $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
-
-            foreach($device_notification_ids as $notification_id) {
-                pushNotify($message, $notification_id);
-            }
-        }
-         
-        function pushNotify($message, $notification_id) {
-
-            $deviceToken = $notification_id;
-            $passphrase = 'URPNCC@MondayCertificate';
-            $message = $message;
-
-            $ctx = stream_context_create();
-            stream_context_set_option($ctx, 'ssl', 'local_cert', '7ed48ded2e412732011227722ff356e9ca5bca05ck.pem');
-            stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
-
-            $fp = stream_socket_client(
-                'ssl://gateway.sandbox.push.apple.com:2195', $err,
-                $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
-
-            if (!$fp)
-                return array('success'=>false,'error_id'=>2,'error_msg'=>"Failed to connect: $err $errstr" . PHP_EOL);
-
-            $body['aps'] = array(
-                'alert' => $message,
-                'sound' => 'default'
-                );
-
-            $payload = json_encode($body);
-
-            $msg = chr(0) . pack('n', 32) . pack('H*', $deviceToken) . pack('n', strlen($payload)) . $payload;
-
-            $result = fwrite($fp, $msg, strlen($msg));
-
-            if (!$result)
-                return array('success'=>false,'error_id'=>3,'error_msg'=>"Failed to connect: $err $errstr" . PHP_EOL);
-            else
-                return array('success'=>true);
-
-            fclose($fp);
-        }
-
         public function actionGetUserPictureID() {
 
-            if (!isset($_GET['user_id']) && !isset($_GET['department_id']) && !isset($_GET['class_id']) && !isset($_GET['club_id'])) {
+            if (!isset($_GET['user_id']) && !isset($_GET['department_id']) && !isset($_GET['class_id']) && !isset($_GET['club_id']) && !isset($_GET['school_id'])) {
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
                 $this->renderJSON($data);
                 return;
@@ -183,6 +164,11 @@
                 }
             } else if (isset($_GET['club_id'])) {
                 $thing = Group::model()->find('group_id=:id', array(':id'=>$_GET['club_id']));
+                if ($thing) {
+                    $pictureFile = File::model()->find("file_id=:file_id",array(":file_id"=>$thing->picture_file_id));
+                }
+            } else if (isset($_GET['school_id'])) {
+                $thing = Group::model()->find('school_id=:school_id', array(':school_id'=>$_GET['school_id']));
                 if ($thing) {
                     $pictureFile = File::model()->find("file_id=:file_id",array(":file_id"=>$thing->picture_file_id));
                 }
@@ -818,6 +804,97 @@
         }
 
 
+
+        //Invite user to class/club/group
+        public function actionGroupInvite(){
+            if(!isset($_POST['origin_type']) || !isset($_POST['origin_id']) || !isset($_POST['to_user_id'])){
+                $data = array('success'=>false,'error_id'=>1,'error_msg'=>'all data not set');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
+            $user = $this->get_current_user($_POST);
+
+            if(!$user){
+                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user not logged in');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
+            $origin_type = $_POST['origin_type'];
+            $origin_id = $_POST['origin_id'];
+
+            if($origin_type != 'class' && $origin_type != 'club' && $origin_type != 'group'){
+                $data = array('success'=>false,'error_id'=>3,'error_msg'=>'invalid origin type');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+            $to_user_id = $_POST['to_user_id'];
+
+            if($user->user_id == $to_user_id){
+                $data = array('success'=>false,'error_id'=>3,'error_msg'=>'Cannot invite yourself');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+            $to_user = User::model()->find('user_id=:id', array(':id'=>$to_user_id));
+
+            if($to_user){
+
+                //make sure user isnt already apart of this group
+                if($origin_type == 'club' || $origin_type == 'group'){
+                    $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$to_user_id, ':group_id'=>$origin_id));
+                    if($group_user){
+                        $data = array('success'=>false,'error_id'=>3,'error_msg'=>'User is already apart of this group');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }else if($origin_type == 'class'){
+                    $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$to_user_id, ':class_id'=>$origin_id));
+                    if($class_user || $class_user->class->professor_id == $to_user_id){
+                        $data = array('success'=>false,'error_id'=>3,'error_msg'=>'User is already apart of this class');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }
+
+
+                //Check if an invite already exists for this user. If so, delete
+                $old_notification = Notification::model()->find("user_id=:user_id and origin_type=:origin_type and origin_id=:origin_id", array(':user_id'=>$to_user_id, ':origin_type'=>$origin_type, ':origin_id'=>$origin_id));
+                if($old_notification){
+                    $old_notification->delete();
+                }
+
+
+                include_once 'invite/invite.php';
+                send_invite($user->user_id,$to_user_id, $origin_id, $origin_type);
+
+
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>4,'error_msg'=>'user not valid');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
+        }
+
+
+
+
+
+
         public function actionCreateReply()
         {
             try {
@@ -1252,7 +1329,7 @@
 
             $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
             if($user){
-                $data = array('success'=>true,'clubs'=>$user->groups);
+                $data = array('success'=>true,'clubs'=>$user->clubs);
                 $this->renderJSON($data);
                 return;
             }else{
@@ -1676,7 +1753,7 @@
                 $data['class']['admins'] = $class->admins;
                 $data['class']['students'] = $class->students;
                 $data['class']['course'] = $class->course;
-                $data['class']['professor'] = $class->professorUser;
+                $data['class']['professor'] = $class->professor;
 
 
                 $user = $this->get_current_user($_GET);
@@ -1993,7 +2070,7 @@ public function actionLogin() {
                     $user_token->expires_at = date("Y-m-d H:i:s",strtotime("+1 week"));
                     $user_token->save(false);
 
-                    return array('success'=>true,'user_id'=>$user->user_id,'token'=>$token,'expires_at'=>$user_token->expires_at);
+                    return array('success'=>true,'user_id'=>$user->user_id,'token'=>$user_token->token,'expires_at'=>$user_token->expires_at);
                     //$this->renderJSON($data);
 
                 }else{ //user login failed
@@ -2293,18 +2370,20 @@ public function actionLogin() {
                 }
 
                 //If this user is not the professor, make sure he is an admin
-                if($user->user_id != $class->professor_id){
-                    $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$origin_id));
-                    if(!$class_user){
-                        $data = array('success'=>false,'error_id'=>3,'error'=>'user is not a member of this class');
-                        $this->renderJSON($data);
-                        return;
-                    }
+                if(!$this->is_urlinq_admin($user)){
+                    if($user->user_id != $class->professor_id){
+                        $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$origin_id));
+                        if(!$class_user){
+                            $data = array('success'=>false,'error_id'=>3,'error'=>'user is not a member of this class');
+                            $this->renderJSON($data);
+                            return;
+                        }
 
-                    if(!$class_user->is_admin){
-                        $data = array('success'=>false,'error_id'=>4,'error'=>'User is not authorized to upload a photo to this class');
-                        $this->renderJSON($data);
-                        return;
+                        if(!$class_user->is_admin){
+                            $data = array('success'=>false,'error_id'=>4,'error'=>'User is not authorized to upload a photo to this class');
+                            $this->renderJSON($data);
+                            return;
+                        }
                     }
                 }
 

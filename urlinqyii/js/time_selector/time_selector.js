@@ -165,13 +165,6 @@ jQuery(document).ready(function(){
         var $time_selector = $('#time_selector');
 
 
-        if($time_selector.is(':visible') && $last_selected_time_input.is($time_input)){
-            $time_selector.removeClass('active');
-            return;
-        }
-
-
-
 
 
         //Close the time input if there is one
@@ -182,11 +175,31 @@ jQuery(document).ready(function(){
         }
 
 
+
+
+
+        if($last_selected_time_input) {
+            if($time_selector.hasClass('active') && $last_selected_time_input.is($time_input)){
+                $last_selected_time_input = null;
+                //alert('LKJSDFOI');
+                $time_selector.removeClass('active');
+                return;
+            }
+        }
+
+
+
+
+
+
+
+
+
         //Get the position of this time input
         var input_position = $time_input.offset();
 
         //Set the position of the time selector to underneath this time input
-        $time_selector.css({'position': 'absolute'});
+        $time_selector.css({'position': 'fixed'});
         $time_selector.css({'top': (input_position.top + $time_input.height()).toString() + 'px'});
         $time_selector.css({'left': input_position.left.toString() + 'px'});
         $time_selector.css({'z-index': '9999'});

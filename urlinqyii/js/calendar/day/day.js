@@ -56,7 +56,7 @@ jQuery(document).ready(function(){
 
         var $window = $(window);
         var windowsize = $window.width();
-        var click_x_difference = windowsize - event.pageX;
+        var click_x_difference = event.pageX;
 
         //Add the event_id to the inspect_event_popup_month for easy access
         //Add the event_id to the inspect_event_popup_week for easy access
@@ -72,7 +72,7 @@ jQuery(document).ready(function(){
                 $create_day_event_popup.css('top', event.pageY + 15);
                 jQuery($create_day_event_popup).addClass("top_position");
                 if(click_x_difference <= 187){
-                    $create_day_event_popup.css('left', event.pageX - 328.5);
+                    $create_day_event_popup.css('right', event.pageX - 328.5);
                     jQuery($create_day_event_popup).addClass("right_position");
                 }
                 else{
@@ -83,7 +83,7 @@ jQuery(document).ready(function(){
                 $create_day_event_popup.css('top', event.pageY - 230);
                 jQuery($create_day_event_popup).removeClass("top_position");
                 if(click_x_difference <= 187){
-                    $create_day_event_popup.css('left', event.pageX - 328.5);
+                    $create_day_event_popup.css('right', event.pageX - 328.5);
                     jQuery($create_day_event_popup).addClass("right_position");
                 }
                 else{
@@ -93,7 +93,15 @@ jQuery(document).ready(function(){
 
             }
 
-            var inspect_event_text = format_event_date_text(this_date_obj) + " " +  date_to_am_pm_string(new_datetime(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new_datetime(this_date + ' ' + end_time));
+
+            var inspect_event_text = '';
+
+
+            if(this_time == '0-1:00:00'){
+                inspect_event_text = format_event_date_text(this_date_obj) + ' All day';
+            }else{
+                inspect_event_text = format_event_date_text(this_date_obj) + " " +  date_to_am_pm_string(new_datetime(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new_datetime(this_date + ' ' + end_time));
+            }
             $create_day_event_popup.find('#create_day_event_when').text(inspect_event_text);
 
 
@@ -109,7 +117,7 @@ jQuery(document).ready(function(){
                     $create_day_event_popup.css('top', event.pageY + 15);
                     jQuery($create_day_event_popup).addClass("top_position");
                     if(click_x_difference <= 187){
-                        $create_day_event_popup.css('left', event.pageX - 328.5);
+                        $create_day_event_popup.css('right', event.pageX - 328.5);
                         jQuery($create_day_event_popup).addClass("right_position");
                     }
                     else{
@@ -120,7 +128,7 @@ jQuery(document).ready(function(){
                     $create_day_event_popup.css('top', event.pageY - 230);
                     jQuery($create_day_event_popup).removeClass("top_position");
                     if(click_x_difference <= 187){
-                        $create_day_event_popup.css('left', event.pageX - 328.5);
+                        $create_day_event_popup.css('right', event.pageX - 328.5);
                         jQuery($create_day_event_popup).addClass("right_position");
                     }
                     else{
@@ -368,10 +376,11 @@ jQuery(document).ready(function(){
         var event_all_day = false;
 
 
-        if(event_end_date == '0-1:00:00'){
+
+
+        if(event_start_time == '0-1:00:00'){
             event_all_day = true;
         }
-
 
 
         //Convert to UTC for the database
@@ -379,7 +388,7 @@ jQuery(document).ready(function(){
         var event_start_datetime = local_to_utc(new_datetime(event_start_date + ' ' + event_start_time));
         var event_end_datetime = local_to_utc(new_datetime(event_end_date + ' ' + event_end_time));
 
-        event_start_date = date_to_string(event_start_datetime);
+        event_start_date = date_to_string(event_end_datetime);
         event_start_time = datetime_to_time_string(event_start_datetime);
 
         event_end_date = date_to_string(event_end_datetime);
@@ -388,25 +397,28 @@ jQuery(document).ready(function(){
 
 
 
-        var post_data = {
-            event:{
-                event_name: event_name,
-                origin_type: event_origin_type,
-                origin_id: event_origin_id,
-                event_type: event_category,
-                title: event_name,
-                description: event_description,
-                start_time: event_start_time,
-                end_time: event_end_time,
-                start_date: event_start_date,
-                end_date: event_end_date,
-                location: event_location,
-                event_todo: event_todo,
-                all_day: event_all_day
+
+
+         var post_data = {
+             event:{
+                 event_name: event_name,
+                 origin_type: event_origin_type,
+                 origin_id: event_origin_id,
+                 event_type: event_category,
+                 title: event_name,
+                 description: event_description,
+                 start_time: event_start_time,
+                 end_time: event_end_time,
+                 start_date: event_start_date,
+                 end_date: event_end_date,
+                 location: event_location,
+                 event_todo: event_todo,
+                 all_day: event_all_day
             }
         };
 
-        console.log(post_data);
+
+
 
         $.post(
             post_url,
