@@ -524,8 +524,6 @@ function ready(globals){
 
     $(document).on('click', '.post_event_calendar_button', function(){
 
-        alert('aslkdjaasdasdsd');
-
 
         var $calendar_button = $(this);
 
@@ -535,7 +533,7 @@ function ready(globals){
 
         var $event_post = $calendar_button.closest('.post[data-post_type="event"]');
 
-        if(!$event_post){
+        if(!$event_post.length){
             $event_post = $calendar_button.closest('.post[data-post_type="opportunity"]');
         }
 
