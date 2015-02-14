@@ -524,7 +524,7 @@ function ready(globals){
 
     $(document).on('click', '.post_event_calendar_button', function(){
 
-
+        alert('aslkdjaasdasdsd');
 
 
         var $calendar_button = $(this);
@@ -535,6 +535,10 @@ function ready(globals){
 
         var $event_post = $calendar_button.closest('.post[data-post_type="event"]');
 
+        if(!$event_post){
+            $event_post = $calendar_button.closest('.post[data-post_type="opportunity"]');
+        }
+
         var event_id = $event_post.attr('data-event_id');
 
         //alert(event_id);
@@ -544,7 +548,9 @@ function ready(globals){
 
 
         var post_url = globals.base_url + '/event/attend';
+
         var post_data = {event_id: event_id};
+
 
         $.post(
             post_url,

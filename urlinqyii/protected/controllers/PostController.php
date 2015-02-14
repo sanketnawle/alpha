@@ -144,11 +144,13 @@ class PostController extends Controller
     //            $model->last_activity =  = NOW();
 
 
-
-
-
-                $model->save(false);
+//
+//
+//
+//                $model->save(false);
                 $model->last_activity = $model->created_at;
+
+
 
                 $model->save(false);
 
@@ -177,8 +179,6 @@ class PostController extends Controller
                         $file_ary = $this->reArrayFiles($_FILES['file']);
 
                         foreach ($file_ary as $file) {
-
-
 
                             $file_data = file_upload2($file, 'post_files/');
 
@@ -301,13 +301,7 @@ class PostController extends Controller
                         $event->start_time = $now->format('H:i:s');
                         $event->end_time = $_POST['post']['opportunity']['end_time'];
                         $event->location = '';
-
-
                         $all_day = 0;
-                        if($_POST['post']['event']['all_day'] == true){
-                            $all_day = 1;
-                        }
-
 
                         $event->all_day = $all_day;
 

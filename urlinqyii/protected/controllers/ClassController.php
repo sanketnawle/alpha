@@ -278,20 +278,6 @@ class ClassController extends Controller
             $this->renderJSON($data);
             return;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 
 
