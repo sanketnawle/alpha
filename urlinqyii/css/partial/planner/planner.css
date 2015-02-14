@@ -91,20 +91,17 @@ hr.future_events_top_line{
 
 .entry_field_placeholder{
     position: relative;
-    width: 100px;
+    width: 75px;
     float: right;
     font-size: 11px;
+
     font-weight: 7000;
     height: 24px;
     text-transform: capitalize;
     top: -8px;
     cursor: pointer;
     padding-top: 8px;
-    left: 8px;
-}
-
-body#body_home .entry_field_placeholder{
-    width:75px;
+    left: 7px;
 }
 
 .entry_field_placeholder span{
@@ -829,13 +826,13 @@ top: 50%;
 .event:hover label:after{
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     filter: alpha(opacity=30);
-    opacity: 0.15;
+    opacity: 0.0;
 }
 
 .event label:hover:after{
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     filter: alpha(opacity=30);
-    opacity: 0.35;
+    opacity: 0.1;
 }
 
 .event input[type=checkbox]:checked + label:after{
@@ -850,6 +847,16 @@ top: 50%;
     color:#999!important;
 }
 
+.event.complete:hover div.event_origin > a{
+    color:#999;
+}
+
+div.event_origin > a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    color:#029acf!important;
+}
+
 
 .event_name {
     font-size: 13px;
@@ -860,6 +867,7 @@ top: 50%;
     -moz-osx-font-smoothing: grayscale; 
     -webkit-font-smoothing: antialiased;
     font-weight: 600;
+    cursor: default;
 }
 /* Set the background colors for the different types of events */
 
@@ -893,11 +901,6 @@ div.event_origin{
 div.event:hover div.event_origin > a{
     color: #029acf;
     
-}
-
-div.event_origin > a:hover{
-    text-decoration: underline;
-    cursor: pointer;
 }
 
 span.event_origin > a:active{
@@ -1125,11 +1128,14 @@ opacity:1;
     top: -1px;
     font-weight: 800;
     font-family: Avenir;
+    cursor: default;
 }
+
 
 div.event_origin{
     display: inline-block;
 }
+
 
 #event_date {
 

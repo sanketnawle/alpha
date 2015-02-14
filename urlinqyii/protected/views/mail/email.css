@@ -9,7 +9,6 @@
 
 img { 
 	max-width: 100%; 
-	margin-top: -4px;
 }
 .collapse {
 	margin:0;
@@ -64,21 +63,40 @@ td.urlinq_tri_color{
 }
 
 div.thought_leader_frame{
-    width: 115px;
+    width: 100px;
 
-    height: 115px;
+    height: 100px;
     margin: 0 auto;
     background: #FFF;
     position: relative;
     margin-top: -90px;
-    border-radius: 6px;
+    border-radius: 5px;
     padding: 3px;
 }
 
+div.thought_leader_frame_group{
+	width: 110px;
+    height: 110px;
+    margin: 0 auto;
+    background: #FFF;
+    position: relative;
+    margin-top: -90px;
+    border-radius: 5px;
+    padding: 3px;
+    
+	/* float:left; */
+    margin-left:40px;
+}
+
 div.thought_leader_picture{
-    width: 115px;
-	
-    height: 115px;
+    width: 110px;
+    height: 110px;
+    border-radius: 4px;
+}
+
+.thought_leader_picture_group{
+    width: 110px;
+    height: 110px;
     border-radius: 4px;
 }
 
@@ -106,13 +124,26 @@ div.tricolor_line.blue{
 
 p.target_copy{
     font-size: 17px;
-
     color: #777;
     text-align: center;
     margin: 0 auto;
     max-width: 480px;
     width: 80%;
     margin-top: 20px;
+}
+
+p.post_target_copy{
+	font-size: 16px;
+    
+	color: #575757;
+    
+	text-align: left;
+    margin: 0 auto;
+    
+	max-width: 700px;
+    width: 80%;
+    
+	margin-top: 7px;
 }
 
 p.callout {
@@ -122,6 +153,25 @@ p.callout {
 	text-align: center;
 	font-size: 18px;
 	font-weight: 400;
+}
+
+p.post_callout{
+	padding: 0px;
+	background-color: #FFF;
+	margin-bottom: 15px;
+	text-align: left;
+	font-size: 18px;
+	border-bottom: 1px solid #777;
+	margin-left:40px;
+	font-weight: 400;	
+	padding-bottom: 6px;
+	margin-right:40px;
+}
+
+td.intro{
+color:#FFF;
+font-size:20px;
+padding-left:10px;
 }
 
 p.footer_text{
@@ -144,13 +194,80 @@ p.footer_text a{
 
 .thought_leader_name{
     margin: 0 auto;
-
     text-align: center;
     padding: 7px 0;
     font-size: 25px;
     font-weight: 600;
     padding-bottom: 0;
 }
+
+.post_thought_leader_name{
+    margin: 0 auto;
+    text-align: left;
+    padding: 7px 0;
+    font-size: 21px;
+    font-weight: 600;
+    padding-bottom: 0;
+    margin-left: 40px;
+}
+
+p.event_title{
+    margin: 0 auto;
+    text-align: left;
+    padding: 7px 0;
+    font-size: 21px;
+    font-weight: 600;
+    padding-bottom: 0;
+    margin-left: 40px;
+}
+
+.post_thought_leader_name > a{
+    color: #222;
+	
+    text-decoration: none;
+}
+
+p.target_copy_title{
+    font-size: 21px; color: #222; text-align: left; margin: 0 auto; 
+    max-width: 700px; width: 80%; margin-top: 16px;
+
+}
+
+a.group_link_btn{
+    background: #029acf; margin: 0 auto; display: block; margin-top: 18px; 
+    max-width: 250px; 
+    display: inline-block;
+    width: 80%; 
+    border-radius: 4px;
+    padding: 10px 0; 
+    margin-left: 2px;
+    font-size: 18px; border-bottom: 2px solid rgba(0, 0, 0, 0.21);
+
+    margin-bottom: 6px;
+    margin-left: 40px;
+}
+
+p.reply_text{
+    display: inline;
+
+    color: #777;
+    font-weight: 200;
+    display: block;
+    margin-left: 2px;
+    margin-bottom: 24px;
+    margin-left: 40px;
+}
+
+span.post_details{
+    color: #575757;
+
+}
+
+span.post_details > a.section_course_name{
+    color: #029acf;
+    text-decoration: none;
+}
+
 
 .thought_leader_name a{
     color: #222;
@@ -189,13 +306,24 @@ a.ms { background-color: #000!important; }
 ------------------------------------- */
 table.head-wrap { width: 100%;}
 
-.header.container table td.logo { 
+img.logo { 
 padding: 15px;
-width: 74px;
+width: 114px;
 left: 7px;
 position: relative;
-height: 34px;
+height: 26px;
 }
+
+img.logo.tricolor_float_logo{
+right: 0px;
+height: 26px;
+position: absolute;
+width: 114px;
+top: -50px;
+left: 50%;
+margin-lefT: -57px;
+}
+
 .header.container table td.label { padding: 15px; padding-left:0px;}
 
 
@@ -222,7 +350,7 @@ table.footer-wrap { width: 100%;	clear:both!important;
 		TYPOGRAPHY 
 ------------------------------------- */
 h1,h2,h3,h4,h5,h6 {
-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; line-height: 1.1; margin-bottom:15px; color:#000;
+ font-family: 'Open Sans', sans-serif; line-height: 1.1; margin-bottom:15px; color:#000;
 }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; text-transform: none; }
 
