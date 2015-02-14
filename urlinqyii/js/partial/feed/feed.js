@@ -522,27 +522,25 @@ function ready(globals){
     }
 
 
-    $(document).on('click', '.post_event_calendar_button', function(){
+    $(document).on('click', '.add_to_calendar_button', function(e){
 
 
         var $calendar_button = $(this);
 
         if($calendar_button.hasClass('added')){
             return;
+        }else{
+            e.stopPropagation();
         }
 
-        var $event_post = $calendar_button.closest('.post[data-post_type="event"]');
+//        var $event_post = $calendar_button.closest('.post[data-post_type="event"]');
+//
+//        if(!$event_post.length){
+//            $event_post = $calendar_button.closest('.post[data-post_type="opportunity"]');
+//        }
 
-        if(!$event_post.length){
-            $event_post = $calendar_button.closest('.post[data-post_type="opportunity"]');
-        }
-
-        var event_id = $event_post.attr('data-event_id');
-
-        //alert(event_id);
-
-        var origin_type = $event_post.attr('data-origin_type');
-        var origin_id = $event_post.attr('data-origin_id');
+//        var event_id = $event_post.attr('data-event_id');
+        var event_id = $calendar_button.attr('data-event_id');
 
 
         var post_url = globals.base_url + '/event/attend';

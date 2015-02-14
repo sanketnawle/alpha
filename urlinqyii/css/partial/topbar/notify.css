@@ -220,11 +220,11 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
     opacity: 1;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .close {
-    height:  12px;
-    width:  12px;
+    height:  10px;
+    width:  8px;
     background-image: url(../../../assets/noti_sprite.png);
-    background-position:  2px -179px;
-    background-size:  600%;
+    background-position: 0px -174px;
+    background-size:  auto;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:not(.done):hover {
     background-color: rgba(245, 245, 245, 0.43);
@@ -294,3 +294,34 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
     -o-transform: scale(1);
     transform: scale(1);
 }
+
+
+.accept_invite_button {
+    cursor: pointer;
+}
+
+
+.notification_link * {
+    cursor: pointer;
+}
+
+.notification_link .message {
+    cursor: pointer;
+}
+
+.notification_link div.stamp  {
+    cursor: pointer;
+}
+
+.notification_link .time {
+    cursor: pointer;
+}
+
+
+.notification_follow_button {
+    margin-top: 30px;
+    margin-right: 5px;
+}
+
+
+

@@ -159,7 +159,6 @@ class PostController extends Controller
                 $post_id = $model->post_id;
 
 
-
                 //Changed by Alex. Dont echo
                 //This function should return JSON with a success flag and
                 //the post data if true
@@ -217,7 +216,7 @@ class PostController extends Controller
                         $event->location = $_POST['post']['event']['location'];
 
                         $all_day = 0;
-                        if($_POST['post']['event']['all_day'] == true){
+                        if(isset($_POST['post']['event']['all_day']) && $_POST['post']['event']['all_day'] == true){
                             $all_day = 1;
                         }
 
@@ -255,6 +254,7 @@ class PostController extends Controller
                                         }
                                     }
                                 }
+
                             }
                         }else if($event->origin_type == 'class'){
                             $class = ClassModel::model()->find('class_id=:id', array(':id'=>$event->origin_id));
@@ -969,6 +969,8 @@ class PostController extends Controller
                     $post->save(false);
                     if($post){
                         if($post->user_id != $user->user_id){
+
+                           include_once 'notification/notification.php';
                            send_notification('like',$user->user_id,$post->user_id,$post->post_id,'post');
                         }
                         $return_data = array('success'=>true);
@@ -1064,6 +1066,7 @@ class PostController extends Controller
         }
 
         try{
+
             //$post_id = $_POST['post_id'];
             $post_id = $_POST['post_id'];
 
@@ -1085,12 +1088,35 @@ class PostController extends Controller
 
                 if($reply){
 
-                if ($user->user_id != $reply_user->user_id) {
 
-                    //include_once "notification/notification.php"
-                    send_notification('reply', $user->user_id, $reply_user->user_id, $post->post_id, 'post');
+                    if($post->user_id != $user->user_id){
+                       include_once 'notification/notification.php';
+                       send_notification('reply',$user->user_id,$post->user_id,$post->post_id,'post');
+                    }
+//                    //Send notification to the creator of this post
+//                    if ($user->user_id != $post->user_id) {
+//                        //include_once "notification/notification.php"
+//                        send_notification('reply', $user->user_id, $post->user_id, $post->post_id, 'post');
+//                    }
 
-                }
+
+                    //Get all the users who liked this post
+                    $post_likes = PostLike::model()->findAllBySql('SELECT * FROM `post_like` WHERE post_id = ' . $post->post_id);
+
+
+                    //Send notification to everyone who liked this post except the user of the post
+                    //and the person sending the reply
+                    foreach($post_likes as $post_like){
+
+                        if($post_like->user_id != $post->user_id && $post_like->user_id != $user->user_id){
+                            include_once 'notification/notification.php';
+                            send_notification('reply', $user->user_id, $post_like->user_id, $post->post_id, 'post');
+                        }
+                    }
+
+
+                        //send_notification('reply', $user->user_id, 1, $post->post_id, 'post');
+
 
 //                {
 //                  "reply_id": "1",
