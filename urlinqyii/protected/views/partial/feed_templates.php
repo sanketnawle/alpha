@@ -972,9 +972,9 @@
 
 
                                 {{#ifCond user_attending '==' false}}
-                                    <div class='post_event_calendar_button'><span class = "add_to_cal_icon"></span>Add to Calendar</div>
+                                    <div class='post_event_calendar_button add_to_calendar_button' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon"></span>Add to Calendar</div>
                                 {{else}}
-                                    <div class='post_event_calendar_button added'><span class = "add_to_cal_icon added"></span>Attending</div>
+                                    <div class='post_event_calendar_button added' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>Attending</div>
                                 {{/ifCond}}
 
 
@@ -1079,9 +1079,9 @@
 
 
                                 {{#ifCond user_attending '==' false}}
-                                    <div class='post_event_calendar_button save_opportunity_btn'><span class = "add_to_cal_icon"></span>Save Opportunity</div>
+                                    <div class='post_event_calendar_button save_opportunity_btn add_to_calendar_button' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon"></span>Save Opportunity</div>
                                 {{else}}
-                                    <div class='post_event_calendar_button added save_opportunity_btn'><span class = "add_to_cal_icon added"></span>Saved</div>
+                                    <div class='post_event_calendar_button added save_opportunity_btn add_to_calendar_button' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>Saved</div>
                                 {{/ifCond}}
 
                                 <div class = "apply_by_div">

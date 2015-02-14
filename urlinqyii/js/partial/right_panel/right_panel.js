@@ -136,14 +136,18 @@ $(document).ready(function() {
         }
     });
     $(document).on('click','.suggested_user_follow_button',function(){
+        var $button = $(this);
+
         var $user_block = $(this).closest('.suggestion_block');
         var $follow_icon = $(this).find(".follow_icon");
         $(this).addClass("followed");
         $follow_icon.addClass("followed_icon");
-        var post_url = base_url+"/user/follow";
-        var post_data = {user_id:$user_block.attr('data-suggestion_id'),from_user_id: globals.user_id};
+        var post_url = base_url + "/user/follow";
+        //var post_data = {user_id:$user_block.attr('data-suggestion_id')};
+        var post_data = {user_id: $button.attr('data-user_id')};
         var suggest_type = $('.suggestion_type.active').attr('data-suggestion_type');
-        post_url
+
+
         $.post(post_url,post_data,function(){
             get_user_suggestions_data(base_url,suggest_type,$user_block);
         });
