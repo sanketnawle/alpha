@@ -7,11 +7,12 @@ div#reminders_section > div{
 }
 
 a.reminders_cal_link > div.blue_right_arrow {
-background-position: -39px -276px;
-width: 17px;
+background-position: -43px -276px;
+width: 10px;
 height: 14px;
 position: relative;
 top: 2px;
+margin-left:4px;
 }
 
 div.reminders_header.header{
@@ -29,21 +30,32 @@ div.reminders_header.header{
 
 ul.reminder_entries{
     list-style: none;
-
+    min-height: 55px;
     padding: 0;
     margin: 0;
 }
 
 div.reminders_footer{
-    margin-top: 4px;
-
+    margin-top: 10px;
+   
+    border-top: 1px solid rgba(255, 255, 255, 0.77);   
+    padding-top: 7px;
+    -moz-box-shadow: 0 1px 0px #E8E8E8 inset; 
+    -webkit-box-shadow: 0 1px 0px #E8E8E8 inset; 
+    box-shadow: 0 1px 0px #E8E8E8 inset;
 }
 
 div.reminders_footer > a{
     color: #029acf;
 
-    font-size: 13.5px;
+    font-size: 12.5px;
     font-weight: 200;
+    text-transform: capitalize;
+    float: left;
+}
+
+div.reminders_footer > a:hover{
+    text-decoration: underline;
 }
 
 
@@ -152,5 +164,26 @@ span.event_highlight{
     padding: 1px 2px;
     background-color: rgba(247, 42, 73, 0.12);  
     color: rgba(247, 42, 73, 1);
+}
+
+.no_reminders_container{
+    font-family: Avenir;
+
+    font-weight: 200;
+    text-transform: capitalize;
+    color: #999;
+    text-align: center;
+    font-size: 15px;
+    text-shadow: 1px 1px 1px #FFF;
+}
+
+.no_reminders_container .no_reminders_graphic{
+    background-image: url(../../../assets/no_reminders_graphic.png);
+
+    width: 33px;
+    height: 28px;
+    background-size: auto;
+    display: block;
+    margin: 20px auto 6px;
 }
 

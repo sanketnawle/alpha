@@ -20,10 +20,7 @@
 
                 </ul>
                 <div class="footer reminders_footer">
-                    <a class = "reminders_cal_link" href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">
-                        See full calendar
-                        <div class = "blue_right_arrow small_icon_map"></div>
-                    </a>
+                    <a class = "reminders_cal_link" href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">See full calendar<div class = "blue_right_arrow small_icon_map"></div></a>
                 </div>
             </div>
         </div>

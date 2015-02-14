@@ -184,9 +184,9 @@ border-top: 1px solid #e6e5e6;
 
 .body .header.row1 > .left a.arrow {
 background-image: url(http://localhost/alpha/urlinqyii/assets/calendar_page_assets.png);
-display: inline-block;
-width: 16px;
-height: 16px;
+display: block!important;
+width: 16px!important;
+height: 16px!important;
 margin-top: 7px;
 }
 .body span.grid-column {
