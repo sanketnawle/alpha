@@ -339,17 +339,23 @@ class SiteController extends Controller
 
     function actionSendUrlinqInviteEmailFunction(){
 
-        if(!isset($_POST['to_email']) || !isset($_POST['from_email']) || !isset($_POST['actor_name'])){
+        if(!isset($_POST['to_email']) || !isset($_POST['from_email'])){
             $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
             $this->renderJSON($data);
             return;
         }
 
-        $actor_name = $_POST['actor_name'];
+
         $to_email = $_POST['to_email'];
         $from_email = $_POST['from_email'];
 
+        $actor = $this->get_current_user($_POST);
 
+        if(!$actor){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid actor', 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
 
 
 
@@ -357,7 +363,7 @@ class SiteController extends Controller
         if (ERunActions::runBackground())
         {
 
-            ERunActions::runScript('send_invite_email',$params=array('to_email'=>$to_email, 'from_email'=>$from_email, 'actor_name'=>$actor_name),$scriptPath=null);
+            ERunActions::runScript('send_invite_email',$params=array('to_email'=>$to_email, 'from_email'=>$from_email, 'actor'=>$actor),$scriptPath=null);
 
             Yii::log('Sending urlinq invite to ' . $to_email);
 
@@ -413,12 +419,12 @@ class SiteController extends Controller
         }
 
 
-        $actor_name = $user->firstname . ' ' . $user->lastname;
+
 
         $from_email = 'team@urlinq.com';
 
 
-        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendUrlinqInviteEmailFunction',$postData=array('to_email'=>$email,'from_email'=>$from_email, 'actor_name'=>$actor_name),$contentType=null);
+        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendUrlinqInviteEmailFunction',$postData=array('to_email'=>$email,'from_email'=>$from_email),$contentType=null);
 
 
         $data = array('success'=>true);

@@ -549,7 +549,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 						
 						
 						<!-- A Real Hero (and a real human being) -->
-						<p style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;"><img src="http://beta.urlinq.com/assets/NYU_Email_hero.jpg" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;"></p><!-- /hero -->
+						<p style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;"><img src="<?php echo Yii::app()->getBaseUrl(true) . $actor->pictureFile->file_url; ?>" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;"></p><!-- /hero -->
 						<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #2BA6CB;">
 							<div class="thought_leader_frame" style="margin: 0 auto;padding: 3px;font-family: 'Open Sans', sans-serif;width: 100px;height: 100px;background: #FFF;position: relative;margin-top: -90px;border-radius: 5px;">
 							<img src="https://urlinq.com/team/photo_urlinq/kevin_0.jpg" style="background-size: cover;background-repeat: no-repeat;border-radius: 3px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;" height="100px" class="thought_leader_picture">
@@ -557,13 +557,13 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 						</a>					
 						<!-- Callout Panel -->
 						<p class="thought_leader_name" style="margin: 0 auto;padding: 7px 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: 600;font-size: 25px;line-height: 1.6;text-align: center;padding-bottom: 0;">
-							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #222;text-decoration: none;"><?php echo $actor_name; ?></a>
+							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #222;text-decoration: none;"><?php echo $actor->firstname . ' ' . $actor->lastname; ?></a>
 						</p>
 						<p class="callout" style="margin: 0;padding: 0px;font-family: 'Open Sans', sans-serif;margin-bottom: 15px;font-weight: 400;font-size: 18px;line-height: 1.6;background-color: #FFF;text-align: center;">
 							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #777;font-weight: 400;text-decoration: none;">has invited you to join Urlinq</a>
 						</p><!-- /Callout Panel -->
 
-						<a class="btn accept_btn" style="margin: 0 auto;padding: 14px 0;font-family: 'Open Sans', sans-serif;color: #FFF;text-decoration: none;background-color: #666;font-weight: 600;text-align: center;cursor: pointer;display: block;background: #1EC783;margin-top: 18px;max-width: 400px;width: 80%;font-size: 21px;border-bottom: 2px solid rgba(0, 0, 0, 0.21);border-radius: 5px;">Accept your Invitation</a>
+						<a href="<?php echo Yii::app()->getBaseUrl(true); ?>" class="btn accept_btn" style="margin: 0 auto;padding: 14px 0;font-family: 'Open Sans', sans-serif;color: #FFF;text-decoration: none;background-color: #666;font-weight: 600;text-align: center;cursor: pointer;display: block;background: #1EC783;margin-top: 18px;max-width: 400px;width: 80%;font-size: 21px;border-bottom: 2px solid rgba(0, 0, 0, 0.21);border-radius: 5px;">Accept your Invitation</a>
 						
 						
 						<p class="target_copy" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 17px;line-height: 1.6;color: #777;text-align: center;max-width: 480px;width: 80%;margin-top: 20px;">Urlinq provides you with access to all of the people, courses, clubs, and events at your university.</p>
