@@ -352,12 +352,12 @@ class PostController extends Controller
 
 
 
-                        $subject = 'Urlinq verification email';
-                        $event_id = $event->event_id;
-                        $user_id = $user->user_id;
-                        $to_email = $user->user_email;
-
-                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
+//                        $subject = 'Urlinq verification email';
+//                        $event_id = $event->event_id;
+//                        $user_id = $user->user_id;
+//                        $to_email = $user->user_email;
+//
+//                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
 
 
@@ -385,8 +385,8 @@ class PostController extends Controller
 
                                             $subject = 'Urlinq verification email';
                                             $event_id = $event->event_id;
-                                            $user_id = $user->user_id;
-                                            $to_email = $user->user_email;
+                                            $user_id = $event_user->user_id;
+                                            $to_email = $event_user->user->user_email;
 
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
@@ -414,6 +414,14 @@ class PostController extends Controller
                                             $event_user->event_id = $event->event_id;
                                             $event_user->color_id = get_random_color();
                                             $event_user->save(false);
+
+                                            $subject = 'Urlinq verification email';
+                                            $event_id = $event->event_id;
+                                            $user_id = $event_user->user_id;
+                                            $to_email = $event_user->user->user_email;
+
+                                            ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
+
 
                                         }
                                     }
