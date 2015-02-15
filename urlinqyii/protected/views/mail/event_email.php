@@ -25,7 +25,7 @@
                                 <tr>
                                     <td align="left" class="intro">Hi
                                     <span class=
-                                    "user_first_name">Laz,</span></td>
+                                    "user_first_name"><?php echo $user->firstname; ?>,</span></td>
 
                                     <td align="right" class="urlinq_tri_color">
                                         <img class="logo tricolor_float_logo"
@@ -78,7 +78,7 @@
                                         "margin-left: 40px;font-size: 21px;font-weight: 200;margin-right: 40px;border-bottom: 1px solid #777;margin-bottom: 20px;">
                                         <a href="http://www.urlinq.com" style=
                                         "font-weight:600;color: #222;text-decoration: none;">
-                                        Club Soccer</a> created an event.</p>
+                                        <?php echo $actor_name; ?></a> created an event in <?php echo $event->origin_type . ' ' . $origin_name; ?></p>
 
                                         <div class="date_month_box" style=
                                         "width: 82px; display: inline-block; height: 82px; border-radius: 5px; background: rgb(77, 77, 77); vertical-align: top; margin-left: 40px; border: 1px solid rgba(0, 0, 0, 0.08); border-bottom-width: 3px;margin-right:12px">
@@ -100,34 +100,25 @@
                                         <p class="target_copy_title" style=
                                         " display: inline-block; margin-top: -13px; font-size: 26px;">
                                             <span class="event_name" style=
-                                            " color: #121314;">Monthly Alumni
-                                            Reunion</span> <span class=
+                                            " color: #121314;"><?php echo $event->title; ?></span> <span class=
                                             "event_category" style=
                                             " color: #999; font-size: 15px; text-transform: uppercase;">
-                                            club meeting</span></p>
+                                            <?php echo $event->origin_type; ?> event</span></p>
 
                                             <p class="event_when_where" style=
                                             " display: inline-block;font-size: 17px; color: #222; margin-top: 2px;">
-                                            <span class="event_when">Saturday,
-                                            Feb 14 at 3:00 pm</span>
+                                            <span class="event_when"><?php echo $event->start_date; ?></span>
                                             <span class="vertical_bar">|</span>
                                             <span class="event_where" style=
-                                            " color: #009933;">Park</span></p>
+                                            " color: #009933;"><?php echo $event->location; ?></span></p>
 
                                             <p class=
                                             "post_target_copy event_description"
                                             style=
                                             " width: 88%;margin-top: 0px; border-top: 1px solid #d8d8d8; border-bottom: 1px solid #d8d8d8; padding: 12px 8px; margin-left: 0px;">
-                                            Recitations this week will be
-                                            canceled. Instead, I will be
-                                            hosting mandatory to attend
-                                            lectures at Stern. I will be
-                                            discussing the rise of Borgeoise
-                                            ideals during the decline of French
-                                            imperialism and advent of the
-                                            renessaince throughout the western
-                                            nations.</p>
-                                        </div><a class="btn group_link_btn"
+                                            <?php echo $event->description; ?>
+                                            </p>
+                                        </div><a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $event->origin_type . '/' . $event->origin_id; ?>" class="btn group_link_btn"
                                         style=
                                         " display: block; margin-bottom: 26px; margin-top: 20px;">See
                                         what's next <img src=

@@ -22,7 +22,7 @@ if (ERunActions::runBackground()){
 
     if($mail->send())
     {
-
+        Yii::log('', CLogger::LEVEL_ERROR, $mail->getError());
     }
     else
     {
