@@ -138,12 +138,15 @@
 
                                 {{/ifCond}}
                                 <span class='event_name'>{{title}}</span>
+                                {{#ifCond user_id '==' <?php echo $user->user_id;?>}}
+                                    <span class="edit_button" style="display: none;">edit</span>
+                                {{/ifCond}}
                                 <div class = "planner_event_date">
                                 {{#if future}}
                                     <div class="event_date_time date">{{formatted_date_time}}</div>
                                 {{/if}}
                                 {{#if start_time}}
-                                <div class='event_date_time'>at {{start_time}}</div>
+                                <div class='event_date_time'>at {{formatted_start_time}}</div>
                                 {{/if}}
                                 </div>
                             </div>
@@ -251,6 +254,13 @@
 		<script>
 		</script>
 
+        <div class = "edit_event_box" style="display: none">
+            <input type="text" id="edit_event_title" placeholder="title" >
+            <input type="text" id="edit_event_date" placeholder="date due" class="planner_edit date_input">
+            <input type="text" id="edit_event_time" placeholder="time due" class="planner_edit time_input">
+            <input type="button" id="submit_edit_event" value="Submit">
+            <input type="button" id="cancel_edit_event" value="Cancel">
+        </div>
 
 
 
