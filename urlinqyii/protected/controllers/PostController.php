@@ -161,9 +161,9 @@ class PostController extends Controller
             $this->renderJSON($data);
             return;
         }else {
-            $data = array('success'=>false,'error_id'=>'didnt run in background');
-            $this->renderJSON($data);
-            return;
+//            $data = array('success'=>false,'error_id'=>'didnt run in background');
+//            $this->renderJSON($data);
+//            return;
         }
 
 

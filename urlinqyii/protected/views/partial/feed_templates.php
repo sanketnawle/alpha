@@ -1,6 +1,14 @@
 <script id="post_template" type="text/x-handlebars-template">
                         <div id='{{last_activity}}'>
-                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}"  data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
+                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}'
+                                {{#ifCond anon '==' 1}}
+                                    {{#ifCond user_id '!=' origin_id}}
+                                        data-origin_id="{{origin_id}}"
+                                    {{/ifCond}}
+                                {{else}}
+                                     data-origin_id="{{origin_id}}"
+                                {{/ifCond}}
+                                 data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
                                     <div class="post_main">
                                         <div class = "post_type_marker reg_post_type">
                                             <span class = "post_type_icon"></span>
@@ -893,7 +901,15 @@
 
 
             <script id="post_event_template" type="text/x-handlebars-template">
-                <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-event_id='{{event.event_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}" data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
+                <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-event_id='{{event.event_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}'
+                {{#ifCond anon '==' 1}}
+                    {{#ifCond user_id '!=' origin_id}}
+                        data-origin_id="{{origin_id}}"
+                    {{/ifCond}}
+                {{else}}
+                    data-origin_id="{{origin_id}}"
+                {{/ifCond}}
+                data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
                     <div class = 'post_main event_post'>
                         <div class = "post_type_marker event_post_type">
                             <span class = "post_type_icon"></span>
@@ -1013,7 +1029,15 @@
             </script>
 
             <script id="post_opportunity_template" type="text/x-handlebars-template">
-                <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-event_id='{{event.event_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}" data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
+                <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-event_id='{{event.event_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}'
+                {{#ifCond anon '==' 1}}
+                    {{#ifCond user_id '!=' origin_id}}
+                        data-origin_id="{{origin_id}}"
+                    {{/ifCond}}
+                {{else}}
+                    data-origin_id="{{origin_id}}"
+                {{/ifCond}}
+                data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
                     <div class = 'post_main opportunity_post'>
 
                         <div class = 'post_head'>
