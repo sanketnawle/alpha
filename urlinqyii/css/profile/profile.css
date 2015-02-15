@@ -200,7 +200,7 @@ div#modal_controls.student_modal_controls_student{
     background-image: url(../../assets/small_icons.png);
 }
 #main_bar{
-    height: 90px;
+    height: 100px;
     border: 1px;
     background-color: #ffffff;
     border-bottom: 1px solid #f0f0f0;
@@ -244,30 +244,31 @@ div#modal_controls.student_modal_controls_student{
 }
 #name_info_wrapper{
     font-family: Avenir;
-    padding-top: 15px;
+    padding-top: 0px;
     padding-left: 18px;
     display: inline-block;
-    padding-bottom: 7px;
+    padding-bottom: 0px;
+    width: 400px;
 }
 #name_info{
     font-weight: 500;
     font-size: 23px;
-    display: inline-block;
+    display: block;
     font-family: Avenir;
+    padding-top: 11px;
 }
 #year_info,#university_info,#office_hours_info{
     display: inline-block;
-    padding-left: 10px;
     font-size: 14px;
     text-overflow: ellipsis;
     overflow: hidden;
     width: 577px;
     white-space: nowrap;
     position: relative;
-    top: 3px;
+    top: 5px;
 }
 #profile_tab_bar{
-    left: 20px;
+    left: 14px;
     height: 52px;
 
     display: block;
@@ -614,7 +615,7 @@ div.profile_tab div.profile_tab_content{
     float: left;
     height: 13px;
     display: inline-block;
-    width: 80%;
+    width: 85%;
     font-size: 11px;
     font-weight: 500;
     line-height: 18px;
@@ -627,7 +628,7 @@ div.profile_tab div.profile_tab_content{
     transition: color .15s ease-in-out;
     position: relative;
     /* top: 10px; */
-    padding-bottom: 12px;
+    padding-bottom: 10px;
     text-shadow: none!important;
     font-family: Avenir;
     cursor: default;
@@ -641,14 +642,14 @@ span.profile_tab_amount{
     font-size: 10px;
     top: -2px;
     left: 5px;
-    padding: 4px 7px;
+    padding: 4px 8px;
     text-shadow: 0 1px 0 rgba(0,0,0,0.2);
     position: relative;
     background: rgba(18, 19, 20, 0.61);
 }
 
 div.profile_tab.active .profile_tab_text{
-    color: #333!important;
+    color: #575757!important;
 
 }
 
@@ -663,7 +664,7 @@ div.profile_tab.active{
 }
 div.profile_tab.active div.profile_tab_content div.profile_tab_text{
 
-    border-bottom: 3px solid rgba(18, 19, 20, 0.61);
+    border-bottom: 3px solid rgba(87, 87, 87, 0.67);
 }
 
 div.profile_tab:hover{

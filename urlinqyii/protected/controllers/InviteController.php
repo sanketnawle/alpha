@@ -75,13 +75,8 @@ class InviteController extends Controller
                 $invite->choice = 1;
                 $invite->save(false);
 
-
+//
                 $this->delete_invite_notification($invite, $user);
-
-
-
-
-
                 $invite->delete(false);
 
                 $return_data = array('success'=>true, 'msg'=>'user is now attending event ' . $event_user->event_id);

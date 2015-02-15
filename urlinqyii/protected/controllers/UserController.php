@@ -17,19 +17,28 @@ class UserController extends Controller
             $this->renderJSON($data);
             return;
         }
-        $current_user_id = null;
-        if(isset($_POST['from_user_id'])){
-            $current_user_id = $_POST['from_user_id'];
-        }else {
-            $current_user_id = $this->get_current_user_id();
+//        $current_user_id = null;
+//        if(isset($_POST['from_user_id'])){
+//            $current_user_id = $_POST['from_user_id'];
+//        }else {
+//            $current_user_id = $this->get_current_user_id();
+//        }
+
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+
         }
+
+
+
         $follow_user_id = $_POST['user_id'];
 
-        $user_connection = UserConnection::model()->findBySql("SELECT * FROM `user_connection` WHERE `from_user_id`='$current_user_id' AND `to_user_id`='$follow_user_id'");
+        $user_connection = UserConnection::model()->findBySql("SELECT * FROM `user_connection` WHERE `from_user_id`='" . $user->user_id . "' AND `to_user_id`='$follow_user_id'");
 
         if(!$user_connection){
             $user_connection = new UserConnection;
-            $user_connection->from_user_id = $current_user_id;
+            $user_connection->from_user_id = $user->user_id;
             $user_connection->to_user_id = $follow_user_id;
             $user_connection->save(false);
 
@@ -202,7 +211,7 @@ class UserController extends Controller
                 }
 
                 $notification['invite_id'] = $invite->invite_id;
-                $notification['invite_choice'] = intval($invite->choice);
+                $notification['invite_choice'] = $invite->choice;
 
 
                 if($notification['origin_type'] == 'event'){
@@ -252,6 +261,11 @@ class UserController extends Controller
 
                     $notification['origin'] = $this->model_to_array($class);
                     $notification['origin']['name'] = $class->class_name;
+
+                    $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$notification['origin_id']));
+                    if($class_user){
+                        $notification['accepted'] = true;
+                    }
                 }else if($notification['origin_type'] == 'club' || $notification['origin_type'] == 'group'){
                     $group = Group::model()->find("group_id=:group_id", array(":group_id"=>$origin_id));
                     if(!$group){
@@ -262,6 +276,13 @@ class UserController extends Controller
 
                     $notification['origin'] = $this->model_to_array($group);
                     $notification['origin']['name'] = $group->group_name;
+
+                    $notification['accepted'] = false;
+
+                    $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$notification['origin_id']));
+                    if($group_user){
+                        $notification['accepted'] = true;
+                    }
                 }
             }
             elseif($notification_type == 'follow'){
@@ -273,6 +294,18 @@ class UserController extends Controller
                     continue;
                 }
                 $notification['origin'] = $this->get_model_associations($follow,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
+
+                $following_back = false;
+
+                $user_connection = UserConnection::model()->find('from_user_id=:from_user_id and to_user_id=:to_user_id', array(':from_user_id'=>$user->user_id, ':to_user_id'=>$follow->user_id));
+
+                if($user_connection){
+                    $following_back = true;
+                }
+
+
+
+                $notification['following_back'] = $following_back;
             }
             elseif($notification_type == 'reply'){
                 $reply = Reply::model()->find("reply_id=:reply_id", array(":reply_id"=>$origin_id));
@@ -283,9 +316,32 @@ class UserController extends Controller
                 }
 
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$reply->post_id));
-                $reply=$this->model_to_array($reply);
-                $reply['post']=$post;
-                $notification['origin']= $reply;
+                $reply = $this->model_to_array($reply);
+                $notification['origin'] = $this->model_to_array($post);
+                $notification['reply']= $reply;
+
+
+                if($post->origin_type == 'class'){
+                    $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post->origin_id));
+                    $notification['origin']['post_origin'] = $this->model_to_array($class);
+                    $notification['origin']['post_origin']['name'] = $class->class_name;
+                }else if($post->origin_type == 'group' || $post->origin_type == 'club'){
+                    $group = Group::model()->find('group_id=:id', array(':id'=>$post->origin_id));
+                    $notification['origin']['post_origin'] = $this->model_to_array($group);
+                    $notification['origin']['post_origin']['name'] = $group->group_name;
+                }else if($post->origin_type == 'department'){
+                    $department = Department::model()->find('department_id=:id', array(':id'=>$post->origin_id));
+                    $notification['origin']['post_origin'] = $this->model_to_array($department);
+                    $notification['origin']['post_origin']['name'] = $department->department_name;
+
+                }else if($post->origin_type == 'school'){
+                    $school = School::model()->find('school_id=:id', array(':id'=>$post->origin_id));
+                    $notification['origin']['post_origin'] = $this->model_to_array($school);
+                    $notification['origin']['post_origin']['name'] = $school->school_name;
+                }else{
+                    $notification['origin']['post_origin'] = null;
+                }
+
             }
             elseif($notification_type == 'like' || $notification_type == 'post'){
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$origin_id));
@@ -317,6 +373,36 @@ class UserController extends Controller
                     $notification['origin']['post_origin']['name'] = $school->school_name;
                 }else{
                     $notification['origin']['post_origin'] = null;
+                }
+
+
+                if($post->post_type == 'event'){
+                    $post_event = PostEvent::model()->find('post_id=:post_id', array(':post_id'=>$post->post_id));
+                    if($post_event){
+                        $event = $post_event->event;
+                        if($event){
+                            $notification['event'] = $this->model_to_array($event);
+
+                            $notification['event']['attending'] = false;
+
+                            //Check if this user is attending this event
+                            if($notification['event']['user_id'] == $user->user_id){
+                                $notification['event']['attending'] = true;
+                            }else{
+                                $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$notification['event']['event_id'], ':user_id'=>$user->user_id));
+                                if($event_user){
+                                    $notification['event']['attending'] = true;
+                                }
+                            }
+
+                        }else{
+                            unset($notifications[$i]);
+                            continue;
+                        }
+                    }else{
+                        unset($notifications[$i]);
+                        continue;
+                    }
                 }
 
 

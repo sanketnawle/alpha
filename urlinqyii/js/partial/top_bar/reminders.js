@@ -42,13 +42,25 @@ $(document).ready(function(){
 
     var $reminders = $('#reminders_section');
 
+   
 
 
     function get_reminders(){
         $.getJSON(globals.base_url + "/user/reminders", function(json_data){
+             first_request = true;
+
             if(json_data['success']){
-                reminders = json_data['reminders'];
-                update_reminders_div();
+
+                if(json_data['reminders'].length == 0 && first_request){
+                    var $reminders_container = $("ul.reminder_entries");
+                    $reminders_container.html("<div class = 'no_reminders_container'><span class = 'no_reminders_graphic'></span>No upcoming</div>");
+                }else{
+                    reminders = json_data['reminders'];
+                    update_reminders_div();
+                }
+
+                
+                first_request = false;                
             }else{
                 console.log('Error getting reminders.');
             }

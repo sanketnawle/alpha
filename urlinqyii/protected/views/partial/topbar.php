@@ -169,19 +169,41 @@
 
 
 <script id='notification_template' type="text/x-handlebars-template">
-    <li class="per notification" data-id='{{notification_id}}' data-type="{{type}}" data-status='{{status}}'>
+
+
+
+    {{#if origin.post_origin}}
+        <li class="per notification notification_link" data-url='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}' data-id='{{notification_id}}' data-type="{{type}}" data-status='{{status}}'>
+
+    {{else}}
+        <li class="per notification" data-id='{{notification_id}}' data-type="{{type}}" data-status='{{status}}'>
+    {{/if}}
+
+
+
+
         <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{actor.pictureFile.file_url}}')"></div>
         <div class="content">
             <div class="right">
                 {{#ifCond type '==' 'follow'}}
+
+
                     {{#if following_back}}
-                        <div class="follow msg">Following</div>
+                        <div class = "suggestion_btn_wrapper notification_follow_button">
+                            <span class = "follow_icon"></span>Following
+                        </div>
                     {{else}}
-                        <div class="follow btn">Follow</div>
+
+                        <div class = "suggestion_btn_wrapper notification_follow_button">
+                            <a role = "button" class = "suggested_user_follow_button" data-user_id={{origin.user_id}}>
+                                <span class = "follow_icon"></span>Follow
+                            </a>
+                        </div>
+                        <!--<div class="follow btn">Follow</div>-->
                     {{/if}}
                 {{/ifCond}}
 
-                <div class="close"></div>
+                <div class="close delete_notification"></div>
             </div>
 
 
@@ -194,11 +216,27 @@
             {{/ifCond}}
 
             {{#ifCond type '==' 'reply'}}
-                <div class="message">{{actor.firstname}} {{actor.lastname}} replied to your post: {{origin.reply_msg}}</div>
+
+                {{#ifCond origin.user_id '==' '<?php echo $user->user_id; ?>'}}
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} replied to your post{{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{reply.reply_msg}}</div>
+                {{else}}
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} replied to a post{{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{reply.reply_msg}}</div>
+                {{/ifCond}}
             {{/ifCond}}
 
             {{#ifCond type '==' 'post'}}
-                <div class="message">{{actor.firstname}} {{actor.lastname}} posted{{#if origin.post_origin}} in <a href='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}'>{{origin.post_origin.name}}</a>{{/if}}: {{origin.text}}</div>
+                {{#ifCond origin.post_type '==' 'event'}}
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} posted event {{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{event.title}}</div>
+
+                    {{#if event.attending}}
+                        <div class="message">Added to calendar</div>
+                    {{else}}
+                        <div class="add_to_calendar_button" data-event_id='{{event.event_id}}'>Add to calendar</div>
+                    {{/if}}
+                {{else}}
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} posted{{#if origin.post_origin}} in <a href='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}'>{{origin.post_origin.name}}</a>{{/if}}: {{origin.text}}</div>
+                {{/ifCond}}
+
             {{/ifCond}}
 
             {{#ifCond type '==' 'invite'}}
@@ -226,11 +264,11 @@
                 {{#ifCond origin_type '==' 'club'}}
                     <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the club {{origin.group_name}}</div>
 
-                    {{#ifCond invite_choice '==' 0}}
-                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>Join club</div>
-                    {{else}}
+                    {{#if accepted}}
                         <div class="message">Member</div>
-                    {{/ifCond}}
+                    {{else}}
+                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>Join club</div>
+                    {{/if}}
                 {{/ifCond}}
 
                 {{#ifCond origin_type '==' 'group'}}
@@ -260,7 +298,13 @@
                 <div class="stamp">{{formatted_created_time}}</div>
             </div>
         </div>
+
+        {{#if origin.post_origin}}
+            </a>
+        {{/if}}
     </li>
+
+
 
 
 

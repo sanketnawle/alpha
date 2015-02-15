@@ -2163,7 +2163,7 @@ div.group_info_boxes.group_desc_box .group_info_block{
 .group_info_block_new.upload_cover_container{ background: rgba(18, 19, 20, 0.85); 
     border-radius: 0 1.5px 1.5px 0; color: #fff; font-size: 12.5px; -moz-box-shadow: 0px 0 3px rgba(0,0,0,0.5); -webkit-box-shadow: 0px 0 3px rgba(0,0,0,0.5); box-shadow: 0px 0 3px rgba(0,0,0,0.5);
     position: absolute;
-    left: 2px;
+    left: 0px;
     padding:2.5px 8px;
     top: 60px;
     float: left;
