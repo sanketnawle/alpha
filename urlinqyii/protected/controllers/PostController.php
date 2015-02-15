@@ -355,7 +355,7 @@ class PostController extends Controller
                         $subject = 'Urlinq verification email';
                         $event_id = $event->event_id;
                         $user_id = $user->user_id;
-                        $to_email = $user->user_email;
+                        $to_email = 'afl294@nyu.edu';
 
                         ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
