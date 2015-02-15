@@ -165,6 +165,7 @@ $(document).ready(function(){
             post_url,
             post_data,
             function(response){
+                console.log(JSON.stringify(response));
                 //alert(JSON.stringify(response));
             }, 'json'
         );

@@ -374,7 +374,11 @@ class PostController extends Controller
 
                                 if($group_user && $group_user->is_admin || !$has_admin){
                                     $is_admin = true;
-                                    foreach($group->members as $member){
+                                    //foreach($group->members as $member){
+
+                                    //We want to send the email to all group members, not
+                                    //just the members
+                                    foreach($group->users as $member){
                                         if($member->user_id != $user->user_id){
                                             include_once 'color/color.php';
                                             $event_user = new EventUser;
