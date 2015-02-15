@@ -93,7 +93,7 @@
                 <div class="notify board">
                     <div class="button">
                         <div class="icon"></div>
-                        <div class = "icon_text">Notices</div>
+                        <div class = "icon_text">Notices<div id='new_notification_count'></div></div>
                     </div>
 
 
@@ -216,7 +216,12 @@
             {{/ifCond}}
 
             {{#ifCond type '==' 'reply'}}
-                <div class="message">{{actor.firstname}} {{actor.lastname}} replied to your post: {{origin.reply_msg}}</div>
+
+                {{#ifCond origin.user_id '==' '<?php echo $user->user_id; ?>'}}
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} replied to your post{{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{reply.reply_msg}}</div>
+                {{else}}
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} replied to a post{{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{reply.reply_msg}}</div>
+                {{/ifCond}}
             {{/ifCond}}
 
             {{#ifCond type '==' 'post'}}

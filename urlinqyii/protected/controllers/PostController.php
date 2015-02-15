@@ -283,6 +283,20 @@ class PostController extends Controller
 
 
                         $post_data['event'] = $this->model_to_array($event);
+
+
+                        if($model->origin_type == 'class'){
+                            $class_user = ClassUser::model()->find('class_id=:class_id and user_id=:user_id', array(':class_id'=>$model->origin_id, ':user_id'=>$user->user_id));
+                            if($class_user){
+                                $post_data['event']['color'] = $class_user->color;
+                            }
+                        }else if($model->origin_type == 'group' || $model->origin_type == 'club'){
+                            $group_user = GroupUser::model()->find('group_id=:group_id and user_id=:user_id', array(':group_id'=>$model->origin_id, ':user_id'=>$user->user_id));
+                            if($group_user){
+                                $post_data['event']['color'] = $group_user->color;
+                            }
+                        }
+
                     }else if($model->post_type == 'opportunity'){
 
 
@@ -314,6 +328,18 @@ class PostController extends Controller
                         $post_event->save(false);
 
                         $post_data['event'] = $this->model_to_array($event);
+
+                        if($model->origin_type == 'class'){
+                            $class_user = ClassUser::model()->find('class_id=:class_id and user_id=:user_id', array(':class_id'=>$model->origin_id, ':user_id'=>$user->user_id));
+                            if($class_user){
+                                $post_data['event']['color'] = $class_user->color;
+                            }
+                        }else if($model->origin_type == 'group' || $model->origin_type == 'club'){
+                            $group_user = GroupUser::model()->find('group_id=:group_id and user_id=:user_id', array(':group_id'=>$model->origin_id, ':user_id'=>$user->user_id));
+                            if($group_user){
+                                $post_data['event']['color'] = $group_user->color;
+                            }
+                        }
                     }
 
                     //echo $post_id = $model->post_id;
@@ -1091,7 +1117,7 @@ class PostController extends Controller
 
                     if($post->user_id != $user->user_id){
                        include_once 'notification/notification.php';
-                       send_notification('reply',$user->user_id,$post->user_id,$post->post_id,'post');
+                       send_notification('reply',$user->user_id,$post->user_id,$reply->reply_id,'reply');
                     }
 //                    //Send notification to the creator of this post
 //                    if ($user->user_id != $post->user_id) {
@@ -1100,19 +1126,39 @@ class PostController extends Controller
 //                    }
 
 
+
+                    //List of user id's who we need to notify
+                    $user_id_list = array();
+
                     //Get all the users who liked this post
                     $post_likes = PostLike::model()->findAllBySql('SELECT * FROM `post_like` WHERE post_id = ' . $post->post_id);
-
 
                     //Send notification to everyone who liked this post except the user of the post
                     //and the person sending the reply
                     foreach($post_likes as $post_like){
+                        if($post_like->user_id != $post->user_id && $post_like->user_id != $user->user_id && !in_array($post_like->user_id, $user_id_list)){
+                            array_push($user_id_list, $post_like->user_id);
 
-                        if($post_like->user_id != $post->user_id && $post_like->user_id != $user->user_id){
-                            include_once 'notification/notification.php';
-                            send_notification('reply', $user->user_id, $post_like->user_id, $post->post_id, 'post');
                         }
                     }
+
+                    $post_replies = Reply::model()->findAll('post_id=:post_id', array(':post_id'=>$post->user_id));
+                    //Send notification to everyone who liked this post except the user of the post
+                    //and the person sending the reply
+                    foreach($post_replies as $post_reply){
+                        if($post_reply->user_id != $post->user_id && $post_reply->user_id != $user->user_id && !in_array($post_reply->user_id, $user_id_list)){
+                            array_push($user_id_list, $post_reply->user_id);
+                        }
+                    }
+
+
+
+                    foreach($user_id_list as $notify_user_id){
+                        include_once 'notification/notification.php';
+                        send_notification('reply', $user->user_id, $notify_user_id, $reply->reply_id,'reply');
+                    }
+
+
 
 
                         //send_notification('reply', $user->user_id, 1, $post->post_id, 'post');

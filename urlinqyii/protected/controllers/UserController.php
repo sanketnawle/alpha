@@ -316,9 +316,32 @@ class UserController extends Controller
                 }
 
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$reply->post_id));
-                $reply=$this->model_to_array($reply);
-                $reply['post']=$post;
-                $notification['origin']= $reply;
+                $reply = $this->model_to_array($reply);
+                $notification['origin'] = $this->model_to_array($post);
+                $notification['reply']= $reply;
+
+
+                if($post->origin_type == 'class'){
+                    $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post->origin_id));
+                    $notification['origin']['post_origin'] = $this->model_to_array($class);
+                    $notification['origin']['post_origin']['name'] = $class->class_name;
+                }else if($post->origin_type == 'group' || $post->origin_type == 'club'){
+                    $group = Group::model()->find('group_id=:id', array(':id'=>$post->origin_id));
+                    $notification['origin']['post_origin'] = $this->model_to_array($group);
+                    $notification['origin']['post_origin']['name'] = $group->group_name;
+                }else if($post->origin_type == 'department'){
+                    $department = Department::model()->find('department_id=:id', array(':id'=>$post->origin_id));
+                    $notification['origin']['post_origin'] = $this->model_to_array($department);
+                    $notification['origin']['post_origin']['name'] = $department->department_name;
+
+                }else if($post->origin_type == 'school'){
+                    $school = School::model()->find('school_id=:id', array(':id'=>$post->origin_id));
+                    $notification['origin']['post_origin'] = $this->model_to_array($school);
+                    $notification['origin']['post_origin']['name'] = $school->school_name;
+                }else{
+                    $notification['origin']['post_origin'] = null;
+                }
+
             }
             elseif($notification_type == 'like' || $notification_type == 'post'){
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$origin_id));
