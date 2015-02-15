@@ -1,4 +1,7 @@
 <?php
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
 
 if(isset($_FILES))
     include_once "file_upload.php";
@@ -55,6 +58,120 @@ class PostController extends Controller
 
         return $file_ary;
     }
+
+
+    function actionSendGroupEventEmailFunction(){
+
+        if(!isset($_POST['to_email']) || !isset($_POST['event_id']) || !isset($_POST['user_id']) || !isset($_POST['subject'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'user not logged in', 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $to_email = $_POST['to_email'];
+        $subject = $_POST['subject'];
+        //$from_email = $_POST['from_email'];
+        $from_email = 'team@urlinq.com';
+
+        $user_id = $_POST['user_id'];
+
+        $to_user= User::model()->find('user_id=:user_id', array(':user_id'=>$user_id));
+
+        if(!$to_user){
+            $data = array('success'=>false,'error_id'=>3, 'error_msg'=> 'invalid user', 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        $event_id = $_POST['event_id'];
+
+        $event = Event::model()->find('event_id=:event_id', array(':event_id'=>$event_id));
+
+        if(!$event){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid event', 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $origin_type = $event->origin_type;
+        $origin_id = $event->origin_id;
+        $origin_name = '';
+
+        if($origin_type == 'class'){
+            $class = ClassModel::model()->find('class_id=:class_id', array(':class_id'=>$origin_id));
+            if($class){
+                $origin_name = $class->class_name;
+            }else{
+                $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid class', 'post'=>$_POST);
+                $this->renderJSON($data);
+                return;
+            }
+        }else if($origin_type == 'group' || $origin_type == 'club'){
+            $group = Group::model()->find('group_id=:group_id', array(':group_id'=>$origin_id));
+            if($group){
+                $origin_name = $group->group_name;
+            }else{
+                $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid group', 'post'=>$_POST);
+                $this->renderJSON($data);
+                return;
+            }
+        }else if($origin_type == 'department'){
+            $department = Department::model()->find('department_id=:department_id', array(':department_id'=>$origin_id));
+            if($department){
+                $origin_name = $department->department_name;
+            }else{
+                $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid department', 'post'=>$_POST);
+                $this->renderJSON($data);
+                return;
+            }
+        }
+        else if($origin_type == 'school'){
+            $school = School::model()->find('school_id=:school_id', array(':school_id'=>$origin_id));
+            if($school){
+                $origin_name = $school->school_name;
+            }else{
+                $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid school', 'post'=>$_POST);
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid origin ' . $origin_type, 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        if (ERunActions::runBackground()) {
+            ERunActions::runScript('send_event_email',$params=array('origin_name'=>$origin_name, 'to_user'=>$to_user, 'to_email'=>$to_email, 'from_email'=>$from_email, 'event'=>$event, 'subject'=>$subject, 'user'=>$user),$scriptPath=null);
+
+
+            $data = array('success'=>true,'error_id'=>'run');
+            $this->renderJSON($data);
+            return;
+        }else {
+            $data = array('success'=>false,'error_id'=>'didnt run in background');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+
+
+
 
 	public function actionCreate()
 	{
@@ -202,6 +319,8 @@ class PostController extends Controller
                     if($model->post_type == 'event'){
 
 
+
+
                         $event = new Event;
                         $event->title = $_POST['post']['event']['title'];
                         $event->description = $_POST['post']['event']['description'];
@@ -233,6 +352,17 @@ class PostController extends Controller
 
 
 
+//                        $subject = 'Urlinq verification email';
+//                        $event_id = $event->event_id;
+//                        $user_id = $user->user_id;
+//                        $to_email = $user->user_email;
+//
+//                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
+
+
+
+                        $is_admin = false;
+
 
                         if($event->origin_type == 'club' || $event->origin_type == 'group'){
                             $group = Group::model()->find('group_id=:id', array(':id'=>$event->origin_id));
@@ -243,6 +373,7 @@ class PostController extends Controller
                                 $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$group->group_id));
 
                                 if($group_user && $group_user->is_admin || !$has_admin){
+                                    $is_admin = true;
                                     foreach($group->members as $member){
                                         if($member->user_id != $user->user_id){
                                             include_once 'color/color.php';
@@ -251,7 +382,17 @@ class PostController extends Controller
                                             $event_user->event_id = $event->event_id;
                                             $event_user->color_id = get_random_color();
                                             $event_user->save(false);
+
+                                            $subject = 'Urlinq verification email';
+                                            $event_id = $event->event_id;
+                                            $user_id = $event_user->user_id;
+                                            $to_email = $event_user->user->user_email;
+
+                                            ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
+
                                         }
+                                        //$this->sendEventEmail($event_user->user,$event);
+
                                     }
                                 }
 
@@ -264,7 +405,7 @@ class PostController extends Controller
 
                                 $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$class->class_id));
                                 if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id || !$has_admin){
-
+                                    $is_admin = true;
                                     foreach($class->students as $member){
                                         if($member->user_id != $user->user_id){
                                             include_once 'color/color.php';
@@ -273,11 +414,34 @@ class PostController extends Controller
                                             $event_user->event_id = $event->event_id;
                                             $event_user->color_id = get_random_color();
                                             $event_user->save(false);
+
+                                            $subject = 'Urlinq verification email';
+                                            $event_id = $event->event_id;
+                                            $user_id = $event_user->user_id;
+                                            $to_email = $event_user->user->user_email;
+
+                                            ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
+
+
                                         }
                                     }
                                 }
                             }
                         }
+//
+//                        data = {
+//                            'to_email': 'afl294@nyu.edu',
+//                            'event_id': '337',
+//                            'origin_id': '1',
+//                            'origin_type': 'club',
+//                            'subject': 'TEST EVENT EMAIL',
+//
+//                            'origin_name': 'Arcane Studies',
+//                            'actor_name': 'Alex Lopez'
+//                        }
+
+
+
 
 
 

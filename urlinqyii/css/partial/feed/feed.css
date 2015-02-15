@@ -1021,16 +1021,12 @@ margin-left: 0px;
 
 .comment_main .comment_msg{
 color: #3d3c40;
-font-size: 13.8px;
+font-size: 13px;
 line-height: 20px;
-
 -ms-word-break: break-all;
-
 // Non standard for webkit
 word-break: break-word;
-
 hyphens: auto;
-
 position: relative;                     
 opacity: 1;   
 margin-bottom: 8px;
@@ -3684,6 +3680,8 @@ div.post_event_origin_holder div.post_event_origin > a{
     
     text-transform: capitalize;
 }
+
+div.post_event_origin_holder div.post_event_origin > a:hover{text-decoration: underline;}
 
 
 .post_event_content {

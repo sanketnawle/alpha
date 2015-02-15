@@ -91,7 +91,7 @@ hr.future_events_top_line{
 
 .entry_field_placeholder{
     position: relative;
-    width: 75px;
+    width: 105px;
     float: right;
     font-size: 11px;
 
@@ -102,6 +102,10 @@ hr.future_events_top_line{
     cursor: pointer;
     padding-top: 8px;
     left: 7px;
+}
+
+body#body_home .entry_field_placeholder{
+    width:75px;
 }
 
 .entry_field_placeholder span{
@@ -627,12 +631,12 @@ body.body_group input.event_title{
 
 .planner_event_header {
     display: block;
-    height: 10px;
+    height: 14px;
 
-    margin-top: 8px;
+    margin-top: 12px;
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 7px;
+    margin-bottom: 0px;
 
     font-size: 13px;
 }
@@ -877,7 +881,7 @@ div.event_origin > a:hover{
 }
 
 #past_events .checkbox_hint{
-    margin-top:-5px;
+    margin-top: -10px;
 }
 
 #past_events div.events_data_holder{

@@ -62,6 +62,8 @@ class SiteController extends Controller
 
         $user_id = Yii::app()->session['user_id'];
         $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+
+
         //Can specify specific layout inside view
         //$this->layout = 'new';
         $this->render('home',array('user'=>$user));
@@ -144,6 +146,10 @@ class SiteController extends Controller
 
 		}
     }
+
+
+
+
 
 
 

@@ -169,12 +169,11 @@ body#body_home #page{
 
 div#planner_column.planner_column_department .entry_field_placeholder
 {
-    width:30px!important;
+    width: 77px;
 }
 
 div#planner_column.planner_column_department .entry_field_placeholder span#add_todo_text
 {
-   display:none;
 }
 
 div#planner_column{
