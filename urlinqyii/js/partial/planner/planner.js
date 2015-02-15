@@ -303,20 +303,29 @@ $(document).ready(function(){
             event_origin_id = globals.user_id;
         }*/
         var event_id = $(this).closest('.edit_event_box').attr('data-event_id');
+        var $event=$('.event[data-event_id='+event_id+']');
+        var duration = new_datetime($event.attr('data-end_date')+' '+$event.attr('data-end_time')).getTime()
+            - new_datetime($event.attr('data-start_date')+' '+$event.attr('data-start_time')).getTime();
+        var end_datetime = new_datetime(event_datetime.getTime()+duration);
+        var event_end_date = date_to_string(end_datetime);
+        var event_end_time = addZero(end_datetime.getHours()).toString() + ':' + addZero(end_datetime.getMinutes()).toString() + ':' + addZero(end_datetime.getSeconds()).toString();
+        console.log(event_end_date+' '+event_end_time);
         var post_data = {event:{event_id:event_id,event_name:event_name,title:event_name
-            ,start_date:event_date,end_date:event_date,start_time:event_time,end_time:event_time} };
+            ,start_date:event_date,end_date:event_end_date,start_time:event_time,end_time:event_end_time} };
         //alert(JSON.stringify(post_data));
         $.post(
             post_url,
             post_data,
             function(response) {
                 if(response['success']){
-                    var $event=$('.event[data-event_id='+event_id+']');
+
                     $event.find('.event_name').text($('#edit_event_title').val());
                     $event.find('.event_date_time').text('at '+$('#edit_event_time').val());
                     $event.find('.event_date_time.date').text(formatted_date);
                     $event.attr('data-start_date',event_date);
                     $event.attr('data-start_time',event_time);
+                    $event.attr('data-end_date',event_end_date);
+                    $event.attr('data-end_time',event_end_time);
                     $('.edit_event_box').fadeOut(150);
                 }else{
                     alert(JSON.stringify(response));
