@@ -51,7 +51,7 @@ class FeedController extends Controller
         return $result;
     }
 
-    public function validatePrivacy($post_privacy, $origin_type=NULL, $origin_id=NULL){
+    public function validatePrivacy($post_privacy, $origin_type=NULL, $origin_id=NULL, $user){
         // privacy check starts
 //        echo "#".$post_privacy."#";
         if($post_privacy=="students_only" && self::$user->user_type!="s"){
@@ -67,7 +67,7 @@ class FeedController extends Controller
 //                echo $origin_id."**".$origin_type;
 
                 if($origin_type=="group" || $origin_type=="class") {
-                    $privacy_stmt = "SELECT * FROM " . $origin_type . "_user WHERE " . $origin_type . "_id=" . $origin_id . " AND user_id=" . self::$cur_user_id;
+                    $privacy_stmt = "SELECT * FROM " . $origin_type . "_user WHERE " . $origin_type . "_id=" . $origin_id . " AND user_id=" . $user->user_id;
                     $command = Yii::app()->db->createCommand($privacy_stmt);
                     if ($priv = $command->queryAll()) {
                         //                    echo "(cccccccccccc)".count(array($priv));
@@ -79,7 +79,7 @@ class FeedController extends Controller
                 elseif($origin_type == "profile"){
                     if($origin_id == self::$cur_user_id)
                         return TRUE;
-                    elseif(UserConnection::model()->findByPk(array('to_user_id'=>$origin_id,'from_user_id'=>self::$cur_user_id)))
+                    elseif(UserConnection::model()->findByPk(array('to_user_id'=>$origin_id,'from_user_id'=>$user->user_id)))
                         return TRUE;
                     else
                         return FALSE;
@@ -114,7 +114,7 @@ class FeedController extends Controller
         return $data;
     }
 
-    public function getReplies($posts){
+    public function getReplies($posts, $user){
 
         // setting reply_flag
         if(isset($_GET['reply'])) {
@@ -184,7 +184,7 @@ class FeedController extends Controller
 
                         $replies[$j]['user_info'] = self::getUserInfo($reply1['user_id'],"reply");
                         //                    echo "***".$j." ".$reply1['user_id']." ".self::$cur_user_id."***";
-                        if (intval($reply1['user_id']) == intval(self::$cur_user_id)) {
+                        if (intval($reply1['user_id']) == intval($user->user_id)) {
                             //                        echo "###".$j." ".$reply1['user_id']." ".self::$cur_user_id."###";
                             $replies[$j]['cownership'] = TRUE;
                         } else {
@@ -192,10 +192,12 @@ class FeedController extends Controller
                             $replies[$j]['cownership'] = FALSE;
                         }
 
-                        if($ex_model = ReplyVote::model()->findbypk(array('reply_id' => $reply1['reply_id'], 'user_id' => self::$cur_user_id)))
+                        if($ex_model = ReplyVote::model()->findbypk(array('reply_id' => $reply1['reply_id'], 'user_id' => $user->user_id))){
                             $replies[$j]['vote_status'] = $ex_model->vote_type;
-                        else
+                        }else{
                             $replies[$j]['vote_status'] = NULL;
+
+                        }
                     }
                 }
                 $posts[$i]['replies'] = $replies;
@@ -237,7 +239,7 @@ class FeedController extends Controller
 
         foreach($posts as $i=>$post){
 //            echo "#".$post['privacy']."*".$post['origin_type']."*".$post['origin_id']."#";
-            if(!self::validatePrivacy($post['privacy'],$post['origin_type'],$post['origin_id'])){
+            if(!self::validatePrivacy($post['privacy'],$post['origin_type'],$post['origin_id'], $user)){
 //                echo "here";
                 unset($posts[$i]);
                 continue;
@@ -551,7 +553,7 @@ class FeedController extends Controller
 
         $command = Yii::app()->db->createCommand($posts_sql_home);
         if($posts = $command->queryAll()){
-            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
+            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user), $user)));
         }else{
             $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
         }
@@ -600,7 +602,7 @@ class FeedController extends Controller
 
         $command = Yii::app()->db->createCommand($posts_sql_profile);
         if($posts = $command->queryAll()){
-            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts,$user))));
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts,$user), $user)));
             return;
         }else{
             $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
@@ -659,7 +661,7 @@ class FeedController extends Controller
 
         if($posts = $command->queryAll()){
             $this->renderJSON(array('success'=>true, 'is_member'=> $is_member, 'is_admin'=>$is_admin,
-            'feed'=>self::getReplies(self::addPostData($posts, $user))));
+            'feed'=>self::getReplies(self::addPostData($posts, $user), $user)));
             return;
         }else{
             $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
@@ -750,7 +752,7 @@ class FeedController extends Controller
 
 
         $posts = $this->models_to_array(Post::model()->findAllBySql($posts_sql_club));
-        $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
+        $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user), $user)));
         return;
 
 
@@ -838,7 +840,7 @@ class FeedController extends Controller
         $command = Yii::app()->db->createCommand($posts_sql_dept);
 
         if($posts = $command->queryAll()){
-            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts, $user), $user)));
             return;
         }else{
             $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
@@ -895,7 +897,7 @@ class FeedController extends Controller
 
 
         if($posts = $command->queryAll()){
-            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts, $user), $user)));
             return;
         }else{
             $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>array()));
