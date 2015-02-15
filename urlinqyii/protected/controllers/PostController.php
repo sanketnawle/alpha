@@ -283,6 +283,20 @@ class PostController extends Controller
 
 
                         $post_data['event'] = $this->model_to_array($event);
+
+
+                        if($model->origin_type == 'class'){
+                            $class_user = ClassUser::model()->find('class_id=:class_id and user_id=:user_id', array(':class_id'=>$model->origin_id, ':user_id'=>$user->user_id));
+                            if($class_user){
+                                $post_data['event']['color'] = $class_user->color;
+                            }
+                        }else if($model->origin_type == 'group' || $model->origin_type == 'club'){
+                            $group_user = GroupUser::model()->find('group_id=:group_id and user_id=:user_id', array(':group_id'=>$model->origin_id, ':user_id'=>$user->user_id));
+                            if($group_user){
+                                $post_data['event']['color'] = $group_user->color;
+                            }
+                        }
+
                     }else if($model->post_type == 'opportunity'){
 
 
@@ -314,6 +328,18 @@ class PostController extends Controller
                         $post_event->save(false);
 
                         $post_data['event'] = $this->model_to_array($event);
+
+                        if($model->origin_type == 'class'){
+                            $class_user = ClassUser::model()->find('class_id=:class_id and user_id=:user_id', array(':class_id'=>$model->origin_id, ':user_id'=>$user->user_id));
+                            if($class_user){
+                                $post_data['event']['color'] = $class_user->color;
+                            }
+                        }else if($model->origin_type == 'group' || $model->origin_type == 'club'){
+                            $group_user = GroupUser::model()->find('group_id=:group_id and user_id=:user_id', array(':group_id'=>$model->origin_id, ':user_id'=>$user->user_id));
+                            if($group_user){
+                                $post_data['event']['color'] = $group_user->color;
+                            }
+                        }
                     }
 
                     //echo $post_id = $model->post_id;

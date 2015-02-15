@@ -93,7 +93,7 @@
                 <div class="notify board">
                     <div class="button">
                         <div class="icon"></div>
-                        <div class = "icon_text">Notices</div>
+                        <div class = "icon_text">Notices<div id='new_notification_count'></div></div>
                     </div>
 
 
