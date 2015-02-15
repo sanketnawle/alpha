@@ -9,7 +9,7 @@ if (ERunActions::runBackground()){
         $from_email = $params['from_email'];
 
         $user = $params['user'];
-        $actor_name = $params['actor_name'];
+        $to_user = $params['to_user'];
 
         $event = $params['event'];
 
@@ -23,7 +23,7 @@ if (ERunActions::runBackground()){
 
 
 
-        $mail = new YiiMailer('event_email', array('user'=>$user, 'event'=>$event, 'origin_type'=>$origin_type, 'origin_id'=>$origin_id, 'origin_name'=>$origin_name, 'actor_name'=>$actor_name));
+        $mail = new YiiMailer('event_email', array('user'=>$user, 'event'=>$event, 'origin_type'=>$origin_type, 'origin_id'=>$origin_id, 'origin_name'=>$origin_name, 'to_user'=>$to_user));
         $mail->setFrom('team@urlinq.com', 'urlinq team');
         $mail->setSubject($subject);
         $mail->setTo($to_email);

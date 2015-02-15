@@ -62,7 +62,7 @@ class PostController extends Controller
 
     function actionSendGroupEventEmailFunction(){
 
-        if(!isset($_POST['to_email']) || !isset($_POST['event_id']) || !isset($_POST['actor_name']) || !isset($_POST['subject'])){
+        if(!isset($_POST['to_email']) || !isset($_POST['event_id']) || !isset($_POST['user_id']) || !isset($_POST['subject'])){
             $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
             $this->renderJSON($data);
             return;
@@ -82,7 +82,16 @@ class PostController extends Controller
         //$from_email = $_POST['from_email'];
         $from_email = 'team@urlinq.com';
 
-        $actor_name = $_POST['actor_name'];
+        $user_id = $_POST['user_id'];
+
+        $to_user= User::model()->find('user_id=:user_id', array(':user_id'=>$user_id));
+
+        if(!$to_user){
+            $data = array('success'=>false,'error_id'=>3, 'error_msg'=> 'invalid user', 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
 
 
         $event_id = $_POST['event_id'];
@@ -145,7 +154,7 @@ class PostController extends Controller
 
 
         if (ERunActions::runBackground()) {
-            ERunActions::runScript('send_event_email',$params=array('origin_name'=>$origin_name, 'actor_name'=>$actor_name, 'to_email'=>$to_email, 'from_email'=>$from_email, 'event'=>$event, 'subject'=>$subject, 'user'=>$user),$scriptPath=null);
+            ERunActions::runScript('send_event_email',$params=array('origin_name'=>$origin_name, 'to_user'=>$to_user, 'to_email'=>$to_email, 'from_email'=>$from_email, 'event'=>$event, 'subject'=>$subject, 'user'=>$user),$scriptPath=null);
 
 
             $data = array('success'=>true,'error_id'=>'run');
@@ -342,18 +351,13 @@ class PostController extends Controller
                         $post_event->save(false);
 
 
-                        $user_email = $user->user_email;
-                        $subject = 'Urlinq event';
 
-
-
-                        $user_email = $user->user_email;
                         $subject = 'Urlinq verification email';
+                        $event_id = $event->event_id;
+                        $user_id = $user->user_id;
+                        $to_email = $user->user_email;
 
-                        $from = 'team@urlinq.com';
-
-
-                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>'afl294@nyu.edu', 'event_id'=>'277', 'actor_name'=>'Alex','subject'=>$subject),$contentType=null);
+                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
 
 
@@ -379,6 +383,12 @@ class PostController extends Controller
                                             $event_user->color_id = get_random_color();
                                             $event_user->save(false);
 
+                                            $subject = 'Urlinq verification email';
+                                            $event_id = $event->event_id;
+                                            $user_id = $user->user_id;
+                                            $to_email = $user->user_email;
+
+                                            ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
                                         }
                                         //$this->sendEventEmail($event_user->user,$event);
