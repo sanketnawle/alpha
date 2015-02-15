@@ -1,133 +1,616 @@
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=320; initial-scale=.55; user-scalable=no;">
-        <title>Upcoming Classwork/Classwork this Week/Classwork Tomorrow</title>
-        <style type="text/css">
-        body {margin: 0; padding: 0; min-width: 100%!important;}
-        .content {width: 100%; max-width: 600px;padding-left: 10px;padding-right: 10px;}  
+<html xmlns="http://www.w3.org/1999/xhtml" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><head style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+<!-- If you delete this tag, the sky will fall on your head -->
+<meta name="viewport" content="width=device-width" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 
-        .header{
-            padding:0 20px 20px 0;
-        }
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+	
+<link rel="stylesheet" type="text/css" href="email.css" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300" rel="stylesheet" type="text/css" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 
-        @media (max-width: 500px){
-        .emailLogo{
-        height: 50px!important;
-        }
+<style style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+	/* ------------------------------------- 
+		GLOBAL 
+------------------------------------- */
+* { 
+	margin:0;
+	padding:0;
+}
+* { font-family: 'Open Sans', sans-serif; }
 
-        .mobileGetBigP{
-        font-size:25.5px!important;
-        }
-
-        .mobileGetBigA{
-        font-size:30.5px!important;
-        }
-        }
-
-
-        </style>
-    </head>
-
-
-
-    <body bgcolor="#fff">
-        <table style = "width:100%;height:100%;" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0">
-            <tbody>
-                <tr>
-                <td>
-                    <table class="content" align="center" cellpadding="0" cellspacing="0" border="0" style="border-bottom:1px solid #e9e9e9;">
-                        <tbody>
-                            <tr>
-                                <td width="600" height="70" style=" height: auto; padding: 20px 0 9px;">
-                                    <img class="emailLogo" src="http://urlinq.com/beta/emailImg/grayLogo.png" height="36" style="margin-left:5px;" border="0" alt="">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="content" align="center" style="border-spacing:0; vertical-align:top; text-align:left;width:100%;padding:36px 0 0; margin:0 auto;">
-                        <tbody>
-                            <tr style="vertical-align:top;text-align:left;padding:0" align="center">
-                                <td style="border-collapse:collapse!important;vertical-align:top;text-align:left;padding:0" align="center" valign="top">
-                                    <img src="http://urlinq.com/beta/emailImg/squareLogo.png" style="border-radius:0px; display:block;margin:0 auto;border:0" alt="Navigate the Universiy." align="center" width="105" height="105">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="content" align="center" style="border-spacing:0;vertical-align:top;text-align:inherit;margin:0 auto;padding:24px 35px 10px;width:570px!important">
-                        <tbody>
-                            <tr style="vertical-align:top;text-align:left;padding:0;" align="center">
-                                <td style="border-collapse:collapse!important;vertical-align:top;text-align:left;padding:0" align="center" valign="top">
+img { 
+	max-width: 100%; 
+}
+.collapse {
+	margin:0;
+	padding:0;
+}
+body {
+	-webkit-font-smoothing:antialiased; 
+	-webkit-text-size-adjust:none; 
+	width: 100%!important; 
+	height: 100%;
+}
 
 
-                                    <p class="mobileGetBigP" style="color:#2a2a2a;display:block;font-family: Lucida Grande,Lucida Sans,Lucida Sans Unicode,Arial,Helvetica,Verdana,sans-serif;font-weight:normal;text-align:left;line-height:1.714em;font-size: 16.5px;margin:0 auto;padding: 0 0 10px;" align="center">
-                                        <br>
-                                        <span style="margin-top:10px;display:block;"><?php echo $actor_name ?> invited you to join Urlinq! To sign up for all your classes and clubs, click the button below</a></span>
-                                    </p>
-                                </td>
+/* ------------------------------------- 
+		ELEMENTS 
+------------------------------------- */
+a { color: #2BA6CB;}
 
-                            </tr>
-                            <tr style="vertical-align:top;text-align:left;padding:0;" align="center">
-                                <td style="border-collapse:collapse!important;vertical-align:top;text-align:left;padding:0" align="center" valign="top">
-                                    <a class="mobileGetBigA" href="http://urlinq.com"  style="font-family: Lucida Grande,Lucida Sans,Lucida Sans Unicode,Arial,Helvetica,Verdana,sans-serif;border:1px solid;display:block;padding:14px 16px;text-decoration:none;border-radius: 2px;text-align:center;color:white!important;font-weight:bold;font-size:18.5px;white-space:nowrap; margin:0 auto;margin-top:.25em;cursor:pointer;background-color: rgb(0,217,160); border-bottom: 3px solid rgb(8, 184, 138);">
-                                        Sign up
-                                    </a>
-                                </td>
-                            </tr>
-                             <tr style="vertical-align:top;text-align:left;padding:0;" align="center">
-                                <td style="border-collapse:collapse!important;vertical-align:top;text-align:left;padding:0;padding-top: 16px;" align="center" valign="top">
-                                    <p style="
-                                        color: #2a2a2a; display: block; font-family: Lucida Grande,Lucida Sans,Lucida Sans Unicode,Arial,Helvetica,Verdana,sans-serif; font-weight: normal; text-align: left; line-height: 1.714em; font-size: 16.5px; margin: 0 auto; padding: 0 0 10px;
-                                    ">If you don't see the button above, <a href="http://urlinq.com" style="color: rgb(0,217,160);cursor: pointer;">click here</a></p>
-                                </td>
-                            </tr>
-                            <tr style="vertical-align:top;text-align:left;padding:0;" align="center">
-                                <td style="border-collapse:collapse!important;vertical-align:top;text-align:left;padding:0" align="center" valign="top">
-                                    <p class="mobileGetBigP" style="color:#2a2a2a;display:block;font-family: Lucida Grande,Lucida Sans,Lucida Sans Unicode,Arial,Helvetica,Verdana,sans-serif;font-weight:normal;text-align:left;line-height:1.714em;font-size: 16.5px;margin:0 auto;margin-top: .25em;padding: 0 0 10px;" align="center">
-                                        Thanks,
-                                        <span style="margin-top:5px;display:block;">
-                                        The Urlinq Family 
-                                        </span>
-                                    </p>
-                                </td>
+a.btn.accept_btn{
+    background: #1EC783;
+	
+    margin: 0 auto;
+    display: block;
+    margin-top: 18px;
+    max-width: 400px;
+    width: 80%;
+    padding: 14px 0;
+    font-size: 21px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.21);
+    font-weight: 600;
+    border-radius: 5px;
+}
 
-                            </tr>                            
-                        </tbody>
-                    </table>
-                    <table width="600" class="content" align="center" cellpadding="0" cellspacing="0" border="0" style="padding-top:0px;vertical-align:top;margin:0 auto; border-top:1px solid #e9e9e9">
-                        <tbody>
-                            <tr style="margin:0;padding:0;display: block;width: 84px;margin: 0 auto;padding-top: 12px;">
-                                <td style="max-width: 30px; margin:0;padding:5px;white-space: nowrap;">
-                                    <a title="Facebook" href="https://facebook.com/joinurlinq" style="margin:0;text-decoration:none;color:#999999;padding:0;">
-                                        <img alt="Facebook" height="18" width="18" style="" "margin:0;padding:0;border:0;"="" src="http://urlinq.com/beta/emailImg/fb_email_icon.png">
-                                    </a>
-                                </td>
-                                <td style="width:30px; margin:0;padding:5px;">
-                                    <a title="Google Plus" href="https://plus.google.com/+urlinq" style="margin:0;text-decoration:none;color:#999999;padding:0;">
-                                        <img alt="Google Plus" height="17" width="17" style="" "margin:0;padding:0;border:0;"="" src="http://urlinq.com/beta/emailImg/plus_email_icon.png">
-                                    </a>
-                                </td>
-                                <td style="width:30px; margin:0;padding:5px;">
-                                    <a title="Twitter" href="https://twitter.com/urlinq" style="margin:0;text-decoration:none;color:#999999;padding:0;">
-                                        <img alt="Twitter" height="17" width="17" style="" "margin:0;padding:0;border:0;"="" src="http://urlinq.com/beta/emailImg/twitter_email_icon.png">
-                                    </a>
-                                </td>                                                                
-                            </tr>
-                            <tr style="vertical-align:top;text-align:left;padding:0;">
-                                <td height="70" style="border-collapse: collapse!important; vertical-align:top; text-align:left; height: auto; padding: 0px; padding-top: 0px;">
-                                    <p style="color:#999999;font-size:9px;width:340px;text-align:center;font-family:Lucida Grande,Lucida Sans,Lucida Sans Unicode,Arial,Helvetica,Verdana,sans-serif;font-weight:normal;line-height:1.714em;margin:0 auto;padding:12px 0 10px;" align="center">
-                                        <br>
-                                        <br>
-                                        TM and copyright © 2014 Urlinq LLC. New York City.
+.btn {
+	text-decoration:none;
+	color: #FFF;
+	background-color: #666;
+	padding:10px 16px;
+	font-weight:bold;
+	margin-right:10px;
+	text-align:center;
+	cursor:pointer;
+	display: inline-block;
+}
 
-                                    </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+td.urlinq_tri_color{
+    width: 33%;
+    right:10px;
+    height: 5px;
+    top: 35px;
+    position: relative;
+}
+
+div.thought_leader_frame{
+    width: 100px;
+
+    height: 100px;
+    margin: 0 auto;
+    background: #FFF;
+    position: relative;
+    margin-top: -90px;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+div.thought_leader_frame_group{
+	width: 110px;
+    height: 110px;
+    margin: 0 auto;
+    background: #FFF;
+    position: relative;
+    margin-top: -90px;
+    border-radius: 5px;
+    padding: 3px;
     
+	/* float:left; */
+    margin-left:40px;
+}
 
- </body></html>
+div.thought_leader_picture{
+    width: 110px;
+    height: 110px;
+    border-radius: 4px;
+}
+
+.thought_leader_picture_group{
+    width: 110px;
+    height: 110px;
+    border-radius: 4px;
+}
+
+div.tricolor_line{
+    width: 32%;
+
+    float: right;
+    height: 7px;
+    position: relative;
+    display: inline-block;
+}
+
+div.tricolor_line.red{
+    background: #ed4f68;
+
+}
+div.tricolor_line.green{
+    background: #2cc185;
+	
+}
+div.tricolor_line.blue{
+    background: #1da7d2;
+	
+}
+
+p.target_copy{
+    font-size: 17px;
+    color: #777;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 480px;
+    width: 80%;
+    margin-top: 20px;
+}
+
+p.post_target_copy{
+	font-size: 16px;
+    
+	color: #575757;
+    
+	text-align: left;
+    margin: 0 auto;
+    
+	max-width: 700px;
+    width: 80%;
+    
+	margin-top: 7px;
+}
+
+p.callout {
+	padding: 0px;
+	background-color: #FFF;
+	margin-bottom: 15px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+p.post_callout{
+	padding: 0px;
+	background-color: #FFF;
+	margin-bottom: 15px;
+	text-align: left;
+	font-size: 18px;
+	border-bottom: 1px solid #777;
+	margin-left:40px;
+	font-weight: 400;	
+	padding-bottom: 6px;
+	margin-right:40px;
+}
+
+td.intro{
+color:#FFF;
+font-size:20px;
+padding-left:10px;
+}
+
+p.footer_text{
+    color: #2cc185;
+
+    font-size: 15.5px;
+}
+
+p.footer_text a{
+    color: #FFF;
+	
+    text-decoration: none;
+}
+
+.callout a {
+	font-weight: 400;
+	color: #777;
+	text-decoration: none;
+}
+
+.thought_leader_name{
+    margin: 0 auto;
+    text-align: center;
+    padding: 7px 0;
+    font-size: 25px;
+    font-weight: 600;
+    padding-bottom: 0;
+}
+
+.post_thought_leader_name{
+    margin: 0 auto;
+    text-align: left;
+    padding: 7px 0;
+    font-size: 21px;
+    font-weight: 600;
+    padding-bottom: 0;
+    margin-left: 40px;
+}
+
+p.event_title{
+    margin: 0 auto;
+    text-align: left;
+    padding: 7px 0;
+    font-size: 21px;
+    font-weight: 600;
+    padding-bottom: 0;
+    margin-left: 40px;
+}
+
+.post_thought_leader_name > a{
+    color: #222;
+	
+    text-decoration: none;
+}
+
+p.target_copy_title{
+    font-size: 21px; color: #222; text-align: left; margin: 0 auto; 
+    max-width: 700px; width: 80%; margin-top: 16px;
+
+}
+
+a.group_link_btn{
+    background: #029acf; margin: 0 auto; display: block; margin-top: 18px; 
+    max-width: 250px; 
+    display: inline-block;
+    width: 80%; 
+    border-radius: 4px;
+    padding: 10px 0; 
+    margin-left: 2px;
+    font-size: 18px; border-bottom: 2px solid rgba(0, 0, 0, 0.21);
+
+    margin-bottom: 6px;
+    margin-left: 40px;
+}
+
+p.reply_text{
+    display: inline;
+
+    color: #777;
+    font-weight: 200;
+    display: block;
+    margin-left: 2px;
+    margin-bottom: 24px;
+    margin-left: 40px;
+}
+
+span.post_details{
+    color: #575757;
+
+}
+
+span.post_details > a.section_course_name{
+    color: #029acf;
+    text-decoration: none;
+}
+
+
+.thought_leader_name a{
+    color: #222;
+	
+    text-decoration: none;
+}
+
+table.social {
+/* 	padding:15px; */
+	
+background-color: #09091a;
+	
+color: #FFF;
+}
+.social .soc-btn {
+	padding: 3px 7px;
+	font-size:12px;
+	margin-bottom:10px;
+	text-decoration:none;
+	color: #FFF;font-weight:bold;
+	display:block;
+	text-align:center;
+}
+a.fb { background-color: #3B5998!important; }
+a.tw { background-color: #1daced!important; }
+a.gp { background-color: #DB4A39!important; }
+a.ms { background-color: #000!important; }
+
+.sidebar .soc-btn { 
+	display:block;
+	width:100%;
+}
+
+/* ------------------------------------- 
+		HEADER 
+------------------------------------- */
+table.head-wrap { width: 100%;}
+
+img.logo { 
+padding: 15px;
+width: 114px;
+left: 7px;
+position: relative;
+height: 26px;
+}
+
+img.logo.tricolor_float_logo{
+right: 0px;
+height: 26px;
+position: absolute;
+width: 114px;
+top: -50px;
+left: 50%;
+margin-lefT: -57px;
+}
+
+.header.container table td.label { padding: 15px; padding-left:0px;}
+
+
+/* ------------------------------------- 
+		BODY 
+------------------------------------- */
+table.body-wrap { width: 100%;}
+
+
+/* ------------------------------------- 
+		FOOTER 
+------------------------------------- */
+table.footer-wrap { width: 100%;	clear:both!important;
+ background: #1d1f20; height: 110px; color: #FFF;}
+.footer-wrap .container td.content  p { border-top: 1px solid rgb(215,215,215); padding-top:15px;}
+.footer-wrap .container td.content p {
+	font-size:10px;
+	font-weight: bold;
+	
+}
+
+
+/* ------------------------------------- 
+		TYPOGRAPHY 
+------------------------------------- */
+h1,h2,h3,h4,h5,h6 {
+ font-family: 'Open Sans', sans-serif; line-height: 1.1; margin-bottom:15px; color:#000;
+}
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; text-transform: none; }
+
+h1 { font-weight:200; font-size: 44px;}
+h2 { font-weight:200; font-size: 37px;}
+h3 { font-weight:500; font-size: 27px;}
+h4 { font-weight:500; font-size: 23px;}
+h5 { font-weight:900; font-size: 17px;}
+h6 { font-weight:900; font-size: 14px; text-transform: uppercase; color:#444;}
+
+.collapse { margin:0!important;}
+
+p, ul { 
+	margin-bottom: 10px; 
+	font-weight: normal; 
+	font-size:14px; 
+	line-height:1.6;
+}
+p.lead { font-size:17px; }
+p.last { margin-bottom:0px;}
+
+ul li {
+	margin-left:5px;
+	list-style-position: inside;
+}
+
+/* ------------------------------------- 
+		SIDEBAR 
+------------------------------------- */
+ul.sidebar {
+	background:#ebebeb;
+	display:block;
+	list-style-type: none;
+}
+ul.sidebar li { display: block; margin:0;}
+ul.sidebar li a {
+	text-decoration:none;
+	color: #666;
+	padding:10px 16px;
+/* 	font-weight:bold; */
+	margin-right:10px;
+/* 	text-align:center; */
+	cursor:pointer;
+	border-bottom: 1px solid #777777;
+	border-top: 1px solid #FFFFFF;
+	display:block;
+	margin:0;
+}
+ul.sidebar li a.last { border-bottom-width:0px;}
+ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.sidebar li a h5,ul.sidebar li a h6,ul.sidebar li a p { margin-bottom:0!important;}
+
+
+
+/* --------------------------------------------------- 
+		RESPONSIVENESS
+		Nuke it from orbit. It's the only way to be sure. 
+------------------------------------------------------ */
+
+/* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+.container {
+	display:block!important;
+	max-width: 800px!important;
+	margin:0 auto!important; /* makes it centered */
+	clear:both!important;
+}
+
+.container.header{
+	height:72px;
+}
+
+/* This should also be a block element, so that it will fill 100% of the .container */
+.content {
+	padding: 0;
+	max-width: 800px;
+	margin:0 auto;
+	display:block; 
+	padding-top: 0;
+}
+
+/* Let's make sure tables in the content area are 100% wide */
+.content table { width: 100%; border-spacing:0; }
+
+
+/* Odds and ends */
+.column {
+	width: 300px;
+	float:left;
+}
+.column tr td { padding: 15px; }
+.column-wrap { 
+	padding:0!important; 
+	margin:0 auto; 
+	max-width:600px!important;
+}
+.column table { width:100%;}
+.social .column {
+	width: 280px;
+	min-width: 279px;
+	float:left;
+}
+
+/* Be sure to place a .clear element after each set of columns, just to be safe */
+.clear { display: block; clear: both; }
+
+
+/* ------------------------------------------- 
+		PHONE
+		For clients that support media queries.
+		Nothing fancy. 
+-------------------------------------------- */
+@media only screen and (max-width: 600px) {
+
+	.date_month_box{
+		display: none!important;
+	}
+	
+	.event_details{
+		margin-left:40px!important;
+		width:100%!important;
+	}
+
+	.event_description{
+		width:100%!important;
+		max-width:300px!important;
+		margin-left:0px!important;
+	}
+
+	a[class="btn"] { display:block!important; margin-bottom:10px!important; background-image:none!important; margin-right:0!important;}
+
+	div[class="column"] { width: auto!important; float:none!important;}
+	
+	table.social div[class="column"] {
+		width:auto!important;
+	}
+
+}
+</style>
+
+</head>
+ 
+<body bgcolor="#FFFFFF" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;-webkit-font-smoothing: antialiased;-webkit-text-size-adjust: none;height: 100%;width: 100%!important;">
+
+<!-- HEADER -->
+<table class="head-wrap" bgcolor="#1d1f20" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;">
+	<tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+		<td style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"></td>
+		<td class="header container" style="margin: 0 auto!important;padding: 0;font-family: 'Open Sans', sans-serif;height: 72px;display: block!important;max-width: 800px!important;clear: both!important;">
+			
+				<div class="content" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 800px;display: block;padding-top: 0;">
+					<table style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;border-spacing: 0;">
+						<tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+							<tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+								<td align="left" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+									<img class="logo" style="background-repeat: no-repeat;background-size: contain;margin: 0;padding: 15px;font-family: 'Open Sans', sans-serif;max-width: 100%;width: 114px;left: 7px;position: relative;height: 26px;" src="http://beta.urlinq.com/assets/email_logo.png">
+								</td>
+								<td align="right" class="urlinq_tri_color" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 33%;right: 10px;height: 5px;top: 35px;position: relative;">
+									<div class="tricolor_line red" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 32%;float: right;height: 7px;position: relative;display: inline-block;background: #ed4f68;"></div>
+									<div class="tricolor_line blue" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 32%;float: right;height: 7px;position: relative;display: inline-block;background: #1da7d2;"></div>
+									<div class="tricolor_line green" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 32%;float: right;height: 7px;position: relative;display: inline-block;background: #2cc185;"></div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+		</td>
+		<td style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"></td>
+	</tr>
+</tbody></table><!-- /HEADER -->
+
+
+<!-- BODY -->
+<table class="body-wrap" style="border-spacing: 0;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;">
+	<tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+		<td style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"></td>
+		<td class="container" bgcolor="#FFFFFF" style="margin: 0 auto!important;padding: 0;font-family: 'Open Sans', sans-serif;display: block!important;max-width: 800px!important;clear: both!important;">
+
+			<div class="content" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 800px;display: block;padding-top: 0;">
+			<table style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;border-spacing: 0;">
+				<tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+					<tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+
+					<td style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+						
+						
+						
+						
+						<!-- A Real Hero (and a real human being) -->
+						<p style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;"><img src="http://beta.urlinq.com/assets/NYU_Email_hero.jpg" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;"></p><!-- /hero -->
+						<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #2BA6CB;">
+							<div class="thought_leader_frame" style="margin: 0 auto;padding: 3px;font-family: 'Open Sans', sans-serif;width: 100px;height: 100px;background: #FFF;position: relative;margin-top: -90px;border-radius: 5px;">
+							<img src="https://urlinq.com/team/photo_urlinq/kevin_0.jpg" style="background-size: cover;background-repeat: no-repeat;border-radius: 3px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;" height="100px" class="thought_leader_picture">
+							</div>
+						</a>					
+						<!-- Callout Panel -->
+						<p class="thought_leader_name" style="margin: 0 auto;padding: 7px 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: 600;font-size: 25px;line-height: 1.6;text-align: center;padding-bottom: 0;">
+							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #222;text-decoration: none;"><?php echo $actor_name; ?></a>
+						</p>
+						<p class="callout" style="margin: 0;padding: 0px;font-family: 'Open Sans', sans-serif;margin-bottom: 15px;font-weight: 400;font-size: 18px;line-height: 1.6;background-color: #FFF;text-align: center;">
+							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #777;font-weight: 400;text-decoration: none;">has invited you to join Urlinq</a>
+						</p><!-- /Callout Panel -->
+
+						<a class="btn accept_btn" style="margin: 0 auto;padding: 14px 0;font-family: 'Open Sans', sans-serif;color: #FFF;text-decoration: none;background-color: #666;font-weight: 600;text-align: center;cursor: pointer;display: block;background: #1EC783;margin-top: 18px;max-width: 400px;width: 80%;font-size: 21px;border-bottom: 2px solid rgba(0, 0, 0, 0.21);border-radius: 5px;">Accept your Invitation</a>
+						
+						
+						<p class="target_copy" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 17px;line-height: 1.6;color: #777;text-align: center;max-width: 480px;width: 80%;margin-top: 20px;">Urlinq provides you with access to all of the people, courses, clubs, and events at your university.</p>
+						
+												
+						<br style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+						<br style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">							
+												
+						<!-- social & contact -->
+
+					
+					
+					</td>
+				</tr>
+			</tbody></table>
+			</div>
+									
+		</td>
+		<td style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"></td>
+	</tr>
+</tbody></table><!-- /BODY -->
+
+<!-- FOOTER -->
+<table class="footer-wrap" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;background: #1d1f20;height: 110px;color: #FFF;clear: both!important;">
+	<tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+		<td style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"></td>
+		<td class="container" style="margin: 0 auto!important;padding: 0;font-family: 'Open Sans', sans-serif;display: block!important;max-width: 800px!important;clear: both!important;">
+			
+				<!-- content -->
+				<div class="content" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 800px;display: block;padding-top: 0;">
+				<table style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;border-spacing: 0;">
+				<tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+					<td align="center" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+						<p class="footer_Text" style="color:#2cc185;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;">
+							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;text-decoration:none;">Urlinq, Inc 2015</a> |
+							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;text-decoration:none;">New York City</a> |
+							<a href="http://www.urlinq.com" style="text-decoration:none;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;"><unsubscribe style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">Unsubscribe</unsubscribe></a>
+						</p>
+					</td>
+				</tr>
+			</tbody></table>
+				</div><!-- /content -->
+				
+		</td>
+		<td style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"></td>
+	</tr>
+</tbody></table><!-- /FOOTER -->
+
+
+</body></html>
