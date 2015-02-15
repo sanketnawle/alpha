@@ -67,12 +67,38 @@ class EventController extends Controller
 
     }
 
+    public function actionSearchEvents(){
+        if(!isset($_GET['search_text'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'date is not set');
+            $this->renderJSON($data);
+            return;
+        }
+       
+        $user = $this->get_current_user($_GET);
+
+        $text = $_GET['search_text'];
+    
+        //Get the events that this user is an event_user of
+        $events_attending = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " AND (event.title LIKE '%" . $text . "%' OR description LIKE '%" . $text . "%')")->queryAll();
+        //Get the events that this
+        $events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND (title LIKE '%" . $text . "%' OR description LIKE '%" . $text . "%')")->queryAll();
+
+        $all_events = $this->add_event_data(array_merge($events,$events_attending), $user);
+
+
+        $data = array('success'=>true,'events'=>$all_events);
+
+        $this->renderJSON($data);
+        return;
+    }
+
     public function actionGetEvents(){
         if(!isset($_GET['date'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'date is not set');
             $this->renderJSON($data);
             return;
         }
+
 
         $user = $this->get_current_user($_GET);
 //        $date = '2014-11-12';

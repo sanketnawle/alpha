@@ -31,7 +31,6 @@
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
 
-
     <!-- global show event functions -->
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/global/show_events.js"></script>
 
@@ -56,6 +55,7 @@
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/new_cal_styles.css" type = "text/css" rel = "stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_people/invite_people.css" type = "text/css" rel = "stylesheet">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/feed/feed.css" rel="stylesheet" type="text/css"><!-- Avenir:L,N,B -->
 
 
 
@@ -135,9 +135,9 @@
                 <div class="column left"></div>
                 <div class="column right">
 <!--                    <button class="print" ng-click="printGrid()">&nbsp;</button>-->
-                    <form class="search">
+                    <form class="search" id="form_calendar_search">
                         <input type="submit" value="">
-                        <input type="text" placeholder="Search">
+                        <input type="text" id="txt_initial_search" placeholder="Search">
                     </form>
                 </div>
                 <div class="column center">
@@ -193,6 +193,39 @@
 
 
         </div>
+        <div class="dialog" style="display:none;" id="search_dialog">
+
+            <div class="overlay">
+                <div class="content">
+                    <div class="wrapper">
+                        <div id="top_buttons_holder" class="create_event_section" style="padding-left:40px;">
+                            <div class="toolbar" style="border:none">
+                            <div class="wrap">
+                            
+                                <div class="column left">
+                                    <div id="search_back_button" class="grey_button"><span></span>Back</div>
+                                </div>
+                                <div class="column right">
+                                   <form class="search ng-pristine ng-valid" id="form_calendar_search_continue">
+                                        <input type="submit" value="">
+                                        <input type="text" id="search_text" placeholder="Search">
+                                    </form>
+                                </div>
+                              
+                            </div>
+                            </div>
+                            
+                        </div>
+                        <br><br><br>
+                        <div id="events_results_found"  class="create_event_section">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
     </div>
 </body>
 
@@ -241,6 +274,7 @@
 </script>
 
 
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/searchevents.js"></script>
 
 
 
