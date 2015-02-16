@@ -604,18 +604,18 @@ $(document).ready(function(){
     if($("body").hasClass("body_class") == true){
 
         $("span.create_planner_message").css({"left":"27px"}).text("Plan this class's schedule");
-        $("span.create_planner_message").css({"left":"18px", "width":"192px"})
+        $("span.create_planner_message").css({"left":"18px", "width":"192px"});
     }
 
     if($("body").hasClass("body_department") == true){
 
         $("span.create_planner_message").css({"left":"27px"}).text("Schedule group events");
-        $("span.create_planner_message").css({"left":"22px", "width":"192px"})
+        $("span.create_planner_message").css({"left":"22px", "width":"192px"});
     }
     if($("body").hasClass("body_club") == true){
 
         $("span.create_planner_message").css({"left":"27px"}).text("Plan this group's schedule");
-        $("span.create_planner_message").css({"left":"12px", "width":"202px"})
+        $("span.create_planner_message").css({"left":"12px", "width":"202px"});
     }
 
     $(document).on('click','.edit_about',function(){

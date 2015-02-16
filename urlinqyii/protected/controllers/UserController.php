@@ -227,13 +227,18 @@ class UserController extends Controller
                     $origin__event_id = $event['origin_id'];
 
                     if($origin != 'user'){
-                        $sql = "SELECT " . $origin_event . '_name, color_id FROM `' . $origin_event . '`  WHERE ' . $origin_event . '_id = ' . $origin__event_id;
-                        $command = Yii::app()->db->createCommand($sql);
-                        $origin_data = $command->queryRow();
-                        //echo json_encode($origin_data);
-                        $event['origin_name'] = $origin_data[$origin_event . '_name'];
-                        $event['origin_color_id'] = $origin_data['color_id'];
-                        //array_push($events_data,$event);
+                        try{
+                            $sql = "SELECT " . $origin_event . '_name, color_id FROM `' . $origin_event . '`  WHERE ' . $origin_event . '_id = ' . $origin__event_id;
+                            $command = Yii::app()->db->createCommand($sql);
+                            $origin_data = $command->queryRow();
+                            //echo json_encode($origin_data);
+                            $event['origin_name'] = $origin_data[$origin_event . '_name'];
+                            $event['origin_color_id'] = $origin_data['color_id'];
+                            //array_push($events_data,$event);
+                        }catch(Exception $e){
+                            $event['origin_name'] = null;
+                            $event['origin_color_id'] = null;
+                        }
                     }else{
                         $event['origin_name'] = null;
                         $event['origin_color_id'] = null;
