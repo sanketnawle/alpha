@@ -17,6 +17,18 @@
     padding: 0 5px 5px;
 }
 
+.no_notifications_container{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: Avenir;
+    font-size: 2.2em;
+    color: #575757;
+    letter-spacing: -1.8px;
+    text-align: center;
+    margin-top: 94px;
+    font-weight: 900;
+}
+
 .noti_header_hint{
     border-bottom: 1px solid #DBDBDB;
 

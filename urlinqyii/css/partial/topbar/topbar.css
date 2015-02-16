@@ -47,7 +47,25 @@ body.body_group .topbar > #topbar_responsive_holder > .left{
 }
 
 #new_notification_count{
+    position: absolute!important;
+    left: -12px;
+    font-size: 12.5px;
+    font-family: Avenir;
+    line-height: 11px;
+    font-weight: 500;
+    color: #FFF;
+    -webkit-border-radius: 2px; 
+    top: -5px!important;
+    color: #222; 
+    max-height: 11px; 
+    text-shadow: 0 -1px 0 rgba(255, 255, 255, 1)!important;
+    padding: 2px 3px;     
+      
+}
 
+#new_notification_count.something_new{
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 1px 1px rgba(98, 98, 98, 1);  
 }
 
 .search_result_icon.non_profile_icon{
@@ -354,7 +372,7 @@ form.top_search_bar_form{
     width: 20px;
     height: 20px;
     border-radius: 100px;
-    top: 1.5px;
+    top: .5px;
     opacity: .9;
     position: relative;
     display: inline-block;
@@ -372,6 +390,7 @@ form.top_search_bar_form{
     padding-bottom: 3px;
     top: -5px;
     border-radius: 4px;
+    cursor: pointer;
     margin-top: 14px;
     margin-left: 2px;
 }
@@ -399,16 +418,22 @@ form.top_search_bar_form{
 .topbar_profile_link .icon_text{
     display: inline-block;
     
-    padding: 0px 0;
-    text-shadow: 0 -1px rgba(0, 0, 0, 1);  
-    top: -2px;
+    padding: 0px 0;  
+    top: -4px;
+    font-family: Avenir;
+    font-weight: 200;
     position: relative;
     padding-left: 4px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
 }
 
 .notify.board.notify_board_active > div.button{
 background-color: rgba(0, 0, 0, 0.43)!important;
 color: #FFF!important;
+}
+
+.notify.board .icon_text{
+    top:-11px!important;
 }
 
 .notify.board.notify_board_active:hover > div.button{
@@ -463,6 +488,7 @@ border-radius: 4px;}
                 padding-bottom: 1px;
                 height: 27px;
                 font-family: Avenir;
+                cursor: pointer;
                 position: relative;
                 top: -5px;
 }
@@ -470,10 +496,12 @@ border-radius: 4px;}
                 .topbar > #topbar_responsive_holder > .right .notify.calendar .button div,.topbar > #topbar_responsive_holder > .right .notify.board .button div {
                     text-align: center;
                     display: inline-block;
+                    font-family: Avenir;
                     bottom: 8px;
                     position: relative;
-                    text-shadow: 0 -1px rgba(0, 0, 0, 1);
+                    font-weight: 200;
                     top: -5px;
+                    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
 }
 
 .topbar > #topbar_responsive_holder > .right .notify.board .button div{
@@ -499,6 +527,7 @@ border-radius: 4px;}
                 
                     background-size: auto;
                     top: -2px;
+                    padding-right: 4px;
                     left: 1px;
                     position: relative;
 }

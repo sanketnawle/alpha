@@ -149,11 +149,20 @@
     $('#other_panel_' + panel_id).addClass('active');
     
 
-    $('#other_panel_' + panel_id).delay(500).queue( function(next){ 
+    $('#other_panel_' + panel_id).delay(550).queue( function(next){ 
       $(this).css({'background':'rgba(255, 255, 255, 0.95)','border-color':'rgba(105, 105, 105, 0.17)'});
       $('#other_panel_' + panel_id + ' .synced_animation_divs').css({'opacity':'1'});  
       next(); 
     });
+  });
+
+  $('.bottom_tab_button').click(function(){
+    var $bottom_tab = $(this);
+    var sub_panel_id = $bottom_tab.attr('data-bottom_tab_id');
+    $(this).closest('.bottom_tab').find('.bottom_tab_button.active').removeClass('active');
+    $bottom_tab.addClass('active');
+    $('.sub_panel.active').removeClass('active');
+     $('#sub_panel_' + sub_panel_id).addClass('active');
 
   });
 
@@ -713,13 +722,70 @@
                       <!--<div class = "signup-slog">seconds to get started</div>-->
                     </div>
                   </div>
+                  <div class = "section_contents synced_animation_divs">
+                    <div class = "opening_text">On Urlinq, every group on campus is connected</div>
+                    <div class = "bottom_tabs">
+                    </div> 
+                  </div>                  
               </div>
               <div class = "other_panel" id = "other_panel_2">
                   <div class = "header-sec">
                     <div class = "header-sec-left">
                       <h4 class = "header">Why Join?</h4>
                     </div>
-
+                  </div>
+                  <div class = "section_contents synced_animation_divs">
+                    <div class = "opening_text sub_panel active" id = "sub_panel_1">This is why you should join</div>
+                    <div class = "opening_text sub_panel" id = "sub_panel_2">This is why you should join</div>
+                    <div class = "opening_text sub_panel" id = "sub_panel_3">This is why you should join</div>
+                    <div class = "bottom_tabs">
+                      <div class = "bottom_tab_left bottom_tab" data-bottom_tab_position = "left">
+                        <div class = "bottom_tab_button" data-bottom_tab_id = "2">
+                          <div class = "arrow">
+                          </div>
+                          <div class = "bottom_tab_text">
+                            What can you do on Urlinq?
+                          </div>
+                        </div>
+                        <div class = "bottom_tab_button active" data-bottom_tab_id = "1">
+                          <div class = "arrow">
+                          </div>
+                          <div class = "bottom_tab_text one_line_text">
+                            About
+                          </div>
+                        </div>  
+                        <div class = "bottom_tab_button active" data-bottom_tab_id = "3">
+                          <div class = "arrow">
+                          </div>
+                          <div class = "bottom_tab_text one_line_text">
+                            Which schools are on Urlinq?
+                          </div>
+                        </div>                                                           
+                      </div>
+                      <div class = "bottom_tab_right bottom_tab" data-bottom_tab_position = "right">
+                        <div class = "bottom_tab_button" data-bottom_tab_id = "3">
+                          <div class = "arrow">
+                          </div>
+                          <div class = "bottom_tab_text">
+                            Which schools are on Urlinq?
+                          </div>
+                        </div>
+                        <div class = "bottom_tab_button active" data-bottom_tab_id = "1">
+                          <div class = "arrow">
+                          </div>
+                          <div class = "bottom_tab_text one_line_text">
+                            About
+                          </div>
+                        </div>  
+                        <div class = "bottom_tab_button active" data-bottom_tab_id = "2">
+                          <div class = "arrow">
+                          </div>
+                          <div class = "bottom_tab_text one_line_text">
+                            What can you do on Urlinq?
+                          </div>
+                        </div>                                                        
+                      </div>
+                    </div>                     
                   </div>
               </div>
               <div class = "signup-form-wrap other_panel active" id = "other_panel_3">

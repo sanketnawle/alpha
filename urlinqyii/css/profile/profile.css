@@ -275,6 +275,7 @@ div#modal_controls.student_modal_controls_student{
     position: relative;
     /* padding-left: 0px; */
     width: 100%;
+    top: 5px;
 }
 
 .info_section{

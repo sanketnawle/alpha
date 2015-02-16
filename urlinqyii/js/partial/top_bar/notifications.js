@@ -48,13 +48,20 @@ $(document).ready(function(){
 
     function get_notifications(){
         $.getJSON(globals.base_url + "/user/notifications", function(json_data){
+            first_request = true;
             if(json_data['success']){
-                notifications = json_data['notifications'];
+                
 
-                if(notifications.length){
+
+                if(json_data['notifications'].length == 0 && first_request){
+                    var $notifications_container = $(".noti-scrollable ul.entries");
+                    $notifications_container.html("<div class = 'no_notifications_container'><span class = 'no_notifications_graphic'></span>Notices are a student's best friend</div>");
+                }else{
+                    notifications = json_data['notifications'];
                     update_notifications_div();
                     poll_notifications();
                 }
+
 
             }else{
                 console.log('Error getting notifications.');
@@ -139,6 +146,8 @@ $(document).ready(function(){
         //Show the new notification count
         if(new_count > 0){
             $notifications_button.addClass('new_notifications');
+            $("#new_notification_count").show();
+            $("#new_notification_count").addClass('something_new');
             $notifications_button.find('#new_notification_count').text(new_count);
         }
 
@@ -310,7 +319,10 @@ $(document).ready(function(){
         e.stopPropagation();
         $(this).addClass("notify_board_active");
         $notifications_button.removeClass('new_notifications');
+        $("#new_notification_count").hide();
+        $("#new_notification_count").removeClass('something_new');
         $notifications_button.find('#new_notification_count').text('');
+
         new_count = 0;
         $(".notify.board > div.button").css({"background":"rgba(18, 19, 20, 0.333)"});
 
