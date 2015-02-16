@@ -549,10 +549,10 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 						
 						
 						<!-- A Real Hero (and a real human being) -->
-						<p style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;"><img src="<?php echo Yii::app()->getBaseUrl(true) . $actor->pictureFile->file_url; ?>" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;"></p><!-- /hero -->
+						<p style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;"><img src="http://beta.urlinq.com/assets/NYU_Email_hero.jpg" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;"></p><!-- /hero -->
 						<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #2BA6CB;">
 							<div class="thought_leader_frame" style="margin: 0 auto;padding: 3px;font-family: 'Open Sans', sans-serif;width: 100px;height: 100px;background: #FFF;position: relative;margin-top: -90px;border-radius: 5px;">
-							<img src="https://urlinq.com/team/photo_urlinq/kevin_0.jpg" style="background-size: cover;background-repeat: no-repeat;border-radius: 3px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;" height="100px" class="thought_leader_picture">
+							<img src="<?php echo Yii::app()->getBaseUrl(true) . $actor->pictureFile->file_url; ?>" style="background-size: cover;background-repeat: no-repeat;border-radius: 3px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;" height="100px" class="thought_leader_picture">
 							</div>
 						</a>					
 						<!-- Callout Panel -->
