@@ -165,6 +165,7 @@ $(document).ready(function(){
             post_url,
             post_data,
             function(response){
+                console.log(JSON.stringify(response));
                 //alert(JSON.stringify(response));
             }, 'json'
         );
@@ -274,10 +275,18 @@ $(document).ready(function(){
 
 
                 if(response['success']){
+
+
+//                    if(origin_type != 'event'){
+//                        $accept_invite_button.closest('.notification').remove();
+//
+//                        window.location.href(globals.base_url + '/' + origin_type + '/' + origin_id);
+//                    }
+
                     $accept_invite_button.closest('.notification').remove();
 
+                        window.location.replace(globals.base_url + '/' + origin_type + '/' + origin_id);
 
-                    window.location.replace(globals.base_url + '/' + origin_type + '/' + origin_id);
                 }else{
 
                 }

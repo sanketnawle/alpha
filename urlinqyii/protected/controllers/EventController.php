@@ -848,8 +848,8 @@ class EventController extends Controller
         }
 
 
-        if(!isset($_POST['event']['event_id']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['event_name']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['title']) || !isset($_POST['event']['description'])
-            || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location']) || !isset($_POST['event']['all_day'])){
+        if(!isset($_POST['event']['event_id']) || !isset($_POST['event']['event_name']) || !isset($_POST['event']['title'])
+            || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
             $this->renderJSON($data);
             return;
@@ -863,17 +863,23 @@ class EventController extends Controller
 
         if($event){
             $event->title = $event_data['event_name'];
-            $event->description = $event_data['description'];
-            $event->event_type = $event_data['event_type'];
+            if(isset($event_data['description']))
+                $event->description = $event_data['description'];
+            if(isset($event_data['event_type']))
+                $event->event_type = $event_data['event_type'];
             $event->user_id = $user->user_id;
-            $event->origin_type = $event_data['origin_type'];
-            $event->origin_id = $event_data['origin_id'];
+            if(isset($event_data['origin_type']))
+                $event->origin_type = $event_data['origin_type'];
+            if(isset($event_data['origin_id']))
+                $event->origin_id = $event_data['origin_id'];
             $event->start_date = $event_data['start_date'];
             $event->end_date = $event_data['end_date'];
             $event->start_time = $event_data['start_time'];
             $event->end_time = $event_data['end_time'];
-            $event->location = $event_data['location'];
-            $event->all_day = $event_data['all_day'];
+            if(isset($event_data['location']))
+                $event->location = $event_data['location'];
+            if(isset($event_data['all_day']))
+                $event->all_day = $event_data['all_day'];
 
 
 

@@ -9,12 +9,12 @@ if (ERunActions::runBackground()){
 
 
 
-    $actor_name = $params['actor_name'];
+    $actor = $params['actor'];
 
     $subject = 'Urlinq Invitation';
 
 
-    $mail = new YiiMailer('invite', array('actor_name'=>$actor_name));
+    $mail = new YiiMailer('invite', array('actor'=>$actor));
     $mail->setFrom($from_email, 'urlinq team');
     $mail->setSubject($subject);
     $mail->setTo($to_email);
@@ -22,7 +22,7 @@ if (ERunActions::runBackground()){
 
     if($mail->send())
     {
-
+        Yii::log('', CLogger::LEVEL_ERROR, $mail->getError());
     }
     else
     {

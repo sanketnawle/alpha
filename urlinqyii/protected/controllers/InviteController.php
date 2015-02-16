@@ -74,10 +74,10 @@ class InviteController extends Controller
             if($event_user->save(false)){
                 $invite->choice = 1;
                 $invite->save(false);
-
 //
-                $this->delete_invite_notification($invite, $user);
-                $invite->delete(false);
+////
+//                $this->delete_invite_notification($invite, $user);
+//                $invite->delete(false);
 
                 $return_data = array('success'=>true, 'msg'=>'user is now attending event ' . $event_user->event_id);
                 $this->renderJSON($return_data);

@@ -242,7 +242,104 @@ $(document).ready(function(){
 
     });
 
+    $(document).on('click','.edit_button',function(){
+        var $event = $(this).closest('.event');
+        var $edit_box = $('.edit_event_box');
+        $edit_box.css({top:$event.position().top+78});
+        $edit_box.fadeIn(150);
+        $edit_box.find('input#edit_event_title').val($event.find('.event_name').text());
+        var datetime = new_datetime($event.attr('data-start_date')+' '+$event.attr('data-start_time'));
+        var datetime = utc_to_local(datetime);
+        var date_str = date_to_day_of_week_string(datetime);
+        $edit_box.find('input#edit_event_date').val(date_str);
+        $edit_box.find('input#edit_event_date').attr('data-date',date_to_string(datetime));
+        var time_str = date_to_am_pm_string(datetime);
+        $edit_box.find('input#edit_event_time').val(time_str);
+        //update_time_input($edit_box.find('input#edit_event_time'));
+        $edit_box.find('input#edit_event_time').attr('data-time',datetime_to_time_string(datetime));
+        $edit_box.attr('data-event_id',$event.attr('data-event_id'));
+    });
 
+    $(document).on('click','#cancel_edit_event',function(){
+        $('.edit_event_box').fadeOut(150);
+    });
+
+    $(document).on('click','#submit_edit_event',function(){
+        var $edit_box = $(this).closest('.edit_event_box');
+        var post_url = globals.base_url+'/event/update';
+        var errors = [];
+
+        var event_name = $('#edit_event_title').val();
+        var event_type = 'todo';
+
+        //Check if user input a name for todo
+        if($('#edit_event_title').val().length == 0){
+            errors.push({name:'event_name_error',value:'You must give a name for this todo'});
+        }
+
+        //Make sure the date is converted to UTC before passing to database
+        var event_datetime = new_datetime($('#edit_event_date').attr('data-date') + ' ' + $('#edit_event_time').attr('data-time'));
+
+        //var todo_time = $('.event_time').attr('data-time');
+
+        var formatted_date = date_to_month_and_day_string(event_datetime);
+        event_datetime = local_to_utc(event_datetime);
+        //var todo_date = todo_datetime.getUTCFullYear().toString() + "-" + (todo_datetime.getMonth() + 1).toString() + "-" + todo_datetime.getDate().toString();
+        var event_date = date_to_string(event_datetime);
+
+        var event_time = addZero(event_datetime.getHours()).toString() + ':' + addZero(event_datetime.getMinutes()).toString() + ':' + addZero(event_datetime.getSeconds()).toString();
+
+        if(errors.length > 0){
+//        alert(JSON.stringify(errors));
+            $('#new_listing_text').text(JSON.stringify(errors));
+            return false;
+        }
+
+
+      /*  var event_origin_type = globals.origin_type;
+        var event_origin_id = globals.origin_id;
+        if(globals.origin_type == 'home'){
+            event_origin_type = 'user';
+            event_origin_id = globals.user_id;
+        }*/
+        var event_id = $(this).closest('.edit_event_box').attr('data-event_id');
+        var $event=$('.event[data-event_id='+event_id+']');
+        var duration = new_datetime($event.attr('data-end_date')+' '+$event.attr('data-end_time')).getTime()
+            - new_datetime($event.attr('data-start_date')+' '+$event.attr('data-start_time')).getTime();
+        var end_datetime = new_datetime(event_datetime.getTime()+duration);
+        var event_end_date = date_to_string(end_datetime);
+        var event_end_time = addZero(end_datetime.getHours()).toString() + ':' + addZero(end_datetime.getMinutes()).toString() + ':' + addZero(end_datetime.getSeconds()).toString();
+        console.log(event_end_date+' '+event_end_time);
+        var post_data = {event:{event_id:event_id,event_name:event_name,title:event_name
+            ,start_date:event_date,end_date:event_end_date,start_time:event_time,end_time:event_end_time} };
+        //alert(JSON.stringify(post_data));
+        $.post(
+            post_url,
+            post_data,
+            function(response) {
+                if(response['success']){
+
+                    $event.find('.event_name').text($('#edit_event_title').val());
+                    $event.find('.event_date_time').text('at '+$('#edit_event_time').val());
+                    $event.find('.event_date_time.date').text(formatted_date);
+                    $event.attr('data-start_date',event_date);
+                    $event.attr('data-start_time',event_time);
+                    $event.attr('data-end_date',event_end_date);
+                    $event.attr('data-end_time',event_end_time);
+                    $('.edit_event_box').fadeOut(150);
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+    });
+
+    $(document).on('mouseenter','.event',function(){
+        $(this).find('.edit_button').fadeIn(150);
+    });
+    $(document).on('mouseleave','.event',function(){
+        $(this).find('.edit_button').fadeOut(150);
+    });
 
 
     function handle_planner_events(){
@@ -543,7 +640,8 @@ function show_event(event,event_div_id){
     var local_event_start_time = utc_to_local(new_datetime(event['start_date'] + ' ' + event['start_time']));
    // alert("DATETIME TO STRING "+ datetime_to_time_string(local_event_start_time));
 //    alert("START TIME: " + time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time)));
-    event['start_time'] = time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time));
+    //event['start_time'] = time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time));
+    event['formatted_start_time'] = time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time));
     event['formatted_date_time'] = date_to_month_and_day_string(local_event_start_time);
     if(event_div_id=="#future_events"){
         event['future'] = true;
@@ -655,19 +753,21 @@ function add_event(event_json){
 
 
 //For somereason these has to be outside of the .ready()
-$(document).on('click','#add_todo, .create_planner_message',function(event){
+$(document).on('click','#add_todo:not(.cancel_form), .create_planner_message',function(event){
     event.stopPropagation();
     show_planner_creation_form();
+
 
 });
 
 $(document).on('click','.cancel_form',function(event){
     event.stopPropagation();
     hide_planner_creation_form();
-
     $(this).removeClass("cancel_form");
+
   
 });
+
 function show_planner_creation_form(){
     $("#planner_body_holder").hide();
     $(".create_event_body").fadeIn(500);
@@ -862,6 +962,7 @@ $(document).on('click','#create_todo_form',function(e){
     //$('#event_list').slimScroll({
     //    height: '329px'
     //});
+
 
 
 });
