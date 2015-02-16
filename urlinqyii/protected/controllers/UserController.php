@@ -488,8 +488,8 @@ class UserController extends Controller
                         $this->renderJSON($data);
 
                         foreach ($notifications as $notification) {
-                            $notification->status = 'seen';
-                            $notification->save(false);
+                        //    $notification->status = 'seen';
+                          //  $notification->save(false);
                         }
 
                         return;
