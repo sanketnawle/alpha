@@ -1,0 +1,45 @@
+<div class="member" id="">
+    <div class="member-person prof-member-person">
+        <div class="member-wrap prof-member-wrap">
+            <div class="person-thumb">
+                <div class="picwrap" style=""></div>
+                <div class="member-bio">
+                    <!-- Add user interest to the span           Set href in javascript to /profile/user_id -->
+                    <span id="member_interest"></span><a class="profile_url" href=""><strong>View Profile</strong></a>
+                </div>
+
+                <!-- Make this visible if the the user looking at this page is an admin-->
+                <img class="delete-user" title="delete member" style="visibility: hidden;"/>
+
+            </div>
+
+            <h3 class="person-title">
+                <!--set href to-->
+                <a class='profile_url' href=""><strong id="member_name" class="search_unit"></strong></a>
+                <!-- set school_url href to school/users_school_id and set its text to school name-->
+                <span><a class="search_unit school_url" href=""></a></span>
+
+            </h3>
+
+            <!---->
+            <!-- is admin -->
+            <!--<div class="follow-btn" style="margin-left:auto;"> -->
+            <!---->
+            <div class="follow-btn">
+
+
+
+
+                <!--If the user is following this member, show that-->
+                <a class="follow tab_followed ready_to_unfollow" style="visibility: hidden">Following</a>'
+                <!--otherwise show follow link-->
+                <a class="follow">Follow</a>
+
+
+
+                <!--if $is_admin) && (count($admin_array) > 1-->
+                echo '<div class="upgrade-admin upgrade-student" title="remove as admin" style="padding: 0px 10px; width:auto;">Remove</div>
+            </div>
+        </div>
+    </div>
+</div>

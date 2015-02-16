@@ -1,0 +1,222 @@
+
+.landinglogo {
+  width: 85%;
+  margin: 35px 10px;
+  position: relative;
+}
+
+#mainarea0 {
+  width: 960px;
+  height: 350px;
+  margin: 60px auto;
+  margin-bottom: 50px;
+}
+
+
+#mainarea2 {
+/* background: url("../images2013/landinglogo.png") 55px 35px no-repeat;*/
+  filter:alpha(opacity=78); /* IE's opacity*/
+  opacity: 0.78;
+  background-color: #000000;
+  width: 580px;
+  height: 350px;
+  margin: 0px 20px 0px 0px;
+  float: left;
+  color: #ffffff;
+  font-family: Gotham, Helvetica,  Arial, Verdana, sans-serif;
+  font-size: 28px;
+  text-align: center;
+}
+
+
+.fieldHolder1
+{
+       width: 90%;
+       text-align: left;
+       margin: 20px 0px 20px 18px;
+      /* background: url(../images2013/inputs2.gif) no-repeat;*/
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; 
+  -khtml-border-radius: 5px;	
+   border-radius: 5px;
+   behavior:url(border-radius.htc);
+  border: 1px solid #e4e4e4;
+}
+
+
+form {
+  margin: 0px;
+  padding: 0px;
+}
+
+.forgetpassword a {
+  float: right;
+  font-size: 12px; 
+  color: #8d8d8d;
+  text-decoration: none;
+  font-family: Gotham, Helvetica, Arial, Verdana, sans-serif;
+  margin: 5px 20px 0px 0px;
+}
+
+
+.forgetpassword a:hover {
+
+text-decoration: underline;
+
+}
+
+
+#loginarea1 {
+ float: right;
+  margin: 0px;
+ /*background: url("../images2013/login1.gif") no-repeat;*/
+  background-color: #ffffff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px; 
+  -khtml-border-radius: 10px;	
+   border-radius: 10px;
+   behavior:url(border-radius.htc);
+  border: 1px solid #e4e4e4;
+ width: 350px;
+ height: 350px;
+
+}
+
+.instruct4 {
+    color: #323232;
+     font-weight: bold;
+     font-size: 2.2em; 
+     text-align: center;
+     padding: 50px 5px 10px 5px;
+     font-family: Gotham, Helvetica, Arial, Verdana, sans-serif;
+}
+
+
+.instruct5 {
+    color: #323232;
+     font-weight: bold;
+     font-size: 2.2em; 
+     text-align: center;
+     padding: 15px 5px 0px 5px;
+     font-family: Gotham, Helvetica, Arial, Verdana, sans-serif;
+}
+
+
+.quote0 {
+  font-size: .9em;
+  position: relative;
+  margin: -120px 0px;
+}
+
+.register {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; 
+  -khtml-border-radius: 5px;	
+   border-radius: 5px;
+   behavior:url(border-radius.htc);
+  width: 40%;
+  float: left;
+   color: #ffffff;
+  height: 30px;
+  border-left: none;
+  border-top: none;
+  background-color: #65c76b;
+  text-transform: uppercase;
+     font-family: Gotham, Helvetica, Arial, Verdana, sans-serif;
+  margin: 15px 0px 0px 20px;
+ padding: 8px 0px;
+ cursor: pointer;
+}
+
+.rememberme {
+    font-size: 12px; 
+     font-family: Gotham, Helvetica, Arial, Verdana, sans-serif;
+     color: #8d8d8d;
+     float: left;
+     margin: 5px 0px 0px 20px;
+}
+
+.rmcheck {
+  margin: 0px 5px 0px 1px;
+  position: relative;
+  float: left;
+}
+
+.signin {
+  width: 40%;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; 
+  -khtml-border-radius: 5px;	
+   border-radius: 5px;
+   behavior:url(border-radius.htc);
+  float: right;   
+  height: 30px;
+  border-left: none;
+  border-top: none;
+color: #ffffff;
+  text-transform: uppercase;
+     font-family: Gotham, Helvetica, Arial, Verdana, sans-serif;
+  margin: 15px 20px 0px 0px;
+  background-color: #0096d9;
+ padding: 8px 0px;
+ cursor: pointer;
+}
+
+.textInput0
+{
+     width: 95%;
+     height: 36px;
+     border: none;
+     margin: 0px 0px 2px 0px;
+     padding-left: 15px;
+     color: #8d8d8d;
+     font-weight: bold;
+     font-size: 15px;
+  -moz-border-radius: 10px 10px 0px 0px;
+  -webkit-border-radius: 10px 10px 0px 0px;
+  -khtml-border-radius: 10px 10px 0px 0px;
+   border-radius: 10px 10px 0px 0px;
+   behavior:url(border-radius.htc);
+  border-bottom: 1px solid #e4e4e4;
+     font-family: Gotham, Helvetica, Arial, Verdana, sans-serif;
+}
+
+
+.textInput
+{
+     width: 95%;
+     border: none;
+     height: 36px;
+     margin: 0px 0px 2px 0px;
+     padding-left: 15px;
+     color: #8d8d8d;
+     font-weight: bold;
+  border-bottom: 1px solid #e4e4e4;  
+     font-size: 15px;
+     font-family: Gotham, Helvetica, Arial, Verdana, sans-serif;
+}
+
+
+
+.textInput1
+{
+     width: 95%;
+     border: none;
+     height: 36px;
+     margin: 0px 0px 0px 0px;
+     padding-left: 15px;
+     color: #8d8d8d;
+     font-weight: bold;
+     font-size: 15px;
+  -moz-border-radius: 0px 0px 5px 5px;
+  -webkit-border-radius: 0px 0px 5px 5px;
+  -khtml-border-radius: 0px 0px 5px 5px;
+   border-radius: 0px 0px 5px 5px;
+   behavior:url(border-radius.htc);
+     font-family: Gotham, Helvetica, Arial, Verdana, sans-serif;
+}
+
+
+
+
+

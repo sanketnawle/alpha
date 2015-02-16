@@ -1,0 +1,22 @@
+
+#feeds
+{
+
+  margin-top:60px;
+  width:572px;
+  max-width:548px;
+  height:auto;
+
+  padding-top:10px;
+  padding-left:10px;
+  padding-right:10px;
+
+  border: 1px solid rgba(0,0,0,.1);
+  border-width: 0 1px;
+  background: #e0e1e2 url(../images/noise-2.png);
+}
+
+/*
+  background: fafafa;
+
+*/

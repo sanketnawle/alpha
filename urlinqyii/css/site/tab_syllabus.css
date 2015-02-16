@@ -1,0 +1,622 @@
+.class_syllabus_tab{
+
+}
+.class_events_holder{
+    left: 68%; 
+    display: inline-block;  
+    position: absolute; 
+    top: 6px;
+    
+    padding-bottom: 60px;
+    width: 32%;
+    background: #fff; -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+    padding-top: 2px;
+    border-radius: 5px;
+}
+
+li#syllabus_event_order_kind{
+    border-bottom: 1px solid #dcdcdc;
+}
+
+header.class_tasks{  
+    
+    margin-right: 10px;
+    padding-bottom: 6px;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-bottom: 1px solid #ddd;
+}
+header.class_tasks h5{ font-size: 17px;
+    
+ color: #444; text-shadow: 0 -1px rgba(255, 255, 255, 1); margin: 0; top: 3px; display: inline-block; font-weight: 500; font-family: Avenir; left: 0px; font-weight: 500; font-size: 14.5px; color: #444; text-transform: uppercase; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; position: relative;}
+
+header.class_tasks label{
+    font-weight: 600; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: #999; font-family: Avenir; 
+    font-size: 10px;
+    
+    top: -18px;
+    float: right;
+    display: none;
+    left: -36px;
+    position: relative;
+}
+
+header.class_tasks div.order_sort_dropdown{
+    width: 66px;
+    
+    height: 19px;
+    line-height: 13px;
+}
+
+div.order_dropdown_box{
+    background: #fff;
+   
+
+    width: 48px;
+    font-size: 12px; 
+    border-radius: 1px;
+    padding-left: 0px;
+    border: 1px solid #d6d6d6; -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13);
+}
+
+div.day_month_box{
+    float: left;
+
+    height: 44px;
+    margin-left: 0px;
+    border-radius: 0px;
+    margin-top: 0px;
+    width: 44px;
+    background-color: #83B233;
+}
+
+div.calendar_top_border{
+    background: rgba(0, 0, 0, 0.13);
+
+    width: 100%;
+    height: 7px;
+}
+
+div.calendar_bottom_section{
+    
+}
+
+div.calendar_bottom_section span{
+    
+    color: #fff;
+    width: 100%;
+    display: block;
+    font-family: Avenir;
+    text-align: center;
+}
+
+
+div.calendar_bottom_section span.day{
+    font-size: 12px;
+    
+    font-weight: 600;
+    line-height: 11px;
+    margin-top: 8px;
+}
+
+div.calendar_bottom_section span.month{
+    font-size: 11px;
+    
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: .5px;
+}
+
+div.order_dropdown_box > div{
+    
+}
+
+div.events_ordered_list{
+    display:none;
+    margin: 0 10px;
+}
+
+div.events_ordered_list div.kind_section{
+    
+}
+
+div.events_ordered_list div.kind_section > h5{
+    
+    color: #999; font-family: Avenir; 
+    font-size: 13.5px;
+    text-align: left;
+    padding-left: 0px;
+    padding-bottom: 1px;
+}
+
+div.events_ordered_list div.week_section{
+    
+}
+
+div.events_ordered_list > div > h5{
+    margin: 15px 0px 6px 0px;
+
+    color: #999; font-family: Avenir; 
+    text-align: left;
+    font-size: 13.5px;
+    padding-left: 0px;
+    padding-bottom: 1px;
+}
+
+div.syllabus_like_btn{
+    font-family: 'Open Sans', sans-serif;
+
+    display: inline-block;
+    top: -6px;
+    color: #029acf; 
+    position: relative;
+    font-size: 12.5px; font-weight: bold;
+    float: right;
+}
+
+div.syllabus_download_btn{
+font-size: 12.5px; font-weight: bold;
+display: inline-block;
+color: #029acf; 
+position: relative;
+top: -6px;
+float: right;
+font-family: 'Open Sans', sans-serif;
+left: -2px;
+}
+
+span.download_icon{
+background-image: url(../../assets/small_icons.png);
+background-size: auto;
+background-position: 0px -521px;
+border: none;
+display: inline-block;
+position: relative;
+width: 25px;
+top: 8px;
+margin-right: 3px;
+box-shadow: none;
+height: 23px;    
+-moz-transform: scale(.74); position: relative; 
+-webkit-transform: scale(.74); 
+left: 5px;
+transform: scale(.74);
+}
+
+div.syllabus_event.editable div.syllabus_event_button{
+    display:none;
+}
+
+div.syllabus_liked_btn span.post_like_icon{
+    background-size: auto;
+background-position: left top;
+display: inline-block;
+margin-left: 15px;
+-moz-transform: scale(.67);
+-webkit-transform: scale(.67);
+transform: scale(.67);
+width: 25px;
+box-shadow: none;
+margin-top: 1px;
+height: 23px;
+background-position: 0px -248px;
+}
+
+div.syllabus_event.editable input.syla_tab_event_editor{
+    display:block;
+    border: none;
+    border-bottom: 1px solid #eee;
+    font-size: 13.7px;
+    margin: 13px 12px;
+    position: relative;
+    left: 5px;
+    width: 76%;
+    -webkit-transition: border-color 0.15s;
+    -moz-transition: border-color 0.15s;
+    transition: border-color 0.15s;
+}
+
+div.syllabus_event.editable input.syla_tab_event_editor:focus{
+border-bottom: 1px solid #CDCDCD;
+}
+
+div.syllabus_event.editable span.event_name_text{
+    display:none;
+}
+
+input.syla_tab_event_editor{
+    display:none;
+}
+
+div.syllabus_event{
+
+    background: #fff;
+    
+    
+
+    height: 44px;
+    margin: 0;
+
+    position: relative;
+    
+    
+
+    border: 4px solid rgba(213, 214, 215, 0.5);   
+    
+    
+
+    margin-top: -4px;
+
+    border-width: 4px 4px;
+
+}
+
+div.black_action_box{
+     width: 91%;
+
+
+    
+     text-align: left;
+    
+    
+    
+    margin: 0 auto;
+    
+    
+     padding-bottom: 8px;
+     color: #333;
+     margin-top: 0px;
+     margin-left: 1px;
+     position: relative;
+     border-radius: 4px;
+    
+     /* background: #fff; */  
+     font-weight: 500;
+     
+     
+    
+    
+    
+     font-size: 12.5px;  
+     padding: 0px 10px 10px;
+     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;      
+     /* border: 1px solid #D5D6D7; */ 
+     /* box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); */ 
+     -moz-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); 
+     /* -webkit-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); */
+}
+
+div.black_action_explainer{
+
+}
+
+div.full_syllabus_box div.title{
+
+    border-bottom: 1px solid #e2e2e2;
+    
+
+    margin-right: 15px;
+
+    font-family: Avenir;
+
+    font-weight: 400;
+
+    color: #333;
+    -webkit-box-shadow:0 -1px 1px #fff inset;
+    -moz-box-shadow:0 -1px 1px #fff inset;
+    box-shadow: 0 -1px 1px #fff inset;
+    font-size: 16px; 
+
+    color: #333;
+
+    padding-bottom: 6px;
+
+    font-weight: 500;   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+
+    margin-bottom: 14px;
+
+}
+
+.class_events_holder.order_date div.events_by_date{
+    display:block;
+}
+
+.class_events_holder.order_kind div.events_by_kind{
+    display:block;
+}
+
+
+
+.class_syllabus_tab{
+    position: relative;
+    top: 13px;
+    width: 100%;
+    min-height: 100%;
+}
+
+div.full_syllabus_box{
+
+}
+
+button.scan_syllabus{
+    font-family: "Open Sans", Arial, sans-serif;   
+    font-size: 13.5px;
+    font-weight: 500;
+    border-radius: 3px;                 
+    cursor: pointer;
+    display: block;
+    padding: 6px 0px;
+     
+    position: relative;
+    margin: 0 auto;  
+    width: 100%;
+    margin-left: auto;
+    text-indent: 7px;
+    border-radius: 4px;     
+    margin-right: auto;
+    font-weight: bold;    
+    color: #575757 !important;  font-weight: 600;                 
+    border: 1px solid;
+    margin-top: 15px;
+    background-color: #f2f2f2; text-shadow: 0 1px 1px rgba(255,255,255,0.75); 
+    border-color: #Ddd;
+    background-repeat: repeat-x; 
+    font-size: 14px;          
+    -moz-transition: all .1s ease; -webkit-transition: all .1s ease; transition: all .1s ease;
+    box-shadow: 0px -1px #fff inset;
+}
+
+button.scan_syllabus:hover{
+    color: #333;
+outline: 0;
+
+    background-color: #F5F5F5;
+  
+    -webkit-box-shadow: 0 1px 1px rgba(179, 179, 179, 0.1), 0px -1px #fff inset; 
+    -moz-box-shadow: 0 1px 1px rgba(179, 179, 179, 0.1), 0px -1px #fff inset; 
+    box-shadow: 0 1px 1px rgba(179, 179, 179, 0.1), 0px -1px #fff inset;
+    border-color: rgb(231, 229, 229) rgb(208, 205, 205) rgba(184, 178, 178, 0.5);
+}
+
+button.scan_syllabus em.syla_plus{
+    background-image: url(../../assets/small_icons.png); background-size: auto; 
+    background-position: 0px -552px;
+
+    display: inline-block;
+    width: 18px;
+    height: 15px;
+    position: relative;
+    left: -4px;
+    top: 2px;
+    -moz-transform: scale(.7); position: relative; 
+    -webkit-transform: scale(.7);  
+    transform: scale(.7);
+}
+
+
+
+
+button.scan_syllabus:active{
+text-shadow: none; background-image: none; border-color: #b5b5b5; 
+border: 1px solid #CFCFCF; background: #E5E5E5; box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 234, 234, 0.4) inset, 0px 1px 0px rgba(226, 226, 226, 0.4) inset, 0px -1px 0px rgba(216, 216, 216, 0.4) inset;
+}
+
+
+ div.rendered_syllabus_page_holder{
+    position: relative;
+
+    margin-right: 15px;
+    background-color: #eaeaea;
+    height: 700px;
+    padding-top: 1px;
+    border-radius: 1px;
+    padding-bottom: 5px;
+}
+
+div.syllabus_tab_holder{
+    
+}
+
+div.order_sort_dropdown em{
+    top: 0px;
+    left: 4px;
+}
+
+div.paper_shadowonblack{
+    margin: 2px 3px;
+
+    background-color: #fff;
+    height: 100%;
+    background-image: url(../../assets/syllabus_page.png);
+    border-radius: 1px;
+    background-size: contain;
+}
+
+div.syllabus_tagger{
+
+}
+
+div.complete_incomplete_button{
+    display:none;
+}
+
+div.complete_incomplete_button.active{
+    display:inline-block;
+}
+
+div.complete_incomplete_button{
+    
+    width: 33px;
+    height: 44px;
+    right: 0px;
+    position: absolute;
+}
+
+div.black_explainer{
+    margin-top: 15px;
+    
+    text-align: left;
+    width: 90%;
+}
+
+div.complete_incomplete_button span{
+    background-position: -32px -579px;
+}
+
+ul.menu{
+    display: inline-block;
+    float: right;
+    
+    margin-top: -4px;
+}
+
+div.complete_incomplete_button span{
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 26px;
+    position: relative;
+    -moz-transform: scale(.85); position: relative; 
+    -webkit-transform: scale(.85); 
+    transform: scale(.85);
+    cursor:pointer;
+    top: 9px;
+    background-image: url(../../assets/small_icons.png);
+    display: block;
+    opacity: 1;
+}
+
+div.complete_incomplete_button.incomplete span{
+    
+    
+
+    background-position: -1px -579px;
+}
+
+div.help-div {
+position: absolute;
+-moz-transition: all .3s ease-in-out;
+-webkit-transition: all .3s ease-in-out;
+transition: all .3s ease-in-out;
+display: block;
+opacity: 0; 
+pointer-events: none;
+z-index:100000;
+top: 36px;
+right: -10px;
+}
+
+div.help-div .help-wedge {
+border-color: transparent;
+border-bottom-color: rgba(51, 51, 51, 0.87);
+border-style: dashed dashed solid;
+border-width: 0 6.5px 6.5px;
+display: block;
+z-index: 1;
+height: 0;
+width: 0;
+position: relative;
+left: 114px;
+}
+
+div.help-div div.help-box {
+width: 136px;
+font-size: 12px;
+line-height: 14px;
+text-align: center;
+text-shadow: none;
+padding: 7px;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+font-weight: 600;
+border-radius: 2px;
+color: #fff;
+background-color: rgba(51, 51, 51, 0.87);
+}
+
+span.todo_checkbox:hover ~ div.help-div {
+z-index: 1;
+opacity: 1;
+}
+
+div.done_editing_button{
+    display:none;
+    position:absolute;
+    line-height: 23px;
+    right: -4px;
+    z-index: 1000;
+    text-align: center;
+    padding-right: 7px;
+    width: 41px;
+    top: 100%;
+    padding-left: 7px;
+    cursor:pointer;
+    margin-top: 4px;
+    opacity:0;
+    color:#777;
+    -moz-transition: opacity .3s ease-in-out;
+    -webkit-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+    border-radius: 0px 0px 3px 3px;
+    font-size:12.5px;
+    font-weight: bold;
+    background-color:rgba(213, 214, 215, 0.5);
+}
+
+div.done_editing_button:hover{color:#575757;text-decoration: underline;}
+div.done_editing_button:active{color:#575757;background-color:rgba(213, 214, 215, 0.75);}
+
+div.editable > div.event_name_buttons > div.done_editing_button{
+    display:block;
+}
+
+div.syllabus_event.editable input.syla_tab_event_editor:focus ~ div.done_editing_button{
+    opacity:1;
+}
+
+.checkbox_hint.syllabus_tab{
+
+}
+
+.order_dropdown_box li{
+    padding: 6px 6px;
+    cursor: pointer;
+    color: #444;
+    font-size: 12.7px;
+}
+
+.order_dropdown_box li:hover{
+    background: #f2f2f2;
+}
+
+.order_dropdown_box li:hover > a{
+    color: #222;
+}
+
+.order_dropdown_box li a{
+    color: #575757;
+    font-weight: 100;
+}
+
+div.full_syllabus_box{
+    right: 32%;
+
+    display: inline-block;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+}
+
+span.event_name_text{
+    font-size: 13.7px;
+    
+    font-weight: 500;
+    position: absolute;
+    padding: 2px;
+    top: 11px;
+    padding-left: 7px;
+}
+
+div.syllabus_tagger{
+
+}

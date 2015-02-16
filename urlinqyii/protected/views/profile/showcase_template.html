@@ -1,0 +1,44 @@
+<div class="showcase_item center" showcase_index={{index}} file_id = {{id}}
+{{#if url}} style="background-image: url({{preview}})" {{/if}}>
+    <div class="showcase_info">
+        <div class="showcase_label" style="background-color:{{color}}">
+            {{#if url}}
+            <div class="showcase_url">{{link}}</div>
+            <button type="button" onclick = "window.open('{{link}}')" class="download_showcase_button link">
+                <i class="link_button_icon"></i>
+            </button>
+            {{else}}
+            <a href="/alpha/urlinqyii/profile/downloadShowcase/?file_id={{id}}">
+                <button type="button" class="download_showcase_button">
+                    <i class="download_button_icon"></i>
+                </button>
+            </a>
+            <div class="showcase_type">.{{type}}</div>
+            {{/if}}
+
+
+        </div>
+        <div class="showcase_text">
+
+            <div class="showcase_title ">
+                {{title}}&nbsp;
+                <button class="edit_showcase_button edit">
+                </button>
+            </div>
+
+            <input class="edit_showcase_title showcase_edit_field">
+            <div class="showcase_description">
+                {{description}}&nbsp;
+            </div>
+            <textarea class="edit_showcase_description showcase_edit_field"></textarea>
+            <button class="edit_showcase_button cancel">
+            </button>
+            <button class="edit_showcase_button submit">
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="showcase_delete"><a></a></div>
+</div>

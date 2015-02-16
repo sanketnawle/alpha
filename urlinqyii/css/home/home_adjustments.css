@@ -1,0 +1,57 @@
+.MyBox_NameSO a.MyBox_ProfileLink{
+	padding-bottom:0px!important;
+}
+
+div.LeftPanel_SectionContent div.LeftPanel_DeptSchoolHolder{
+	margin-top: 10px!important;
+}
+
+div#content_panel div#nav_bar{
+	top: 63px!important;
+	border-radius: 4px;
+	width: 551px;
+	-webkit-box-shadow: none!important;
+	-moz-box-shadow: none!important;
+	box-shadow: none!important;
+	margin-left: 15px;
+}
+
+div.SectionHeader_holder div.float_Right a{
+	top:0px!important;
+}
+
+div.LeftPanel_DeptSchoolHolder div.LeftPanel_DSContentBox{
+	margin-bottom: 4px!important;
+}
+
+.LeftPanel_MyBox{
+	margin-top:14px!important;
+}
+
+div#nav_bar{
+	border-radius:4px;
+}
+
+div#nav_bar:hover {
+background-color: #393d41!important;
+}
+
+div#nav_drop_down_container{
+	background-color: #393d41;
+}
+
+div.nav_section div#nav_drop_down_container{
+	top:100px!important;
+}
+
+div.home_nav_dropdown#nav_drop_down_container{
+height: 205px;
+}
+
+div.home_nav_dropdown#nav_drop_down_container div.nav_drop_down_scrollable{
+max-height: 198px;
+}
+
+div.nav_section.nav_section_home.active div a:hover{
+	cursor:default!important;
+}

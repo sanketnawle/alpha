@@ -1,0 +1,339 @@
+.topbar {
+    font-family: 'Open Sans';
+    }
+    
+.topbar > #topbar_responsive_holder .right .notify .notify-window {
+    position: absolute;
+    top: 104%;
+    right: auto;
+    bottom: auto;
+    left: -84px;
+    z-index: 10;
+    margin-left: 4px;
+    width: 360px;
+    /* opacity: 0; */
+    /* height: 0; */
+    overflow: hidden;
+    padding: 0 5px 5px;
+}
+
+.no_notifications_container{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: Avenir;
+    font-size: 2.2em;
+    color: #575757;
+    letter-spacing: -1.8px;
+    text-align: center;
+    margin-top: 94px;
+    font-weight: 900;
+}
+
+.noti_header_hint{
+    border-bottom: 1px solid #DBDBDB;
+
+    display: block;
+    font-family: Avenir;
+    font-size: 11.5px;
+    text-align: justify;
+    height: 41px;
+    color: #999;
+    padding-right: 52px;
+    padding-top: 9px;
+    width: 308px;
+    line-height: 17px;
+}
+
+.topbar > #topbar_responsive_holder .right .notify .notify-window .wedge {
+    position: absolute;
+    top: 0;
+    right: 165px;
+    bottom: auto;
+    left: auto;
+    z-index: auto;
+    height: 12px;
+    width: 14px;
+    background-image: url(../../../assets/noti_sprite.png);
+    background-position: 23px 34px;
+    z-index: 2;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window {
+    margin-top: 8px;
+    background-color: #fff;
+    border-radius: 3px;   
+    border: 1px solid #d6d6d6; -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13);
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window * {
+    /* opacity: 0; */
+    -moz-transform: scale(.99);
+    -ms-transform: scale(.99);
+    -o-transform: scale(.99);
+    /* transform: scale(.99); */
+    -webkit-transition: opacity .1s, transform .2s;
+    -moz-transition: opacity .1s, transform .2s;
+    -o-transition: opacity .1s, transform .2s;
+    -ms-transition: opacity .1s, transform .2s;
+    transition: opacity .1s, transform .2s;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .header {
+    text-align: center;
+    padding: 18px 14px 15px;
+    font-family: 'Avenir';
+    font-weight:  500;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    font-size: 14.8px;
+    color: #575757;
+    text-transform: capitalize;
+    font-family: Avenir;
+    text-transform: uppercase;
+    float: left;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable {
+    overflow: auto;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: auto;
+    height: auto !important;
+    max-height: 300px;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li {
+    border-top: 1px solid #e6e5e6;
+    background-color: #fff;
+    position: relative;
+    overflow: auto;
+    -webkit-transition: background-color .3s;
+    -moz-transition: background-color .3s;
+    -o-transition: background-color .3s;
+    -ms-transition: background-color .3s;
+    transition: background-color .3s;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:first-child {
+    border-top: none;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon {
+    float: left;
+    width: 34px;
+    margin: 11px 8px 0 12px;
+    height: 34px;
+    background-image: url(../../../assets/noti_sprite.png);
+    border-radius: 2.5px;
+    background-size: cover;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon.text {
+    background-position: 35px 0;
+    color: #fff;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon.text div {
+    font-size: 65%;
+    text-align: center;
+    margin-top: 11px;
+    text-transform: uppercase;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon.date {
+    background-position: 0 0;
+    color: #fff;
+    background: #777;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon.date div {
+    text-align: center;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon.date div.month {
+    font-size: 10px;
+    line-height: 11px;
+    font-family: Avenir;
+    margin-top: 5px;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon.date div.day {
+    font-size: 14px;
+    line-height: 17px;
+    font-family: Avenir;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .message {
+    font-size: 12.5px;
+    margin-top: 8px;
+    font-weight:  400;
+    color: #333;
+    margin-left: 54px;
+    display: block;
+    width: 300px;
+    white-space: initial;
+    word-wrap: break-word;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .time {
+    clear: left;
+    margin-left: 50px;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .time .icon {
+    height: 12px;
+    float: left;
+    background-image: url(../../../assets/noti_sprite.png);
+    margin: 1px 3px;
+    display: none;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .time .stamp {
+    margin-top: 4px;
+    font-size: 75%;
+    font-weight: 400;
+    color: #989898;
+    margin-bottom: 12px;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right {
+    text-align: right;
+    float: right;
+    margin: 0 12px 0 5px;
+    position: relative;
+    z-index: 10;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right * {
+    font-size: 85%}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .follow {
+    font-size: 75%;
+    font-weight: 500;
+    padding: 3px 5px;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .follow.btn {
+    border-radius: 4px;
+    border: 1px solid #eee; border-bottom-color: #E4E4E4; background-color: #fcfcfc; background-image: -webkit-linear-gradient(#fafafa, #f8f8f8); background-image: linear-gradient(#fafafa, #f8f8f8); color: #575757!important;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .follow.btn:hover {
+border-color: #E4E4E4;
+-moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+-webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 border-bottom-color:#DDD;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .follow.btn:active {
+
+-webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+-moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+background: #EEE;
+box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+
+}
+
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .follow.msg {
+    color: #000;
+    font-weight: 600;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .dismiss, .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .close {
+    margin-top: 2px;
+    color: #222;
+    opacity: .65;
+    visibility: hidden;
+    float: right;
+    clear: both;
+    font-size: 10px;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .dismiss:hover, .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .close:hover {
+    opacity: 1;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .close {
+    height:  10px;
+    width:  8px;
+    background-image: url(../../../assets/noti_sprite.png);
+    background-position: 0px -174px;
+    background-size:  auto;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:not(.done):hover {
+    background-color: rgba(245, 245, 245, 0.43);
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:not(.done):hover .right .dismiss, .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:not(.done):hover .right .close {
+    visibility: visible;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li.eve .time .icon {
+    width: 24px;
+    background-position: -20px -70px;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li.tdo .time .icon {
+    width: 12px;
+    height: 10px;
+    background-position: -8px -70px;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li.qus .time .icon {
+    width: 12px;
+    height: 15px;
+    background-position: 0 -81px;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li.inf .time .icon {
+    width: 11px;
+    height: 13px;
+    background-position: -12px -82px;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li.per .time .icon {
+    width: 11px;
+    background-position: -23px -82px;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li.done {
+    opacity: .75;
+    background-color: #f5f5f5;
+    border-top-color: #e6e5e6;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .footer {
+    text-align: center;
+    padding: 14px;
+    font-family: 'Avenir';
+    border-top: 1px solid #d4d4d4;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .footer:hover {
+    text-decoration: underline;
+}
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .footer img {
+    margin-bottom: -3px;
+}
+.topbar > #topbar_responsive_holder .right .notify.board .notify-window {
+    left:  -186px;
+}
+.topbar > #topbar_responsive_holder .right .notify.board .notify-window .wedge {
+    right: 44px;
+}
+.topbar > #topbar_responsive_holder .right .notify.board .notify-window .window .noti-scrollable {
+    bottom: 0;
+}
+.topbar > #topbar_responsive_holder .right .notify.active .notify-window {
+    opacity: 1;
+    height: auto;
+    width: 380px;
+}
+.topbar > #topbar_responsive_holder .right .notify.active .notify-window .window * {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+
+
+.accept_invite_button {
+    cursor: pointer;
+}
+
+
+.notification_link * {
+    cursor: pointer;
+}
+
+.notification_link .message {
+    cursor: pointer;
+}
+
+.notification_link div.stamp  {
+    cursor: pointer;
+}
+
+.notification_link .time {
+    cursor: pointer;
+}
+
+
+.notification_follow_button {
+    margin-top: 30px;
+    margin-right: 5px;
+}
+
+
+

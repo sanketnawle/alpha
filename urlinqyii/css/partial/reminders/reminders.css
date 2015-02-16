@@ -1,0 +1,189 @@
+div#reminders_section{
+
+}
+
+div#reminders_section > div{
+    margin-top: 14px;
+}
+
+a.reminders_cal_link > div.blue_right_arrow {
+background-position: -43px -276px;
+width: 10px;
+height: 14px;
+position: relative;
+top: 2px;
+margin-left:4px;
+}
+
+div.reminders_header.header{
+    font-family: Avenir;
+
+    font-size: 15px;
+    font-size: 14.8px; 
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #444; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #EAEAEA;  -moz-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset; -webkit-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset; box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset;
+} 
+
+ul.reminder_entries{
+    list-style: none;
+    min-height: 55px;
+    padding: 0;
+    margin: 0;
+}
+
+div.reminders_footer{
+    margin-top: 10px;
+   
+    border-top: 1px solid rgba(255, 255, 255, 0.77);   
+    padding-top: 7px;
+    -moz-box-shadow: 0 1px 0px #E8E8E8 inset; 
+    -webkit-box-shadow: 0 1px 0px #E8E8E8 inset; 
+    box-shadow: 0 1px 0px #E8E8E8 inset;
+}
+
+div.reminders_footer > a{
+    color: #029acf;
+
+    font-size: 12.5px;
+    font-weight: 200;
+    text-transform: capitalize;
+    float: left;
+}
+
+div.reminders_footer > a:hover{
+    text-decoration: underline;
+}
+
+
+div.reminders_footer > a > img{
+
+}
+
+div#reminders_section li.tdo{
+    list-style: none;
+
+    /* border: 1px solid #e2e2e2; */
+    background: #fff;
+    height: 45px;
+    margin-top: 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    padding: 4px;
+    border-radius: 3.5px;
+}
+
+div#reminders_section div.icon.date{
+    display: inline-block;
+
+    width: 45px;
+    background-color: #777;
+    height: 45px;
+    font-family: Avenir;
+    float: left;
+    border-radius: 0px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2.5px;
+}
+
+div#reminders_section div.icon.date div.mini_cal_top_border{
+    position: absolute;
+    
+    top: 0px;
+    right: 0;
+    height: 7px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+div#reminders_section div.icon.date div.month{
+    text-align: center;
+
+    color: #FFF;
+    font-size: 13.5px;
+    margin-top: 8.5px;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+}
+
+div#reminders_section div.icon.date div.day{
+    text-align: center;
+    
+    font-size: 14px; 
+    font-weight: 500; line-height: 11px; 
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+    margin-top: 3px;
+    color: #FFF;
+}
+
+div#reminders_section li.tdo div.content{
+    display: inline-block;
+
+    width: 177px;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+
+div#reminders_section li.tdo div.content div.right{
+
+}
+
+div#reminders_section li.tdo div.content div.right div.dismiss{
+
+}
+
+div#reminders_section li.tdo div.content div.right div.close{
+
+}
+
+div#reminders_section li.tdo div.content div.time{
+    text-transform: capitalize;
+    font-size: 15px;
+
+    margin-bottom: 3px;
+}
+
+div#reminders_section li.tdo div.content div.time div.stamp{
+    font-family: Avenir;
+    
+    font-weight: 200;
+}
+
+div#reminders_section li.tdo div.content div.message{
+    font-size: 12px;
+    
+    line-height: 15px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    text-transform: capitalize;
+}
+
+span.event_highlight{
+    
+    padding: 1px 2px;
+    background-color: rgba(247, 42, 73, 0.12);  
+    color: rgba(247, 42, 73, 1);
+}
+
+.no_reminders_container{
+    font-family: Avenir;
+
+    font-weight: 200;
+    text-transform: capitalize;
+    color: #999;
+    text-align: center;
+    font-size: 15px;
+    text-shadow: 1px 1px 1px #FFF;
+}
+
+.no_reminders_container .no_reminders_graphic{
+    background-image: url(../../../assets/no_reminders_graphic.png);
+
+    width: 33px;
+    height: 28px;
+    background-size: auto;
+    display: block;
+    margin: 20px auto 6px;
+}
+

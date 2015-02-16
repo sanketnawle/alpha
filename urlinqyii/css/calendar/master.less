@@ -1,0 +1,270 @@
+﻿@import "import/common.less";
+
+/* Reset Window */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: @hundred-percent;
+    background-color: #fafafa;
+}
+
+
+.event_holder{
+  cursor: pointer;
+}
+
+.ul-calendar {
+    overflow: hidden;
+    min-width: 900px;
+
+    &, * {
+        .reset();
+        .font-open-sans();
+    }
+
+    .absolute(@srchbar-height, 0, 0, 0);
+
+    &.print {
+        position: static;
+    }
+
+    .toolbar {
+        position: absolute;
+        top: 0;
+        left: 23px;
+        bottom: auto;
+        right: 193px;
+        z-index: 10;
+        border: solid #d4d4d4;
+        border-width: 0 1px;
+        background-color: #FFF;
+        height: 45px;
+        @corner-rd: 4px;
+
+        .wrap {
+            margin: 0 15px;
+            border-bottom: 1px solid @border-color;
+
+            .column {
+                font-size: 12px;
+                height: @hundred-percent;
+                padding: 10px 0 6px;
+                @right-width: 230px;
+                @left-width: 250px;
+
+                &.left {
+                    float: left;
+                    width: @left-width;
+                }
+
+                &.right {
+                    float: right;
+                    width: @right-width;
+
+                    .print {
+                        .absolute(15px);
+                        width: 16px;
+                        background-image: url(../../assets/calendar_page_assets.png);
+                        background-position: 0 48px;
+
+                        &:hover {
+                            background-position: 0 64px;
+                        }
+                    }
+
+                    form {
+                        float: right;
+                        border-radius: @corner-rd;
+                        background-color: #FFF;
+                        height: @hundred-percent;
+                        border: 1px solid #b9b9b9;
+                        box-shadow: inset 0px 1px 2px rgba(0,0,0,0.1);
+                        -moz-box-shadow: inset 0px 1px 2px rgba(0,0,0,0.1);
+                        -webkit-box-shadow: inset 0px 1px 2px rgba(0,0,0,0.1);
+                        border-top-color: #a0a0a0;
+                        @ideal-width: 21px;
+
+                        * {
+                            float: left;
+                            height: 25px;
+                        }
+
+                        input[type=text] {
+                            width: 200px;
+                            margin-left: -@ideal-width;
+                            padding: @ideal-padding 25px;
+                            border-radius: @corner-rd;
+                        }
+
+                        input[type=submit] {
+                            width: @ideal-width;
+                            background-image: url(../../assets/calendar/search.png);
+                            background-repeat: no-repeat;
+                            background-position: right center;
+                            background-size: 70% 54%;
+                            opacity: .8;
+                            background-color: #FFF;
+                            box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.05);
+                            border-radius: @corner-rd 0 0 @corner-rd;
+                        }
+                    }
+                }
+
+                &.center {
+                    margin: 0 @right-width 0 @left-width;
+                    font-size: 11px;
+
+                    ul {
+                        overflow: auto;
+                        margin: auto;
+                        text-align: center;
+                        font-size: 0;
+                        height: @hundred-percent;
+
+                        li {
+                            height: @hundred-percent;
+                            font-size: @ideal-font-size - 1;
+                            display: inline-block;
+                            background-color: #f0f0f0;
+                            overflow: hidden;
+                            font-weight: 500;
+                            width:82px;
+                            text-align: center;
+                            .transition(all .1s ease);
+                            .font-avenir();
+                            border-right-color: transparent;
+                            box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.45) inset;
+
+                            @border-radius: @corner-rd;
+
+
+                            &:first-child {
+                                &, a {
+                                    border-radius: @border-radius 0 0 @border-radius;
+                                    border-right:none;
+                                }
+                            }
+
+                            &:last-child {
+                                border-right-color: #ddd;
+
+                                &, a {
+                                    border-radius: 0 @border-radius @border-radius 0;
+                                    border-left:none;
+                                }
+                            }
+
+                            a {
+                                display: block;
+                                padding: 5px 19px 4px;
+                                text-transform: capitalize;
+                                height: @hundred-percent;
+                                color:#777;
+                                border:1px solid #ddd;
+
+                                &:hover {
+                                    background-color: #eaeaea;
+                                }
+
+                                &.active {
+                                    color: #FFF;
+                                    background-color: #575757;
+                                    border-top-color: #575757;
+                                    border-bottom-color: #575757;
+                                    box-shadow: 1px 0px 1px rgb(37, 37, 37), 0px 1px 1px rgba(255, 255, 255, 0.23) inset;
+                                    border: 1px solid #222;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .body {
+        .absolute(@toolbar-height, @leftbar-width + 23px, 0, 23px);
+        border: 1px solid @border-color;
+        border-width: 0 1px;
+        background-color: #fff;
+
+        .month {
+            .font-avenir();
+        }
+
+        .year {
+            font-weight: 500;
+            color: #575757;
+        }
+
+        &.semester {
+            left: 0;
+        }
+
+        &.print {
+            position: static;
+
+            .header.row1 {
+                .arrow, .right {
+                    display: none;
+                }
+            }
+
+            .header.row2 {
+                margin-right: 0px;
+            }
+
+            .week-view {
+                position: static;
+            }
+
+            .month-grid {
+                right: 0;
+            }
+        }
+
+
+
+        .ad-grid {
+
+            .ads {
+                overflow: auto;
+
+                .ad {
+                    overflow: auto;
+                    width: 230px;
+                    float: left;
+                    margin: 10px;
+
+                    .icon {
+                        float: left;
+                        margin-right: 8px;
+                        margin-bottom: 8px;
+                    }
+
+                    .title {
+                    }
+
+                    .follow {
+                        float: right;
+                        clear: left;
+                        padding: 3px 19px 4px;
+                        color: #333;
+                        font-size: @ideal-grid-font-size + 1;
+                        font-weight: 600;
+                        border: 1px solid #DDD;
+                        border-color: #e5e5e5 #ccc #ccc;
+                        .gradient(#EEE,#FFF,#EEE);
+                        border-radius: 4px;
+                        box-shadow: 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+
+                        &:hover {
+                            color: #000;
+                            box-shadow: 0 1px 3px rgba(0, 0, 0, .15), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(248, 248, 248, 1), inset 0 -1px 0 rgba(248, 248, 248, .5), inset 1px 0 0 rgba(248, 248, 248, 1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
