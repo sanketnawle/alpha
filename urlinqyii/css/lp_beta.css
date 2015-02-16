@@ -103,11 +103,11 @@ background: rgba(18, 19, 20, 0.84);
   z-index: -1;
   pointer-events: none;
   position: absolute;
-  -ms-transition: background .22s ease, border-color .22s ease;
-  -o-transition: background .22s ease, border-color .22s ease;
-  -webkit-transition: background .22s ease, border-color .22s ease;
-  -moz-transition: background .22s ease, border-color .22s ease;
-  transition: background .22s ease, border-color .22s ease;
+  -ms-transition: background .33s ease, border-color .33s ease;
+  -o-transition: background .33s ease, border-color .33s ease;
+  -webkit-transition: background .33s ease, border-color .33s ease;
+  -moz-transition: background .33s ease, border-color .33s ease;
+  transition: background .33s ease, border-color .33s ease;
   width: 389px;     
 }
 
@@ -129,28 +129,28 @@ background: rgba(18, 19, 20, 0.84);
 
 .other_panel.active .registration-form, .other_panel.active .lp_terms{
   opacity: 1;
-  -ms-transition: opacity .23s ease!important; 
-  -o-transition: opacity .23s ease!important; 
-  -webkit-transition: opacity .23s ease!important; 
-  -moz-transition: opacity .23s ease!important; 
-  -webkit-transition: opacity .23s ease!important;
+  -ms-transition: opacity .33s ease!important; 
+  -o-transition: opacity .33s ease!important; 
+  -webkit-transition: opacity .33s ease!important; 
+  -moz-transition: opacity .33s ease!important; 
+  -webkit-transition: opacity .33s ease!important;
 }
 
 .other_panel .registration-form, .other_panel .lp_terms{
   opacity: 0;     
-  -ms-transition: opacity .4s ease; 
-  -o-transition: opacity .4s ease; 
-  -webkit-transition: opacity .4s ease; 
-  -moz-transition: opacity .4s ease;  
-  transition: opacity .4s ease; 
+  -ms-transition: opacity .33s ease; 
+  -o-transition: opacity .33s ease; 
+  -webkit-transition: opacity .33s ease; 
+  -moz-transition: opacity .33s ease;  
+  transition: opacity .33s ease; 
 }
 
 .header-sec {
-  -ms-transition: transform .6s ease-in-out;
-  -o-transition: transform .6s ease-in-out;
-  -webkit-transition: transform .6s ease-in-out;
-  -moz-transition: transform .6s ease-in-out;
-  transition: transform .6s ease-in-out;
+  -ms-transition: transform .55s cubic-bezier(0.550,0.085,0.680,0.530), opacity .35s cubic-bezier(0.550,0.085,0.680,0.530);
+  -o-transition: transform .55s cubic-bezier(0.550,0.085,0.680,0.530), opacity .35s cubic-bezier(0.550,0.085,0.680,0.530);
+  -webkit-transition: transform .55s cubic-bezier(0.550,0.085,0.680,0.530), opacity .35s cubic-bezier(0.550,0.085,0.680,0.530);
+  -moz-transition: transform .55s cubic-bezier(0.550,0.085,0.680,0.530), opacity .35s cubic-bezier(0.550,0.085,0.680,0.530);
+  transition: transform .55s cubic-bezier(0.550,0.085,0.680,0.530), opacity .35s cubic-bezier(0.550,0.085,0.680,0.530);
 }
 
 
@@ -642,7 +642,7 @@ div.header-sec-left{
     width: auto;
     height: 42px;
     padding-left: 0px;
-    padding-right: 18px;
+    padding-right: 16px;
 }
 
 div.header-sec{
@@ -688,7 +688,7 @@ div.header-sec div.header-sec-right{
 
 div.header-sec-right div.time-to-signup{
 
-    font-size: 23px!important;
+    font-size: 26px!important;
     
     
 
@@ -2087,7 +2087,7 @@ div.footer-sec button.FacebookConnect {
 width: 409px;
 }
 button.SignUp{
-  width:409px;
+  width: 371px;
   top: 14px;
 }
 
@@ -2096,8 +2096,8 @@ div.or-head {
 }
 
 div.header-sec-right div.time-to-signup{
-  padding-left: 22px;
-  padding-top: 6px;
+  padding-left: 0px;
+  padding-top: 3px;
 }
 
 ul.account-types li.student label {
@@ -2113,15 +2113,15 @@ div.header-sec-left h4.header{
   margin-left: 0px;
 }
 div.fname-lname-sec input {
-width: 199px;
+width: 180px;
 }
 
 ul.account-types li.account-type {
-width: 204px;
+width: s;
 }
 
 .registration-sec-texts input{
-width: 408px;
+width: 370px;
 
 }
 
@@ -2147,14 +2147,15 @@ img.logo {
 div.signup-container {
 display: block;
 position: fixed;
-  position:absolute;
+  
+position:absolute;
 
-width: 440px;
+width: 400px;
 top: 170px;
-margin-left: -220px;
+margin-left: -200px;
 border-radius: 8px;
 left: 50%;
-/* background: rgba(255, 255, 255, 0); */
+background: rgba(255, 255, 255, 0);
 padding: 4px;
 /* -webkit-box-shadow: 0 0 16px 4px rgba(0, 0, 0, .2); */
 z-index: 100;
