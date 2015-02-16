@@ -517,7 +517,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 						<tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 							<tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 								<td class="intro" align="left" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #FFF;font-size: 20px;padding-left: 10px;">
-									Hi <span class="user_first_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">Laz,</span>
+									Hi <span class="user_first_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><?php echo $to_user->firstname; ?>,</span>
 								</td>
 								<td align="right" class="urlinq_tri_color" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 33%;right: 10px;height: 5px;top: 35px;position: relative;">
 									<img class="logo tricolor_float_logo" style="background-repeat: no-repeat;background-size: contain;margin: 0;padding: 15px;font-family: 'Open Sans', sans-serif;max-width: 100%;width: 114px;left: 50%;position: absolute;height: 26px;right: 0px;top: -50px;margin-left: -57px;" src="http://beta.urlinq.com/assets/email_logo.png">										
@@ -562,7 +562,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 						</a>					
 						<!-- Callout Panel -->
 						<p class="post_thought_leader_name" style="margin: 0 auto;padding: 7px 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: 600;font-size: 21px;line-height: 1.6;text-align: left;padding-bottom: 0;margin-left: 40px;">
-							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #222;text-decoration: none;"><?php if($actor->user_type == 'p'){ echo "Professor " . $actor->lastname; }else{ echo $actor->firstname . ' ' . $actor->lastname; } ?> Hippocratus</a>
+							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #222;text-decoration: none;"><?php if($actor->user_type == 'p'){ echo "Professor " . $actor->lastname; }else{ echo $actor->firstname . ' ' . $actor->lastname; } ?></a>
 						</p>
 						<p class="post_callout" style="margin: 0;padding: 0px;font-family: 'Open Sans', sans-serif;margin-bottom: 15px;font-weight: 400;font-size: 18px;line-height: 1.6;background-color: #FFF;text-align: left;border-bottom: 1px solid #777;margin-left: 40px;padding-bottom: 6px;margin-right: 40px;">
 							<?php if($post->origin_type == 'class'){ ?>
