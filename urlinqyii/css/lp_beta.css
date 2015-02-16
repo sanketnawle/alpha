@@ -146,8 +146,13 @@ display:block;
 cursor: pointer;
 }
 
+
+.bottom_tab_button {
+  display: none;
+}
+
 .bottom_tab_button.active{
-  display:none;
+  display: block;
 }
 
 .bottom_tab_left{

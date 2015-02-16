@@ -159,10 +159,51 @@
   $('.bottom_tab_button').click(function(){
     var $bottom_tab = $(this);
     var sub_panel_id = $bottom_tab.attr('data-bottom_tab_id');
-    $(this).closest('.bottom_tab').find('.bottom_tab_button.active').removeClass('active');
-    $bottom_tab.addClass('active');
+
+    var panel_count = 3;
+
+
+    var left_button_tab_id = parseInt(sub_panel_id) - 1;
+    var right_button_tab_id = parseInt(sub_panel_id) + 1;
+
+
+    //alert(sub_panel_id);
+
+    if(left_button_tab_id == 0){
+        left_button_tab_id = 3
+    }
+
+    if(right_button_tab_id == panel_count + 1){
+        right_button_tab_id = 1;
+    }
+
+    console.log('sub panel id: ' + sub_panel_id.toString());
+
+    console.log('left button tab id');
+    console.log(left_button_tab_id);
+
+
+    console.log('right button tab id');
+
+    console.log(right_button_tab_id);
+
+    console.log('-------------------------');
+
+
+    $('.bottom_tab_left').find('.bottom_tab_button.active').removeClass('active');
+    $('.bottom_tab_right').find('.bottom_tab_button.active').removeClass('active');
+
+
+    $('.bottom_tab_left').find('.bottom_tab_button[data-bottom_tab_id="' + left_button_tab_id.toString() + '"]').addClass('active');
+    $('.bottom_tab_right').find('.bottom_tab_button[data-bottom_tab_id="' + right_button_tab_id.toString() + '"]').addClass('active');
+
+//
+//    $(this).closest('.bottom_tab').find('.bottom_tab_button.active').removeClass('active');
+
+
+    //$bottom_tab.addClass('active');
     $('.sub_panel.active').removeClass('active');
-     $('#sub_panel_' + sub_panel_id).addClass('active');
+    $('#sub_panel_' + sub_panel_id).addClass('active');
 
   });
 
@@ -747,7 +788,7 @@
                             What can you do on Urlinq?
                           </div>
                         </div>
-                        <div class = "bottom_tab_button active" data-bottom_tab_id = "1">
+                        <div class = "bottom_tab_button" data-bottom_tab_id = "1">
                           <div class = "arrow">
                           </div>
                           <div class = "bottom_tab_text one_line_text">
@@ -770,14 +811,14 @@
                             Which schools are on Urlinq?
                           </div>
                         </div>
-                        <div class = "bottom_tab_button active" data-bottom_tab_id = "1">
+                        <div class = "bottom_tab_button" data-bottom_tab_id = "1">
                           <div class = "arrow">
                           </div>
                           <div class = "bottom_tab_text one_line_text">
                             About
                           </div>
                         </div>  
-                        <div class = "bottom_tab_button active" data-bottom_tab_id = "2">
+                        <div class = "bottom_tab_button  active" data-bottom_tab_id = "2">
                           <div class = "arrow">
                           </div>
                           <div class = "bottom_tab_text one_line_text">
