@@ -485,8 +485,10 @@ class UserController extends Controller
                     $data = array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications));
 
                     if (isset($_GET['mark_seen'])) {
+                        echo "testtest";
 
                     foreach ($notifications as $notification) {
+                        echo "test";
                         $notification->status = 'seen';
                         $notification->save(false);
                     }
