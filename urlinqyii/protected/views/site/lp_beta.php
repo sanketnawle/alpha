@@ -137,6 +137,25 @@
   /*error handling end*/
 
 
+  $('.after_tab').click(function(){
+    var $tab = $(this);
+    var panel_id = $tab.attr('data-tab_id');
+    $('.after_tab.active').removeClass('active');
+    $tab.addClass('active');
+    $('.other_panel.active .synced_animation_divs').css({'transition':'opacity .05s linear', '-webkit-transition':'opacity .05s linear', '-moz-transition':'opacity .05s linear','-ms-transition':'opacity .05s linear','opacity':'0'});
+    $('.other_panel.active').css({'background':'transparent',"border-color":"transparent"}); 
+    $('.other_panel.active').removeClass('active');
+    
+    $('#other_panel_' + panel_id).addClass('active');
+    
+
+    $('#other_panel_' + panel_id).delay(500).queue( function(next){ 
+      $(this).css({'background':'rgba(255, 255, 255, 0.95)','border-color':'rgba(105, 105, 105, 0.17)'});
+      $('#other_panel_' + panel_id + ' .synced_animation_divs').css({'opacity':'1'});  
+      next(); 
+    });
+
+  });
 
 
 
@@ -671,17 +690,49 @@
 
           <!--signup form-->
           <div class = "signup-container">
-              <div class = "signup-form-wrap">
+              <div class = "signup_border_fake">
+              </div>
+              <div class = "signup_after_tabs">
+                <div class = "after_tab" data-tab_id = "1">
+                  <h4>About</h4> 
+                </div>
+                <div class = "after_tab" data-tab_id = "2">
+                  <h4>Why Join?</h4>
+                </div>
+                <div class = "after_tab active" data-tab_id = "3">
+                  <h4>Sign Up</h4>
+                </div>
+              </div>
+              <div class = "other_panel" id = "other_panel_1">
                   <div class = "header-sec">
                     <div class = "header-sec-left">
-                      <h4 class = "header">Sign Up
+                      <h4 class = "header">About</h4>
                     </div>
                     <div class = "header-sec-right">
-                      <div class = "time-to-signup">Your digital campus awaits</div>
+                      <div class = "time-to-signup">Your link to the university</div>
                       <!--<div class = "signup-slog">seconds to get started</div>-->
                     </div>
                   </div>
-                  <div class = "registration-form">
+              </div>
+              <div class = "other_panel" id = "other_panel_2">
+                  <div class = "header-sec">
+                    <div class = "header-sec-left">
+                      <h4 class = "header">Why Join?</h4>
+                    </div>
+
+                  </div>
+              </div>
+              <div class = "signup-form-wrap other_panel active" id = "other_panel_3">
+                  <div class = "header-sec">
+                    <div class = "header-sec-left">
+                      <h4 class = "header">Sign Up</h4>
+                    </div>
+                    <div class = "header-sec-right">
+                      <div class = "time-to-signup" style = "font-size:20px;">Communicate across campus</div>
+                      <!--<div class = "signup-slog">seconds to get started</div>-->
+                    </div>
+                  </div>
+                  <div class = "registration-form synced_animation_divs">
                     <form name = "register" id = "register" class = "register" method = "post" action = "<?php echo Yii::app()->request->baseUrl; ?>/register" autocomplete="on">
                       <div class = "registration-sec">
                         <div class="reg_error_text_prompt"></div>
@@ -766,7 +817,7 @@
                     </button>
 
                   </div>-->
-                  <div class = "lp_terms">
+                  <div class = "lp_terms synced_animation_divs">
                     <p class = "lp_terms_p">
                       By clicking Create Your Account, you agree to our <a href = "https://urlinq.com/about/legal/terms" target = "_blank">Terms</a> and that you have read our <a href = "https://urlinq.com/about/legal/privacy" target = "_blank">Privacy Policy</a>.
                     </p>
