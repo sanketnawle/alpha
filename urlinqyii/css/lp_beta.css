@@ -95,6 +95,96 @@ background: rgba(18, 19, 20, 0.84);
 
 }
 
+.sub_panel{
+  z-index:-1;
+  pointer-events:none;
+  opacity: 0;
+}
+
+.sub_panel.active{
+  z-index:1;
+  pointer-events:auto;
+  opacity: 1;
+}
+
+.bottom_tabs{
+
+}
+
+.bottom_tab{
+    width: 119px;
+
+}
+
+.bottom_tab_text{
+    color: #575757;
+
+    font-size: 14px;
+    line-height: 16px;
+    font-family: AVenir;
+}
+
+.bottom_tab_text.one_line_text{
+    line-height: 30px;
+  
+}
+
+.bottom_tab_button:hover .bottom_tab_text{
+  color: #029acf;
+}
+
+.bottom_tab_left .bottom_tab_button:hover .arrow{
+    background-position: 0px -32px;
+}
+
+.bottom_tab_right .bottom_tab_button:hover .arrow{
+    background-position: -38px -32px;
+}
+
+.bottom_tab_button{
+display:block;
+cursor: pointer;
+}
+
+.bottom_tab_button.active{
+  display:none;
+}
+
+.bottom_tab_left{
+    float: left;
+
+    text-align: left;
+}
+
+.bottom_tab_right{
+    float: right;
+
+    text-align: right;
+}
+
+.bottom_tab .arrow{
+    background-image: url(../assets/lp_sub_tab_arrows.png);
+  
+    width: 20px;
+    height: 28px;
+    background-size: auto;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+.bottom_tab_left .arrow{
+    float: left;
+
+    margin-right: 5px;
+}
+
+.bottom_tab_right .arrow{
+    float: right;
+
+    background-position: -38px 0;
+    margin-left: 1px;
+}
+
 .other_panel {
   height: 390px;
   border-radius: 6px;
@@ -125,6 +215,49 @@ background: rgba(18, 19, 20, 0.84);
   transform: translateX(0px) scale(1,1)!important;
   opacity: 1;
   color: #FFF;
+}
+
+.other_panel .section_contents{
+opacity:0;
+position: relative;
+top: -50px;
+height: 380px;
+}
+
+.other_panel .section_contents .opening_text{
+
+    font-weight: 100;
+    font-size: 17px;
+    
+
+    font-size: 12px;  
+
+    line-height: 23px;
+
+    font-weight: 600; 
+
+    margin: 0 10px;
+
+    padding: 12px;
+
+    color: #333;
+    
+
+    padding-top: 7px;
+
+    text-align: justify;
+
+}
+
+.other_panel .section_contents .bottom_tabs{
+    border-top: 2px solid rgba(87, 87, 87, 0.9);
+
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+    height: 30px;
+    padding: 14px 0px 14px;
+    right: 20px;
 }
 
 .other_panel.active .registration-form, .other_panel.active .lp_terms{
