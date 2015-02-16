@@ -489,11 +489,12 @@ class UserController extends Controller
                         $notification->save(false);
                     }
 
+                    }
+
                     $data = array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications));
                     $this->renderJSON($data);
                     return;
 
-                    }
                 } else {
                     $data = array('success'=>true,'notifications'=>array());
                     $this->renderJSON($data);
