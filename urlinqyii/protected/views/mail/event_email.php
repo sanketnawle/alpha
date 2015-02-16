@@ -550,7 +550,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 
                                         <p style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;"><img src="http://beta.urlinq.com/assets/Club_Event_Email_hero.jpg" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;"></p><a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #2BA6CB;">
                                         <div class="thought_leader_frame_group" style="margin: 0 auto;padding: 3px;font-family: 'Open Sans', sans-serif;width: 110px;height: 110px;background: #FFF;position: relative;margin-top: -90px;border-radius: 5px;margin-left: 40px;">
-                                        <img class="thought_leader_picture_group" src="<?php echo Yii::app()->getBaseUrl(true) . $actor->pictureFile->file_url; ?>" style="height: 100px;margin-top: 0px;border-radius: 3px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;width: 110px;"></div></a>
+                                        <img class="thought_leader_picture_group" src="<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>" style="height: 100px;margin-top: 0px;border-radius: 3px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;width: 110px;"></div></a>
                                         <!-- Callout Panel -->
 
                                         <p class="event_intro" style="font-size: 21px;font-weight: 200;margin-right: 40px;border-bottom: 1px solid #777;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;line-height: 1.6;margin-left: 40px;margin-bottom: 20px;">
@@ -574,7 +574,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                                             <?php echo $event->origin_type; ?> meeting</span></p>
 
                                             <p class="event_when_where" style="display: inline-block;font-size: 17px;color: #222;margin-top: 2px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;line-height: 1.6;">
-                                            <span class="event_when" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><?php echo $event->start_date; ?></span>
+                                            <span class="event_when" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><?php echo date_time_string_to_pretty_timestamp($event->start_date . ' ' . $event->start_time); ?></span>
                                             <?php if($event->location != ''){ ?>
                                                 <span class="vertical_bar" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">|</span>
                                                 <span class="event_where" style="color: #009933;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><?php echo $event->location; ?></span></p>
