@@ -475,7 +475,7 @@ class UserController extends Controller
     //            return;
 
                 if (isset($_GET['last_notification_id'])) {
-                    $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id < ' . $_GET['last_notification_id'] . ' ORDER BY notification_id DESC limit 10');
+                    $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id < ' . $_GET['last_notification_id'] . ' ORDER BY notification_id DESC limit 5');
                 } else {
                     $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
                 }
@@ -484,15 +484,13 @@ class UserController extends Controller
 
                     if (isset($_GET['mark_seen'])) {
 
-                        $notifications_array = $notifications;
+                        $this->renderJSON(array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications)));
 
                         foreach ($notifications as $notification) {
                             $notification->status = 'seen';
                             $notification->save(false);
                         }
 
-                        $data = array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications_array));
-                        $this->renderJSON($data);
                         return;
 
                     } else {

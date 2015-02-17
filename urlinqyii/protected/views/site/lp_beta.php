@@ -177,18 +177,6 @@
         right_button_tab_id = 1;
     }
 
-    console.log('sub panel id: ' + sub_panel_id.toString());
-
-    console.log('left button tab id');
-    console.log(left_button_tab_id);
-
-
-    console.log('right button tab id');
-
-    console.log(right_button_tab_id);
-
-    console.log('-------------------------');
-
 
     $('.bottom_tab_left').find('.bottom_tab_button.active').removeClass('active');
     $('.bottom_tab_right').find('.bottom_tab_button.active').removeClass('active');
@@ -207,7 +195,21 @@
 
   });
 
+  $('.action_item').mouseenter(function(){
+    var $action_item = $(this);
+    var $action_title = $('.action_description_header');
+    var $action_description = $('.action_description_details');
 
+    var data_action_name = $action_item.attr('data-action_name');
+    var data_action_details = $action_item.attr('data-action_detail');
+
+    $action_title.text(data_action_name);
+    $action_description.text(data_action_details);
+
+
+    $('.action_item.active').removeClass('active');
+    $action_item.addClass('active');
+  });
 
 
   $(document).on('submit','#register',function(e){
@@ -743,13 +745,13 @@
               <div class = "signup_border_fake">
               </div>
               <div class = "signup_after_tabs">
-                <div class = "after_tab" data-tab_id = "1">
+                <div class = "after_tab after_tab_1" data-tab_id = "1">
                   <h4>About</h4> 
                 </div>
-                <div class = "after_tab" data-tab_id = "2">
+                <div class = "after_tab after_tab_2" data-tab_id = "2">
                   <h4>Why Join?</h4>
                 </div>
-                <div class = "after_tab active" data-tab_id = "3">
+                <div class = "after_tab active after_tab_3" data-tab_id = "3">
                   <h4>Sign Up</h4>
                 </div>
               </div>
@@ -764,9 +766,7 @@
                     </div>
                   </div>
                   <div class = "section_contents synced_animation_divs">
-                    <div class = "opening_text">On Urlinq, every group on campus is connected</div>
-                    <div class = "bottom_tabs">
-                    </div> 
+                    <div class = "opening_text">Urlinq&#x27;s mission is to improve the connectivity of students and faculty. Universities have become extremely complex and fragmented ecosystems. Urlinq solves this by breaking down the barriers of schools and departments to allow individuals to engage with others outside their major or ethnic groups. Urlinq was designed to reimagine the type of collaboration and communication that we all envision and desire for our educational journeys.</div>
                   </div>                  
               </div>
               <div class = "other_panel" id = "other_panel_2">
@@ -776,9 +776,56 @@
                     </div>
                   </div>
                   <div class = "section_contents synced_animation_divs">
-                    <div class = "opening_text sub_panel active" id = "sub_panel_1">This is why you should join</div>
-                    <div class = "opening_text sub_panel" id = "sub_panel_2">This is why you should join</div>
-                    <div class = "opening_text sub_panel" id = "sub_panel_3">This is why you should join</div>
+                    <div class = "opening_text sub_panel active" id = "sub_panel_1">
+                      Urlinq was built with the vision that we could create a stronger university community by bridging the gaps between individuals who have historically been siloed off into different departments. We want to improve collaboration at the university and we believe that is possible by helping you to better connect within and across disciplines at your university. We created tools that allow you to engage with your favorite professors, to ask questions amongst the smartest body of individuals, and provided you with a new lens of all the resources your university offers. Sign up & tell your peers because together we can create a stronger academic community.
+                    </div>
+                    <div class = "opening_text sub_panel" id = "sub_panel_2">
+                      <div class = "sub_panel_header">What can you do on Urlinq? Here are some of the tools you'll have access to.</div>
+                      <div class ="action_sub_panel_graphic">
+                        <div class = "actions_list">
+                          <div class = "action_item opportunity active" data-action_name = "Opportunities" data-action_detail = "The University is full of highly talented people looking to do amazing things. An opportunity post in the department page helps you find amazing people to work with, or an interesting project or job to work on.">
+                            <div class = "action_icon">
+                            </div>
+                            <div class = "action_name">Opportunity</div>
+                          </div>   
+                          <div class = "action_item discuss" data-action_name = "Class Discussions" data-action_detail = "Communication between members of classes and clubs is centered on discussion posts. A discussion can be anonymous, include files, and be sent out as an email.">
+                            <div class = "action_icon">
+                            </div>
+                            <div class = "action_name">Discussion</div>
+                          </div>
+                    
+                          <div class = "action_item material" data-action_name = "Notes and Materials" data-action_detail = "Notes, study guides, readings, materials, and of course, the age-old syllabus. Sharing any type of file is easy on Urlinq.">
+                            <div class = "action_icon">
+                            </div>
+                            <div class = "action_name">Notes</div>
+                          </div>
+                          <div class = "action_item question" data-action_name = "Class and Group Questions" data-action_detail = "Multiple choice and true or false questions let you poll the people in your group or club, and track attendance in your classes.">
+                            <div class = "action_icon">
+                            </div>
+                            <div class = "action_name">Question</div>
+                          </div>
+                           <div class = "action_item todo" data-action_name = "Group Events and TO-DOs" data-action_detail = "Your planner automatically fills up when people in your classes, clubs, and departments create events, which sync with your calendar.">
+                            <div class = "action_icon">
+                            </div>
+                            <div class = "action_name">Todo</div>
+                          </div>
+                                                                                                                                                       
+                        </div>
+                        <div class = "action_description">
+                          <div class = "action_description_header">
+                            Opportunities
+                          </div>
+                          <div class = "action_description_details">
+                            The University is full of highly talented people looking to do amazing things. An opportunity post in the department page helps you find amazing people to work with, or an interesting project or job to work on.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "opening_text sub_panel" id = "sub_panel_3">
+                     <div class = "sub_panel_header">Which schools are on board? </div>
+                     <div class = "sub_panel_graphic"></div>
+                     <div class = "sub_panel_header_2">and many more to come.</div>
+                    </div>
                     <div class = "bottom_tabs">
                       <div class = "bottom_tab_left bottom_tab" data-bottom_tab_position = "left">
                         <div class = "bottom_tab_button" data-bottom_tab_id = "2">
@@ -792,13 +839,13 @@
                           <div class = "arrow">
                           </div>
                           <div class = "bottom_tab_text one_line_text">
-                            About
+                            Why join?
                           </div>
                         </div>  
                         <div class = "bottom_tab_button active" data-bottom_tab_id = "3">
                           <div class = "arrow">
                           </div>
-                          <div class = "bottom_tab_text one_line_text">
+                          <div class = "bottom_tab_text">
                             Which schools are on Urlinq?
                           </div>
                         </div>                                                           
@@ -815,13 +862,13 @@
                           <div class = "arrow">
                           </div>
                           <div class = "bottom_tab_text one_line_text">
-                            About
+                            Why join?
                           </div>
                         </div>  
                         <div class = "bottom_tab_button  active" data-bottom_tab_id = "2">
                           <div class = "arrow">
                           </div>
-                          <div class = "bottom_tab_text one_line_text">
+                          <div class = "bottom_tab_text">
                             What can you do on Urlinq?
                           </div>
                         </div>                                                        
