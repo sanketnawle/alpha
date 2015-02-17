@@ -830,7 +830,7 @@ class UserController extends Controller
 //            $this->redirect(array('/home'));
 //        }
 
-        $user = $this->get_current_user();
+        $user = $this->get_current_user($_GET);
 
 
         if($user){
