@@ -258,7 +258,7 @@
             <input type="text" id="edit_event_title" placeholder="title" >
             <input type="text" id="edit_event_date" placeholder="date due" class="planner_edit date_input">
             <input type="text" id="edit_event_time" placeholder="time due" class="planner_edit time_input">
-            <input type="button" id="submit_edit_event" value="Submit">
+            <input type="button" id="submit_edit_event" value="Save">
             <input type="button" id="cancel_edit_event" value="Cancel">
         </div>
 
