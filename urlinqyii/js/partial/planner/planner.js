@@ -335,10 +335,10 @@ $(document).ready(function(){
     });
 
     $(document).on('mouseenter','.event',function(){
-        $(this).find('.edit_button').fadeIn(150);
+        $(this).find('.edit_button').fadeIn(50);
     });
     $(document).on('mouseleave','.event',function(){
-        $(this).find('.edit_button').fadeOut(150);
+        $(this).find('.edit_button').fadeOut(50);
     });
 
 
