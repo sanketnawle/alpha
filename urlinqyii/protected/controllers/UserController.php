@@ -490,6 +490,8 @@ class UserController extends Controller
 
                             if ($notification->status == 'new') {
 
+                            $notification->status = 'seen';
+                            $notification->save(false);
                             $notification = $this->model_to_array($notification);
                             $notification['ios_new'] = true;
 
@@ -507,11 +509,6 @@ class UserController extends Controller
 
 
                         $this->renderJSON(array('success'=>true,'notifications'=>$this->get_notifications_data($user, $array_with_proper_notis)));
-
-                        foreach ($notifications as $notification) {
-                            $notification->status = 'seen';
-                            $notification->save(false);
-                        }
 
                         return;
 
