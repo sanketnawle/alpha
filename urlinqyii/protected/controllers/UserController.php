@@ -506,7 +506,7 @@ class UserController extends Controller
 
 
 
-                        $this->renderJSON(array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications)));
+                        $this->renderJSON(array('success'=>true,'notifications'=>$this->get_notifications_data($user, $array_with_proper_notis)));
 
                         foreach ($notifications as $notification) {
                             $notification->status = 'seen';
