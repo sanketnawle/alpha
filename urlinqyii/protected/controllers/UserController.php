@@ -475,7 +475,7 @@ class UserController extends Controller
     //            return;
 
                 if (isset($_GET['last_notification_id'])) {
-                    $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id < ' . $_GET['last_notification_id'] . ' ORDER BY notification_id DESC limit 5');
+                    $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 15');
                 } else {
                     $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
                 }
@@ -484,12 +484,31 @@ class UserController extends Controller
 
                     if (isset($_GET['mark_seen'])) {
 
-                        $this->renderJSON(array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications)));
+                        $array_with_proper_notis = array();
 
                         foreach ($notifications as $notification) {
+
+                            if ($notification->status == 'new') {
+
                             $notification->status = 'seen';
                             $notification->save(false);
+                            $notification = $this->model_to_array($notification);
+                            $notification['ios_new'] = true;
+
+                        } else {
+                            $notification = $this->model_to_array($notification);
+                            $notification['ios_new'] = false;
+
+                            }
+
+
+                            array_push($array_with_proper_notis, $notification);
+
                         }
+
+
+
+                        $this->renderJSON(array('success'=>true,'notifications'=>$this->get_notifications_data($user, $array_with_proper_notis)));
 
                         return;
 
@@ -828,14 +847,14 @@ class UserController extends Controller
 //            $this->redirect(array('/home'));
 //        }
 
-        $user = $this->get_current_user();
+        $user = $this->get_current_user($_GET);
 
 
         if($user){
 
 
 
-            $user_data = $this->get_model_associations($user,array('classes','clubs','groups'));
+            $user_data = $this->get_model_associations($user,array('classes','clubs','groups','departments'));
 
 
 
@@ -875,9 +894,20 @@ class UserController extends Controller
 
             }
 
+            for($i = 0;$i < count($user_data['departments']);++$i){
+                $user_data['departments'][$i] = $this->model_to_array($user_data['departments'][$i]);
+                $user_data['departments'][$i]['color'] = array('hex'=>'#FABBB3');
+
+              //  $dept_user = DepartmentFollow::model()->find('user_id=:user_id and department_id=:dept_id',array(':user_id'=>$user->user_id,':dept_id'=>$user_data['departments'][$i]['department_id']));
+              //  $color = Color::model()->find('color_id=:id',array(':id'=>$dept_user->color_id));
+
+              //  $user_data['groups'][$i]['color'] = array('hex'=>$color->hex);
+
+            }
 
 
-            $data = array('success'=>true,'user'=>$user_data,'classes'=>$user_data['classes'],'clubs'=>$user_data['groups'], 'groups'=>array());
+
+            $data = array('success'=>true,'user'=>$user_data,'classes'=>$user_data['classes'],'clubs'=>$user_data['clubs'], 'groups'=>array(), 'departments'=>$user_data['departments']);
             $this->renderJSON($data);
             return;
         }else{

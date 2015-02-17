@@ -229,7 +229,8 @@ jQuery(document).ready(function(){
         var event_type = $event_holder.attr('data-event_type');
         var event_location = $event_holder.attr('data-location');
 
-
+        var event_start_date = local_to_utc(new_date(event_start_date_string));
+        var event_end_date = local_to_utc(new_date(event_end_date_string));
         //Check if this click comes from a create event form
         var $create_event_popup = $('.create_event_popup');
         if($create_event_popup.hasClass('active')){
@@ -262,9 +263,9 @@ jQuery(document).ready(function(){
 
 
 
-        jQuery('#create_event_start_date_input').val(date_string_to_day_of_week_string(event_start_date_string));
+        jQuery('#create_event_start_date_input').val(date_to_day_of_week_string(event_start_date));
         jQuery('#create_event_start_date_input').attr('data-date',event_start_date_string);
-        jQuery('#create_event_end_date_input').val(date_string_to_day_of_week_string(event_end_date_string));
+        jQuery('#create_event_end_date_input').val(date_to_day_of_week_string(event_end_date));
         jQuery('#create_event_end_date_input').attr('data-date',event_end_date_string);
 
         jQuery('#create_event_start_time_input').val(time_string_to_am_pm_string(event_start_time_string));
