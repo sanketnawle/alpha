@@ -854,7 +854,7 @@ class UserController extends Controller
 
 
 
-            $user_data = $this->get_model_associations($user,array('classes','clubs','groups'));
+            $user_data = $this->get_model_associations($user,array('classes','clubs','groups','departments'));
 
 
 
@@ -894,9 +894,20 @@ class UserController extends Controller
 
             }
 
+            for($i = 0;$i < count($user_data['departments']);++$i){
+                $user_data['departments'][$i] = $this->model_to_array($user_data['departments'][$i]);
+                $user_data['departments'][$i]['color'] = array('hex'=>'#FABBB3');
+
+              //  $dept_user = DepartmentFollow::model()->find('user_id=:user_id and department_id=:dept_id',array(':user_id'=>$user->user_id,':dept_id'=>$user_data['departments'][$i]['department_id']));
+              //  $color = Color::model()->find('color_id=:id',array(':id'=>$dept_user->color_id));
+
+              //  $user_data['groups'][$i]['color'] = array('hex'=>$color->hex);
+
+            }
 
 
-            $data = array('success'=>true,'user'=>$user_data,'classes'=>$user_data['classes'],'clubs'=>$user_data['groups'], 'groups'=>array());
+
+            $data = array('success'=>true,'user'=>$user_data,'classes'=>$user_data['classes'],'clubs'=>$user_data['clubs'], 'groups'=>array(), 'departments'=>$user_data['departments']);
             $this->renderJSON($data);
             return;
         }else{
