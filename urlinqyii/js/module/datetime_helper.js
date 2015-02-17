@@ -126,7 +126,8 @@ function new_date(date_string){
     if(!isFinite(date)){
         date = new Date(date_string + ' 00:00:00');
     }
-    return local_to_utc(date);
+
+    return date;
 }
 
 //Takes in a standard sql timestamp
