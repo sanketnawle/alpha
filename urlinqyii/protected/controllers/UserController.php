@@ -475,7 +475,7 @@ class UserController extends Controller
     //            return;
 
                 if (isset($_GET['last_notification_id'])) {
-                    $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id < ' . $_GET['last_notification_id'] . ' ORDER BY notification_id DESC limit 5');
+                    $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 15');
                 } else {
                     $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
                 }
