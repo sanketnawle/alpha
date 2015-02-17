@@ -226,7 +226,7 @@
 
             {{#ifCond type '==' 'post'}}
                 {{#ifCond origin.post_type '==' 'event'}}
-                    <div class="message">{{actor.firstname}} {{actor.lastname}} posted event {{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{event.title}}</div>
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} posted an event {{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{event.title}}</div>
 
                     {{#if event.attending}}
                         <div class="message">Added to calendar</div>
