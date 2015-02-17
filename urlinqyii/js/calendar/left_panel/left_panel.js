@@ -27,6 +27,13 @@ jQuery(document).ready(function(){
                 show_user_group(club_json, '.providers.clubs');
             });
 
+            jQuery.each(json_data['departments'],function(index, dept_json){
+                dept_json['name'] = dept_json['department_name'];
+                dept_json['type'] = 'department';
+                dept_json['id'] = dept_json['department_id'];
+                show_user_group(dept_json, '.providers.depts');
+            });
+
         });
     }
 
