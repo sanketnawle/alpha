@@ -766,7 +766,7 @@
                     </div>
                   </div>
                   <div class = "section_contents synced_animation_divs">
-                    <div class = "opening_text">Urlinq’s mission is to improve the connectivity of students and faculty. Universities have become extremely complex and fragmented ecosystems. Urlinq solves this by breaking down the barriers of schools and departments to allow individuals to engage with others outside their major or ethnic groups. Urlinq was designed to reimagine the type of collaboration and communication that we all envision and desire for our educational journeys.</div>
+                    <div class = "opening_text">Urlinq&#x27;s mission is to improve the connectivity of students and faculty. Universities have become extremely complex and fragmented ecosystems. Urlinq solves this by breaking down the barriers of schools and departments to allow individuals to engage with others outside their major or ethnic groups. Urlinq was designed to reimagine the type of collaboration and communication that we all envision and desire for our educational journeys.</div>
                   </div>                  
               </div>
               <div class = "other_panel" id = "other_panel_2">
