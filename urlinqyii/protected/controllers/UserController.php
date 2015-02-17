@@ -484,6 +484,28 @@ class UserController extends Controller
 
                     if (isset($_GET['mark_seen'])) {
 
+                        $array_with_proper_notis = array();
+
+                        foreach ($notifications as $notification) {
+
+                            if ($notification->status == 'new') {
+
+                            $notification = $this->model_to_array($notification);
+                            $notification['ios_new'] = true;
+
+                        } else {
+                            $notification = $this->model_to_array($notification);
+                            $notification['ios_new'] = false;
+
+                            }
+
+
+                            array_push($array_with_proper_notis, $notification);
+
+                        }
+
+
+
                         $this->renderJSON(array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications)));
 
                         foreach ($notifications as $notification) {
