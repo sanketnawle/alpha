@@ -134,6 +134,8 @@ class ClassModel extends CActiveRecord
             'admins' => array(self::MANY_MANY, 'User', 'class_user(class_id, user_id)', 'on'=>'is_admin=1'),
             'files' => array(self::MANY_MANY, 'File', 'class_file(class_id, file_id)'),
 
+            'events' => array(self::HAS_MANY,'Event',array('origin_id'=>'class_id'),'condition'=>'origin_type = "class"'),
+
 		);
 	}
 

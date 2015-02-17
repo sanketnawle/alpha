@@ -123,7 +123,7 @@ jQuery(document).ready(function(){
         jQuery($day_div).addClass("making_event");
         var this_date = $day_div.attr('data-date');
 
-        var this_date_obj = new_date(this_date);
+        var this_date_obj = local_to_utc(new_date(this_date));
         console.log(this_date_obj);
         var $create_month_day_event_popup = jQuery('#create_month_day_event_popup');
 
