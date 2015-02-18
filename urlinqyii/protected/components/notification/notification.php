@@ -18,7 +18,7 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
     $thing = get_notifications_data($user, array($notification));
 
-    notifyAlliOSDevicesForUserID($user_id, "Test Notification");
+    notifyAlliOSDevicesForUserID($user->user_id, "Test Notification");
 
 }
 /*
