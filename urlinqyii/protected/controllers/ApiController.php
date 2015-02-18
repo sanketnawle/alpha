@@ -49,6 +49,7 @@
 
             $notification_id = str_replace(array(" ", "<", ">"), "", $_POST['notification_id']);
 
+            $user_id = $get_user->user_id;
 
 $ios_notification = IosNotifications::model()->find('notification_id = :notification_id', array(':notification_id'=>$notification_id));
 if($ios_notification){
