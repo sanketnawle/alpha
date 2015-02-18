@@ -516,8 +516,8 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                                     <td align="left" class="intro" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #FFF;font-size: 20px;padding-left: 10px;">Hi
                                     <span class="user_first_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><?php echo $to_user->firstname; ?>,</span></td>
 
-                                    <td align="right" class="urlinq_tri_color" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 33%;right: 10px;height: 5px;top: 35px;position: relative;">
-                                        <img class="logo tricolor_float_logo" src="http://beta.urlinq.com/assets/email_logo.png" style="background-repeat: no-repeat;background-size: contain;margin: 0;padding: 15px;font-family: 'Open Sans', sans-serif;max-width: 100%;width: 114px;left: 50%;position: absolute;height: 26px;right: 0px;top: -50px;margin-left: -57px;">
+                                    <td align="right" class="urlinq_tri_color" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 33%;right: 10px;height: 5px;padding-top:7px;position: relative;">
+                                        <img class="logo tricolor_float_logo" src="http://beta.urlinq.com/assets/email_logo.png" style="background-repeat: no-repeat;background-size: contain;margin: 0;padding: 15px;font-family: 'Open Sans', sans-serif;width: 114px;left: 50%;position: absolute;height: 26px;right: 0px;top: -50px;>
 
                                         <div class="tricolor_line red" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 32%;float: right;height: 7px;position: relative;display: inline-block;background: #ed4f68;"></div>
 
@@ -557,7 +557,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                                         <a href="http://www.urlinq.com" style="font-weight: 600;color: #222;text-decoration: none;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
                                         <?php echo $user->firstname; ?> </a> created an event.</p>
 
-                                        <div class="date_month_box" style="width: 82px;display: inline-block;height: 82px;border-radius: 5px;background: rgb(77, 77, 77);vertical-align: top;border: 1px solid rgba(0, 0, 0, 0.08);border-bottom-width: 3px;margin-right: 12px;margin: 0;margin-left: 40px;padding: 0;font-family: 'Open Sans', sans-serif;">
+                                        <div class="date_month_box" width = "82px" height = "82px" style="width: 82px;display: inline-block;height: 82px;border-radius: 5px;background: rgb(77, 77, 77);vertical-align: top;border: 1px solid rgba(0, 0, 0, 0.08);border-bottom-width: 3px;margin-right: 12px;margin: 0;margin-left: 40px;padding: 0;font-family: 'Open Sans', sans-serif;">
                                         <p style="background: rgba(0, 0, 0, 0.15);width: 100%;margin: 0;border-radius: 4px 4px 0 0;height: 16px;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 8px;font-weight: normal;font-size: 14px;line-height: 1.6;">
                                             </p>
 
@@ -582,7 +582,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                                             <p class="post_target_copy event_description" style="width: 88%;margin-top: 0px;border-top: 1px solid #d8d8d8;border-bottom: 1px solid #d8d8d8;padding: 12px 8px;margin: 0 auto;font-family: 'Open Sans', sans-serif;margin-bottom: 18px;font-weight: normal;font-size: 16px;line-height: 1.6;color: #575757;text-align: left;max-width: 700px;margin-left: 0px;">
                                             <?php echo $event->description; ?></p>
                                         </div><a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $event->origin_type . '/' . $event->origin_id; ?>" class="btn group_link_btn" style="display: block;margin: 0 auto;padding: 10px 0;font-family: 'Open Sans', sans-serif;color: #FFF;text-decoration: none;background-color: #666;font-weight: bold;margin-right: 10px;text-align: center;cursor: pointer;background: #029acf;max-width: 250px;width: 80%;border-radius: 4px;margin-left: 40px;font-size: 18px;border-bottom: 2px solid rgba(0, 0, 0, 0.21);margin-bottom: 26px;">See
-                                        what's next <img src="http://beta.urlinq.com/assets/small_cal_icon.png" style="height: 18px;position: relative;top: 3px;left: 8px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;">
+                                        what's next 
                                         </a>
                                     </td>
                                 </tr>
