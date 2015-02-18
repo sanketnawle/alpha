@@ -210,11 +210,15 @@ class UserController extends Controller
 
                         }
 
+    include_once "notification/notification-helper.php";
+
                         $this->renderJSON(array('success'=>true,'notifications'=>get_notifications_data($user, $array_with_proper_notis)));
 
                         return;
 
                     } else {
+                            include_once "notification/notification-helper.php";
+
                         $data = array('success'=>true,'notifications'=>get_notifications_data($user, $notifications));
                         $this->renderJSON($data);
                         return;
