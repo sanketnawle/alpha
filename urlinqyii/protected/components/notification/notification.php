@@ -13,14 +13,14 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
     include_once 'notification/iOSPushNotifications.php';
 
     $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
-    $notification = Notification::model()->find('notification_id=:notification_id', array(':notification_id'=>$notification->notification_id));
+    /*$notification = Notification::model()->find('notification_id=:notification_id', array(':notification_id'=>$notification->notification_id));
 
     include_once 'notification/notification-helper.php';
 
     $noti_data = get_notifications_data($user, array($notification), "false")["notifications"][0];
 
 
-    notifyAlliOSDevicesForUserID($user->user_id, get_text_for_notification_array($noti_data));
+    notifyAlliOSDevicesForUserID($user->user_id, get_text_for_notification_array($noti_data));*/
 
 
 }
