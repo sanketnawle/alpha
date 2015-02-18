@@ -108,7 +108,7 @@
                         <div class="wedge"></div>
                         <div class="window">
                             <div class="header">Notices</div>
-                            <span class = "noti_header_hint">These will help you stay in the loop of your groups and classes</span>
+                            <span class = "noti_header_hint">Notifications and reminders</span>
                             <ul class="entries">
 
 

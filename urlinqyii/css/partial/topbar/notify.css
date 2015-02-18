@@ -24,9 +24,14 @@
     font-size: 2.2em;
     color: #575757;
     letter-spacing: -1.8px;
+    width: 181px;
+    height: 184px;
     text-align: center;
-    margin-top: 94px;
+    margin-top: 50px;
+    background-repeat: no-repeat;
     font-weight: 900;
+    margin-left: 85px;
+    background-image: url(../../../assets/post_it_notices.png);
 }
 
 .noti_header_hint{
@@ -34,14 +39,15 @@
 
     display: block;
     font-family: Avenir;
-    font-size: 11.5px;
-    text-align: justify;
+    font-size: 13px;
+    text-align: left;
     height: 41px;
+    font-weight: 100;
     color: #999;
     padding-right: 52px;
     padding-top: 9px;
     width: 308px;
-    line-height: 17px;
+    line-height: 40px;
 }
 
 .topbar > #topbar_responsive_holder .right .notify .notify-window .wedge {
@@ -87,6 +93,7 @@
     font-family: Avenir;
     text-transform: uppercase;
     float: left;
+    margin-left: 43px;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable {
     overflow: auto;
