@@ -79,7 +79,7 @@ return array(
                 'class/<id:[\w|-]+>/feed' => 'feed/getClassPosts',
 
                 'course/<id:[\w|\-|\s]+>/feed' => 'feed/getCoursePosts',
-                'course/<id>' => 'course/view',
+                //'course/<id>' => 'course/view',
                 //'course/<id>' => 'partial/course',
 
                 'club/<id:[\w|-]+>/feed' => 'feed/getClubPosts',
