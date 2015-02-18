@@ -40,11 +40,15 @@ $(document).ready(function(){
 
 
 
-    $('#create_class_department_input').click(function(e){
+    $('.department_input').click(function(e){
         e.preventDefault();
         e.stopPropagation();
+        var $department_input = $(this);
+
+        var $form = $department_input.closest('form');
+
         //Check if univ id has been set
-        var school_id = $("#create_class_school_input").attr('data-id');
+        var school_id = $form.find('.school_input').attr('data-id');
 
         if(!school_id){
             alert('Please select a school');
@@ -338,7 +342,6 @@ $(document).ready(function(){
             university_id: university_id,
             school_id: school_id,
             department_id: department_id,
-            course_id: course_id,
             course_name: course_name,
             course_tag: course_tag,
             course_description: course_description,
