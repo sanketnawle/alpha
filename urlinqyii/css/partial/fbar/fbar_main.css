@@ -605,7 +605,7 @@ form#fbar_form.show {
     position: relative;
     font-size: 10.8px;
     font-family: Avenir;
-    top: 4px;
+    top: -2px;
     right: -1px;
 }
 
