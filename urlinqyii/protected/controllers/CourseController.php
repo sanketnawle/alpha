@@ -51,7 +51,7 @@ class CourseController extends Controller
 
 
         $course_credits = '';
-        if(isset($_POST['credits'])){
+        if(isset($_POST['course_credits'])){
             $course_credits = $_POST['course_credits'];
         }
 
