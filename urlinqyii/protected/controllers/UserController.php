@@ -2,7 +2,10 @@
 
 class UserController extends Controller
 {
-	public function actionView()
+
+    include_once "notification/notification-helper.php";
+	
+    public function actionView()
 	{
 		$this->render('view');
 	}
@@ -207,14 +210,12 @@ class UserController extends Controller
 
                         }
 
-
-
-                        $this->renderJSON(array('success'=>true,'notifications'=>$this->get_notifications_data($user, $array_with_proper_notis)));
+                        $this->renderJSON(array('success'=>true,'notifications'=>get_notifications_data($user, $array_with_proper_notis)));
 
                         return;
 
                     } else {
-                        $data = array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications));
+                        $data = array('success'=>true,'notifications'=>get_notifications_data($user, $notifications));
                         $this->renderJSON($data);
                         return;
                     }
@@ -260,7 +261,7 @@ class UserController extends Controller
 
             $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id > ' . $last_notification_id . ' ORDER BY notification_id DESC limit 0,5');
             if ($notifications) {
-                $data = array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications));
+                $data = array('success'=>true,'notifications'=>get_notifications_data($user, $notifications));
                 $this->renderJSON($data);
                 return;
             } else {
