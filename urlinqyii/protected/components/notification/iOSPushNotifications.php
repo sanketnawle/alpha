@@ -17,7 +17,7 @@
             $message = $message;
 
             $ctx = stream_context_create();
-            stream_context_set_option($ctx, 'ssl', 'local_cert', '7ed48ded2e412732011227722ff356e9ca5bca05ck.pem');
+            stream_context_set_option($ctx, 'ssl', 'local_cert', '/Applications/MAMP/htdocs/alpha/urlinqyii/protected/components/notification/7ed48ded2e412732011227722ff356e9ca5bca05ck.pem');
             stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
 
             $fp = stream_socket_client(
@@ -25,6 +25,7 @@
                 $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
 
             if (!$fp)
+                error_log("Failed to connect - iOS push notifications - error one");
                 return array('success'=>false,'error_id'=>2,'error_msg'=>"Failed to connect: $err $errstr" . PHP_EOL);
 
             $body['aps'] = array(
@@ -39,6 +40,7 @@
             $result = fwrite($fp, $msg, strlen($msg));
 
             if (!$result)
+                error_log("Failed to connect - iOS push notifications - error two");
                 return array('success'=>false,'error_id'=>3,'error_msg'=>"Failed to connect: $err $errstr" . PHP_EOL);
             else
                 return array('success'=>true);

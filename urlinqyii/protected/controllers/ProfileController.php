@@ -509,7 +509,7 @@ class ProfileController extends Controller
             $new_data = array();
             $user_id = $_POST['user'];
             //$user = User::model()->find('user_id=:uid', array(':uid' => $user_id));
-            $user = $this->get_current_user();
+            $user = $this->get_current_user($_POST);
             if($user){
 
 

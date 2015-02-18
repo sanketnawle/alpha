@@ -13,14 +13,53 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
     include_once 'notification/iOSPushNotifications.php';
 
     $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+    /*$notification = Notification::model()->find('notification_id=:notification_id', array(':notification_id'=>$notification->notification_id));
 
     include_once 'notification/notification-helper.php';
 
-    $thing = get_notifications_data($user, array($notification));
+    $noti_data = get_notifications_data($user, array($notification), "false")["notifications"][0];
 
-    notifyAlliOSDevicesForUserID($user->user_id, "Test Notification");
+
+    notifyAlliOSDevicesForUserID($user->user_id, get_text_for_notification_array($noti_data));*/
+
 
 }
+
+function get_text_for_notification_array($notification) {
+
+    $type = $notification['type']; 
+    $origin = $notification['origin'];
+    $actor = $notification['actor'];
+    $notification_text = 'Not a valid notification.';
+
+    if ($type == 'follow') {
+        $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " is now following you.";
+    }
+
+    else if ($type == 'like') {
+        $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " liked your post: " . $origin['text'];
+    }
+
+    else if ($type == 'reply') {
+        if ($origin['user_id'] == $notification['user_id']) {
+            if ($origin['post_origin']) {
+                $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " replied to your post in " . $notification['post_origin']['name'] . ": " . $notification['reply']['reply_msg'];
+            } else {
+                $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " replied to your post: " . $notification['reply']['reply_msg'];
+            }
+        } else {
+            if ($origin['post_origin']) {
+                $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " replied to a post in " . $notification['post_origin']['name'] . ": " . $notification['reply']['reply_msg'];
+            } else {
+                $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " replied to a post: " . $notification['reply']['reply_msg'];
+            }
+        }
+    }
+
+    return $notification_text;
+
+}
+
 /*
 function array_for_notification_model($notification) {
     return array("type"=>$notification->type, "actor_id"=>$notification->actor_id, "user_id"=>$notification->user_id, "origin_id"=>$notification->origin_id, "origin_type"=>$notification->origin_type);
