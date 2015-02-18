@@ -10,15 +10,15 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
     $notification->save(false);
 
-    include_once 'iOSPushNotifications.php';
-    $notification = Notification::model()->find('notification_id=:id', array(':id'=>$notification->notification_id));
+    include_once 'notification/iOSPushNotifications.php';
+
     $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
-    //$notification_array = array_for_notification_model($notification);
-    //$message = get_notification_text($notification_array, $user);
 
-//$thing = get_notifications_data($user, array($notification_array));
+    include_once 'notification/notification-helper.php';
 
-    //notifyAlliOSDevicesForUserID($user_id, $message);
+    $thing = get_notifications_data($user, array($notification));
+
+    notifyAlliOSDevicesForUserID($user_id, "Test Notification");
 
 }
 /*

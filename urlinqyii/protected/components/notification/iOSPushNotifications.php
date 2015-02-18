@@ -17,7 +17,7 @@
             $message = $message;
 
             $ctx = stream_context_create();
-            stream_context_set_option($ctx, 'ssl', 'local_cert', '/home6/campusla/public_html/urlinq/alpha/urlinqyii/protected/components/7ed48ded2e412732011227722ff356e9ca5bca05ck.pem');
+            stream_context_set_option($ctx, 'ssl', 'local_cert', '7ed48ded2e412732011227722ff356e9ca5bca05ck.pem');
             stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
 
             $fp = stream_socket_client(
