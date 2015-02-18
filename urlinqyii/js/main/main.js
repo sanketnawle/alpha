@@ -163,15 +163,6 @@ $(document).ready(function(){
 
         }
 
-        if(Math.floor(scroll_offset_top) <= 413){
-            $("#fixed_element.planner_group.planner_club").css({'position':'relative'});
-            $("#fixed_element.planner_group.planner_club").css({'top':'0px'});
-        }        
-
-        if(Math.floor(scroll_offset_top) >= 414){
-            $("#fixed_element.planner_group.planner_club").css({'position':'fixed'});
-            $("#fixed_element.planner_group.planner_club").css({'top':'105px'});
-        }
 
         //alert(y);
 
