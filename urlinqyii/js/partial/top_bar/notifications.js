@@ -55,7 +55,7 @@ $(document).ready(function(){
 
                 if(json_data['notifications'].length == 0 && first_request){
                     var $notifications_container = $(".noti-scrollable ul.entries");
-                    $notifications_container.html("<div class = 'no_notifications_container'><span class = 'no_notifications_graphic'></span>Notices are a student's best friend</div>");
+                    $notifications_container.html("<div class = 'no_notifications_container'></div>");
                 }else{
                     notifications = json_data['notifications'];
                     update_notifications_div();

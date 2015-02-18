@@ -882,7 +882,7 @@
                       <h4 class = "header">Sign Up</h4>
                     </div>
                     <div class = "header-sec-right">
-                      <div class = "time-to-signup" style = "font-size:20px;">Communicate across campus</div>
+                      <div class = "time-to-signup" style = "font-size:20px;">Learning made simpler</div>
                       <!--<div class = "signup-slog">seconds to get started</div>-->
                     </div>
                   </div>

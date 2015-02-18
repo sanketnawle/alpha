@@ -230,7 +230,9 @@
 
                     </div>
 
-
+                    <div class='planner_event_header' id='future_events_header' style="display: none;">
+                        <div class="planner_event_header_label">Future</div>
+                    </div>
 
                     <div id='future_events'>
 
