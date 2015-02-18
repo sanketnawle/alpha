@@ -1,7 +1,7 @@
 <?php
 
-	
- function get_notifications_data($user, $notifications){
+
+ function get_notifications_data($user, $notifications, $should_end_yii = 'true'){
 
 
         $notifications_new = array();
@@ -291,23 +291,34 @@
             array_push($notifications_new, $notification);
         }
         $data = array('success'=>true,'notifications'=>$notifications_new);
+
+        if ($should_end_yii == 'false') {
+            return $data;
+        }
        	renderJSON($data);
         return;
     }
 
 
 
-    function renderJSON($data)
+    function renderJSON($data, $shouldEnd = 'true')
     {
         header('Content-type: application/json');
+
+        if ($shouldEnd == 'true') {
+
         echo CJSON::encode($data);
 
-        foreach (Yii::app()->log->routes as $route) {
+foreach (Yii::app()->log->routes as $route) {
             if($route instanceof CWebLogRoute) {
                 $route->enabled = false; // disable any weblogroutes
             }
         }
-        Yii::app()->end();
+
+           Yii::app()->end();
+        }
+
+                return CJSON::encode($data);
     }
 
 function is_assoc($array) {
