@@ -34,7 +34,7 @@
 
         public function actionAddNotificationID() {
 
-            if(!isset($_POST['user_id']) || !isset($_POST['notification_id'])){
+            if(!isset($_POST['notification_id'])){
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
                 $this->renderJSON($data);
                 return;
@@ -47,33 +47,14 @@
                 return;   
             }
 
-            $user_id = $_POST['user_id'];
-            $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
-
-            if (!$user) {
-                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
-                $this->renderJSON($data);
-                return;            
-            }
-
             $notification_id = str_replace(array(" ", "<", ">"), "", $_POST['notification_id']);
 
-
-            /*$sql = "SELECT * FROM IosNotifications WHERE notification_id = $notification_id;";
-            $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
-
-            foreach($device_notification_ids as $notification_id) {
-                $notification_id->delete;
-            }*/
-
-  //          $notiModel = IosNotifications::model()->find("notification_id=:notification_id", array(":notification_id"=>$notification_id));
-//            $notiModel->delete;
-
-
+            $user_id = $get_user->user_id;
 
 $ios_notification = IosNotifications::model()->find('notification_id = :notification_id', array(':notification_id'=>$notification_id));
 if($ios_notification){
     $ios_notification->user_id = $user_id;
+    $ios_notification->save(false);
     $data = array('success'=>true);
     $this->renderJSON($data);
     return;
