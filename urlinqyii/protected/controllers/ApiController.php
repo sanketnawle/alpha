@@ -1890,7 +1890,7 @@ if($ios_notification){
 
             $email = $_POST['email'];
 
-            if(strpos($email,'nyu.edu') > 0){
+            if(strpos($email,'nyu.edu') > 0 || strpos($email, 'urlinq.com') > 0) {
                 //Get univeristy id from a table of university_id   and   @univ.edu  (the schools email pattern)
                 $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
 
