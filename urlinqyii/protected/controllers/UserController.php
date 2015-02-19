@@ -162,6 +162,14 @@ class UserController extends Controller
 
 
         $users = $this->models_to_array(User::model()->findAllBySql('SELECT * FROM `user` WHERE user_id != ' . $user->user_id . ' LIMIT 10'));
+        foreach($users as $i=>$curr_user){
+            if($curr_user['picture_file_id']){
+                $picture = File::model()->find('file_id=:fid',array(':fid'=>$curr_user['picture_file_id']));
+                if($picture){
+                    $users[$i]['picture_url']=$picture->file_url;
+                }
+            }
+        }
         $data = array('success'=>true,'users'=>$users);
         $this->renderJSON($data);
         return;
