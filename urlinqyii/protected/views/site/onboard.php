@@ -115,7 +115,7 @@
 
             <div class="step_0_card school" data-school_id='{{school_id}}' data-school_name='{{school_name}}' style='background: url("{{base_url}}{{pictureFile.file_url}}") center center;'>
                 <div class="card_0_info">
-                    <img class="card_0_glyph" src='{{base_url}}/onboard_files/img/defaultGlyph.png'>
+                    <img class="card_0_glyph" src='{{base_url}}{{pictureFile.file_url}}'>
                     <div class="card_0_text"><div class="card_0_text_0">{{school_name}}</div><div class="card_0_text_1"></div></div>
                     <div class="green_join_btn"><em class = 'white_plus_icon'></em><span>Join</span></div>
                 </div>

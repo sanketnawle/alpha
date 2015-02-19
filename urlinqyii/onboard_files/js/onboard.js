@@ -356,8 +356,13 @@ $(document).ready(function () {
                 } else {
                     $tthread = $thread1;
                 }
-
-                $tthread.append("<div class='step_4_card' data-user_name='" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "' data-user_id='" + people_list[i]['user_id'].toString() + "'><img class='card_4_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='card_4_txt'>" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "</div><div class='follow_btn card_4_btn'><em class = 'follow_icon'></em><span>Follow</span></div></div>");
+                var picture_url;
+                if(people_list[i]['picture_url']){
+                    picture_url = base_url + people_list[i]['picture_url'];
+                }else{
+                    picture_url = base_url + "/onboard_files/img/defaultGlyph.png";
+                }
+                $tthread.append("<div class='step_4_card' data-user_name='" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "' data-user_id='" + people_list[i]['user_id'].toString() + "'><img class='card_4_glyph' src='" + picture_url + "'><div class='card_4_txt'>" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "</div><div class='follow_btn card_4_btn'><em class = 'follow_icon'></em><span>Follow</span></div></div>");
 
             }
 
@@ -383,8 +388,13 @@ $(document).ready(function () {
                 } else {
                     $tthread = $thread1;
                 }
-
-                $tthread.append("<div class='step_3_card step_5_card' data-group_id='" + clubs_list[i]['group_id'] + "'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0 club_adjust'>" + clubs_list[i]['group_name'] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span></span></div></div> <div class='club_join gray_join_btn'><em class = 'gray_plus_icon'></em>Join</div></div></div>");
+                var picture_url;
+                if(clubs_list[i]['picture_file_id']){
+                    picture_url = base_url + clubs_list[i]['pictureFile']['file_url'];
+                }else{
+                    picture_url = base_url + "/onboard_files/img/defaultGlyph.png";
+                }
+                $tthread.append("<div class='step_3_card step_5_card' data-group_id='" + clubs_list[i]['group_id'] + "'><div class='step_3_show'><img class='card_3_glyph' src='"+picture_url+"'><div class='step_3_line_0 club_adjust'>" + clubs_list[i]['group_name'] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span></span></div></div> <div class='club_join gray_join_btn'><em class = 'gray_plus_icon'></em>Join</div></div></div>");
             }
 
 
@@ -1286,6 +1296,32 @@ $(document).ready(function () {
                     if($child.attr('data-user_name').toLowerCase().indexOf(input_string) > -1){
 
                         console.log('user_name: ' + $child.attr('data-user_name') + '    input_string: ' + input_string);
+
+                        $child.show();
+                    }else{
+                        $child.hide();
+                    }
+                });
+            }
+        }else if(progress_flag == 5){
+            var $club_name_input = $(this);
+            var input_string = $club_name_input.val().toLowerCase();
+
+            var $content_canvas = $('.content_canvas');
+
+            if(input_string == ''){
+                $content_canvas.find('div.step_5_card').each(function(){
+                    var $child = $(this);
+                    $child.show();
+                });
+            }else{
+                $content_canvas.find('div.step_5_card').each(function(){
+                    var $child = $(this);
+                    var club_name = $child.find('div.step_3_line_0').text();
+
+                    if(club_name.toLowerCase().indexOf(input_string) > -1){
+
+                        console.log('club_name: ' + club_name + '    input_string: ' + input_string);
 
                         $child.show();
                     }else{
