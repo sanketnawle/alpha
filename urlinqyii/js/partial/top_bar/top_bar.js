@@ -108,14 +108,63 @@ $(document).ready(function(){
                                 hide_search_results();
                                 $(".topbar .center form").css({"border-radius":"4px"});
                             }else{
-
+                                show_search_results();
 //                                var different_results = json_data['results'];
 //
 //                                for(var i = 0; i < json_data.length; i++){
 //
 //                                }
 
-                                clear_search_results();
+
+                                //GO thru the current list and replace items that are the same
+                                $('.search_result').each(function(index){
+                                    var $search_result = $(this);
+
+                                    var remove = true;
+
+
+                                    $.each(json_data['results'], function(index, result_json){
+
+                                        try{
+
+                                            if($search_result.attr('data-origin_type') == result_json['origin_type'] && $search_result.attr('data-origin_id') == result_json['origin_id']){
+                                                //alert("ALRDY THERE. " + JSON.stringiy(result_json));
+                                                remove = false;
+                                                console.log(JSON.stringify(json_data[index]) + ' already exists in the seach results. Removing from json_data["results"]');
+                                                console.log('list b4 slice');
+                                                console.log(JSON.stringify(json_data['results']));
+                                                json_data['results'].splice(index, 1);
+
+                                                console.log('list after slice');
+                                                console.log(JSON.stringify(json_data['results']));
+                                                return false;
+                                            }
+
+                                        }catch(err){
+                                            console.log(err);
+                                            //alert('ERROR ' + JSON.stringify(result_json));
+                                        }
+
+
+
+                                    });
+
+
+
+                                    if(remove){
+                                        $search_result.remove();
+                                        console.log('REmoving search result that is not in new json_data');
+                                    }
+                                });
+
+
+
+
+                                //clear_search_results();
+
+
+
+                                //Go thru the rest of the nonspliced array
                                 $.each(json_data['results'], function(index, result_json){
                                     show_search_result(result_json);
                                 });
@@ -181,6 +230,12 @@ $(document).ready(function(){
     function hide_search_results(){
         var $list = $('.prelist');
         $list.hide();
+    }
+
+
+    function show_search_results(){
+        var $list = $('.prelist');
+        $list.show();
     }
 
 
