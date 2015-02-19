@@ -1890,12 +1890,13 @@ if($ios_notification){
 
             $email = $_POST['email'];
 
-            if(strpos($email,'nyu.edu') > 0){
-                //Get univeristy id from a table of university_id   and   @univ.edu  (the schools email pattern)
-                $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
+            if(strpos($email,'nyu.edu') > 0 || strpos($email, 'urlinq.com') > 0) {
+
+                $schools = School::model()->findAllBySql("SELECT * FROM school");
+                $departments = Department::model()->findAllBySql("SELECT * FROM department");
 
                 $base_url = Yii::app()->getBaseUrl(true);
-                $data = array('success'=>true,'base_url'=>$base_url,'university'=> $this->get_model_associations($university,array('schools'=>array('departments'=>array(),))));
+                $data = array('success'=>true,'base_url'=>$base_url,'schools'=>$schools, 'departments'=>$departments);
 
 
                 $this->renderJSON($data);
