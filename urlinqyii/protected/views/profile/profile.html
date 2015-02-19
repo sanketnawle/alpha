@@ -168,8 +168,10 @@
             <div id="name_info_wrapper">
                 <div id="name_info">
                     {{#if professor}}Professor {{firstname}} {{lastname}}
-                    {{else}} {{firstname}} {{lastname}} 
-                         {{#if year_truncated}}'{{year_truncated}}
+                    {{else}} 
+                         {{firstname}} {{lastname}} 
+                         {{#if year_truncated}}
+                         <span class = "class_year">'{{year_truncated}}</span>
                          {{/if}}
                     {{/if}}</div>
                 {{#if professor}}
@@ -204,7 +206,7 @@
                 <div class="profile_tab clubs" data-panel_id="3">
                     <div class="profile_tab_content">
 
-                        <div class="profile_tab_text">Clubs <span class="profile_tab_amount">{{num_clubs}}</span></div>
+                        <div class="profile_tab_text">Groups <span class="profile_tab_amount">{{num_clubs}}</span></div>
                     </div>
 
                 </div>

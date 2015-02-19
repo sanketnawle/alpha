@@ -780,7 +780,8 @@
             <input class="upload_files_submit" type="submit" name="submitIT" value="Upload these Files">
         </form>
 
-
+        <div class = "no_files_div">
+        </div>
 
 
 

@@ -276,15 +276,22 @@ div.remove_state_controls{
     display:none;
 }
 
+.add_people_button ~ .help_div.dark{
+    z-index: 1!important;
+    opacity:0;
+    pointer-events:none;
+}
+
 .add_people_button:hover ~ .help_div.dark{
-    z-index: 1;
+    pointer-events:none;
     opacity:1;
 }
 
 .tab_members .help_div.dark{
-    top: 49px;
+    top: 38px;
 
-    margin-left: 92px;
+    left: -54px;
+    margin-left: 0px;
 }
 
 .tab_members .help_div.dark .box{
@@ -313,3 +320,6 @@ div.remove_member_button span{
     display:none!important;
 }
 
+div.tab_members .float_Right{
+    position:relative;
+}

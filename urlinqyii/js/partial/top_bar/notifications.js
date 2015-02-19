@@ -60,12 +60,12 @@ $(document).ready(function(){
                     notifications = json_data['notifications'];
                     update_notifications_div();
                     poll_notifications();
+                    first_request = false;
                 }
 
 
             }else{
-                console.log('Error getting notifications.');
-                console.log(json_data);
+
             }
         });
     }

@@ -183,14 +183,15 @@
 
 
         <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{actor.pictureFile.file_url}}')"></div>
+        <div class="close delete_notification"><span class = "close_text">hide</span></div>
         <div class="content">
             <div class="right">
                 {{#ifCond type '==' 'follow'}}
 
 
                     {{#if following_back}}
-                        <div class = "suggestion_btn_wrapper notification_follow_button">
-                            <span class = "follow_icon"></span>Following
+                        <div class = "suggestion_btn_wrapper notification_follow_button following">
+                            <span class = "follow_icon following"></span>Following
                         </div>
                     {{else}}
 
@@ -203,81 +204,80 @@
                     {{/if}}
                 {{/ifCond}}
 
-                <div class="close delete_notification"></div>
             </div>
 
 
             {{#ifCond type '==' 'follow'}}
-                <div class="message">{{actor.firstname}} {{actor.lastname}} is now following you.</div>
+                <div class="message"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> is now following you.</div>
             {{/ifCond}}
 
             {{#ifCond type '==' 'like'}}
-                <div class="message">{{actor.firstname}} {{actor.lastname}} liked your post: {{origin.text}}</div>
+                <div class="message"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> liked your post.</div>
             {{/ifCond}}
 
             {{#ifCond type '==' 'reply'}}
 
                 {{#ifCond origin.user_id '==' '<?php echo $user->user_id; ?>'}}
-                    <div class="message">{{actor.firstname}} {{actor.lastname}} replied to your post{{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{reply.reply_msg}}</div>
+                    <div class="message full"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> replied to your post{{#if origin.post_origin}} in <span class = "actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
                 {{else}}
-                    <div class="message">{{actor.firstname}} {{actor.lastname}} replied to a post{{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{reply.reply_msg}}</div>
+                    <div class="message full"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> replied to a post{{#if origin.post_origin}} in <span class ="actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
                 {{/ifCond}}
             {{/ifCond}}
 
             {{#ifCond type '==' 'post'}}
                 {{#ifCond origin.post_type '==' 'event'}}
-                    <div class="message">{{actor.firstname}} {{actor.lastname}} posted an event {{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{event.title}}</div>
+                    <div class="message"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> posted the event <span class = "actor_name">{{event.title}}</span> {{#if origin.post_origin}} to <span class = "actor_name">{{origin.post_origin.name}}</span>{{/if}}</div>
 
                     {{#if event.attending}}
-                        <div class="message">Added to calendar</div>
+                        <div class="message event_added"><span class="added_to_cal_icon"></span>Added</div>
                     {{else}}
-                        <div class="add_to_calendar_button" data-event_id='{{event.event_id}}'>Add to calendar</div>
+                        <div class="add_to_calendar_button" data-event_id='{{event.event_id}}'><span class="add_to_cal_icon"></span>Add to Cal</div>
                     {{/if}}
                 {{else}}
-                    <div class="message">{{actor.firstname}} {{actor.lastname}} posted{{#if origin.post_origin}} in <a href='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}'>{{origin.post_origin.name}}</a>{{/if}}: {{origin.text}}</div>
+                    <div class="message full"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> posted{{#if origin.post_origin}} in <span class = "actor_name"><a class = 'noti_group_name' href='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}'>{{origin.post_origin.name}}</a></span>{{/if}}</div>
                 {{/ifCond}}
 
             {{/ifCond}}
 
             {{#ifCond type '==' 'invite'}}
                 {{#ifCond origin_type '==' 'event'}}
-                    <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the event {{origin.title}}</div>
+                    <div class="message"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> invited you to <span class = "actor_name">{{origin.title}}</span></div>
 
                     {{#ifCond invite_choice '==' 0}}
-                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>Add to calendar</div>
+                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'><span class="add_to_cal_icon"></span>Add to Cal</div>
                     {{else}}
-                        <div class="message">Added to calendar</div>
+                        <div class="message event_added"><span class="added_to_cal_icon"></span>Added</div>
                     {{/ifCond}}
                 {{/ifCond}}
 
                 {{#ifCond origin_type '==' 'class'}}
-                    <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the class {{origin.class_name}}</div>
+                    <div class="message"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> invited you to the class, <span class = "actor_name">{{origin.class_name}}</span></div>
 
                     {{#ifCond invite_choice '==' 0}}
-                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>Join class</div>
+                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'><span class = "join_group_icon"></span>Join class</div>
                     {{else}}
-                        <div class="message">Member</div>
+                        <div class="message member">Member</div>
                     {{/ifCond}}
 
                 {{/ifCond}}
 
                 {{#ifCond origin_type '==' 'club'}}
-                    <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the club {{origin.group_name}}</div>
+                    <div class="message"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> invited you to join <span class = "actor_name">{{origin.group_name}}</span></div>
 
                     {{#if accepted}}
-                        <div class="message">Member</div>
+                        <div class="message member">Member</div>
                     {{else}}
-                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>Join club</div>
+                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'><span class = "join_group_icon"></span>Join group</div>
                     {{/if}}
                 {{/ifCond}}
 
                 {{#ifCond origin_type '==' 'group'}}
-                    <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the group {{origin.group_name}}</div>
+                    <div class="message"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> invited you to join <span class = "actor_name">{{origin.group_name}}</span></div>
 
                     {{#ifCond invite_choice '==' 0}}
-                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>Join group</div>
+                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'><span class = "join_group_icon"></span>Join</div>
                     {{else}}
-                        <div class="message">Member</div>
+                        <div class="message member">Member</div>
                     {{/ifCond}}
                 {{/ifCond}}
 
@@ -285,12 +285,12 @@
 
 
             {{#ifCond type '==' 'event'}}
-                <div class="message">{{actor.firstname}} {{actor.lastname}} created event {{origin.title}} in <a href='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}'>{{origin.event_origin.name}}</a></div>
+                <div class="message"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> created the event <span class = "actor_name">{{origin.title}}</span> in <span class ="actor_name"><a href='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}'>{{origin.event_origin.name}}</a></span></div>
             {{/ifCond}}
 
 
             {{#ifCond type '==' 'announcement'}}
-                <div class="message">Professor {{actor.lastname}} has made an announcement in your class, {{origin.class_name}}</div>
+                <div class="message"><span class = "actor_name">Professor {{actor.lastname}}</span> has made an announcement in your class, <span class = "actor_name">{{origin.class_name}}</span></div>
             {{/ifCond}}
 
             <div class="time">
