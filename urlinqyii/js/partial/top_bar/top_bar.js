@@ -80,6 +80,8 @@ $(document).ready(function(){
         }
   });
 
+    var last_input = '';
+    var previous_results = [];
 
     $(document).on('keyup', '#top_search_bar', function(){
         var $search_bar = $(this);
@@ -87,7 +89,79 @@ $(document).ready(function(){
 
         if(search_input.length >= 1){
             //clear_search_results();
-            update_search_results(search_input);
+
+            last_input = search_input;
+
+
+
+            setTimeout(update_search_results, 600);
+
+            function update_search_results(){
+
+                if(last_input == search_input){
+                    last_input = '';
+                    $.getJSON(globals.base_url + '/search/quickSearch?q=' + search_input, function(json_data){
+                        //clear_search_results();
+                        if(json_data['success']){
+                            if(json_data['results'].length == 0){
+                                clear_search_results();
+                                hide_search_results();
+                                $(".topbar .center form").css({"border-radius":"4px"});
+                            }else{
+
+//                                var different_results = json_data['results'];
+//
+//                                for(var i = 0; i < json_data.length; i++){
+//
+//                                }
+
+                                clear_search_results();
+                                $.each(json_data['results'], function(index, result_json){
+                                    show_search_result(result_json);
+                                });
+
+
+
+
+//
+//                                //Delete the old ones
+//                                //Delete the old search result with this index
+//                                $(".search_result.old").each(function(index){
+//                                    var $old_search_result = $(this);
+//                                    //$old_search_result.remove();
+//
+//
+//                                    var remove = true;
+//
+//
+//                                    $.each(json_data['results'], function(index, result_json){
+//
+//                                        //REmove this search result if its different from the previous one
+//                                        if($old_search_result.attr('data-origin_type') == result_json['origin_type'] || $old_search_result.attr('data-origin_id') != result_json['origin_id']){
+//                                            $old_search_result.remove();
+//                                        }
+//
+//                                    });
+//
+//
+//                                    if(remove){
+//                                        $old_search_result.remove();
+//                                    }
+//                                });
+
+
+
+                                $(".topbar .center form").css({"border-radius":"4px 4px 0px 0px"});
+                            }
+
+                            previous_results = json_data['results'];
+                        }else{
+
+                        }
+                    });
+                }
+            }
+
         }else{
             clear_search_results();
             hide_search_results();
@@ -110,32 +184,13 @@ $(document).ready(function(){
     }
 
 
-    function update_search_results(search_input){
 
-        $.getJSON(globals.base_url + '/search/quickSearch?q=' + search_input, function(json_data){
-            clear_search_results();
-            if(json_data['success']){
-                if(json_data['results'].length == 0){
-                    clear_search_results();
-                    hide_search_results();
-                    $(".topbar .center form").css({"border-radius":"4px"});
-                }else{
-                    $.each(json_data['results'], function(index, result_json){
-                        show_search_result(result_json);
-                    });
-                    $(".topbar .center form").css({"border-radius":"4px 4px 0px 0px"});
-                }
-            }else{
-
-            }
-        });
-    }
 
     function show_search_result(result_json){
         var source = $('#search_result_template').html();
         var template = Handlebars.compile(source);
         var generated_html = template(result_json);
-        $('.prelist').append(generated_html).hide().fadeIn(50);
+        $('.prelist').append($(generated_html).hide().fadeIn(50));
         
         var $search_result_element = $(".search_result");
         $(".topbar .center form").css({"border-radius":"4px 4px 0px 0px"});

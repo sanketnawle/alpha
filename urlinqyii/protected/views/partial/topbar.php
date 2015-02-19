@@ -141,7 +141,7 @@
 
 <script id="search_result_template" type="text/x-handlebars-template">
 
-        <li class="search_result" data-origin_type='{{origin_type}}'>
+        <li class="search_result" data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>
             {{#ifCond origin_type '==' 'user'}}
                 <a class='profile_link' data-user_id='{{user_id}}' >
                 <span>{{origin_name}}</span>
