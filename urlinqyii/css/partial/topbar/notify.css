@@ -46,7 +46,7 @@
     color: #999;
     padding-right: 52px;
     padding-top: 9px;
-    width: 308px;
+    width: 306px;
     line-height: 40px;
 }
 
@@ -109,26 +109,29 @@
     max-height: 300px;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li {
-    border-top: 1px solid #e6e5e6;
+    border-bottom: 1px solid #e6e5e6;
     background-color: #fff;
     position: relative;
+    padding-bottom: 5px;
     overflow: auto;
+    overflow-x: hidden;
+    min-height: 62px;
     -webkit-transition: background-color .3s;
     -moz-transition: background-color .3s;
     -o-transition: background-color .3s;
     -ms-transition: background-color .3s;
     transition: background-color .3s;
 }
-.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:first-child {
-    border-top: none;
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:last-child {
+    border-: none;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon {
     float: left;
-    width: 34px;
-    margin: 11px 8px 0 12px;
-    height: 34px;
+    width: 40px;
+    margin: 8px 8px 0 8px;
+    height: 40px;
     background-image: url(../../../assets/noti_sprite.png);
-    border-radius: 2.5px;
+    border-radius: 1000px;
     background-size: cover;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon.text {
@@ -161,19 +164,23 @@
     font-family: Avenir;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .message {
-    font-size: 12.5px;
+    font-size: 12.25px;
     margin-top: 8px;
     font-weight:  400;
-    color: #333;
+    color: #575757;
     margin-left: 54px;
     display: block;
-    width: 300px;
-    white-space: initial;
-    word-wrap: break-word;
+    width: 229px;
+    white-space: pre-line;
+    word-break: initial;
+    word-wrap: normal;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .time {
-    clear: left;
+    /* clear: left; */
     margin-left: 50px;
+    color: #999;
+    font-family: Avenir;
+    font-size: 13px;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .time .icon {
     height: 12px;
@@ -184,17 +191,21 @@
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .time .stamp {
     margin-top: 4px;
-    font-size: 75%;
+    font-size: 11.5px;
     font-weight: 400;
-    color: #989898;
-    margin-bottom: 12px;
+    font-family: Avenir;
+    margin-bottom: 0px;
+    color: #999;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right {
     text-align: right;
     float: right;
-    margin: 0 12px 0 5px;
-    position: relative;
+    position: absolute;
     z-index: 10;
+    right: 0px;
+    top: 0px;
+    width: 70px;
+    bottom: 0px;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right * {
     font-size: 85%}
@@ -226,29 +237,45 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
     color: #000;
     font-weight: 600;
 }
-.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .dismiss, .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .close {
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .dismiss, .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .close {
     margin-top: 2px;
     color: #222;
-    opacity: .65;
+    opacity: .5;
     visibility: hidden;
     float: right;
     clear: both;
+    cursor: pointer;
     font-size: 10px;
 }
-.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .dismiss:hover, .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .close:hover {
+
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .close > span{
+    color: #868383;
+
+    font-family: Avenir;
+    font-weight: 200;
+    top: -2px;
+    font-size: 11.5px;
+    position: relative;
+    margin-left: 11px;
+}
+
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .dismiss:hover, .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .close:hover {
     opacity: 1;
 }
-.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .close {
-    height:  10px;
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .close {
+    height: 8px;
     width:  8px;
     background-image: url(../../../assets/noti_sprite.png);
     background-position: 0px -174px;
     background-size:  auto;
+    position: absolute;
+    left: 11px;
+    bottom: 6px;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:not(.done):hover {
     background-color: rgba(245, 245, 245, 0.43);
 }
-.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:not(.done):hover .right .dismiss, .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:not(.done):hover .right .close {
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:not(.done):hover .right .dismiss, .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:not(.done):hover .close {
     visibility: visible;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li.eve .time .icon {
@@ -317,6 +344,18 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
 
 .accept_invite_button {
     cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: rgba(22, 206, 122, 1);
+    width: 72px;
+    color: #FFF;
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 25px;
+    z-index: 1000;
+    text-align: center;
 }
 
 
@@ -338,9 +377,166 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
 
 
 .notification_follow_button {
-    margin-top: 30px;
-    margin-right: 5px;
+    float: right;
+    right: 0px;
+    width: 72px;
+    position: absolute;
+    margin: 0;
+    color: #FFF;
+    font-size: 11.5px!important;
+    top: 0px;
+    text-align: center;
+    line-height: 42px;
+    bottom: 0px;
+    font-weight: 600!important;
+    background: rgba(226, 52, 79, 1);
 }
 
+.notification_follow_button:hover{
+    background: rgba(253, 63, 92, 1);
 
+}
 
+.notification_follow_button:active{
+    
+}
+
+.notification_follow_button.following{
+cursor: default;!important;
+background: rgba(226, 52, 79, .5);
+}
+
+.notification_follow_button.following:hover{
+background: rgba(226, 52, 79, .5);
+}
+
+.notification_follow_button.following:active{
+background: rgba(226, 52, 79, .5);  
+}
+
+span.actor_name{
+    font-weight: 600;
+
+    font-size: 12.25px;
+    color: #222;
+}
+
+div.message.member{
+    
+}
+
+li.notification span.join_group_icon{
+    background-image: url(../../../assets/noti_action_icons.png); 
+    background-position: 4px -86px; width: 58px; 
+    height: 38px; display: block; position: relative; left: 8px; 
+    top: 8px; background-repeat: no-repeat;
+    cursor: pointer;
+    
+}
+
+li.notification div.suggestion_btn_wrapper a.group_join_button, li.notification div.suggestion_btn_wrapper a.suggested_user_follow_button{
+    background: none;
+
+    color: #FFF!important;
+    text-align: center;
+    border: none;
+    display: block;
+    font-size: 11.5px!important;
+    margin-top: -1px;
+    line-height: 34px;
+    box-shadow: none!important;
+}
+
+li.notification div.suggestion_btn_wrapper a.group_join_button{
+
+}
+
+li.notification div.suggestion_btn_wrapper a.group_join_button:hover{
+
+}
+
+li.notification div.suggestion_btn_wrapper a.group_join_button:active{
+
+}
+
+li.notification div.suggestion_btn_wrapper .follow_icon{
+    background-image: url(../../../assets/noti_action_icons.png);
+
+    background-position: 4px 0px;
+    width: 58px;
+    height: 28px;
+    display: block;
+    position: relative;
+    left: 8px;
+    top: 12px;
+    cursor: pointer;
+}
+
+li.notification div.suggestion_btn_wrapper .follow_icon.following{
+    background-position: -70px 0px;
+    width: 50px;
+    cursor: default!important;
+}
+
+li.notification div.suggestion_btn_wrapper a.suggested_user_follow_button:hover{
+
+}
+
+li.notification div.suggestion_btn_wrapper a.suggested_user_follow_button:active{
+
+}
+
+li.notification span.added_to_cal_icon{
+    background-image: url(../../../assets/noti_action_icons.png); 
+    background-position: -66px -41px; 
+    width: 56px; 
+    height: 30px; position: relative; display: block;
+    left: 5px; top: 10px; cursor: pointer;
+
+    background-repeat: no-repeat;
+}
+
+li.notification div.add_to_calendar_button span.add_to_cal_icon{
+
+}
+
+li.notification div.add_to_calendar_button{
+
+}
+
+li.notification div.add_to_calendar_button:hover{
+
+}
+
+li.notification div.add_to_calendar_button:active{
+
+}
+
+div.message.event_added{
+    position: absolute;
+
+    right: 0px;
+    top: 0px;
+    margin: 0!important;
+    bottom: 0px;
+    background: rgba(2, 154, 207, 0.5);
+    text-align: center;
+    width: 72px!important;
+    line-height: 44px;
+    color: #FFF!important;
+    font-family: 'Open Sans', sans-serif; 
+    font-size: 11.5px!important; 
+    font-weight: 600!important;
+}
+
+div.message.full{
+    width: 300px!important;
+
+}
+
+span.actor_name > a{
+    font-size: 12.5px;
+
+    font-weight: 600;
+    color: #222;
+}
