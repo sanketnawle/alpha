@@ -31,15 +31,16 @@ class SearchController extends Controller
             return;
         }
 
-        $query = $_GET['q'];
+        $query = urldecode($_GET['q']);
 
         $results = array();
 
-        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname,' ',lastname) LIKE '%" . $query ."%' LIMIT 5");
+        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(LOWER(firstname),' ',LOWER(lastname)) LIKE LOWER('%" . $query ."%') LIMIT 5");
 
         foreach($users as $user){
             $user = $this->get_model_associations($user, array('pictureFile'));
             $user['origin_type'] = 'user';
+            $user['origin_id'] = $user['user_id'];
             $user['origin_name'] = $user['firstname'] . ' ' . $user['lastname'];
             array_push($results, $user);
         }
