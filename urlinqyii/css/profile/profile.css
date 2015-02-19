@@ -328,6 +328,14 @@ a.info_name{
     margin-bottom: 6px;
 }
 
+div.name_info > span{
+    
+}
+
+a.info_name:hover{
+    text-decoration: underline;
+}
+
 .profile_tab {
     display: inline-block;
     width: auto;

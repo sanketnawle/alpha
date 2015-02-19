@@ -46,12 +46,20 @@ $(document).ready(function(){
 
     function get_files(files_list_class){
         $.getJSON( globals.base_url + '/' + globals.origin_type + '/' + globals.origin_id + '/' + files_list_class + 'Files', function( json_data ) {
-            console.log(json_data);
+            
+            first_request = true;
             if(json_data['success']){
-                show_files(json_data['files'],files_list_class);
+                if(json_data['files'].length == 0 && first_request){
+                    var $no_files_container = $("div.no_files_div");
+                    $no_files_container.html("<div class = 'no_files_container'>No files uploaded</div>");                    
+                }
+                else{
+                    show_files(json_data['files'],files_list_class);
+                }
+                
             }else{
                 return [];
-            }
+            }    
 
         });
     }
@@ -91,7 +99,7 @@ $(document).ready(function(){
 
 
 
-	$('.files_subtab').click(function(){
+    $('.files_subtab').click(function(){
         var $tab = $(this);
         var panel_id = $tab.attr('data-panel_id');
         //Change active tab
