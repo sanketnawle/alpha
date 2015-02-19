@@ -354,6 +354,7 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
     font-size: 11.5px;
     font-weight: 600;
     line-height: 25px;
+    text-shadow: rgba(0, 0, 0, 0.2) 0px -1px 0px;
     z-index: 1000;
     text-align: center;
 }
@@ -390,6 +391,7 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
     bottom: 0px;
     font-weight: 600!important;
     background: rgba(226, 52, 79, 1);
+    text-shadow: rgba(0, 0, 0, 0.2) 0px -1px 0px;
 }
 
 .notification_follow_button:hover{
@@ -467,14 +469,14 @@ li.notification div.suggestion_btn_wrapper .follow_icon{
     height: 28px;
     display: block;
     position: relative;
-    left: 8px;
-    top: 12px;
+    left: 13px;
+    top: 15px;
     cursor: pointer;
 }
 
 li.notification div.suggestion_btn_wrapper .follow_icon.following{
-    background-position: -70px 0px;
-    width: 50px;
+    background-position: -59px 0px;
+    width: 39px;
     cursor: default!important;
 }
 
@@ -488,10 +490,11 @@ li.notification div.suggestion_btn_wrapper a.suggested_user_follow_button:active
 
 li.notification span.added_to_cal_icon{
     background-image: url(../../../assets/noti_action_icons.png); 
-    background-position: -66px -41px; 
+    background-position: -57px -36px; 
     width: 56px; 
     height: 30px; position: relative; display: block;
-    left: 5px; top: 10px; cursor: pointer;
+    left: 14px; 
+    top: 14px; cursor: pointer;
 
     background-repeat: no-repeat;
 }
@@ -522,7 +525,7 @@ div.message.event_added{
     background: rgba(2, 154, 207, 0.5);
     text-align: center;
     width: 72px!important;
-    line-height: 44px;
+    line-height: 36px;
     color: #FFF!important;
     font-family: 'Open Sans', sans-serif; 
     font-size: 11.5px!important; 
