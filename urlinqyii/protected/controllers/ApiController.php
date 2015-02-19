@@ -1890,6 +1890,21 @@ if($ios_notification){
 
             $email = $_POST['email'];
 
+            $user = User::model()->find("email=:email", array(":email"=>$email));
+
+            if ($user) {
+
+                if ($user->status == 'unverified') {
+                    $data = array('success'=>false,'error_id'=>2,'error'=>'This email has a pending verification.');
+                    $this->renderJSON($data);
+                    return;
+                }
+
+                $data = array('success'=>false,'error_id'=>3,'error'=>'This email has already been used to make an account.');
+                $this->renderJSON($data);
+                return;
+            }
+
             if(strpos($email,'nyu.edu') > 0 || strpos($email, 'urlinq.com') > 0) {
 
                 $schools = School::model()->findAllBySql("SELECT * FROM school");
@@ -1898,11 +1913,10 @@ if($ios_notification){
                 $base_url = Yii::app()->getBaseUrl(true);
                 $data = array('success'=>true,'base_url'=>$base_url,'schools'=>$schools, 'departments'=>$departments);
 
-
                 $this->renderJSON($data);
                 return;
             }else{
-                $data = array('success'=>false,'error_id'=>2,'error'=>'Only NYU email addresses are supported at this time');
+                $data = array('success'=>false,'error_id'=>4,'error'=>'Only NYU email addresses are supported at this time');
                 $this->renderJSON($data);
                 return;
             }
