@@ -1890,7 +1890,7 @@ if($ios_notification){
 
             $email = $_POST['email'];
 
-            $user = User::model()->find("email=:email", array(":email"=>$email));
+            $user = User::model()->find("user_email=:email", array(":email"=>$email));
 
             if ($user) {
 
