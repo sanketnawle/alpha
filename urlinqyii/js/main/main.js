@@ -182,7 +182,7 @@ $(document).ready(function(){
         $members_tab.addClass("remove_members_state");
         $('.members_card').not('.admin').find('.remove_member_button').show();
 
-        $('.members_card').not('.admin').find('.follow_button_wrapper').hide();
+        $('.members_card').not('.admin').find('.follow_button_wrapper').not('.own_profile').hide();
 
     });
 

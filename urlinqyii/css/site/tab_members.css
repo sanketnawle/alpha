@@ -312,9 +312,6 @@ div.remove_member_button span{
     font-weight:600!important;
 }
 
-.remove_members_state div.regular_member div.members_card div.user_card_button_holder div.remove_member_button{
-    display:block!important;
-}
 
 .remove_members_state div.members_card_wrapper.class_admin{
     display:none!important;

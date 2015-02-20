@@ -199,7 +199,16 @@
 
 
                     <div class='planner_event_header' id='past_due_events_header' style="display: none;">
-                        <div class="planner_event_header_label"><em class = "pl_red_circle small_icon_map"></em> Past Due</div>
+                        <div class="planner_event_header_label"><em class = "pl_red_circle small_icon_map"></em> 
+                            <?php
+                                if($origin_type === 'class'){
+                                    echo 'Past Due';
+                                }
+                                else{
+                                    echo 'Past';
+                                }
+                             ?>                            
+                        </div>
 
                     </div>
 

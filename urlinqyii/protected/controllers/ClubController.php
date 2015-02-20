@@ -345,10 +345,12 @@ class ClubController extends Controller
 
                 $has_admin=GroupUser::model()->exists('group_id=:group_id and is_admin=true',array(':group_id'=>$group->group_id));
                 foreach($group->events as $event){
+                    $already_attending =  EventUser::model()->exists('event_id=:eid and user_id=:uid',array(':eid'=>$event->event_id,':uid'=>$user_id));
                     $event_creator = GroupUser::model()->find('group_id=:group_id and user_id=:user_id',array(':group_id'=>$group->group_id
                         ,':user_id'=>$event->user_id));
                     //add all club events from admins (or anyone if no admis) to user's events
-                    if($event_creator->is_admin || !$has_admin){
+                    if(($event_creator->is_admin || !$has_admin) && !$already_attending){
+
                         $event_user = new EventUser();
                         $event_user->user_id = $user_id;
                         $event_user->event_id = $event->event_id;
