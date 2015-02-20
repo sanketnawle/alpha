@@ -435,8 +435,8 @@
 <script id="club_template" type="text/x-handlebars-template">
 
     <div class = "group_box group_course_box club_box" data-group_id='{{group_id}}' data-school_id='{{school_id}}'>
-        <div class = "float_Left group_image">
-            <a class = "group_link">{{group_name}}</a>
+        <div class = "float_Left group_image" style="background-image: url(<?php echo Yii::app()->getBaseUrl(true); ?>{{picture_url}})">
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/club/{{group_id}}" class = "group_link">{{group_name}}</a>
             <span class = "group_type group_with_button">Group</span>
 
         </div>
@@ -445,14 +445,18 @@
             <div class = "float_Right">
                 <div class = "group_bar_button_holder">
                     <div class = "join_button_wrapper">
+                        {{#if is_member}}
+                        <div class = "group_join_button nonmember"><em class = "white_add_icon"></em>Joined</div>
+                        {{else}}
                         <div class = "group_join_button nonmember"><em class = "white_add_icon"></em>Join Group</div>
+                        {{/if}}
                     </div>
                 </div>
             </div>
         </div>
         <div class = "group_box_secondary_info_section">
-            <div class= "info_line indent">35 members</div>
-            <div class= "info_line indent info_line_events"><span></span>5 events this month</div>
+            <div class= "info_line indent">{{num_members}} members</div>
+            <div class= "info_line indent info_line_events"><span></span>{{num_events}} upcoming events</div>
             <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about">{{group_desc}}</div></div></div>
         </div>
     </div>

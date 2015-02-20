@@ -255,7 +255,7 @@ div.inspect_event_detail{
 
 div.event_name.month_event_name
 {
-	width:calc(100% - 40px);
+	width:calc(100% - 59px);
 	width: -webkit-calc(100% - 59px);
 	overflow: hidden;
 	text-overflow: ellipsis;

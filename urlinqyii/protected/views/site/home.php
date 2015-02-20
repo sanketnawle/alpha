@@ -44,7 +44,12 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/reminders.js"></script>
-        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/jquery.scrollUp.js"></script>
+
+
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/tooltip.js"></script>
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/pulser.js"></script>
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/intro_tutorial.js"></script>
+
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
@@ -59,7 +64,7 @@
     </head>
 
 
-    <body id = "body_home">
+    <body id = "body_home" class = "first_visit">
 
         <?php echo Yii::app()->runController('partial/topbar');     ?>
 
@@ -67,12 +72,12 @@
             <div id="page">
                 <div id = "main_panel">
                     <div id="content_holder">
-                        <div id="left_panel">
+                        <div id="left_panel" class = "intro_div intro_div_1">
                             <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'home','origin_id'=>'')); ?>
                         </div>
                         <div id = "content_panel" class = "content_panel_home">
                             <?php echo $this->renderPartial('/partial/nav_bar',array('user' => $user, 'origin_type'=>'home','origin_id'=>$user->user_id,'origin'=>$user)); ?>
-                            <div id = "planner_column" class = "planner_column_home">
+                            <div id = "planner_column" class = "planner_column_home intro_div intro_div_2">
                                 <div id = "right_column_specs">
                                     <div id = "fixed_element">
                                         <?php
@@ -87,8 +92,12 @@
                             </div>
                             <div id = "feed_column" class = "feed_column_home">
                                 <div id = "stream_holder" class = "stream_holder_home">
-                                    <div id = "fbar_wrapper" class = "fbar_home">
+                                    <div id = "fbar_wrapper" class = "fbar_home intro_div intro_div_3">
                                         <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'user','origin_id'=>$user->user_id ,'is_admin'=>false)); ?>
+                                    </div>
+
+                                    <div id = "tutorial_starter" class = "welcome_button">
+                                        <h5>Discover how Urlinq can improve your education</h5>
                                     </div>
 
                                     <div id = "filter_wrapper" class = "filter_bar filter_bar_home">
@@ -121,11 +130,14 @@
                 </div>
             </div>
         </div>
-        
+        <div class='pulse_container' style='left:50%;top:50%;position:absolute;'>
+            <div class='pulse_tp_0'></div>
+        </div> 
+        <div class='black_canvas hidden'></div>
     </body>
 
 
-
+    
 
  <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
 

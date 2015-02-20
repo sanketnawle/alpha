@@ -1,5 +1,5 @@
 div#reminders_section{
-
+display: none!important
 }
 
 div#reminders_section > div{

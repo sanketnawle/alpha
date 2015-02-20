@@ -573,9 +573,9 @@ border-radius: 4px;}
         border-radius: 0px 0px 4px 4px;
         padding: 4px 0px 0px;  
         background: rgba(255, 255, 255, 0.99);   
-        box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.04);
         overflow-y: scroll;
-        max-height: 418px;
+        max-height: 418px;   -webkit-box-shadow: 0 4px 6px 2px rgba(0, 0, 0, .10);
 }
 
         .topbar #topbar_responsive_holder .center ul li a {

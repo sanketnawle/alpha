@@ -561,15 +561,17 @@ body.body_group input.event_title{
   animation-fill-mode:forwards; 
 }
 
-@-webkit-keyframes hidePlus{
+
+
+@keyframes hidePlus{
   100%{
     transform: scaleY(0);
   }
 }
 
-@keyframes hidePlus{
+@-webkit-keyframes hidePlus{
   100%{
-    transform: scaleY(0);
+    -webkit-transform: scaleY(0);
   }
 }
 
@@ -582,8 +584,8 @@ body.body_group input.event_title{
 }
 
 @-webkit-keyframes bounceMinus{
-  50%{transform: scaleX(2);}
-  100%{transform: scaleX(1);}
+  50%{-webkit-transform: scaleX(2);}
+  100%{-webkit-transform: scaleX(1);}
 }
 
 @keyframes bounceMinus{
@@ -594,7 +596,7 @@ body.body_group input.event_title{
 @-webkit-keyframes moveNav{
   50%{ color:#325586;}
   100%{
-    transform: translate(0,0);
+    -webkit-transform: translate(0,0);
     color:#fff;
   }
 }
@@ -814,7 +816,6 @@ border-width: 1px;
 padding: 0;
 margin-left: 20px;
 border: 1px solid rgba(184, 184, 184, 0.61);
-box-shadow: inset 0px 0px 2px 0px rgba(205, 205, 205, 0.12);
 background: white;
 margin-top: -8px;
 margin-left: 7px;
@@ -883,6 +884,12 @@ div.event_origin > a:hover{
 #past_events div.event{
     text-shadow: 0 1px 1px rgba(123, 123, 123, 0.05);
     height: auto;
+    background: rgba(255, 243, 184, 0.5);
+    padding-bottom: 5px;
+}
+
+#past_events div.event span.edit_button{
+    background: transparent!important;
 }
 
 #past_events .checkbox_hint{
@@ -1142,6 +1149,10 @@ opacity:1;
     font-weight: 800;
     font-family: Avenir;
     cursor: default;
+}
+
+#past_events div.event div.event_origin a{
+    color:#3d3c40;
 }
 
 

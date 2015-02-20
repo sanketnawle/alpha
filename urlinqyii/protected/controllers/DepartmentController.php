@@ -95,6 +95,7 @@ class DepartmentController extends Controller
             $department_follow = new DepartmentFollow;
             $department_follow->department_id = $department_id;
             $department_follow->user_id = $user_id;
+            $department_follow->color_id = get_random_color();
             //If we save successfully, user is now following this department
             if($department_follow->save(false)){
                 $data = array('success'=>true);

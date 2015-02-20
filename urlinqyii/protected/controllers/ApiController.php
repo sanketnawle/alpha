@@ -648,6 +648,10 @@ if($ios_notification){
                             $from = 'team@urlinq.com';
                             $email_data = array('key'=>$user_confirmation->key_email);
                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                            $data = array('success'=>true);
+                            $this->renderJSON($data);
+                            return;
+                            // login success, return that.
                         }else{
                             $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
                             $this->renderJSON($data);
