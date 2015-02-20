@@ -724,14 +724,6 @@
                                         <p class = "about_box_headers">GROUP INFO</p>
 
 
-                                        <div class = "group_info_divider">
-                                            <hr role = "separator">
-                                            <div class = "group_info_divider_label" data-label = "description"> Title and Icon 
-                                                <?php if($is_admin){ ?>  
-                                                    <p id = "edit_club_name"><span class = "edit_icon small_icon_map"></span>Edit</p>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
 
                                         <div class = "group_info_data">
                                             <div class = "group_display_icon" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->pictureFile->file_url ?>');">

@@ -97,7 +97,7 @@
                         <tbody>
                             <tr style="margin:0;padding:0;display: block;width: 84px;margin: 0 auto;padding-top: 12px;">
                                 <td style="max-width: 30px; margin:0;padding:5px;white-space: nowrap;">
-                                    <a title="Facebook" href="https://facebook.com/joinurlinq" style="margin:0;text-decoration:none;color:#999999;padding:0;">
+                                    <a title="Facebook" href="https://facebook.com/urlinq" style="margin:0;text-decoration:none;color:#999999;padding:0;">
                                         <img alt="Facebook" height="18" width="18" style="" "margin:0;padding:0;border:0;"="" src="http://urlinq.com/beta/emailImg/fb_email_icon.png">
                                     </a>
                                 </td>
