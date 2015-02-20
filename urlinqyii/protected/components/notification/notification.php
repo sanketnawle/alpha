@@ -10,9 +10,9 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
     $notification->save(false);
 
-    include_once 'notification/iOSPushNotifications.php';
+    /*include_once 'notification/iOSPushNotifications.php';
 
-    $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+    $user = User::model()->find('user_id=:id', array(':id'=>$user_id));*/
     /*$notification = Notification::model()->find('notification_id=:notification_id', array(':notification_id'=>$notification->notification_id));
 
     include_once 'notification/notification-helper.php';
@@ -24,7 +24,7 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
 
 }
-
+/*
 function get_text_for_notification_array($notification) {
 
     $type = $notification['type']; 
@@ -59,7 +59,7 @@ function get_text_for_notification_array($notification) {
     return $notification_text;
 
 }
-
+*/
 /*
 function array_for_notification_model($notification) {
     return array("type"=>$notification->type, "actor_id"=>$notification->actor_id, "user_id"=>$notification->user_id, "origin_id"=>$notification->origin_id, "origin_type"=>$notification->origin_type);

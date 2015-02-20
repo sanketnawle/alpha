@@ -404,11 +404,9 @@
                             PANEL 4
                         </div>
 
-                        <?php if($is_member){ ?>
+
                         <div class="panel tab_members" id="panel_3">
-                        <?php }else{ ?>
-                        <div class="panel tab_members" id="panel_3" style="display:none;">
-                        <?php } ?>
+
 
                             <div class="tab_content_holder">
                                 <div class="tab_header"> 
@@ -431,6 +429,7 @@
                                             </div>-->
 
                                         <?php } ?>
+                                        <?php if($is_member){ ?>
                                         <div class = "add_people_button invite">
                                             Add Members
                                         </div>
@@ -441,6 +440,7 @@
                                                 Add new members to join your group. If they don't already have a Urlinq account, they'll receive an email to signup.
                                             </div>
                                         </div>
+                                        <?php } ?>
 
 
 
@@ -550,7 +550,7 @@
                                                 </div>
                                                 <?php }else{?>
                                                     <div class = "user_card_button_holder">
-                                                        <div class = "follow_button_wrapper following_wrapper">
+                                                        <div class = "follow_button_wrapper following_wrapper own_profile">
                                                             <div class = "user_follow_button own_profile">Me</div>
                                                         </div>
                                                     </div>

@@ -228,7 +228,7 @@ $(document).ready(function(){
 
                 console.log(current_calendar_year.toString() + '-' + addZero(current_calendar_month).toString() + '-' + addZero(formatted_day_date).toString());
 
-                var selected_date = new_date(current_calendar_year.toString() + '-' + addZero(current_calendar_month).toString() + '-' + (addZero(formatted_day_date + 1)).toString());
+                var selected_date = local_to_utc(new_date(current_calendar_year.toString() + '-' + addZero(current_calendar_month).toString() + '-' + (addZero(formatted_day_date)).toString()));
 
 
 

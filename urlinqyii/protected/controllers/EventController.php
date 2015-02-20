@@ -307,10 +307,13 @@ class EventController extends Controller
         $event = Event::model()->find('event_id=:event_id',array('event_id'=>$event_id));
 
         if ($event) {
+            $attendees = $event->attendees;
+            foreach($attendees as $i=>$attendee){
+                $attendees[$i] = $this->get_model_associations($attendee, array('pictureFile'));
 
+            }
 
-
-            $data = array('success'=>true,'attendees'=>$event->attendees);
+            $data = array('success'=>true,'attendees'=>$attendees);
 
             $this->renderJSON($data);
             return;

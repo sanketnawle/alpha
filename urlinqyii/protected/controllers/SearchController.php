@@ -341,7 +341,13 @@ class SearchController extends Controller
             ->queryAll();
         //$schoolContent = School::model()->findAllBySql($ssql);
         $groups = Group::model()->findAllBySql("SELECT * FROM `group` WHERE LOWER(group_name) LIKE LOWER('%" . $query . "%') LIMIT 20");
-
+        foreach($groups as $i=>$group){
+            $groups[$i] = $this->model_to_array($group);
+            $groups[$i]['num_members'] = sizeof($group->users);
+            $groups[$i]['num_events'] = sizeof($group->upcoming_events);
+            $groups[$i]['picture_url'] = $group->coverFile->file_url;
+            $groups[$i]['is_member'] = GroupUser::model()->exists('group_id=:gid and user_id=:uid',array(':gid'=>$group->group_id,':uid'=>$user->user_id));
+        }
 
         if($query == "piyd")
         {   //professors in your department

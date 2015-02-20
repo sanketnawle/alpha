@@ -11,6 +11,7 @@ jQuery(document).ready(function(){
         jQuery.getJSON(base_url + '/user/getGroupData', function(json_data){
             var $classes_div = $('.providers.class');
             var $clubs_div = $('.providers.clubs');
+            var $depts_div = $('.providers.depts');
 
             jQuery.each(json_data['classes'],function(index, class_json){
                 class_json['name'] = class_json['class_name'];
@@ -18,6 +19,9 @@ jQuery(document).ready(function(){
                 class_json['id'] = class_json['class_id'];
                 show_user_group(class_json, '.providers.class');
             });
+            if(json_data['classes'].length==0){
+                $classes_div.append('<p>No classes</p>');
+            }
 
 
             jQuery.each(json_data['clubs'],function(index, club_json){
@@ -26,6 +30,9 @@ jQuery(document).ready(function(){
                 club_json['id'] = club_json['group_id'];
                 show_user_group(club_json, '.providers.clubs');
             });
+            if(json_data['clubs'].length==0){
+                $clubs_div.append('<p>No clubs</p>');
+            }
 
             jQuery.each(json_data['departments'],function(index, dept_json){
                 dept_json['name'] = dept_json['department_name'];
@@ -33,6 +40,9 @@ jQuery(document).ready(function(){
                 dept_json['id'] = dept_json['department_id'];
                 show_user_group(dept_json, '.providers.depts');
             });
+            if(json_data['departments'].length==0){
+                $depts_div.append('<p>No departments followed</p>');
+            }
 
         });
     }

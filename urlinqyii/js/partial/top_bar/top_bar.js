@@ -145,23 +145,13 @@ $(document).ready(function(){
                                             //alert('ERROR ' + JSON.stringify(result_json));
                                         }
 
-
-
                                     });
-
-
 
                                     if(remove){
                                         $search_result.remove();
                                         console.log('REmoving search result that is not in new json_data');
                                     }
                                 });
-
-
-
-
-                                //clear_search_results();
-
 
 
                                 //Go thru the rest of the nonspliced array
