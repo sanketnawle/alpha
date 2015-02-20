@@ -586,7 +586,7 @@ if($ios_notification){
 
                 if($user->save(false)){
 
-                    if(isset($_FILES['file']) && $_FILES['file'] != null){
+                    if(empty($_FILES)){
                         include "file_upload.php";
                         $local_directory = 'profile_pictures/';
                         $file_id = null;
