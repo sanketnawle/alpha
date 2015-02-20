@@ -600,7 +600,7 @@ if($ios_notification){
                         $file_id = 1;
                     }
                     $user->picture_file_id = $file_id;
-                    if($user->save(false)){
+                    if(!$user->save(false)){
                         $data = array('success'=> false,'error_id'=> 5, 'error_msg'=>'error saving user picture into db');
                         $this->renderJSON($data);
                         return;
