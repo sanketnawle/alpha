@@ -475,10 +475,12 @@ class ClassController extends Controller
                 }
 
                 foreach($class->events as $event){
+                    $already_attending =  EventUser::model()->exists('event_id=:eid and user_id=:uid',array(':eid'=>$event->event_id,':uid'=>$user_id));
+
                     $event_creator = ClassUser::model()->find('class_id=:class_id and user_id=:user_id',array(':class_id'=>$class->class_id
                     ,':user_id'=>$event->user_id));
                     //add all club events from admins (or anyone if no admis) to user's events
-                    if($event_creator->is_admin || !$has_admin_or_prof){
+                    if(($event_creator->is_admin || !$has_admin_or_prof)&&!$already_attending){
                         $event_user = new EventUser();
                         $event_user->user_id = $user_id;
                         $event_user->event_id = $event->event_id;

@@ -256,7 +256,7 @@ div.inspect_event_detail{
 div.event_name.month_event_name
 {
 	width:calc(100% - 40px);
-	width: -webkit-calc(100% - 44px);
+	width: -webkit-calc(100% - 59px);
 	overflow: hidden;
 	text-overflow: ellipsis;
 	line-height: 20px;
@@ -448,7 +448,7 @@ left:35%
 
 .body .month-view .month-grid .grid-item .month_day_event .event_start_time {
 float: right;
-width: 33px;
+width: 48px;
 text-align: right;
 font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
 color: #787878;
@@ -630,5 +630,49 @@ padding-right: 0px!important;
     	left:23px;
     	right:23px;
     }
+}
 
+.attendee_holder{
+    display: inline-block;
+    /* margin-top: 10px !important; */
+    margin-right: 10px !important;
+    width: 87px;
+    position: relative;
+    height: 87px;
+    cursor:pointer;
+}
+.attendee_picture{
+    border-radius: 49px;
+    background-size: cover;
+    width: 87px;
+    height: 87px;
+}
+.attendee_name{
+    position: relative;
+    top: -18px;
+    margin: auto;
+    color: white !important;
+    text-shadow: 0px 0px 3px black;
+    text-align: center;
+    position: absolute;
+    top: 59px;
+    margin: auto;
+    width: 100%;
+}
+.more_attendees_button{
+    width: 29px;
+    display: inline-block;
+    position: relative;
+    top: -37px;
+    text-align: center;
+}
+.more_attendees_list {
+    display: none;
+    position: absolute;
+    right: -142px;
+    top: 21px;
+    background-color: rgba(0, 0, 0, 0.498039) !important;
+    border-radius:3px;
+    padding:5px !important;
+    color:white !important;
 }
