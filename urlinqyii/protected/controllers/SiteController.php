@@ -1531,17 +1531,35 @@ public function actionSendReset(){
         if($user_recovery){
             $user = User::model()->find('user_id=:user_id',array(':user_id'=>$user_recovery->user_id));
             $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user_recovery->user_id));
+
             $salt = $user_login->salt;
             $hashed_password = hash_password($password,$salt);
 
-            // The password gets changed here
-            $user_login->password = $hashed_password;
-            $user_login->save(false);
-            Yii::app()->session['user_id'] = $user->user_id;
-            $data = array('success'=>true);
-            $this->renderJSON($data);
-            $user_recovery->delete();
-            return;
+            if($user_login){
+
+
+                // The password gets changed here
+                $user_login->password = $hashed_password;
+                $user_login->save(false);
+                Yii::app()->session['user_id'] = $user->user_id;
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                $user_recovery->delete();
+                return;
+            }else{
+                $user_login = new UserLogin;
+                // The password gets changed here
+                $user_login->password = $hashed_password;
+                $user_login->save(false);
+
+
+                Yii::app()->session['user_id'] = $user->user_id;
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                $user_recovery->delete();
+                return;
+            }
+
         }
     }
 
