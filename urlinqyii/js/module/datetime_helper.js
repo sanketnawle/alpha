@@ -121,10 +121,10 @@ function time_string_to_am_pm_string(time_string){
 //and converts it the safe way by making the space a T
 //returns a date object
 function new_date(date_string){
-    var date = new Date(date_string + 'T00:00:00');
+    var date = new Date(date_string + 'T00:00:00Z');
 
     if(!isFinite(date)){
-        date = new Date(date_string + ' 00:00:00');
+        date = new Date(date_string + ' 00:00:00Z');
     }
 
     return date;
@@ -135,17 +135,18 @@ function new_date(date_string){
 //and converts it the safe way by making the space a T
 //returns a datetime object
 function new_datetime(datetime_string){
-    var date = new Date(datetime_string);
+    var date = new Date(datetime_string+'Z');
 
     if(!isFinite(date)){
-        date = new Date(datetime_string.replace(' ', 'T'));
+        var new_datetime_string = datetime_string.replace(' ', 'T');
+        date = new Date(new_datetime_string+'Z');
     }
 
 
 //    console.log('Date time shit');
 //    console.log(date);
 
-    return date;
+    return local_to_utc(date);
 }
 
 

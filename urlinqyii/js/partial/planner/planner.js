@@ -306,7 +306,8 @@ $(document).ready(function(){
         var $event=$('.event[data-event_id='+event_id+']');
         var duration = new_datetime($event.attr('data-end_date')+' '+$event.attr('data-end_time')).getTime()
             - new_datetime($event.attr('data-start_date')+' '+$event.attr('data-start_time')).getTime();
-        var end_datetime = new_datetime(event_datetime.getTime()+duration);
+        console.log(event_datetime.getTime()+duration);
+        var end_datetime = new Date(event_datetime.getTime()+duration);
         var event_end_date = date_to_string(end_datetime);
         var event_end_time = addZero(end_datetime.getHours()).toString() + ':' + addZero(end_datetime.getMinutes()).toString() + ':' + addZero(end_datetime.getSeconds()).toString();
         console.log(event_end_date+' '+event_end_time);
