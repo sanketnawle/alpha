@@ -132,7 +132,9 @@ var CalendarEvent = (function (CalendarEvent) {
                     function show_group(group_json){
                         //Normally source would be $("#group_template").html(); but for whatever reason
                         //angular doesnt let jquery select the handlebars template if it is in the html
-                        var source = '<div class="group" data-group_type="{{group_type}}" data-color = "{{color.hex}}" style = "background-color:{{color.hex}}" data-id="{{id}}"><div class="group_name">{{name}}</div></div>';
+                        var check_wrap = '<input type="checkbox" class="checkbox_share_event"/>'
+                            
+                        var source = '<div class="group" data-group_type="{{group_type}}" data-color = "{{color.hex}}" style = "background-color:{{color.hex}}" data-id="{{id}}"><div class="group_name">{{name}}'+check_wrap+'</div></div>';
                         var template = Handlebars.compile(source);
                         var generated_html = template(group_json);
 
