@@ -348,8 +348,6 @@ jQuery(document).ready(function(){
 
         event_end_date = date_to_string(event_end_datetime);
         event_end_time = datetime_to_time_string(event_end_datetime);
-
-
         var post_data = {
             event:{
                 event_id: event_id,
@@ -370,6 +368,33 @@ jQuery(document).ready(function(){
             }
         };
 
+        if($selected_group){
+        var checkbox_share_isset = $selected_group.children().find('.checkbox_share_event').is(':checked');
+        if (checkbox_share_isset) {
+            post_url = "post/create"
+            post_data = {"post" : 
+                                {"text":"",
+                                "post_type":"event",
+                                "origin_type":event_origin_type,
+                                "origin_id":event_origin_id,
+                                "sub_text":"",
+                                "privacy":"",
+                                "anon":0,
+                                "like_count":0,
+                                "event":{"title":event_name,
+                                         "start_date": event_start_date,
+                                         "start_time":event_start_time,
+                                         "end_date": event_end_date,
+                                         "end_time": event_end_time,
+                                         "description":event_description,
+                                         "location":event_location,
+                                         "origin_type":event_origin_type,
+                                         "origin_id": event_origin_id
+                                        }
+                                }
+                        };
+            }
+        }
 
         console.log(JSON.stringify(post_data));
 
@@ -394,18 +419,22 @@ jQuery(document).ready(function(){
 //                            show_month_event(response['event']);
 //                        }
 //                    }
-
+                    var new_response = response;
+                    if(!new_response["event"]){
+                        new_response = {};
+                        new_response["event"] = $.extend({}, response["post"]["event"],{"color" : {"color_id":3,"hex":"#669999"}});
+                    }
 
                     //Delete the old event
                     jQuery('.day_event_holder[data-id="' + event_id + '"]').remove();
                     //show new event
                     var $active_tab = jQuery('a.ng-binding.active');
                     if($active_tab.text().toLowerCase() == 'day'){
-                        show_day_event(response['event']);
+                        show_day_event(new_response['event']);
                     }else if($active_tab.text().toLowerCase() == 'week'){
-                        show_week_day_event(response['event']);
+                        show_week_day_event(new_response['event']);
                     }else if($active_tab.text().toLowerCase() == 'month'){
-                        show_month_event(response['event']);
+                        show_month_event(new_response['event']);
                     }
 
 
