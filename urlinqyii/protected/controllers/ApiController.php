@@ -685,7 +685,7 @@ $user_email = $user->user_email;
     //        $this->renderJSON($data);
 
             //Remove this once email verification is completed
-            $data = $this->login($email,$password);
+            $data = array("success"=>true);
             $this->renderJSON($data);
             return;
             } catch (Exception $e) {
