@@ -461,19 +461,19 @@ class EventController extends Controller
             if($origin_type != 'user'){
 
                 //Get the events that this user is an event_user of
-                $events_attending = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " AND event.end_date >= '" . $start_date . "' AND event.origin_type = '" . $origin_type . "' AND event.origin_id = " . $origin_id)->queryAll();
+                $events = Yii::app()->db->createCommand("SELECT * FROM event e where (e.user_id=".$user->user_id." OR exists (select * from event_user eu where eu.user_id=" . $user->user_id . " and eu.event_id=e.event_id))  AND e.end_date >= '" . $start_date . "' AND e.origin_type = '" . $origin_type . "' AND e.origin_id = " . $origin_id." and e.complete=0 order by start_date,start_time limit 8")->queryAll();
 
                 //Get the events that this
                 //$events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete and origin_type=:origin_type and origin_id=:origin_id',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0, ':origin_type'=>$origin_type, ':origin_id'=>$origin_id));
 
 
-                $events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND end_date >= '" . $start_date . "' AND origin_type = '" . $origin_type . "' AND origin_id = " . $origin_id)->queryAll();
-                $events = array_slice(array_merge($events,$events_attending),0,8);
+               // $events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND end_date >= '" . $start_date . "' AND origin_type = '" . $origin_type . "' AND origin_id = " . $origin_id)->queryAll();
+               // $events = array_slice(array_merge($events,$events_attending),0,8);
                 $events = $this->add_event_data($events, $user);
 
             }else{
                 //$events = Event::model()->findAllBySql('select * from event e where e.end_date>=:start_date and (e.user_id=:user_id or exists (select * from event_user eu where eu.user_id=:user_id and eu.event_id=e.event_id)) and e.complete=:complete limit 8',array(':start_date'=>$start_date,':user_id'=>$user->user_id, ':complete'=>0));
-                $events = Yii::app()->db->createCommand("select * from event e where e.end_date>='" . $start_date . "' and (e.user_id=" . $user->user_id . " or exists (select * from event_user eu where eu.user_id=" . $user->user_id . " and eu.event_id=e.event_id)) and e.complete=0 limit 8")->queryAll();
+                $events = Yii::app()->db->createCommand("select * from event e where e.end_date>='" . $start_date . "' and (e.user_id=" . $user->user_id . " or exists (select * from event_user eu where eu.user_id=" . $user->user_id . " and eu.event_id=e.event_id)) and e.complete=0 order by start_date,start_time limit 8")->queryAll();
                 $events = $this->add_event_data($events, $user);
             }
 

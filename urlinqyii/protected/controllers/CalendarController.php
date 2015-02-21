@@ -15,7 +15,7 @@ class CalendarController extends Controller
 
 
 
-		$this->render('index');
+		$this->render('index',array('user'=>$user));
 	}
 
 
