@@ -531,6 +531,18 @@ label.where_label{
     color: rgba(0, 0, 0, 1)!important;
 }
 
+.group .flat7b {
+position: absolute;
+float: right;
+width: 34px;
+height: 17px;
+top: 7px;
+right: 25px;
+background-color: transparent!important;
+border-color: #FFF!important;
+border-width: 1px!important;
+}
+
 .category_name {
     width: 100%;
     margin-left: 5px;
