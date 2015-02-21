@@ -64,7 +64,7 @@
     </head>
 
 
-    <body id = "body_home" class = "first_visit">
+    <body id = "body_home" <?php if($first_time) echo 'class="first_visit"';?>>
 
         <?php echo Yii::app()->runController('partial/topbar');     ?>
 
@@ -115,6 +115,7 @@
                                     </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
+
                                         <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed', 'origin_type'=>'user', 'origin_id'=>$user->user_id ,'is_admin'=>false)); ?>
                                     </div>
 
