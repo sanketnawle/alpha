@@ -34,7 +34,7 @@
 
         public function actionAddNotificationID() {
 
-            if(!isset($_POST['user_id']) || !isset($_POST['notification_id'])){
+            if(!isset($_POST['notification_id'])){
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
                 $this->renderJSON($data);
                 return;
@@ -47,33 +47,14 @@
                 return;   
             }
 
-            $user_id = $_POST['user_id'];
-            $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
-
-            if (!$user) {
-                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
-                $this->renderJSON($data);
-                return;            
-            }
-
             $notification_id = str_replace(array(" ", "<", ">"), "", $_POST['notification_id']);
 
-
-            /*$sql = "SELECT * FROM IosNotifications WHERE notification_id = $notification_id;";
-            $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
-
-            foreach($device_notification_ids as $notification_id) {
-                $notification_id->delete;
-            }*/
-
-  //          $notiModel = IosNotifications::model()->find("notification_id=:notification_id", array(":notification_id"=>$notification_id));
-//            $notiModel->delete;
-
-
+            $user_id = $get_user->user_id;
 
 $ios_notification = IosNotifications::model()->find('notification_id = :notification_id', array(':notification_id'=>$notification_id));
 if($ios_notification){
     $ios_notification->user_id = $user_id;
+    $ios_notification->save(false);
     $data = array('success'=>true);
     $this->renderJSON($data);
     return;
@@ -605,7 +586,7 @@ if($ios_notification){
 
                 if($user->save(false)){
 
-                    if(isset($_FILES['file']) && $_FILES['file'] != null){
+                    if(!empty($_FILES)){
                         include "file_upload.php";
                         $local_directory = 'profile_pictures/';
                         $file_id = null;
@@ -619,7 +600,7 @@ if($ios_notification){
                         $file_id = 1;
                     }
                     $user->picture_file_id = $file_id;
-                    if($user->save(false)){
+                    if(!$user->save(false)){
                         $data = array('success'=> false,'error_id'=> 5, 'error_msg'=>'error saving user picture into db');
                         $this->renderJSON($data);
                         return;
@@ -667,6 +648,10 @@ if($ios_notification){
                             $from = 'team@urlinq.com';
                             $email_data = array('key'=>$user_confirmation->key_email);
                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                            $data = array('success'=>true);
+                            $this->renderJSON($data);
+                            return;
+                            // login success, return that.
                         }else{
                             $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
                             $this->renderJSON($data);
@@ -1909,18 +1894,33 @@ if($ios_notification){
 
             $email = $_POST['email'];
 
-            if(strpos($email,'nyu.edu') > 0){
-                //Get univeristy id from a table of university_id   and   @univ.edu  (the schools email pattern)
-                $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
+            $user = User::model()->find("user_email=:email", array(":email"=>$email));
+
+            if ($user) {
+
+                if ($user->status == 'unverified') {
+                    $data = array('success'=>false,'error_id'=>2,'error'=>'This email has a pending verification.');
+                    $this->renderJSON($data);
+                    return;
+                }
+
+                $data = array('success'=>false,'error_id'=>3,'error'=>'This email has already been used to make an account.');
+                $this->renderJSON($data);
+                return;
+            }
+
+            if(strpos($email,'nyu.edu') > 0 || strpos($email, 'urlinq.com') > 0) {
+
+                $schools = School::model()->findAllBySql("SELECT * FROM school");
+                $departments = Department::model()->findAllBySql("SELECT * FROM department");
 
                 $base_url = Yii::app()->getBaseUrl(true);
-                $data = array('success'=>true,'base_url'=>$base_url,'university'=> $this->get_model_associations($university,array('schools'=>array('departments'=>array(),))));
-
+                $data = array('success'=>true,'base_url'=>$base_url,'schools'=>$schools, 'departments'=>$departments);
 
                 $this->renderJSON($data);
                 return;
             }else{
-                $data = array('success'=>false,'error_id'=>2,'error'=>'Only NYU email addresses are supported at this time');
+                $data = array('success'=>false,'error_id'=>4,'error'=>'Only NYU email addresses are supported at this time');
                 $this->renderJSON($data);
                 return;
             }

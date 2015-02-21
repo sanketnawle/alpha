@@ -72,7 +72,10 @@ class Group extends CActiveRecord
 			'groupFiles' => array(self::HAS_MANY, 'GroupFile', 'group_id'),
 			'users' => array(self::MANY_MANY, 'User', 'group_user(group_id, user_id)'),
 			'groupUserTags' => array(self::HAS_MANY, 'GroupUserTag', 'group_id'),
+
             'events' => array(self::HAS_MANY,'Event',array('origin_id'=>'group_id'),'condition'=>'origin_type = "group" or origin_type="club"'),
+            'upcoming_events' => array(self::HAS_MANY,'Event',array('origin_id'=>'group_id'),'condition'=>'start_date>=CURDATE() && start_time>=CURTIME()&& (origin_type = "group" or origin_type="club")'),
+
             //Gets all users, admins AND members
 
 

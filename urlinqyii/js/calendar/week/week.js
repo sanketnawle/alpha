@@ -19,7 +19,7 @@ jQuery(document).ready(function(){
         event.stopPropagation();
         var $day_time_div = jQuery(this);
         var this_date = $day_time_div.attr('data-date');
-        var this_date_obj = new_date(this_date);
+        var this_date_obj = local_to_utc(new_date(this_date));
         var this_time = $day_time_div.attr('data-time');
         var this_time_int = parseInt($day_time_div.attr('data-time_num'));
         var $create_week_day_event_popup = jQuery('#create_week_day_event_popup');
@@ -43,6 +43,7 @@ jQuery(document).ready(function(){
                 jQuery($create_week_day_event_popup).addClass("top_position");
                 if(click_x_difference <= 187){
                     $create_week_day_event_popup.css('right', event.pageX - 328.5);
+                    $create_week_day_event_popup.css('left', 0);
                     jQuery($create_week_day_event_popup).addClass("right_position");
                 }
                 else{
@@ -54,6 +55,7 @@ jQuery(document).ready(function(){
                 jQuery($create_week_day_event_popup).removeClass("top_position");
                 if(click_x_difference <= 187){
                     $create_week_day_event_popup.css('right', event.pageX - 328.5);
+                    $create_week_day_event_popup.css('left', 0);
                     jQuery($create_week_day_event_popup).addClass("right_position");
                 }
                 else{
@@ -89,6 +91,7 @@ jQuery(document).ready(function(){
                     jQuery($create_week_day_event_popup).addClass("top_position");
                     if(click_x_difference <= 187){
                         $create_week_day_event_popup.css('right', event.pageX - 328.5);
+                        $create_week_day_event_popup.css('left', 0);
                         jQuery($create_week_day_event_popup).addClass("right_position");
                     }
                     else{
@@ -100,6 +103,7 @@ jQuery(document).ready(function(){
                     jQuery($create_week_day_event_popup).removeClass("top_position");
                     if(click_x_difference <= 187){
                         $create_week_day_event_popup.css('right', event.pageX - 328.5);
+                        $create_week_day_event_popup.css('left', 0);
                         jQuery($create_week_day_event_popup).addClass("right_position");
                     }
                     else{

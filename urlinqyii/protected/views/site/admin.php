@@ -51,7 +51,7 @@
             <label for="create_class_department_input">Department</label>
             <br>
 
-            <input type="text" id="create_class_department_input" placeholder="department" data-id="0">
+            <input type="text" class="department_input" id="create_class_department_input" placeholder="department" data-id="0">
 
             <br>
 
@@ -112,7 +112,7 @@
             <label for="create_course_department_input">Department</label>
             <br>
 
-            <input type="text" id="create_course_department_input" placeholder="department" data-id="0">
+            <input class='department_input' type="text" id="create_course_department_input" placeholder="department" data-id="0">
 
             <br>
 

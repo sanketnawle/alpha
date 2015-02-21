@@ -6,14 +6,12 @@ font-family: 'Open Sans', sans-serif;
 background: #fff;
 border-radius: 5px;
 display: block;
-padding-bottom: 0px;
--webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0, 0, 0, 0.07);
--moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0, 0, 0, 0.07);
-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0, 0, 0, 0.07);
+padding-bottom: 0px;    
+-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 body#body_group #time_selector, body#body_home #time_selector{
-    width:71px;
+    width: 71px;
     margin-top: 13px;
 }
 
@@ -91,7 +89,7 @@ hr.future_events_top_line{
 
 .entry_field_placeholder{
     position: relative;
-    width: 75px;
+    width: 105px;
     float: right;
     font-size: 11px;
 
@@ -102,6 +100,10 @@ hr.future_events_top_line{
     cursor: pointer;
     padding-top: 8px;
     left: 7px;
+}
+
+body#body_home .entry_field_placeholder{
+    width:75px;
 }
 
 .entry_field_placeholder span{
@@ -140,7 +142,7 @@ em.pl_blue_circle{
     opacity:.75;
 }
 
-..entry_field_placeholder:active{
+.entry_field_placeholder:active{
 
 }
 
@@ -559,15 +561,17 @@ body.body_group input.event_title{
   animation-fill-mode:forwards; 
 }
 
-@-webkit-keyframes hidePlus{
+
+
+@keyframes hidePlus{
   100%{
     transform: scaleY(0);
   }
 }
 
-@keyframes hidePlus{
+@-webkit-keyframes hidePlus{
   100%{
-    transform: scaleY(0);
+    -webkit-transform: scaleY(0);
   }
 }
 
@@ -580,8 +584,8 @@ body.body_group input.event_title{
 }
 
 @-webkit-keyframes bounceMinus{
-  50%{transform: scaleX(2);}
-  100%{transform: scaleX(1);}
+  50%{-webkit-transform: scaleX(2);}
+  100%{-webkit-transform: scaleX(1);}
 }
 
 @keyframes bounceMinus{
@@ -592,7 +596,7 @@ body.body_group input.event_title{
 @-webkit-keyframes moveNav{
   50%{ color:#325586;}
   100%{
-    transform: translate(0,0);
+    -webkit-transform: translate(0,0);
     color:#fff;
   }
 }
@@ -627,14 +631,20 @@ body.body_group input.event_title{
 
 .planner_event_header {
     display: block;
-    height: 10px;
+    height: 14px;
 
-    margin-top: 8px;
+    margin-top: 12px;
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 7px;
+    margin-bottom: 2px;
 
+    border-bottom: 1px solid #eee;
     font-size: 13px;
+    padding-bottom: 2px;
+}
+
+#past_due_events_header{
+    border-bottom:none!important;
 }
 
 .planner_event_header_label {
@@ -645,7 +655,8 @@ body.body_group input.event_title{
 
 
     color: #444; font-weight: 600; 
-    font-size: 10.5px;
+    font-size: 11px; color: #999; 
+    margin-left: 0px; font-family: Avenir; font-weight: 100;
 }
 
 .planner_event_header_date {
@@ -805,7 +816,6 @@ border-width: 1px;
 padding: 0;
 margin-left: 20px;
 border: 1px solid rgba(184, 184, 184, 0.61);
-box-shadow: inset 0px 0px 2px 0px rgba(205, 205, 205, 0.12);
 background: white;
 margin-top: -8px;
 margin-left: 7px;
@@ -859,14 +869,14 @@ div.event_origin > a:hover{
 
 
 .event_name {
-    font-size: 13px;
+    font-size: 13.5px;
 
     color: #121314;
     text-transform: capitalize;
     padding-bottom: 2px;
     -moz-osx-font-smoothing: grayscale; 
     -webkit-font-smoothing: antialiased;
-    font-weight: 600;
+    font-weight: 500;
     cursor: default;
 }
 /* Set the background colors for the different types of events */
@@ -874,10 +884,16 @@ div.event_origin > a:hover{
 #past_events div.event{
     text-shadow: 0 1px 1px rgba(123, 123, 123, 0.05);
     height: auto;
+    background: rgba(255, 243, 184, 0.5);
+    padding-bottom: 5px;
+}
+
+#past_events div.event span.edit_button{
+    background: transparent!important;
 }
 
 #past_events .checkbox_hint{
-    margin-top:-5px;
+    margin-top: -10px;
 }
 
 #past_events div.events_data_holder{
@@ -920,6 +936,10 @@ span.event_origin > a{
 
 div.event.complete{
     background: #F5F5F5!important;
+}
+
+div.event.complete span.edit_button{
+    display: none!important
 }
 
 div.event.complete span.event_name, div.event.complete div.event_date_time{
@@ -1131,6 +1151,10 @@ opacity:1;
     cursor: default;
 }
 
+#past_events div.event div.event_origin a{
+    color:#3d3c40;
+}
+
 
 div.event_origin{
     display: inline-block;
@@ -1150,4 +1174,123 @@ body.body_group #tp1{
 padding: 6px 7px;
 width: 75px;
 margin-left: 2px;
+}
+
+div.edit_event_box{
+    padding: 6px 10px;
+    border-radius: 4px;
+    width: 87%;
+    margin-left:5px;
+    position:absolute;
+    background-color: rgba(255, 255, 255, 1); border-radius: 3px; border: 1px solid #d6d6d6; -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13);
+    margin-top: -8px;
+}
+span.edit_button{
+    display: inline-block;
+    right: 40px;
+    font-size: 10.4px;
+    font-weight: 400;
+    font-family: Avenir;
+    color: #525557;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.67);
+    margin-top: -7px;
+    position: absolute;
+    line-height: 14px;
+    height: 14px;
+    top: 50%;
+    width: 22px;
+    text-align: center;
+}
+div.edit_event_box input[type=text]{
+    padding:3px;
+    border: none;
+    width: 195px;
+    border-radius: 2px;
+    margin-top: 5px;
+    font-size: 12.7px;
+    height: 27px;
+    color: #2C2C2C;
+    padding: 1px 1px 1px 6px;
+    font-weight: 400;
+    margin-bottom:5px;
+    border: 1px solid #d9d9d9; border-top-color: #c0c0c0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); -webkit-transition: border linear .2s,box-shadow linear .2s; -moz-transition: border linear .2s,box-shadow linear .2s; -o-transition: border linear .2s,box-shadow linear .2s; transition: border linear .2s,box-shadow linear .2s;
+    font-family: 'Open Sans', sans-serif;
+}
+
+div.edit_event_box:before{
+    content: "";
+    background-image: none,url(../../../assets/wire_icons.svg);
+    background-repeat: no-repeat;
+    background-size: 305px auto;
+    background-position: 4px -142px;
+    height: 10px;
+    width: 30px;
+    position: absolute;
+    top: -10px;
+    display: block;
+    left: 12px;
+    background-position: 8px -141px;
+    content: " ";
+}
+
+div.edit_event_box input#edit_event_date{
+    display: inline-block;
+
+    float: left;
+    width: 115px;
+    margin-top: 4px;
+}
+
+div.edit_event_box input#edit_event_time{
+    width: 64px;
+
+    float: right;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+div.edit_event_box input#submit_edit_event{
+    background-color: rgba(6, 155, 207, 0.8); border: 1px solid #029acf!important; box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; 
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-family: Avenir;
+    font-weight: 100;
+    font-size: 13.5px;
+    color: #FFF;
+
+}
+
+div.edit_event_box input#submit_edit_event:hover{
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.14902)); background-color: #069bcf; -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+}
+
+div.edit_event_box input#cancel_edit_event:hover{}
+
+div.edit_event_box input#submit_edit_event:active{
+    background-color: #2C9DCA; box-shadow: inset 0 1px 1px rgba(32, 151, 173, 1),inset 0 -1px 1px rgba(42, 166, 221, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); -webkit-box-shadow: inset 0 1px 1px rgba(32, 151, 173, 1),inset 0 -1px 1px rgba(42, 166, 221, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+}
+
+div.edit_event_box input#cancel_edit_event:active{}
+
+.edit_button:hover{
+    color:#029acf;
+    cursor: pointer;
+}
+
+div.edit_event_box input#cancel_edit_event{
+    background: transparent;
+
+    border: none!important;
+    color: #787878;
+    margin-top: 9px;
+}
+
+div.edit_event_box input[type=button]{
+    display:inline-block;
+    float:right;
+    margin-top: 3px;
+    margin-left: 5px;    
+    margin-bottom: 4px;
 }

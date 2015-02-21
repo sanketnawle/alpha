@@ -8,11 +8,10 @@ div#fbar_new {
     min-height: 50px;
     -moz-transition: height 450ms ease, box-shadow 250 ease;
     -webkit-transition: height 450ms ease, box-shadow 250 ease;
-    transition: height 450ms ease, box-shadow 250 ease;
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);  
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); 
-    box-shadow: 0 1px 2px rgba(0,0,0,0.07);;
+    transition: height 450ms ease, box-shadow 250 ease;   ;
     border-top: 1px solid #eee;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1);  
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1); box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 #fbar_button_announcement{
@@ -27,22 +26,13 @@ form#fbar_form {
     margin-bottom: 0px !important;
 }
 
-div#fbar_new:hover {
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-}
 
 div#fbar_new.fbar_shadow{
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.035);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.035);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.035);
+    -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.27); -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.27); box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.27);
 }
 
 div#fbar_new.fbar_shadow:hover{
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.035);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.035);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.035);
+    -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.27); -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.27); box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.27);
 }
 
 .post_form_template {
@@ -610,7 +600,7 @@ form#fbar_form.show {
     position: relative;
     font-size: 10.8px;
     font-family: Avenir;
-    top: 4px;
+    top: -2px;
     right: -1px;
 }
 

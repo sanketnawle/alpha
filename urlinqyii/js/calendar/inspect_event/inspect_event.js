@@ -114,12 +114,39 @@ jQuery(document).ready(function(){
         jQuery($inspect_event_whentime).text(event_timewhen_data);
         jQuery($inspect_event_description).text(event_description);
 
+        //get people going to this event
+        jQuery($inspect_event_who).empty();
+        $.getJSON(
+            globals.base_url+'/event/'+event_id+'/Attendees',
+            function(response){
+                if(response['success']){
+                    var source=$('#event_attendee_template').html();
+                    var template = Handlebars.compile(source);
+                    var i;
+                    for(i=0;i<3 && i<response['attendees'].length;i++){
+                        response['attendees'][i]['base_url']=globals.base_url;
+                        $inspect_event_who.append(template(response['attendees'][i]));
+                    }
+                    var length = response['attendees'].length;
+                    if(length>3){
+                        $inspect_event_who.append('<div class="more_attendees_button">and '+(length-3)+' more</div>');
+                        var $more_attendees_list = $('<div class="more_attendees_list" style="display: none"></div>');
+                        for(i=3;i<length;i++){
+                            $more_attendees_list.append('<p>'+response['attendees'][i]['firstname']+' '+response['attendees'][i]['lastname']+'</p>');
+                        }
+                        $inspect_event_who.append($more_attendees_list);
+                    }
+                }
+            }
+        );
+
         if(!$inspect_event_popup.is(":visible")){
             if(event.pageY <= 300){
                 $inspect_event_popup.css('top', event.pageY + 15);
                 jQuery($inspect_event_popup).addClass("top_position");
                 if(click_x_difference <= 187){
                     $inspect_event_popup.css('right', event.pageX - 328.5);
+                    $inspect_event_popup.css('left', 0);
                     jQuery($inspect_event_popup).addClass("right_position");
                 }
                 else{
@@ -131,13 +158,13 @@ jQuery(document).ready(function(){
                 jQuery($inspect_event_popup).removeClass("top_position");
                 if(click_x_difference <= 187){
                     $inspect_event_popup.css('right', event.pageX - 328.5);
+                    $inspect_event_popup.css('left', 0);
                     jQuery($inspect_event_popup).addClass("right_position");
                 }
                 else{
                     $inspect_event_popup.css('left', event.pageX - 182.5);
                     jQuery($inspect_event_popup).removeClass("right_position");
                 }
-
             }
 
             //            Mon, October 27, 2014, 8am – 11am
@@ -163,6 +190,7 @@ jQuery(document).ready(function(){
                     jQuery($inspect_event_popup).addClass("top_position");
                     if(click_x_difference <= 187){
                         $inspect_event_popup.css('right', event.pageX - 328.5);
+                        $inspect_event_popup.css('left', 0);
                         jQuery($inspect_event_popup).addClass("right_position");
                     }
                     else{
@@ -174,6 +202,7 @@ jQuery(document).ready(function(){
                     jQuery($inspect_event_popup).removeClass("top_position");
                     if(click_x_difference <= 187){
                         $inspect_event_popup.css('right', event.pageX - 328.5);
+                        $inspect_event_popup.css('left', 0);
                         jQuery($inspect_event_popup).addClass("right_position");
                     }
                     else{
@@ -199,7 +228,12 @@ jQuery(document).ready(function(){
         last_clicked_event_id = $event_div.attr('data-id');
     });
 
-
+    jQuery(document).on('mouseenter','.more_attendees_button', function(){
+        $(this).next('.more_attendees_list').show();
+    });
+    jQuery(document).on('mouseleave','.more_attendees_button', function(){
+        $(this).next('.more_attendees_list').hide();
+    });
 
     jQuery(document).on('click','.popup_edit_button', function(){
         jQuery('.grid-item.prem').removeClass('making_event');
@@ -229,7 +263,8 @@ jQuery(document).ready(function(){
         var event_type = $event_holder.attr('data-event_type');
         var event_location = $event_holder.attr('data-location');
 
-
+        var event_start_date = local_to_utc(new_date(event_start_date_string));
+        var event_end_date = local_to_utc(new_date(event_end_date_string));
         //Check if this click comes from a create event form
         var $create_event_popup = $('.create_event_popup');
         if($create_event_popup.hasClass('active')){
@@ -262,9 +297,9 @@ jQuery(document).ready(function(){
 
 
 
-        jQuery('#create_event_start_date_input').val(date_string_to_day_of_week_string(event_start_date_string));
+        jQuery('#create_event_start_date_input').val(date_to_day_of_week_string(event_start_date));
         jQuery('#create_event_start_date_input').attr('data-date',event_start_date_string);
-        jQuery('#create_event_end_date_input').val(date_string_to_day_of_week_string(event_end_date_string));
+        jQuery('#create_event_end_date_input').val(date_to_day_of_week_string(event_end_date));
         jQuery('#create_event_end_date_input').attr('data-date',event_end_date_string);
 
         jQuery('#create_event_start_time_input').val(time_string_to_am_pm_string(event_start_time_string));

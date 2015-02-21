@@ -244,7 +244,7 @@
 			</form>
 		</section>
 	</div>
-
+</div>
 
 
 <script id='audience_template' type="text/x-handlebars-template">

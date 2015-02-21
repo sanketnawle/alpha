@@ -73,7 +73,7 @@ $(document).ready(function(){
 
         console.log(jQuery('#calLayer').css("display"));
         //alert(jQuery('#calLayer').css("display"));
-        if(jQuery(this).hasClass('planner')){
+        if(jQuery(this).hasClass('planner') || jQuery(this).hasClass('planner_edit')){
             $calLayer = jQuery('#calLayer.planner');
             jQuery('#calLayer.fbar').hide();
         }else if(jQuery(this).hasClass('fbar_date_time')){
@@ -109,6 +109,9 @@ $(document).ready(function(){
             }else if(jQuery(this).hasClass('planner')){
                 console.log("planner");
                 $calLayer.css({'z-index': '9999',position:'absolute', top: '121px', left: $recent_date_input.position().left+12});
+            }else if(jQuery(this).hasClass('planner_edit')){
+                console.log("planner");
+                $calLayer.css({'z-index': '9999',position:'absolute', top: $('.edit_event_box').position().top+$recent_date_input.position().top, left: '20px'});
             }else{
                 jQuery('#calLayer').css({'z-index': '9999',position:'absolute', top: $recent_date_input.offset().top + $recent_date_input.outerHeight()-50, left: $recent_date_input.offset().left-23});
             }
@@ -225,7 +228,7 @@ $(document).ready(function(){
 
                 console.log(current_calendar_year.toString() + '-' + addZero(current_calendar_month).toString() + '-' + addZero(formatted_day_date).toString());
 
-                var selected_date = new_date(current_calendar_year.toString() + '-' + addZero(current_calendar_month).toString() + '-' + (addZero(formatted_day_date + 1)).toString());
+                var selected_date = local_to_utc(new_date(current_calendar_year.toString() + '-' + addZero(current_calendar_month).toString() + '-' + (addZero(formatted_day_date)).toString()));
 
 
 

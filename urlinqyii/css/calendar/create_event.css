@@ -177,7 +177,8 @@ margin-top: -10px;
 
 div.dialog .fbar_date_time#event_location.calendar_page_event_location_input{
     margin-left: 7px;
-    width: 422px!important;
+    width: 420px!important;
+    float: right;
     background: #Fff;
 }
 
@@ -450,7 +451,7 @@ margin-top: 1px;
 
 div#create_event_location_input_holder span.where_icon{
     top: 10px;
-    left: 57px;
+    left: 60px;
 }
 
 div#create_event_location_input_holder div.location_matches_list{
@@ -463,6 +464,7 @@ label.where_label{
     font-size: 14.5px;
     color: #444;
     font-weight: 600;
+    line-height: 41px;
 }
 
 .fbar_date_time#event_location.calendar_page_event_location_input{
@@ -749,7 +751,7 @@ div#create_event_invite_label{
     font-weight: 500;
     margin-bottom: 1px;
     display: block;
-    width: 121px;
+    width: 130px;
     padding: 5px 12px 3px 15px;
     font-size: 14.5px; -webkit-box-shadow: 0 -3px 5px rgba(0,0,0,0.03); -moz-box-shadow: 0 -3px 5px rgba(0,0,0,0.03); box-shadow: 0 -3px 5px rgba(0,0,0,0.03); border-radius: 2px 2px 0px 0px; 
     background-color: #F4F4F4; border: 1px solid #e2e2e2;
@@ -845,8 +847,9 @@ div.group.selected > div.group_name{
 }
 
 input.invite_input{
-    padding: 7px 10px;
+    padding: 6px 10px;
     width: 200px;
+    font-size: 15px;
     font-family: Avenir;
     border-radius: 0 2px 2px 2px;
 }

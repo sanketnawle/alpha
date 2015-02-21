@@ -51,7 +51,7 @@ class CourseController extends Controller
 
 
         $course_credits = '';
-        if(isset($_POST['credits'])){
+        if(isset($_POST['course_credits'])){
             $course_credits = $_POST['course_credits'];
         }
 
@@ -78,7 +78,6 @@ class CourseController extends Controller
         $course->course_credits = $course_credits;
         $course->course_tag = $course_tag;
         $course->course_desc = $course_description;
-        $course->cover_file_id = $picture_file_id;
         $course->picture_file_id = $picture_file_id;
 
 

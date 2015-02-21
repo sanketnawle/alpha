@@ -307,10 +307,13 @@ class EventController extends Controller
         $event = Event::model()->find('event_id=:event_id',array('event_id'=>$event_id));
 
         if ($event) {
+            $attendees = $event->attendees;
+            foreach($attendees as $i=>$attendee){
+                $attendees[$i] = $this->get_model_associations($attendee, array('pictureFile'));
 
+            }
 
-
-            $data = array('success'=>true,'attendees'=>$event->attendees);
+            $data = array('success'=>true,'attendees'=>$attendees);
 
             $this->renderJSON($data);
             return;
@@ -655,10 +658,11 @@ class EventController extends Controller
 
                 if($event->origin_type == 'club' || $event->origin_type == 'group'){
                     $group = Group::model()->find('group_id=:id', array(':id'=>$event->origin_id));
+                    $has_admin = GroupUser::model()->exists('group_id=:group_id and is_admin=true',array(':group_id'=>$group->group_id));
                     if($group){
 
                         $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$group->group_id));
-                        if($group_user && $group_user->is_admin){
+                        if($group_user && $group_user->is_admin || !$has_admin){
                             foreach($group->members as $member){
                                 if($member->user_id != $user->user_id){
                                     include_once 'color/color.php';
@@ -673,10 +677,14 @@ class EventController extends Controller
                     }
                 }else if($event->origin_type == 'class'){
                     $class = ClassModel::model()->find('class_id=:id', array(':id'=>$event->origin_id));
+                    $has_admin_or_prof=ClassUser::model()->exists('class_id=:class_id and is_admin=true',array(':class_id'=>$class->class_id));
+                    if($class->professor){
+                        $has_admin_or_prof=$has_admin_or_prof || $class->professor->status === "verified";
+                    }
                     if($class){
 
                         $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$class->class_id));
-                        if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id){
+                        if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id || !$has_admin_or_prof){
 
                             foreach($class->students as $member){
                                 if($member->user_id != $user->user_id){
@@ -848,8 +856,8 @@ class EventController extends Controller
         }
 
 
-        if(!isset($_POST['event']['event_id']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['event_name']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['title']) || !isset($_POST['event']['description'])
-            || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location']) || !isset($_POST['event']['all_day'])){
+        if(!isset($_POST['event']['event_id']) || !isset($_POST['event']['event_name']) || !isset($_POST['event']['title'])
+            || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
             $this->renderJSON($data);
             return;
@@ -863,17 +871,23 @@ class EventController extends Controller
 
         if($event){
             $event->title = $event_data['event_name'];
-            $event->description = $event_data['description'];
-            $event->event_type = $event_data['event_type'];
+            if(isset($event_data['description']))
+                $event->description = $event_data['description'];
+            if(isset($event_data['event_type']))
+                $event->event_type = $event_data['event_type'];
             $event->user_id = $user->user_id;
-            $event->origin_type = $event_data['origin_type'];
-            $event->origin_id = $event_data['origin_id'];
+            if(isset($event_data['origin_type']))
+                $event->origin_type = $event_data['origin_type'];
+            if(isset($event_data['origin_id']))
+                $event->origin_id = $event_data['origin_id'];
             $event->start_date = $event_data['start_date'];
             $event->end_date = $event_data['end_date'];
             $event->start_time = $event_data['start_time'];
             $event->end_time = $event_data['end_time'];
-            $event->location = $event_data['location'];
-            $event->all_day = $event_data['all_day'];
+            if(isset($event_data['location']))
+                $event->location = $event_data['location'];
+            if(isset($event_data['all_day']))
+                $event->all_day = $event_data['all_day'];
 
 
 

@@ -163,15 +163,6 @@ $(document).ready(function(){
 
         }
 
-        if(Math.floor(scroll_offset_top) <= 413){
-            $("#fixed_element.planner_group.planner_club").css({'position':'relative'});
-            $("#fixed_element.planner_group.planner_club").css({'top':'0px'});
-        }        
-
-        if(Math.floor(scroll_offset_top) >= 414){
-            $("#fixed_element.planner_group.planner_club").css({'position':'fixed'});
-            $("#fixed_element.planner_group.planner_club").css({'top':'105px'});
-        }
 
         //alert(y);
 
@@ -191,7 +182,7 @@ $(document).ready(function(){
         $members_tab.addClass("remove_members_state");
         $('.members_card').not('.admin').find('.remove_member_button').show();
 
-        $('.members_card').not('.admin').find('.follow_button_wrapper').hide();
+        $('.members_card').not('.admin').find('.follow_button_wrapper').not('.own_profile').hide();
 
     });
 
@@ -604,18 +595,18 @@ $(document).ready(function(){
     if($("body").hasClass("body_class") == true){
 
         $("span.create_planner_message").css({"left":"27px"}).text("Plan this class's schedule");
-        $("span.create_planner_message").css({"left":"18px", "width":"192px"})
+        $("span.create_planner_message").css({"left":"18px", "width":"192px"});
     }
 
     if($("body").hasClass("body_department") == true){
 
         $("span.create_planner_message").css({"left":"27px"}).text("Schedule group events");
-        $("span.create_planner_message").css({"left":"22px", "width":"192px"})
+        $("span.create_planner_message").css({"left":"22px", "width":"192px"});
     }
     if($("body").hasClass("body_club") == true){
 
         $("span.create_planner_message").css({"left":"27px"}).text("Plan this group's schedule");
-        $("span.create_planner_message").css({"left":"12px", "width":"202px"})
+        $("span.create_planner_message").css({"left":"12px", "width":"202px"});
     }
 
     $(document).on('click','.edit_about',function(){

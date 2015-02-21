@@ -94,19 +94,16 @@ a {
     float: left;
     max-width: 45%;
     padding-left: 5px;
-    cursor:pointer;
+    cursor:default;
     padding-right: 7px;
     text-decoration: none;
     text-overflow: ellipsis;
 }
 
-.nav_section:hover{
-    cursor:pointer;
-}
 
 .nav_section:hover .nav_text{
     color:rgba(255,255,255,.87);
-    cursor: pointer;
+    cursor: default;
     transition: color 150ms ease;
 }
 
@@ -121,9 +118,15 @@ div.nav_section div.nav_text {
     /*transform: translateY(-50%);*/
     margin-top: 10px;
     float: left;
-    font-weight: 600;
+    
+
+    font-weight: 200;
     cursor: pointer;
-    font-size: 13px;
+    
+
+    font-family: Avenir;
+
+    font-size: 14px;
     overflow:hidden;
     display: inline-block;
     text-overflow: ellipsis;
@@ -149,7 +152,7 @@ div.nav_section.active:hover div.nav_text{
 div.nav_section div.nav_text a{
     width: 100%;
     height: 100%;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 

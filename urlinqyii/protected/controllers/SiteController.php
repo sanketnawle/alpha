@@ -62,6 +62,8 @@ class SiteController extends Controller
 
         $user_id = Yii::app()->session['user_id'];
         $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+
+
         //Can specify specific layout inside view
         //$this->layout = 'new';
         $this->render('home',array('user'=>$user));
@@ -144,6 +146,10 @@ class SiteController extends Controller
 
 		}
     }
+
+
+
+
 
 
 
@@ -331,27 +337,40 @@ class SiteController extends Controller
 
 
 
-    function actionSendUrlinqInviteEmailFunction(){
+    public function actionSendUrlinqInviteEmailFunction(){
 
-        if(!isset($_POST['to_email']) || !isset($_POST['from_email']) || !isset($_POST['actor_name'])){
+        if(!isset($_POST['to_email']) || !isset($_POST['from_email']) || !isset($_POST['actor_id'])){
             $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
             $this->renderJSON($data);
             return;
         }
 
-        $actor_name = $_POST['actor_name'];
+
         $to_email = $_POST['to_email'];
         $from_email = $_POST['from_email'];
 
 
+        $actor_id = $_POST['actor_id'];
+//
+//        $actor = $this->get_current_user($_POST);
+//
 
+
+
+        $actor = User::model()->find('user_id=:user_id', array(':user_id'=>$actor_id));
+
+        if(!$actor){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid actor', 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
 
 
 
         if (ERunActions::runBackground())
         {
 
-            ERunActions::runScript('send_invite_email',$params=array('to_email'=>$to_email, 'from_email'=>$from_email, 'actor_name'=>$actor_name),$scriptPath=null);
+            ERunActions::runScript('send_invite_email',$params=array('to_email'=>$to_email, 'from_email'=>$from_email, 'actor'=>$actor),$scriptPath=null);
 
             Yii::log('Sending urlinq invite to ' . $to_email);
 
@@ -407,12 +426,12 @@ class SiteController extends Controller
         }
 
 
-        $actor_name = $user->firstname . ' ' . $user->lastname;
+
 
         $from_email = 'team@urlinq.com';
+        $actor_id = $user->user_id;
 
-
-        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendUrlinqInviteEmailFunction',$postData=array('to_email'=>$email,'from_email'=>$from_email, 'actor_name'=>$actor_name),$contentType=null);
+        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendUrlinqInviteEmailFunction',$postData=array('to_email'=>$email,'from_email'=>$from_email, 'actor_id'=>$actor_id),$contentType=null);
 
 
         $data = array('success'=>true);
@@ -1512,17 +1531,35 @@ public function actionSendReset(){
         if($user_recovery){
             $user = User::model()->find('user_id=:user_id',array(':user_id'=>$user_recovery->user_id));
             $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user_recovery->user_id));
+
             $salt = $user_login->salt;
             $hashed_password = hash_password($password,$salt);
 
-            // The password gets changed here
-            $user_login->password = $hashed_password;
-            $user_login->save(false);
-            Yii::app()->session['user_id'] = $user->user_id;
-            $data = array('success'=>true);
-            $this->renderJSON($data);
-            $user_recovery->delete();
-            return;
+            if($user_login){
+
+
+                // The password gets changed here
+                $user_login->password = $hashed_password;
+                $user_login->save(false);
+                Yii::app()->session['user_id'] = $user->user_id;
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                $user_recovery->delete();
+                return;
+            }else{
+                $user_login = new UserLogin;
+                // The password gets changed here
+                $user_login->password = $hashed_password;
+                $user_login->save(false);
+
+
+                Yii::app()->session['user_id'] = $user->user_id;
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                $user_recovery->delete();
+                return;
+            }
+
         }
     }
 

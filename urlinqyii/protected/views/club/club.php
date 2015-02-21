@@ -404,11 +404,9 @@
                             PANEL 4
                         </div>
 
-                        <?php if($is_member){ ?>
+
                         <div class="panel tab_members" id="panel_3">
-                        <?php }else{ ?>
-                        <div class="panel tab_members" id="panel_3" style="display:none;">
-                        <?php } ?>
+
 
                             <div class="tab_content_holder">
                                 <div class="tab_header"> 
@@ -431,6 +429,7 @@
                                             </div>-->
 
                                         <?php } ?>
+                                        <?php if($is_member){ ?>
                                         <div class = "add_people_button invite">
                                             Add Members
                                         </div>
@@ -441,6 +440,7 @@
                                                 Add new members to join your group. If they don't already have a Urlinq account, they'll receive an email to signup.
                                             </div>
                                         </div>
+                                        <?php } ?>
 
 
 
@@ -518,7 +518,6 @@
                                                         <span class = "title">Student</span>
                                                     <?php } ?>
 
-                                                    <span class = "class_year">Senior</span>
                                                 </div>
                                                 <div class = "user_main_info">
                                                     <a class = "name profile_link" data-user_id='<?php echo $member->user_id; ?>'><?php echo $member->full_name(); ?></a>
@@ -551,7 +550,7 @@
                                                 </div>
                                                 <?php }else{?>
                                                     <div class = "user_card_button_holder">
-                                                        <div class = "follow_button_wrapper following_wrapper">
+                                                        <div class = "follow_button_wrapper following_wrapper own_profile">
                                                             <div class = "user_follow_button own_profile">Me</div>
                                                         </div>
                                                     </div>
@@ -725,14 +724,6 @@
                                         <p class = "about_box_headers">GROUP INFO</p>
 
 
-                                        <div class = "group_info_divider">
-                                            <hr role = "separator">
-                                            <div class = "group_info_divider_label" data-label = "description"> Title and Icon 
-                                                <?php if($is_admin){ ?>  
-                                                    <p id = "edit_club_name"><span class = "edit_icon small_icon_map"></span>Edit</p>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
 
                                         <div class = "group_info_data">
                                             <div class = "group_display_icon" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->pictureFile->file_url ?>');">

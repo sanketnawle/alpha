@@ -137,8 +137,79 @@
   /*error handling end*/
 
 
+  $('.after_tab').click(function(){
+    var $tab = $(this);
+    var panel_id = $tab.attr('data-tab_id');
+    $('.after_tab.active').removeClass('active');
+    $tab.addClass('active');
+    $('.other_panel.active .synced_animation_divs').css({'transition':'opacity .05s linear', '-webkit-transition':'opacity .05s linear', '-moz-transition':'opacity .05s linear','-ms-transition':'opacity .05s linear','opacity':'0'});
+    $('.other_panel.active').css({'background':'transparent',"border-color":"transparent"}); 
+    $('.other_panel.active').removeClass('active');
+    
+    $('#other_panel_' + panel_id).addClass('active');
+    
+
+    $('#other_panel_' + panel_id).delay(550).queue( function(next){ 
+      $(this).css({'background':'rgba(255, 255, 255, 0.95)','border-color':'rgba(105, 105, 105, 0.17)'});
+      $('#other_panel_' + panel_id + ' .synced_animation_divs').css({'opacity':'1'});  
+      next(); 
+    });
+  });
+
+  $('.bottom_tab_button').click(function(){
+    var $bottom_tab = $(this);
+    var sub_panel_id = $bottom_tab.attr('data-bottom_tab_id');
+
+    var panel_count = 3;
 
 
+    var left_button_tab_id = parseInt(sub_panel_id) - 1;
+    var right_button_tab_id = parseInt(sub_panel_id) + 1;
+
+
+    //alert(sub_panel_id);
+
+    if(left_button_tab_id == 0){
+        left_button_tab_id = 3
+    }
+
+    if(right_button_tab_id == panel_count + 1){
+        right_button_tab_id = 1;
+    }
+
+
+    $('.bottom_tab_left').find('.bottom_tab_button.active').removeClass('active');
+    $('.bottom_tab_right').find('.bottom_tab_button.active').removeClass('active');
+
+
+    $('.bottom_tab_left').find('.bottom_tab_button[data-bottom_tab_id="' + left_button_tab_id.toString() + '"]').addClass('active');
+    $('.bottom_tab_right').find('.bottom_tab_button[data-bottom_tab_id="' + right_button_tab_id.toString() + '"]').addClass('active');
+
+//
+//    $(this).closest('.bottom_tab').find('.bottom_tab_button.active').removeClass('active');
+
+
+    //$bottom_tab.addClass('active');
+    $('.sub_panel.active').removeClass('active');
+    $('#sub_panel_' + sub_panel_id).addClass('active');
+
+  });
+
+  $('.action_item').mouseenter(function(){
+    var $action_item = $(this);
+    var $action_title = $('.action_description_header');
+    var $action_description = $('.action_description_details');
+
+    var data_action_name = $action_item.attr('data-action_name');
+    var data_action_details = $action_item.attr('data-action_detail');
+
+    $action_title.text(data_action_name);
+    $action_description.text(data_action_details);
+
+
+    $('.action_item.active').removeClass('active');
+    $action_item.addClass('active');
+  });
 
 
   $(document).on('submit','#register',function(e){
@@ -659,7 +730,7 @@
 
 
           <ul class = "color-border">
-            <li style = "background-color:rgba(0,0,0,.35);"><a style = "color: white; text-decoration:none" class = "cb-link1" href="http://urlinq.com/beta/lp_beta.php">Home</a></li>
+            <li style = "background-color:rgba(0,0,0,.35);"><a style = "color: white; text-decoration:none" class = "cb-link1" href="http://urlinq.com">Home</a></li>
           <li><a style = "color: #fff; text-decoration:none" class = "cb-link2" href="http://urlinq.com/blog">Blog</a></li>
           <li><a style = "color: #fff; text-decoration:none" class = "cb-link3" href="https://urlinq.com/team/jobs">Jobs</a></li>
           <li><a style = "color: #fff; text-decoration:none" class = "cb-link4" href="https://urlinq.com/team/contact">Team</a></li>
@@ -671,17 +742,151 @@
 
           <!--signup form-->
           <div class = "signup-container">
-              <div class = "signup-form-wrap">
+              <div class = "signup_border_fake">
+              </div>
+              <div class = "signup_after_tabs">
+                <div class = "after_tab after_tab_1" data-tab_id = "1">
+                  <h4>About</h4> 
+                </div>
+                <div class = "after_tab after_tab_2" data-tab_id = "2">
+                  <h4>Why Join?</h4>
+                </div>
+                <div class = "after_tab active after_tab_3" data-tab_id = "3">
+                  <h4>Sign Up</h4>
+                </div>
+              </div>
+              <div class = "other_panel" id = "other_panel_1">
                   <div class = "header-sec">
                     <div class = "header-sec-left">
-                      <h4 class = "header">Sign Up
+                      <h4 class = "header">About</h4>
                     </div>
                     <div class = "header-sec-right">
-                      <div class = "time-to-signup">Your digital campus awaits</div>
+                      <div class = "time-to-signup">Your link to the university</div>
                       <!--<div class = "signup-slog">seconds to get started</div>-->
                     </div>
                   </div>
-                  <div class = "registration-form">
+                  <div class = "section_contents synced_animation_divs">
+                    <div class = "opening_text">Urlinq&#x27;s mission is to improve the connectivity of students and faculty. Universities have become extremely complex and fragmented ecosystems. Urlinq solves this by breaking down the barriers of schools and departments to allow individuals to engage with others outside their major or ethnic groups. Urlinq was designed to reimagine the type of collaboration and communication that we all envision and desire for our educational journeys.</div>
+                  </div>                  
+              </div>
+              <div class = "other_panel" id = "other_panel_2">
+                  <div class = "header-sec">
+                    <div class = "header-sec-left">
+                      <h4 class = "header">Why Join?</h4>
+                    </div>
+                  </div>
+                  <div class = "section_contents synced_animation_divs">
+                    <div class = "opening_text sub_panel active" id = "sub_panel_1">
+                      Urlinq was built with the vision that we could create a stronger university community by bridging the gaps between individuals who have historically been siloed off into different departments. We want to improve collaboration at the university and we believe that is possible by helping you to better connect within and across disciplines at your university. We created tools that allow you to engage with your favorite professors, to ask questions amongst the smartest body of individuals, and provided you with a new lens of all the resources your university offers. Sign up & tell your peers because together we can create a stronger academic community.
+                    </div>
+                    <div class = "opening_text sub_panel" id = "sub_panel_2">
+                      <div class = "sub_panel_header">What can you do on Urlinq? Here are some of the tools you'll have access to.</div>
+                      <div class ="action_sub_panel_graphic">
+                        <div class = "actions_list">
+                          <div class = "action_item opportunity active" data-action_name = "Opportunities" data-action_detail = "The University is full of highly talented people looking to do amazing things. An opportunity post in the department page helps you find amazing people to work with, or an interesting project or job to work on.">
+                            <div class = "action_icon">
+                            </div>
+                            <div class = "action_name">Opportunity</div>
+                          </div>   
+                          <div class = "action_item discuss" data-action_name = "Class Discussions" data-action_detail = "Communication between members of classes and clubs is centered on discussion posts. A discussion can be anonymous, include files, and be sent out as an email.">
+                            <div class = "action_icon">
+                            </div>
+                            <div class = "action_name">Discussion</div>
+                          </div>
+                    
+                          <div class = "action_item material" data-action_name = "Notes and Materials" data-action_detail = "Notes, study guides, readings, materials, and of course, the age-old syllabus. Sharing any type of file is easy on Urlinq.">
+                            <div class = "action_icon">
+                            </div>
+                            <div class = "action_name">Notes</div>
+                          </div>
+                          <div class = "action_item question" data-action_name = "Class and Group Questions" data-action_detail = "Multiple choice and true or false questions let you poll the people in your group or club, and track attendance in your classes.">
+                            <div class = "action_icon">
+                            </div>
+                            <div class = "action_name">Question</div>
+                          </div>
+                           <div class = "action_item todo" data-action_name = "Group Events and TO-DOs" data-action_detail = "Your planner automatically fills up when people in your classes, clubs, and departments create events, which sync with your calendar.">
+                            <div class = "action_icon">
+                            </div>
+                            <div class = "action_name">Todo</div>
+                          </div>
+                                                                                                                                                       
+                        </div>
+                        <div class = "action_description">
+                          <div class = "action_description_header">
+                            Opportunities
+                          </div>
+                          <div class = "action_description_details">
+                            The University is full of highly talented people looking to do amazing things. An opportunity post in the department page helps you find amazing people to work with, or an interesting project or job to work on.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "opening_text sub_panel" id = "sub_panel_3">
+                     <div class = "sub_panel_header">Which schools are on board? </div>
+                     <div class = "sub_panel_graphic"></div>
+                     <div class = "sub_panel_header_2">and many more to come.</div>
+                    </div>
+                    <div class = "bottom_tabs">
+                      <div class = "bottom_tab_left bottom_tab" data-bottom_tab_position = "left">
+                        <div class = "bottom_tab_button" data-bottom_tab_id = "2">
+                          <div class = "arrow">
+                          </div>
+                          <div class = "bottom_tab_text">
+                            What can you do on Urlinq?
+                          </div>
+                        </div>
+                        <div class = "bottom_tab_button" data-bottom_tab_id = "1">
+                          <div class = "arrow">
+                          </div>
+                          <div class = "bottom_tab_text one_line_text">
+                            Why join?
+                          </div>
+                        </div>  
+                        <div class = "bottom_tab_button active" data-bottom_tab_id = "3">
+                          <div class = "arrow">
+                          </div>
+                          <div class = "bottom_tab_text">
+                            Which schools are on Urlinq?
+                          </div>
+                        </div>                                                           
+                      </div>
+                      <div class = "bottom_tab_right bottom_tab" data-bottom_tab_position = "right">
+                        <div class = "bottom_tab_button" data-bottom_tab_id = "3">
+                          <div class = "arrow">
+                          </div>
+                          <div class = "bottom_tab_text">
+                            Which schools are on Urlinq?
+                          </div>
+                        </div>
+                        <div class = "bottom_tab_button" data-bottom_tab_id = "1">
+                          <div class = "arrow">
+                          </div>
+                          <div class = "bottom_tab_text one_line_text">
+                            Why join?
+                          </div>
+                        </div>  
+                        <div class = "bottom_tab_button  active" data-bottom_tab_id = "2">
+                          <div class = "arrow">
+                          </div>
+                          <div class = "bottom_tab_text">
+                            What can you do on Urlinq?
+                          </div>
+                        </div>                                                        
+                      </div>
+                    </div>                     
+                  </div>
+              </div>
+              <div class = "signup-form-wrap other_panel active" id = "other_panel_3">
+                  <div class = "header-sec">
+                    <div class = "header-sec-left">
+                      <h4 class = "header">Sign Up</h4>
+                    </div>
+                    <div class = "header-sec-right">
+                      <div class = "time-to-signup" style = "font-size:20px;">Learning made simpler</div>
+                      <!--<div class = "signup-slog">seconds to get started</div>-->
+                    </div>
+                  </div>
+                  <div class = "registration-form synced_animation_divs">
                     <form name = "register" id = "register" class = "register" method = "post" action = "<?php echo Yii::app()->request->baseUrl; ?>/register" autocomplete="on">
                       <div class = "registration-sec">
                         <div class="reg_error_text_prompt"></div>
@@ -766,7 +971,7 @@
                     </button>
 
                   </div>-->
-                  <div class = "lp_terms">
+                  <div class = "lp_terms synced_animation_divs">
                     <p class = "lp_terms_p">
                       By clicking Create Your Account, you agree to our <a href = "https://urlinq.com/about/legal/terms" target = "_blank">Terms</a> and that you have read our <a href = "https://urlinq.com/about/legal/privacy" target = "_blank">Privacy Policy</a>.
                     </p>
