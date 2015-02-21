@@ -1,5 +1,9 @@
 <?php
 
+
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
     class ApiController extends Controller
     {
 
@@ -586,7 +590,7 @@ if($ios_notification){
 
                 if($user->save(false)){
 
-                    if(isset($_FILES['file']) && $_FILES['file'] != null){
+                    if(!empty($_FILES)){
                         include "file_upload.php";
                         $local_directory = 'profile_pictures/';
                         $file_id = null;
@@ -600,7 +604,7 @@ if($ios_notification){
                         $file_id = 1;
                     }
                     $user->picture_file_id = $file_id;
-                    if($user->save(false)){
+                    if(!$user->save(false)){
                         $data = array('success'=> false,'error_id'=> 5, 'error_msg'=>'error saving user picture into db');
                         $this->renderJSON($data);
                         return;
@@ -625,13 +629,15 @@ if($ios_notification){
 
                     $user_confirmation_test = UserConfirmation::model()->find('user_id=:id',array(':id'=>$user->user_id));
                     if($user_confirmation_test){
-                        //If the user already has a confirmation, send another email with the same token
-                        $user_email = $user->user_email;
-                        $subject = 'Urlinq verification email';
-                        $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
-                        $from = 'team@urlinq.com';
-                        $email_data = array('key'=>$user_confirmation_test->key_email);
-                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+
+
+$user_email = $user->user_email;
+                $subject = 'Urlinq verification email';
+                $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
+                $from = 'team@urlinq.com';
+                ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation->key_email),$contentType=null);
+
+
                     }else{
                         //If there isnt already a user confirmation,
                         //create a new one
@@ -642,12 +648,13 @@ if($ios_notification){
                         $user_confirmation->user_id = $user->user_id;
 
                         if($user_confirmation->save(false)){
-                            $user_email = $user->user_email;
-                            $subject = 'Urlinq verification email';
-                            $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
-                            $from = 'team@urlinq.com';
-                            $email_data = array('key'=>$user_confirmation->key_email);
-                            ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+$user_email = $user->user_email;
+                $subject = 'Urlinq verification email';
+                $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
+                $from = 'team@urlinq.com';
+                ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation->key_email),$contentType=null);
+
+
                         }else{
                             $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
                             $this->renderJSON($data);
@@ -678,7 +685,7 @@ if($ios_notification){
     //        $this->renderJSON($data);
 
             //Remove this once email verification is completed
-            $data = $this->login($email,$password);
+            $data = array("success"=>true);
             $this->renderJSON($data);
             return;
             } catch (Exception $e) {

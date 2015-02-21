@@ -522,7 +522,7 @@ class PostController extends Controller
                             $class = ClassModel::model()->find('class_id=:id', array(':id'=>$event->origin_id));
                             if($class){
 
-                                $has_admin=ClassUser::model()->exists('class_id=:group_id and is_admin=true',array(':class_id'=>$class->class_id));
+                                $has_admin=ClassUser::model()->exists('class_id=:group_id and is_admin=true',array(':group_id'=>$class->class_id));
 
                                 $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$class->class_id));
                                 if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id || !$has_admin){
@@ -954,7 +954,7 @@ class PostController extends Controller
     //		));
 
         }catch(Exception $e){
-            $return_data = array('success'=>false,'error_id'=>3,'error_msg'=>$e->getMessage());
+            $return_data = array('success'=>false,'error_id'=>3,'dd'=>'Inside exception' ,'error_msg'=>$e->getMessage());
             $this->renderJSON($return_data);
             return;
         }

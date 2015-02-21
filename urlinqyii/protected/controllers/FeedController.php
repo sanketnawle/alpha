@@ -656,7 +656,7 @@ class FeedController extends Controller
 		  from post p
 		  where (p.origin_type = 'class' and p.origin_id = '".$_GET['id']."') and created_at < '" . $created_at ."'
 		  and not exists (select * from post_hide where user_id= " . $user->user_id . " and post_id = p.post_id)
-			order by last_activity DESC	LIMIT " . self::$start_rec . "," . self::POST_LIMIT;
+			order by created_at DESC	LIMIT " . self::$start_rec . "," . self::POST_LIMIT;
 
         $command = Yii::app()->db->createCommand($posts_sql_class);
 
