@@ -1,5 +1,9 @@
 <?php
 
+
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
     class ApiController extends Controller
     {
 
