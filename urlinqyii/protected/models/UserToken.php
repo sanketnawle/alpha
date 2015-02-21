@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'user_token':
  * @property integer $user_id
- * @property integer $token
+ * @property string $token
  * @property string $expires_at
  *
  * The followings are the available model relations:
@@ -30,7 +30,8 @@ class UserToken extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('user_id, token, expires_at', 'required'),
-			array('user_id, token', 'numerical', 'integerOnly'=>true),
+			array('user_id', 'numerical', 'integerOnly'=>true),
+			array('token', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('user_id, token, expires_at', 'safe', 'on'=>'search'),
@@ -80,7 +81,7 @@ class UserToken extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('token',$this->token);
+		$criteria->compare('token',$this->token,true);
 		$criteria->compare('expires_at',$this->expires_at,true);
 
 		return new CActiveDataProvider($this, array(
