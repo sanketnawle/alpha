@@ -24,7 +24,7 @@ $(document).ready(function(){
                 $(".intro_div_1").addClass('show_tutorial');
                 $(".intro_div_1").tooltip({
                     x: 274,
-                    y: -327,
+                    y: -243,
                     promptHeader: promptHeader1,
                     promptContent: promptContent,
                     footer: footer,
@@ -100,14 +100,19 @@ $(document).ready(function(){
             post_data,
             function(response){
                 if(response['success']){
-                    $submit_button.closest('.msg_span').fadeOut(150);
-                    $submit_button.closest('.msg_span').empty();
+                    //$submit_button.closest('.msg_span').fadeOut(150);
+                    //$submit_button.closest('.msg_span').empty();
                     $submit_button.closest('.msg_span').text('Your profile has been updated');
-                    $submit_button.closest('.msg_span').fadeIn(150);
+                    $submit_button.closest('.msg_span').show();
                 }
 
             }
         )
+    });
+
+    $('#welcome_post, #welcome_post_2').hide().fadeIn(150);
+    $(document).on('keyup','.post_bio_input',function(){
+        $('.post_bio_input').attr('rows',Math.ceil($(this).val().length/$('.post_bio_input').attr('cols')));
     });
 
 
