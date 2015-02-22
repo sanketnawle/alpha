@@ -724,7 +724,6 @@ class EventController extends Controller
     }
 
 
-
     //Error ids
     // 1 - All data not set
     // 2 - error creating todo

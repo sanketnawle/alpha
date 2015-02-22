@@ -325,6 +325,38 @@ function ready(globals){
 
 
 
+
+
+    $(document).on('click', '.reply_delete_button', function(){
+
+        var $reply_delete_button = $(this);
+        var $reply = $reply_delete_button.closest('.comment_main');
+
+        var reply_id = $reply.attr('data-reply_id');
+
+        var post_url = globals.base_url + '/reply/' + reply_id + '/delete';
+        var post_data = {id: reply_id};
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                if(response['success']){
+                    $reply.fadeOut('fast', function(){
+                        $reply.closest('.comments').remove();
+                    });
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+
+
+    });
+
+
+
+
     $(document).on('click','.reply_button', function(){
         var $reply_form = $(this).closest('.reply_form');
         $reply_form.submit();
