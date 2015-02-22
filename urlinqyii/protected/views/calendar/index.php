@@ -214,6 +214,15 @@
                 </div>
             </div>
             <div class = "providers_scrollable">
+
+                <div class="providers personal">
+                    <div class="provider" data-origin_type='user' data-origin_id='<?php echo $user->user_id;?>' title = "<?php echo $user->full_name();?>">
+                        <div ng-uc-check="" style='background-color: #27e53f' class="check ng-scope checked" checked="">
+                            <i class="checkmark"></i>
+                        </div>
+                        <div class="title" style = "border:1px solid transparent;"><?php echo $user->full_name();?></div>
+                    </div>
+                </div>
                 <div class="providers class"></div>
                 <div class="providers clubs"></div>
                 <div class="providers depts"></div>

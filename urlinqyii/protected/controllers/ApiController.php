@@ -502,7 +502,10 @@ if($ios_notification){
                 if ($user) {
                     $user_confirmation_test = UserConfirmation::model()->find('user_id=:id', array(':id' => $user->user_id));
                     if ($user_confirmation_test) {
-                        //If the user already has a confirmation, send another email with the same token
+
+                        Yii::import('ext.runactions.components.ERunActions');
+                        ERunActions::runBackground(true);
+
                         $user_email = $user->user_email;
                         $subject = 'Urlinq verification email';
                         $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
@@ -522,6 +525,12 @@ if($ios_notification){
                         $user_confirmation->user_id = $user->user_id;
 
                         if ($user_confirmation->save(false)) {
+
+
+                            Yii::import('ext.runactions.components.ERunActions');
+                            ERunActions::runBackground(true);
+
+
                             $user_email = $user->user_email;
                             $subject = 'Urlinq verification email';
                             $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
@@ -625,13 +634,18 @@ if($ios_notification){
 
                     $user_confirmation_test = UserConfirmation::model()->find('user_id=:id',array(':id'=>$user->user_id));
                     if($user_confirmation_test){
-                        //If the user already has a confirmation, send another email with the same token
-                        $user_email = $user->user_email;
-                        $subject = 'Urlinq verification email';
-                        $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
-                        $from = 'team@urlinq.com';
-                        $email_data = array('key'=>$user_confirmation_test->key_email);
-                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
+
+$user_email = $user->user_email;
+                $subject = 'Urlinq verification email';
+                $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
+                $from = 'team@urlinq.com';
+                ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation->key_email),$contentType=null);
+
+
                     }else{
                         //If there isnt already a user confirmation,
                         //create a new one
@@ -642,16 +656,18 @@ if($ios_notification){
                         $user_confirmation->user_id = $user->user_id;
 
                         if($user_confirmation->save(false)){
-                            $user_email = $user->user_email;
-                            $subject = 'Urlinq verification email';
-                            $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
-                            $from = 'team@urlinq.com';
-                            $email_data = array('key'=>$user_confirmation->key_email);
-                            ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
-                            $data = array('success'=>true);
-                            $this->renderJSON($data);
-                            return;
-                            // login success, return that.
+
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
+
+$user_email = $user->user_email;
+                $subject = 'Urlinq verification email';
+                $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
+                $from = 'team@urlinq.com';
+                ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation->key_email),$contentType=null);
+
+
                         }else{
                             $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
                             $this->renderJSON($data);
@@ -682,7 +698,7 @@ if($ios_notification){
     //        $this->renderJSON($data);
 
             //Remove this once email verification is completed
-            $data = $this->login($email,$password);
+            $data = array("success"=>true, "user_id"=>$user->user_id);
             $this->renderJSON($data);
             return;
             } catch (Exception $e) {
@@ -1383,7 +1399,7 @@ if($ios_notification){
 
             $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
             if($user){
-                $followers = $user->usersFollowed;
+                $followers = $user->usersFollowing;
                 $followers_data = array();
                 foreach($followers as $follower){
                     $follower = $this->get_model_associations($follower, array('department'=>array(),'school'=>array('university')));
@@ -1410,7 +1426,7 @@ if($ios_notification){
 
             $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
             if($user){
-                $followings = $user->usersFollowing;
+                $followings = $user->usersFollowed;
                 $followings_data = array();
                 foreach($followings as $following){
                     $following = $this->get_model_associations($following, array('department'=>array(),'school'=>array('university')));
@@ -1933,8 +1949,6 @@ if($ios_notification){
         // 1 - all data is not set
 public function actionLogin() {
 
-    try {
-
             if(!isset($_POST['email']) || !isset($_POST['password'])){
                 $data = array('success'=>false,'error'=>'email or password is not set');
                 $this->renderJSON($data);
@@ -1944,15 +1958,60 @@ public function actionLogin() {
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $data = $this->login($email,$password);
-            $this->renderJSON($data);
-        
-        } catch(Exception $e){ 
-                $data = array('success'=>false,'error_id'=>2,'error'=>$e->getMessage());
+
+$user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
+
+            if($user){
+
+                if($user->status != 'active'){
+                    $data = array('success'=>false,'error_id'=>2,'error'=>'User is not active so they cannot login');
+                    $this->renderJSON($data);
+                    return;
+                }
+
+
+                $user_token = UserToken::model()->find('user_id=:user_id',array(':user_id'=>$user->user_id));
+
+ include_once 'UniqueTokenGenerator.php';
+                include_once "password_encryption.php";
+                $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user->user_id));
+
+                $salt = $user_login->salt;
+                $hashed_password = hash_password($password,$salt);
+
+
+
+                if($user_login->password == $hashed_password){ //user has successfully logged in
+                    //Generate the token
+                    $token = generateUniqueToken($user->user_id, $email);
+
+                    //Save token to database
+
+                    if (!$user_token) {
+                        $user_token = new UserToken;
+                    }
+                    $user_token->user_id = $user->user_id;
+                    $user_token->token = $token;
+                    $user_token->expires_at = date("Y-m-d H:i:s",strtotime("+1 week"));
+                    $user_token->save(false);
+
+
+
+                    $data = array('success'=>true,'user_id'=>$user->user_id,'token'=>$token,'expires_at'=>$user_token->expires_at);
+                    $this->renderJSON($data);
+                    return;
+               
+                }else{ //user login failed
+                    $data = array('success'=>false,'error_id'=>3,'error'=>'user password not correct');
+                    $this->renderJSON($data);
+                    return;
+                }
+
+            }else{
+                $data = array('success'=>false,'error_id'=>1,'error'=>'user with email: ' . $email . ' doesnt exist');
                 $this->renderJSON($data);
                 return;
-
-    }
+            }
 
 }
 
@@ -2066,9 +2125,11 @@ public function actionLogin() {
                     //Save token to database
                     $user_token = new UserToken;
                     $user_token->user_id = $user->user_id;
-                    $user_token->token = $token;
+                    $user_token->token = "Hello ".rand(1,100);
                     $user_token->expires_at = date("Y-m-d H:i:s",strtotime("+1 week"));
                     $user_token->save(false);
+
+
 
                     return array('success'=>true,'user_id'=>$user->user_id,'token'=>$user_token->token,'expires_at'=>$user_token->expires_at);
                     //$this->renderJSON($data);
