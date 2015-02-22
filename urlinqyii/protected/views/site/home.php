@@ -64,7 +64,7 @@
     </head>
 
 
-    <body id = "body_home" <?php if($show_tutorial_button) echo 'class="first_visit"';?>>
+    <body id = "body_home" <?php if($first_time) echo 'class="first_visit"';?>>
 
         <?php echo Yii::app()->runController('partial/topbar');     ?>
 
@@ -115,7 +115,7 @@
                                     </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                     <?php if($show_welcome_posts){ ?>
+                                     <?php if($first_time){ ?>
                                      <div class = 'post new_fd' id = 'welcome_post'>
 
                                         <div class="post_main">

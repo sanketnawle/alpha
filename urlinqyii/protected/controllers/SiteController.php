@@ -66,30 +66,30 @@ class SiteController extends Controller
         $show_fbar_tutorial="";
         $show_profile_tutorial="";
         $show_planner_tutorial="";
-        $show_welcome_posts=true;
+        $first_time=true;
         if($user->show_fbar_tutorial){
             $show_fbar_tutorial = "show_fbar_tutorial";
-            $show_tutorial_button = true;
+            //$show_tutorial_button = true;
         }else{
-            $show_welcome_posts=false;
+            $first_time=false;
         }
         if($user->show_planner_tutorial){
             $show_profile_tutorial = "show_planner_tutorial";
-            $show_tutorial_button = true;
+            //$show_tutorial_button = true;
         }else{
-            $show_welcome_posts=false;
+            $first_time=false;
         }
         if($user->show_profile_tutorial){
             $show_planner_tutorial = "show_profile_tutorial";
-            $show_tutorial_button = true;
+            //$show_tutorial_button = true;
         }else{
-            $show_welcome_posts=false;
+            $first_time=false;
         }
         //Can specify specific layout inside view
         //$this->layout = 'new';
-        $this->render('home',array('user'=>$user,'show_tutorial_button'=>$show_tutorial_button
+        $this->render('home',array('user'=>$user
             ,'show_fbar_tutorial'=>$show_fbar_tutorial,'show_planner_tutorial'=>$show_planner_tutorial
-            ,'show_profile_tutorial'=>$show_profile_tutorial, 'show_welcome_posts'=>$show_welcome_posts));
+            ,'show_profile_tutorial'=>$show_profile_tutorial, 'first_time'=>$first_time));
     }
 
     public function actionCompleteTutorial(){
