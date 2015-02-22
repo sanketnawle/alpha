@@ -55,7 +55,7 @@
                 <p class = "fbar_button_text events_button_text">Event</p>
             </div>
 
-            
+
 		</section>
 		<section id = "fbar_postbox">
 			<form id = "fbar_form">

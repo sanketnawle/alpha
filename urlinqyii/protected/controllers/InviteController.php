@@ -113,6 +113,12 @@ class InviteController extends Controller
 
                 $invite->delete(false);
 
+
+                //Add all NYU
+
+
+
+
                 $return_data = array('success'=>true, 'msg'=>'user is now attending group ' . $group_user->group_id);
                 $this->renderJSON($return_data);
                 return;
