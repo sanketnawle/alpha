@@ -337,15 +337,24 @@ function ready(globals){
         var post_url = globals.base_url + '/reply/' + reply_id + '/delete';
         var post_data = {id: reply_id};
 
+
+        //Start hiding reply immediately
+        $reply.fadeOut('fast', function(){
+
+        });
+
+
         $.post(
             post_url,
             post_data,
             function(response){
                 if(response['success']){
-                    $reply.fadeOut('fast', function(){
-                        $reply.closest('.comments').remove();
-                    });
+                    //remove reply from html if success
+                    $reply.closest('.comments').remove();
                 }else{
+                    //Show the reply again since it wasnt
+                    //sucessfully deleted
+                    $reply.show();
                     alert(JSON.stringify(response));
                 }
             }, 'json'
