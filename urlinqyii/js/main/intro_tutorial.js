@@ -4,6 +4,7 @@ $(document).ready(function(){
 		$(this).addClass("tutorial_started");
 
 		setTimeout(function() {
+		$(".pulse_tp_0").show();
 		$(".pulse_tp_0").css({'opacity':'1'});
 		$(".intro_div").pulse($(".pulse_tp_0"),{x:10,y:10});
 		var promptHeader1=["Your Account Menu","Your Account Menu"];

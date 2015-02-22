@@ -130,13 +130,9 @@ a.MyBox_SO.edit_profile:hover{
 
     height: 26px; 
     
-
-    -moz-box-shadow: 0 -1px 1px #fff inset;
     
-
-    -webkit-box-shadow: 0 -1px 1px #fff inset;
     
-    box-shadow: 0 -1px 1px #fff inset; border-bottom: 1px solid #e2e2e2;
+     border-bottom: 1px solid #e2e2e2;
 
 }
 
