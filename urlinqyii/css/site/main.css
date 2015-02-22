@@ -2481,38 +2481,33 @@ div.no_select::-moz-selection { background:transparent; }
   -moz-animation:throb .65s steps(12) alternate infinite;
   animation:throb .65s steps(12) alternate infinite;
 */
-    border: 4px solid #999;
-    -webkit-border-radius: 30px;
+    -webkit-border-radius: 100px;
+    border-radius:100px;
     height: 33px;
     width:33px;
     position: absolute;
     top:200px;
     opacity: 0;
     left:350px;
+    background: #029acf;
     z-index: 10;
     display: none;
     -webkit-animation-name: pulsate;
     -webkit-animation-duration: 1s;
-    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite
 }
+
+
 
 body.first_visit #tutorial_starter{
     display: block;
 }
 
 @-webkit-keyframes pulsate {
-    0% { width:0px;height: 0px; opacity: 0.0}
-    10% { width:4px;height: 4px; opacity: .20}
-    20% { width:8px;height: 8px; opacity: .40 }
-    30% { width:12px;height: 12px; opacity: .60 }
-    40% { width:16px;height: 16px; opacity: .80 }    
-    50% { width:20px;height: 20px; opacity: 1.0}
-    60% { width:24px;height: 24px; opacity: .80}
-    70% { width:28px;height: 28px;  opacity: .60}
-    80% { width:32px;height: 32px;  opacity: .40}
-    90% { width:36px;height: 36px;  opacity: .20}
-    100% { width:40px;height: 40px;  opacity: 0.0}
+    0% {-webkit-transform:scale(.6); opacity: 1;}  
+    50% {-webkit-transform:scale(1); opacity: .1;}
+    100% { -webkit-transform:scale(.6);  opacity: 1;}
 }
 
 #tutorial_starter{
@@ -2524,7 +2519,7 @@ display: none;
     text-shadow: 0 0 0 !important;
     background: #ebebeb !important;
     border: 1px solid #ddd !important;
-    color: #aaa !important;
+    color: rgba(170, 170, 170, 0.42) !important;
     cursor: default!important;
     pointer-events:none!important;
     text-shadow:none!important;
@@ -2536,7 +2531,8 @@ display: none;
     margin-top: 26px;
     width: 440px;
     margin-left: auto;
-    background: none repeat scroll 0% 0% #2A80B9; color: #FFF !important; text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+    background: none repeat scroll 0% 0% #2A80B9; 
+    color: #FFF; text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     margin-right: auto;
     padding: 10px 0;
@@ -2581,7 +2577,6 @@ display: none;
     font-family: Avenir;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     font-weight: 900;
-    color: #FFF;
     margin-top: 2px;
 }
 
