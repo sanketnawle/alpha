@@ -62,21 +62,67 @@ class SiteController extends Controller
 
         $user_id = Yii::app()->session['user_id'];
         $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
-        if($user->first_time){
-            $first_time = true;
-            $user->first_time = false;
-            $user->save();
-        }else{
-            $first_time=false;
-
+        $show_tutorial_button= false;
+        $show_fbar_tutorial="";
+        $show_profile_tutorial="";
+        $show_planner_tutorial="";
+        if($user->show_fbar_tutorial){
+            $show_fbar_tutorial = "show_fbar_tutorial";
+            $show_tutorial_button = true;
         }
+        if($user->show_planner_tutorial){
+            $show_profile_tutorial = "show_planner_tutorial";
+            $show_tutorial_button = true;
+        }
+        if($user->show_profile_tutorial){
+            $show_planner_tutorial = "show_profile_tutorial";
+            $show_tutorial_button = true;
+        }
+
 
         //Can specify specific layout inside view
         //$this->layout = 'new';
-        $this->render('home',array('user'=>$user,'first_time'=>$first_time));
+        $this->render('home',array('user'=>$user,'show_tutorial_button'=>$show_tutorial_button
+            ,'show_fbar_tutorial'=>$show_fbar_tutorial,'show_planner_tutorial'=>$show_planner_tutorial
+            ,'show_profile_tutorial'=>$show_profile_tutorial));
     }
 
+    public function actionCompleteTutorial(){
 
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($data);
+            return;
+        }
+
+        if(!isset($_POST['tutorial_num'])){
+            $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'tutorial num not set');
+            $this->renderJSON($data);
+            return;
+        }
+        $tutorial_num = $_POST['tutorial_num'];
+
+        if($tutorial_num==1){
+            $user->show_profile_tutorial = 0;
+        }else if($tutorial_num==2){
+            $user->show_planner_tutorial = 0;
+        }else if($tutorial_num==3){
+            $user->show_fbar_tutorial = 0;
+        }
+        if($user->save(false)){
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_msg'=>'error saving');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
 
 	/**
 	 * This is the action to handle external exceptions.
