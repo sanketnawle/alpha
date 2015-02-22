@@ -114,9 +114,9 @@
             </div>
 
             <div id="planner_body_holder">
-                <div id="free_planner_wrap" style="display: none;">
+                <div id="free_planner_wrap" class = "create_planner_message" style="display: none;">
                     <img id="eventImg" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/eventImg.png" />
-                    <span class="create_planner_message" style = "opacity:1">   Plan your Week</span>
+                    <span class="create_planner_message_pre" style = "opacity:1">   Plan your Week</span>
                     <span class="point point1" style = "opacity:1"> <em></em> Invite your friends to join in</span>
                     <span class="point point2" style = "opacity:1"> <em></em> Receive classwork reminders</span>
                     <span class="point point3" style = "opacity:1"> <em></em> Syncs with your calendar</span>
@@ -272,8 +272,10 @@
             <input type="text" id="edit_event_title" placeholder="title" >
             <input type="text" id="edit_event_date" placeholder="date due" class="planner_edit date_input">
             <input type="text" id="edit_event_time" placeholder="time due" class="planner_edit time_input">
-            <input type="button" id="submit_edit_event" value="Save">
-            <input type="button" id="cancel_edit_event" value="Cancel">
+            <div class = "popout_sep">
+                <input type="button" id="submit_edit_event" value="Save">
+                <input type="button" id="cancel_edit_event" value="Cancel">
+            </div>
         </div>
 
 
