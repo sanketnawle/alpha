@@ -339,6 +339,9 @@ function show_month_event(event_json){
     }
 
 
+
+    console.log(event_json['color']);
+
     var generated_html = template(event_json);
 
 

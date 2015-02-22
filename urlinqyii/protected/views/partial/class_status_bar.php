@@ -48,6 +48,14 @@
 				</i>
 				<p class = "fbar_button_text question_button_text">Question</p>
 			</div>
+
+            <div class = "fbar_buttonwrapper" id = "fbar_button_event" data-post_button_type = "event">
+                <i class = "fbar_button_icon" id = "fbar_icon_event">
+                </i>
+                <p class = "fbar_button_text events_button_text">Event</p>
+            </div>
+
+            
 		</section>
 		<section id = "fbar_postbox">
 			<form id = "fbar_form">
@@ -58,6 +66,8 @@
 
 
 						</ul>
+                        <div id = "event_form_content" class = "post_type_header active post_type_events"><span>Event</span></div>
+
 						<div id = "discussion_form_content" class = "post_type_header active post_type_discussion"><span>Post</span></div>	
 						<div id = "notes_form_content" class = "post_type_header active post_type_notes"><span>Notes/Files</span></div>					
 						<div id = "question_form_content" class = "question_type_button active regular_question" id = "hide_both_question_types" data-question_post_type = "hide_both">Regular Question</div><div id = "question_form_content" class = "question_type_button multiple_choice_btn" data-question_post_type = "multiple_choice"><em></em>Multiple Choice</div><div id = "question_form_content" data-question_post_type = "true_false" class = "question_type_button true_or_false_btn"><em></em>True or False</div>
@@ -168,6 +178,31 @@
 						</section>
 
 					</section>
+
+
+                    <section id = "event_form" class = "post_form_template fbar_contents_fix">
+
+                        <div class = "input_wrap">
+                            <input placeholder = "Event title" id = "event_title" class = "autofocus" type = "text" name = "event_title">
+                        </div>
+                        <div class = "input_wrap event_when">
+                            <input placeholder = "Start date" id = "event_start_date" class = "fbar_date_time date_input" type = "text" name = "event_start_date"><input placeholder = "Start time" id = "event_start_time" class = "fbar_date_time fbar_time_input time_input" type = "text" name = "event_start_time"><em class = "event_time_to_arrow"></em><input placeholder = "End time" id = "event_end_time" class = "fbar_date_time fbar_time_input time_input" type = "text" name = "event_end_time"><input placeholder = "End date" id = "event_end_date" class = "date_input fbar_date_time" type = "text" name = "event_end_date">
+                        </div>
+                        <div class = "input_wrap" style = "position:relative;">
+                            <label for = "event_location">Where:</label><input placeholder = "Enter a location" id = "event_location" class = "gray_bg location_input autocomplete_location fbar_date_time" type = "text" name = "event_location"><span class = "where_icon"></span>
+                            <div class = "location_matches_list"></div>
+                            <!--<div class = "input_wrap event_input_hidden repeat_event_input">
+                                <label style = "margin-left: 30px;" for = "event_repeat">Repeat:</label><div class = "repeat_activator">No repeat <em class = "down_arrow"></em></div>
+                            </div>-->
+                        </div>
+
+
+
+                        <div class = "event_textarea input_wrap event_input_hidden hidden">
+                            <textarea class = "post_text_area" placeholder = "Write event description"></textarea>
+                        </div>
+
+                    </section>
 
 					<footer id = "fbar_footer" class = "fbar_contents_fix">
 						<!--<div id = "post_anonymously"><input type='checkbox' value='0' class='post_anon_val'><span class = 'comment_anon_text'>Post Anonymously</span></div>-->
