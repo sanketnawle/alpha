@@ -74,6 +74,12 @@
                 </i>
                 <p class = "fbar_button_text events_button_text">Event</p>
             </div>
+
+            <div class = "fbar_buttonwrapper" id = "fbar_button_question" data-post_button_type = "question">
+				<i class = "fbar_button_icon" id = "fbar_icon_question">
+				</i>
+				<p class = "fbar_button_text question_button_text">Question</p>
+			</div>
         </section>
         <section id = "fbar_postbox">
             <form id = "fbar_form">
@@ -111,6 +117,88 @@
                             <textarea class = "autofocus post_text_area" placeholder = "Write file details"></textarea>
                         </div>
                     </section>
+
+
+
+                    <section id = "question_form" class = "post_form_template fbar_contents_fix">
+						<div class = "input_wrap">
+							<input placeholder = "What is your question?" id = "post_title" class = "autofocus" type = "text" name = "question_title">
+						</div>
+						<div class = "question_textarea input_wrap">
+							<textarea class = "post_text_area" placeholder = "Write question details"></textarea>
+						</div>
+						<section>
+							<div class="multiple_choice">
+                                <div class="question_choice_line multiple_line">
+                                    <div class="fixed_choice_prefix">
+                                        <div class="letter_choice"><span>A</span></div>
+                                        <div class="add_choice"><span>+</span></div>
+                                    </div>
+                                    <input class="multiple_choice_answer" id="choice_a" placeholder="Add choice A...">
+                                    <div class="answer_check">
+                                        <input id="check_A" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                                <div class="question_choice_line multiple_line">
+                                    <div class="fixed_choice_prefix">
+                                        <div class="letter_choice"><span>B</span></div>
+                                        <div class="add_choice"><span>+</span></div>
+                                    </div>
+                                    <input class="multiple_choice_answer"  id="choice_b" placeholder="Add choice B...">
+                                    <div class="answer_check">
+                                        <input id="check_B" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                                <div class="question_choice_line multiple_line">
+                                    <div class="fixed_choice_prefix">
+                                        <div class="letter_choice"><span>C</span></div>
+                                        <div class="add_choice"><span>+</span></div>
+                                    </div>
+                                    <input class="multiple_choice_answer"  id="choice_c"placeholder="Add choice C...(optional)">
+                                    <div class="answer_check">
+                                        <input id="check_C" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                                <div class="question_choice_line multiple_line">
+                                    <div class="fixed_choice_prefix">
+                                        <div class="letter_choice"><span>D</span></div>
+                                        <div class="add_choice"><span>+</span></div>
+                                    </div>
+                                    <input class="multiple_choice_answer" id="choice_d"placeholder="Add choice D...(optional)">
+                                    <div class="answer_check">
+                                        <input id="check_D" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="true_false">
+                                <div class="question_choice_line tf_line">
+                                    <span>True</span>
+                                    <div class="answer_check">
+                                        <input id="check_true" type="radio" value="true">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                                <div class="question_choice_line tf_line">
+                                    <span>False</span>
+                                    <div class="answer_check">
+                                        <input id="check_false" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                            </div>
+						</section>
+
+					</section>
 
                     <section id = "event_form" class = "post_form_template fbar_contents_fix">
                         

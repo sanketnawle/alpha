@@ -2475,22 +2475,44 @@ div.no_select::-moz-selection { background:transparent; }
  
 .pulse_tp_0
 {
-  position: absolute;
-  top:200px;
-  left:350px;
-  opacity:0;
-  height: 58px;
-  width: 58px;
-  z-index: 10;
-  background: url('../../assets/tip_throbber.png') no-repeat scroll 0px 0px transparent;
+  /*background: url('../../assets/tip_throbber.png') no-repeat scroll 0px 0px transparent;*/
   cursor: pointer;
-  -webkit-animation:throb .65s steps(12) alternate infinite;
+ /* -webkit-animation:throb .65s steps(12) alternate infinite;
   -moz-animation:throb .65s steps(12) alternate infinite;
   animation:throb .65s steps(12) alternate infinite;
+*/
+    border: 4px solid #999;
+    -webkit-border-radius: 30px;
+    height: 33px;
+    width:33px;
+    position: absolute;
+    top:200px;
+    opacity: 0;
+    left:350px;
+    z-index: 10;
+    display: none;
+    -webkit-animation-name: pulsate;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite
 }
 
 body.first_visit #tutorial_starter{
     display: block;
+}
+
+@-webkit-keyframes pulsate {
+    0% { width:0px;height: 0px; opacity: 0.0}
+    10% { width:4px;height: 4px; opacity: .20}
+    20% { width:8px;height: 8px; opacity: .40 }
+    30% { width:12px;height: 12px; opacity: .60 }
+    40% { width:16px;height: 16px; opacity: .80 }    
+    50% { width:20px;height: 20px; opacity: 1.0}
+    60% { width:24px;height: 24px; opacity: .80}
+    70% { width:28px;height: 28px;  opacity: .60}
+    80% { width:32px;height: 32px;  opacity: .40}
+    90% { width:36px;height: 36px;  opacity: .20}
+    100% { width:40px;height: 40px;  opacity: 0.0}
 }
 
 #tutorial_starter{
@@ -2865,7 +2887,7 @@ display: none;
   position: fixed;
   width: 100%;
   height:100%;
-  background-color: rgba(0,0,0,0.45);
+  background-color: rgba(0,0,0,0.6);
   z-index: 100;
   top:0px;
   left:0px;

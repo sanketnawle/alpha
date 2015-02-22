@@ -318,7 +318,7 @@
 
 
 <script id="month_event_template" type="text/x-handlebars-template">
-    <div class="month_day_event event_holder" data-url="{{url}}" data-hex={{color.hex}} data-formatted_time = "{{formatted_start_time}}" data-origin_name="{{origin.name}}" data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
+    <div class="month_day_event event_holder" data-url="{{url}}" data-hex={{color.hex}} data-formatted_time="{{formatted_start_time}}" data-origin_name="{{origin.name}}" data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
         <div class = "event_color_bar color_bar_month" style = "background-color:{{color.hex}}"></div>
         
         <div class="event_name month_event_name">{{title}}</div>

@@ -5,6 +5,8 @@ $(document).ready(function(){
         $tutorial_starter_button.addClass("tutorial_started");
 
 		setTimeout(function() {
+
+            $(".pulse_tp_0").show();
             $(".pulse_tp_0").css({'opacity':'1'});
             //$(".intro_div_1").pulse($(".pulse_tp_0"),{x:10,y:10});
 
@@ -35,6 +37,7 @@ $(document).ready(function(){
             }
             $(".intro_div.show_tutorial").pulse($(".pulse_tp_0"),{x:10,y:10});
         }, 200);
+
 
 
 
