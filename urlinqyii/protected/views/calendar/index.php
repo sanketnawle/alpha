@@ -288,7 +288,7 @@
 
 
 <script id="day_event_template" type="text/x-handlebars-template">
-    <div class="day_event_holder event_holder" data-all_day="{{all_day}}" data-formatted_time = "{{formatted_start_time}}" data-origin_name="{{origin.name}}" data-hex={{color.hex}} data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
+    <div class="day_event_holder event_holder" data-url="{{url}}" data-all_day="{{all_day}}" data-formatted_time = "{{formatted_start_time}}" data-origin_name="{{origin.name}}" data-hex={{color.hex}} data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
         <div class = "event_color_bar color_bar_day" style = "background-color:{{color.hex}}"></div>
         <div class = "white_bg_line_blocker"></div>
         <div class="event_start_time" style = "color:{{color.hex}};">{{formatted_start_time}}</div>
@@ -306,7 +306,7 @@
 </script>
 
 <script id="week_day_event_template" type="text/x-handlebars-template">
-    <div class="grid-event week_event_holder event_holder" data-formatted_time = "{{formatted_start_time}}" data-origin_name="{{origin.name}}" data-hex= "{{color.hex}}" data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
+    <div class="grid-event week_event_holder event_holder" data-url="{{url}}" data-formatted_time = "{{formatted_start_time}}" data-origin_name="{{origin.name}}" data-hex= "{{color.hex}}" data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
         <div class = "event_color_bar color_bar_week" style = "background-color:{{color.hex}}"></div>
         <div class = "white_bg_line_blocker"></div>
         <div class="event_name">{{title}}</div>
@@ -318,7 +318,7 @@
 
 
 <script id="month_event_template" type="text/x-handlebars-template">
-    <div class="month_day_event event_holder" data-hex={{color.hex}} data-formatted_time = "{{formatted_start_time}}" data-origin_name="{{origin.name}}" data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
+    <div class="month_day_event event_holder" data-url="{{url}}" data-hex={{color.hex}} data-formatted_time = "{{formatted_start_time}}" data-origin_name="{{origin.name}}" data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
         <div class = "event_color_bar color_bar_month" style = "background-color:{{color.hex}}"></div>
         
         <div class="event_name month_event_name">{{title}}</div>
