@@ -1128,19 +1128,22 @@ class ProfileController extends Controller
         $index = sizeof($data['classes']);
         if($user->user_type === "p"){
             $classesTaught = ClassModel::model()->findAll('professor_id=:pid',array(':pid'=>$user->user_id));
-            foreach($classesTaught as $i=>$class){
-                if($class->course){
-                    $data['classes'][$i+$index]['course_name']=$class->course->course_name;
-                    $data['classes'][$i+$index]['description']= $class->course->course_desc;
+            foreach($classesTaught as $class){
+                if(!ClassUser::model()->exists('class_id = :cid and user_id= :uid',array(':cid'=>$class->class_id,':uid'=>$user->user_id))){
+                    if($class->course){
+                        $data['classes'][$index]['course_name']=$class->course->course_name;
+                        $data['classes'][$index]['description']= $class->course->course_desc;
+                    }
+                    if($class->department){
+                        $data['classes'][$index]['department_name']=$class->department->department_name;
+                        $data['classes'][$index]['department_link']=Yii::app()->getBaseUrl(true).'/department/'.$class->department->department_id;
+                    }
+                    $data['classes'][$index]['section']=$class->section_id;
+                    $data['classes'][$index]['class_id']=$class->class_id;
+                    $data['classes'][$index]['class_picture']= ($class->pictureFile) ?
+                        Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
+                    $index++;
                 }
-                if($class->department){
-                    $data['classes'][$i+$index]['department_name']=$class->department->department_name;
-                    $data['classes'][$i+$index]['department_link']=Yii::app()->getBaseUrl(true).'/department/'.$class->department->department_id;
-                }
-                $data['classes'][$i+$index]['section']=$class->section_id;
-                $data['classes'][$i+$index]['class_id']=$class->class_id;
-                $data['classes'][$i+$index]['class_picture']= ($class->pictureFile) ?
-                    Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
 
             }
         }

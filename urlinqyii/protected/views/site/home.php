@@ -64,7 +64,7 @@
     </head>
 
 
-    <body id = "body_home" <?php if($show_tutorial_button) echo 'class="first_visit"';?>>
+    <body id = "body_home" <?php if($first_time) echo 'class="first_visit"';?>>
 
         <?php echo Yii::app()->runController('partial/topbar');     ?>
 
@@ -115,7 +115,7 @@
                                     </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                     <?php if($show_welcome_posts){ ?>
+                                     <?php if($first_time){ ?>
                                      <div class = 'post new_fd' id = 'welcome_post'>
 
                                         <div class="post_main">
@@ -205,7 +205,7 @@
 
                                             <div class = 'post_msg post_lr_link_msg'>
                                                     <span class='msg_span seemore_anchor'>
-                                                         <div class="post_welcome_label">Tell us about yourself</div>
+                                                         <div class="welcome_post_header">Tell us about yourself</div>
                                                          <?php if($user->user_type == "s" && $user->studentAttributes){
                                                                 if(sizeof($user->majors)==0){?>
                                                                    <div class="post_major_section">
@@ -252,7 +252,7 @@
                                                         <?php if(!$user->user_bio){?>
                                                             <div class="post_bio_section">
                                                                 <div class="post_bio_add welcome_post_label">Add a short bio</div>
-                                                                <textarea class = "post_bio_input"></textarea>
+                                                                <textarea maxlength="240" type="text" class="post_bio_input" id="bio_input" cols="29" wrap="hard"></textarea>
                                                             </div>
                                                         <?php }?>
                                                             <button class="post_submit_edit_profile">Save</button>
