@@ -66,25 +66,30 @@ class SiteController extends Controller
         $show_fbar_tutorial="";
         $show_profile_tutorial="";
         $show_planner_tutorial="";
+        $show_welcome_posts=true;
         if($user->show_fbar_tutorial){
             $show_fbar_tutorial = "show_fbar_tutorial";
             $show_tutorial_button = true;
+        }else{
+            $show_welcome_posts=false;
         }
         if($user->show_planner_tutorial){
             $show_profile_tutorial = "show_planner_tutorial";
             $show_tutorial_button = true;
+        }else{
+            $show_welcome_posts=false;
         }
         if($user->show_profile_tutorial){
             $show_planner_tutorial = "show_profile_tutorial";
             $show_tutorial_button = true;
+        }else{
+            $show_welcome_posts=false;
         }
-
-
         //Can specify specific layout inside view
         //$this->layout = 'new';
         $this->render('home',array('user'=>$user,'show_tutorial_button'=>$show_tutorial_button
             ,'show_fbar_tutorial'=>$show_fbar_tutorial,'show_planner_tutorial'=>$show_planner_tutorial
-            ,'show_profile_tutorial'=>$show_profile_tutorial));
+            ,'show_profile_tutorial'=>$show_profile_tutorial, 'show_welcome_posts'=>$show_welcome_posts));
     }
 
     public function actionCompleteTutorial(){

@@ -507,9 +507,10 @@ class ProfileController extends Controller
     public function actionEditProfile(){
         try {
             $new_data = array();
-            $user_id = $_POST['user'];
+            //$user_id = $_POST['user'];
             //$user = User::model()->find('user_id=:uid', array(':uid' => $user_id));
             $user = $this->get_current_user($_POST);
+            $user_id = $user->user_id;
             if($user){
 
 
@@ -534,7 +535,7 @@ class ProfileController extends Controller
                         $new_data['bio'] = $user->getErrors();
                     }
                 }
-                if (isset($_POST['gender'])) {
+                if (isset($_POST['gender']) && $_POST['gender'] != "undefined") {
                     $user->gender = $_POST['gender'];
                     if ($user->save()) {
                         $new_data['gender'] = "success";
@@ -713,6 +714,7 @@ class ProfileController extends Controller
                     }
 
                 }
+                $new_data['success']=true;
                 $this->renderJSON($new_data);
                 return;
             }else{
@@ -1219,16 +1221,16 @@ class ProfileController extends Controller
             $departments = Department::model()->findAll('school_id=:sid',array(':sid'=>$_GET['school']));
 
         }
-        //if(isset($_GET['user'])){
+        if(isset($_GET['user'])){
             //$user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
-        $user = $this->get_current_user();
-        if($user->school){
-            $departments = $user->school->departments;
-            $result['selected'] = $user->department_id;
-        }else{
-            $this->renderJSON(array('error','user has no school'));
+            $user = $this->get_current_user();
+            if($user->school){
+                $departments = $user->school->departments;
+                $result['selected'] = $user->department_id;
+            }else{
+                $this->renderJSON(array('error','user has no school'));
+            }
         }
-        //}
         foreach($departments as $department){
             $result['departments'][] = array('id'=>$department->department_id, 'name'=>$department->department_name, 'tag'=>$department->department_tag);
         }
