@@ -3,7 +3,7 @@
 }
 
 div.LeftPanel_SectionContent div.LeftPanel_DeptSchoolHolder{
-	margin-top: 10px!important;
+	margin-top: 5px!important;
 }
 
 div#content_panel div#nav_bar{
@@ -17,7 +17,7 @@ div#content_panel div#nav_bar{
 }
 
 div.SectionHeader_holder div.float_Right a{
-	top:0px!important;
+	top: 4px!important;
 }
 
 div.LeftPanel_DeptSchoolHolder div.LeftPanel_DSContentBox{

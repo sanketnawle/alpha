@@ -16,17 +16,7 @@
 	<div class = "LeftPanel_Content">
 		<div class = "LeftPanel_Section LeftPanel_Profile">
 			<div class = "LeftPanel_SectionHeader">
-				<div class = "SectionHeader_holder">
-					<div class = "float_Left">
-						<em class = "SectionHeader_ribbon LeftPanel_icons">
-						</em>
-						<h4>My Profile</h4>
-					</div>
-					<div class = "float_Right">
-						<div class = "LeftPanel_menuicon LeftPanel_icons"></div>
-					</div>
 
-				</div>
 			</div>
 			<div class = "LeftPanel_SectionContent">
 				<div class = "LeftPanel_MyBox">
@@ -56,7 +46,7 @@
 				<div class = "LeftPanel_DeptSchoolHolder">
 					<div class = "LeftPanel_DSContentBox">
 						<div class = "LeftPanel_DSContentBoxHeader">
-							<b>Department</b>
+							<b>Your Department</b>
 						</div>
 						<a class = "LeftPanel_DSContentBoxName" href="<?php echo Yii::app()->getBaseUrl(true); ?>/department/<?php echo $user->department->department_id; ?>">
 							<h5><?php echo $user->department->department_name; ?></h5>
@@ -64,7 +54,7 @@
 					</div>
 					<div class = "LeftPanel_DSContentBox">
 						<div class = "LeftPanel_DSContentBoxHeader">
-							<b>School</b>
+							<b>Your School</b>
 						</div>
 						<a class = "LeftPanel_DSContentBoxName" href="<?php echo Yii::app()->getBaseUrl(true); ?>/school/<?php echo $user->school->school_id; ?>">
 							<h5><?php echo $user->school->school_name; ?></h5>
@@ -79,10 +69,12 @@
 					<div class = "float_Left">
 						<em class = "SectionHeader_ribbon LeftPanel_icons">
 						</em>
-						<h4>My Classes</h4>	
+						<h4>Classes</h4>	
 					</div>
 					<div class = "float_Right">
 						<a class = "textBtn" href="<?php echo Yii::app()->getBaseUrl(true) . '/search'; ?>"><span class = "search_text">Search</span></a>
+						<div class = "right_flank">
+						</div>
 					</div>				
 				</div>				
 			</div>
@@ -102,10 +94,12 @@
 					<div class = "float_Left">
 						<em class = "SectionHeader_ribbon LeftPanel_icons">
 						</em>
-						<h4>My Groups</h4>
+						<h4>Groups</h4>
 					</div>
 					<div class = "float_Right">
 						<a class = "textBtn" href="<?php echo Yii::app()->getBaseUrl(true) . '/search'; ?>">Search</a>
+						<div class = "right_flank">
+						</div>
 					</div>					
 				</div>				
 			</div>	
