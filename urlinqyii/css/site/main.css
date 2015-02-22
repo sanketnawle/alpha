@@ -2924,3 +2924,11 @@ body#body_home.first_visit #topbar_responsive_holder{
 }
 
 div#topbar_responsive_holder {}
+
+.post_welcome_label{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid grey;
+}
+

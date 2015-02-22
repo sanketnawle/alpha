@@ -943,6 +943,7 @@ $(document).ready(function() {
         //school
 
         $.getJSON( base_url + "/profile/getSchools",{user: globals.user_id}, function( result) {
+            $('#school_dropdown').empty();
             $.each(result.schools,function(i,school){
                 $('#school_dropdown').append($('<option/>').attr("value", school.id).text(school.name));
             });
