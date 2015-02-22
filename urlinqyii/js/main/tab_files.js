@@ -181,7 +181,9 @@ $(document).ready(function(){
         }
     });
 
-    
+    $('.bigbox_bigmessage').click(function(){
+        $('.dropzone.tab_files').click();
+    });
 
 
     $('.file_search_input').keyup(function(){
