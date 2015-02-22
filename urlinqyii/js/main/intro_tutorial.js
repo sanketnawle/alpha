@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var already_clicked=false;
 
 	$('#tutorial_starter').click(function(){
         var $tutorial_starter_button = $(this);
@@ -6,8 +7,11 @@ $(document).ready(function(){
 
 		setTimeout(function() {
 
-            $(".pulse_tp_0").show();
-            $(".pulse_tp_0").css({'opacity':'1'});
+            if(!already_clicked){
+                $(".pulse_tp_0").show();
+                $(".pulse_tp_0").css({'opacity':'1'});
+            }
+
             //$(".intro_div_1").pulse($(".pulse_tp_0"),{x:10,y:10});
 
             var promptHeader1=["Your Account Menu","Your Account Menu"];
@@ -35,14 +39,24 @@ $(document).ready(function(){
                 $(".intro_div_3").addClass('show_tutorial');
                 $(".intro_div_3").tooltip({x:12, y:23, promptHeader: promptHeader3, promptContent: promptContent, footer:footer, wedge:'top'});
             }
-            $(".intro_div.show_tutorial").pulse($(".pulse_tp_0"));
+            $(".intro_div.show_tutorial").pulse($(".pulse_tp_0"),{x:10,y:10});
+            if(already_clicked){
+                $(".pulse_tp_0").fadeIn(150);
+                $(".pulse_tp_0").css({'opacity':'1'});
+            }
+
         }, 200);
 
 
 
 
 	});
-
+    if(!$('#tutorial_starter').hasClass('show_profile_tutorial')||
+        !$('#tutorial_starter').hasClass('show_planner_tutorial')||
+        !$('#tutorial_starter').hasClass('show_fbar_tutorial')){
+        already_clicked=true;
+        $('#tutorial_starter').click();
+    }
 	$(".intro_div").click(function(){
 		$(this).find(".pulse_tp_0").fadeOut(300);
 		$(this).removeClass("intro_div");
