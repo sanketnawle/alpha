@@ -51,9 +51,12 @@ $(document).ready(function(){
 
 
 	});
-    if(!$('#tutorial_starter').hasClass('show_profile_tutorial')||
+    if((!$('#tutorial_starter').hasClass('show_profile_tutorial')||
         !$('#tutorial_starter').hasClass('show_planner_tutorial')||
-        !$('#tutorial_starter').hasClass('show_fbar_tutorial')){
+        !$('#tutorial_starter').hasClass('show_fbar_tutorial'))&&
+        ($('#tutorial_starter').hasClass('show_profile_tutorial')||
+        $('#tutorial_starter').hasClass('show_planner_tutorial')||
+        $('#tutorial_starter').hasClass('show_fbar_tutorial'))){
         already_clicked=true;
         $('#tutorial_starter').click();
     }
