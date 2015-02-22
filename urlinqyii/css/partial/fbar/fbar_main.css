@@ -1560,3 +1560,21 @@ div.photo_flier_upload_box {
 }
 
 
+
+/* Custom CSS for home page fbar */
+body#body_home input#event_title {
+    width: 497px !important;
+}
+
+body#body_home input#event_location {
+    width: 435px !important;
+}
+
+body#body_home input#event_start_date,
+body#body_home input#event_end_date {
+
+    width: 105px;
+
+}
+
+
