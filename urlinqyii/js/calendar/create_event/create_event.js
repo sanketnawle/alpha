@@ -381,7 +381,7 @@ jQuery(document).ready(function(){
                                 "privacy":"",
                                 "anon":0,
                                 "like_count":0,
-                                "event":{"title":event_name,
+                                "event": {"title":event_name,
                                          "start_date": event_start_date,
                                          "start_time":event_start_time,
                                          "end_date": event_end_date,

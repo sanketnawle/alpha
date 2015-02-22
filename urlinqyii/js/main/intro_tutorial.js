@@ -35,7 +35,7 @@ $(document).ready(function(){
                 $(".intro_div_3").addClass('show_tutorial');
                 $(".intro_div_3").tooltip({x:12, y:23, promptHeader: promptHeader3, promptContent: promptContent, footer:footer, wedge:'top'});
             }
-            $(".intro_div.show_tutorial").pulse($(".pulse_tp_0"),{x:10,y:10});
+            $(".intro_div.show_tutorial").pulse($(".pulse_tp_0"));
         }, 200);
 
 
@@ -57,6 +57,41 @@ $(document).ready(function(){
         $.post(globals.base_url+'/completeTutorial',{tutorial_num:tutorial_num});
 	});
 
+    $(document).on('click','.post_submit_edit_profile',function(){
+        var $submit_button = $(this);
+        var post_data = {};
+        if($('.post_major_input').length && $.trim($('.post_major_input').val()) != ''){
+            post_data.majors =[$.trim($('.post_major_input').val())];
+        }
+        if($('.post_year_input').length && $.trim($('.post_year_input').val()) != ''){
+            post_data.year=$.trim($('.post_year_input').val());
+        }
+        if($('.post_year_name_input').length && $.trim($('.post_year_name_input').val()) != ''){
+            post_data.year_name=$.trim($('.post_year_name_input').val());
+        }
+        if($('.post_office_input').length && $.trim($('.post_office_input').val()) != ''){
+            post_data.office_location=$.trim($('.post_office_input').val());
+        }
+        if($('.post_office_hours_input').length && $.trim($('.post_office_hours_input').val()) != ''){
+            post_data.office_hours=$.trim($('.post_office_hours_input').val());
+        }
+        if($('.post_bio_input').length && $.trim($('.post_bio_input').val()) != ''){
+            post_data.bio=$.trim($('.post_bio_input').val());
+        }
+        $.post(
+            globals.base_url+'/profile/editProfile',
+            post_data,
+            function(response){
+                if(response['success']){
+                    $submit_button.closest('.msg_span').fadeOut(150);
+                    $submit_button.closest('.msg_span').empty();
+                    $submit_button.closest('.msg_span').text('Your profile has been updated');
+                    $submit_button.closest('.msg_span').fadeIn(150);
+                }
+
+            }
+        )
+    });
 
 
 });
