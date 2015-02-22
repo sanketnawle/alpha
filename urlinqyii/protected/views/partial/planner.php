@@ -146,8 +146,11 @@
                                     <div class="event_date_time date">{{formatted_date_time}}</div>
                                 {{/if}}
                                 {{#if start_time}}
-                                <div class='event_date_time'>at {{formatted_start_time}}</div>
+                                    <div class='event_date_time'>at {{formatted_start_time}}</div>
                                 {{/if}}
+                                {{#ifCond event_type '==' 'NYU Event'}}
+                                    <div class='event_date_time'>· <a target="_blank" href='{{url}}'>NYU Event</a></div>
+                                {{/ifCond}}
                                 </div>
                             </div>
                             <div class='event_checkbox_holder'>

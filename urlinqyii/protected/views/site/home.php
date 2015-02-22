@@ -64,7 +64,7 @@
     </head>
 
 
-    <body id = "body_home" <?php if($first_time) echo 'class="first_visit"';?>>
+    <body id = "body_home" <?php if($show_tutorial_button) echo 'class="first_visit"';?>>
 
         <?php echo Yii::app()->runController('partial/topbar');     ?>
 
@@ -96,7 +96,7 @@
                                         <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'user','origin_id'=>$user->user_id ,'is_admin'=>false)); ?>
                                     </div>
 
-                                    <div id = "tutorial_starter" class = "welcome_button">
+                                    <div id = "tutorial_starter" class = "welcome_button <?php echo $show_fbar_tutorial.' '.$show_profile_tutorial.' '.$show_planner_tutorial;?>">
                                         <h5>Discover how Urlinq can improve your education</h5>
                                     </div>
 
@@ -115,7 +115,57 @@
                                     </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
+                                     <!--   <div class = 'post new_fd' id = 'welcome_post'>
 
+                                        <div class="post_main">
+                                        <div class = "post_type_marker reg_post_type">
+                                            <span class = "post_type_icon"></span>
+                                        </div>
+                                        <div class="post_head">
+                                        <div class="post_title">
+                                            <div class = 'image_container'>
+                                                <a>
+                                                    <div class = 'post_user_icon'  style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test.jpg')">
+                                                    </div>
+                                                </a>
+
+                                            </div>
+
+                                            <a>
+                                                <span class = 'post_owner' >
+                                                    Professor Urlinq
+                                                </span>
+                                            </a>
+
+
+
+
+
+
+
+
+                                         </div>
+                                            <div class = 'post_time'> <span class = "time_icon"></span>
+                                                <time class='timeago' datetime= '{{created_time}}'>
+                                                    A few seconds ago
+                                                </time>
+                                            </div>
+
+                                            <div class = 'post_msg post_lr_link_msg'>
+                                                    <span class='msg_span seemore_anchor'>
+                                                               Hi! I'm Professor Urlinq. Welcome to our site!
+                                                    </span>
+
+
+
+
+
+                                             </div>
+
+                                    </div>
+
+                                    </div>
+                                    </div>-->
                                         <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed', 'origin_type'=>'user', 'origin_id'=>$user->user_id ,'is_admin'=>false)); ?>
                                     </div>
 
