@@ -19,11 +19,11 @@ body.left_panel_hidden_p2 #LeftPanel_Holder, body.left_panel_hidden_p2 #left_pan
     position: absolute;
     /* bottom: 10px; */
     left: 0px;
-    width: 52px;
+    width: 48px;
     top: 0px;
     border: none;
     border-radius: 500px;
-    height: 52px;
+    height: 48px;
     background-color: rgba(18, 19, 20, 0.4);
     background-repeat: no-repeat;
     background-size: auto;
@@ -102,6 +102,8 @@ a.MyBox_SO.edit_profile:hover{
     border-radius: 5px;
     padding-right: 16px;
     padding-left: 35px;
+    padding-top: 0px;
+    margin-top: -12px;
 }
 
 .LeftPanel_Section{
@@ -119,6 +121,7 @@ a.MyBox_SO.edit_profile:hover{
 }
 
 .LeftPanel_Clubs{
+    margin-top: -10px;
     
 }
 
@@ -134,19 +137,27 @@ a.MyBox_SO.edit_profile:hover{
     
      border-bottom: 1px solid #e2e2e2;
 
+    position: relative;
+
+    width: 225px;
+
+    padding-right: -2px;
+
 }
 
 .SectionHeader_holder div h4{
     font-family: Avenir;
 
     font-weight: 500;
-    font-size: 14.8px;
-    color: #444;
+    font-size: 13px;
+    color: #838383;
     -webkit-font-smoothing: antialiased;          -moz-osx-font-smoothing: grayscale;
     margin: 0;
     display: inline-block;
-    margin-left: 3px;
+    margin-left: 0px;
     text-transform: uppercase;
+    top: 4px;
+    position: relative;
 }
 
 .SectionHeader_holder div.float_Right a{
@@ -154,16 +165,26 @@ a.MyBox_SO.edit_profile:hover{
     top: 6px;
     position: relative;
     font-family: Avenir;
+    text-decoration: none!important;
     font-weight: 500;
+    font-size: 11px;
+    opacity: 1;
+    top: 5px!;
+    right: 5px;
 }
 
 em.SectionHeader_ribbon{
-    height: 9.56px;
-    width: 7px;
-    border-radius: 1px;
+    height:5px;
+    width: 5px;
+    border-radius: 10000px;
     position: relative;
-    margin-left: 1px;
-    margin-top: -2px;
+    margin-left: -9px;
+    margin-top: 5px;
+}
+
+div.right_flank{
+
+    display: none!important;
 }
 
 .LeftPanel_Classes .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{
@@ -225,9 +246,9 @@ em.SectionHeader_ribbon.LeftPanel_icons {}
 }
 
 a.MyBox_PictureLink div.MyBox_Picture{
-    height: 52px!important;
+    height: 48px!important;
     background-size:cover;
-    width: 52px!important;
+    width: 48px!important;
     border-radius: 500px;
 }
 
@@ -243,15 +264,15 @@ div.MyBox_text div.MyBox_textcontent{
 }
 
 div.MyBox_textcontent div.MyBox_NameSO{
-padding-left: 12px;
+padding-left: 7px;
 padding-top: 3px;
 }
 
 a.MyBox_ProfileLink{
     color: #27292b;
 
-    font-size: 14.3px;
-    font-weight: 600;
+    font-size: 15.2px;
+    font-weight: 500;
     cursor: pointer;
     width: auto; word-wrap: break-word;
     display: block;
@@ -280,7 +301,7 @@ a.MyBox_SO:hover{
 }
 
 div.LeftPanel_DeptSchoolHolder{
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 
     margin-top: 12px;
     position: relative;
