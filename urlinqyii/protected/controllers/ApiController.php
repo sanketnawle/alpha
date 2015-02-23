@@ -1703,8 +1703,27 @@ $user_email = $user->user_email;
 
 
 
-                $data['group']['admins'] = $group->admins;
-                $data['group']['members'] = $group->members;
+
+
+                // get all of the user details about the class
+                // admins
+
+                $admins = array();
+
+                foreach ($group->admins as $user) {
+                    array_push($admins, $this->get_model_associations($user, array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array())));
+                }
+
+                // students
+
+                $members = array();
+
+                foreach ($group->members as $user) {
+                    array_push($members, $this->get_model_associations($user, array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array())));
+                }
+
+                $data['class']['admins'] = $admins;
+                $data['class']['members'] = $members;
 
                 $user = $this->get_current_user($_GET);
                 if($user) {
@@ -1751,10 +1770,29 @@ $user_email = $user->user_email;
     //            $data = array('success'=>true,'class'=>$this->get_model_associations($class,array('students','admins')));
 
                 $data = array('success'=>true,'class'=>$this->model_to_array($class));
-                $data['class']['admins'] = $class->admins;
-                $data['class']['students'] = $class->students;
+    
+                // get all of the user details about the class
+                // admins
+
+                $admins = array();
+
+                foreach ($class->admins as $user) {
+                    array_push($admins, $this->get_model_associations($user, array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array())));
+                }
+
+                // students
+
+                $students = array();
+
+                foreach ($class->students as $user) {
+                    array_push($students, $this->get_model_associations($user, array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array())));
+                }
+
+
+                $data['class']['admins'] = $admins;
+                $data['class']['students'] = $students;
                 $data['class']['course'] = $class->course;
-                $data['class']['professor'] = $class->professor;
+                $data['class']['professor'] = $this->get_model_associations($class->professor, array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
 
 
                 $user = $this->get_current_user($_GET);

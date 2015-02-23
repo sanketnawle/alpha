@@ -320,7 +320,7 @@ class ClubController extends Controller
         //if this is a private group, make sure this user
         //has an invitation from an admin in this class
         if($group->privacy){
-            $invite = Invite::model()->find('user_id=:user_id and origin_id=:origin_id and origin_type="group"');
+            $invite = Invite::model()->find('user_id=:user_id and origin_id=:origin_id and origin_type=:origin_type', array(":user_id"=>$user_id, ":origin_id"=>$group_id, ":origin_type"=>"group"));
             //if there is no invite for this group, dont let the user join
             if(!$invite){
                 $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'Cannot join a private group without an invitation');
