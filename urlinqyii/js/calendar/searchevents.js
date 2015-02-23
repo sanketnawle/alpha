@@ -115,7 +115,7 @@ $(document).on('click','#search_back_button',function(e){
     $(".left_panel_create_button.left_panel_create_button").removeClass("disabled");
     $(".mini_calendar_cover").removeClass("enabled");
     $('#events_results_found').html('');
-    $('#search_dialog').hide();
+    $('#search_dialog').hide(300);
 });
 
 
