@@ -26,10 +26,17 @@
 <body>
 
     <script id="circle_template" type="text/x-handlebars-template">
-        <div class="circle" style = "background:{{color.hex}};">
+        <div class="circle" style = "background:{{color.hex}};" data-class_count ="{{class_count}}">
             <h5>{{department_name}}</h5>
             <div class = "courses_popout">
-                {{each classes}}
+                {{#each classes}}
+                <div class = "circle_classes_item"> 
+                   <span class = "circle_class_name">{{class_name}}</span>
+                   <span class = "circle_class_component">{{component}}</span>
+                   <span class = "circle_class_semester">{{semester}}</span>
+                   <span class = "circle_class_year">{{year}}</span>
+                </div>
+                {{/each}}
             </div>
         </div>
     </script>
