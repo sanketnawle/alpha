@@ -93,7 +93,7 @@
                                                     </span>
 
 
-                                                        
+
                                                 {{#each files}}
                                                     {{#ifCond file_extension '===' 'jpg'}}
                                                     <div class = "post_attached_image_container">
@@ -227,7 +227,7 @@
 
                             {{#each replies}}
                             <div class = 'comments'>
-                                <div class = 'comment_main'>
+                                <div class = 'comment_main' data-user_id="{{user_info.user_id}}" data-reply_id="{{reply_id}}">
 
 
                                     {{#ifCond anon '==' 1}}
@@ -271,7 +271,9 @@
                                     {{#if file_id}}
 
                                         <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-                                    {{/if}}                              
+                                    {{/if}}
+
+                                    {{#ifCond user_info.user_id '==' '<?php echo $user_id; ?>'}}                                         <div class='reply_delete_button'></div>                                     {{/ifCond}}
 
                                 </div>
 
@@ -344,7 +346,7 @@
 
                     {{#each replies}}
                                 <div class = 'comments'>
-                                    <div class = 'comment_main'>
+                                    <div class = 'comment_main' data-user_id="{{user_info.user_id}}" data-reply_id="{{reply_id}}">
 
 
                                         {{#ifCond anon '==' 1}}
@@ -389,6 +391,7 @@
                                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
 
+                                        {{#ifCond user_info.user_id '==' '<?php echo $user_id; ?>'}}                                         <div class='reply_delete_button'></div>                                     {{/ifCond}}
                                     </div>
 
                                 </div>
@@ -402,7 +405,7 @@
 
             <script id='one_reply_template' type="text/x-handlebars-template">
                 <div class = 'comments'>
-                    <div class = 'comment_main'>
+                    <div class = 'comment_main' data-user_id="{{user_info.user_id}}" data-reply_id="{{reply_id}}">
 
                         {{#ifCond anon '==' 1}}
                         <div class = 'comment_owner_container' style = "cursor:default; background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
@@ -441,6 +444,8 @@
 
                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                         {{/if}}
+
+                        {{#ifCond user_info.user_id '==' '<?php echo $user_id; ?>'}}                                         <div class='reply_delete_button'></div>                                     {{/ifCond}}
                     </div>
 
                 </div>
@@ -450,7 +455,7 @@
 
                     {{#each replies}}
                                 <div class = 'comments'>
-                                    <div class = 'comment_main'>
+                                    <div class = 'comment_main' data-user_id="{{user_info.user_id}}" data-reply_id="{{reply_id}}">
 
                                         {{#ifCond anon '==' 1}}
                                         <div class = 'comment_owner_container' style = "cursor:default; background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
@@ -492,6 +497,11 @@
 
                                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
+
+
+                                        {{#ifCond user_info.user_id '==' '<?php echo $user_id; ?>'}}
+                                            <div class='reply_delete_button'></div>
+                                        {{/ifCond}}
                                     </div>
 
                                 </div>
@@ -557,7 +567,7 @@
 
                                                         {{#ifCond origin_type '!=' 'user'}}
                                                             <span class = 'post_format'>
-                                                                <em class = "posted_to"></em> 
+                                                                <em class = "posted_to"></em>
                                                                 <span class = 'post_group'>
                                                                     <a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a>
                                                                 </span>
@@ -797,7 +807,7 @@
 
                             {{#each replies}}
                             <div class = 'comments'>
-                                <div class = 'comment_main'>
+                                <div class = 'comment_main' data-user_id="{{user_info.user_id}}" data-reply_id="{{reply_id}}">
 
 
                                     {{#ifCond anon '==' 1}}
@@ -841,6 +851,12 @@
 
                                         <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
+
+
+
+                                    {{#ifCond user_info.user_id '==' '<?php echo $user_id; ?>'}}
+                                      <div class='reply_delete_button'></div>
+                                    {{/ifCond}}
                                 </div>
 
                             </div>
@@ -1018,7 +1034,7 @@
                                 </div>
 
 
-                                
+
                             </div>
 
 
@@ -1075,8 +1091,8 @@
                                         Invalid User
                                     </span>
                                 {{/if}}
-                                
-                                
+
+
                             </div>
 
                             <div class='post_event_content'>
@@ -1109,7 +1125,7 @@
                                 {{/ifCond}}
 
                                 <div class = "apply_by_div">
-                                    <span class = "apply_by_text">Deadline:</span> 
+                                    <span class = "apply_by_text">Deadline:</span>
                                     <span class='apply_by_text apply_by_text_month'>{{event.month}}</span>
                                     <span class='apply_by_text apply_by_text_day'>{{event.day_number}}</span>
                                     {{#if event.end_time_string}}
@@ -1134,7 +1150,7 @@
                                         </div>
                                         {{/ifCond}}
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
 
                         </div>
@@ -1145,7 +1161,7 @@
 
                             {{#each replies}}
                             <div class = 'comments'>
-                                <div class = 'comment_main'>
+                                <div class = 'comment_main' data-user_id="{{user_info.user_id}}" data-reply_id="{{reply_id}}">
 
 
 
@@ -1201,6 +1217,10 @@
                                             {{/ifCond}}
                                         {{/ifCond}}
                                     {{/each}}
+
+                                {{#ifCond user_info.user_id '==' '<?php echo $user_id; ?>'}}
+                                  <div class='reply_delete_button'></div>
+                                {{/ifCond}}
                                 </div>
 
                             </div>
@@ -1319,7 +1339,7 @@
 
                                                         {{#ifCond origin_type '!=' 'user'}}
                                                             <span class = 'post_format'>
-                                                                <em class = "posted_to"></em> 
+                                                                <em class = "posted_to"></em>
                                                                 <span class = 'post_group'>
                                                                     <a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a>
                                                                 </span>
@@ -1451,7 +1471,7 @@
 
                             {{#each replies}}
                             <div class = 'comments'>
-                                <div class = 'comment_main'>
+                                <div class = 'comment_main' data-user_id="{{user_info.user_id}}" data-reply_id="{{reply_id}}">
 
 
 
@@ -1507,6 +1527,10 @@
                                             {{/ifCond}}
                                         {{/ifCond}}
                                     {{/each}}
+
+                                    {{#ifCond user_info.user_id '==' '<?php echo $user_id; ?>'}}
+                                      <div class='reply_delete_button'></div>
+                                    {{/ifCond}}
                                 </div>
 
                             </div>

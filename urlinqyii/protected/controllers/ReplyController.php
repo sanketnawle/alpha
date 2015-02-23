@@ -11,29 +11,6 @@ class ReplyController extends Controller
 
 	public $layout='//layouts/column2';
 
-    public function __construct()
-    {
-        self::$cur_user_id = intval(Yii::app()->session['user_id'] || 1);
-
-        $_POST['Reply'] = array('post_id'=>3, 'reply_msg'=>'test reply_text by reply_cntrlr', 'anon'=>0);
-        var_dump($_POST['Reply']);
-    }
-
-	/**
-	 * @return array action filters
-	 */
-	public function filters()
-	{
-		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
-		);
-	}
-
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
 	public function actionCreate()
 	{
 		$model=new Reply;
@@ -78,13 +55,34 @@ class ReplyController extends Controller
 	 */
 	public function actionDelete()
 	{
-//		$this->loadModel($_GET['id'])->delete();
-        if($model->user_id == self::$cur_user_id) {
-            if($this->loadModel($_GET['id'])->delete())
-                echo "delete_success";
+        if(!isset($_POST['id'])){
+            $data = array('success'=>false,'error_id'=>1, 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
         }
-        else
-            echo "Access Denied";
+
+        $id = $_POST['id'];
+
+
+        $reply = Reply::model()->find('reply_id=:reply_id', array(':reply_id'=>$id));
+        if(!$reply){
+            $data = array('success'=>false,'error_id'=>2, 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        if($reply->delete()){
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error deleting reply' , 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
 	}
 
     public function actionUpvote()

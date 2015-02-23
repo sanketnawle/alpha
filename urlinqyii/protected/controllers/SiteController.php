@@ -66,25 +66,30 @@ class SiteController extends Controller
         $show_fbar_tutorial="";
         $show_profile_tutorial="";
         $show_planner_tutorial="";
+        $first_time=true;
         if($user->show_fbar_tutorial){
             $show_fbar_tutorial = "show_fbar_tutorial";
-            $show_tutorial_button = true;
+            //$show_tutorial_button = true;
+        }else{
+            $first_time=false;
         }
         if($user->show_planner_tutorial){
             $show_profile_tutorial = "show_planner_tutorial";
-            $show_tutorial_button = true;
+            //$show_tutorial_button = true;
+        }else{
+            $first_time=false;
         }
         if($user->show_profile_tutorial){
             $show_planner_tutorial = "show_profile_tutorial";
-            $show_tutorial_button = true;
+            //$show_tutorial_button = true;
+        }else{
+            $first_time=false;
         }
-
-
         //Can specify specific layout inside view
         //$this->layout = 'new';
-        $this->render('home',array('user'=>$user,'show_tutorial_button'=>$show_tutorial_button
+        $this->render('home',array('user'=>$user
             ,'show_fbar_tutorial'=>$show_fbar_tutorial,'show_planner_tutorial'=>$show_planner_tutorial
-            ,'show_profile_tutorial'=>$show_profile_tutorial));
+            ,'show_profile_tutorial'=>$show_profile_tutorial, 'first_time'=>$first_time));
     }
 
     public function actionCompleteTutorial(){
@@ -1143,6 +1148,22 @@ class SiteController extends Controller
 
     }
 
+
+
+    function add_default_user_events($user){
+        include_once 'color/color.php';
+        $default_events = Event::model()->findAll('event_type="NYU Event"');
+
+        foreach($default_events as $event){
+            $event_user = new EventUser;
+            $event_user->event_ud = $event->event_id;
+            $event_user->user_id = $user->user_id;
+            $event_user->color_id = get_random_color();
+            $event_user->save();
+        }
+
+    }
+
     public function actionRegister(){
 
         if(isset($_POST['password']) ||isset($_POST['firstname']) ||isset($_POST['lastname']) ||isset($_POST['account_types']) ||isset($_POST['email'])){
@@ -1291,6 +1312,8 @@ class SiteController extends Controller
                     $professor->status = 'temp';
                     try{
                         $professor->save(false);
+
+                        $this->add_default_user_events($professor);
                     }catch(Exception $e){
                         $data = array('success'=>false,'error_id'=>12, 'error'=>'Error saving professor');
                         $this->renderJSON($data);
@@ -1398,6 +1421,9 @@ class SiteController extends Controller
                     $user->department_id = null;
                     $user->status = 'unverified';
                     $user->save(false);
+
+
+                    $this->add_default_user_events($user);
 
 
                     $salt = salt();

@@ -1,6 +1,18 @@
 $(document).ready(function() {
     var old_origin_type;
     var old_origin_id;
+
+
+
+
+
+
+
+
+
+
+
+
     globals.$fbar = $('#fbar_wrapper');
 
     $(document).on('click', '.profile_link', function(){
@@ -34,6 +46,9 @@ $(document).ready(function() {
         $("body#body_home").removeClass("profile_stop_scroll");
     }
     function open_profile(base_url,user_id,edit_mode){
+
+
+
         //  var numShowcase;
         $.getJSON( base_url + "/profile/json",{id: user_id}, function( json_profile_data ) {
            
@@ -59,6 +74,9 @@ $(document).ready(function() {
 
                 render_profile(base_url,json_profile_data,edit_mode);
             }
+
+
+
 
         });
 
@@ -141,9 +159,59 @@ $(document).ready(function() {
                         $('#edit_profile_button.not_editing').click();
 
                 }
+
+
+                $.getJSON(globals.base_url + '/profile/getDepartmentList', function(json_data){
+                    $.each(json_data['departments'], function(index, department_json){
+                        render_circle(department_json);
+                    });
+                });
             }
         });
     }
+
+    function render_circle(json_data){
+        var source = jQuery('#circle_template').html();
+        var template = Handlebars.compile(source);
+        json_data['class_count'] = json_data['classes'].length;
+        var generated_html = template(json_data);
+
+
+
+        $('#department_circles').append($(generated_html));
+
+
+
+        $('div.circle').each(function(){
+            var width = 115;
+            var height = 115;     
+            var class_count = $(this).attr("data-class_count");  
+            var modulator = 1 + (class_count * .15);  
+            width = width * modulator;
+            height = height * modulator;
+            margin_height_offset = -(height/2);
+            $(this).css({"width":width,"height":height,"margin-top":margin_height_offset});
+         });
+    }
+
+    $(document).on('mouseenter', 'div.circle', function () {
+        $(this).addClass("active");
+    });
+    $(document).on('mouseleave', 'div.circle', function () {
+        $(this).removeClass("active");
+    });
+
+
+    $(document).on('mouseenter', '.courses_popout', function () {
+        $(this).find("div.circle").addClass("active");
+    });
+    $(document).on('mouseleave', '.courses_popout', function () {
+        $(this).find("div.circle").removeClass("active");
+    });
+
+
+
+
     function populate_audience_select(){
         $.getJSON(base_url + '/user/getGroupData', function(json_data){
             var $audience_select_list = globals.$fbar.find("#audience_select_list");
@@ -943,6 +1011,7 @@ $(document).ready(function() {
         //school
 
         $.getJSON( base_url + "/profile/getSchools",{user: globals.user_id}, function( result) {
+            $('#school_dropdown').empty();
             $.each(result.schools,function(i,school){
                 $('#school_dropdown').append($('<option/>').attr("value", school.id).text(school.name));
             });

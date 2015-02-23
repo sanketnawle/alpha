@@ -101,7 +101,7 @@ a.MyBox_SO.edit_profile:hover{
     padding: 10px;  
     border-radius: 5px;
     padding-right: 16px;
-    padding-left: 35px;
+    padding-left: 28px;
     padding-top: 0px;
     margin-top: -12px;
 }
@@ -135,13 +135,15 @@ a.MyBox_SO.edit_profile:hover{
     
     
     
-     border-bottom: 1px solid #e2e2e2;
+     
 
     position: relative;
 
     width: 225px;
 
     padding-right: -2px;
+
+    -moz-box-shadow: 0 -1px 1px #fff inset; -webkit-box-shadow: 0 -1px 1px #fff inset; box-shadow: 0 -1px 1px #fff inset; border-bottom: 1px solid #e2e2e2;
 
 }
 
@@ -154,7 +156,7 @@ a.MyBox_SO.edit_profile:hover{
     -webkit-font-smoothing: antialiased;          -moz-osx-font-smoothing: grayscale;
     margin: 0;
     display: inline-block;
-    margin-left: 0px;
+    margin-left: 1px;
     text-transform: uppercase;
     top: 4px;
     position: relative;
@@ -162,7 +164,7 @@ a.MyBox_SO.edit_profile:hover{
 
 .SectionHeader_holder div.float_Right a{
     
-    top: 6px;
+    top: 11px;
     position: relative;
     font-family: Avenir;
     text-decoration: none!important;
@@ -178,7 +180,7 @@ em.SectionHeader_ribbon{
     width: 5px;
     border-radius: 10000px;
     position: relative;
-    margin-left: -9px;
+    margin-left: -10px;
     margin-top: 5px;
 }
 
@@ -187,17 +189,9 @@ div.right_flank{
     display: none!important;
 }
 
-.LeftPanel_Classes .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{
+.LeftPanel_Classes .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{    
+    background: #11B372; background-image: -webkit-linear-gradient(#11B372,#30DD97); background-image: -moz-linear-gradient(#11B372,#30DD97); background-image: -o-linear-gradient(#11B372,#30DD97); background-image: linear-gradient(#11B372,#30DD97);
 
-    background: #E8514F; 
-
-    background-image: -webkit-linear-gradient(#E8514F,#f16b6a); 
-
-    background-image: -moz-linear-gradient(#E8514F,#f16b6a); 
-
-    background-image: -o-linear-gradient(#E8514F,#f16b6a); 
-
-    background-image: linear-gradient(#E8514F,#f16b6a);
 }
 
 .LeftPanel_Clubs .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{

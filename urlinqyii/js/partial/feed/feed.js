@@ -325,6 +325,47 @@ function ready(globals){
 
 
 
+
+
+    $(document).on('click', '.reply_delete_button', function(){
+
+        var $reply_delete_button = $(this);
+        var $reply = $reply_delete_button.closest('.comment_main');
+
+        var reply_id = $reply.attr('data-reply_id');
+
+        var post_url = globals.base_url + '/reply/' + reply_id + '/delete';
+        var post_data = {id: reply_id};
+
+
+        //Start hiding reply immediately
+        $reply.fadeOut('fast', function(){
+
+        });
+
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                if(response['success']){
+                    //remove reply from html if success
+                    $reply.closest('.comments').remove();
+                }else{
+                    //Show the reply again since it wasnt
+                    //sucessfully deleted
+                    $reply.show();
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+
+
+    });
+
+
+
+
     $(document).on('click','.reply_button', function(){
         var $reply_form = $(this).closest('.reply_form');
         $reply_form.submit();

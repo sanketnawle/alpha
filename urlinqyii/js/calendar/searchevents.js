@@ -71,20 +71,21 @@ var search_calendar = function(event){
                type: "GET",
                data: {"search_text":txt},
                success: function(response) {
-                console.log(response);
                 if(response["events"]){
                     $.each(response["events"],function(index, item){
-                         var d = new Date(item["start_date"]);
-                         html_content+= '<div style="padding-left:40px" class="post" id="">\
+                         date_split = item['start_date'].split("-")
+                         redirect_date = date_split[1]+"/"+date_split[2]+"/"+date_split[0]
+                         var d = new Date(redirect_date);
+                         html_content+= '<div style="padding-left:40px" class="post">\
                                     <div class="post_main event_post">\
                                     <div class="post_head">\
-                                        <div class="post_event_date_box" style="background-color:aqua;">\
+                                        <div class="post_event_date_box" style="background-color:'+item["color"]["hex"] +';">\
                                             <div class="top_dark_area"></div>\
-                                            <div class="post_event_month post_event_date_box_text">'+d.getMonth()+'</div>\
-                                            <div class="post_event_day post_event_date_box_text">'+month[d.getDay()]+'</div>\
+                                            <div class="post_event_month post_event_date_box_text">'+month[d.getMonth()]+'</div>\
+                                            <div class="post_event_day post_event_date_box_text">'+date_split[2]+'</div>\
                                         </div>\
                                         <div class="event_post_toparea">\
-                                            <div class="post_event_title">'+item["title"]+'</div>\
+                                            <div class="post_event_title"><a class="go_to_event" start_date="'+item["start_date"]+'" start_time="'+item["start_time"]+'" end_date="'+item["end_date"]+'" end_time="'+item["end_time"]+'" all_day="'+item["all_day"]+'" title="'+item["title"]+'">'+item["title"]+'</a></div>\
                                                 <div class="event_context">\
                                                     <div class="post_event_time_holder">\
                                                     <div class="post_event_start_time">1:49 PM</div> to <div class="post_event_end_time">2:49 PM</div>\
@@ -114,5 +115,29 @@ $(document).on('click','#search_back_button',function(e){
     $(".left_panel_create_button.left_panel_create_button").removeClass("disabled");
     $(".mini_calendar_cover").removeClass("enabled");
     $('#events_results_found').html('');
-    $('#search_dialog').hide();
+    $('#search_dialog').hide(300);
 });
+
+
+$(document).on('click','.go_to_event',function(event){
+     jQuery(".left_panel_create_button.left_panel_create_button").removeClass("disabled");
+        jQuery(".mini_calendar_cover").removeClass("enabled");
+   event.preventDefault(); 
+   item = {};
+   item['start_date'] = $(this).attr('start_date');
+    item['start_time'] = $(this).attr('start_time');
+    item['end_date'] = $(this).attr('end_date');
+    item['end_time'] = $(this).attr('end_time');
+    item['all_day'] = $(this).attr('all_day');
+    item['title'] = $(this).attr('title');
+    item_color = {}
+    item_color["hex"] = "#669999";
+    item['color'] = item_color;
+    console.log(item['start_date']);
+    $('#search_back_button').trigger('click');
+    //show_day_event(item);
+    date_split = item['start_date'].split("-")
+    redirect_date = date_split[2]+"/"+date_split[1]+"/"+date_split[0]
+    window.location.replace("calendar#/day/"+redirect_date);
+});
+

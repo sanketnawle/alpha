@@ -28,6 +28,13 @@
             <!-- if user is admin, change text below "notes" to "materials" -->
             <p class = "fbar_button_text notes_button_text">Notes</p>
         </div>
+
+        <div class = "fbar_buttonwrapper" id = "fbar_button_event" data-post_button_type = "event">
+            <i class = "fbar_button_icon" id = "fbar_icon_event">
+            </i>
+            <p class = "fbar_button_text events_button_text">Event</p>
+        </div>
+
         <div class = "fbar_buttonwrapper" id = "fbar_button_question" data-post_button_type = "question">
             <i class = "fbar_button_icon" id = "fbar_icon_question">
             </i>
