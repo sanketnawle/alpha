@@ -26,7 +26,12 @@
 <body>
 
     <script id="circle_template" type="text/x-handlebars-template">
-        <div class="circle">{{department_id}} {{department_name}}</div>
+        <div class="circle" style = "background:{{color.hex}};">
+            <h5>{{department_name}}</h5>
+            <div class = "courses_popout">
+                {{each classes}}
+            </div>
+        </div>
     </script>
 
     <div class="topbar">

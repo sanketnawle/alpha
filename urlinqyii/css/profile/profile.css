@@ -1173,3 +1173,7 @@ div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div
 #department_circles {
     height: 100px;
 }
+
+#department_circles div.circle{
+    
+}
