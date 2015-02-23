@@ -137,7 +137,7 @@ div.nav_section div.nav_text {
 div.nav_section.active div.nav_text{
     color: white;
     cursor:default;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 div.nav_section.active:hover {
