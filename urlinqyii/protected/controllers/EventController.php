@@ -69,7 +69,7 @@ class EventController extends Controller
 
     public function actionSearchEvents(){
         if(!isset($_GET['search_text'])){
-            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'date is not set');
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'Search text is not set');
             $this->renderJSON($data);
             return;
         }
