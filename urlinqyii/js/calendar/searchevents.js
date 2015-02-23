@@ -79,7 +79,7 @@ var search_calendar = function(event){
                          html_content+= '<div style="padding-left:40px" class="post">\
                                     <div class="post_main event_post">\
                                     <div class="post_head">\
-                                        <div class="post_event_date_box" style="background-color:aqua;">\
+                                        <div class="post_event_date_box" style="background-color:'+item["color"]["hex"] +';">\
                                             <div class="top_dark_area"></div>\
                                             <div class="post_event_month post_event_date_box_text">'+month[d.getMonth()]+'</div>\
                                             <div class="post_event_day post_event_date_box_text">'+date_split[2]+'</div>\
