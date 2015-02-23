@@ -1,6 +1,18 @@
 $(document).ready(function() {
     var old_origin_type;
     var old_origin_id;
+
+
+
+
+
+
+
+
+
+
+
+
     globals.$fbar = $('#fbar_wrapper');
 
     $(document).on('click', '.profile_link', function(){
@@ -34,6 +46,9 @@ $(document).ready(function() {
         $("body#body_home").removeClass("profile_stop_scroll");
     }
     function open_profile(base_url,user_id,edit_mode){
+
+
+
         //  var numShowcase;
         $.getJSON( base_url + "/profile/json",{id: user_id}, function( json_profile_data ) {
            
@@ -59,6 +74,9 @@ $(document).ready(function() {
 
                 render_profile(base_url,json_profile_data,edit_mode);
             }
+
+
+
 
         });
 
@@ -141,9 +159,26 @@ $(document).ready(function() {
                         $('#edit_profile_button.not_editing').click();
 
                 }
+
+
+                $.getJSON(globals.base_url + '/profile/getDepartmentList', function(json_data){
+                    $.each(json_data['departments'], function(index, department_json){
+                        render_circle(department_json);
+                    });
+                });
             }
         });
     }
+
+    function render_circle(json_data){
+        var source = jQuery('#circle_template').html();
+        var template = Handlebars.compile(source);
+        var generated_html = template(json_data);
+
+        $('#department_circles').append($(generated_html));
+    }
+
+
     function populate_audience_select(){
         $.getJSON(base_url + '/user/getGroupData', function(json_data){
             var $audience_select_list = globals.$fbar.find("#audience_select_list");

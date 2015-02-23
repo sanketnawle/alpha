@@ -978,6 +978,91 @@ class ProfileController extends Controller
     public function actionGetTemplate(){
         $this->render('profile');
     }
+
+    //Gets the list of unique department and classes
+    //that this user is taking/has taken
+    public function actionGetDepartmentList(){
+        $user = $this->get_current_user($_GET);
+
+        if(!$user){
+            $this->renderJSON(array('status'=>false, 'error_msg'=>'User not logged in'));
+            return;
+        }
+
+
+        $classes = array();
+
+        //Get all classes for this user
+        if($user->user_type == 's' || $user->user_type == 'a'){
+            $class_users = ClassUser::model()->findAll('user_id=:user_id', array(':user_id'=>$user->user_id));
+            foreach($class_users as $class_user){
+                array_push($classes, $class_user->class);
+            }
+        }else if($user->user_type == 'p'){
+            $classes = ClassModel::model()->find('professor_id=:user_id', array(':user_id'=>$user->user_id));
+        }
+
+
+        function in_list($class, $departments){
+            foreach($departments as $department){
+                if((string)$class->department_id == (string)$department['department_id']){
+                    return true;
+                }
+            }
+
+
+            return false;
+        }
+         //Check if this classes department exists in list yet
+
+//
+//
+        //Get unique departments
+        $departments = array();
+
+
+        include_once "color/color.php";
+
+
+        foreach($classes as $class){
+            if(!in_list($class, $departments)){
+                $new_department = $this->model_to_array($class->department);
+                $new_department['classes'] = array();
+
+                array_push($departments, $new_department);
+            }
+        }
+
+
+        $colors = get_unique_random_color_list(count($departments));
+
+        for($i = 0; $i < count($departments); $i++){
+            $departments[$i]['color'] = $colors[$i];
+        }
+
+
+
+
+        foreach($classes as $class){
+            for($i = 0; $i < count($departments); $i++){
+                if($class->department_id == $departments[$i]['department_id']){
+                    array_push($departments[$i]['classes'], $this->model_to_array($class));
+                }
+            }
+        }
+
+
+
+        $this->renderJSON(array('status'=>true, 'departments'=>$departments, 'classes'=>$classes));
+        return;
+    }
+
+
+
+
+
+
+
     public function actionJson(){
         if(isset($_GET['id'])){
             $user=User::model()->find('user_id = :uid', array(':uid'=>$_GET['id']));
@@ -1043,19 +1128,22 @@ class ProfileController extends Controller
         $index = sizeof($data['classes']);
         if($user->user_type === "p"){
             $classesTaught = ClassModel::model()->findAll('professor_id=:pid',array(':pid'=>$user->user_id));
-            foreach($classesTaught as $i=>$class){
-                if($class->course){
-                    $data['classes'][$i+$index]['course_name']=$class->course->course_name;
-                    $data['classes'][$i+$index]['description']= $class->course->course_desc;
+            foreach($classesTaught as $class){
+                if(!ClassUser::model()->exists('class_id = :cid and user_id= :uid',array(':cid'=>$class->class_id,':uid'=>$user->user_id))){
+                    if($class->course){
+                        $data['classes'][$index]['course_name']=$class->course->course_name;
+                        $data['classes'][$index]['description']= $class->course->course_desc;
+                    }
+                    if($class->department){
+                        $data['classes'][$index]['department_name']=$class->department->department_name;
+                        $data['classes'][$index]['department_link']=Yii::app()->getBaseUrl(true).'/department/'.$class->department->department_id;
+                    }
+                    $data['classes'][$index]['section']=$class->section_id;
+                    $data['classes'][$index]['class_id']=$class->class_id;
+                    $data['classes'][$index]['class_picture']= ($class->pictureFile) ?
+                        Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
+                    $index++;
                 }
-                if($class->department){
-                    $data['classes'][$i+$index]['department_name']=$class->department->department_name;
-                    $data['classes'][$i+$index]['department_link']=Yii::app()->getBaseUrl(true).'/department/'.$class->department->department_id;
-                }
-                $data['classes'][$i+$index]['section']=$class->section_id;
-                $data['classes'][$i+$index]['class_id']=$class->class_id;
-                $data['classes'][$i+$index]['class_picture']= ($class->pictureFile) ?
-                    Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
 
             }
         }

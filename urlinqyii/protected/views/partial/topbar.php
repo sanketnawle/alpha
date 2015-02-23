@@ -24,6 +24,11 @@
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftpanel/leftpanel.css' />
 </head>
 <body>
+
+    <script id="circle_template" type="text/x-handlebars-template">
+        <div class="circle">{{department_id}} {{department_name}}</div>
+    </script>
+
     <div class="topbar">
         <div id = "topbar_responsive_holder">
             <div class="left">
