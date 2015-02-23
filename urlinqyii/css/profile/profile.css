@@ -139,9 +139,9 @@ div#modal_controls.student_modal_controls_student{
     float:left;
 }
 #modal_controls{
-    background-color: #777;
+    background: transparent!important;
     height: 53px;
-
+    border: none!important;
 
     font-family: 'Open Sans', sans-serif;
     color: white;
@@ -170,6 +170,7 @@ div#modal_controls.student_modal_controls_student{
     cursor: default;
     padding-top: 8px;
     padding-left: 2px;
+    display: none!important;
     padding-bottom: 13px;
 }
 
@@ -185,6 +186,7 @@ div#modal_controls.student_modal_controls_student{
     background-size: auto!important;
     float: left;
     background-position: 0px -983px;
+    display: none;
 }
 .close_modal{
     font-weight: 600;
@@ -1154,9 +1156,20 @@ div.user_more_info{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    height: 22px;
 }
 /*
 div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div.tab_img, div.tab.active:hover div.tab_text{
     opacity: 1.0;
     cursor:default!important;
 }*/
+
+#modal_controls {
+    width: 150px;
+    float: right;
+}
+
+
+#department_circles {
+    height: 100px;
+}

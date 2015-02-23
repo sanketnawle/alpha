@@ -7,11 +7,11 @@
     <div id="profile_wrapper" data-user_id={{user_id}}>
         <div id="profile_foreground_overlay"></div>
         <div id="modal_header">
+
+
             {{#if professor}}
             <div id="modal_controls" class = "student_modal_controls_professor">
 
-                <span class="branding_left"></span>
-                <div id="modal_label">Profile <span class = "white_vertical_line"></span> Professor</div>
                 <a class="close_modal"></a>
                 <div class = "help_div dark">
                     <div class = "wedge"></div>
@@ -23,8 +23,6 @@
             {{else}}
             <div id="modal_controls" class = "student_modal_controls_student">
 
-                <span class="branding_left"></span>
-                <div id="modal_label">Profile <span class = "white_vertical_line"></span> Student</div>
                 <a class="close_modal"></a>
                 <div class = "help_div dark">
                     <div class = "wedge"></div>
@@ -33,6 +31,11 @@
             </div>
 
             {{/if}}
+
+            <div id="department_circles"></div>
+
+
+
 
 
             <div id="showcase_wrapper">

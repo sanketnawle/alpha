@@ -11,7 +11,7 @@
     <body>
         <div id="reminders_section">
             <div>
-                <div class="reminders_header header">Reminders</div>
+                <div class="reminders_header header">Your Reminders</div>
                 <ul class="reminder_entries">
 
 
@@ -20,7 +20,6 @@
 
                 </ul>
                 <div class="footer reminders_footer">
-                    <a class = "reminders_cal_link" href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">See full calendar<div class = "blue_right_arrow small_icon_map"></div></a>
                 </div>
             </div>
         </div>
@@ -28,11 +27,11 @@
         <script id="reminder_template" type="text/x-handlebars-template">
 
             <li class="tdo">
-                <div class="icon date">
-                    <div class = "mini_cal_top_border"></div>
-                    <div class="month">{{month}}</div>
-                    <div class="day">{{day}}</div>
-                </div>
+                // <div class="icon date">
+                //     <div class = "mini_cal_top_border"></div>
+                //     <div class="month">{{month}}</div>
+                //     <div class="day">{{day}}</div>
+                // </div>
                 <div class="content">
 
 

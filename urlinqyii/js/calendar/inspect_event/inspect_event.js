@@ -65,10 +65,15 @@ jQuery(document).ready(function(){
         var event_div_hex = $event_div.attr("data-hex");
         var event_title = $event_div.attr("data-name");
         var event_description = $event_div.attr("data-description");
+        var event_type = $event_div.attr('data-event_type');
+        var event_url = $event_div.attr('data-url');
+
+
         jQuery($event_div).addClass("colorfied");
         var $window = $(window);
         var windowsize = $window.width();
-        var click_x_difference = event.pageX;      
+        var click_x_difference = event.pageX;
+
 
         if($event_div.hasClass('month_day_event')){
             jQuery($event_div).css({"background-color": event_div_hex});
@@ -114,31 +119,46 @@ jQuery(document).ready(function(){
         jQuery($inspect_event_whentime).text(event_timewhen_data);
         jQuery($inspect_event_description).text(event_description);
 
+
+
+
         //get people going to this event
         jQuery($inspect_event_who).empty();
-        $.getJSON(
-            globals.base_url+'/event/'+event_id+'/Attendees',
-            function(response){
-                if(response['success']){
-                    var source=$('#event_attendee_template').html();
-                    var template = Handlebars.compile(source);
-                    var i;
-                    for(i=0;i<3 && i<response['attendees'].length;i++){
-                        response['attendees'][i]['base_url']=globals.base_url;
-                        $inspect_event_who.append(template(response['attendees'][i]));
-                    }
-                    var length = response['attendees'].length;
-                    if(length>3){
-                        $inspect_event_who.append('<div class="more_attendees_button">and '+(length-3)+' more</div>');
-                        var $more_attendees_list = $('<div class="more_attendees_list" style="display: none"></div>');
-                        for(i=3;i<length;i++){
-                            $more_attendees_list.append('<p>'+response['attendees'][i]['firstname']+' '+response['attendees'][i]['lastname']+'</p>');
+
+
+        if(event_type == 'NYU Event'){
+            if(event_url){
+                jQuery('div#inspect_event_who.inspect_data').append("<a target='_blank' href='" + event_url + "'>" + event_url + "</a>");
+            }
+        }else{
+            $.getJSON(
+                globals.base_url + '/event/' + event_id + '/Attendees',
+                function(response){
+                    if(response['success']){
+                        var source=$('#event_attendee_template').html();
+                        var template = Handlebars.compile(source);
+                        var i;
+                        for(i=0;i<3 && i<response['attendees'].length;i++){
+                            response['attendees'][i]['base_url'] = globals.base_url;
+                            $inspect_event_who.append(template(response['attendees'][i]));
                         }
-                        $inspect_event_who.append($more_attendees_list);
+
+
+
+                             var length = response['attendees'].length;
+                            if(length>3){
+                                $inspect_event_who.append('<div class="more_attendees_button">and '+(length-3)+' more</div>');
+                                var $more_attendees_list = $('<div class="more_attendees_list" style="display: none"></div>');
+                                for(i=3;i<length;i++){
+                                    $more_attendees_list.append('<p>'+response['attendees'][i]['firstname']+' '+response['attendees'][i]['lastname']+'</p>');
+                                }
+                                $inspect_event_who.append($more_attendees_list);
+                            }
                     }
                 }
-            }
-        );
+            );
+        }
+
 
         if(!$inspect_event_popup.is(":visible")){
             if(event.pageY <= 300){

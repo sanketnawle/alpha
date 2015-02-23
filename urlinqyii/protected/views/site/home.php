@@ -96,7 +96,7 @@
                                         <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'user','origin_id'=>$user->user_id ,'is_admin'=>false)); ?>
                                     </div>
 
-                                    <div id = "tutorial_starter" class = "welcome_button">
+                                    <div id = "tutorial_starter" class = "welcome_button <?php echo $show_fbar_tutorial.' '.$show_profile_tutorial.' '.$show_planner_tutorial;?>">
                                         <h5>Discover how Urlinq can improve your education</h5>
                                     </div>
 
@@ -115,7 +115,160 @@
                                     </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
+                                     <?php if($first_time){ ?>
+                                     <div class = 'post new_fd' id = 'welcome_post'>
 
+                                        <div class="post_main">
+                                        <div class = "post_type_marker reg_post_type">
+                                            <span class = "post_type_icon"></span>
+                                        </div>
+                                        <div class="post_head">
+                                        <div class="post_title">
+                                            <div class = 'image_container'>
+                                                <a>
+                                                    <div class = 'post_user_icon'  style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test.jpg')">
+                                                    </div>
+                                                </a>
+
+                                            </div>
+
+                                            <a>
+                                                <span class = 'post_owner' >
+                                                    Professor Urlinq
+                                                </span>
+                                            </a>
+
+
+
+
+
+
+
+
+                                         </div>
+                                            <div class = 'post_time'> <span class = "time_icon"></span>
+                                                <time class='timeago' datetime= '{{created_time}}'>
+                                                    A few seconds ago
+                                                </time>
+                                            </div>
+
+                                            <div class = 'post_msg post_lr_link_msg'>
+                                                    <span class='msg_span seemore_anchor'>
+                                                               Hi! I'm Professor Urlinq. Welcome to our site!
+                                                    </span>
+
+
+
+
+
+                                             </div>
+
+                                        </div>
+
+                                       </div>
+                                    </div>
+                                    <div class = 'post new_fd' id = 'welcome_post_2'>
+
+                                        <div class="post_main">
+                                        <div class = "post_type_marker reg_post_type">
+                                            <span class = "post_type_icon"></span>
+                                        </div>
+                                        <div class="post_head">
+                                        <div class="post_title">
+                                            <div class = 'image_container'>
+                                                <a>
+                                                    <div class = 'post_user_icon'  style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test.jpg')">
+                                                    </div>
+                                                </a>
+
+                                            </div>
+
+                                            <a>
+                                                <span class = 'post_owner' >
+                                                    Professor Urlinq
+                                                </span>
+                                            </a>
+
+
+
+
+
+
+
+
+                                         </div>
+                                            <div class = 'post_time'> <span class = "time_icon"></span>
+                                                <time class='timeago' datetime= '{{created_time}}'>
+                                                    A few seconds ago
+                                                </time>
+                                            </div>
+
+                                            <div class = 'post_msg post_lr_link_msg'>
+                                                    <span class='msg_span seemore_anchor'>
+                                                         <div class="welcome_post_header">Tell us about yourself</div>
+                                                         <?php if($user->user_type == "s" && $user->studentAttributes){
+                                                                if(sizeof($user->majors)==0){?>
+                                                                   <div class="post_major_section">
+                                                                       <div class="post_major_add welcome_post_label">Add your major</div>
+                                                                       <input class = "post_major_input">
+                                                                   </div>
+                                                              <?php  }?>
+                                                                 <div class="post_year_name_section">
+                                                                     <div class="post_year_name_add welcome_post_label">Add your year</div>
+                                                                     <select class="post_year_name_input">
+                                                                         <option value="Freshman">Freshman</option>
+                                                                         <option value="Sophomore">Sophomore</option>
+                                                                         <option value="Junior">Junior</option>
+                                                                         <option value="Senior">Senior</option>
+                                                                         <option value="Master">Master</option>
+                                                                         <option value="PhD">PhD</option>
+                                                                     </select>
+                                                                 </div>
+
+                                                             <?php if(!$user->studentAttributes->year){?>
+                                                                 <div class="post_year_section">
+                                                                     <div class="post_year_add welcome_post_label">Add your year of graduation</div>
+                                                                     <input class = "post_year_input">
+                                                                 </div>
+
+                                                             <?php }?>
+
+                                                         <?php }?>
+                                                        <?php if($user->user_type == "p" && $user->professorAttribute){?>
+                                                            <?php if(!$user->professorAttribute->office_location){?>
+                                                                <div class="post_office_section">
+                                                                    <div class="post_office_add welcome_post_label">Add your office location</div>
+                                                                    <input class = "post_office_input">
+                                                                </div>
+
+                                                            <?php }if(!$user->professorAttribute->office_hours){?>
+                                                                <div class="post_office_hours_section">
+                                                                    <div class="post_office_hours_add welcome_post_label">Add your office hours</div>
+                                                                    <input class = "post_office_hours_input">
+                                                                </div>
+                                                            <?php }?>
+
+                                                        <?php }?>
+                                                        <?php if(!$user->user_bio){?>
+                                                            <div class="post_bio_section">
+                                                                <div class="post_bio_add welcome_post_label">Add a short bio</div>
+                                                                <textarea maxlength="240" type="text" class="post_bio_input" id="bio_input" cols="29" wrap="hard"></textarea>
+                                                            </div>
+                                                        <?php }?>
+                                                            <button class="post_submit_edit_profile">Save</button>
+                                                    </span>
+
+
+
+
+
+                                             </div>
+
+                                    </div>
+
+                                    </div>
+                                    </div>
+                                    <?php } ?>
                                         <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed', 'origin_type'=>'user', 'origin_id'=>$user->user_id ,'is_admin'=>false)); ?>
                                     </div>
 

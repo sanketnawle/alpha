@@ -131,6 +131,9 @@ class EventController extends Controller
             $events[$i]['color'] = $this->get_user_event_color($user,$events[$i]);
 
 
+
+
+
             //Get the origin data
             if($events[$i]['origin_type'] == 'class'){
                 $events[$i]['origin'] = $this->model_to_array(ClassModel::model()->find('class_id=:id',array(':id'=>$events[$i]['origin_id'])));
@@ -150,6 +153,11 @@ class EventController extends Controller
                 //reassign the name to make it easier to get in the handlebars
                 $events[$i]['origin']['name'] = $events[$i]['origin']['group_name'];
             }
+
+
+
+
+
         }
 
         return $events;
@@ -184,12 +192,10 @@ class EventController extends Controller
         //Get the events that this
         $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . ' AND MONTH(`end_date`) = MONTH("' . $date . '")')->queryAll();
 
-        $events = $this->add_event_data($events, $user);
+        $events = array_merge($events,$events_attending);
 
 
-
-
-        $data = array('success'=>true,'events'=>array_merge($events,$events_attending));
+        $data = array('success'=>true,'events'=>$this->add_event_data($events, $user));
 
         $this->renderJSON($data);
         return;
@@ -716,7 +722,6 @@ class EventController extends Controller
             return;
         }
     }
-
 
 
     //Error ids

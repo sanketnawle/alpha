@@ -1560,8 +1560,9 @@ function fbar_ready(origin_id) {
 
         function init(){
 
+            //if(globals.origin_type == 'club' || globals.origin_type == 'department' || globals.origin_type == 'group' || globals.origin_type == 'class'){
 
-            if(globals.origin_type == 'club' || globals.origin_type == 'department' || globals.origin_type == 'group'){
+            if(globals.origin_type != 'school'){
                 //get the current datetime object
                 var datetime = new Date();
 

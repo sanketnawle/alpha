@@ -165,12 +165,13 @@ em.pl_blue_circle{
     left: 57px;
 }
 
-span.create_planner_message {}
+.create_planner_message{
+    cursor: pointer;
+}
 
 
 
-
-.free_planner_message, .create_planner_message{
+.free_planner_message, .create_planner_message_pre{
     display: inline;
     position: absolute;
     font-size: 13.2px;
@@ -180,7 +181,7 @@ span.create_planner_message {}
     left: 54px;
     font-size: 17px;
 }
-.create_planner_message{
+.create_planner_message_pre{
     color: #029acf;
     cursor: pointer;
     text-decoration: none;

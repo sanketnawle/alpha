@@ -47,8 +47,9 @@ class ClassUser extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'class' => array(self::BELONGS_TO, 'ClassModel', 'class_id'),
             'color' => array(self::BELONGS_TO, 'Color', 'color_id'),
-            'class' => array(self::BELONGS_TO, 'Class', 'class_id')
+
 		);
 	}
 

@@ -489,6 +489,7 @@ label.where_label{
     background-color: #eee;
     border-radius: 2px;
     cursor:default;
+    position: relative;
     opacity: .45!important;
 }
 
@@ -518,6 +519,18 @@ label.where_label{
     cursor:default;
 }
 
+div.event_post_option{
+    display: none;
+    position: absolute;
+    right: 24px;
+    top: 0px;
+    width: 120px;
+}
+
+div.group.selected div.event_post_option{
+    display: block;
+}
+
 
 .group_name {
     width: 100%;
@@ -526,7 +539,12 @@ label.where_label{
     white-space: nowrap;
     line-height: 30px;
     font-size: 13.4px!important;
+    position: absolute;
+    top: 2px;
     font-weight: 600;
+    opacity: 1;
+    z-index: 10000;
+    height: 25px;
     overflow: hidden;
     padding-left: 5px!important;
     text-overflow: ellipsis;
@@ -844,6 +862,83 @@ box-shadow: none!important;
 
 div.group.selected > div.group_name{
     color: #FFF!important;
+}
+
+input.checkbox_share_event{
+}
+
+input.checkbox_share_event[type=checkbox] ~ label.flat7bcal{
+    border-color: rgba(255, 255, 255, 0.83)!important;
+
+}
+
+input.checkbox_share_event[type=checkbox] ~ label.flat7bcal > span.move{
+    opacity: .8;
+    
+}
+
+input.checkbox_share_event[type=checkbox] ~ span.share_in_feed_text{
+    opacity: .7;
+    
+}
+
+input.checkbox_share_event[type=checkbox]:checked ~ label.flat7bcal{
+    border-color: rgba(255, 255, 255, 1)!important;
+
+}
+
+input.checkbox_share_event[type=checkbox]:checked ~ label.flat7bcal > span.move{
+    margin-left: 19px!important;
+    
+    opacity: 1;
+}
+
+input.checkbox_share_event[type=checkbox]:checked ~ span.share_in_feed_text{
+    opacity: 1;
+    
+}
+
+span.share_in_feed_text{
+
+    opacity: 1;
+    font-size: 12px;
+    
+
+    position: relative;
+
+    top: -1px;
+
+    float: left;
+    font-weight: 100;
+    text-transform: lowercase;
+}
+
+input.flat7cal{
+    display: none;
+}
+
+label.flat7bcal{
+    display: inline-block; border-radius: 20px; float: left; width: 37px; float: right;
+    position: relative;
+    left: -9px;
+    top: 5px; 
+    height: 16.5px; 
+    border: 2px solid #FFFFFF!important; cursor: pointer; 
+    background-color: transparent!important;  -webkit-transition: background-color 0.6s ease, border 0.6s ease; -moz-transition: background-color 0.6s ease, border 0.6s ease; -ms-transition: background-color 0.6s ease, border 0.6s ease; -o-transition: background-color 0.6s ease, border 0.6s ease; transition: background-color 0.6s ease, border 0.6s ease;
+
+}
+
+label.flat7bcal > span.move{
+    border: none!important;
+
+    margin-left: 1px!important;
+    width: 13px;
+    margin-top: 1px;
+    height: 11px;
+}
+
+div.group.selected > input.checkbox_share_event{
+    display: block;
 }
 
 input.invite_input{

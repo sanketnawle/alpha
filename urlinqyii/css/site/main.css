@@ -2475,22 +2475,39 @@ div.no_select::-moz-selection { background:transparent; }
  
 .pulse_tp_0
 {
-  position: absolute;
-  top:200px;
-  left:350px;
-  opacity:0;
-  height: 58px;
-  width: 58px;
-  z-index: 10;
-  background: url('../../assets/tip_throbber.png') no-repeat scroll 0px 0px transparent;
+  /*background: url('../../assets/tip_throbber.png') no-repeat scroll 0px 0px transparent;*/
   cursor: pointer;
-  -webkit-animation:throb .65s steps(12) alternate infinite;
+ /* -webkit-animation:throb .65s steps(12) alternate infinite;
   -moz-animation:throb .65s steps(12) alternate infinite;
   animation:throb .65s steps(12) alternate infinite;
+*/
+    -webkit-border-radius: 100px;
+    border-radius:100px;
+    height: 33px;
+    width:33px;
+    position: absolute;
+    top:200px;
+    opacity: 0;
+    left:350px;
+    background: #029acf;
+    z-index: 10;
+    display: none;
+    -webkit-animation-name: pulsate;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite
 }
+
+
 
 body.first_visit #tutorial_starter{
     display: block;
+}
+
+@-webkit-keyframes pulsate {
+    0% {-webkit-transform:scale(.6); opacity: 1;}  
+    50% {-webkit-transform:scale(1); opacity: .1;}
+    100% { -webkit-transform:scale(.6);  opacity: 1;}
 }
 
 #tutorial_starter{
@@ -2502,7 +2519,7 @@ display: none;
     text-shadow: 0 0 0 !important;
     background: #ebebeb !important;
     border: 1px solid #ddd !important;
-    color: #aaa !important;
+    color: rgba(170, 170, 170, 0.42) !important;
     cursor: default!important;
     pointer-events:none!important;
     text-shadow:none!important;
@@ -2514,7 +2531,8 @@ display: none;
     margin-top: 26px;
     width: 440px;
     margin-left: auto;
-    background: none repeat scroll 0% 0% #2A80B9; color: #FFF !important; text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+    background: none repeat scroll 0% 0% #2A80B9; 
+    color: #FFF; text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     margin-right: auto;
     padding: 10px 0;
@@ -2559,7 +2577,6 @@ display: none;
     font-family: Avenir;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     font-weight: 900;
-    color: #FFF;
     margin-top: 2px;
 }
 
@@ -2865,7 +2882,7 @@ display: none;
   position: fixed;
   width: 100%;
   height:100%;
-  background-color: rgba(0,0,0,0.45);
+  background-color: rgba(0,0,0,0.6);
   z-index: 100;
   top:0px;
   left:0px;
@@ -2907,3 +2924,61 @@ body#body_home.first_visit #topbar_responsive_holder{
 }
 
 div#topbar_responsive_holder {}
+
+.welcome_post_header{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid grey;
+}
+
+.post_submit_edit_profile{
+    background-color: rgba(6, 155, 207, 0.8);
+    border: 1px solid #029acf!important;
+    box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+    -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+    -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-family: Avenir;
+    font-weight: 100;
+    font-size: 13.5px;
+    color: #FFF;
+    margin-top:10px;
+}
+
+.post_year_name_input{
+    /* white-space: nowrap; */
+
+    margin-bottom: 3px;
+    border-radius: 2px;
+    background: #fff;
+    padding: 3px 4px;
+    font-size: 13px;
+    margin-left: 10px;
+    border: 1px solid #d8d8d8;
+    border-top-color: #c0c0c0;
+}
+
+.post_year_input, .post_major_input, .post_bio_input{
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    margin-bottom: 3px;
+    border-radius: 2px;
+    background: #fff;
+    padding: 3px 4px;
+    font-size: 13px;
+    margin-left: 10px;
+    border: 1px solid #d8d8d8;
+    border-top-color: #c0c0c0;
+}
+
+.welcome_post_label{
+    margin-bottom: 6px;
+}
+
+.post_bio_input{
+    resize: none;
+}
