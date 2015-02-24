@@ -101,6 +101,8 @@
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_people/invite_people.css" type = "text/css" rel = "stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/feed/feed.css" rel="stylesheet" type="text/css"><!-- Avenir:L,N,B -->
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/bootstrap.css" rel="stylesheet" type="text/css"><!-- Avenir:L,N,B -->
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/bootstrap-theme.css" rel="stylesheet" type="text/css"><!-- Avenir:L,N,B -->
 
 
 
@@ -159,6 +161,7 @@
 
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/inspect_event/inspect_event.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/bootstrap.js"></script>
 
 </head>
 <body id = "body_calendar">
@@ -182,7 +185,7 @@
 <!--                    <button class="print" ng-click="printGrid()">&nbsp;</button>-->
                     <form class="search" id="form_calendar_search">
                         <input type="submit" value="">
-                        <input type="text" id="txt_initial_search" placeholder="Search">
+                        <input type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="Search">
                     </form>
                 </div>
                 <div class="column center">

@@ -1,3 +1,4 @@
+$(document).ready(function(){
 ;(function($){
     $.fn.extend({
         donetyping: function(callback,timeout){
@@ -35,19 +36,11 @@
     });
 })(jQuery);
 
-$('#search_text').donetyping(function(){
+$('#txt_initial_search').donetyping(function(){
   search_calendar();
 });
 
-$(document).on('focus','#txt_initial_search', function(){
 
-    $(".left_panel_create_button.left_panel_create_button").addClass("disabled");
-    $(".mini_calendar_cover").addClass("enabled");
-    $('#events_results_found').html("");
-    $('#search_dialog').show();
-    $('#search_text').focus();
-
-});
 
 var search_calendar = function(event){
      var month = new Array();
@@ -63,7 +56,7 @@ var search_calendar = function(event){
     month[9] = "Oct";
     month[10] = "Nov";
     month[11] = "Dec";
-    txt = $('#search_text').val();
+    txt = $('#txt_initial_search').val();
     if(txt.length>1){
         html_content = '';
         $.ajax({
@@ -72,31 +65,7 @@ var search_calendar = function(event){
                data: {"search_text":txt},
                success: function(response) {
                 if(response["events"]){
-                    $.each(response["events"],function(index, item){
-                         date_split = item['start_date'].split("-")
-                         redirect_date = date_split[1]+"/"+date_split[2]+"/"+date_split[0]
-                         var d = new Date(redirect_date);
-                         html_content+= '<div style="padding-left:40px" class="post">\
-                                    <div class="post_main event_post">\
-                                    <div class="post_head">\
-                                        <div class="post_event_date_box" style="background-color:'+item["color"]["hex"] +';">\
-                                            <div class="top_dark_area"></div>\
-                                            <div class="post_event_month post_event_date_box_text">'+month[d.getMonth()]+'</div>\
-                                            <div class="post_event_day post_event_date_box_text">'+date_split[2]+'</div>\
-                                        </div>\
-                                        <div class="event_post_toparea">\
-                                            <div class="post_event_title"><a class="go_to_event" start_date="'+item["start_date"]+'" start_time="'+item["start_time"]+'" end_date="'+item["end_date"]+'" end_time="'+item["end_time"]+'" all_day="'+item["all_day"]+'" title="'+item["title"]+'">'+item["title"]+'</a></div>\
-                                                <div class="event_context">\
-                                                    <div class="post_event_time_holder">\
-                                                    <div class="post_event_start_time">1:49 PM</div> to <div class="post_event_end_time">2:49 PM</div>\
-                                                    </div>\
-                                                </div>\
-                                        </div>\
-                                    </div>\
-                                    </div>\
-                                </div>';
-                    });
-                $('#events_results_found').html(html_content);
+                   show_results(response)
                 }
                },
                error: function(jqXHR, textStatus, errorMessage) {
@@ -106,11 +75,45 @@ var search_calendar = function(event){
     }
     else{
 
-        $('#events_results_found').html("");
+        $('#txt_initial_search').popover("hide");
     }
 };
+ var month = new Array();
+    month[0] = "Jan";
+    month[1] = "Feb";
+    month[2] = "Mar";
+    month[3] = "Apr";
+    month[4] = "May";
+    month[5] = "Jun";
+    month[6] = "Jul";
+    month[7] = "Aug";
+    month[8] = "Sep";
+    month[9] = "Oct";
+    month[10] = "Nov";
+    month[11] = "Dec";
 
-
+var show_results = function(response){
+    $('.popover-content').html('');
+    html_content = '';
+    $.each(response["events"],function(index, item){
+         date_split = item['start_date'].split("-")
+         redirect_date = date_split[1]+"/"+date_split[2]+"/"+date_split[0]
+         var d = new Date(redirect_date);
+         html_content+= '<a style="width:100%;height:100%;background-color:'+item["color"]["hex"]+'" class="row go_to_event" start_date="'+item["start_date"]+'" start_time="'+item["start_time"]+'" end_date="'+item["end_date"]+'" end_time="'+item["end_time"]+'" all_day="'+item["all_day"]+'" title="'+item["title"]+'">\
+                            <div class="col-md-5">'+month[d.getMonth()]+' '+date_split[2]+'</div>\
+                            <div class="col-md-7">' +item["title"]+'\
+                            </div>\
+                        </a><br><hr>';
+    });
+    $("#txt_initial_search").popover({
+          html:true,
+          title:"Search results:",
+          content:html_content
+          }); 
+    $("#txt_initial_search").popover('show'); 
+    $(".popover-content").html(html_content);
+};
+});
 $(document).on('click','#search_back_button',function(e){
     $(".left_panel_create_button.left_panel_create_button").removeClass("disabled");
     $(".mini_calendar_cover").removeClass("enabled");
@@ -120,6 +123,7 @@ $(document).on('click','#search_back_button',function(e){
 
 
 $(document).on('click','.go_to_event',function(event){
+    $("#txt_initial_search").popover("hide");
      jQuery(".left_panel_create_button.left_panel_create_button").removeClass("disabled");
         jQuery(".mini_calendar_cover").removeClass("enabled");
    event.preventDefault(); 
@@ -133,8 +137,6 @@ $(document).on('click','.go_to_event',function(event){
     item_color = {}
     item_color["hex"] = "#669999";
     item['color'] = item_color;
-    console.log(item['start_date']);
-    $('#search_back_button').trigger('click');
     //show_day_event(item);
     date_split = item['start_date'].split("-")
     redirect_date = date_split[2]+"/"+date_split[1]+"/"+date_split[0]
