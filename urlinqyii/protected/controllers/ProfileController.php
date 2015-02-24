@@ -1260,7 +1260,8 @@ class ProfileController extends Controller
             }
          }
         $data['base_url'] = Yii::app()->getBaseUrl(true);
-        $data['professor'] = $user->user_type == "p";
+        $data['professor'] = $user->user_type === "p";
+        $data['admin'] = $user->user_type === "a";
 
         if(!$data['own_profile']){
             $data['is_following']=UserConnection::model()->exists('from_user_id = :u1 and to_user_id = :u2 ',

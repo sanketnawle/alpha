@@ -2983,3 +2983,8 @@ div#topbar_responsive_holder {}
 .post_bio_input{
     resize: none;
 }
+
+#group_user_action_button.own_department{
+    padding-left: 10px;
+    padding-right: 10px;
+}
