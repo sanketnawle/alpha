@@ -447,8 +447,11 @@
                                     {{#if professor}}
                                     <span class = "title">Professor</span>
                                     {{else}}
-                                    <span class = "title">Student</span>
-                                    <span class = "class_year">Senior</span>
+                                        {{#if admin}}
+                                        <span class = "title">Administrator</span>
+                                        {{else}}
+                                        <span class = "title">Student</span>
+                                        {{/if}}
                                     {{/if}}
 
 
@@ -502,8 +505,11 @@
                                     {{#if professor}}
                                     <span class = "title">Professor</span>
                                     {{else}}
+                                    {{#if admin}}
+                                    <span class = "title">Administrator</span>
+                                    {{else}}
                                     <span class = "title">Student</span>
-                                    <span class = "class_year">Senior</span>
+                                    {{/if}}
                                     {{/if}}
 
 
