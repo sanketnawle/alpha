@@ -3,14 +3,14 @@ div.month-grid .grid-item.prem{
 }
 
 body{
-	background-image: url(../../assets/noise_bg.gif);
-	background-color: #FAFAF9;
+    background-image: url(../../assets/noise_bg.gif);
+    background-color: #FAFAF9;
 }
 
 
 
 body#body_calendar .topbar > #topbar_responsive_holder{
-	max-width:100%;
+    max-width:100%;
 }
 
 div.check > i.checkmark{
@@ -28,7 +28,7 @@ div.check > i.checkmark{
 }
 
     body#body_calendar .topbar #topbar_responsive_holder .center ul{
-    	width:481px;
+        width:481px;
     }  
 
 div.title_background{
@@ -47,7 +47,7 @@ div.check.checked > i.checkmark{
 }
 
 .body .month-view .month-grid .grid-item{
-	color:#333;
+    color:#333;
 }
 
 div.body .grid-view .grid .grid-item:nth-of-type(7n), div.body .grid-view .grid .grid-item:nth-of-type(7n + 1), .body .grid-view .grid .grid-item:nth-of-type(1) {
@@ -79,7 +79,7 @@ height: 11px;
 }
 
 div.day_event_holder.colorfied span.icon.icon-clock{
-	color: #fff!important;
+    color: #fff!important;
 }
 
 */
@@ -91,12 +91,12 @@ margin-left: 14px;
 }
 
 .body .day-view div.day-grid{
-	border-left:none!important;
-	border-right:none!important;
+    border-left:none!important;
+    border-right:none!important;
 }
 
 div.grid-event.week_event_holder.event_holder{
-	min-height:48px;
+    min-height:48px;
 }
 
 
@@ -105,7 +105,7 @@ div.inspect_event_detail{
 }
 
 div.inspect_event_detail div.inspect_label{
-	
+    
 }
 
 div.white_bg_line_blocker{
@@ -118,8 +118,8 @@ right: 0;
 }
 
 .body .grid-view .grid .grid-item .grid-event.week_event_holder.event_holder,.body .grid-view .grid .grid-item .grid-event.week_event_holder.event_holder:hover{
-	background-color:#FFF;
-	margin-top:0px;
+    background-color:#FFF;
+    margin-top:0px;
 }
 
 .body .day-view .day-grid div.day_event_holder{
@@ -161,7 +161,7 @@ padding-left: 10px;
 }
 
 div.day_event_holder.event_holder.colorfied div.event_description, div.day_event_holder.event_holder.colorfied div.event_location, div.day_event_holder.event_holder.colorfied div.event_location > span{
-	color:#FFF!important;
+    color:#FFF!important;
 }
 
 .ul-calendar .leftbar .create div.button .full > i {
@@ -190,7 +190,7 @@ color: #1D1D1D!important;
 }
 
 a.event_origin_link:hover > span.origin_name_text{
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 span.right_arrow_head_icon{
@@ -204,11 +204,11 @@ position: relative;
 }
 
 div.day_event_holder.event_holder.colorfied > a.event_origin_link > span.right_arrow_head_icon{
-	background-position: -18px 0px;
+    background-position: -18px 0px;
 }
 
 div.day_event_holder.event_holder.colorfied > a.event_origin_link{
-	color:#FFF!important;
+    color:#FFF!important;
 }
 
 div.event_type{
@@ -229,7 +229,7 @@ border-radius: 0px 0px 0px 2px;
 }
 
 div.event_holder.day_event_holder.colorfied > div.event_type, div.event_holder.day_event_holder.colorfied > div.event_name, div.event_holder.day_event_holder.colorfied > div.event_start_time{
-	color:#FFF!important;
+    color:#FFF!important;
 }
 
 div.inspect_data_oneline{
@@ -239,7 +239,7 @@ div.inspect_data_oneline{
 
 div.inspect_data{
     font-size: 13px;
-	
+    
     /* -webkit-font-smoothing: antialiased; */ -moz-osx-font-smoothing: grayscale;
     font-weight: 500;
     color: #333;
@@ -255,25 +255,25 @@ div.inspect_event_detail{
 
 div.event_name.month_event_name
 {
-	width:calc(100% - 59px);
-	width: -webkit-calc(100% - 59px);
-	overflow: hidden;
-	text-overflow: ellipsis;
-	line-height: 20px;
-	white-space: nowrap;
+    width:calc(100% - 59px);
+    width: -webkit-calc(100% - 59px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    white-space: nowrap;
 }
 
 .body .month-view .month-grid div.grid-item
 {
-	overflow-y:hidden;
+    overflow-y:hidden;
 }
 
 .ul-calendar .leftbar .providers .provider div.title{
-	background: #FFF!important;
-	box-shadow: !important;
-	position:relative!important;
-	border:1px solid transparent!important;
-	z-index:999;
+    background: #FFF!important;
+    box-shadow: !important;
+    position:relative!important;
+    border:1px solid transparent!important;
+    z-index:999;
 }
 .ul-calendar .leftbar .providers .provider{
     overflow: visible;
@@ -285,19 +285,19 @@ div.event_name.month_event_name
 }
 
 div.event_holder.day_event_holder.colorfied > div.event_type{
-	border-color:#FFF;
+    border-color:#FFF;
 }
 
 div.month_day_event.event_holder.colorfied > div {
-	color:#FFF!important;
+    color:#FFF!important;
 }
 
 div.month_day_event.event_holder.colorfied > div.event_color_bar.color_bar_month{
-	background-color:#FFF!important;
+    background-color:#FFF!important;
 }
 
 div.day_event_holder.event_holder.colorfied > div.event_color_bar.color_bar_day, div.week_event_holder.event_holder.colorfied > div.event_color_bar.color_bar_week {
-	background-color:#FFF!important;
+    background-color:#FFF!important;
 }
 
 div.day_event_holder.event_holder > div.event_color_bar.color_bar_day, div.event_color_bar.color_bar_week {
@@ -312,45 +312,45 @@ div.day_event_holder.event_holder > div.event_color_bar.color_bar_day, div.event
 
 
 div.body .month-view .month-grid{
-	bottom:11px;
+    bottom:11px;
 }
 
 .body.day .scroll-view{
-	top:40px;
-	bottom:50px;
+    top:40px;
+    bottom:50px;
 }
 
 div.body .grid-view .grid .grid-item .grid-event{
-	box-shadow: none;
-	-webkit-transition: all 0.0s;
-	-moz-transition: all 0.0s;
-	-o-transition: all 0.0s;
-	-ms-transition: all 0.0s;
-	transition: all 0.0s;
+    box-shadow: none;
+    -webkit-transition: all 0.0s;
+    -moz-transition: all 0.0s;
+    -o-transition: all 0.0s;
+    -ms-transition: all 0.0s;
+    transition: all 0.0s;
 }
 
 div.body .grid-view .grid .grid-item
 {
-	border-color:#e6e5e6;
+    border-color:#e6e5e6;
 }
 
 div.body .week-view .week-grid div.all_day_week_grid_item.grid-item{
-	border-bottom-width: 2px;
-	height: 42px;
+    border-bottom-width: 2px;
+    height: 42px;
 }
 
 div.body .week-view .week-grid{
-	border-left:none;
-	border-right:none;
+    border-left:none;
+    border-right:none;
 }
 
 div.body .day-view .day-grid .day_grid_item{
-	border-color:#e6e5e6;
+    border-color:#e6e5e6;
 }
 
 .body div.day-view .day-grid .day_grid_item.all_day{
-	min-height: 35px;
-	border-bottom-width: 2px;
+    min-height: 35px;
+    border-bottom-width: 2px;
 }
 
 div.all_day div.day_time {
@@ -365,8 +365,8 @@ border-top: 1px solid #e6e5e6;
 }
 
 div.day_time{
-	text-transform: uppercase;
-	color:#adadb6;
+    text-transform: uppercase;
+    color:#adadb6;
 }
 
 .ul-calendar .toolbar .wrap .column.right form input[type=submit] {
@@ -381,9 +381,9 @@ border-radius: 4px 0 0 4px;
 }
 
 .ul-calendar .body{
-	-webkit-box-shadow: 0 0px 2px rgba(0,0,0,0.07);
-	-moz-box-shadow: 0 0px 2px rgba(0,0,0,0.07);
-	box-shadow: 0 0px 2px rgba(0,0,0,0.07);
+    -webkit-box-shadow: 0 0px 2px rgba(0,0,0,0.07);
+    -moz-box-shadow: 0 0px 2px rgba(0,0,0,0.07);
+    box-shadow: 0 0px 2px rgba(0,0,0,0.07);
 }
 
 .ul-calendar .toolbar{
@@ -402,12 +402,12 @@ div#create_month_day_event_popup{
 }
 
 div.inspect_event_title div.abs_color_splash{
-	position:absolute;
-	top:0;
-	bottom:0;
-	left:0;
-	right:0;
-	opacity: .18;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    opacity: .18;
 }
 
 div.create_event_popup::after, div.inspect_event_popup::after{
@@ -430,9 +430,9 @@ transform: rotate(180deg);
 }
 
 .ul-calendar div.leftbar{
-	background-color:#FFF;
-	-webkit-box-shadow: 0 0px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 0px 2px rgba(0,0,0,0.07); box-shadow: 0 0px 2px rgba(0,0,0,0.07);
-	border-left: 1px solid #d4d4d4;
+    background-color:#FFF;
+    -webkit-box-shadow: 0 0px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 0px 2px rgba(0,0,0,0.07); box-shadow: 0 0px 2px rgba(0,0,0,0.07);
+    border-left: 1px solid #d4d4d4;
 }
 
 div.create_event_popup.top_position::after, div.inspect_event_popup.top_position::after {
@@ -502,15 +502,15 @@ opacity: .55;
 }
 
 .body .popup div.popup_edit_button > strong{
-	background-image: url(../../assets/small_icons.png);
-	background-position: -40px -490px;
-	display: inline-block;
-	z-index: 10000;
-	width: 15px;
-	position: relative;
-	height: 12px;
-	top: 1px;
-	left: 1px;
+    background-image: url(../../assets/small_icons.png);
+    background-position: -40px -490px;
+    display: inline-block;
+    z-index: 10000;
+    width: 15px;
+    position: relative;
+    height: 12px;
+    top: 1px;
+    left: 1px;
 }
 
 .body #inspect_event_popup_week div#inspect_event_delete_button_week, .body div#inspect_event_delete_button_month, .body div#inspect_event_delete_button_day{
@@ -519,7 +519,7 @@ width:65px!important;
 
 span.create_event_when_label{
     display: inline-block;
-	
+    
     margin-right: 10px;
     font-weight: 500; color: #575757; font-size: 14px;
 }
@@ -595,7 +595,7 @@ div.inspect_event_detail.inspect_event_detail_when{
 }
 
 span.category_description_middot{
-	
+    
 }
 
 form#create_month_day_event_form, form#create_week_day_event_form, form#create_day_event_form{
@@ -619,16 +619,16 @@ padding-right: 0px!important;
         display:none!important;
     }
     .ul-calendar .body{
-    	left:23px;
-    	right:23px;
+        left:23px;
+        right:23px;
     }
     #body_calendar .topbar > #topbar_responsive_holder > .right{
-    	right:10px!important;
+        right:10px!important;
     }
 
     .ul-calendar .toolbar{
-    	left:23px;
-    	right:23px;
+        left:23px;
+        right:23px;
     }
 }
 
@@ -675,4 +675,56 @@ padding-right: 0px!important;
     border-radius:3px;
     padding:5px !important;
     color:white !important;
+}
+
+form.search div.popover{
+    height: auto!important;
+
+    max-height: 500px;
+    z-index: 1000000000;
+    position: absolute;
+    top: auto;
+    min-height: 80px;
+    background: #FFF;
+    width: 202px;
+    top: 21px!important;
+    left: -1px!important;
+    border: 1px solid #d6d6d6; -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13);
+}
+
+form.search div.popover div.arrow{
+
+}
+
+form.search div.popover h3.popover-title{
+
+}
+
+form.search div.popover:before{
+
+}
+
+form.search div.popover div.popover-content{
+
+}
+
+form.search div.popover div.popover-content a.row.go_to_event{
+
+}
+
+form.search div.popover div.popover-content a.row.go_to_event div.col-md-5{
+
+}
+
+form.search div.popover div.popover-content a.row.go_to_event div.col-md-7{
+    
+}
+
+div.event_search_circle{
+
+}
+
+form.search div.popover div.arrow{
+    display: none!important;
+
 }
