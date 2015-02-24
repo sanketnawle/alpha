@@ -99,7 +99,8 @@ var show_results = function(response){
          date_split = item['start_date'].split("-")
          redirect_date = date_split[1]+"/"+date_split[2]+"/"+date_split[0]
          var d = new Date(redirect_date);
-         html_content+= '<a style="width:100%;height:100%;background-color:'+item["color"]["hex"]+'" class="row go_to_event" start_date="'+item["start_date"]+'" start_time="'+item["start_time"]+'" end_date="'+item["end_date"]+'" end_time="'+item["end_time"]+'" all_day="'+item["all_day"]+'" title="'+item["title"]+'">\
+         html_content+= '<a style="width:100%;height:100%;" class="row go_to_event" start_date="'+item["start_date"]+'" start_time="'+item["start_time"]+'" end_date="'+item["end_date"]+'" end_time="'+item["end_time"]+'" all_day="'+item["all_day"]+'" title="'+item["title"]+'">\
+                            <div class = "event_search_circle" style="background-color:'+item["color"]["hex"]+'"></div>\
                             <div class="col-md-5">'+month[d.getMonth()]+' '+date_split[2]+'</div>\
                             <div class="col-md-7">' +item["title"]+'\
                             </div>\
@@ -107,6 +108,10 @@ var show_results = function(response){
     });
     $("#txt_initial_search").popover({
           html:true,
+<<<<<<< HEAD
+          title:"",
+=======
+>>>>>>> 851d8a6ea35770bef5aa80ff0bf9b412eb8cc2ec
           content:html_content
           }); 
     $("#txt_initial_search").popover('show'); 

@@ -293,6 +293,7 @@ border: 1px solid #ddd;
 box-shadow: none;
 padding: 1px 0px;
 border-top: 1px solid #CDCDCD;
+position:relative;
 }
 
 #form_calendar_search_continue{
