@@ -125,18 +125,18 @@
                                         <div class="post_head">
                                         <div class="post_title">
                                             <div class = 'image_container'>
-                                                <a>
+
                                                     <div class = 'post_user_icon'  style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test.jpg')">
                                                     </div>
-                                                </a>
+
 
                                             </div>
 
-                                            <a>
+
                                                 <span class = 'post_owner' >
                                                     Professor Urlinq
                                                 </span>
-                                            </a>
+
 
 
 
@@ -167,6 +167,8 @@
 
                                        </div>
                                     </div>
+                                  <?php } ?>
+                                  <?php if($user->show_edit_profile_post){?>
                                     <div class = 'post new_fd' id = 'welcome_post_2'>
 
                                         <div class="post_main">
@@ -176,18 +178,18 @@
                                         <div class="post_head">
                                         <div class="post_title">
                                             <div class = 'image_container'>
-                                                <a>
+
                                                     <div class = 'post_user_icon'  style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test.jpg')">
                                                     </div>
-                                                </a>
+
 
                                             </div>
 
-                                            <a>
+
                                                 <span class = 'post_owner' >
                                                     Professor Urlinq
                                                 </span>
-                                            </a>
+
 
 
 

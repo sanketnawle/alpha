@@ -511,8 +511,12 @@ class ProfileController extends Controller
             //$user = User::model()->find('user_id=:uid', array(':uid' => $user_id));
             $user = $this->get_current_user($_POST);
             $user_id = $user->user_id;
-            if($user){
 
+            if($user){
+                if($user->show_edit_profile_post){
+                    $user->show_edit_profile_post=false;
+                    $user->save();
+                }
 
                 if($this->is_urlinq_admin($user)){
                     if(isset($_POST['user_id'])){

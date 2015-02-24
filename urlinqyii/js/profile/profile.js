@@ -1331,6 +1331,7 @@ $(document).ready(function() {
                     any_errors = true;
                 }
                 if(!any_errors){
+                    $('.post#welcome_post_2').hide();
                     closeEditProfile();
                 }
             },
@@ -1354,6 +1355,11 @@ $(document).ready(function() {
     });
 
     $(document).on('click','#cancel_edit_button',function(){
+        $.post(globals.base_url+'/profile/editProfile',{},function(response){
+            if(response['success']){
+                $('.post#welcome_post_2').hide();
+            }
+        });
         closeEditProfile();
     });
     function closeEditProfile(){
@@ -1430,7 +1436,7 @@ $(document).ready(function() {
         data.append('user_id', $('#profile_wrapper').attr('data-user_id'));
         //data.append("user", globals.user_id);
         $.ajax({
-            url: base_url+'/profile/changeProfilePicture',
+            url: globals.base_url+'/profile/changeProfilePicture',
             type: 'POST',
             data: data,
             cache: false,
@@ -1465,7 +1471,7 @@ $(document).ready(function() {
             follow=1;  //want to follow
         }
         $.ajax({
-            url: base_url+'/profile/followUser',
+            url: globals.base_url+'/profile/followUser',
             type: 'POST',
             data: {user_to_follow:$('#profile_wrapper').attr('data-user_id'),user:globals.user_id,follow:follow},
             dataType: 'json',
