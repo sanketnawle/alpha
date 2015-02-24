@@ -35,7 +35,7 @@ ulcal.factory("UCEventData", function ($http) {
     return {
         getData: function (params) {
             return $http({
-                url: base_url + "/event/getEvents",
+                url: base_url + "/event/getEvents?tz_offset="+(new Date().getTimezoneOffset()),
                 params: params
             });
         }

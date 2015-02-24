@@ -194,7 +194,7 @@ var DayGrid = (function (DayGrid) {
             var todays_date = jQuery('div#day-grid').attr('data-date');
             //console.log(todays_date);
 
-            jQuery.getJSON(base_url + '/event/getEvents?date=' + '2015-01-05',{date: todays_date}, function(json_data){
+            jQuery.getJSON(base_url + '/event/getEvents?date=' + '2015-01-05',{date: todays_date, tz_offset:(new Date().getTimezoneOffset())}, function(json_data){
                 jQuery.each(json_data['events'],function(index, event_json){
                     //console.log('DAY EVENTS');
 
