@@ -81,7 +81,7 @@ var search_calendar = function(event){
  var month = new Array();
     month[0] = "Jan";
     month[1] = "Feb";
-    month[2] = "Mar";
+    month[2] = "Mar";   
     month[3] = "Apr";
     month[4] = "May";
     month[5] = "Jun";
@@ -107,7 +107,6 @@ var show_results = function(response){
     });
     $("#txt_initial_search").popover({
           html:true,
-          title:"Search results:",
           content:html_content
           }); 
     $("#txt_initial_search").popover('show'); 
