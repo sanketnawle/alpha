@@ -32,9 +32,11 @@
                 {{#each classes}}
                 <div class = "circle_classes_item"> 
                    <span class = "circle_class_name">{{class_name}}</span>
-                   <span class = "circle_class_component">{{component}}</span>
-                   <span class = "circle_class_semester">{{semester}}</span>
-                   <span class = "circle_class_year">{{year}}</span>
+                   <div class = "circle_class_detail_container">
+                       <span class = "circle_class_component">{{component}}</span>
+                       <span class = "circle_class_semester">{{semester}}</span>
+                       <span class = "circle_class_year">{{year}}</span>
+                   </div>
                 </div>
                 {{/each}}
             </div>
