@@ -103,6 +103,7 @@ class EventController extends Controller
         $user = $this->get_current_user($_GET);
 //        $date = '2014-11-12';
         $date = $_GET['date'];
+       // $start_datetime = new DateTime($_GET['date'].' '.)
         //user_id=:user_id AND  //':user_id'=>1,
         //$events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>7));
         //$events = $user->get_all_events();

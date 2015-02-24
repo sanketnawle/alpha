@@ -150,9 +150,13 @@
 
 
                         <!-- #group_user_action_button performs either join/leave or follow/unfollow depending on context -->
-                        <?php if($is_following ){ ?>
+                        <?php if($is_following && !$own_department){ ?>
                             <div id="group_user_action_button" class="member" data-action_url="leave">
                                 <div id="group_user_action_button_text">Following</div>
+                            </div>
+                        <?php }else if($own_department){ ?>
+                            <div id="group_user_action_button" class="own_department">
+                                <div id="group_user_action_button_text">My Department</div>
                             </div>
                         <?php }else{ ?>
                             <div id="group_user_action_button" class="non_member" data-action_url="join">

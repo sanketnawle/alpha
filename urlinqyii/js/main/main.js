@@ -456,6 +456,9 @@ $(document).ready(function(){
 
         var $group_user_action_button = $(this);
 
+        if($group_user_action_button.hasClass('own_department')){
+            return;
+        }
         var verb = '';
         if($group_user_action_button.hasClass('member')){
             verb = 'leave';
