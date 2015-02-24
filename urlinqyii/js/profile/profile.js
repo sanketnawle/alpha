@@ -184,13 +184,16 @@ $(document).ready(function() {
 
         $('div.circle').each(function(){
             var width = 115;
-            var height = 115;     
+            var height = 115; 
+            var font_size = 15;    
             var class_count = $(this).attr("data-class_count");  
             var modulator = 1 + (class_count * .15);  
             width = width * modulator;
             height = height * modulator;
+            font_size = font_size * modulator;
             margin_height_offset = -(height/2);
             $(this).css({"width":width,"height":height,"margin-top":margin_height_offset});
+            $(this).find("h5").css({"font-size":font_size});
          });
     }
 

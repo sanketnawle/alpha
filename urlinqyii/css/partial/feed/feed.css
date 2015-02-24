@@ -787,11 +787,11 @@ opacity:0;
 -moz-transition: all .125s ease-in-out;
 -webkit-transition: all .125s ease-in-out;
 transition: all .125s ease-in-out;
-margin-right: -134px;
+right: -110px;
 /*-ms-transform: scale(1,.9);
 -webkit-transform: scale(1,.9); 
 transform: scale(1,.9);*/
-bottom: 20px;
+bottom: -14px;
 background: #FFF;
 padding-bottom: 4px;
 width: auto;
