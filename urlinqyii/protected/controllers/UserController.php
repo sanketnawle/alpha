@@ -162,14 +162,6 @@ class UserController extends Controller
 
 
         $users = $this->models_to_array(User::model()->findAllBySql('SELECT * FROM `user` WHERE user_id != ' . $user->user_id . ' LIMIT 10'));
-        foreach($users as $i=>$curr_user){
-            if($curr_user['picture_file_id']){
-                $picture = File::model()->find('file_id=:fid',array(':fid'=>$curr_user['picture_file_id']));
-                if($picture){
-                    $users[$i]['picture_url']=$picture->file_url;
-                }
-            }
-        }
         $data = array('success'=>true,'users'=>$users);
         $this->renderJSON($data);
         return;
@@ -188,7 +180,7 @@ class UserController extends Controller
     //            $this->renderJSON($data);
     //            return;
 
-                if (isset($_GET['last_notification_id'])) {
+                if (isset($_GET['limit_to_15'])) {
                     $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 15');
                 } else {
                     $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
@@ -223,14 +215,14 @@ class UserController extends Controller
 
                         include_once 'notification/notification-helper.php';
 
-                        $data = array('success'=>true,'notifications'=>get_notifications_data($user, $array_with_proper_notis));
+                        $data = array('success'=>true,'notifications'=>get_notifications_data($user, $array_with_proper_notis, true));
                         $this->renderJSON($data);
 
                         return;
 
                     } else {
                         include_once 'notification/notification-helper.php';
-                        $data = array('success'=>true,'notifications'=>get_notifications_data($user, $notifications));
+                        $data = array('success'=>true,'notifications'=>get_notifications_data($user, $notifications, true));
                         $this->renderJSON($data);
                         return;
                     }
@@ -277,7 +269,7 @@ class UserController extends Controller
             $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id > ' . $last_notification_id . ' ORDER BY notification_id DESC limit 0,5');
             if ($notifications) {
                                         include_once 'notification/notification-helper.php';
-                $data = array('success'=>true,'notifications'=>get_notifications_data($user, $notifications));
+                $data = array('success'=>true,'notifications'=>get_notifications_data($user, $notifications, true));
                 $this->renderJSON($data);
                 return;
             } else {
@@ -616,10 +608,10 @@ class UserController extends Controller
                 $user_data['departments'][$i] = $this->model_to_array($user_data['departments'][$i]);
                 $user_data['departments'][$i]['color'] = array('hex'=>'#FABBB3');
 
-                $dept_user = DepartmentFollow::model()->find('user_id=:user_id and department_id=:dept_id',array(':user_id'=>$user->user_id,':dept_id'=>$user_data['departments'][$i]['department_id']));
-                $color = Color::model()->find('color_id=:id',array(':id'=>$dept_user->color_id));
+              //  $dept_user = DepartmentFollow::model()->find('user_id=:user_id and department_id=:dept_id',array(':user_id'=>$user->user_id,':dept_id'=>$user_data['departments'][$i]['department_id']));
+              //  $color = Color::model()->find('color_id=:id',array(':id'=>$dept_user->color_id));
 
-                $user_data['departments'][$i]['color'] = array('hex'=>$color->hex);
+              //  $user_data['groups'][$i]['color'] = array('hex'=>$color->hex);
 
             }
 
