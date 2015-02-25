@@ -44,7 +44,7 @@ $(document).ready(function () {
     }
 
     var progress_bar = ["14%", "28%", "43%", "57%", "71%", "86%", "100%"];
-    var btn_text = ["Join your School", "Join your Major/Department", "Resend Verification", "Continue", "Continue", "Continue", "Let's Get Started"];
+    var btn_text = ["Join your School", "Join your Major/Department","", "Continue", "Continue", "Continue", "Let's Get Started"];
     var hint_text = ["Select your School", "Select your Major/Department", "Verify .edu Email", "Sign up for Courses - Pick your Section", "Who inspires you on campus?", "Find your Group", "Add a Photo"];
     var progress_bar_color = ["rgb(186, 81, 228)", "#009ed3", "rgb(110, 56, 169)", "rgb(0, 173, 61)", "rgb(242, 110, 0)", "#ec3856", "rgb(39, 178, 78)"];
 
@@ -169,6 +169,7 @@ $(document).ready(function () {
         if (curr == 2) {
             $(".onboard_textarea_t1").hide();
             $(".progress_footer_glyph_0").hide();
+            $(".next_progress").addClass("hide");
         }
 
         if (curr == 3) {
@@ -207,7 +208,7 @@ $(document).ready(function () {
         //if ((curr!=0)&&(curr!=3))
     }
 
-    $(".content_inner").slimScroll({ wrapperClass: "scroll-wrapper", barClass: "scroll-bar" });
+    $(".content_inner").slimScroll({ wrapperClass: "scroll-wrapper", barClass: "scroll-bar", touchScrollStep: "140" });
 
     function content_paint(curr) {
         var $canvas = $(".content_canvas");
@@ -281,7 +282,7 @@ $(document).ready(function () {
 
 
         } else if (curr == 2) {
-            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'</div>");
+            $canvas.append("<div class='step_2_card'><a href = 'http://mail.google.com/a/nyu.edu'><h1>Check your email</h1></a><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'><p class = 'confirm_link_wrapper'><span>Please confirm your email address</span><a href = 'http://mail.google.com/a/nyu.edu' class = 'confirm_links'>Check your inbox.</a><a class = 'next_progress confirm_links'>Resend email</a></p></div>");
             $('.skip_progress').hide();
             $(".full_skip").hide();
         } else if (curr == 3) {
