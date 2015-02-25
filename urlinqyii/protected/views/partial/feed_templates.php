@@ -97,7 +97,7 @@
                                                 {{#each files}}
                                                     {{#ifCond file_extension '===' 'jpg'}}
                                                     <div class = "post_attached_image_container">
-                                                        <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                                        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}" data-lightbox="{{original_name}}"  class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></a>
                                                         <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
                                                     </div>
                                                     {{else}}

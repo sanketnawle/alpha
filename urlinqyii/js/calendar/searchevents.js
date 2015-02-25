@@ -94,28 +94,25 @@ var search_calendar = function(event){
 
 var show_results = function(response){
     $('.popover-content').html('');
-    html_content = '';
+    html_content = '<br>';
     $.each(response["events"],function(index, item){
          date_split = item['start_date'].split("-")
          redirect_date = date_split[1]+"/"+date_split[2]+"/"+date_split[0]
          var d = new Date(redirect_date);
-         html_content+= '<a style="width:100%;height:100%;" class="row go_to_event" start_date="'+item["start_date"]+'" start_time="'+item["start_time"]+'" end_date="'+item["end_date"]+'" end_time="'+item["end_time"]+'" all_day="'+item["all_day"]+'" title="'+item["title"]+'">\
-                            <div class = "event_search_circle" style="background-color:'+item["color"]["hex"]+'"></div>\
-                            <div class="col-md-5">'+month[d.getMonth()]+' '+date_split[2]+'</div>\
-                            <div class="col-md-7">' +item["title"]+'\
-                            </div>\
-                        </a><br><hr>';
+         html_content+= '<a class="row go_to_event center" style="height:auto;border-radius:5px;width:100%;background-color:'+item["color"]["hex"]+'" start_date="'+item["start_date"]+'" start_time="'+item["start_time"]+'" end_date="'+item["end_date"]+'" end_time="'+item["end_time"]+'" all_day="'+item["all_day"]+'" title="'+item["title"]+'">\
+                            <div style="margin:5px">'+month[d.getMonth()]+' '+date_split[2]+'</div>\
+                            <div style="margin:5px;">' +item["title"].substring(0,20)+'</div>\
+                        </a><br><br><br>';
     });
     $("#txt_initial_search").popover({
           html:true,
-<<<<<<< HEAD
           title:"",
-=======
->>>>>>> 851d8a6ea35770bef5aa80ff0bf9b412eb8cc2ec
           content:html_content
           }); 
     $("#txt_initial_search").popover('show'); 
     $(".popover-content").html(html_content);
+    $(".popover-content").addClass("slimScrollBar");
+    $('.popover-content').attr("style","height:300px;overflow-y:auto;width:95%;margin:5px;")
 };
 });
 $(document).on('click','#search_back_button',function(e){

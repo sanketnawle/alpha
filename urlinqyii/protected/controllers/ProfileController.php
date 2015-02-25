@@ -511,8 +511,12 @@ class ProfileController extends Controller
             //$user = User::model()->find('user_id=:uid', array(':uid' => $user_id));
             $user = $this->get_current_user($_POST);
             $user_id = $user->user_id;
-            if($user){
 
+            if($user){
+                if($user->show_edit_profile_post){
+                    $user->show_edit_profile_post=false;
+                    $user->save();
+                }
 
                 if($this->is_urlinq_admin($user)){
                     if(isset($_POST['user_id'])){
@@ -982,6 +986,14 @@ class ProfileController extends Controller
     //Gets the list of unique department and classes
     //that this user is taking/has taken
     public function actionGetDepartmentList(){
+
+
+        if(!isset($_GET['user_id'])){
+            $this->renderJSON(array('status'=>false, 'error_msg'=>'user id not set'));
+            return;
+        }
+
+
         $user = $this->get_current_user($_GET);
 
         if(!$user){
@@ -990,16 +1002,19 @@ class ProfileController extends Controller
         }
 
 
+
+        $user_id = $_GET['user_id'];
+
         $classes = array();
 
         //Get all classes for this user
         if($user->user_type == 's' || $user->user_type == 'a'){
-            $class_users = ClassUser::model()->findAll('user_id=:user_id', array(':user_id'=>$user->user_id));
+            $class_users = ClassUser::model()->findAll('user_id=:user_id', array(':user_id'=>$user_id));
             foreach($class_users as $class_user){
                 array_push($classes, $class_user->class);
             }
         }else if($user->user_type == 'p'){
-            $classes = ClassModel::model()->find('professor_id=:user_id', array(':user_id'=>$user->user_id));
+            $classes = ClassModel::model()->find('professor_id=:user_id', array(':user_id'=>$user_id));
         }
 
 
