@@ -24,6 +24,23 @@ class EventController extends Controller
         }
 
 
+        $event_type = '';
+        try{
+            $event_type = $event['event_type'];
+        }catch(Exception $e){
+            $event_type = $event->event_type;
+        }
+
+        if($event_type == 'NYU Event'){
+            //Get the purple color
+            $color = Color::model()->find('color_id=:id', array(':id'=>16));
+            return $color;
+        }
+
+
+
+
+
         if($origin_type == 'class'){
 
 
