@@ -160,8 +160,8 @@ $(document).ready(function() {
 
                 }
 
-
-                $.getJSON(globals.base_url + '/profile/getDepartmentList', function(json_data){
+                var profile_id = $('#profile_wrapper').attr('data-user_id');
+                $.getJSON(globals.base_url + '/profile/getDepartmentList',{user_id: profile_id} ,function(json_data){
                     $.each(json_data['departments'], function(index, department_json){
                         render_circle(department_json);
                     });

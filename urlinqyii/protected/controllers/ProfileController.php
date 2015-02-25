@@ -986,6 +986,14 @@ class ProfileController extends Controller
     //Gets the list of unique department and classes
     //that this user is taking/has taken
     public function actionGetDepartmentList(){
+
+
+        if(!isset($_GET['user_id'])){
+            $this->renderJSON(array('status'=>false, 'error_msg'=>'user id not set'));
+            return;
+        }
+
+
         $user = $this->get_current_user($_GET);
 
         if(!$user){
@@ -994,16 +1002,19 @@ class ProfileController extends Controller
         }
 
 
+
+        $user_id = $_GET['user_id'];
+
         $classes = array();
 
         //Get all classes for this user
         if($user->user_type == 's' || $user->user_type == 'a'){
-            $class_users = ClassUser::model()->findAll('user_id=:user_id', array(':user_id'=>$user->user_id));
+            $class_users = ClassUser::model()->findAll('user_id=:user_id', array(':user_id'=>$user_id));
             foreach($class_users as $class_user){
                 array_push($classes, $class_user->class);
             }
         }else if($user->user_type == 'p'){
-            $classes = ClassModel::model()->find('professor_id=:user_id', array(':user_id'=>$user->user_id));
+            $classes = ClassModel::model()->find('professor_id=:user_id', array(':user_id'=>$user_id));
         }
 
 
