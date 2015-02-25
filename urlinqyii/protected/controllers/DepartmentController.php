@@ -22,8 +22,12 @@ class DepartmentController extends Controller
         $is_following = DepartmentFollow::model()->exists('user_id =:uid and department_id = :did'
             ,array(':uid'=>$this->get_current_user_id(),':did'=>$department->department_id));
 
+        $own_department = $user->department_id === $department->department_id;
 
-		$this->render('department',array('department'=>$department,'user'=>$user,'is_following'=>$is_following, 'is_admin'=>$is_admin));
+
+
+
+		$this->render('department',array('department'=>$department,'user'=>$user,'is_following'=>$is_following, 'is_admin'=>$is_admin, 'own_department'=>$own_department));
 	}
 
 

@@ -61,17 +61,19 @@ $(document).ready(function(){
         $('#tutorial_starter').click();
     }
 	$(".intro_div").click(function(){
-		$(this).find(".pulse_tp_0").fadeOut(300);
-		$(this).removeClass("intro_div");
-        var tutorial_num;
-        if($(this).hasClass("intro_div_1")){
-            tutorial_num = 1;
-        }else if($(this).hasClass("intro_div_2")){
-            tutorial_num = 2;
-        }else if($(this).hasClass("intro_div_3")){
-            tutorial_num = 3;
+        if($('#tutorial_starter').hasClass('tutorial_started')){
+            $(this).find(".pulse_tp_0").fadeOut(300);
+            $(this).removeClass("intro_div");
+            var tutorial_num;
+            if($(this).hasClass("intro_div_1")){
+                tutorial_num = 1;
+            }else if($(this).hasClass("intro_div_2")){
+                tutorial_num = 2;
+            }else if($(this).hasClass("intro_div_3")){
+                tutorial_num = 3;
+            }
+            $.post(globals.base_url+'/completeTutorial',{tutorial_num:tutorial_num});
         }
-        $.post(globals.base_url+'/completeTutorial',{tutorial_num:tutorial_num});
 	});
 
     $(document).on('click','.post_submit_edit_profile',function(){

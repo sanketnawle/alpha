@@ -173,10 +173,46 @@ $(document).ready(function() {
     function render_circle(json_data){
         var source = jQuery('#circle_template').html();
         var template = Handlebars.compile(source);
+        json_data['class_count'] = json_data['classes'].length;
         var generated_html = template(json_data);
 
+
+
         $('#department_circles').append($(generated_html));
+
+
+
+        $('div.circle').each(function(){
+            var width = 115;
+            var height = 115; 
+            var font_size = 15;    
+            var class_count = $(this).attr("data-class_count");  
+            var modulator = 1 + (class_count * .15);  
+            width = width * modulator;
+            height = height * modulator;
+            font_size = font_size * modulator;
+            margin_height_offset = -(height/2);
+            $(this).css({"width":width,"height":height,"margin-top":margin_height_offset});
+            $(this).find("h5").css({"font-size":font_size});
+         });
     }
+
+    $(document).on('mouseenter', 'div.circle', function () {
+        $(this).addClass("active");
+    });
+    $(document).on('mouseleave', 'div.circle', function () {
+        $(this).removeClass("active");
+    });
+
+
+    $(document).on('mouseenter', '.courses_popout', function () {
+        $(this).find("div.circle").addClass("active");
+    });
+    $(document).on('mouseleave', '.courses_popout', function () {
+        $(this).find("div.circle").removeClass("active");
+    });
+
+
 
 
     function populate_audience_select(){
@@ -1295,6 +1331,7 @@ $(document).ready(function() {
                     any_errors = true;
                 }
                 if(!any_errors){
+                    $('.post#welcome_post_2').hide();
                     closeEditProfile();
                 }
             },
@@ -1318,6 +1355,11 @@ $(document).ready(function() {
     });
 
     $(document).on('click','#cancel_edit_button',function(){
+        $.post(globals.base_url+'/profile/editProfile',{},function(response){
+            if(response['success']){
+                $('.post#welcome_post_2').hide();
+            }
+        });
         closeEditProfile();
     });
     function closeEditProfile(){
@@ -1394,7 +1436,7 @@ $(document).ready(function() {
         data.append('user_id', $('#profile_wrapper').attr('data-user_id'));
         //data.append("user", globals.user_id);
         $.ajax({
-            url: base_url+'/profile/changeProfilePicture',
+            url: globals.base_url+'/profile/changeProfilePicture',
             type: 'POST',
             data: data,
             cache: false,
@@ -1429,7 +1471,7 @@ $(document).ready(function() {
             follow=1;  //want to follow
         }
         $.ajax({
-            url: base_url+'/profile/followUser',
+            url: globals.base_url+'/profile/followUser',
             type: 'POST',
             data: {user_to_follow:$('#profile_wrapper').attr('data-user_id'),user:globals.user_id,follow:follow},
             dataType: 'json',

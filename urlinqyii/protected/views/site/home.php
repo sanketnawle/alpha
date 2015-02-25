@@ -59,8 +59,9 @@
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
         <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/date_selector/date_selector.js" type="text/javascript"></script>
-
-
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lightbox.min.js" type="text/javascript"></script>
+        <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/lightbox.css" type = "text/css" rel = "stylesheet">
+ 
     </head>
 
 
@@ -125,18 +126,18 @@
                                         <div class="post_head">
                                         <div class="post_title">
                                             <div class = 'image_container'>
-                                                <a>
+
                                                     <div class = 'post_user_icon'  style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test.jpg')">
                                                     </div>
-                                                </a>
+
 
                                             </div>
 
-                                            <a>
+
                                                 <span class = 'post_owner' >
                                                     Professor Urlinq
                                                 </span>
-                                            </a>
+
 
 
 
@@ -167,6 +168,8 @@
 
                                        </div>
                                     </div>
+                                  <?php } ?>
+                                  <?php if($user->show_edit_profile_post){?>
                                     <div class = 'post new_fd' id = 'welcome_post_2'>
 
                                         <div class="post_main">
@@ -176,18 +179,18 @@
                                         <div class="post_head">
                                         <div class="post_title">
                                             <div class = 'image_container'>
-                                                <a>
+
                                                     <div class = 'post_user_icon'  style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test.jpg')">
                                                     </div>
-                                                </a>
+
 
                                             </div>
 
-                                            <a>
+
                                                 <span class = 'post_owner' >
                                                     Professor Urlinq
                                                 </span>
-                                            </a>
+
 
 
 
@@ -447,9 +450,6 @@ Set the class name on your input to 'time_input' -->
 
     <div class='time_selector_div' data-time='23:00:00' value="23:00:00">11:00pm</div>
     <div class='time_selector_div' data-time='23:30:00' value="23:30:00">11:30pm</div>
-
-
-</div>
 
 </html>
 

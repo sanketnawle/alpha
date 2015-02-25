@@ -511,8 +511,12 @@ class ProfileController extends Controller
             //$user = User::model()->find('user_id=:uid', array(':uid' => $user_id));
             $user = $this->get_current_user($_POST);
             $user_id = $user->user_id;
-            if($user){
 
+            if($user){
+                if($user->show_edit_profile_post){
+                    $user->show_edit_profile_post=false;
+                    $user->save();
+                }
 
                 if($this->is_urlinq_admin($user)){
                     if(isset($_POST['user_id'])){
@@ -1260,7 +1264,8 @@ class ProfileController extends Controller
             }
          }
         $data['base_url'] = Yii::app()->getBaseUrl(true);
-        $data['professor'] = $user->user_type == "p";
+        $data['professor'] = $user->user_type === "p";
+        $data['admin'] = $user->user_type === "a";
 
         if(!$data['own_profile']){
             $data['is_following']=UserConnection::model()->exists('from_user_id = :u1 and to_user_id = :u2 ',

@@ -691,9 +691,3 @@ function ready(globals){
     $("div.comments:last-of-type").css({"border-bottom":"none"});
 
 }
-
-
-
-
-
-

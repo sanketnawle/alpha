@@ -113,15 +113,16 @@ body#body_home #page{
     position: fixed;
     top: 48px;
     right: 0px;
-    width: 196px;
+    width: 205px;
     bottom: 0;
     min-height: 590px;
     background: #F7F7F7;
     z-index: 300;
-    -webkit-box-shadow: 0 0px 2px rgba(255, 255, 255, 1); 
-    -moz-box-shadow: 0 0px 2px rgba(255, 255, 255, 1); 
-    box-shadow: 0 0px 2px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.42); 
+    -moz-box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.42); 
+    box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.42);
     border-left: 1px solid #E5E5E5;
+    background-image: url(../../assets/noise_3.png);
 }
 
 #main_panel{
@@ -2981,4 +2982,9 @@ div#topbar_responsive_holder {}
 
 .post_bio_input{
     resize: none;
+}
+
+#group_user_action_button.own_department{
+    padding-left: 10px;
+    padding-right: 10px;
 }

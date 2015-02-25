@@ -88,6 +88,30 @@
                     </div>
                 </section>
 
+                <section id = "event_form" class = "post_form_template fbar_contents_fix">
+
+                    <div class = "input_wrap">
+                        <input placeholder = "Event title" id = "event_title" class = "autofocus" type = "text" name = "event_title">
+                    </div>
+                    <div class = "input_wrap event_when">
+                        <input placeholder = "Start date" id = "event_start_date" class = "fbar_date_time date_input" type = "text" name = "event_start_date"><input placeholder = "Start time" id = "event_start_time" class = "fbar_date_time fbar_time_input time_input" type = "text" name = "event_start_time"><em class = "event_time_to_arrow"></em><input placeholder = "End time" id = "event_end_time" class = "fbar_date_time fbar_time_input time_input" type = "text" name = "event_end_time"><input placeholder = "End date" id = "event_end_date" class = "date_input fbar_date_time" type = "text" name = "event_end_date">
+                    </div>
+                    <div class = "input_wrap" style = "position:relative;">
+                        <label for = "event_location">Where:</label><input placeholder = "Enter a location" id = "event_location" class = "gray_bg location_input autocomplete_location fbar_date_time" type = "text" name = "event_location"><span class = "where_icon"></span>
+                        <div class = "location_matches_list"></div>
+                        <!--<div class = "input_wrap event_input_hidden repeat_event_input">
+                            <label style = "margin-left: 30px;" for = "event_repeat">Repeat:</label><div class = "repeat_activator">No repeat <em class = "down_arrow"></em></div>
+                        </div>-->
+                    </div>
+
+
+
+                    <div class = "event_textarea input_wrap event_input_hidden hidden">
+                        <textarea class = "post_text_area" placeholder = "Write event description"></textarea>
+                    </div>
+
+                </section>
+
                 <section id = "question_form" class = "post_form_template fbar_contents_fix">
                     <div class = "input_wrap">
                         <input placeholder = "What is your question?" id = "post_title" class = "autofocus" type = "text" name = "question_title">

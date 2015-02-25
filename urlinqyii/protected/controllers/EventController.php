@@ -86,7 +86,7 @@ class EventController extends Controller
 
     public function actionSearchEvents(){
         if(!isset($_GET['search_text'])){
-            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'date is not set');
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'Search text is not set');
             $this->renderJSON($data);
             return;
         }
@@ -120,6 +120,25 @@ class EventController extends Controller
         $user = $this->get_current_user($_GET);
 //        $date = '2014-11-12';
         $date = $_GET['date'];
+      //  echo $_GET['tz_offset'];
+        //date_default_timezone_set(date_default_timezone_get());
+        $start_date = strtotime($_GET['date'].' 00:00:00');
+        $end_date = strtotime($_GET['date'].' 23:59:59');
+
+        $start_timestamp = $start_date+(60*$_GET['tz_offset']);
+        $end_timestamp = $end_date+(60*$_GET['tz_offset']);
+
+        $start_date = date('Y-m-d',$start_timestamp);
+        $start_time = date('H:i:s',$start_timestamp);
+        $end_date = date('Y-m-d',$end_timestamp);
+        $end_time = date('H:i:s',$end_timestamp);
+
+
+
+       // echo $start_date;
+       // echo $end_date;
+       // echo $start_time;
+       // echo $end_time;
         //user_id=:user_id AND  //':user_id'=>1,
         //$events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>7));
         //$events = $user->get_all_events();
@@ -130,9 +149,13 @@ class EventController extends Controller
 //                                                WHERE event_user.user_id = 7 OR event.user_id = 7');
 
         //Get the events that this user is an event_user of
-        $events_attending = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " AND start_date = '" . $date . "'")->queryAll();
+        $events_attending = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . "
+            AND ((start_date = '" . $start_date . "' AND start_time >= '" . $start_time . "')
+            OR (start_date = '" . $end_date . "' AND start_time <= '" . $end_time . "'))")->queryAll();
         //Get the events that this
-        $events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND start_date = '" . $date . "'")->queryAll();
+        $events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . "
+            AND ((start_date = '" . $start_date . "' AND start_time >= '" . $start_time . "')
+            OR (start_date = '" . $end_date . "' AND start_time <= '" . $end_time . "'))")->queryAll();
 
         $all_events = $this->add_event_data(array_merge($events,$events_attending), $user);
 

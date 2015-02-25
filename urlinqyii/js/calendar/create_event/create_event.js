@@ -69,10 +69,10 @@ jQuery(document).ready(function(){
             //Create just date objects
             //so we can compare the date only
             var start_date = new_datetime(date_to_string(start_datetime_object) + ' 00:00:00');
-            var end_date = new_dattime(date_to_string(end_datetime_object) + ' 00:00:00');
+            var end_date = new_datetime(date_to_string(end_datetime_object) + ' 00:00:00');
 
 
-            if(start_date == end_date){
+            if(start_date.getTime() == end_date.getTime()){
                 var new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
                 //make the time an hour from the start time
                 $event_end_time.attr('data-time', new_end_time_string);
@@ -110,6 +110,8 @@ jQuery(document).ready(function(){
 
 
     jQuery(document).on('focusout', '.date_input', function(){
+
+        console.log('yo');
         verify_date_inputs();
     });
 
@@ -130,6 +132,7 @@ jQuery(document).ready(function(){
 
 
     jQuery(document).on('click', '.time_selector_div', function(){
+        console.log('time');
         verify_date_inputs();
     });
 

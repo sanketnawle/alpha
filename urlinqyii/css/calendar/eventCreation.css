@@ -8,7 +8,7 @@ bottom: 0;
 right: 194px;
 z-index: 10000000;
 position: fixed;
-background: rgba(255, 255, 255, 0.84);
+background: rgba(255, 255, 255, 0.92);
 height: 100%;
 width: 100%;
 display: table;
@@ -293,6 +293,103 @@ border: 1px solid #ddd;
 box-shadow: none;
 padding: 1px 0px;
 border-top: 1px solid #CDCDCD;
+position:relative;
+}
+
+#form_calendar_search_continue{
+left: 15px;
+position: absolute;
+width: 364px;
+height: 30px;
+line-height: 30px;
+border: 1px solid #d9d9d9;
+border-top-color: #c0c0c0;
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+transition: left .5s ease;
+}
+
+#form_calendar_search_continue input[type=text]{
+    width:360px;
+}
+
+div#events_results_found div.post_head{
+    margin-left: -4px;
+ 
+
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+div#events_results_found div.post_event_date_box{
+    border-radius: 6px;
+
+}
+
+div#events_results_found div.event_post_toparea{
+    border: none!important;
+ 
+}
+
+div#events_results_found div.post_event_title{
+    font-family: Avenir;
+
+    font-weight: 100;
+    text-transform: capitalize;
+    font-size: 20px;
+    padding: 4px 0 8px 55px;
+    color: #222;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    font-weight: 100;
+}
+
+div#events_results_found div.event_context{
+    padding-left: 56px;
+
+    position: relative;
+    top: -5px;
+    font-size: 13px;
+}
+
+div#events_results_found div.post_event_time_holder{
+    font-size: 14.5px;
+    
+    padding-left: 0px;
+    padding-top: 0px;
+}
+
+div#events_results_found div.post_event_start_time{
+    font-family: Avenir;
+    
+    font-size: 14.5px;
+    font-weight: 100;
+    text-shadow: none;
+}
+
+div#events_results_found div.post_event_end_time{
+    font-family: Avenir; font-size: 14.5px;
+    
+    font-weight: 100;
+}
+
+
+div#events_results_found div.post{
+
+}
+
+div#events_results_found div.post_main.event_post{
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+
+    border: 1px solid transparent!important;
+}
+
+#search_back_button{
+left: 372px;
+height: 30px;
+border-radius: 4px;
+line-height: 30px;
 }
 
 div.event_color_bar{
