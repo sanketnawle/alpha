@@ -374,6 +374,7 @@ jQuery(document).ready(function(){
         if($selected_group){
         var checkbox_share_isset = $selected_group.children().find('.checkbox_share_event').is(':checked');
         if (checkbox_share_isset) {
+            console.log("yeah")
             post_url = "post/create"
             post_data = {"post" : 
                                 {"text":"",
