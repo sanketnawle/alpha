@@ -372,31 +372,43 @@ jQuery(document).ready(function(){
         };
 
         if($selected_group){
-        var checkbox_share_isset = $selected_group.children().find('.checkbox_share_event').is(':checked');
-        if (checkbox_share_isset) {
-            console.log("yeah")
-            post_url = "post/create"
-            post_data = {"post" : 
-                                {"text":"",
-                                "post_type":"event",
-                                "origin_type":event_origin_type,
-                                "origin_id":event_origin_id,
-                                "sub_text":"",
-                                "privacy":"",
-                                "anon":0,
-                                "like_count":0,
-                                "event": {"title":event_name,
-                                         "start_date": event_start_date,
-                                         "start_time":event_start_time,
-                                         "end_date": event_end_date,
-                                         "end_time": event_end_time,
-                                         "description":event_description,
-                                         "location":event_location,
-                                         "origin_type":event_origin_type,
-                                         "origin_id": event_origin_id
-                                        }
-                                }
-                        };
+            var checkbox_share_isset = $selected_group.children().find('.checkbox_share_event').is(':checked');
+            if (checkbox_share_isset) {
+                console.log("yeah")
+                var post_post_url = "post/create"
+                var post_post_data = {"post" :
+                                    {"text":"",
+                                    "post_type":"event",
+                                    "origin_type":event_origin_type,
+                                    "origin_id":event_origin_id,
+                                    "sub_text":"",
+                                    "privacy":"",
+                                    "anon":0,
+                                    "like_count":0,
+                                    "event": {"title":event_name,
+                                             "start_date": event_start_date,
+                                             "start_time":event_start_time,
+                                             "end_date": event_end_date,
+                                             "end_time": event_end_time,
+                                             "description":event_description,
+                                             "location":event_location,
+                                             "origin_type":event_origin_type,
+                                             "origin_id": event_origin_id
+                                            }
+                                    }
+                            };
+                $.post(
+                    post_post_url,
+                    post_post_data,
+                    function(response){
+                        if(response['success']){
+                            console.log('created post');
+                        }else{
+                            console.log(JSON.stringify(response));
+                        }
+                    }
+
+                );
             }
         }
 
@@ -430,7 +442,8 @@ jQuery(document).ready(function(){
                     }
 
                     //Delete the old event
-                    jQuery('.day_event_holder[data-id="' + event_id + '"]').remove();
+                    jQuery('.event_holder[data-id="' + event_id + '"]').remove();
+
                     //show new event
                     var $active_tab = jQuery('a.ng-binding.active');
                     if($active_tab.text().toLowerCase() == 'day'){

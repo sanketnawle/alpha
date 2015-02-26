@@ -218,6 +218,23 @@ class EventController extends Controller
 
 //        $date = '2014-11-12';
         $date = $_GET['date'];
+
+        $start_date = date('Y-m-01', strtotime($date));
+        $end_date = date('Y-m-t', strtotime($date));
+        $start_date = strtotime($start_date.' 00:00:00');
+        $end_date = strtotime($end_date.' 23:59:59');
+        $start_timestamp = $start_date+(60*$_GET['tz_offset']);
+        $end_timestamp = $end_date+(60*$_GET['tz_offset']);
+
+        $start_date = date('Y-m-d',$start_timestamp);
+        $start_time = date('H:i:s',$start_timestamp);
+        $end_date = date('Y-m-d',$end_timestamp);
+        $end_time = date('H:i:s',$end_timestamp);
+
+        /*echo $start_date;
+        echo $end_date;
+        echo $start_time;
+        echo $end_time;*/
         //user_id=:user_id AND  //':user_id'=>1,
         //$events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>7));
         //$events = $user->get_all_events();
@@ -227,10 +244,25 @@ class EventController extends Controller
 //                                                ON event.event_id = event_user.event_id
 //                                                WHERE event_user.user_id = 7 OR event.user_id = 7');
 
-        //Get the events that this user is an event_user of
-        $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id .' AND MONTH(`end_date`) = MONTH("' . $date . '")')->queryAll();
-        //Get the events that this
-        $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . ' AND MONTH(`end_date`) = MONTH("' . $date . '")')->queryAll();
+
+        if($_GET['tz_offset']>=0){
+            //Get the events that this user is an event_user of
+            $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id .'
+            AND (MONTH(`end_date`) = MONTH("' . $date . '") OR (end_date = "'.$end_date.'" AND end_time <= "'.$end_time.'"))
+            AND NOT (end_date = "'.$start_date.'" AND end_time <= "'.$start_time.'")')->queryAll();
+            //Get the events that this
+            $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . '
+            AND (MONTH(`end_date`) = MONTH("' . $date . '") OR (end_date = "'.$end_date.'" AND end_time <= "'.$end_time.'"))
+            AND NOT (end_date = "'.$start_date.'" AND end_time <= "'.$start_time.'")')->queryAll();
+        }else if($_GET['tz_offset']<0){
+            //Get the events that this user is an event_user of
+            $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id .'
+            AND (MONTH(`end_date`) = MONTH("' . $date . '") OR (event.end_date = "'.$start_date.'" AND event.end_time >= "'.$start_time.'"))
+            AND NOT (event.end_date = "'.$end_date.'" AND event.end_time >= "'.$end_time.'")')->queryAll();
+            //Get the events that this
+            $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . '
+            AND (MONTH(`end_date`) = MONTH("' . $date . '") OR (event.end_date = "'.$start_date.'" AND event.end_time >= "'.$start_time.'"))
+            AND NOT (event.end_date = "'.$end_date.'" AND event.end_time >= "'.$end_time.'")')->queryAll();        }
 
         $events = array_merge($events,$events_attending);
 
@@ -262,6 +294,26 @@ class EventController extends Controller
 
 //        $date = '2014-11-12';
         $date = $_GET['date'];
+
+
+        $day_of_week = date('w',strtotime($date));
+       // echo $day_of_week;
+        $start_date = date('Y-m-d', strtotime($date.' -'.$day_of_week.' days'));
+        $end_date = date('Y-m-d', strtotime($date.' +'.(6-$day_of_week).' days'));
+        $start_date = strtotime($start_date.' 00:00:00');
+        $end_date = strtotime($end_date.' 23:59:59');
+        $start_timestamp = $start_date+(60*$_GET['tz_offset']);
+        $end_timestamp = $end_date+(60*$_GET['tz_offset']);
+
+        $start_date = date('Y-m-d',$start_timestamp);
+        $start_time = date('H:i:s',$start_timestamp);
+        $end_date = date('Y-m-d',$end_timestamp);
+        $end_time = date('H:i:s',$end_timestamp);
+
+      /*  echo $start_date;
+        echo $end_date;
+        echo $start_time;
+        echo $end_time;*/
         //user_id=:user_id AND  //':user_id'=>1,
         //$events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>7));
         //$events = $user->get_all_events();
@@ -272,9 +324,23 @@ class EventController extends Controller
 //                                                WHERE event_user.user_id = 7 OR event.user_id = 7');
 
         //Get the events that this user is an event_user of
-        $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id . ' AND WEEK(`end_date`) = WEEK("' . $date . '")')->queryAll();
-        //Get the events that this
-        $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . ' AND WEEK(`end_date`) = WEEK("' . $date . '")')->queryAll();
+        if($_GET['tz_offset']>=0) {
+            $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id . '
+            AND (WEEK(`end_date`) = WEEK("' . $date . '") OR (end_date = "' . $end_date . '" AND end_time <= "' . $end_time . '"))
+            AND NOT (end_date = "' . $start_date . '" AND end_time <= "' . $start_time . '")')->queryAll();
+            //Get the events that this
+            $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . '
+            AND (WEEK(`end_date`) = WEEK("' . $date . '") OR (end_date = "' . $end_date . '" AND end_time <= "' . $end_time . '"))
+            AND NOT (end_date = "' . $start_date . '" AND end_time <= "' . $start_time . '")')->queryAll();
+        }else if($_GET['tz_offset']<0) {
+            $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id . '
+            AND (WEEK(`end_date`) = WEEK("' . $date . '") OR (end_date = "' . $start_date . '" AND end_time >= "' . $start_time . '"))
+            AND NOT (end_date = "' . $end_date . '" AND end_time >= "' . $end_time . '")')->queryAll();
+            //Get the events that this
+            $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . '
+            AND (WEEK(`end_date`) = WEEK("' . $date . '") OR (end_date = "' . $start_date . '" AND end_time >= "' . $start_time . '"))
+            AND NOT (end_date = "' . $end_date . '" AND end_time >= "' . $end_time . '")')->queryAll();
+        }
 
         $data = array('success'=>true,'events'=>$this->add_event_data(array_merge($events,$events_attending),$user));
 
@@ -913,6 +979,10 @@ class EventController extends Controller
 
         $event = Event::model()->find('event_id=:id', array(':id'=>$event_id));
 
+        $all_day = 0;
+        if($event_data['all_day'] === true || $event_data['all_day'] == 'true'){
+            $all_day = 1;
+        }
 
         if($event){
             $event->title = $event_data['event_name'];
@@ -931,8 +1001,8 @@ class EventController extends Controller
             $event->end_time = $event_data['end_time'];
             if(isset($event_data['location']))
                 $event->location = $event_data['location'];
-            if(isset($event_data['all_day']))
-                $event->all_day = $event_data['all_day'];
+            if(isset($all_day))
+                $event->all_day = $all_day;
 
 
 
