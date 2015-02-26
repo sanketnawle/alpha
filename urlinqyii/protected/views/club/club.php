@@ -55,12 +55,10 @@
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
 
 
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/invite_people/invite_people.js"></script>
+        <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_people/invite_people.css" type = "text/css" rel = "stylesheet">
 
 
-        <?php if($is_admin){ ?>
-            <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/invite_people/invite_people.js"></script>
-            <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_people/invite_people.css" type = "text/css" rel = "stylesheet">
-        <?php } ?>
 
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
         <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
@@ -424,9 +422,6 @@
                                                     <span>Done</span>
                                                 </div>
                                             </div>
-                                            <!--<div class = "add_people_button">
-                                                Add Members
-                                            </div>-->
 
                                         <?php } ?>
                                         <?php if($is_member){ ?>
@@ -444,7 +439,7 @@
 
 
 
-                                        <?php if($is_admin) { ?>
+                                        <?php //if($is_admin) { ?>
 <!--                                            <div class = "small_search fade_input_small">-->
 <!--                                                <em id = "left_search_icon">-->
 <!--                                                </em>-->
@@ -490,7 +485,7 @@
                                             </script>
 
 
-                                        <?php } ?>
+                                        <?php //} ?>
 
 
                                         <div class = "small_search fade_input_small">
