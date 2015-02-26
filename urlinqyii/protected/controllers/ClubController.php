@@ -83,7 +83,7 @@ class ClubController extends Controller
 
 
 
-        if($club->privacy && !$is_admin){
+        if($club->privacy && (!$is_member)){
             //user cannot see this page
             $this->redirect(array('/home'));
         }
