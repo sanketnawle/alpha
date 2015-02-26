@@ -140,6 +140,8 @@ jQuery(document).ready(function(){
                 post_url,
                 post_data,
                 function(response){
+                    console.log(response);
+                    alert(JSON.stringify(response));
 
                     var $invite_popup = $invite_holder.find('#invite_popup');
                     $invite_popup.removeClass('active');

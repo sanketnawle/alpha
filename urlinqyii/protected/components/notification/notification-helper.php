@@ -290,13 +290,15 @@
             }
             array_push($notifications_new, $notification);
         }
-        $data = array('success'=>true,'notifications'=>$notifications_new);
+//        $data = array('success'=>true,'notifications'=>$notifications_new);
+//
+//        if ($should_end_yii == 'false') {
+//            return $data;
+//        }
+//       	renderJSON($data);
+//        return;
 
-        if ($should_end_yii == 'false') {
-            return $data;
-        }
-       	renderJSON($data);
-        return;
+     return $notifications_new;
     }
 
 
