@@ -719,7 +719,12 @@ class PostController extends Controller
                                     if($class_user->user_id != $user->user_id){
                                         //If this user is an admin and this post is not an event,
                                         //send a post announcement email
-                                        if($is_admin && $model->post_type != 'event'){
+
+
+                                        //Only send email if admin
+                                        //if($is_admin && $model->post_type != 'event'){
+
+                                        if($model->post_type != 'event'){
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $class_user->user_id;
                                             $actor_id = $user->user_id;
@@ -750,7 +755,10 @@ class PostController extends Controller
 
                                         //If this user is an admin and this post is not an event,
                                         //send a post announcement email
-                                        if(($user->user_type == 'a' || $user->user_type == 'p') && $user->department_id == $department->department_id  && $model->post_type != 'event'){
+                                        //if(($user->user_type == 'a' || $user->user_type == 'p') && $user->department_id == $department->department_id  && $model->post_type != 'event'){
+
+                                        if($user->department_id == $department->department_id  && $model->post_type != 'event'){
+
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $department_user->user_id;
                                             $actor_id = $user->user_id;
@@ -794,7 +802,9 @@ class PostController extends Controller
 
                                         //If this user is an admin and this post is not an event,
                                         //send a post announcement email
-                                        if(($user->user_type == 'a' || $user->user_type == 'p') && $user->school_id == $school->school_id  && $model->post_type != 'event'){
+                                        //if(($user->user_type == 'a' || $user->user_type == 'p') && $user->school_id == $school->school_id  && $model->post_type != 'event'){
+                                        if($user->school_id == $school->school_id  && $model->post_type != 'event'){
+
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $school_user->user_id;
                                             $actor_id = $user->user_id;
@@ -833,7 +843,11 @@ class PostController extends Controller
 
                                         //If this user is an admin and this post is not an event,
                                         //send a post announcement email
-                                        if($is_admin && $model->post_type != 'event'){
+                                        //if($is_admin && $model->post_type != 'event'){
+
+
+                                        if($model->post_type != 'event'){
+
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $group_user->user_id;
                                             $actor_id = $user->user_id;
