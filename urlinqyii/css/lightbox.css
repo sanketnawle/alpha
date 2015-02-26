@@ -192,7 +192,6 @@ body:after {
   float: right;
   width: 30px;
   height: 30px;
-  background: url(../img/close.png) top right no-repeat;
   text-align: right;
   outline: none;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
@@ -201,6 +200,8 @@ body:after {
   -moz-transition: opacity 0.2s;
   -o-transition: opacity 0.2s;
   transition: opacity 0.2s;
+  background-position: 0px -955px; cursor: pointer; background-size: auto; 
+  background-image: url(../assets/small_icons.png);
 }
 
 .lb-data .lb-close:hover {

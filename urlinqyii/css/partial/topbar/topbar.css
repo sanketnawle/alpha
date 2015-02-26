@@ -304,10 +304,10 @@ width: 980px!important;
             border-radius: 4px;
             position: absolute;
             cursor: text;
-            top: 7px;
+            top: 5px;
             overflow: hidden;
         
-            /* border: 1px solid #000; */
+            border: 2px solid #000;
             max-width: 467px;
 }
 

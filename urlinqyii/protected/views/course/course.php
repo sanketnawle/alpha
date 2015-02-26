@@ -74,7 +74,9 @@
 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
 
-
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lightbox.min.js" type="text/javascript"></script>
+        <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/lightbox.css" type = "text/css" rel = "stylesheet">
+ 
 
 
     </head>

@@ -36,7 +36,9 @@
         <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 
         <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/professor-profile.js"></script>
-
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lightbox.min.js" type="text/javascript"></script>
+        <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/lightbox.css" type = "text/css" rel = "stylesheet">
+ 
     </head>
 
     <body class="loadani_parent">
