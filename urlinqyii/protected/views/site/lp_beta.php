@@ -943,7 +943,7 @@
                                   ?>">
                       </div>
                       <div class = "registration-sec-texts signup_password_field">
-                        <input type = "password" name = "password" id = "password" placeholder = "Password">
+                        <input type = "password" name = "password" id = "password" placeholder = "Create password">
                         <?php 
                            //session_destroy();
                         ?>

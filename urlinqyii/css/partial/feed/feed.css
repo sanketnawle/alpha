@@ -107,7 +107,7 @@ cursor: pointer;
 margin-left: 5px;
 background-size: cover!important;
 border-left: none;
-opacity: .8;
+opacity: 1;
 -webkit-transition: opacity .218s; -moz-transition: opacity .218s; -o-transition: opacity .218s; transition: opacity .218s;
 }
 

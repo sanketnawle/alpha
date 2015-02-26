@@ -181,11 +181,10 @@ body {
 .card_0_info {
     height: 40px;
     width: 100%;
-    margin-top: 60px;
+    margin-top: 6px;
 }
 
 .step_0_card.school .card_0_text{
-    margin-top: -54px;
     width: 500px;
 }
 
@@ -198,6 +197,11 @@ display: block;
 white-space: nowrap;
 color: #222;
 overflow: hidden;
+}
+
+div.card_0_text_0 span{
+    font-size:14px;
+    color:#999;
 }
 
 .card_0_glyph {
@@ -222,8 +226,8 @@ overflow: hidden;
 }
 
 .card_0_text_0 {
-    font-size: 20.8px;
-    font-weight: 600;
+    font-size: 16.5px;
+    font-weight: 100;
     line-height: 1.4em;
     text-overflow: ellipsis;
     width: auto;
@@ -231,11 +235,12 @@ overflow: hidden;
     display: block;
     overflow: hidden;
     position: relative;
+    color: #222;
     top: 0px;
     border-radius: 0 4px 4px 0;
     padding: 4px 8px;
     white-space: nowrap;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Avenir;
     margin-left: 8px;
 }
 
@@ -250,8 +255,13 @@ overflow: hidden;
     margin-top: 90px;
 }
 
+.step_2_card a{
+    text-decoration: none;
+}
+
 .step_2_card h1 {
     padding: 0px 104px;
+    text-decoration: none;
     color: rgba(0, 0, 0, 0.8);
     position: relative;
     animation-timing-function: ease-in-out;
@@ -1135,8 +1145,60 @@ div.update_picture_text{
 
 }
 
+div.progress_content.c2 .scroll-wrapper{
+    overflow: visible!important;
+}
+
+div.progress_content.c2 .content_inner{
+    border-bottom:none;
+    overflow: visible!important;
+}
+
+div.next_progress.hide{
+    display: none!important;
+}
+
 div.next_progress.step_3_adjust{
 margin-top: 10px!important;
+}
+
+.step_2_card a.confirm_links{
+    float: left;
+
+    margin-left: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    background: #029acf;
+    padding: 6px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 0px;
+    border-radius: 8px;
+}
+
+.step_2_card a.confirm_links.next_progress{
+    opacity:.7;
+}
+
+.step_2_card .confirm_link_wrapper{
+    padding: 0px;
+
+    margin-top: 90px;
+    padding-left: 24px;
+}
+
+p.confirm_link_wrapper > span{
+    font-family: Avenir;
+
+    font-weight: 100;
+    float: left;
+    color: #222;
+    margin-top: 6px;
+}
+
+a.confirm_links.next_progress.hide{
+    display: block!important;
 }
 
 div.update_picture_text > p{
