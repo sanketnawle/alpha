@@ -2961,7 +2961,7 @@ div#topbar_responsive_holder {}
     border-top-color: #c0c0c0;
 }
 
-.post_year_input, .post_major_input, .post_bio_input{
+.post_year_input, .post_major_input, .post_bio_input, .post_office_input, .post_office_hours_input{
 
     text-overflow: ellipsis;
     overflow: hidden;

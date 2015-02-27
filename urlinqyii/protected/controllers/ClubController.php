@@ -77,9 +77,9 @@ class ClubController extends Controller
         }
 
 
-        if(strpos($user->user_email,'@urlinq.com') !== false){
-            $is_admin = true;
-        }
+//        if(strpos($user->user_email,'@urlinq.com') !== false){
+//            $is_admin = true;
+//        }
 
 
 
@@ -549,9 +549,21 @@ class ClubController extends Controller
 
 
     public function actionGetPageViewData(){
-        define('ga_email','urlinq5@gmail.com');
-        define('ga_password','Daisy@619');
-        define('ga_profile_id','78486849');
+
+        if (!isset($_GET['group_id']) && !isset($_GET['filter'])) {
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $group_id = $_GET['group_id'];
+        $filter = $_GET['filter'];
+
+
+        define('ga_email','analytics@urlinq.com');
+        define('ga_password','earlInq311');
+        define('ga_profile_id','97099170');
 
         require 'gapi.class.php';
 
@@ -559,29 +571,26 @@ class ClubController extends Controller
 
 
 
-        if (isset($_GET['group_id']) && isset($_GET['filter'])) {
-            require 'club/analytics_helpers.php';
-            $group_id = $_GET['group_id'];
-            $filter = $_GET['filter'];
 
-            $json_data_array = array('total_page_views' => 0,'new_page_views' => 0);
-            $json_data_array['total_page_views'] = get_all_views($group_id);
-
-            if (strpos($filter, 'Week') !== FALSE){
-                $json_data_array['new_page_views'] = get_this_week_views($group_id);
-            }elseif(strpos($filter, 'Month') !== FALSE){
-                $json_data_array['new_page_views'] = get_this_month_views($group_id);
-            }elseif(strpos($filter, 'Semester') !== FALSE){
-                $json_data_array['new_page_views'] = get_this_year_views($group_id);
-            }
+        require 'club/analytics_helpers.php';
 
 
+        $json_data_array = array('total_page_views' => 0,'new_page_views' => 0);
+        $json_data_array['total_page_views'] = get_all_views($ga,$group_id);
 
-
-            echo json_encode($json_data_array);
+        if (strpos($filter, 'Week') !== FALSE){
+            $json_data_array['new_page_views'] = get_this_week_views($ga,$group_id);
+        }elseif(strpos($filter, 'Month') !== FALSE){
+            $json_data_array['new_page_views'] = get_this_month_views($ga,$group_id);
+        }elseif(strpos($filter, 'Semester') !== FALSE){
+            $json_data_array['new_page_views'] = get_this_year_views($ga,$group_id);
         }
 
 
+
+        $json_data_array['success'] = true;
+        $this->renderJSON($json_data_array);
+        return;
 
 
 
@@ -600,6 +609,8 @@ class ClubController extends Controller
 
             try {
                 $json_data_array = array('users' => array());
+
+
 
                 $club = Group::model()->findBySql("SELECT * FROM `group` WHERE group_id = $group_id");
                 //Get the # of events that this club/group has had
@@ -622,13 +633,24 @@ class ClubController extends Controller
                     //Convert php datetime to milliseconds for the javascript new Date(milliseconds) function
                     $user_json['join_time'] = strtotime($group_user->join_time)*1000;
                     //make sure user is student
-                    if($user->user_type == 's'){
+                    //if($user->user_type == 's'){
                         foreach($club->events as $event){
                             $event_id = $event->event_id;
-                            //Gets the invite for specific user
-                            $user_json['attendance_count'] = count($event->acceptedInvites);
+
+                            if($user->user_id == $event->user_id){
+                                $user_json['attendance_count'] += 1;
+                            }else{
+                                //See if this user is a user for this event
+                                $event_user = EventUser::model()->find('user_id=:user_id and event_id=:event_id', array(':user_id'=>$user->user_id, ':event_id'=>$event_id));
+                                if($event_user){
+                                    //Gets the invite for specific user
+                                    $user_json['attendance_count'] += 1;
+                                }
+                            }
                         }
-                    }
+                    //}
+
+
 
                     $attendance_percent = round(($user_json['attendance_count'] / $json_data_array['event_count']),2);
                     $user_json['attendance_percent_str'] = strval($attendance_percent * 100) . '%';
@@ -718,22 +740,35 @@ class ClubController extends Controller
                     //user ids: 285/286/350
                     //$group_users = mysqli_query($con,"SELECT * FROM `group_users` WHERE group_id = '$group_id'");
                     $json_data_array['total_count'] += 1;
-                    if($user_attribs['student_type'] == 'grad' || $user_attribs['student_type'] == 'phd'){
+                    if($user_attribs['year_name'] == 'Master' || $user_attribs['student_type'] == 'PhD'){
                         $json_data_array['graduate_count'] += 1;
-                    }elseif($user_attribs['student_type'] == 'undergrad'){
-                        $user_grad_year_int = intval($user_attribs['year']);
-                        $current_year_int = intval(date("Y"));
-                        $year_delta = $user_grad_year_int - $current_year_int;
+                    }elseif($user_attribs['year_name'] == "Freshman"){
+                        $json_data_array['freshman_count'] += 1;
+                    }elseif($user_attribs['year_name'] == "Sophomore"){
+                        $json_data_array['sophomore_count'] += 1;
+                    }elseif($user_attribs['year_name'] == "Junior"){
+                        $json_data_array['junior_count'] += 1;
+                    }elseif($user_attribs['year_name'] == "Senior"){
+                        $json_data_array['senior_count'] += 1;
+                    }
 
-                        if($year_delta == 4){
-                            $json_data_array['freshman_count'] += 1;
-                        }elseif($year_delta == 3){
-                            $json_data_array['sophomore_count'] += 1;
-                        }elseif($year_delta == 2){
-                            $json_data_array['junior_count'] += 1;
-                        }elseif($year_delta == 1){
-                            $json_data_array['senior_count'] += 1;
-                        }
+
+                    elseif($user_attribs['student_type'] == 'undergrad'){
+//                        $user_grad_year_int = intval($user_attribs['year']);
+//                        $current_year_int = intval(date("Y"));
+//                        $year_delta = $user_grad_year_int - $current_year_int;
+//
+//                        if($year_delta == 4){
+//                            $json_data_array['freshman_count'] += 1;
+//                        }elseif($year_delta == 3){
+//                            $json_data_array['sophomore_count'] += 1;
+//                        }elseif($year_delta == 2){
+//                            $json_data_array['junior_count'] += 1;
+//                        }elseif($year_delta == 1){
+//                            $json_data_array['senior_count'] += 1;
+//                        }
+
+
                     }
                 }
             }
@@ -742,11 +777,67 @@ class ClubController extends Controller
             $this->renderJSON($json_data_array);
             return;
         } catch (Exception $e) {
-            $json_data_array = array('success'=>false,'error_id'=>2);
+            $json_data_array = array('success'=>false,'error_id'=>2, 'error_msg'=>$e->getMessage());
             $this->renderJSON($json_data_array);
             return;
         }
 
+
+    }
+
+
+
+
+    public function actionAttendanceData(){
+
+
+        if (!isset($_GET['id']) || !isset($_GET['filter'])) {
+            $json_data_array = array('success'=>false,'error_id'=>1, 'error_msg'=>'id not set');
+            $this->renderJSON($json_data_array);
+            return;
+        }
+
+        $filter = $_GET['filter'];
+
+        $group_id = $_GET['id'];
+
+
+        $json_data_array = array('invite_count' => 0,'accepted_invite_count'=>0);
+
+        $sql_str = '';
+        if (strpos($filter, 'Week') !== FALSE){
+            $sql_str = "SELECT * FROM event WHERE (origin_type = 'club' OR origin_type = 'group') AND origin_id = '$group_id' AND yearweek(`start_date`) = yearweek(curdate())";
+        }elseif(strpos($filter, 'Month') !== FALSE){
+            $sql_str = "SELECT * FROM event WHERE (origin_type = 'club' OR origin_type = 'group') AND origin_id = '$group_id' AND MONTH(`start_date`) = MONTH(curdate())";
+        }elseif(strpos($filter, 'Semester') !== FALSE){
+            $sql_str = "SELECT * FROM event WHERE (origin_type = 'club' OR origin_type = 'group') AND origin_id = '$group_id' AND YEAR(`start_date`) = YEAR(curdate())";
+        }
+
+        $events = Event::model()->findAllBySql($sql_str);
+
+
+
+        $json_data_array['event_count'] = count($events);
+        foreach($events as $event){
+            $event_id = $event->event_id;
+
+            //Count all the invites sent out for this event and add to invite_count
+            $invites = Invite::model()->findAllBySql("SELECT * FROM invite WHERE (origin_type = 'club' OR origin_type = 'group') AND origin_id = " . $event_id);
+
+            $json_data_array['invite_count'] += count($invites);
+
+            foreach($invites as $invite){
+                if($invite->choice){
+                    $json_data_array['accepted_invite_count'] += 1;
+                }
+            }
+        }
+
+
+
+        $json_data_array['success'] = true;
+        $this->renderJSON($json_data_array);
+        return;
 
     }
 

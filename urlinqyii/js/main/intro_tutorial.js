@@ -74,6 +74,7 @@ $(document).ready(function(){
             }
             $.post(globals.base_url+'/completeTutorial',{tutorial_num:tutorial_num});
         }
+
 	});
 
     $(document).on('click','.post_submit_edit_profile',function(){

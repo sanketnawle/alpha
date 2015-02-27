@@ -101,6 +101,7 @@ $(document).ready(function(){
         });
 
 
+
         setTimeout(function() {
             poll_notifications();
         }, notification_timeout_milliseconds);

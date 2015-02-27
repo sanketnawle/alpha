@@ -15,8 +15,8 @@ $(document).ready(function() {
 
     globals.$fbar = $('#fbar_wrapper');
 
-    $(document).on('click', '.profile_link', function(){
-
+    $(document).on('click', '.profile_link', function(e){
+        e.stopPropagation();
         old_origin_id = globals.origin_id;
         old_origin_type = globals.origin_type;
         //alert(globals.origin_id);
@@ -92,7 +92,10 @@ $(document).ready(function() {
                 $.ajax({ url: base_url + '/profile/returnFbar?user='+data.user_id,
                     dataType:'html',
                     success: function(html) {
-                        $('#profile_fbar_wrapper').append(html);
+                        if($('#profile_fbar_wrapper').is(':empty')){
+                            $('#profile_fbar_wrapper').append(html);
+                        }
+
                         globals.$fbar.find('.menu_audience').dropit({});
                         globals.$fbar.find('.privacy_menu').dropit({});
                         populate_audience_select();
@@ -162,9 +165,12 @@ $(document).ready(function() {
 
                 var profile_id = $('#profile_wrapper').attr('data-user_id');
                 $.getJSON(globals.base_url + '/profile/getDepartmentList',{user_id: profile_id} ,function(json_data){
-                    $.each(json_data['departments'], function(index, department_json){
-                        render_circle(department_json);
-                    });
+                    if($('#department_circles').is(':empty')){
+                        $.each(json_data['departments'], function(index, department_json){
+                            render_circle(department_json);
+                        });
+                    }
+
                 });
             }
         });
@@ -175,7 +181,6 @@ $(document).ready(function() {
         var template = Handlebars.compile(source);
         json_data['class_count'] = json_data['classes'].length;
         var generated_html = template(json_data);
-
 
 
         $('#department_circles').append($(generated_html));

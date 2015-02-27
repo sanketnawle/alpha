@@ -83,12 +83,12 @@
 
                                                 </div>
                                                 <div class = 'post_time'> <span class = "time_icon"></span>
-                                                     <time class='timeago' datetime= '{{created_time}}'>
-                                                        {{#if created_time}}
+                                                     <time class='timeago' datetime= '{{created_at}}'>
+                                                        {{#if created_at}}
                                                         {{update_timestamp}}
                                                         {{else}}
                                                         a few seconds ago
-                                                     {{/if}}
+                                                        {{/if}}
                                                      </time>
                                                 </div>
                                                 <div class = 'post_msg post_lr_link_msg'>
@@ -583,8 +583,12 @@
 
                                                 </div>
                                                 <div class = 'post_time'><span class = "time_icon"></span>
-                                                     <time class='timeago' datetime= '{{created_time}}'>
-                                                        {{update_timestamp}}
+                                                     <time class='timeago' datetime= '{{created_at}}'>
+                                                         {{#if created_at}}
+                                                         {{update_timestamp}}
+                                                         {{else}}
+                                                         a few seconds ago
+                                                         {{/if}}
                                                      </time>
                                                 </div>
 
@@ -1355,8 +1359,12 @@
 
                                                 </div>
                                                 <div class = 'post_time'><span class = "time_icon"></span>
-                                                     <time class='timeago' datetime= '{{created_time}}'>
-                                                        {{update_timestamp}}
+                                                     <time class='timeago' datetime= '{{created_at}}'>
+                                                         {{#if created_at}}
+                                                         {{update_timestamp}}
+                                                         {{else}}
+                                                         a few seconds ago
+                                                         {{/if}}
                                                      </time>
                                                 </div>
 

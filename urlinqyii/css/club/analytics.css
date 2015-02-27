@@ -4,10 +4,10 @@ body
 
 .anl-frame
 {
-	width: 960px;
+	width: 100%;
 	border-radius: 4px;
 	height: 400px;
-	background-color: #E8E9EB;
+	/*background-color: #E8E9EB;*/
 }
 
 .anl-header
@@ -135,7 +135,7 @@ body
 .anl-content-box-mb-left
 {
 float: left;
-width: 670px;
+width: 570px;
 height: auto;
 background-color: #FFF;
 margin-top: 20px;
@@ -145,7 +145,7 @@ border-radius: 4px;
 .anl-content-box-mb-right
 {
 float: left;
-width: 260px;
+width: 205px;
 height: 190px;
 background-color: #FFF;
 margin-top: 20px;
@@ -168,7 +168,7 @@ padding-top: 10px;
 
 .anl-graph-part
 {
-width: auto;
+width: 90%;
 height: 120px;
 padding-top: 10px;
 padding-left: 15px;
@@ -225,7 +225,7 @@ float: left;
 position: absolute;
 font-size: 32px;
 margin-left: 18px;
-margin-top: 40px;
+margin-top: 32px;
 }
 
 .dn_anl
@@ -249,19 +249,21 @@ margin-top: 40px;
 {
 	float: left;
 	margin-left: 20px;
+
+    width: 30%;
 }
 
 .dn_g_right
 {
 	float: left;
-	width: 160px;
+	width: 60px;
 	height: 120px;
 }
 
 .dn_separator
 {
 	position: absolute;
-	width: 150px;
+	width: 120px;
 	height: 2px;
 	background-color: #e5e5e5;
 	margin-top: 60px;
@@ -270,7 +272,7 @@ margin-top: 40px;
 .dn_right_t_top_n
 {
 position: absolute;
-font-size: 30px;
+font-size: 26px;
 margin-left: 8px;
 margin-top: -2px;
 }
@@ -278,7 +280,7 @@ margin-top: -2px;
 {
 position: absolute;
 margin-top: 36px;
-font-size: 16px;
+font-size: 14px;
 margin-left: 8px;
 color: rgba(66,66,66,0.5);
 }
@@ -424,9 +426,10 @@ margin-bottom: 4px;
 
 .anl-content-box-mb-right-right
 {
-	height: 100%;
-	width: 65px;
-	float: right;
+height: 100%;
+width: 60px;
+float: right;
+margin-top: -20px;
 }
 
 .anl_pi_pattern
@@ -569,7 +572,8 @@ margin-bottom: 4px;
 {
 	float: left;
 	height: 100%;
-	width:125px;
+	width: 15%;
+    font-size: 15px;
 	border-right: 1px solid #d3d5d9;
 	text-align: center;
 }
@@ -577,7 +581,7 @@ margin-bottom: 4px;
 .anl-content-box-mb-left-cell-left span
 {
 	color: #424242;
-	font-size: 18px;
+	font-size: 14px;
 	line-height: 40px;
 }
 
@@ -585,7 +589,7 @@ margin-bottom: 4px;
 {
 	float: left;
 	height: 100%;
-	width:450px;
+	width: 78%;
 	border-right: 1px solid #d3d5d9;
 }
 
@@ -620,7 +624,7 @@ margin-bottom: 4px;
 .mb-left-cell-mid-grey
 {
 	float: left;
-	width: 380px;
+	width: 370px;
 	margin-left: 10px;
 	margin-top: 10px;
 	height: 20px;
@@ -660,7 +664,6 @@ margin-bottom: 4px;
 	line-height: 40px;
 	color: #424242;
 	margin-left: 10px;
-	width: 70px;
 	text-align: center;
 }
 
@@ -752,7 +755,7 @@ margin-bottom: 4px;
 {
 	float: left;
 	height: 100%;
-	width: 210px;
+	/*width: 210px;*/
 }
 
 .plus_button

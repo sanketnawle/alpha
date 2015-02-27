@@ -20,6 +20,36 @@ body#body_calendar .topbar > #topbar_responsive_holder{
     max-width:100%;
 }
 
+div.search_event_color{
+    width: 10px;
+
+    height: 10px!important;
+    border-radius: 10000px!important;
+    margin-left: 5px;
+    margin-top: 8px;
+}
+
+div.search_event_time{
+    height: 16px!important;
+
+    font-family: Avenir;
+    font-weight: 100;
+    color: #777;
+}
+
+div.search_event_title{
+    display: block;
+
+    font-family: Avenir;
+    width: 100%;
+    text-transform: capitalize;
+    font-size: 15.5px;
+    font-weight: 100;
+    color: #222;
+    height: 18px!important;
+    margin-bottom: 0px!important;
+}
+
 div.check > i.checkmark{
     display: none;
 
@@ -712,11 +742,23 @@ form.search div.popover:before{
 }
 
 form.search div.popover div.popover-content{
+    height: auto!important;
 
 }
 
 form.search div.popover div.popover-content a.row.go_to_event{
 
+    border-radius: 0px!important;
+}
+
+form.search div.popover div.popover-content a.row.go_to_event:hover{
+    background: #f5f5f5;
+
+}
+
+form.search div.popover div.popover-content a.row.go_to_event:active{
+    background: #eee;
+    
 }
 
 form.search div.popover div.popover-content a.row.go_to_event div.col-md-5{

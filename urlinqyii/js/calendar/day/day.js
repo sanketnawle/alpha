@@ -51,7 +51,10 @@ jQuery(document).ready(function(){
         var this_time = $day_div.attr('data-time');
         var this_time_int = parseInt($day_div.attr('data-time_num'));
 
-        var end_time = ints_to_time(this_time_int + 1,0,0);
+        var end_time;
+        if(this_time!="23:00:00")
+            end_time = ints_to_time(this_time_int + 1,0,0);
+        else end_time = ints_to_time(this_time_int + 0,59,0);
         var $create_day_event_popup = jQuery('#create_day_event_popup');
 
         var $window = $(window);
@@ -387,12 +390,13 @@ jQuery(document).ready(function(){
         }
 
 
+
         //Convert to UTC for the database
 
         var event_start_datetime = local_to_utc(new_datetime(event_start_date + ' ' + event_start_time));
         var event_end_datetime = local_to_utc(new_datetime(event_end_date + ' ' + event_end_time));
 
-        event_start_date = date_to_string(event_end_datetime);
+        event_start_date = date_to_string(event_start_datetime);
         event_start_time = datetime_to_time_string(event_start_datetime);
 
         event_end_date = date_to_string(event_end_datetime);
@@ -401,7 +405,10 @@ jQuery(document).ready(function(){
 
 
 
-
+        if(event_all_day){
+            event_start_date = event_end_date;
+            event_start_time = event_end_time;
+        }
 
          var post_data = {
              event:{

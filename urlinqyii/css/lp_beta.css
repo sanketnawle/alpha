@@ -3157,3 +3157,11 @@ ul.color-border li:nth-child(5):hover {
 
 
 
+
+
+#forgot_password_div {
+    position: fixed;
+    right: 200px;
+    top: 20px;
+    margin: 0px;
+}

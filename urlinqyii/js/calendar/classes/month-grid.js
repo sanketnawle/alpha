@@ -71,7 +71,7 @@ var MonthGrid = (function (MonthGrid) {
 
                     function get_month_events(date_str){
 
-                        $.getJSON( base_url + '/event/getMonthEvents', {date: date_str},function( json_data ) {
+                        $.getJSON( base_url + '/event/getMonthEvents', {date: date_str, tz_offset:(new Date().getTimezoneOffset())},function( json_data ) {
                             if(json_data['success']){
                                 show_month_events(json_data['events']);
                             }else{
