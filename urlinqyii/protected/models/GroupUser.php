@@ -46,6 +46,7 @@ class GroupUser extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'user' => array(self::BELONGS_TO, 'User', 'user_id'),
             'color' => array(self::BELONGS_TO, 'Color', 'color_id'),
             'group' => array(self::BELONGS_TO, 'Group', 'group_id')
 		);

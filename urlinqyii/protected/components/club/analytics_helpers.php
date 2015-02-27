@@ -4,8 +4,8 @@
 
 
 
-function get_all_views($group_id){
-    global $ga;
+function get_all_views($ga,$group_id){
+//    global $ga;
     $filter = 'ga:dimension2 == ' . $group_id;
     $results = $ga->requestReportData(ga_profile_id,array('dimension2'),array('pageviews'),null,$filter);
 
@@ -16,8 +16,8 @@ function get_all_views($group_id){
     }
 }
 
-function get_this_week_views($group_id){
-    global $ga;
+function get_this_week_views($ga,$group_id){
+    //global $ga;
     $start_week = strtotime("last sunday midnight");
     $end_week = strtotime("today");
 
@@ -34,8 +34,8 @@ function get_this_week_views($group_id){
     }
 }
 
-function get_last_week_views(){
-    global $ga;
+function get_last_week_views($ga){
+    //global $ga;
     $end_week = strtotime("last sunday midnight");
     $start_week = strtotime("-1 week",$end_week);
     $end_week_str = date("Y-m-d",$end_week);
@@ -51,8 +51,8 @@ function get_last_week_views(){
     }
 }
 
-function get_this_month_views($group_id){
-    global $ga;
+function get_this_month_views($ga,$group_id){
+    //global $ga;
     //Gets the first of this month
     $start_month = strtotime(date('01-m-Y'));
     $end_month = strtotime('today');
@@ -71,8 +71,8 @@ function get_this_month_views($group_id){
 }
 
 
-function get_last_month_views(){
-    global $ga;
+function get_last_month_views($ga){
+    //global $ga;
     //Gets the first of this month
     $end_week = strtotime(date('01-m-Y'));
     $start_week = strtotime("-1 month",$end_week);
@@ -90,8 +90,8 @@ function get_last_month_views(){
 }
 
 
-function get_this_year_views($group_id){
-    global $ga;
+function get_this_year_views($ga,$group_id){
+    //global $ga;
     //Gets the first of this month
     $start_year = strtotime(date('01-01-Y'));
     $end_year = strtotime('today');
@@ -110,8 +110,8 @@ function get_this_year_views($group_id){
 }
 
 
-function get_unqiue_visitors_count(){
-    global $ga;
+function get_unqiue_visitors_count($ga){
+    //global $ga;
     $results = $ga->requestReportData(ga_profile_id,array('source'),array('pageviews','visitors'));
     var_dump($results);
     echo $results[0]->getVisitors();
@@ -122,8 +122,8 @@ function get_unqiue_visitors_count(){
 
 //Pass in user table id
 //Filters by dimension "User Id"
-function get_user_views($userid){
-    global $ga;
+function get_user_views($ga,$userid){
+    //global $ga;
     $filter = 'ga:dimension1 == ' . $userid;
     $results = $ga->requestReportData(ga_profile_id,array('dimension1'),array('pageviews'),null,$filter);
     if(count($results) > 0){

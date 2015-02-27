@@ -388,7 +388,7 @@ class PostController extends Controller
 
                 $post_id = $model->post_id;
 
-
+                $email_sent = false;
                 //Changed by Alex. Dont echo
                 //This function should return JSON with a success flag and
                 //the post data if true
@@ -486,6 +486,7 @@ class PostController extends Controller
                                 $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$group->group_id));
 
                                 if($group_user && $group_user->is_admin || !$has_admin){
+                                    $email_sent = true;
                                     $is_admin = true;
                                     //foreach($group->members as $member){
 
@@ -527,6 +528,8 @@ class PostController extends Controller
                                 $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$class->class_id));
                                 if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id || !$has_admin){
                                     $is_admin = true;
+
+                                    $email_sent = true;
                                     foreach($class->students as $member){
                                         if($member->user_id != $user->user_id){
                                             include_once 'color/color.php';
@@ -594,7 +597,7 @@ class PostController extends Controller
                         $event = new Event;
                         $event->title = $_POST['post']['opportunity']['title'];
                         $event->description = $_POST['post']['opportunity']['description'];
-                        $event->event_type = 'event';
+                        $event->event_type = 'opportunity';
                         $event->user_id = $user->user_id;
                         $event->origin_type = $_POST['post']['origin_type'];
                         $event->origin_id = $_POST['post']['origin_id'];
@@ -724,7 +727,7 @@ class PostController extends Controller
                                         //Only send email if admin
                                         //if($is_admin && $model->post_type != 'event'){
 
-                                        if($model->post_type != 'event'){
+                                        if(!$email_sent){
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $class_user->user_id;
                                             $actor_id = $user->user_id;
@@ -757,7 +760,7 @@ class PostController extends Controller
                                         //send a post announcement email
                                         //if(($user->user_type == 'a' || $user->user_type == 'p') && $user->department_id == $department->department_id  && $model->post_type != 'event'){
 
-                                        if($user->department_id == $department->department_id  && $model->post_type != 'event'){
+                                        if($user->department_id == $department->department_id  && !$email_sent){
 
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $department_user->user_id;
@@ -803,7 +806,7 @@ class PostController extends Controller
                                         //If this user is an admin and this post is not an event,
                                         //send a post announcement email
                                         //if(($user->user_type == 'a' || $user->user_type == 'p') && $user->school_id == $school->school_id  && $model->post_type != 'event'){
-                                        if($user->school_id == $school->school_id  && $model->post_type != 'event'){
+                                        if($user->school_id == $school->school_id  && !$email_sent){
 
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $school_user->user_id;
@@ -846,7 +849,7 @@ class PostController extends Controller
                                         //if($is_admin && $model->post_type != 'event'){
 
 
-                                        if($model->post_type != 'event'){
+                                        if(!$email_sent){
 
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $group_user->user_id;

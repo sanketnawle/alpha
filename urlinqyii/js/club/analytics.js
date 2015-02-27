@@ -38,7 +38,13 @@ $(document).ready(function() {
 
         var current_option = $('.ga_option_cur').text();
 
-        $.getJSON(base_url + "/club" + group_id.toString() + "/getPageViewData", { group_id: group_id, filter:current_option}, function(page_view_json) {
+        $.getJSON(base_url + "/club/" + group_id.toString() + "/getPageViewData", { group_id: group_id, filter:current_option}, function(page_view_json) {
+
+
+            if(parseInt(page_view_json['new_page_views']) > parseInt(page_view_json['total_page_views'])){
+                page_view_json['new_page_views'] = page_view_json['total_page_views'];
+            }
+
             console.log("page view data");
 
             console.log(page_view_json);
@@ -47,6 +53,9 @@ $(document).ready(function() {
             var new_page_views_count = 0;
             var percent_increase = 0.0;
             //prevent divide by 0
+
+
+
 
 
             new_page_views_count = page_view_json['new_page_views'];
@@ -68,6 +77,10 @@ $(document).ready(function() {
             percent_increase = new_page_views_count / page_view_json['total_page_views'];
         }
 
+
+
+
+
         var page_view_data = [
                         {
                             value: page_view_json['total_page_views'] - new_page_views_count,
@@ -82,6 +95,12 @@ $(document).ready(function() {
                             label: "Newbie"
                             }
         ];
+
+
+        dn_0.canvas.width = 110;
+        dn_0.canvas.height = 110;
+
+
         var chart_dn0= new Chart(dn_0).Doughnut(page_view_data, {
             percentageInnerCutout : 87,
             segmentShowStroke : false,
@@ -92,11 +111,13 @@ $(document).ready(function() {
 
         //Round to two decimal points
         percent_increase = Math.round(percent_increase * 100) / 100;
-
+        if(percent_increase > 1){
+            percent_increase = 1;
+        }
 
         //reset left margin
         var $percent_text = $('#page_views_percent_increase_text');
-        $percent_text.css('margin-left', '18px');
+        $percent_text.css('margin-left', '13px');
 
         var percent_increase_str = '';
         if(percent_increase < 1){
@@ -107,8 +128,12 @@ $(document).ready(function() {
         }else if(percent_increase == 1){
             percent_increase_str = (percent_increase * 100).toString() + '%';
         }else{
+            $percent_text.css('margin-left', function (index, curValue) {
+                return parseInt(curValue, 10) + 20 + 'px';
+            });
             percent_increase_str = '+' + (percent_increase * 100).toString() + '%';
         }
+
 
         $percent_text.text(percent_increase_str);
         $('#total_page_views_text').text(page_view_json['total_page_views'].toString());
@@ -166,6 +191,10 @@ $(document).ready(function() {
             console.log('Member data');
             console.log(member_data);
 
+
+            dn_1.canvas.width = 110;
+            dn_1.canvas.height = 110;
+
             var chart_dn1= new Chart(dn_1).Doughnut(member_data, {
                 percentageInnerCutout : 87,
                 segmentShowStroke : false,
@@ -183,12 +212,17 @@ $(document).ready(function() {
 
 
             //reset left margin
-            $('#members_percent_increase_text').css('margin-left', '18px');
+            $('#members_percent_increase_text').css('margin-left', '13px');
 
             var percent_increase_str = '';
-            if(percent_increase < 1){
+            if(percent_increase < .1){
                 $('#members_percent_increase_text').css('margin-left', function (index, curValue) {
                     return parseInt(curValue, 10) + 25 + 'px';
+                });
+                percent_increase_str = (percent_increase * 100).toString() + '%';
+            }else if(percent_increase < 1){
+                $('#members_percent_increase_text').css('margin-left', function (index, curValue) {
+                    return parseInt(curValue, 10) + 15 + 'px';
                 });
                 percent_increase_str = (percent_increase * 100).toString() + '%';
             }else if(percent_increase == 1){
@@ -199,6 +233,7 @@ $(document).ready(function() {
 
          $('#members_percent_increase_text').text(percent_increase_str);
             $('#total_members_count_text').text(json_data['members_count'].toString());
+
             $('#new_members_count_text').text(new_members_count.toString());
 
         });
@@ -214,7 +249,7 @@ $(document).ready(function() {
 
             var current_option = $('.ga_option_cur').text();
 
-            $.getJSON("php/analytics/club_attendance_data.php", { group_id: group_id, filter:current_option}, function(attendance_json) {
+            $.getJSON(base_url + '/club/' + group_id.toString() + '/attendanceData', { group_id: group_id, filter:current_option}, function(attendance_json) {
                 var invite_count = attendance_json['invite_count'];
                 var accepted_invites_count = attendance_json['accepted_invite_count'];
                 var percent_increase = 0.0;
@@ -258,6 +293,10 @@ $(document).ready(function() {
                         label: "Newbie"
                     }
                 ];
+
+                dn_2.canvas.width = 110;
+                dn_2.canvas.height = 110;
+
                 var chart_dn2= new Chart(dn_2).Doughnut(attendance_data, {
                     percentageInnerCutout : 87,
                     segmentShowStroke : false,
@@ -273,21 +312,16 @@ $(document).ready(function() {
 
                 //reset left margin
                 var $percent_text = $('#invite_percent_increase');
-                $percent_text.css('margin-left', '18px');
+                $percent_text.css('margin-left', '4px');
 
                 var percent_increase_str = '';
-                if(percent_increase == 0){
+                if(percent_increase < .1){
                     $percent_text.css('margin-left', function (index, curValue) {
-                        return parseInt(curValue, 10) + 25 + 'px';
+                        return parseInt(curValue, 10) + 32 + 'px';
                     });
                     percent_increase_str = '' + (percent_increase * 100).toString() + '%';
                 }else if(percent_increase == 1){
                     percent_increase_str = (percent_increase * 100).toString() + '%';
-                }else if(percent_increase < .1){
-                    $percent_text.css('margin-left', function (index, curValue) {
-                        return parseInt(curValue, 10) + 0 + 'px';
-                    });
-                    percent_increase_str = '+' + (percent_increase * 100).toString() + '%';
                 }else{
                     percent_increase_str = '+' + (percent_increase * 100).toString() + '%';
                 }
@@ -358,6 +392,9 @@ function show_gender_data(){
                     highlight: "#63b9f2"
                 }
             ];
+
+
+
             //console.log(gender_data);
             var chart_pi0 = new Chart(pi_0).Doughnut(gender_data, {
                 percentageInnerCutout : 0,
@@ -460,7 +497,8 @@ function show_gender_data(){
 //        }
             //    ];
 
-
+            dn_2.canvas.width = 110;
+            dn_2.canvas.height = 110;
             var chart_dn2= new Chart(dn_2).Doughnut(data_dn_2, {
                 percentageInnerCutout : 87,
                 segmentShowStroke : false,
@@ -536,27 +574,27 @@ $(document).delegate(".box-ga-header","mouseleave",function(){
    
 });
 
-$(document).delegate(".ga_option","click",function(){
+    $(document).delegate(".ga_option","click",function(){
 
-    var txt_this= $(this).text();
-    var txt_cur= $(this).closest(".box-ga-header").find(".ga_option_cur").text();
+        var txt_this= $(this).text();
+        var txt_cur= $(this).closest(".box-ga-header").find(".ga_option_cur").text();
 
-    if($(this).hasClass("ga_option_1")){
-        $(this).html(txt_cur+"<span class='anal_right_wedge_hidden'></span>");
-            }else{
-                $(this).text(txt_cur);
-                }
+        if($(this).hasClass("ga_option_1")){
+            $(this).html(txt_cur+"<span class='anal_right_wedge_hidden'></span>");
+        }else{
+            $(this).text(txt_cur);
+            }
 
-            $(this).closest(".box-ga-header").find(".ga_option_cur").html("<div class='anal_right_wedge'></div>"+txt_this);
+        $(this).closest(".box-ga-header").find(".ga_option_cur").html("<div class='anal_right_wedge'></div>"+txt_this);
 
-            $(this).closest(".box-ga-header").find(".hidden_ga_option").stop().animate({opacity:0,marginLeft:-1},200,function(){
-                $(this).find(".hidden_ga_option").hide();
-                });
-            /* mutate chart value accordingly and update chart*/
-            show_page_view_data();
-            show_member_data();
-            show_attendance_data();
-            });
+        $(this).closest(".box-ga-header").find(".hidden_ga_option").stop().animate({opacity:0,marginLeft:-1},200,function(){
+            $(this).find(".hidden_ga_option").hide();
+        });
+        /* mutate chart value accordingly and update chart*/
+        show_page_view_data();
+        show_member_data();
+        show_attendance_data();
+    });
 
 
             $(document).delegate(".anl_header_dropdown_showr","click",function(){
@@ -736,7 +774,7 @@ $(document).delegate(".ga_option","click",function(){
 
 
                 $.getJSON(base_url + '/club/' + group_id.toString() + '/getMemberBreakdown', { group_id: group_id}, function(json_data) {
-                    var freshman_percent_str = (Math.round(json_data['freshman_count'] / json_data['total_count'] * 100) / 100).toString() + '%';
+                    var freshman_percent_str = (Math.round(json_data['freshman_count'] / json_data['total_count'] * 1000) / 10).toString() + '%';
                     var sophomore_percent_str = (Math.round((json_data['sophomore_count'] / json_data['total_count']) * 1000) / 10).toString() + '%';
                     var junior_percent_str = (Math.round((json_data['junior_count'] / json_data['total_count']) * 1000) / 10).toString() + '%';
                     var senior_percent_str = (Math.round((json_data['senior_count'] / json_data['total_count']) * 1000) / 10).toString() + '%';
@@ -867,7 +905,7 @@ $(document).delegate(".ga_option","click",function(){
                     </div> \
                     </div> \
                     <div class='anl-content-box-mb-right'> \
-                        <canvas class='pie_i gender_piechart' width='180' height='180'></canvas> \
+                        <canvas class='pie_i gender_piechart' width='159' height='160'></canvas> \
                     <div class='anl-content-box-mb-right-right gender_percent_div' > \
                         <div class='anl-content-box-mb-right-right-cell'> \
                         <div class='pattern_0 anl_pi_pattern'> \
@@ -1067,8 +1105,10 @@ $(document).delegate(".ga_option","click",function(){
                     <div class='cell_right_tags_wrap tags'></div> \
                     <input class='cell_right_input' type='text' placeholder='add a tag' maxlength='11'> \
                 </div> \
-                <button class='plus_button'></button> \
             </div>");
+
+
+                //                <button class='plus_button'></button> \
 
                 $.each( user_data['tags'], function( index, tag) {
                     $user_div.find('.tags').append($("<div class='cell_right_a_tag'>" + tag + "</div>"));

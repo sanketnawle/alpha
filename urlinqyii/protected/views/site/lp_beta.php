@@ -583,12 +583,13 @@
                                         }else if(response['error_id'] == 4){
                                             //alert('Invalid login');
                                             $error_div.text('Incorrect password');
-                                            var $forgot_password_div = $("<button id='forgot_password'>Forgot Password? </button>" +
-                                            "                   <form id='reset_password' style='display:none;'>" +
-                                            "                        <input id='reset_password_email' type='text' name='email' placeholder='Enter account email...'/>" +
-                                            "                        <input class = 'forgot_password_submit_button' type='submit' value='submit'/>" +
-                                            "                   </form> ");
-                                            $error_div.append($forgot_password_div);
+
+//                                            var $forgot_password_div = $("<button id='forgot_password'>Forgot Password? </button>" +
+//                                            "                   <form id='reset_password' style='display:none;'>" +
+//                                            "                        <input id='reset_password_email' type='text' name='email' placeholder='Enter account email...'/>" +
+//                                            "                        <input class = 'forgot_password_submit_button' type='submit' value='submit'/>" +
+//                                            "                   </form> ");
+//                                            $error_div.append($forgot_password_div);
 
                                             //var $forgot_pass_div = $("<button id='forgot_password'>Forgot Password? </button> <form id='reset_password'><input type='text' name='email' placeholder='email'/><input type='submit' value='submit'/></form> </div>")
                                             //$error_div.append($forgot_pass_div);
@@ -619,6 +620,16 @@
                         });
 
                       </script>
+
+
+                        <div id="forgot_password_div">
+                            <button id='forgot_password'>Forgot Password? </button>
+                           <form id='reset_password' style='display:none;'>
+                               <input id='reset_password_email' type='text' name='email' placeholder='Enter account email...'/>
+                               <input class = 'forgot_password_submit_button' type='submit' value='submit'/>
+                           </form>
+                        </div>
+
 
                     <form name = "login" id = "login" method = "post" action = "<?php echo Yii::app()->request->baseUrl; ?>/login">
                       <input type = "text" name = "login_email" id = "login_email" autocomplete = "on" placeholder = "School Email">
