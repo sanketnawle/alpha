@@ -93,7 +93,9 @@ var WeekGrid = (function (WeekGrid) {
                     init();
 
                     function init(){
-                        var date_str = new Date();
+                        console.log('date yo' + date);
+                        var date_str = new Date(date);
+                        date_str.setDate(date_str.getDate()-1);
                         date_str = date_to_string(date_str);
                         get_week_events(date_str);
                     }
@@ -102,7 +104,7 @@ var WeekGrid = (function (WeekGrid) {
 
                     function get_week_events(date_str){
 
-                        $.getJSON( base_url + '/event/getWeekEvents', {date: date_str},function( json_data ) {
+                        $.getJSON( base_url + '/event/getWeekEvents', {date: date_str, tz_offset: (new Date().getTimezoneOffset())},function( json_data ) {
                             if(json_data['success']){
                                 show_week_events(json_data['events']);
                             }else{

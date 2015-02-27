@@ -282,6 +282,10 @@ jQuery(document).ready(function(){
         var event_origin_id = $event_holder.attr('data-origin_id');
         var event_type = $event_holder.attr('data-event_type');
         var event_location = $event_holder.attr('data-location');
+        var event_description = $event_holder.attr('data-description');
+        var event_all_day = $event_holder.attr('data-all_day');
+        var event_todo = event_type === "todo";
+
 
         var event_start_date = local_to_utc(new_date(event_start_date_string));
         var event_end_date = local_to_utc(new_date(event_end_date_string));
@@ -327,6 +331,13 @@ jQuery(document).ready(function(){
         jQuery('#create_event_end_time_input').val(time_string_to_am_pm_string(event_end_time_string));
         jQuery('#create_event_end_time_input').attr('data-time', event_end_time_string);
 
+        jQuery('#event_description_input').val(event_description);
+        if(event_all_day === "1"){
+            jQuery('#allday_checkbox').prop('checked',true);
+        }
+        if(event_todo){
+            jQuery('#todo_checkbox').prop('checked',true);
+        }
 
 
         //Get the create event form element

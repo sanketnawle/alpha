@@ -25,7 +25,10 @@ jQuery(document).ready(function(){
         var $create_week_day_event_popup = jQuery('#create_week_day_event_popup');
         
 
-        var end_time = ints_to_time(this_time_int + 1,0,0);
+        var end_time;
+        if(this_time!="23:00:00")
+            end_time = ints_to_time(this_time_int + 1,0,0);
+        else end_time = ints_to_time(this_time_int + 0,59,0);
 
         //FOR X POSITION CHECKING IN COMPARISON TO WINDOW WIDTH //
 
@@ -192,7 +195,7 @@ jQuery(document).ready(function(){
         var event_start_datetime = local_to_utc(new_datetime(event_start_date + ' ' + event_start_time));
         var event_end_datetime = local_to_utc(new_datetime(event_end_date + ' ' + event_end_time));
 
-        event_start_date = date_to_string(event_end_datetime);
+        event_start_date = date_to_string(event_start_datetime);
         event_start_time = datetime_to_time_string(event_start_datetime);
 
         event_end_date = date_to_string(event_end_datetime);

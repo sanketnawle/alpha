@@ -96,6 +96,12 @@ jQuery(document).ready(function(){
                 var $event_holder = $(this);
                 $event_holder.hide();
             });
+            if($check.closest('.providers').hasClass('personal')){
+                $('.event_holder[data-hex="#27e53f"]').each(function(){
+                    var $event_holder = $(this);
+                    $event_holder.hide();
+                });
+            }
         }else{
             $check.attr('checked','');
             $check.addClass('checked');
@@ -103,6 +109,12 @@ jQuery(document).ready(function(){
                 var $event_holder = $(this);
                 $event_holder.show();
             });
+            if($check.closest('.providers').hasClass('personal')){
+                $('.event_holder[data-hex="#27e53f"]').each(function(){
+                    var $event_holder = $(this);
+                    $event_holder.show();
+                });
+            }
         }
     });
 
