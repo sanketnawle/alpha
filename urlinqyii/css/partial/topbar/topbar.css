@@ -1153,7 +1153,7 @@ body.body_group #topbar_responsive_holder{
 }
 
 body.body_group .topbar > #topbar_responsive_holder > .right{
-    margin-left: 10px;
+    margin-left: 20px;
 
 }
 
@@ -1216,7 +1216,7 @@ body.body_group #topbar_responsive_holder{
 }
 
 body.body_group .topbar > #topbar_responsive_holder > .right{
-    float: right!important;
+    float: none!important;
 
     margin-right: 60px;
 }
