@@ -20,7 +20,7 @@ body.body_group #topbar_responsive_holder{
 
 body.body_group .topbar > #topbar_responsive_holder > .right{
     float: none;
-    margin-left: 176px;
+    margin-left: 108px;
 }
 
 body.body_group .topbar > #topbar_responsive_holder > .center{
@@ -229,7 +229,7 @@ width: 980px!important;
 
     .topbar > #topbar_responsive_holder > .left {
         overflow: visible;
-        margin-left: 271px;
+        margin-left: 26px;
         height: 48px;
         margin-right: 0px;
     
@@ -285,10 +285,11 @@ width: 980px!important;
     }
 
     .topbar .center {
-        width: 490px;
+        width: 560px;
         margin: auto;
     
         display: inline-block;
+        margin-left: 172px;
         height: 46px;
         float: center;
         margin-top: 0px;
@@ -308,7 +309,7 @@ width: 980px!important;
             overflow: hidden;
         
             border: 2px solid #000;
-            max-width: 467px;
+            max-width: 533px;
 }
 
 form.top_search_bar_form{
@@ -323,7 +324,7 @@ form.top_search_bar_form{
                 margin-right: -25px;
                 padding-right: 25px;
                 background: transparent;
-                font-size: 14.5px;
+                font-size: 15px;
  
                 text-rendering: optimizelegibility;
                 border: none;
@@ -331,7 +332,7 @@ form.top_search_bar_form{
                 cursor: text;
                 height: 22px;
             
-                font-family: 'Open Sans', sans-serif;
+                font-family: Avenir;
 }
 
             .topbar #topbar_responsive_holder .center form .submit {
@@ -757,9 +758,11 @@ body .topbar div.calendar_link{
     position: absolute;
 
     right: 5px;
-    top: 5px;
-    height: 39px;
-    width: 44px;
+    top: 8px;
+    right: 9px;
+    height: 33px;
+    margin-right: 9px;
+    width: 84px;
     /* background-color: black; */
 }
 body .topbar div.calendar_link > a{
@@ -769,8 +772,10 @@ body .topbar div.calendar_link > a{
     width: 100%;
     left: 0;
     height: 100%;
+    padding-left: 10px;
     position: absolute;
-    border-radius: 2.5px;
+    padding-right: -7px;
+    border-radius: 4px;
     top: 0;
 }
 
@@ -791,12 +796,12 @@ background-image: url(../../../assets/quick_cal_arrow.png);
 background-size:auto;
 width: 6px;
 height: 9px;
-right: 5px;
+right: 10px;
 display:inline-block;
 line-height: 1;
 background-repeat: no-repeat;
 position: absolute;
-top: 16px;
+top: 13px;
 transition: left 190ms ease-out;
 }
 
@@ -1285,4 +1290,26 @@ body.body_group .topbar > #topbar_responsive_holder > .center{
 body.body_group .topbar > #topbar_responsive_holder > .left{
 
 }
+}
+
+a.calendar_link_wrap {
+
+}
+
+a.calendar_link_wrap:hover {
+    background: rgba(18,19,20,.333);
+
+}
+
+a.calendar_link_wrap h5{
+    font-size: 14.5px;
+    
+    font-family: Avenir;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
+    font-weight: 200;
+    position: relative;
+    top: 8px;
+    cursor: pointer;
+    left: 1px;
 }

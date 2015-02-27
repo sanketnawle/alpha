@@ -185,7 +185,7 @@
 <!--                    <button class="print" ng-click="printGrid()">&nbsp;</button>-->
                     <form class="search" id="form_calendar_search">
                         <input type="submit" value="">
-                        <input type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="Search">
+                        <input type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="Search your events...">
                     </form>
                 </div>
                 <div class="column center">

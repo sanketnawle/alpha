@@ -234,7 +234,7 @@ margin-top: 9px;
 position: absolute;
 top: -39px;
 left: 15px;
-z-index: 20;
+z-index: 200000;
 }
 
 div.event_location{

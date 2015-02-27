@@ -149,9 +149,8 @@
             </div>
         </div>
         <div class = "calendar_link">
-            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar" >
-                <div class = "calendar_icon">
-                </div>
+            <a class = "calendar_link_wrap" href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar" >
+                <h5>Calendar</h5>
                 <div class = "quick_cal_arrow">
                 </div>
             </a>
