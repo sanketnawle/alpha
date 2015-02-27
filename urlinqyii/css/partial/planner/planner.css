@@ -107,11 +107,13 @@ body#body_home .entry_field_placeholder{
 }
 
 .entry_field_placeholder span{
-    font-weight: 500;
-    -webkit-font-smoothing: antialiased; 
+    font-weight: 600; 
     position: relative;
-    -moz-osx-font-smoothing: grayscale;
-    top: 3px;
+    top: 2px;
+    color: #121314;
+    font-family: 'Open Sans', sans-serif;
+    left: -2px;
+    font-size: 11.5px;
 }
 
 .entry_field_placeholder:hover span{
@@ -407,7 +409,7 @@ border-image: none;
     margin-left: 0px;
     font-size: 10px;
     font-weight: bold;
-    font-family: 'OpenSans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #575757;
     white-space: normal;
 
@@ -534,7 +536,7 @@ body.body_group input.event_title{
 
 
 .nav-icon{
-    background:#575757;
+    background: #121314;
     position: absolute;
     right: 10px;
     top: 16px;
@@ -543,7 +545,7 @@ body.body_group input.event_title{
     cursor: pointer;
 } 
 .nav-icon .nav-icon-plus{
-    background:#575757;
+    background: #121314;
     width: 2px; 
     height: 10px;
     position:relative;

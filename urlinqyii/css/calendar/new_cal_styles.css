@@ -743,7 +743,7 @@ form.search div.popover:before{
 
 form.search div.popover div.popover-content{
     height: auto!important;
-
+    overflow: hidden;
 }
 
 form.search div.popover div.popover-content a.row.go_to_event{
