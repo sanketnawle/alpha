@@ -1151,19 +1151,24 @@ class PostController extends Controller
 
         //Make sure this user created this post
         if($post->user_id != $user->user_id){
-            if($post->origin_type == "club"){
-                $origin = Group::model()->findByPk($post->origin_id);
-            }else if($post->origin_type == "class"){
-                $origin = ClassModel::model()->findByPk($post->origin_id);
-            }else if($post->origin_type == "department"){
-                $origin = Department::model()->findByPk($post->origin_id);
-            }
-            $is_admin=false;
-            foreach($origin->admins as $admin){
-                if($user->user_id == $admin->user_id){
-                    $is_admin = true;
+            if($post->origin_type !== "user"){
+                if($post->origin_type == "club"){
+                    $origin = Group::model()->findByPk($post->origin_id);
+                }else if($post->origin_type == "class"){
+                    $origin = ClassModel::model()->findByPk($post->origin_id);
+                }else if($post->origin_type == "department"){
+                    $origin = Department::model()->findByPk($post->origin_id);
                 }
-            }if($is_admin == false){
+                $is_admin=false;
+                foreach($origin->admins as $admin){
+                    if($user->user_id == $admin->user_id){
+                        $is_admin = true;
+                    }
+                }
+            }else{
+                $is_admin = intval($post->origin_id) === intval($this->get_current_user_id());
+            }
+            if($is_admin == false){
                 $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'User is not authorized to delete this post');
                 $this->renderJSON($return_data);
                 return;

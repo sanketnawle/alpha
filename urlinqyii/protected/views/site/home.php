@@ -148,7 +148,7 @@
 
                                          </div>
                                             <div class = 'post_time'> <span class = "time_icon"></span>
-                                                <time class='timeago' datetime= '{{created_time}}'>
+                                                <time class='timeago'>
                                                     A few seconds ago
                                                 </time>
                                             </div>
@@ -201,7 +201,7 @@
 
                                          </div>
                                             <div class = 'post_time'> <span class = "time_icon"></span>
-                                                <time class='timeago' datetime= '{{created_time}}'>
+                                                <time class='timeago'>
                                                     A few seconds ago
                                                 </time>
                                             </div>
