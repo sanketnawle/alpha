@@ -4078,20 +4078,207 @@ div.post_type_marker.question_post_type span.post_type_icon{
     
 }
 
+div.post_other_attendees_holder{
+    display: inline-block; 
+    border-left: 1px solid #D8D8D8; position: relative;  padding-left: 5px; font-weight: 400; font-size: 14px;  
+    height: 32px;
+    width: 205px; 
+    top: -7px; color: rgba(0,0,0,0.37);
+
+}
+
+div.post_other_attendees_holder:hover{
+
+}
+
+div.post_other_attendees_holder:active{
+
+}
 
 .reply_delete_button {
-
     float: right;
     margin-top: -32px;
     cursor: pointer;
-
-
     height: 9px;
     width: 8px;
-
-
     background-image: url(../../../assets/noti_sprite.png);
     background-position: 0px -174px;
     background-size: auto;
+}
 
+.post_attendees{
+    background-color: white;
+    width: 99%;
+    height: 34px;
+    margin-bottom: 6px;
+    padding:5px;  
+    position: relative;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1); -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1); box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 550px;
+}
+
+.post_attendees:after{
+font-size: 0px;
+line-height: 0%;
+width: 0px;
+z-index: 2;
+left: 1px;
+position: absolute;
+border-left: 9px solid rgba(255, 255, 255, 0);
+border-top: 10px solid #FFFFFF;
+border-right: 9px solid rgba(246, 246, 246, 0);           
+}
+
+.post_attendees_link_arrow{
+    font-size: 0px;
+    line-height: 0%;
+    width: 0px;
+    z-index: 100000;
+    top: 44px;
+    left: 65px;
+    position: absolute!important;
+    border-left: 9px solid rgba(255, 255, 255, 0);
+    border-top: 10px solid #FFFFFF;
+    border-right: 9px solid rgba(246, 246, 246, 0);
+}
+
+.post_attendees_link_arrow_border{
+    border-bottom-color: rgba(0,0,0,.2);
+font-size: 0px;
+line-height: 0%;
+
+
+    top: 44px;
+    left: 64px;
+    z-index: 10000;
+position: absolute!important;
+    width: 0px;
+border-left: 10px solid rgba(255, 255, 255, 0);
+
+    border-top: 11px solid #DEE0E4;
+border-right: 10px solid rgba(246, 246, 246, 0);
+}
+
+.post_last_user_joined .post_last_user_image{
+    background-image: url(http://localhost/alpha/urlinqyii/assets/test.jpg);
+    background-size: cover;
+    margin-top: 2px;
+    margin-left: 8px;
+    width: 31px; 
+    height: 31px;
+    border-radius: 2.7px;
+}
+
+.post_last_user_name, .post_last_user_image, .post_other_attendees{
+    cursor: pointer;
+
+    color: #029acf;
+    font-size: 15px!important;
+}
+.post_attendees * {
+    display:inline-block;
+    font-size: 14px;
+    position:relative;
+}
+.post_divider{
+    height: 20px;
+    position: relative;
+    /* border-right: 1px solid black; */
+    top: -13px;
+}
+.post_last_user_text, .post_other_attendees_count{
+    top: -10px;
+    color: rgba(0,0,0,.72); 
+    left: 4px;
+    cursor: default;
+    font-weight: 400;
+    width: 285px;
+    font-size: 14px;
+    position: relative;
+}
+
+.post_last_user_text > a{
+
+}
+
+.post_last_user_text > a:hover > span{
+    text-decoration: underline!important;
+}
+
+.post_last_user_image:hover ~ .post_last_user_text > a > span{
+    text-decoration: underline!important;
+}
+
+.post_other_attendees .post_user_popup{
+
+}
+
+.post_other_attendees .post_user_popup{
+    
+}
+
+.post_other_attendees .post_user_image:hover ~ .post_user_popup{
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+
+div.post_other_attendees_link{
+    margin-left: 1px;
+    border-radius: 3px;
+    padding: 3px 3px;
+    padding-right: 8px;
+    padding-left: 7px;
+}
+
+div.post_other_attendees_link:hover{
+    background: #f2f2f2;
+
+}
+
+div.post_other_attendees_link:active{
+    opacity: .8;
+    
+}
+
+div.post_other_attendees_count{
+    width: auto;
+
+    font-size: 13px;
+    cursor: default;
+    left: 2px;
+    color: rgba(0, 0, 0, 0.368627);
+    top: -3px;
+}
+
+.post_other_attendees{
+    height: 21px;
+    top: 2px;
+    margin-right: 0px;
+    position: relative;
+}
+.post_other_attendees .post_user_image {
+    width: 21px;
+    height: 21px;
+    background-size: cover;
+    border-radius: 2px;
+}
+
+.post_other_attendees .post_user_popup{
+    position: absolute;
+
+    z-index: 100000000;
+    opacity: 0;
+    top: auto;
+    pointer-events: none;
+}
+
+.post_other_attendees_count > span{
+    color: #000;
+    
 }
