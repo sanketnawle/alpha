@@ -21,8 +21,8 @@
 			<div class = "LeftPanel_SectionContent">
 				<div class = "LeftPanel_MyBox">
 					<div class = "clearfix MyBox">
-						<a class = "MyBox_PictureLink">
-							<div class = "MyBox_Picture profile_link" data-user_id="<?php echo $user->user_id?>" style="background-image:url(<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>)"></div>
+						<a class = "MyBox_PictureLink";>
+							<div class = "MyBox_Picture profile_link" data-user_id="<?php echo $user->user_id?>" style="background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>')"></div>
                             <button type="button" id="left_panel_change_picture_button"></button>
                             <div style="height: 0px;width:0px; overflow:hidden;">
                                 <input id="left_panel_picture_upfile" type="file" value="upload"/>

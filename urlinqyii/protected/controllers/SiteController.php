@@ -1159,7 +1159,7 @@ class SiteController extends Controller
             $event_user->event_ud = $event->event_id;
             $event_user->user_id = $user->user_id;
             $event_user->color_id = get_random_color();
-            $event_user->save();
+            $event_user->save(false);
         }
 
     }
