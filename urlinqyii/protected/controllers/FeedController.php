@@ -422,6 +422,17 @@ class FeedController extends Controller
                         }
                     }
 
+                    if(sizeof($post_event->event->attendees)>0){
+                        $posts[$i]['event']['attending'] = array();
+                        foreach($post_event->event->attendees as $attendee){
+                            if($attendee->user_id != $this->get_current_user_id()){
+                                array_push($posts[$i]['event']['attending'],$this->get_model_associations($attendee,array('pictureFile'=>array())));
+                            }
+                        }
+                    }
+
+
+
 
                     if($post_model->origin_type == 'class'){
                         $class_user = ClassUser::model()->find('class_id=:class_id and user_id=:user_id', array(':class_id'=>$post_model->origin_id, ':user_id'=>$user->user_id));

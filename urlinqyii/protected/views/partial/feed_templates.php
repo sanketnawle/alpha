@@ -934,6 +934,33 @@
                     data-origin_id="{{origin_id}}"
                 {{/ifCond}}
                 data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
+                    {{#if event.attending}}
+                    <div class = 'post_attendees'>
+                        <div class="post_last_user_joined">
+                            <div class="post_last_user_image profile_link" data_user-id="{{event.last_joined.user_id}}" style="background-image:url(<?php echo Yii::app()->getBaseUrl(true);?>{{event.last_joined.pictureFile.file_url}})"></div>
+                            <div class="post_last_user_text"><a><span class="post_last_user_name profile_link" data_user-id="{{event.last_joined.user_id}}">{{event.last_joined.firstname}} {{event.last_joined.lastname}}</span></a> is attending</div>
+                        </div>
+
+                        {{#if event.other_attendees}}
+                        <span class="post_divider"></span>
+                        <div class="post_other_attendees_holder">
+                            {{#each event.other_attendees}}
+                                <div class="post_other_attendees">
+                                    <div class="post_user_image profile_link" data_user-id="{{user_id}}" style="background-image:url(<?php echo Yii::app()->getBaseUrl(true);?>{{pictureFile.file_url}})"></div>
+                                    <div class="post_user_popup">{{firstname}} {{lastname}}</div>
+                                </div>
+                            {{/each}}
+                            <div class="post_other_attendees_count">
+                                {{#ifCond event.other_attendee_count '==' 1}}
+                                    1 more attendee
+                                {{else}}
+                                    {{event.other_attendee_count}} more attendees
+                                {{/ifCond}}
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                    {{/if}}
                     <div class = 'post_main event_post'>
                         <div class = "post_type_marker event_post_type">
                             <span class = "post_type_icon"></span>

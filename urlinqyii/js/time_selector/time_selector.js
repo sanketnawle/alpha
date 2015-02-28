@@ -149,6 +149,8 @@ jQuery(document).ready(function(){
         $('#time_selector').removeClass('active');
     });
 
+
+
 //    jQuery(document).on('keyup','.time_input', function(){
 //        update_time_input($(this));
 //    });
@@ -156,7 +158,7 @@ jQuery(document).ready(function(){
 
 
 
-    var $last_selected_time_input = null;
+
 
     jQuery(document).on('click','.time_input', function(e){
 
@@ -200,7 +202,7 @@ jQuery(document).ready(function(){
 
         //Set the position of the time selector to underneath this time input
         $time_selector.css({'position': 'fixed'});
-        $time_selector.css({'top': (input_position.top + $time_input.height()).toString() + 'px'});
+        $time_selector.css({'top': (input_position.top - $(window).scrollTop() + $time_input.outerHeight()-14).toString() + 'px'});
         $time_selector.css({'left': input_position.left.toString() + 'px'});
         $time_selector.css({'z-index': '9999'});
         //Set the time_selector to active
@@ -254,5 +256,19 @@ jQuery(document).ready(function(){
 
 
 
+
+});
+var $last_selected_time_input = null;
+jQuery(document).scroll(function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    if($last_selected_time_input){
+        //Get the position of this time input
+        console.log('scroll');
+        var input_position = $last_selected_time_input.offset();
+
+        //Set the position of the time selector to underneath this time input
+        $('#time_selector').css({'top': (input_position.top - $(window).scrollTop() + $last_selected_time_input.outerHeight()).toString() + 'px'});
+    }
 
 });

@@ -88,7 +88,7 @@ jQuery(document).ready(function(){
 
                 return;
             }else{
-                alert('invalid input');
+                //alert('invalid input');
                 $invite_input.addClass('error');
                 return;
             }
@@ -141,7 +141,7 @@ jQuery(document).ready(function(){
                 post_data,
                 function(response){
                     console.log(response);
-                    alert(JSON.stringify(response));
+                 //   alert(JSON.stringify(response));
 
                     var $invite_popup = $invite_holder.find('#invite_popup');
                     $invite_popup.removeClass('active');
