@@ -183,7 +183,7 @@ div#planner_column{
     float: right;
     margin-top: 0;
     word-wrap: break-word;
-    width: 235px;
+    width: 245px;
 
     height: 100%;
 }
@@ -300,7 +300,7 @@ body.body_school #planner_column.planner_column_group #right_column_specs #fixed
 #feed_column{
     width: 552px;
 
-    padding-left: 15px;
+    padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 20px;
     float: left;
@@ -1707,17 +1707,18 @@ textarea:focus:-moz-placeholder {
 }
 
      body.body_searchpage .topbar #topbar_responsive_holder .center ul{
+    width: 464px;
 
     } 
     body.body_group .topbar #topbar_responsive_holder .center ul{
-    width: 481px;
+    width: 547px;
 
     }   
     body#body_calendar .topbar #topbar_responsive_holder .center ul{
 
     }  
      body#body_home .topbar #topbar_responsive_holder .center ul{
-    width: 481px;
+    width: 547px;
 
     } 
 
@@ -1843,7 +1844,7 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
     }
 
     #body_home #content_panel{
-        margin-left: 280px;
+        margin-left: 257px;
     }
     #body_home #LeftPanel_Holder{
 
@@ -1882,7 +1883,7 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
 
     } 
     body.body_group .topbar #topbar_responsive_holder .center ul{
-    width: 551px;
+    width: 548px;
 
     }   
     body#body_calendar .topbar #topbar_responsive_holder .center ul{
@@ -2000,17 +2001,18 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
         min-width:855px;
     }   
     body#body_home .topbar #topbar_responsive_holder .center ul{
-    width: 470px;
+    width: 458px;
 
     } 
      body.body_searchpage .topbar #topbar_responsive_holder .center ul{
 
     } 
     body.body_group .topbar #topbar_responsive_holder .center ul{
-    width: 470px;
+    width: 458px;
 
     }   
     body#body_calendar .topbar #topbar_responsive_holder .center ul{
+    width: 444px!important;
 
     }  
 }

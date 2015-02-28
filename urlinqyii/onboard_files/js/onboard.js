@@ -126,8 +126,6 @@ $(document).ready(function () {
     }
 
 
-
-
     function progress_check(curr) {
         var w = progress_bar[curr];
         var b = progress_bar_color[curr];
@@ -208,7 +206,7 @@ $(document).ready(function () {
         //if ((curr!=0)&&(curr!=3))
     }
 
-    $(".content_inner").slimScroll({ wrapperClass: "scroll-wrapper", barClass: "scroll-bar", touchScrollStep: "140" });
+    $(".content_inner").slimScroll({ wrapperClass: "scroll-wrapper", barClass: "scroll-bar", railVisible: true, touchScrollStep: "140",size:"10px" });
 
     function content_paint(curr) {
         var $canvas = $(".content_canvas");
@@ -829,6 +827,7 @@ $(document).ready(function () {
 
             if(progress_flag == 1){
                 delete selected_data["school_id"];
+                school_click_count = 0;
             }
 
             if(progress_flag == 4){

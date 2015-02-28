@@ -101,7 +101,7 @@ a.MyBox_SO.edit_profile:hover{
     padding: 10px;  
     border-radius: 5px;
     padding-right: 16px;
-    padding-left: 28px;
+    padding-left: 22px;
     padding-top: 0px;
     margin-top: -12px;
 }
@@ -141,9 +141,9 @@ a.MyBox_SO.edit_profile:hover{
 
     width: 225px;
 
-    padding-right: -2px;
+    padding-right: -2px;   
 
-    -moz-box-shadow: 0 -1px 1px #fff inset; -webkit-box-shadow: 0 -1px 1px #fff inset; box-shadow: 0 -1px 1px #fff inset; border-bottom: 1px solid #e2e2e2;
+    border-bottom: 1px solid #C3C3C3;
 
 }
 
@@ -316,12 +316,13 @@ div.LeftPanel_DeptSchoolHolder{
     
     color: #999;
     margin-left: 6px;
+    text-transform: uppercase;
     font-family: Avenir;
     font-weight: 100;
 }
 
 a.LeftPanel_DSContentBoxName{
-    width: 226px;
+    width: 236px;
 
     display: block;
     cursor: pointer;
@@ -335,7 +336,7 @@ a.LeftPanel_DSContentBoxName{
 
 a.LeftPanel_DSContentBoxName h5{
     color: #333; 
-    font-size: 13px; 
+    font-size: 13.5px; 
     font-weight: 500;
     margin: 0;
     margin-left: 1px;
@@ -344,6 +345,7 @@ a.LeftPanel_DSContentBoxName h5{
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     padding: 2.5px 0 2.5px 5px;
     border-radius: 3px;
+    -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; font-weight: 500;
 }
 
 .LeftPanelSection:hover .LeftPanel_SectionHeader div.float_Right a{
@@ -379,16 +381,17 @@ ul.LeftPanel_GroupsList li a{
     color: #27292b;
     cursor:pointer;
     outline:none;
-    font-size: 12.15px;
+    font-size: 13.5px;
     padding: 4px 6px;
-    width: 220px;
+    width: 231px;
     font-weight: 500;
     border-radius: 3px;
     text-decoration: none;
     background: transparent;
     display: block;
     padding-right: 0px;
-    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    overflow: hidden; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; font-weight: 500;
+    text-overflow: ellipsis; white-space: nowrap;
     font-family: 'Open Sans', sans-serif;
     -moz-transition:.035s ease color, .035s ease background;
     -webkit-transition:.035s ease color, .035s ease background;
