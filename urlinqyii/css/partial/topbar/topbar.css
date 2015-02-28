@@ -29,7 +29,7 @@ body.body_group .topbar > #topbar_responsive_holder > .center{
 }
 
 body.body_group .topbar > #topbar_responsive_holder > .left{
-    margin-left: 40px;
+    margin-left: 26px;
 
 }
 
@@ -64,8 +64,15 @@ body.body_group .topbar > #topbar_responsive_holder > .left{
 }
 
 #new_notification_count.something_new{
-    background: rgba(255, 255, 255, 0.78);
-    box-shadow: 0 1px 1px rgba(98, 98, 98, 1);  
+    background: rgba(255, 255, 255, 1);  
+    border: 2px solid #000;
+    font-weight: 500!important;
+    height: 14px;
+    top: -3px!important;
+    left: -28px!important;
+    line-height: 15px;
+    max-height: 14px;
+    width: 12px!important;
 }
 
 .search_result_icon.non_profile_icon{
@@ -131,7 +138,7 @@ width: 15px;
 height: 27px;
 position: absolute;
 top: 10px;
-left: 22px;
+left: 4px;
 border-radius: 2px;
 }
 
@@ -210,7 +217,7 @@ width: 980px!important;
     left: 0;
     right: 0;
     top: 0;
-    border-bottom: 1px solid #222;
+    border-bottom: 2px solid #000;
     z-index: 99999999999;
     min-width: 820px;
     -moz-box-shadow: 0px 0 3px rgba(0,0,0,0.5);
@@ -245,17 +252,17 @@ width: 980px!important;
             }
 
             .topbar > #topbar_responsive_holder > .left a.urlinq {
-                width: 64px;
+                width: 75px;
                 display: block;
                 background-image: url(../../../assets/logo.svg);
-                background-size: auto 20px;
+                background-size: contain;
                 background-repeat: no-repeat;
                 display:inline-block;
-                background-position: center 16px;
             
                 position: relative;
                 cursor: pointer;
-                left: -2px;
+                top: 13px;
+                left: -4px;
 }
 
             .topbar > #topbar_responsive_holder > .left a.menu {
@@ -289,7 +296,7 @@ width: 980px!important;
         margin: auto;
     
         display: inline-block;
-        margin-left: 172px;
+        margin-left: 157px;
         height: 46px;
         float: center;
         margin-top: 0px;
@@ -574,9 +581,10 @@ border-radius: 4px;}
         border-radius: 0px 0px 4px 4px;
         padding: 4px 0px 0px;  
         background: rgba(255, 255, 255, 0.99);   
-        box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.04);
         overflow-y: scroll;
-        max-height: 418px;   -webkit-box-shadow: 0 4px 6px 2px rgba(0, 0, 0, .10);
+        max-height: 418px;   
+        border: 2px solid #000;
+        border-top: none;
 }
 
         .topbar #topbar_responsive_holder .center ul li a {
@@ -859,7 +867,9 @@ body .topbar div.calendar_link{}
 
 .topbar > #topbar_responsive_holder > .left{}
 .topbar > #topbar_responsive_holder > .right{}
-.topbar > #topbar_responsive_holder > .center{}
+.topbar > #topbar_responsive_holder > .center{
+    margin-left: 157px;
+}
 
 body.body_group .topbar > #topbar_responsive_holder > .right{}
 body.body_group .topbar > #topbar_responsive_holder > .left{}
@@ -911,16 +921,18 @@ body.body_group .topbar > #topbar_responsive_holder > .center{}
 }
 
 .topbar > #topbar_responsive_holder > .left{
-    margin-left: 294px;
+    margin-left: 23px;
 }
 .topbar > #topbar_responsive_holder > .right{}
-.topbar > #topbar_responsive_holder > .center{}
+.topbar > #topbar_responsive_holder > .center{
+    margin-left: 161px;
+}
 body .topbar div.calendar_link{}
 
 body.body_group .topbar > #topbar_responsive_holder > .left{}
 
 body.body_group .topbar > #topbar_responsive_holder > .center{
-    margin-left: 168px!important;
+    margin-left: 169px!important;
 }
 .topbar .center form{}
 body.body_group #topbar_responsive_holder{
@@ -928,7 +940,7 @@ body.body_group #topbar_responsive_holder{
 
 body.body_group .topbar > #topbar_responsive_holder > .right{
     float: none; 
-    margin-left: 177px; };
+    margin-left: 0px; };
 
 }
 
@@ -950,12 +962,12 @@ body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_respons
 }
 
 body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
-    left: -18px;
+    left: -22px;
 
 }
 
 body.body_group .topbar > #topbar_responsive_holder > .center{
-    margin-left: 156px;
+    margin-left: 157px;
 
 }
 
@@ -1030,7 +1042,9 @@ body.body_group .topbar > #topbar_responsive_holder > .center{}
 
 .topbar > #topbar_responsive_holder > .left{}
 .topbar > #topbar_responsive_holder > .right{}
-.topbar > #topbar_responsive_holder > .center{}
+.topbar > #topbar_responsive_holder > .center{
+    margin-left: 160px;
+}
 body .topbar div.calendar_link{}
 .topbar .center form{}
 body.body_group #topbar_responsive_holder{
@@ -1084,7 +1098,7 @@ body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
 
 body.body_group .topbar > #topbar_responsive_holder > .right{
     float: none!important;
-    margin-left: 116px;
+    margin-left: 12px;
 }
 
 body.body_group .topbar > #topbar_responsive_holder > .left{}
@@ -1093,7 +1107,7 @@ body.body_group .topbar > #topbar_responsive_holder > .center{}
 
 .topbar > #topbar_responsive_holder > .left{
     margin-left: 24px;
-    margin-right: 13px;
+    margin-right: 6px;
 }
 #body_calendar .topbar > #topbar_responsive_holder > .left{
     
@@ -1102,12 +1116,12 @@ body.body_group .topbar > #topbar_responsive_holder > .center{}
     margin-left: 17px;
 }
 .topbar > #topbar_responsive_holder > .center{
-    margin-left: 191px;
-    width: 550px;
+    margin-left: 152px;
+    width: 542px;
 }
 body .topbar div.calendar_link{}
 .topbar .center form{
-    max-width: 537px;
+    max-width: 534px;
 }
 body.body_group #topbar_responsive_holder{
     padding-right: 0px;
@@ -1118,11 +1132,12 @@ body.body_group .topbar > #topbar_responsive_holder > .right{
 }
 
 body.body_group .topbar > #topbar_responsive_holder > .center{
-    margin-left: 160px!important;
+    margin-left: 166px!important;
 
 }
 
 body.body_group .topbar > #topbar_responsive_holder > .left{
+    margin-left: 28px;
 
 }
 }
@@ -1153,7 +1168,7 @@ body.body_group #topbar_responsive_holder{
 }
 
 body.body_group .topbar > #topbar_responsive_holder > .right{
-    margin-left: 20px;
+    margin-left: 14px;
 
 }
 
@@ -1192,7 +1207,7 @@ body.body_group .topbar > #topbar_responsive_holder > .right{}
 body.body_group .topbar > #topbar_responsive_holder > .left{}
 
 .topbar > #topbar_responsive_holder > .left{
-    margin-left: 15px;
+    margin-left: 14px;
 }
 .topbar > #topbar_responsive_holder > .right{
     margin-left: 14px;
@@ -1210,7 +1225,7 @@ body#body_home .topbar #topbar_responsive_holder{
     width: 830px!important;
 }
 .topbar .center form{
-    max-width: 456px;
+    max-width: 444px;
 }
 body.body_group #topbar_responsive_holder{
 }
@@ -1241,7 +1256,7 @@ body.body_group .topbar > #topbar_responsive_holder > .right{}
 
 .topbar > #topbar_responsive_holder > .left{}
 .topbar > #topbar_responsive_holder > .right{
-    margin-left: 32px;
+    margin-left: 22px;
 }
 #body_calendar .topbar > #topbar_responsive_holder > .left{
     
@@ -1267,7 +1282,8 @@ body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
 
 }
 .topbar > #topbar_responsive_holder > .center{
-    width: 457px;
+    width: 444px;
+    margin-left: 1px;
 }
 body .topbar div.calendar_link{
     right: 13px;

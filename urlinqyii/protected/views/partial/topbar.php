@@ -7,7 +7,6 @@
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/moment.js" > </script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"></script>
@@ -15,7 +14,7 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/top_bar.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/notifications.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
-
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
 
 
 

@@ -2027,7 +2027,7 @@ div.post_attached_image_caption > p{
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.25);
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     float: left;
-    width: auto;
+    width: 190px;
     margin: 10px 0px;
     display: block;
 }

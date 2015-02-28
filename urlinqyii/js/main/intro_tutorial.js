@@ -92,9 +92,11 @@ $(document).ready(function(){
         if($('.post_office_input').length && $.trim($('.post_office_input').val()) != ''){
             post_data.office_location=$.trim($('.post_office_input').val());
         }
-        if($('.post_office_hours_input').length && $.trim($('.post_office_hours_input').val()) != ''){
+       /* if($('.post_office_hours_input').length && $.trim($('.post_office_hours_input').val()) != ''){
             post_data.office_hours=$.trim($('.post_office_hours_input').val());
-        }
+        }*/
+
+        
         if($('.post_bio_input').length && $.trim($('.post_bio_input').val()) != ''){
             post_data.bio=$.trim($('.post_bio_input').val());
         }

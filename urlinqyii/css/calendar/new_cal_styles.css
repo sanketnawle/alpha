@@ -65,8 +65,10 @@ div.check > i.checkmark{
 }
 
     body#body_calendar .topbar #topbar_responsive_holder .center ul{
-        width:481px;
-    }  
+        width: 533px;
+    
+        left: 0px;
+}  
 
 div.title_background{
 opacity: .1;
@@ -727,6 +729,22 @@ form.search div.popover{
     top: 21px!important;
     left: -1px!important;
     border: 1px solid #d6d6d6; -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13);
+}
+
+form.search div.popover:before{
+    content: "";
+    background-image: none,url(../../assets/wire_icons.svg);
+    background-repeat: no-repeat;
+    background-size: 305px auto;
+    background-position: 4px -142px;
+    height: 10px;
+    width: 30px;
+    position: absolute;
+    top: -10px;
+    display: block;
+    left: -7px;
+    background-position: 8px -141px;
+    content: " ";
 }
 
 form.search div.popover div.arrow{

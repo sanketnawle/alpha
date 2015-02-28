@@ -636,7 +636,11 @@ function show_event(event,event_div_id){
         event['complete'] = 'not_complete';
     }
 
-
+    if(event['event_type'] == "todo" || event['event_type'] == "assignment" || event['event_type'] == "project"){
+        event['checkable'] = true;
+    }else{
+        event['checkable'] = false;
+    }
     //Convert the utc times to local
     var local_event_start_time = utc_to_local(new_datetime(event['start_date'] + ' ' + event['start_time']));
    // alert("DATETIME TO STRING "+ datetime_to_time_string(local_event_start_time));
@@ -978,7 +982,12 @@ $(document).on('click','#create_todo_form',function(e){
 $(window).load(function(){
 
         $('#event_list').slimScroll({
-            height: '340px'
+            height: '340px',
+            railVisible: true, 
+            touchScrollStep: "20",
+            size:"10px",
+            allowPageScroll: true,
+            distance: "3px"
         });
 
 
