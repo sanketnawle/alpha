@@ -46,7 +46,7 @@
 				<div class = "LeftPanel_DeptSchoolHolder">
 					<div class = "LeftPanel_DSContentBox">
 						<div class = "LeftPanel_DSContentBoxHeader">
-							<b>Your Department</b>
+							<b>Department</b>
 						</div>
 						<a class = "LeftPanel_DSContentBoxName" href="<?php echo Yii::app()->getBaseUrl(true); ?>/department/<?php echo $user->department->department_id; ?>">
 							<h5><?php echo $user->department->department_name; ?></h5>
@@ -54,7 +54,7 @@
 					</div>
 					<div class = "LeftPanel_DSContentBox">
 						<div class = "LeftPanel_DSContentBoxHeader">
-							<b>Your School</b>
+							<b>School</b>
 						</div>
 						<a class = "LeftPanel_DSContentBoxName" href="<?php echo Yii::app()->getBaseUrl(true); ?>/school/<?php echo $user->school->school_id; ?>">
 							<h5><?php echo $user->school->school_name; ?></h5>

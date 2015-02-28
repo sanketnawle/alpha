@@ -88,7 +88,7 @@ jQuery(document).ready(function(){
 
                 return;
             }else{
-                alert('invalid input');
+                //alert('invalid input');
                 $invite_input.addClass('error');
                 return;
             }
@@ -141,7 +141,7 @@ jQuery(document).ready(function(){
                 post_data,
                 function(response){
                     console.log(response);
-                    alert(JSON.stringify(response));
+                 //   alert(JSON.stringify(response));
 
                     var $invite_popup = $invite_holder.find('#invite_popup');
                     $invite_popup.removeClass('active');
@@ -193,7 +193,7 @@ jQuery(document).ready(function(){
     var last_input = '';
 
     jQuery(document).on('keyup','.invite_input',function(event){
-
+        console.log('fire');
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13'){
             //Check if the dropdown has any users listed

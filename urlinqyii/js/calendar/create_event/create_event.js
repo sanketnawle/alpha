@@ -73,10 +73,24 @@ jQuery(document).ready(function(){
 
 
             if(start_date.getTime() == end_date.getTime()){
-                var new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
-                //make the time an hour from the start time
+                var new_end_time_string;
+                console.log('hours '+start_datetime_object.getHours());
+                /*if(start_datetime_object.getHours() == 23){
+                    new_end_time_string = ints_to_time(23,59, start_datetime_object.getSeconds());
+                }else{
+                    new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
+
+                }       */
+                end_datetime_object = new Date(start_datetime_object.getTime() + 60*60000);
+                new_end_time_string = ints_to_time(end_datetime_object.getHours(), end_datetime_object.getMinutes(), end_datetime_object.getSeconds());
+
+                         //make the time an hour from the start time
                 $event_end_time.attr('data-time', new_end_time_string);
                 $event_end_time.val(time_string_to_am_pm_string(new_end_time_string));
+                if(end_datetime_object.getDate() != start_datetime_object.getDate()){
+                    $event_end_date.val(date_to_day_of_week_string(end_datetime_object));
+                    $event_end_date.attr('data-date', date_to_string(end_datetime_object));
+                }
             }else if(start_date > end_date){
                 //If the start date is greater than the end date,
                 //make the end date the start date
@@ -84,10 +98,23 @@ jQuery(document).ready(function(){
                 $event_end_date.attr('data-date', date_to_string(start_date));
 
 
-                var new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
+                var new_end_time_string;
+                console.log('hours '+start_datetime_object.getHours());
+              //  if(start_datetime_object.getHours() == 23){
+                    end_datetime_object = new Date(start_datetime_object.getTime() + 60*60000);
+                    new_end_time_string = ints_to_time(end_datetime_object.getHours(), end_datetime_object.getMinutes(), end_datetime_object.getSeconds());
+              //  }else{
+               //     new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
+
+              //  }
                 //make the time an hour from the start time
                 $event_end_time.attr('data-time', new_end_time_string);
                 $event_end_time.val(time_string_to_am_pm_string(new_end_time_string));
+
+                if(end_datetime_object.getDate() != start_datetime_object.getDate()){
+                    $event_end_date.val(date_to_day_of_week_string(end_datetime_object));
+                    $event_end_date.attr('data-date', date_to_string(end_datetime_object));
+                }
 
 
     //                        $event_end_date.addClass('error');
@@ -140,6 +167,7 @@ jQuery(document).ready(function(){
         console.log('VERIFYING DATE INPUTS');
         verify_date_inputs();
     });
+
 
 
 
@@ -447,7 +475,11 @@ jQuery(document).ready(function(){
                     //show new event
                     var $active_tab = jQuery('a.ng-binding.active');
                     if($active_tab.text().toLowerCase() == 'day'){
-                        show_day_event(new_response['event']);
+                        var current_date = $('#day-grid').attr('data-date');
+                        if(new_response['event']['start_date'] === current_date){
+                            show_day_event(new_response['event']);
+                        }
+
                     }else if($active_tab.text().toLowerCase() == 'week'){
                         show_week_day_event(new_response['event']);
                     }else if($active_tab.text().toLowerCase() == 'month'){

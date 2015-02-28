@@ -153,6 +153,7 @@
                                 {{/ifCond}}
                                 </div>
                             </div>
+                            {{#if checkable}}
                             <div class='event_checkbox_holder'>
 
 
@@ -193,6 +194,7 @@
                                     </div>
                                 {{/ifCond}}
                             </div>
+                            {{/if}}
                         </div>
 
 

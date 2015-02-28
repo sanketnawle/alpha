@@ -554,6 +554,63 @@ class PostController extends Controller
                                     }
                                 }
                             }
+                        }else if($event->origin_type == 'department'){
+                            $department = Department::model()->find('department_id=:id', array(':id'=>$event->origin_id));
+                            if($department){
+
+                              //  $has_admin=ClassUser::model()->exists('class_id=:group_id and is_admin=true',array(':group_id'=>$class->class_id));
+
+                              //  $department_follower = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$class->class_id));
+                              //  if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id || !$has_admin){
+                            //        $is_admin = true;
+
+                                    $email_sent = true;
+                                    foreach($department->followers as $follower){
+                                        if($follower->user_id != $user->user_id){
+                                            include_once 'color/color.php';
+                                            $event_user = new EventUser;
+                                            $event_user->user_id = $follower->user_id;
+                                            $event_user->event_id = $event->event_id;
+                                            $event_user->color_id = get_random_color();
+                                            $event_user->save(false);
+
+                                            $subject = 'Urlinq verification email';
+                                            $event_id = $event->event_id;
+                                            $user_id = $event_user->user_id;
+                                            $to_email = $event_user->user->user_email;
+                                            $actor_id = $user->user_id;
+
+                                            ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'actor_id'=>$actor_id,'to_user_id'=>$user_id,'subject'=>$subject),$contentType=null);
+
+                                            //ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
+
+
+                                        }
+                                    }
+                                    foreach($department->users as $member){
+                                        if($member->user_id != $user->user_id){
+                                            include_once 'color/color.php';
+                                            $event_user = new EventUser;
+                                            $event_user->user_id = $member->user_id;
+                                            $event_user->event_id = $event->event_id;
+                                            $event_user->color_id = get_random_color();
+                                            $event_user->save(false);
+
+                                            $subject = 'Urlinq verification email';
+                                            $event_id = $event->event_id;
+                                            $user_id = $event_user->user_id;
+                                            $to_email = $event_user->user->user_email;
+                                            $actor_id = $user->user_id;
+
+                                            ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'actor_id'=>$actor_id,'to_user_id'=>$user_id,'subject'=>$subject),$contentType=null);
+
+                                            //ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
+
+
+                                        }
+                                    }
+
+                            }
                         }
 //
 //                        data = {
@@ -1154,19 +1211,24 @@ class PostController extends Controller
 
         //Make sure this user created this post
         if($post->user_id != $user->user_id){
-            if($post->origin_type == "club"){
-                $origin = Group::model()->findByPk($post->origin_id);
-            }else if($post->origin_type == "class"){
-                $origin = ClassModel::model()->findByPk($post->origin_id);
-            }else if($post->origin_type == "department"){
-                $origin = Department::model()->findByPk($post->origin_id);
-            }
-            $is_admin=false;
-            foreach($origin->admins as $admin){
-                if($user->user_id == $admin->user_id){
-                    $is_admin = true;
+            if($post->origin_type !== "user"){
+                if($post->origin_type == "club"){
+                    $origin = Group::model()->findByPk($post->origin_id);
+                }else if($post->origin_type == "class"){
+                    $origin = ClassModel::model()->findByPk($post->origin_id);
+                }else if($post->origin_type == "department"){
+                    $origin = Department::model()->findByPk($post->origin_id);
                 }
-            }if($is_admin == false){
+                $is_admin=false;
+                foreach($origin->admins as $admin){
+                    if($user->user_id == $admin->user_id){
+                        $is_admin = true;
+                    }
+                }
+            }else{
+                $is_admin = intval($post->origin_id) === intval($this->get_current_user_id());
+            }
+            if($is_admin == false){
                 $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'User is not authorized to delete this post');
                 $this->renderJSON($return_data);
                 return;

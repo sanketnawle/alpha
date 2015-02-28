@@ -94,14 +94,15 @@ var search_calendar = function(event){
 
 var show_results = function(response){
     $('.popover-content').html('');
-    html_content = '<br>';
+    html_content = '';
     $.each(response["events"],function(index, item){
          date_split = item['start_date'].split("-")
          redirect_date = date_split[1]+"/"+date_split[2]+"/"+date_split[0]
          var d = new Date(redirect_date);
-         html_content+= '<a class="row go_to_event center" style="height:auto;border-radius:5px;width:100%;background-color:'+item["color"]["hex"]+'" start_date="'+item["start_date"]+'" start_time="'+item["start_time"]+'" end_date="'+item["end_date"]+'" end_time="'+item["end_time"]+'" all_day="'+item["all_day"]+'" title="'+item["title"]+'">\
-                            <div style="margin:5px">'+month[d.getMonth()]+' '+date_split[2]+'</div>\
-                            <div style="margin:5px;">' +item["title"].substring(0,20)+'</div>\
+         html_content+= '<a class="row go_to_event center" style="height:auto;border-radius:5px;width:100%;" start_date="'+item["start_date"]+'" start_time="'+item["start_time"]+'" end_date="'+item["end_date"]+'" end_time="'+item["end_time"]+'" all_day="'+item["all_day"]+'" title="'+item["title"]+'">\
+                            <div class = "search_event_title" style="margin:5px;">' +item["title"].substring(0,20)+'</div>\
+                            <div class = "search_event_color" style = "background-color:'+item["color"]["hex"]+'"></div>\
+                            <div class = "search_event_time" style="margin:5px">'+month[d.getMonth()]+' '+date_split[2]+'</div>\
                         </a><br><br><br>';
     });
     $("#txt_initial_search").popover({

@@ -13,7 +13,7 @@ function fbar_ready(origin_id) {
         //liking a post
 
         //alert(origin_id);
-
+        globals.$fbar = $('#fbar_wrapper');
         console.log(globals);
 
         Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
