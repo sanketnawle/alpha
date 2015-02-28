@@ -3006,6 +3006,7 @@ div#topbar_responsive_holder {}
 
 #group_user_action_button.own_department{
     padding-left: 10px;
+    cursor: default;
     padding-right: 10px;
 }
 .post_add_office_hours_button{
