@@ -410,7 +410,7 @@ class FeedController extends Controller
 
                     $posts[$i]['event'] = $event;
                     $posts[$i]['user_attending'] = false;
-
+				   $posts[$i]['event']['attendance_count'] = count($post_event->event->attendees);
 
 
                     if($event['user_id'] == $user->user_id){

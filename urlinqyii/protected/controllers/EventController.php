@@ -194,9 +194,18 @@ class EventController extends Controller
                 $events[$i]['origin']['name'] = $events[$i]['origin']['group_name'];
             }
 
+	                        $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$events[$i]['event_id'], ':user_id'=>$user->user_id));
 
+if ($event_user) {
+	$events[$i]['is_attending'] = true;
 
+} else {
+	$events[$i]['is_attending'] = false;
 
+}
+
+	$event_m = Event::model()->find('event_id=:event_id', array(':event_id'=>$events[$i]['event_id']));
+	$events[$i]['attendance_count'] = count($event_m->attendees);
 
         }
 
@@ -422,7 +431,7 @@ class EventController extends Controller
             $attendees = $event->attendees;
             foreach($attendees as $i=>$attendee){
                 $attendees[$i] = $this->get_model_associations($attendee, array('pictureFile'));
-
+			   $attendees[$i]['department'] = $attendee->department;
             }
 
             $data = array('success'=>true,'attendees'=>$attendees);
