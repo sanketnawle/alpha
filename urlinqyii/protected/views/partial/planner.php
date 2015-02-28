@@ -285,7 +285,7 @@
 
         <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
 
-        <div id = "calLayer"  class = "planner" style="display: none;">
+     <!--   <div id = "calLayer"  class = "planner" style="display: none;">
             <section id = "mounth" class="mounth">
                 <header class="minical-header">
                     <h1 class="minical-h1"></h1>
@@ -352,7 +352,7 @@
                     </div>
                 </article>
             </section>
-        </div>
+        </div> -->
     </body>
 
 

@@ -2993,7 +2993,8 @@ div#topbar_responsive_holder {}
 }
 
 .post_office_hours_day_input{
-    width:100px;
+    width: 112px;
+    display:inline-block;
 }
 .welcome_post_label{
     margin-bottom: 6px;
@@ -3007,7 +3008,19 @@ div#topbar_responsive_holder {}
     padding-left: 10px;
     padding-right: 10px;
 }
-
+.post_add_office_hours_button{
+    background-image: url(../../assets/small_icons.png);
+    background-size: auto;
+    background-position: -2px -1186px;
+    border: none;
+    display: inline-block;
+    background-color: transparent;
+    width: 22px;
+    height: 24px;
+    position: relative;
+    margin-left: 13px;
+    top: 5px;
+}
 .post_attendees{
     background-color: white;
     width: 98%;
@@ -3057,3 +3070,4 @@ div#topbar_responsive_holder {}
 .post_other_attendees .post_user_popup{
 
 }
+

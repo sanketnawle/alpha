@@ -247,18 +247,23 @@
                                                             <?php }if(!$user->professorAttribute->office_hours){?>
                                                                 <div class="post_office_hours_section">
                                                                     <div class="post_office_hours_add welcome_post_label">Add your office hours</div>
-                                                                    <input placeholder="Start time" class = "post_office_hours_input start_time time_input">
-                                                                    <em class="event_time_to_arrow"></em>
-                                                                    <input placeholder="End time" class = "post_office_hours_input end_time time_input">
-                                                                    <select class = "post_office_hours_day_input">
-                                                                        <option value="Monday">Monday</option>
-                                                                        <option value="Tuesday">Tuesday</option>
-                                                                        <option value="Wednesday">Wednesday</option>
-                                                                        <option value="Thursday">Thursday</option>
-                                                                        <option value="Friday">Friday</option>
-                                                                        <option value="Saturday">Saturday</option>
-                                                                        <option value="Sunday">Sunday</option>
-                                                                    </select>
+
+                                                                    <div class="post_office_hours_day_holder">
+                                                                        <input placeholder="Start time" class = "post_office_hours_input start_time time_input">
+                                                                        <em class="event_time_to_arrow"></em>
+                                                                        <input placeholder="End time" class = "post_office_hours_input end_time time_input">
+                                                                        <select class = "post_office_hours_day_input">
+                                                                            <option value="Monday">Monday</option>
+                                                                            <option value="Tuesday">Tuesday</option>
+                                                                            <option value="Wednesday">Wednesday</option>
+                                                                            <option value="Thursday">Thursday</option>
+                                                                            <option value="Friday">Friday</option>
+                                                                            <option value="Saturday">Saturday</option>
+                                                                            <option value="Sunday">Sunday</option>
+                                                                        </select>
+                                                                        <div class="post_add_office_hours_button"></div>
+                                                                    </div>
+
                                                                    <!-- <input class="post_office_hours_input">-->
                                                                 </div>
                                                             <?php }?>
