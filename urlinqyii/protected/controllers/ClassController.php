@@ -425,14 +425,6 @@ class ClassController extends Controller
 
 
 
-
-/*    function getDays($y, $start, $end, $day){
-            return new DatePeriod(
-                new DateTime("first $day of $y-$start"),
-                DateInterval::createFromDateString("next $day"),
-                new DateTime("$end month $y-01")
-            );
-        }*/
     //modified by Tianming Xu at 01/07/2014
     public function actionJoin(){
         include_once "color/color.php";
@@ -496,9 +488,6 @@ class ClassController extends Controller
                         $event_user->save();
                     }
 
-                   
-
-
                 }
                  $class_datetime = $class->class_datetime;
                 
@@ -508,7 +497,15 @@ class ClassController extends Controller
                     $year = date("Y");
                     $date_array = array("spring" => array("start" => "01", "end" => "05", "start_day" => "20", "end_day" => "20"), "fall" => array("start" => "09", "start_day" => "01", "end" => "12", "end_day" => "20"));
                     $start_end = explode("-", substr($class_datetime, 4));
-                    //foreach (getDays($year, $date_array[$class->semester]["start"], $date_array[$class->semester]["end"], substr($class_datetime, 0, 3)) as $Day) {
+                    $start_day = $date_array[$class->semester]["start"];
+                    $end_day = $date_array[$class->semester]["end"];
+                    $week_day = substr($class_datetime, 0, 3);
+                    $date_range = new DatePeriod(
+                                    new DateTime("first $week_day of $year-$start_day"),
+                                    DateInterval::createFromDateString("next $week_day"),
+                                    new DateTime("$end_day month $year-01")
+                                );
+                    foreach ($date_range as $Day) {
                         $event_entry = new Event;
                         $event_entry->event_type = "class";
                         $event_entry->origin_type = "class";
@@ -517,11 +514,11 @@ class ClassController extends Controller
                         $event_entry->title = $class->class_name;
                         $event_entry->start_time = (new DateTime($start_end[0]))->format("H:i:s");
                         $event_entry->end_time = (new DateTime($start_end[1]))->format("H:i:s");
-                        $event_entry->start_date = $year."-".$date_array[$class->semester]["start"]."-".$date_array[$class->semester]["start_day"];
-                        $event_entry->end_date = $year."-".$date_array[$class->semester]["end"]."-".$date_array[$class->semester]["end_day"];
+                        $event_entry->start_date = $Day->format("Y-m-d");
+                        $event_entry->end_date = $Day->format("Y-m-d");
                         $event_entry->location = $class->location;
                         $event_entry->save(false);
-                    //}
+                    }
                 }
                 $data = array('success'=>true);
                 $this->renderJSON($data);
