@@ -698,6 +698,8 @@ $(document).ready(function(){
         }
     });
 
+    $('#welcome_post, #welcome_post_2').hide().fadeIn(250);
+
 
 
 

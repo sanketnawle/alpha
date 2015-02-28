@@ -636,7 +636,11 @@ function show_event(event,event_div_id){
         event['complete'] = 'not_complete';
     }
 
-
+    if(event['event_type'] == "todo" || event['event_type'] == "assignment" || event['event_type'] == "project"){
+        event['checkable'] = true;
+    }else{
+        event['checkable'] = false;
+    }
     //Convert the utc times to local
     var local_event_start_time = utc_to_local(new_datetime(event['start_date'] + ' ' + event['start_time']));
    // alert("DATETIME TO STRING "+ datetime_to_time_string(local_event_start_time));
