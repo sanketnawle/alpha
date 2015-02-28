@@ -565,7 +565,7 @@ class UserController extends Controller
 
 
             $user_data = $this->get_model_associations($user,array('classes','clubs','groups','departments'));
-            $colors = array();
+        //    $colors = array();
 
 
             for($i = 0;$i < count($user_data['classes']);++$i){
@@ -576,16 +576,16 @@ class UserController extends Controller
                 $color = Color::model()->find('color_id=:id',array(':id'=>$class_user->color_id));
 
 
-                while(in_array($color->hex,$colors)){
+          /*      while(in_array($color->hex,$colors)){
                    // $color = Color::model()->find('color_id=:id',array(':id'=>get_random_color()));
                    // $user_data['classes'][$i]['color']['hex'] = $color->hex;
                     $class_user->color_id=get_random_color();
                     $color = Color::model()->find('color_id=:id',array(':id'=>$class_user->color_id));
-                }
+                }*/
                 $user_data['classes'][$i]['color'] = array('hex'=>$color->hex);
-                $class_user->save();
+             //   $class_user->save();
 
-                array_push($colors,$color->hex);
+            //    array_push($colors,$color->hex);
             }
 
 
@@ -596,16 +596,16 @@ class UserController extends Controller
                 $club_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id,':group_id'=>$user_data['clubs'][$i]['group_id']));
                 $color = Color::model()->find('color_id=:id',array(':id'=>$club_user->color_id));
 
-                while(in_array($color->hex,$colors)){
+             /*   while(in_array($color->hex,$colors)){
                     // $color = Color::model()->find('color_id=:id',array(':id'=>get_random_color()));
                     // $user_data['classes'][$i]['color']['hex'] = $color->hex;
                     $club_user->color_id=get_random_color();
                     $color = Color::model()->find('color_id=:id',array(':id'=>$club_user->color_id));
-                }
+                }*/
                 $user_data['clubs'][$i]['color'] = array('hex'=>$color->hex);
-                $club_user->save();
+             //   $club_user->save();
 
-                array_push($colors,$color->hex);
+              //  array_push($colors,$color->hex);
 
             }
 
@@ -619,19 +619,19 @@ class UserController extends Controller
                 $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id,':group_id'=>$user_data['groups'][$i]['group_id']));
                 $color = Color::model()->find('color_id=:id',array(':id'=>$group_user->color_id));
 
-                while(in_array($color->hex,$colors)){
+             /*   while(in_array($color->hex,$colors)){
                     // $color = Color::model()->find('color_id=:id',array(':id'=>get_random_color()));
                     // $user_data['classes'][$i]['color']['hex'] = $color->hex;
                     $group_user->color_id=get_random_color();
                     $color = Color::model()->find('color_id=:id',array(':id'=>$group_user->color_id));
-                }
+                }*/
                 $user_data['groups'][$i]['color'] = array('hex'=>$color->hex);
-                $group_user;
+              //  $group_user;
 
-                array_push($colors,$color->hex);
+             //   array_push($colors,$color->hex);
 
             }
-
+            $i=0;
             for($i = 0;$i < count($user_data['departments']);++$i){
                 $user_data['departments'][$i] = $this->model_to_array($user_data['departments'][$i]);
                 $user_data['departments'][$i]['color'] = array('hex'=>'#FABBB3');
@@ -639,18 +639,29 @@ class UserController extends Controller
                 $dept_user = DepartmentFollow::model()->find('user_id=:user_id and department_id=:dept_id',array(':user_id'=>$user->user_id,':dept_id'=>$user_data['departments'][$i]['department_id']));
                 $color = Color::model()->find('color_id=:id',array(':id'=>$dept_user->color_id));
 
-                while(in_array($color->hex,$colors)){
+         /*       while(in_array($color->hex,$colors)){
                     // $color = Color::model()->find('color_id=:id',array(':id'=>get_random_color()));
                     // $user_data['classes'][$i]['color']['hex'] = $color->hex;
                     $dept_user->color_id=get_random_color();
                     $color = Color::model()->find('color_id=:id',array(':id'=>$dept_user->color_id));
-                }
+                }*/
                 $user_data['departments'][$i]['color'] = array('hex'=>$color->hex);
-                $dept_user->save();
+               // $dept_user->save();
 
-                array_push($colors,$color->hex);
+                //array_push($colors,$color->hex);
 
             }
+            $user_data['departments'][$i] = $this->model_to_array($user->department);
+            $user_data['departments'][$i]['color'] = array('hex'=>'#27e53f');
+            $color = Color::model()->find('color_id=:id',array(':id'=>get_random_color()));
+
+       /*     while(in_array($color->hex,$colors)){
+                // $color = Color::model()->find('color_id=:id',array(':id'=>get_random_color()));
+                // $user_data['classes'][$i]['color']['hex'] = $color->hex;
+                $color = Color::model()->find('color_id=:id',array(':id'=>get_random_color()));
+            }*/
+        //    $user_data['departments'][$i]['color'] = array('hex'=>$color->hex);
+
 
 
 

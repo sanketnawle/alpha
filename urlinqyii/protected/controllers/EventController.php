@@ -556,7 +556,11 @@ if ($event_user) {
 //            $origin_type = 'group';
 //        }
 
-
+        if(isset($_GET['tz_offset'])){
+            $tz_offset=$_GET['tz_offset'];
+        }else{
+            $tz_offset=0;
+        }
 
 
 
@@ -568,10 +572,13 @@ if ($event_user) {
             $event_count = 0;
 
             //Get events that were due yesterday
-            $date = date("Y-m-d H:i:s", time());
+            $date = date("Y-m-d H:i:s", time()+$tz_offset);
+           // echo $date;
             $datetime = new DateTime($date);
             $datetime->modify('-1 day');
             $start_date= $datetime->format('Y-m-d');
+            $date_now = date("Y-m-d", time()+$tz_offset);
+            $time_now = date("H:i:s", time()+$tz_offset);
             //$datetime->modify('+4 day');
             //$end_date= $datetime->format('Y-m-d');
 
@@ -582,7 +589,9 @@ if ($event_user) {
             if($origin_type != 'user'){
 
                 //Get the events that this user is an event_user of
-                $events = Yii::app()->db->createCommand("SELECT * FROM event e where (e.user_id=".$user->user_id." OR exists (select * from event_user eu where eu.user_id=" . $user->user_id . " and eu.event_id=e.event_id))  AND e.end_date >= '" . $start_date . "' AND e.origin_type = '" . $origin_type . "' AND e.origin_id = " . $origin_id." and e.complete=0 order by start_date,start_time limit 8")->queryAll();
+                $events = Yii::app()->db->createCommand("SELECT * FROM event e where (e.user_id=".$user->user_id." OR exists (select * from event_user eu where eu.user_id=" . $user->user_id . " and eu.event_id=e.event_id))  AND e.end_date >= '" . $start_date . "'
+                AND ((e.event_type = 'assignment' OR e.event_type = 'todo' OR e.event_type = 'project') OR (e.end_date>='".$date_now."' AND e.end_time>='".$time_now."'))
+                    AND e.origin_type = '" . $origin_type . "' AND e.origin_id = " . $origin_id." and e.complete=0 order by start_date,start_time limit 8")->queryAll();
 
                 //Get the events that this
                 //$events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete and origin_type=:origin_type and origin_id=:origin_id',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0, ':origin_type'=>$origin_type, ':origin_id'=>$origin_id));
@@ -594,7 +603,9 @@ if ($event_user) {
 
             }else{
                 //$events = Event::model()->findAllBySql('select * from event e where e.end_date>=:start_date and (e.user_id=:user_id or exists (select * from event_user eu where eu.user_id=:user_id and eu.event_id=e.event_id)) and e.complete=:complete limit 8',array(':start_date'=>$start_date,':user_id'=>$user->user_id, ':complete'=>0));
-                $events = Yii::app()->db->createCommand("select * from event e where e.end_date>='" . $start_date . "' and (e.user_id=" . $user->user_id . " or exists (select * from event_user eu where eu.user_id=" . $user->user_id . " and eu.event_id=e.event_id)) and e.complete=0 order by start_date,start_time limit 8")->queryAll();
+                $events = Yii::app()->db->createCommand("select * from event e where e.end_date>='" . $start_date . "' and (e.user_id=" . $user->user_id . " or exists (select * from event_user eu where eu.user_id=" . $user->user_id . " and eu.event_id=e.event_id)) and e.complete=0
+                 AND ((e.event_type = 'assignment' OR e.event_type = 'todo' OR e.event_type = 'project') OR (e.end_date>='".$date_now."' AND e.end_time>='".$time_now."'))
+                 order by start_date,start_time limit 8")->queryAll();
                 $events = $this->add_event_data($events, $user);
             }
 
@@ -909,6 +920,49 @@ if ($event_user) {
 
 
             if($event){
+                if($event->origin_type == 'club' || $event->origin_type == 'group'){
+                    $group = Group::model()->find('group_id=:id', array(':id'=>$event->origin_id));
+                    $has_admin = GroupUser::model()->exists('group_id=:group_id and is_admin=true',array(':group_id'=>$group->group_id));
+                    if($group){
+
+                        $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$group->group_id));
+                        if($group_user && $group_user->is_admin || !$has_admin){
+                            foreach($group->members as $member){
+                                if($member->user_id != $user->user_id){
+                                    include_once 'color/color.php';
+                                    $event_user = new EventUser;
+                                    $event_user->user_id = $member->user_id;
+                                    $event_user->event_id = $event->event_id;
+                                    $event_user->color_id = get_random_color();
+                                    $event_user->save(false);
+                                }
+                            }
+                        }
+                    }
+                }else if($event->origin_type == 'class'){
+                    $class = ClassModel::model()->find('class_id=:id', array(':id'=>$event->origin_id));
+                    $has_admin_or_prof=ClassUser::model()->exists('class_id=:class_id and is_admin=true',array(':class_id'=>$class->class_id));
+                    if($class->professor){
+                        $has_admin_or_prof=$has_admin_or_prof || $class->professor->status === "verified";
+                    }
+                    if($class){
+
+                        $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$class->class_id));
+                        if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id || !$has_admin_or_prof){
+
+                            foreach($class->students as $member){
+                                if($member->user_id != $user->user_id){
+                                    include_once 'color/color.php';
+                                    $event_user = new EventUser;
+                                    $event_user->user_id = $member->user_id;
+                                    $event_user->event_id = $event->event_id;
+                                    $event_user->color_id = get_random_color();
+                                    $event_user->save(false);
+                                }
+                            }
+                        }
+                    }
+                }
                 //If this event was successfully created, check if there
                 //were any invitations sent out for this event
                 if(isset($_POST['event']['invites'])){

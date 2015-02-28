@@ -268,7 +268,7 @@ jQuery(document).scroll(function(e){
         var input_position = $last_selected_time_input.offset();
 
         //Set the position of the time selector to underneath this time input
-        $('#time_selector').css({'top': (input_position.top - $(window).scrollTop() + $last_selected_time_input.outerHeight()).toString() + 'px'});
+        $('#time_selector').css({'top': (input_position.top - $(window).scrollTop() + $last_selected_time_input.outerHeight()-14).toString() + 'px'});
     }
 
 });

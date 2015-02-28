@@ -947,7 +947,7 @@
                             {{#each event.other_attendees}}
                                 <div class="post_other_attendees">
                                     <div class="post_user_image profile_link" data_user-id="{{user_id}}" style="background-image:url(<?php echo Yii::app()->getBaseUrl(true);?>{{pictureFile.file_url}})"></div>
-                                    <div class="post_user_popup">{{firstname}} {{lastname}}</div>
+                                    <div class="post_user_popup" style="display:none;">{{firstname}} {{lastname}}</div>
                                 </div>
                             {{/each}}
                             <div class="post_other_attendees_count">

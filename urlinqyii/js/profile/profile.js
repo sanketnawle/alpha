@@ -1451,11 +1451,11 @@ $(document).ready(function() {
             success: function(data)
             {
                 if(data.status == "success"){
-                    $('#profile_picture').css('background-image','url('+data.file_url+')');
-                    $('.post_user_icon[data-user_id='+globals.user_id+']').css('background-image','url('+data.file_url+')');
-                    $('.comment_owner_container[data-user_id='+globals.user_id+']').css('background-image','url('+data.file_url+')');
-                    $('.MyBox_Picture').css('background-image','url('+data.file_url+')');
-                    $('.members_card_img[data-user_id='+globals.user_id+']').css('background-image','url('+data.file_url+')');
+                    $('#profile_picture').css('background-image',"url('"+data.file_url+"')");
+                    $('.post_user_icon[data-user_id='+globals.user_id+']').css('background-image','url("'+data.file_url+'")');
+                    $('.comment_owner_container[data-user_id='+globals.user_id+']').css('background-image','url("'+data.file_url+'")');
+                    $('.MyBox_Picture').css('background-image','url("'+data.file_url+'")');
+                    $('.members_card_img[data-user_id='+globals.user_id+']').css('background-image','url("'+data.file_url+'")');
                 }else{
                     //alert(data.message);
                 }

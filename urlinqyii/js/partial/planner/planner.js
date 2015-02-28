@@ -360,7 +360,7 @@ $(document).ready(function(){
         console.log(planner_origin_id);
 
 
-        $.getJSON( globals.base_url + '/event/getPlannerEvents', {origin_type: planner_origin_type, origin_id: planner_origin_id}, function( json_data ) {
+        $.getJSON( globals.base_url + '/event/getPlannerEvents', {origin_type: planner_origin_type, origin_id: planner_origin_id, tz_offset:(new Date().getTimezoneOffset())}, function( json_data ) {
             //alert(JSON.stringify(json_data));
             if(json_data['success']){
                 show_events(json_data);

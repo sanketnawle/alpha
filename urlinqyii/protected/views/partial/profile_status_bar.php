@@ -8,6 +8,8 @@
 <div id = "fbar_holder" class = "fbar_homepage" data-post_type = "">
 <!--<div class = "dark_overlay" id = "dark_overlay_fbar"></div>-->
 
+<script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropit.js'></script>
+<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/dropit.css" type="text/css" />
 
 <!--  This is the hidden form that is submitting when there are files. Should be in every status bar page  -->
 <form action="/post/create" class="dropzone fbar_file_form dz-clickable files_upload_bigbox" id="profile_fbar_file_form" style="display: none;">
