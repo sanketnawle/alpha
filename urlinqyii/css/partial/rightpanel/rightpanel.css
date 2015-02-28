@@ -28,12 +28,13 @@ span.right_panel_assets{
 }
 
 span.activity_icon.right_panel_assets{
-    height: 10.56px;
-    width: 7px;
+    height: 6px;
+    width: 6px;
     margin-left: 6px;
     display: inline-block;
     float: right;
-    margin-top: 2px;
+    margin-top: 4px;
+    border-radius: 10000px;
     background: #fd702d;
     background-image: -webkit-linear-gradient(#fd702d,#ff8d56);
     background-image: -moz-linear-gradient(#fd702d,#ff8d56);

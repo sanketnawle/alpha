@@ -200,14 +200,15 @@
 
                             <?php } ?>
 
-
-                            <div class="tab analytics" data-panel_id="4">
-                                <div class="tab_content">
-                                    <div class="tab_img"></div>
-                                    <div class="tab_text">Analytics</div>
+                            <?php if($is_admin){ ?>
+                                <div class="tab analytics" data-panel_id="4">
+                                    <div class="tab_content">
+                                        <div class="tab_img"></div>
+                                        <div class="tab_text">Analytics</div>
+                                    </div>
+                                    <div class="tab_wedge"></div>
                                 </div>
-                                <div class="tab_wedge"></div>
-                            </div>
+                            <?php } ?>
 
 
 
@@ -698,11 +699,11 @@
                             </div>                      
                         </div>
 
-
-
-                        <div class="panel tab_analytics" id="panel_4">
-                            <?php echo $this->renderPartial('/club/club_analytics',array('club'=>$club, 'user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
-                        </div>
+                        <?php if($is_admin){ ?>
+                            <div class="panel tab_analytics" id="panel_4">
+                                <?php echo $this->renderPartial('/club/club_analytics',array('club'=>$club, 'user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
+                            </div>
+                        <?php } ?>
 
 
                         <!-- About Tab -->

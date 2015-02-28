@@ -188,7 +188,9 @@ display: block!important;
 width: 16px!important;
 height: 16px!important;
 margin-top: 7px;
+background-size: auto;
 }
+
 .body span.grid-column {
 width: calc(100%/7);
 width: -webkit-calc(100%/7);
@@ -281,6 +283,7 @@ input.popup_create_event_name_input:focus{
     height: 25px;
     position: relative;
     top: -4px;
+    text-transform: capitalize;
     line-height: 27px;
 }
 

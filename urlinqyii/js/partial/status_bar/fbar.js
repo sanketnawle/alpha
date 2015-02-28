@@ -1439,6 +1439,8 @@ function fbar_ready(origin_id) {
                     }
                 }
 
+
+
             }
 
 
@@ -1495,6 +1497,10 @@ function fbar_ready(origin_id) {
                             response['post']['update_timestamp'] = moment(response['post']['update_timestamp'], "X").fromNow();
                             reset_fbar();
                             render_post(response['post'],'prepend');
+
+                            if(response['post']['event']){
+                                add_event(response['post']['event']);
+                            }
                         }else{
 
                         }
