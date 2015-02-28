@@ -638,6 +638,7 @@ class ProfileController extends Controller
                         if ($department) {
                             $user->department_id = $department->department_id;
                             if ($user->save()) {
+
                                 $new_data['department'] = "success";
                                 // $new_data['new_school_id'] = $school->school_id;
                             } else {

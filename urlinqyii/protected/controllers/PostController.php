@@ -554,7 +554,7 @@ class PostController extends Controller
                                     }
                                 }
                             }
-                        }else if($event->origin_type == 'department'){
+                        }/*else if($event->origin_type == 'department'){
                             $department = Department::model()->find('department_id=:id', array(':id'=>$event->origin_id));
                             if($department){
 
@@ -611,7 +611,7 @@ class PostController extends Controller
                                     }
 
                             }
-                        }
+                        }*/
 //
 //                        data = {
 //                            'to_email': 'afl294@nyu.edu',

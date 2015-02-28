@@ -102,6 +102,20 @@ class DepartmentController extends Controller
             $department_follow->color_id = get_random_color();
             //If we save successfully, user is now following this department
             if($department_follow->save(false)){
+               /* foreach($department->events as $event){
+                    $already_attending =  EventUser::model()->exists('event_id=:eid and user_id=:uid',array(':eid'=>$event->event_id,':uid'=>$user_id));
+                    $event_creator = DepartmentFollow::model()->find('department_id=:dept_id and user_id=:user_id',array(':dept_id'=>$department->department_id
+                    ,':user_id'=>$event->user_id));
+                    //add all club events from admins (or anyone if no admis) to user's events
+                    if(!$already_attending){
+
+                        $event_user = new EventUser();
+                        $event_user->user_id = $user_id;
+                        $event_user->event_id = $event->event_id;
+                        $event_user->color_id = get_random_color();
+                        $event_user->save();
+                    }
+                }*/
                 $data = array('success'=>true);
                 $this->renderJSON($data);
                 return;
