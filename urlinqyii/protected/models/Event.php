@@ -91,7 +91,8 @@ class Event extends CActiveRecord
             'acceptedInvites' => array(self::HAS_MANY,'Invite',array('origin_id'=>'event_id'),'condition'=>'origin_type = "event" AND choice = 1'),
             'event' => array(self::HAS_ONE,'Event',array('origin_id'=>'event_id'),'condition'=>'origin_type = "event"'),
 
-            'attendees'=>array(self::MANY_MANY, 'User', 'event_user(event_id, user_id)')
+            'attendees'=>array(self::MANY_MANY, 'User', 'event_user(event_id, user_id)', 'on'=>'attend_status="attending"','order'=>'attend_timestamp DESC'),
+            //'eventUsers'=>array(self::MANY_MANY, 'EventUser', 'event_id', 'on'=>'event_user.status="attending"','order'=>'event_user.attend_timestamp DESC'),
 		);
 	}
 

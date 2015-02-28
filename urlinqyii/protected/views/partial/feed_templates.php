@@ -1049,7 +1049,7 @@
                                 {{/each}}
 
 
-                                {{#ifCond user_attending '==' false}}
+                                {{#ifCond attend_status '==' false}}
                                     <div class='post_event_calendar_button add_to_calendar_button' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon"></span>Add to Calendar</div>
                                 {{else}}
                                     <div class='post_event_calendar_button added' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>Attending</div>
