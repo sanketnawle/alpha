@@ -589,8 +589,8 @@ if ($event_user) {
             if($origin_type != 'user'){
 
                 //Get the events that this user is an event_user of
-                $events = Yii::app()->db->createCommand("SELECT * FROM event e where (e.user_id=".$user->user_id." OR exists (select * from event_user eu where eu.user_id=" . $user->user_id . " and eu.event_id=e.event_id))  AND e.end_date >= '" . $start_date . "'
-                AND ((e.event_type = 'assignment' OR e.event_type = 'todo' OR e.event_type = 'project') OR (e.end_date>='".$date_now."' AND e.end_time>='".$time_now."'))
+                $events = Yii::app()->db->createCommand("SELECT * FROM event e where e.end_date >= '" . $start_date . "'
+                AND ((e.event_type = 'assignment' OR e.event_type = 'todo' OR e.event_type = 'project') OR ((e.end_date='".$date_now."' AND e.end_time>='".$time_now."') OR e.end_date>'".$date_now."'))
                     AND e.origin_type = '" . $origin_type . "' AND e.origin_id = " . $origin_id." and e.complete=0 order by start_date,start_time limit 8")->queryAll();
 
                 //Get the events that this
@@ -604,7 +604,7 @@ if ($event_user) {
             }else{
                 //$events = Event::model()->findAllBySql('select * from event e where e.end_date>=:start_date and (e.user_id=:user_id or exists (select * from event_user eu where eu.user_id=:user_id and eu.event_id=e.event_id)) and e.complete=:complete limit 8',array(':start_date'=>$start_date,':user_id'=>$user->user_id, ':complete'=>0));
                 $events = Yii::app()->db->createCommand("select * from event e where e.end_date>='" . $start_date . "' and (e.user_id=" . $user->user_id . " or exists (select * from event_user eu where eu.user_id=" . $user->user_id . " and eu.event_id=e.event_id)) and e.complete=0
-                 AND ((e.event_type = 'assignment' OR e.event_type = 'todo' OR e.event_type = 'project') OR (e.end_date>='".$date_now."' AND e.end_time>='".$time_now."'))
+                 AND ((e.event_type = 'assignment' OR e.event_type = 'todo' OR e.event_type = 'project') OR ((e.end_date='".$date_now."' AND e.end_time>='".$time_now."') OR e.end_date>'".$date_now."'))
                  order by start_date,start_time limit 8")->queryAll();
                 $events = $this->add_event_data($events, $user);
             }

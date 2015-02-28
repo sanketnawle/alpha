@@ -1254,9 +1254,14 @@ class SiteController extends Controller
             include "password_encryption.php";
 
             if($user_type == 'p' || $user_type == 'a'){
-                $professor = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
+                $professor = User::model()->findBySql("SELECT * FROM `user` LEFT JOIN `professor_attribute` ON (user.user_id = professor_attribute.professor_id) WHERE LOWER(user.user_email) LIKE LOWER(" . $email . ") OR LOWER(professor_attribute.alternate_email) LIKE LOWER(" . $email . ") LIMIT 1");
                 if($professor){
                     //Professor is already in our database
+
+                    if($professor->firstname == '' || $professor->lastname == ''){
+                        $professor->firstname = $firstname;
+                        $professor->lastname = $lastname;
+                    }
 
                     if($professor->status == 'active'){
                         $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$professor->user_id));
@@ -1350,8 +1355,11 @@ class SiteController extends Controller
                     //Update with the info they just input
 //                    $user->user_email = $email;
 //                    $user->user_type = $user_type;
-                    $user->firstname = $firstname;
-                    $user->lastname = $lastname;
+                    if($user->firstname == '' || $user->lastname == ''){
+                        $user->firstname = $firstname;
+                        $user->lastname = $lastname;
+                    }
+
 //                    $user->school_id = null;
 //                    $user->department_id = null;
                     //$user->status = 'unverified';
