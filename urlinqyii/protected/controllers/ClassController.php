@@ -426,7 +426,13 @@ class ClassController extends Controller
 
 
 
-
+/*    function getDays($y, $start, $end, $day){
+            return new DatePeriod(
+                new DateTime("first $day of $y-$start"),
+                DateInterval::createFromDateString("next $day"),
+                new DateTime("$end month $y-01")
+            );
+        }*/
     //modified by Tianming Xu at 01/07/2014
     public function actionJoin(){
         include_once "color/color.php";
@@ -474,6 +480,8 @@ class ClassController extends Controller
                     $has_admin_or_prof=$has_admin_or_prof || $class->professor->status === "verified";
                 }
 
+
+
                 foreach($class->events as $event){
                     $already_attending =  EventUser::model()->exists('event_id=:eid and user_id=:uid',array(':eid'=>$event->event_id,':uid'=>$user_id));
 
@@ -487,6 +495,33 @@ class ClassController extends Controller
                         $event_user->color_id = get_random_color();
                         $event_user->save();
                     }
+
+                   
+
+
+                }
+                 $class_datetime = $class->class_datetime;
+                
+
+                if($class_datetime){
+                    
+                    $year = date("Y");
+                    $date_array = array("spring" => array("start" => "01", "end" => "05", "start_day" => "20", "end_day" => "20"), "fall" => array("start" => "09", "start_day" => "01", "end" => "12", "end_day" => "20"));
+                    $start_end = explode("-", substr($class_datetime, 4));
+                    //foreach (getDays($year, $date_array[$class->semester]["start"], $date_array[$class->semester]["end"], substr($class_datetime, 0, 3)) as $Day) {
+                        $event_entry = new Event;
+                        $event_entry->event_type = "class";
+                        $event_entry->origin_type = "class";
+                        $event_entry->origin_id = $class_id;
+                        $event_entry->user_id = $user_id;
+                        $event_entry->title = $class->class_name;
+                        $event_entry->start_time = (new DateTime($start_end[0]))->format("H:i:s");
+                        $event_entry->end_time = (new DateTime($start_end[1]))->format("H:i:s");
+                        $event_entry->start_date = $year."-".$date_array[$class->semester]["start"]."-".$date_array[$class->semester]["start_day"];
+                        $event_entry->end_date = $year."-".$date_array[$class->semester]["end"]."-".$date_array[$class->semester]["end_day"];
+                        $event_entry->location = $class->location;
+                        $event_entry->save(false);
+                    //}
                 }
                 $data = array('success'=>true);
                 $this->renderJSON($data);
