@@ -1,6 +1,6 @@
 
 .planner_container{
-width: 235px;
+width: 250px;
 max-height: 100%;
 font-family: 'Open Sans', sans-serif;
 background: #fff;
@@ -8,6 +8,18 @@ border-radius: 5px;
 display: block;
 padding-bottom: 0px;    
 -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.planner_container .slimScrollRail{
+    background: #111111!important;
+
+    opacity: .33!important;
+}
+
+.planner_container .slimScrollBar{
+    background: #FFF!important;
+    
+    opacity: .45!important;
 }
 
 body#body_group #time_selector, body#body_home #time_selector{
@@ -36,8 +48,8 @@ hr.future_events_top_line{
     position: relative;
     border-radius: 4px 4px 0px 0px;
     border-bottom: 1px solid #dbdcdc;  
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 7px;
+    margin-right: 7px;
 }
 .planner_header{
     padding: 16px 0px 4px 0px;
@@ -107,11 +119,13 @@ body#body_home .entry_field_placeholder{
 }
 
 .entry_field_placeholder span{
-    font-weight: 500;
-    -webkit-font-smoothing: antialiased; 
+    font-weight: 600; 
     position: relative;
-    -moz-osx-font-smoothing: grayscale;
-    top: 3px;
+    top: 2px;
+    color: #121314;
+    font-family: 'Open Sans', sans-serif;
+    left: -2px;
+    font-size: 11.5px;
 }
 
 .entry_field_placeholder:hover span{
@@ -407,7 +421,7 @@ border-image: none;
     margin-left: 0px;
     font-size: 10px;
     font-weight: bold;
-    font-family: 'OpenSans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #575757;
     white-space: normal;
 
@@ -425,7 +439,11 @@ border-image: none;
 
     position: relative;
 
+    padding-left: 6px;
+
     overflow: hidden;
+
+    padding-right: 6px;
 
 }
 
@@ -534,7 +552,7 @@ body.body_group input.event_title{
 
 
 .nav-icon{
-    background:#575757;
+    background: #121314;
     position: absolute;
     right: 10px;
     top: 16px;
@@ -543,7 +561,7 @@ body.body_group input.event_title{
     cursor: pointer;
 } 
 .nav-icon .nav-icon-plus{
-    background:#575757;
+    background: #121314;
     width: 2px; 
     height: 10px;
     position:relative;
@@ -635,8 +653,8 @@ body.body_group input.event_title{
     height: 14px;
 
     margin-top: 12px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
     margin-bottom: 2px;
 
     border-bottom: 1px solid #eee;

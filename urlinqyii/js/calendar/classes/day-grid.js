@@ -146,7 +146,7 @@ var DayGrid = (function (DayGrid) {
         //Start at -1 because the first row
         //is all day events
 
-        for (var i = 0; i < 26; i++){
+        for (var i = 0; i < 25; i++){
 
             var html_string = '<div class="day_grid_item"><div class="day_time">12pm</div></div>';
             if(i == 0){

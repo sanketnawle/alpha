@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 
 
-    globals.$fbar = $('#fbar_wrapper');
+    //globals.$fbar = $('#fbar_wrapper');
 
     $(document).on('click', '.profile_link', function(e){
         e.stopPropagation();

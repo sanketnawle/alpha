@@ -73,7 +73,7 @@ $(document).ready(function(){
 
         console.log(jQuery('#calLayer').css("display"));
         //alert(jQuery('#calLayer').css("display"));
-        if(jQuery(this).hasClass('planner') || jQuery(this).hasClass('planner_edit')){
+       /* if(jQuery(this).hasClass('planner') || jQuery(this).hasClass('planner_edit')){
             $calLayer = jQuery('#calLayer.planner');
             jQuery('#calLayer.fbar').hide();
         }else if(jQuery(this).hasClass('fbar_date_time')){
@@ -81,15 +81,16 @@ $(document).ready(function(){
             jQuery('#calLayer.planner').hide();
         }else{
             $calLayer = jQuery('#calLayer');
-        }
+        }*/
+        $calLayer=jQuery('#calLayer');
 
         if(jQuery(this).is($recent_date_input) && $calLayer.css("display") == 'block'){
             //jQuery('#calLayer').hide();
         } else {
 
             $recent_date_input = jQuery(this);
-            //jQuery('#calLayer').css({'z-index': '9999',position:'absolute', top: $recent_date_input.offset().top + $recent_date_input.outerHeight(), left: $recent_date_input.offset().left});
-            if(jQuery(this).hasClass('fbar_date_time')) {
+            jQuery('#calLayer').css({'z-index': '9999',position:'fixed', top: $recent_date_input.offset().top - $(window).scrollTop()+$recent_date_input.outerHeight(), left: $recent_date_input.offset().left});
+           /* if(jQuery(this).hasClass('fbar_date_time')) {
                 if(jQuery(this).attr('id')=="opportunity_due_date"){
                     $calLayer.css({
                         'z-index': '9999',
@@ -111,10 +112,10 @@ $(document).ready(function(){
                 $calLayer.css({'z-index': '9999',position:'absolute', top: '121px', left: $recent_date_input.position().left+12});
             }else if(jQuery(this).hasClass('planner_edit')){
                 console.log("planner");
-                $calLayer.css({'z-index': '9999',position:'absolute', top: $('.edit_event_box').position().top+$recent_date_input.position().top, left: '20px'});
+                $calLayer.css({'z-index': '9999',position:'absolute', top: $('.edit_event_box').position().top+$recent_date_input.position().top+28, left: '18px'});
             }else{
                 jQuery('#calLayer').css({'z-index': '9999',position:'absolute', top: $recent_date_input.offset().top + $recent_date_input.outerHeight()-50, left: $recent_date_input.offset().left-23});
-            }
+            }*/
 
             $calLayer.show();
         }

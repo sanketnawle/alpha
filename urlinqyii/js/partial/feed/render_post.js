@@ -186,6 +186,15 @@ function render_post(single_post, prepend){
         single_post['event']['start_time_string'] = date_to_am_pm_string(event_start_datetime);
         single_post['event']['end_time_string'] = date_to_am_pm_string(event_end_datetime);
 
+        if(single_post['event']['attending']){
+            single_post['event']['last_joined'] = single_post['event']['attending'][0];
+            console.log(single_post['event']['last_joined']);
+            if(single_post['event']['attending'].length>1){
+                single_post['event']['other_attendees'] = single_post['event']['attending'].slice(1,4);
+                single_post['event']['other_attendee_count'] = single_post['event']['attending'].length-1;
+            }
+        }
+
 
         var source = $("#post_event_template").html();
         var template = Handlebars.compile(source);

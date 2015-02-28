@@ -429,7 +429,7 @@ div.message.member{
 
 li.notification span.join_group_icon{
     background-image: url(../../../assets/noti_action_icons.png); 
-    background-position: 4px -86px; width: 58px; 
+    background-position: 4px -66px; width: 58px; 
     height: 38px; display: block; position: relative; left: 8px; 
     top: 8px; background-repeat: no-repeat;
     cursor: pointer;

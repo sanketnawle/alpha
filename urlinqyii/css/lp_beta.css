@@ -15,10 +15,10 @@ border-bottom: none;
 font-family: 'Open Sans', sans-serif;
 
 
-overflow: hidden; 
+/* overflow: hidden; */ 
 
 
-background: rgba(18, 19, 20, 0.85);;
+background: #27292B;;
 
 
 position: relative;
@@ -1872,7 +1872,8 @@ div.bottom-container{
     margin: 0 auto;
     z-index:100;
     margin-top: -10px;
-    top: 90%;
+    background: #27292B;
+    top: 100%;
 }
 
 /*
@@ -1928,14 +1929,16 @@ ul.color-border{
   margin: 0 auto;
   position: relative;
   padding: 0;
-  margin-top: 29px;
+  margin-top: 15px;
   width: 360px;
   padding-bottom: 0px;
   display: inline-block;
   display: inherit;
   padding-left: 4px;
-  border-radius: 3px;
-  background: #222;
+  border-radius: 0px;
+  background: #27292b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.21);
+  border-top: 1px solid rgba(255, 255, 255, 0.21);
 }
 
 ul.color-border li{
@@ -3162,6 +3165,6 @@ ul.color-border li:nth-child(5):hover {
 #forgot_password_div {
     position: fixed;
     right: 200px;
-    top: 20px;
+    top: 75px;
     margin: 0px;
 }
