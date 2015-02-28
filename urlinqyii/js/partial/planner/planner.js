@@ -978,7 +978,12 @@ $(document).on('click','#create_todo_form',function(e){
 $(window).load(function(){
 
         $('#event_list').slimScroll({
-            height: '340px'
+            height: '340px',
+            railVisible: true, 
+            touchScrollStep: "20",
+            size:"10px",
+            allowPageScroll: true,
+            distance: "3px"
         });
 
 
