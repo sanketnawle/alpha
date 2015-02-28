@@ -276,17 +276,15 @@ $(document).ready(function(){
 //
 //    });
 
-
+    $(document).on('click', '.profile_link', function(e){
+        hide_search_results();
+    });
 
 
 
 
     $(document).on('click', '.search_result', function(e){
-//        e.stopPropagation();
-//        e.preventDefault();
-//        alert('click happened');
-
-
+        hide_search_results();
 
     });
 
