@@ -554,16 +554,13 @@ class PostController extends Controller
                                     }
                                 }
                             }
-                        }/*else if($event->origin_type == 'department'){
+                        }else if($event->origin_type == 'department'){
                             $department = Department::model()->find('department_id=:id', array(':id'=>$event->origin_id));
                             if($department){
 
                               //  $has_admin=ClassUser::model()->exists('class_id=:group_id and is_admin=true',array(':group_id'=>$class->class_id));
 
-                              //  $department_follower = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$class->class_id));
-                              //  if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id || !$has_admin){
-                            //        $is_admin = true;
-
+                                if(($user->user_type == "p" || $user->user_type == "a") && $user->department_id == $department->department_id){
                                     $email_sent = true;
                                     foreach($department->followers as $follower){
                                         if($follower->user_id != $user->user_id){
@@ -609,9 +606,15 @@ class PostController extends Controller
 
                                         }
                                     }
+                                }
+                              //  $department_follower = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$class->class_id));
+                              //  if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id || !$has_admin){
+                            //        $is_admin = true;
+
+
 
                             }
-                        }*/
+                        }
 //
 //                        data = {
 //                            'to_email': 'afl294@nyu.edu',

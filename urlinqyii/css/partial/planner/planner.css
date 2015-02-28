@@ -634,7 +634,7 @@ body.body_group input.event_title{
     display: inline-block;
     width: 80%;
     margin-top: 3px;
-    margin-left: 10px;
+    margin-left: 8px;
 
     font-size: 12px;
     font-weight: 600;
@@ -643,7 +643,7 @@ body.body_group input.event_title{
 .event_checkbox_holder {
     display: inline-block;
     float: right;
-    width: 15%;
+    width: 12.9%;
     padding-top: 10px;
 }
 
@@ -792,7 +792,7 @@ label.planner_checkbox_label:after{
     z-index: -1;
     pointer-events: none;
     z-index: 99;
-    right: 30px;
+    right: 23px;
     margin-top: -10px;
     top: 50%;
 }
@@ -807,7 +807,7 @@ label.planner_checkbox_label:after{
     display: inline-block;
     border-style: solid; 
     border-width: 5px 0 5px 5px; 
-    border-color: transparent transparent transparent rgba(68, 68, 68, 0.67);
+    border-color: transparent transparent transparent rgba(39, 41, 43, 0.84);
 }
 .hint_box{
     font-size: 10.5px;
@@ -821,7 +821,7 @@ label.planner_checkbox_label:after{
     font-weight: 500;
     border-radius: 2px;
     color: white;
-    background-color: rgba(68, 68, 68, 0.67);
+    background-color: rgba(39, 41, 43, 0.84);
 }
 
 label.planner_checkbox_label {
@@ -1206,17 +1206,17 @@ div.edit_event_box{
 }
 span.edit_button{
     display: inline-block;
-    right: 40px;
+    right: 28px;
     font-size: 10.4px;
     font-weight: 400;
     font-family: Avenir;
     color: #525557;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.67);
-    margin-top: -7px;
+    margin-top: -6px;
     position: absolute;
     line-height: 14px;
-    height: 14px;
+    height: 12px;
     top: 50%;
     width: 22px;
     text-align: center;

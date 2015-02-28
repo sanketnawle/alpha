@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var $recent_date_input = null;
+
     var $calLayer=jQuery('#calLayer');
     var blinkflag = 0;
 
@@ -168,7 +168,21 @@ $(document).ready(function(){
     });
 
 
+    $('#page').scroll(function(e){
 
+            e.preventDefault();
+            e.stopPropagation();
+            if($recent_date_input){
+                //Get the position of this time input
+                console.log('scroll');
+                var input_position = $recent_date_input.offset();
+
+                //Set the position of the time selector to underneath this time input
+                jQuery('#calLayer').css({'z-index': '9999',position:'fixed', top: $recent_date_input.offset().top - $(window).scrollTop()+$recent_date_input.outerHeight(), left: $recent_date_input.offset().left});
+            }
+
+
+    });
 
 
 
@@ -243,4 +257,18 @@ $(document).ready(function(){
 
 
     });
+});
+var $recent_date_input = null;
+jQuery(document).scroll(function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    if($recent_date_input){
+        //Get the position of this time input
+        console.log('scroll');
+        var input_position = $recent_date_input.offset();
+
+        //Set the position of the time selector to underneath this time input
+        jQuery('#calLayer').css({'z-index': '9999',position:'fixed', top: $recent_date_input.offset().top - $(window).scrollTop()+$recent_date_input.outerHeight(), left: $recent_date_input.offset().left});
+    }
+
 });

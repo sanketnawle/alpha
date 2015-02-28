@@ -144,9 +144,17 @@ jQuery(document).ready(function(){
     });
 
 
-    $( "#page" ).scroll(function() {
-        console.log('WINDOW SCROLL');
-        $('#time_selector').removeClass('active');
+    $( "#page" ).scroll(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if($last_selected_time_input){
+            //Get the position of this time input
+            console.log('scroll');
+            var input_position = $last_selected_time_input.offset();
+
+            //Set the position of the time selector to underneath this time input
+            $('#time_selector').css({'top': (input_position.top - $(window).scrollTop() + $last_selected_time_input.outerHeight()-14).toString() + 'px'});
+        }
     });
 
 
