@@ -1154,7 +1154,7 @@ if ($event_user) {
         $event_user->color_id = get_random_color();
 
         if($event_user->save(false)){
-            $data = array('success'=>true);
+            $data = array('success'=>true, 'event'=>$event);
             $this->renderJSON($data);
             return;
         }else{
@@ -1283,6 +1283,45 @@ if ($event_user) {
             return;
         }
 
+    }
+
+    public function actionChangeAttending(){
+        if(!isset($_POST['event_id']) || !isset($_POST['attend_status'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'all data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $event_id = $_POST['event_id'];
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'User doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $event_user = EventUser::model()->find('event_id=:eid and user_id=:uid', array(':eid'=>$event_id,':uid'=>$user->user_id));
+        if($event_user){
+            if($_POST['attend_status']=="Attending"){
+                $attend_status = "attending";
+            }else if($_POST['attend_status']=="Not Attending"){
+                $attend_status = "not_attending";
+            }else if($_POST['attend_status']=="Maybe Attending"){
+                $attend_status = "maybe_attending";
+            }
+            $event_user->attend_status = $attend_status;
+            $event_user->save(false);
+
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Event doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
     }
 
 

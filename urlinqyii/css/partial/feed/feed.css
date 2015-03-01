@@ -4282,3 +4282,37 @@ div.post_other_attendees_count{
     color: #000;
     
 }
+
+.post_choose_attending *{
+    display:inline-block;
+}
+
+.post_conflict_icon.red{
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: red;
+    margin-left: 10px;
+    margin-right: 4px;
+}
+.post_conflict_icon.green{
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: green;
+    margin-left: 10px;
+    margin-right: 4px;
+}
+.conflicting_event_popup{
+    display: none;
+    color: white;
+    background-color: black;
+    padding: 3px;
+    border-radius: 4px;
+    position: absolute;
+    left: 297px;
+    top: -30px;
+}
+.post_choose_attending{
+    position:relative;
+}

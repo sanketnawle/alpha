@@ -140,5 +140,7 @@ $(document).ready(function(){
         $('.post_bio_input').attr('rows',Math.ceil($(this).val().length/$('.post_bio_input').attr('cols')));
     });
 
+   
+
 
 });

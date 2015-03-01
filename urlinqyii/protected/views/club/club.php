@@ -729,6 +729,9 @@
                                             <div class = "group_display_icon" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->pictureFile->file_url ?>');">
                                                 <?php if($is_admin){ ?>  
                                                     <a id = "edit_club_icon"><span class = "photo_edit_icon small_icon_map"></span></a>
+                                                    <div style="height: 0px;width:0px; overflow:hidden;">
+                                                        <input id="club_picture_upfile" type="file" value="upload"/>
+                                                    </div>
                                                 <?php } ?>
                                             </div>
                                             <h4 class = "group_name_text">
@@ -845,6 +848,9 @@
                                             <div class = "group_display_icon" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->pictureFile->file_url ?>');">
                                                 <?php if($is_admin){ ?>  
                                                     <a id = "edit_club_icon"><span class = "photo_edit_icon small_icon_map"></span></a>
+                                                    <div style="height: 0px;width:0px; overflow:hidden;">
+                                                        <input id="club_picture_upfile" type="file" value="upload"/>
+                                                    </div>
                                                 <?php } ?>
                                             </div>
                                             <h4 class = "group_name_text">

@@ -196,6 +196,7 @@ function render_post(single_post, prepend){
         }
 
 
+
         var source = $("#post_event_template").html();
         var template = Handlebars.compile(source);
 
