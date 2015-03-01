@@ -721,6 +721,55 @@ $(document).ready(function(){
         }
     });
 
+    var picking_file=false;
+    $(document).on('click', '#edit_club_icon',function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('upload file');
+        if(picking_file==false){
+            picking_file=true;
+            $('#club_picture_upfile').click();
+           // picking_file=false;
+        }
+
+    });
+
+
+    var upload_file;
+    $(document).on('change', '#club_picture_upfile', function (event)
+    {
+        picking_file=false;
+        console.log('yo');
+        upload_file = event.target.files[0];
+        console.log(upload_file);
+        var post_data = new FormData();
+
+        post_data.append("file", upload_file);
+        post_data.append("club_id",globals.origin_id);
+
+        $.ajax({
+            url: globals.base_url+'/club/changeClubIcon',
+            type: 'POST',
+            data: post_data,
+            cache: false,
+            dataType: 'json',
+            processData: false, // Don't process the files
+            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+            success: function(response)
+            {
+                if(response['success']){
+                    $('.group_display_icon').css('background-size','cover');
+                    $('.group_display_icon').css('background-image',"url('"+globals.base_url+response['file_url']+"')");
+
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown)
+            {
+                alert('err'+errorThrown);
+            }
+        });
+        picking_file=false;
+    });
     $('#welcome_post, #welcome_post_2').hide().fadeIn(250);
 
 

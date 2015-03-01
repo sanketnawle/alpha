@@ -8,12 +8,21 @@ if (origin_type == "class"){
 }
 
 //change profile picture
-$(document).on('click','#left_panel_change_picture_button',function(){
-    $('#left_panel_picture_upfile').click();
+var picking_file=false;
+$(document).on('click','#left_panel_change_picture_button',function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    if(picking_file==false){
+        picking_file=true;
+        $('#left_panel_picture_upfile').click();
+
+    }
+
 });
 var upload_file;
 $(document).on('change', '#left_panel_picture_upfile', function (event)
 {
+    picking_file=false;
     upload_file = event.target.files[0];
     var data = new FormData();
 
@@ -44,4 +53,5 @@ $(document).on('change', '#left_panel_picture_upfile', function (event)
             alert('err'+errorThrown);
         }
     });
+
 });

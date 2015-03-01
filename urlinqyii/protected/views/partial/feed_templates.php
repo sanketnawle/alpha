@@ -941,7 +941,7 @@
                         <div class = "post_attendees_link_arrow_border">
                         </div>
                         <div class="post_last_user_joined">
-                            <div class="post_last_user_image profile_link" data_user-id="{{event.last_joined.user_id}}" style="background-image:url(<?php echo Yii::app()->getBaseUrl(true);?>{{event.last_joined.pictureFile.file_url}})"></div>
+                            <div class="post_last_user_image profile_link" data-user_id="{{event.last_joined.user_id}}" style="background-image:url("<?php echo Yii::app()->getBaseUrl(true);?>{{event.last_joined.pictureFile.file_url}}")"></div>
                             <div class="post_last_user_text"><a><span class="post_last_user_name profile_link" data_user-id="{{event.last_joined.user_id}}">{{event.last_joined.firstname}} {{event.last_joined.lastname}}</span></a> is attending</div>
                         </div>
 
@@ -951,11 +951,13 @@
                             <div class = "post_other_attendees_link">
                             {{#each event.other_attendees}}
                                 <div class="post_other_attendees">
-                                    <div class="post_user_image profile_link" data_user-id="{{user_id}}" style="background-image:url(<?php echo Yii::app()->getBaseUrl(true);?>{{pictureFile.file_url}})"></div>
+
+                                    <div class="post_user_image profile_link" data-user_id="{{user_id}}" style="background-image:url(<?php echo Yii::app()->getBaseUrl(true);?>{{pictureFile.file_url}})"></div>
                                     <div class="post_user_popup help_div dark">
                                         <div class = "wedge"></div>
                                         <div class = "box">{{firstname}} {{lastname}}</div>
                                     </div>
+
                                 </div>
                             {{/each}}
                             <div class="post_other_attendees_count">
@@ -1047,11 +1049,37 @@
                                 {{/each}}
 
 
-                                {{#ifCond user_attending '==' false}}
+                                {{#ifCond event.attend_status '==' "none"}}
                                     <div class='post_event_calendar_button add_to_calendar_button' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon"></span>Add to Calendar</div>
+                                    <div class="post_choose_attending" style="display: none;" data-event_id='{{event.event_id}}'>
+
                                 {{else}}
-                                    <div class='post_event_calendar_button added' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>Attending</div>
+                                    {{#ifCond event.attend_status '==' "In Calendar"}}
+                                        <div class='post_event_calendar_button added' style="display:none;" data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>{{event.attend_status}}</div>
+                                        <div class="post_choose_attending" data-event_id='{{event.event_id}}'>
+
+                                    {{else}}
+                                        {{#if pownership}}
+                                        <div class='post_event_calendar_button added event_owner' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>{{event.attend_status}}</div>
+                                        {{else}}
+                                        <div class='post_event_calendar_button added' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>{{event.attend_status}}</div>
+                                        {{/if}}
+                                        <div class="post_choose_attending" style="display: none;" data-event_id='{{event.event_id}}'>
+
+                                    {{/ifCond}}
+
                                 {{/ifCond}}
+                                        Are you attending?
+                                        <button class="post_choose_attending_button" id="post_choose_yes">Yes</button>
+                                        <button class="post_choose_attending_button" id="post_choose_no">No</button>
+                                        <button class="post_choose_attending_button" id="post_choose_maybe">Maybe</button>
+                                        {{#if event.conflict}}
+                                            <div class="post_conflict_indicator"><span class="post_conflict_icon red"></span>Conflict</div>
+                                           <div class="conflicting_event_popup" style="display: none;">{{event.conflict.title}}</div>
+                                        {{else}}
+                                           <div class="post_conflict_indicator"><span class="post_conflict_icon green"></span>No Conflicts</div>
+                                        {{/if}}
+                                    </div>
 
 
 
