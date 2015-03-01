@@ -1428,12 +1428,21 @@ $(document).ready(function() {
     });
 
     //change profile picture
-    $(document).on('click','#change_picture_button',function(){
-        $('#picture_upfile').click();
+    var picking_file=false;
+    $(document).on('click','#change_picture_button',function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(picking_file==false){
+            picking_file=true;
+            $('#picture_upfile').click();
+
+        }
+
     });
     var upload_file;
     $(document).on('change', '#picture_upfile', function (event)
     {
+        picking_file=false;
         upload_file = event.target.files[0];
         var data = new FormData();
 
@@ -1465,6 +1474,7 @@ $(document).ready(function() {
                 alert('err'+errorThrown);
             }
         });
+        picking_file=false;
     });
     $(document).on('click','#follow_button',function(){
 

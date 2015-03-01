@@ -458,12 +458,13 @@ div.html5-info-bar.ytp-can-shar{
 
 
 #embedly_video_box.embedly_box{
-    height: 315px;
+    height: 310px;
 
     padding: 0!important;
-    width: 524px;
+    width: 550px;
     box-shadow: none;
     border: none!important;
+    margin-left: -17px;
 }
 
 #embedly_video_box .embedly_box:hover{
@@ -3725,9 +3726,11 @@ div.post_event_origin_holder div.post_event_origin > a:hover{text-decoration: un
     float: left;
 
     margin-bottom: 12px;
+    margin-left: 4px;
 }
 
 div.event_description_holder{
+    padding-bottom: 4px;
 
 }
 
@@ -4080,10 +4083,11 @@ div.post_type_marker.question_post_type span.post_type_icon{
 
 div.post_other_attendees_holder{
     display: inline-block; 
-    border-left: 1px solid #D8D8D8; position: relative;  padding-left: 5px; font-weight: 400; font-size: 14px;  
+    border-left: 1px solid #D8D8D8; position: relative;  
+    padding-left: 2px; font-weight: 400; font-size: 14px;  
     height: 32px;
     width: 205px; 
-    top: -7px; color: rgba(0,0,0,0.37);
+    top: -13px; color: rgba(0,0,0,0.37);
 
 }
 
@@ -4195,7 +4199,7 @@ border-right: 10px solid rgba(246, 246, 246, 0);
     left: 4px;
     cursor: default;
     font-weight: 400;
-    width: 285px;
+    width: 279px;
     font-size: 14px;
     position: relative;
 }
@@ -4222,11 +4226,11 @@ border-right: 10px solid rgba(246, 246, 246, 0);
 
 .post_other_attendees .post_user_image:hover ~ .post_user_popup{
     opacity: 1;
-
     pointer-events: auto;
 }
 
 
+.post_other_attendees .post_user_image:active ~ .post_user_popup{display: none;}
 
 div.post_other_attendees_link{
     margin-left: 1px;
@@ -4234,6 +4238,7 @@ div.post_other_attendees_link{
     padding: 3px 3px;
     padding-right: 8px;
     padding-left: 7px;
+    height: 25px;
 }
 
 div.post_other_attendees_link:hover{
@@ -4253,13 +4258,14 @@ div.post_other_attendees_count{
     cursor: default;
     left: 2px;
     color: rgba(0, 0, 0, 0.368627);
-    top: -3px;
+    top: 3px;
 }
 
 .post_other_attendees{
     height: 21px;
+    float: left;
     top: 2px;
-    margin-right: 0px;
+    margin-right: 2px;
     position: relative;
 }
 .post_other_attendees .post_user_image {
@@ -4272,7 +4278,7 @@ div.post_other_attendees_count{
 .post_other_attendees .post_user_popup{
     position: absolute;
 
-    z-index: 100000000;
+    z-index: 10000;
     opacity: 0;
     top: auto;
     pointer-events: none;
@@ -4281,4 +4287,38 @@ div.post_other_attendees_count{
 .post_other_attendees_count > span{
     color: #000;
     
+}
+
+.post_choose_attending *{
+    display:inline-block;
+}
+
+.post_conflict_icon.red{
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: red;
+    margin-left: 10px;
+    margin-right: 4px;
+}
+.post_conflict_icon.green{
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: green;
+    margin-left: 10px;
+    margin-right: 4px;
+}
+.conflicting_event_popup{
+    display: none;
+    color: white;
+    background-color: black;
+    padding: 3px;
+    border-radius: 4px;
+    position: absolute;
+    left: 297px;
+    top: -30px;
+}
+.post_choose_attending{
+    position:relative;
 }

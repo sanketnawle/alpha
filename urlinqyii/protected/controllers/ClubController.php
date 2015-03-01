@@ -1055,6 +1055,55 @@ class ClubController extends Controller
         }
     }
 
+    function actionChangeClubIcon(){
+
+        $user = $this->get_current_user();
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user not logged in');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        if(!isset($_POST['club_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'group id not set','_files'=>$_FILES,'_post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+        if(!isset($_FILES['file'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'file not set','_files'=>$_FILES,'_post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+        include "file_upload.php";
+        $club = Group::model()->find('group_id=:id',array(':id'=>$_POST['club_id']));
+        if($club){
+            $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
+            if($club_user  || (strpos($user->user_email,'@urlinq.com') !== false)){
+                if($club_user->is_admin  || (strpos($user->user_email,'@urlinq.com') !== false)){
+                    $extension = pathinfo($_FILES["file"]["name"])['extension'];
+                    if($extension == "jpg" || $extension == "png" || $extension == "gif") {
+                        $result = file_upload($_FILES, "club/");
+                        $club->picture_file_id = $result['file_id'];
+                        if($club->save(false)){
+                            $this->renderJSON(array('success'=>true,'file_url'=>$result['file_url']));
+                        }else{
+                            $this->renderJSON(array('success'=>false,'message'=>'error saving clubs'));
+                        }
+                    }else{
+                        $this->renderJSON(array('success'=>false,'message'=>'file is not a picture'));
+                    }
+
+                }else{
+                    $this->renderJSON(array('success'=>false,'message'=>'you are not an admin of this club'));
+                }
+            }else{
+                $this->renderJSON(array('success'=>false,'message'=>'you are not part of this club'));
+            }
+        }else{
+            $this->renderJSON(array('success'=>false,'message'=>'invalid club'));
+        }
+    }
 
 
 	// Uncomment the following methods and override them if needed
