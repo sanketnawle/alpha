@@ -14,6 +14,8 @@ div#content_panel div#nav_bar{
 	-moz-box-shadow: none!important;
 	box-shadow: none!important;
 	margin-left: 10px;
+	border:1px solid #000!important;
+	background:#38383a;
 }
 
 div.SectionHeader_holder div.float_Right a{

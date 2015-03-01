@@ -5,15 +5,38 @@ $(document).ready(function(){
 
     $(function(){
         $('body.body_club div#fixed_element div.about_box').slimScroll({
-            height: 'auto'
+            height: 'auto',
+            railVisible: true, 
+            touchScrollStep: "20",
+            size:"10px",
+            allowPageScroll: true,
+            distance: "3px"
         });
 
         $('div.about_box p.school_about').slimScroll({
-            height: '300px'
+            height: '300px',
+            railVisible: true, 
+            touchScrollStep: "20",
+            size:"10px",
+            allowPageScroll: true,
+            distance: "3px"
         });
-        $('#group_about_box > .class_description_holder').slimScroll({
-            height: '123px'
+        $('body.body_club #group_about_box > .class_description_holder').slimScroll({
+            height: '120px',
+            railVisible: true, 
+            touchScrollStep: "20",
+            size:"10px",
+            allowPageScroll: true,
+            distance: "3px"
         });
+        $('body.body_class #group_about_box > .class_description_holder').slimScroll({
+            height: '340',
+            railVisible: true, 
+            touchScrollStep: "20",
+            size:"10px",
+            allowPageScroll: true,
+            distance: "3px"
+        });        
     });
 
     $('.tab').click(function(){
