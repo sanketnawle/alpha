@@ -16,7 +16,7 @@ font-family: 'Open Sans', sans-serif;
  
 
 
-background: #27292B;;
+background: #27292b;;
 
 
 position: relative;
@@ -38,6 +38,19 @@ position: relative;
     border-bottom-right-radius: 12px;
 }
 
+  div.mobile_wrap_primary{
+    display:none;
+  }
+
+
+  div.mobile_wrap_header_text{
+
+  }
+
+  div.mobile_wrap_header_text > h3{
+
+  }
+  
 .signup_after_tabs{
     position: absolute;
 
@@ -64,6 +77,28 @@ color: #fff;
 background: rgba(18, 19, 20, 0.84);
 }
 
+.mobile_panel_1{
+    background: #27292b;
+}
+
+.mobile_panel_2{
+    background: #FFF;
+  
+    margin: 15px 20px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1); -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1); box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.mobile_panel_3{
+    background: orange;
+  
+}
+
+.mobile_only_panel{
+    display: none;
+
+    height: 100%;
+}
 
 .signup_after_tabs .after_tab.active{
     
@@ -826,7 +861,7 @@ img.logoText{
     height: 29px;
     position: relative;
     left: 16px;
-    top: 22px;
+    top: 21px;
 }
 
 div.main-market-area{
@@ -868,7 +903,7 @@ div.main-market-area{
 .main-content-wrap{
   background: transparent;
 
-  height: 100%;
+  height: 86%;
   /* overflow: hidden; */
   position: relative;
   top: -60px;        
@@ -1044,11 +1079,15 @@ div.header-sec-right div.time-to-signup{
     float: left;
     
 
+    position: relative;
+
     line-height: 24px;
     font-family: Avenir;
     
 
     width: 175px;
+
+    top: -2px;
 
     padding-top: 1px;
 
@@ -1887,15 +1926,11 @@ div.bottom-container{
     position: absolute;
   
     width: 100%;
-    height: 100px; 
+    height: 92px; 
     margin: 0 auto;
     z-index:100;
-    margin-top: -25px;
-    background: #27292b;
-    -moz-box-shadow: 0 0px 1px 1px rgba(0, 0, 0, .52); 
-    -webkit-box-shadow: 0 0px 1px 1px rgba(0, 0, 0, .52); 
-    box-shadow: 0 0px 1px 1px rgba(0, 0, 0, .52); 
-    border-top: 2px solid black;
+    top: calc(100% - 8px);
+    background: #27292b;   
 }
 
 /*
@@ -1952,7 +1987,7 @@ ul.color-border{
   position: relative;
   padding: 0;
   margin-top: 25px;
-  width: 360px;
+  width: 382px;
   padding-bottom: 0px;
   display: inline-block;
   display: inherit;
@@ -2111,11 +2146,11 @@ display:none;
   left: 0px;
   min-width: 1300px;
   right: 0px;
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -webkit-filter: blur(5px);
-  filter: blur(4.5px);
+  -o-filter: blur(3.5px);
+  -ms-filter: blur(3.5px);
+  -moz-filter: blur(3.5px);
+  -webkit-filter: blur(3.5px);
+  filter: blur(3.5px);
   max-width: 100%;
   top: -60px;
   bottom:0px;
@@ -2274,7 +2309,21 @@ div.grabber div.grabber-container{
   div#forgot_password_div{
     display: none;
   }
+  .mobile_panel_1{
 
+  }
+
+  .mobile_panel_2{
+    
+  }
+
+  .mobile_panel_3{
+    
+  }
+
+  .mobile_only_panel{
+    
+  }
 }
 
 
@@ -2282,6 +2331,21 @@ div.grabber div.grabber-container{
 @media(max-width:980px){
  div.signup-container{
     left: 50%;
+  
+}
+.mobile_panel_1{
+
+}
+
+.mobile_panel_2{
+  
+}
+
+.mobile_panel_3{
+  
+}
+
+.mobile_only_panel{
   
 }
 img.logoText{
@@ -2307,14 +2371,32 @@ img.logoText{
   div.grabber{
     left: 50%;
   }
+  .mobile_panel_1{
+
+}
+
+.mobile_panel_2{
+  
+}
+
+.mobile_panel_3{
+  
+}
+
+.mobile_only_panel{
+  
+}
   img.logoText{}
   }
+
 
    @media(max-width:920px){
  div.signup-container{
     left:527px;
   }
-  img.logoText{}
+  img.logoText{
+    top: 22px;
+}
   div.grabber{
     left: 50%;
   }
@@ -2322,6 +2404,21 @@ img.logoText{
   div.about_section{
     left:15px;
   }
+  .mobile_panel_1{
+
+}
+
+.mobile_panel_2{
+  
+}
+
+.mobile_panel_3{
+  
+}
+
+.mobile_only_panel{
+  
+}
 
   }
 
@@ -2433,6 +2530,10 @@ div.urlinq-marketing{
   height: 130px;
 }
 
+body{
+  background:#EAEAEA;
+}
+
   div.about_section{
     display:none;
   }
@@ -2465,7 +2566,7 @@ div.or-head {
 
 div.header-sec-right div.time-to-signup{
   padding-left: 0px;
-  padding-top: 3px;
+  padding-top: 0px;
 }
 
 ul.account-types li.student label {
@@ -2509,7 +2610,7 @@ img.logo {
     padding-left:10px;
     margin-left: 0px;
     width: auto;
-    margin-top: 2px;
+    margin-top: -2px;
     height: 50px;
 }
 
@@ -2521,7 +2622,7 @@ position:absolute;
 
 width: 400px;
 top: 170px;
-margin-left: -241px;
+margin-left: -210px;
 border-radius: 8px;
 left: 50%;
 background: rgba(255, 255, 255, 0);
@@ -2557,6 +2658,34 @@ margin-left: 0px;
   div.forgotPassword{
   display:none;
   } 
+    video{
+  display:none!important;
+  }
+  div.header-sec-left h4.header,div.header-sec-right div.time-to-signup{
+    color:#222!important;
+  }
+    div.bottom-container{
+    -webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+  }
+
+  .mobile_panel_1{
+
+}
+
+.mobile_panel_2{
+  
+}
+
+.mobile_panel_3{
+  
+}
+
+.mobile_only_panel{
+    display: block!important;
+  
+}
 
     img.logoText{
   display:none;
@@ -2573,7 +2702,12 @@ margin-left: 0px;
 
   img.logo{
     float: left;
-  }
+  
+    margin-left: -8px;
+    padding-left: 0px;
+    height: 44px;
+    margin-top: 5px;
+}
 
   .announcement_board_writtable h4{
     font-size:40px;
@@ -2586,16 +2720,36 @@ margin-left: 0px;
 
 @media(max-width:552px){
   div.signup-container{
-    left:45%;
+    left: 50%;
+  }
+  .mobile_panel_1{
+
+}
+
+.mobile_panel_2{
+  
+}
+
+.mobile_panel_3{
+  
+}
+
+.mobile_only_panel{
+  
+}
+
+  body{
+    background:#eaeaea!important;
   }
 
-  div.signin-wrap{position:absolute;right: 5px;}
+  div.signin-wrap{position:absolute;right: 2px;}
 
   .fb-like {
   position: relative!important;
   left: 20px;
   top: 100%;
   }
+
 
   div.grabber{
     left:15%;
@@ -2613,7 +2767,31 @@ margin-left: 0px;
 }
 
 @media(max-width:500px){
+
+
+  div.mobile_wrap_primary{
+    display:block;
+  }
+
+div.signup-container{
+display:none!important;
+}
+.mobile_panel_1{
+
+}
+
+.mobile_panel_2{
   
+}
+
+.mobile_panel_3{
+  
+}
+
+.mobile_only_panel{
+  
+}
+
 
   div.grabber{
 left: 0px!important;
