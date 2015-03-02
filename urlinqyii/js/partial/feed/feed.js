@@ -665,6 +665,28 @@ function ready(globals){
         );
     });
 
+    $(document).on('click','.post_event_title',function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if($(this).hasClass('not_in_calendar')){
+            return;
+        }
+        var start_date = $(this).attr('data-event_start_date');
+        var event_id = $(this).attr('data-event_id');
+        var re = /(\d+)-(\d+)-(\d+)/;
+        var matches = start_date.match(re);
+        var year, month, day;
+        if(matches){
+             year = parseInt(matches[1]);
+             month = parseInt(matches[2]);
+             day = parseInt(matches[3]);
+        }
+
+        console.log('asdf');
+        window.name = event_id;
+        window.location.href = globals.base_url + '/calendar#/day/'+day+'/'+month+'/'+year;
+
+    });
 
     function isElementInViewport (el) {
         if(el === undefined){

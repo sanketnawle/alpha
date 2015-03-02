@@ -2963,7 +2963,7 @@ div#topbar_responsive_holder {}
     border-top-color: #c0c0c0;
 }
 
-.post_year_input, .post_major_input, .post_bio_input, .post_office_input{
+.post_year_input, .post_major_input, .post_bio_input, .post_office_input, .post_office_hours_input{
 
     text-overflow: ellipsis;
     overflow: hidden;
@@ -2977,7 +2977,7 @@ div#topbar_responsive_holder {}
     border: 1px solid #d8d8d8;
     border-top-color: #c0c0c0;
 }
-
+/*
 .post_office_hours_input, .post_office_hours_day_input{
     border: 1px solid #ddd;
     border-radius: 2px;
@@ -2990,7 +2990,7 @@ div#topbar_responsive_holder {}
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin-bottom: 9px;
-}
+}*/
 
 .post_office_hours_day_input{
     width: 112px;

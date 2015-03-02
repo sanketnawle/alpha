@@ -248,7 +248,7 @@
                                                                 <div class="post_office_hours_section">
                                                                     <div class="post_office_hours_add welcome_post_label">Add your office hours</div>
 
-                                                                    <div class="post_office_hours_day_holder">
+                                                                   <!-- <div class="post_office_hours_day_holder">
                                                                         <input placeholder="Start time" class = "post_office_hours_input start_time time_input">
                                                                         <em class="event_time_to_arrow"></em>
                                                                         <input placeholder="End time" class = "post_office_hours_input end_time time_input">
@@ -262,9 +262,9 @@
                                                                             <option value="Sunday">Sunday</option>
                                                                         </select>
                                                                         <div class="post_add_office_hours_button"></div>
-                                                                    </div>
+                                                                    </div>-->
 
-                                                                   <!-- <input class="post_office_hours_input">-->
+                                                                   <input class="post_office_hours_input" placeholder="Wed 2:00pm - 4:00pm">
                                                                 </div>
                                                             <?php }?>
 

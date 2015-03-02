@@ -403,8 +403,8 @@ jQuery(document).ready(function(){
             var checkbox_share_isset = $selected_group.children().find('.checkbox_share_event').is(':checked');
             if (checkbox_share_isset) {
                 console.log("yeah")
-                var post_post_url = "post/create"
-                var post_post_data = {"post" :
+                post_url = "post/create"
+                post_data = {"post" :
                                     {"text":"",
                                     "post_type":"event",
                                     "origin_type":event_origin_type,
@@ -421,11 +421,12 @@ jQuery(document).ready(function(){
                                              "description":event_description,
                                              "location":event_location,
                                              "origin_type":event_origin_type,
-                                             "origin_id": event_origin_id
+                                             "origin_id": event_origin_id,
+                                             "event_type": event_category
                                             }
                                     }
                             };
-                $.post(
+              /*  $.post(
                     post_post_url,
                     post_post_data,
                     function(response){
@@ -436,7 +437,7 @@ jQuery(document).ready(function(){
                         }
                     }
 
-                );
+                );*/
             }
         }
 

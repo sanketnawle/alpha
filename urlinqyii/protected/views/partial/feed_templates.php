@@ -984,7 +984,11 @@
                                 <div class='post_event_day post_event_date_box_text'>{{event.day_number}}</div>
                             </div>
                             <div class = "event_post_toparea">
-                                <div class='post_event_title'>{{event.title}}</div>
+                                {{#ifCond event.attend_status '!=' "none"}}
+                                    <div class='post_event_title' data-event_start_date="{{event.start_date}}" data-event_id="{{event.event_id}}"><a>{{event.title}}</a></div>
+                                {{else}}
+                                    <div class='post_event_title not_in_calendar'>{{event.title}}</div>
+                                {{/ifCond}}
                                 {{#if event.location}}
                                 <div class = "post_event_location_holder">
                                     <div class = "post_event_location"><span class = "location_icon_dark"></span>{{event.location}}</div>
