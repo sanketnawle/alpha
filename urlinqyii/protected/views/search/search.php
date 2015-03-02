@@ -435,11 +435,13 @@
 <script id="club_template" type="text/x-handlebars-template">
 
     <div class = "group_box group_course_box club_box" data-group_id='{{group_id}}' data-school_id='{{school_id}}'>
+        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/club/{{group_id}}">
         <div class = "float_Left group_image" style="background-image: url(<?php echo Yii::app()->getBaseUrl(true); ?>{{picture_url}})">
-            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/club/{{group_id}}" class = "group_link">{{group_name}}</a>
+            <div class = "group_link">{{group_name}}</div>
             <span class = "group_type group_with_button">Group</span>
 
         </div>
+        </a>
         <div class = "group_box_main_info">
 
             <div class = "float_Right">

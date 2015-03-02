@@ -882,7 +882,7 @@
                                         <span class = "title">Student</span>
                                     <?php } ?>
 
-                                    <span class = "class_year">Senior</span>
+
                                 </div>
                                 <div class = "user_main_info">
                                     <a class = "name profile_link" data-user_id='<?php echo $member->user_id; ?>'><?php echo $member->firstname . ' ' . $member->lastname; ?></a>

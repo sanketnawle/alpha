@@ -437,7 +437,12 @@ class PostController extends Controller
                         $event = new Event;
                         $event->title = $_POST['post']['event']['title'];
                         $event->description = $_POST['post']['event']['description'];
-                        $event->event_type = 'event';
+                        if(isset($_POST['post']['event']['event_type'])){
+                            $event->event_type = $_POST['post']['event']['event_type'];
+                        }else{
+                            $event->event_type = 'event';
+                        }
+
                         $event->user_id = $user->user_id;
                         $event->origin_type = $_POST['post']['event']['origin_type'];
                         $event->origin_id = $_POST['post']['event']['origin_id'];
@@ -634,6 +639,7 @@ class PostController extends Controller
 
 
                         $post_data['event'] = $this->model_to_array($event);
+                        $post_data['event']['attend_status'] = "Attending";
 
 
                         if($model->origin_type == 'class'){

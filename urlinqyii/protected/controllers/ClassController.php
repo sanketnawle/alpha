@@ -489,7 +489,8 @@ class ClassController extends Controller
                     }
 
                 }
-                 $class_datetime = $class->class_datetime;
+
+                $class_datetime = $class->class_datetime;
                 
 
                 if($class_datetime){
@@ -506,19 +507,23 @@ class ClassController extends Controller
                                     new DateTime("$end_day month $year-01")
                                 );
                     foreach ($date_range as $Day) {
-                        $event_entry = new Event;
-                        $event_entry->event_type = "class";
-                        $event_entry->origin_type = "class";
-                        $event_entry->origin_id = $class_id;
-                        $event_entry->user_id = $user_id;
-                        $event_entry->title = $class->class_name;
-                        $event_entry->start_time = (new DateTime($start_end[0]))->format("H:i:s");
-                        $event_entry->end_time = (new DateTime($start_end[1]))->format("H:i:s");
-                        $event_entry->start_date = $Day->format("Y-m-d");
-                        $event_entry->end_date = $Day->format("Y-m-d");
-                        $event_entry->location = $class->location;
-                        $event_entry->save(false);
+                        if($Day){
+                            $event_entry = new Event;
+                            $event_entry->event_type = "lecture";
+                            $event_entry->origin_type = "class";
+                            $event_entry->origin_id = $class_id;
+                            $event_entry->user_id = $user_id;
+                            $event_entry->title = $class->class_name;
+                            $event_entry->start_time = (new DateTime($start_end[0]))->format("H:i:s");
+                            $event_entry->end_time = (new DateTime($start_end[1]))->format("H:i:s");
+                            $event_entry->start_date = $Day->format("Y-m-d");
+                            $event_entry->end_date = $Day->format("Y-m-d");
+                            $event_entry->location = $class->location;
+                           
+                            $event_entry->save(false);
+                        }
                     }
+
                 }
                 $data = array('success'=>true);
                 $this->renderJSON($data);
@@ -533,7 +538,6 @@ class ClassController extends Controller
             $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user already in the class');
             return;
         }
-
 
     }
 
