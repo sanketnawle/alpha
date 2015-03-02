@@ -564,6 +564,20 @@ function ready(globals){
 
     }
 
+    $(document).on('click','.post_event_calendar_button.added',function(e){
+        var $calendar_button = $(this);
+
+        if($calendar_button.text()=="Added to Calendar" || $calendar_button.hasClass('event_owner')){
+            return;
+        }else{
+            e.stopPropagation();
+        }
+
+        $calendar_button.fadeOut(150);
+        $calendar_button.next('.post_choose_attending').fadeIn(150);
+
+
+    });
 
     $(document).on('click', '.add_to_calendar_button', function(e){
 
@@ -597,7 +611,10 @@ function ready(globals){
             function(response){
                 if(response['success']){
                     $calendar_button.addClass('added');
-                    $calendar_button.text('Added to Calendar');
+                    //$calendar_button.fadeOut(150);
+                    $calendar_button.next('.post_choose_attending').fadeIn(150);
+                    $calendar_button.html('<span class = "add_to_cal_icon added"></span>Added to Calendar');
+                    add_event(response['event'])
                 }else{
                     alert(JSON.stringify(response));
                 }
@@ -605,6 +622,47 @@ function ready(globals){
         );
 
 
+    });
+    $(document).on('mouseenter','.post_conflict_indicator',function(){
+        $(this).next('.conflicting_event_popup').show();
+    });
+    $(document).on('mouseleave','.post_conflict_indicator',function(){
+        $(this).next('.conflicting_event_popup').hide();
+    });
+    $(document).on('click','.post_choose_attending_button',function(){
+        var $attend_button = $(this);
+        var $attend_section = $attend_button.parent('.post_choose_attending');
+        var event_id = $attend_section.attr('data-event_id');
+        var attend_status = $attend_button.text();
+        if(attend_status=="Yes"){
+            attend_status='Attending';
+        }else if(attend_status=="No"){
+            attend_status='Not Attending';
+        }else if(attend_status=="Maybe"){
+            attend_status='Maybe Attending';
+        }
+        var post_url = globals.base_url + '/event/changeAttending';
+
+        var post_data = {event_id: event_id, attend_status: attend_status};
+
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                if(response['success']){
+                    $attend_section.fadeOut(150);
+                    var $calendar_button = $attend_section.prev('.post_event_calendar_button');
+                    $calendar_button.html('<span class = "add_to_cal_icon added"></span>'+attend_status);
+
+                    $calendar_button.show();
+
+
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }
+        );
     });
 
 

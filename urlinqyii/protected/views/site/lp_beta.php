@@ -23,7 +23,6 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
   <title>Urlinq</title>
   <meta name="google-site-verification" content="qv_TWutBCtliggYTCBDzJeXCNfJ3Dd3L5SkIhBSxm5Y" />
-  <meta name="viewport" content="width=device-width, initial-scale=.68">
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta.css" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/waiting_animation.css" rel='stylesheet' type='text/css'>
     <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
@@ -509,7 +508,8 @@
           <div class = "header">
             <div class = "top-bar">
               <div class = "top-bar-wrapper content">
-                  <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/logo.png" class = "logo">
+                  <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/square_logo.png" class = "logo">
+                  <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/logo.png" class = "logoText">
                   <div class = "forgotPassword">
                     <a class="forgot" href="PasswordReset.php" style="text-decoration: none">Forgot password?</a>
                   </div>

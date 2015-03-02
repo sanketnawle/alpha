@@ -1049,11 +1049,37 @@
                                 {{/each}}
 
 
-                                {{#ifCond user_attending '==' false}}
+                                {{#ifCond event.attend_status '==' "none"}}
                                     <div class='post_event_calendar_button add_to_calendar_button' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon"></span>Add to Calendar</div>
+                                    <div class="post_choose_attending" style="display: none;" data-event_id='{{event.event_id}}'>
+
                                 {{else}}
-                                    <div class='post_event_calendar_button added' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>Attending</div>
+                                    {{#ifCond event.attend_status '==' "In Calendar"}}
+                                        <div class='post_event_calendar_button added' style="display:none;" data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>{{event.attend_status}}</div>
+                                        <div class="post_choose_attending" data-event_id='{{event.event_id}}'>
+
+                                    {{else}}
+                                        {{#if pownership}}
+                                        <div class='post_event_calendar_button added event_owner' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>{{event.attend_status}}</div>
+                                        {{else}}
+                                        <div class='post_event_calendar_button added' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>{{event.attend_status}}</div>
+                                        {{/if}}
+                                        <div class="post_choose_attending" style="display: none;" data-event_id='{{event.event_id}}'>
+
+                                    {{/ifCond}}
+
                                 {{/ifCond}}
+                                        Are you attending?
+                                        <button class="post_choose_attending_button" id="post_choose_yes">Yes</button>
+                                        <button class="post_choose_attending_button" id="post_choose_no">No</button>
+                                        <button class="post_choose_attending_button" id="post_choose_maybe">Maybe</button>
+                                        {{#if event.conflict}}
+                                            <div class="post_conflict_indicator"><span class="post_conflict_icon red"></span>Conflict</div>
+                                           <div class="conflicting_event_popup" style="display: none;">{{event.conflict.title}}</div>
+                                        {{else}}
+                                           <div class="post_conflict_indicator"><span class="post_conflict_icon green"></span>No Conflicts</div>
+                                        {{/if}}
+                                    </div>
 
 
 
