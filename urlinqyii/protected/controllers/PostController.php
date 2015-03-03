@@ -640,6 +640,7 @@ class PostController extends Controller
 
                         $post_data['event'] = $this->model_to_array($event);
                         $post_data['event']['attend_status'] = "Attending";
+                       // $post_data['event']['color'] = ;
 
 
                         if($model->origin_type == 'class'){

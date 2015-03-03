@@ -20,6 +20,10 @@ class CalendarController extends Controller
 
 
 
+	public function actiongooglecalendar()
+	{
+		$this->render('googlecalendar');
+	}
 
 
 

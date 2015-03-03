@@ -1327,6 +1327,7 @@ if ($event_user) {
 
 
 
+
     // Uncomment the following methods and override them if needed
     /*
     public function filters()
