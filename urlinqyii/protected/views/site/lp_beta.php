@@ -567,7 +567,7 @@
                                         $('#login_error_popup').remove();
                                         var email_position = $('input#login_email').offset();
                                         var $error_div = $("<div id='login_error_popup'></div>");
-                                        $error_div.css({'top': email_position.top + 48});
+                                        $error_div.css({'top': email_position.top + 60});
                                         $error_div.css({'left': email_position.left});
                                         if(response['error_id'] == 2){
                                             //alert('Email is not supported');
@@ -707,16 +707,17 @@
                     Urlinq organizes your academic life, giving students and faculty an easier and faster way to access and interact with anything on campus.
                   </h6>
                 </div>
+                <a class = "main_app_download_btn">
+                  <div class = "mobile_wrap_centered_download_button">
+                  </div>
+                </a>
                 <div class = "mobile_wrap_centered_demo">
                   <div class = "iphone_skeleton">
                     <div class = "app_screenshot">
                     </div>
                   </div>
                 </div>
-                <a>
-                  <div class = "mobile_wrap_centered_download_button">
-                  </div>
-                </a>
+                
               </div>
 
               <div class = "about_section">
@@ -765,7 +766,7 @@
 
 
           <ul class = "color-border">
-            <li style = "background-color:rgba(0,0,0,.35);"><a style = "color: white; text-decoration:none" class = "cb-link1" href="http://urlinq.com">Home</a></li>
+            <li style = ""><a style = "color: white; text-decoration:none" class = "cb-link1" href="http://urlinq.com">Home</a></li>
           <li><a style = "color: #fff; text-decoration:none" class = "cb-link2" href="http://urlinq.com/blog">Blog</a></li>
           <li><a style = "color: #fff; text-decoration:none" class = "cb-link3" href="https://urlinq.com/team/jobs">Jobs</a></li>
           <li><a style = "color: #fff; text-decoration:none" class = "cb-link4" href="https://urlinq.com/team/contact">Team</a></li>
@@ -775,9 +776,15 @@
           
           </div>
 
+          <div class = "mobile_panel_5 mobile_only_panel big_pic">
+            <div class = "mobile_wrap">
+              <p>The entire University at your Fingetips</p>
+            </div>
+          </div>
+
           <div class = "mobile_panel_1 mobile_only_panel">
             <div class = "mobile_wrap">
-              <div class = "2_panels">
+              <div class = "dos_panels">
                 <div class = "mobile_featurette featurette_1 left">
                   <div class = "featurette_iphone_skeleton skeleton_bottom">
                     <div class = "iphone_screenshot_bottom">
@@ -802,25 +809,56 @@
             <div class = "mobile_wrap">
               <div class = "big_app_icon">
               </div>
-              <div class = "2_panels">
+              <div class = "dos_panels">
                 <div class = "left">
+                  <h2>Features</h2>
+                  <h3>The University experience has been re-imagined for mobile. Education is now faster, easier to manage, and more fun than ever. Here are some of the more notable features:</h3>
                   <ul>
-                    <li>Fast planner to help you stay on top of schoolwork</li>
-                    <li>Ask questions to people in classes and departments</li>
-                    <li>Follow professors on your campus</li>
-                    <li>Discover classes and groups on campus</li>
+                    <li>
+                      <h4>Smart Planner</h4>
+                      <img width = "60" height = "64">
+                      Fast planner to help you stay on top of schoolwork
+                    </li>
+                    <li>
+                      <h4>Ask your Class</h4>
+                      <img>
+                      Ask questions to people in classes and departments
+                    </li>
+                    <li>
+                      <h4>Follow People who Inspire You</h4>
+                      <img>
+                      Follow professors on your campus
+                    </li>
+                    <li>
+                      <h4>Uncover your curriculum</h4>
+                      <img>
+                      Discover classes and groups on campus
+                    </li>
                   </ul>
                 </div>
                 <div class = "right">
+
                   <a>
+                    <div class = "big_app_icon small">
+                    </div>
                     <div class = "mobile_wrap_centered_download_button">
                     </div>
                     <div class = "made_in_ny">
                     </div>
-                  </a>                  
+                  </a>   
+                  <div class = "computer_available">
+                    <p>
+                      Urlinq is also available <span>for the web <strong id = "computer_icon"></strong>.</span>
+                    </p>
+                  </div>               
                 </div>
               </div>
             </div>            
+          </div>
+          <div class = "mobile_panel_4 mobile_only_panel footer">
+            <div class = "mobile_wrap">
+              <p >&#169; 2015 Urlinq, Inc. All Rights Reserved.</p>
+            </div>
           </div>
 
 
