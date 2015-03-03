@@ -153,18 +153,21 @@ if (isset($authUrl)) {
       foreach ($complete_events as $key => $value) {
              # code...
            $event_entry = new Event;
-          $event_entry->event_type = "personal";
-          $event_entry->origin_type = "googlecalendar";
+          $event_entry->event_type = "";
+          $event_entry->origin_type = "";
           $event_entry->origin_id = "";
           $event_entry->user_id = $user_id;
-          $event_entry->title = $out_array["title"];
-          $event_entry->start_time = (new DateTime($out_array["start"]))->format("H:i:s");
-          $event_entry->end_time = (new DateTime($out_array["end"]))->format("H:i:s");
-          $event_entry->start_date = (new DateTime($out_array["start"]))->format("Y-m-d");
-          $event_entry->end_date = (new DateTime($out_array["end"]))->format("Y-m-d");
-          $event_entry->time_added = $out_array["created"];
-          $event_entry->location = $out_array["location"];
-          $event_entry->save(false);
+          $event_entry->title = $value["title"];
+          $event_entry->start_time = (new DateTime($value["start"]))->format("H:i:s");
+          $event_entry->end_time = (new DateTime($value["end"]))->format("H:i:s");
+          $event_entry->start_date = (new DateTime($value["start"]))->format("Y-m-d");
+          $event_entry->end_date = (new DateTime($value["end"]))->format("Y-m-d");
+          $event_entry->time_added = $value["created"];
+          $event_entry->location = $value["location"];
+          $event_check = Event::model()->exists("title=:title and user_id=:user_id and start_date=:start_date and end_date=:end_date and location=:location", array(":title"=>$event_entry->title, ":user_id" => $event_entry->user_id, ":start_date" => $event_entry->start_date, ":end_date" => $event_entry->end_date, ":location" => $event_entry->location));
+          if(!$event_check){
+            $event_entry->save(false);
+          }
           }
           $_SESSION["store"] = false;
       }
