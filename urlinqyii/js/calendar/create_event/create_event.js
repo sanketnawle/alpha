@@ -72,7 +72,7 @@ jQuery(document).ready(function(){
             var end_date = new_datetime(date_to_string(end_datetime_object) + ' 00:00:00');
 
 
-            if(start_date.getTime() == end_date.getTime()){
+            if(start_date.getTime() == end_date.getTime()){  //if dates are equal
                 var new_end_time_string;
                 console.log('hours '+start_datetime_object.getHours());
                 /*if(start_datetime_object.getHours() == 23){
@@ -185,7 +185,7 @@ jQuery(document).ready(function(){
         jQuery('#create_event_name_input').val('');
 
         var todays_date = new Date();
-
+        console.log('hello there');
         jQuery('#create_event_start_date_input').val(date_to_day_of_week_string(todays_date));
         jQuery('#create_event_start_date_input').attr('data-date',date_to_string(todays_date));
         jQuery('#create_event_end_date_input').val(date_to_day_of_week_string(todays_date));

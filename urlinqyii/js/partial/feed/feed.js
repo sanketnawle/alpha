@@ -567,7 +567,7 @@ function ready(globals){
     $(document).on('click','.post_event_calendar_button.added',function(e){
         var $calendar_button = $(this);
 
-        if($calendar_button.text()=="Added to Calendar" || $calendar_button.hasClass('event_owner')){
+        if($calendar_button.text()=="Added" || $calendar_button.hasClass('event_owner')){
             return;
         }else{
             e.stopPropagation();
@@ -613,7 +613,7 @@ function ready(globals){
                     $calendar_button.addClass('added');
                     //$calendar_button.fadeOut(150);
                     $calendar_button.next('.post_choose_attending').fadeIn(150);
-                    $calendar_button.html('<span class = "add_to_cal_icon added"></span>Added to Calendar');
+                    $calendar_button.html('<span class = "add_to_cal_icon added"></span>Added');
                     add_event(response['event'])
                 }else{
                     alert(JSON.stringify(response));
@@ -633,7 +633,7 @@ function ready(globals){
         var $attend_button = $(this);
         var $attend_section = $attend_button.parent('.post_choose_attending');
         var event_id = $attend_section.attr('data-event_id');
-        var attend_status = $attend_button.text();
+        var attend_status = $attend_button.val();
         if(attend_status=="Yes"){
             attend_status='Attending';
         }else if(attend_status=="No"){
@@ -651,11 +651,11 @@ function ready(globals){
             post_data,
             function(response){
                 if(response['success']){
-                    $attend_section.fadeOut(150);
-                    var $calendar_button = $attend_section.prev('.post_event_calendar_button');
-                    $calendar_button.html('<span class = "add_to_cal_icon added"></span>'+attend_status);
+                  //  $attend_section.fadeOut(150);
+                  //  var $calendar_button = $attend_section.prev('.post_event_calendar_button');
+                  //  $calendar_button.html('<span class = "add_to_cal_icon added"></span>'+attend_status);
 
-                    $calendar_button.show();
+                 //   $calendar_button.show();
 
 
                 }else{
@@ -665,7 +665,7 @@ function ready(globals){
         );
     });
 
-    $(document).on('click','.post_event_title',function(e){
+    $(document).on('click','.event_link',function(e){
         e.preventDefault();
         e.stopPropagation();
         if($(this).hasClass('not_in_calendar')){

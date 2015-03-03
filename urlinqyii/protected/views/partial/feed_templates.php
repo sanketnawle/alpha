@@ -985,7 +985,7 @@
                             </div>
                             <div class = "event_post_toparea">
                                 {{#ifCond event.attend_status '!=' "none"}}
-                                    <div class='post_event_title' data-event_start_date="{{event.start_date}}" data-event_id="{{event.event_id}}"><a>{{event.title}}</a></div>
+                                    <div class='post_event_title'><a class="event_link" data-event_start_date="{{event.start_date}}" data-event_id="{{event.event_id}}">{{event.title}}</a></div>
                                 {{else}}
                                     <div class='post_event_title not_in_calendar'>{{event.title}}</div>
                                 {{/ifCond}}
@@ -1052,44 +1052,45 @@
                                     {{/ifCond}}
                                 {{/each}}
 
+                                <div class='post_event_time_holder'>
+                                    <div class='post_event_start_time'>{{event.start_time_string}}</div> to <div class='post_event_end_time'>{{event.end_time_string}}</div>
+                                </div>
 
                                 {{#ifCond event.attend_status '==' "none"}}
                                     <div class='post_event_calendar_button add_to_calendar_button' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon"></span>Add to Calendar</div>
                                     <div class="post_choose_attending" style="display: none;" data-event_id='{{event.event_id}}'>
-
                                 {{else}}
-                                    {{#ifCond event.attend_status '==' "In Calendar"}}
-                                        <div class='post_event_calendar_button added' style="display:none;" data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>{{event.attend_status}}</div>
-                                        <div class="post_choose_attending" data-event_id='{{event.event_id}}'>
-
+                                    {{#if pownership}}
+                                        <div class='post_event_calendar_button added event_owner' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>Attending</div>
                                     {{else}}
-                                        {{#if pownership}}
-                                        <div class='post_event_calendar_button added event_owner' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>{{event.attend_status}}</div>
-                                        {{else}}
-                                        <div class='post_event_calendar_button added' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>{{event.attend_status}}</div>
-                                        {{/if}}
-                                        <div class="post_choose_attending" style="display: none;" data-event_id='{{event.event_id}}'>
+                                        <div class='post_event_calendar_button added' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>Added</div>
 
-                                    {{/ifCond}}
-
+                                    {{/if}}
+                                    <div class="post_choose_attending"  data-event_id='{{event.event_id}}'>
                                 {{/ifCond}}
-                                        Are you attending?
-                                        <button class="post_choose_attending_button" id="post_choose_yes">Yes</button>
-                                        <button class="post_choose_attending_button" id="post_choose_no">No</button>
-                                        <button class="post_choose_attending_button" id="post_choose_maybe">Maybe</button>
-                                        {{#if event.conflict}}
-                                            <div class="post_conflict_indicator"><span class="post_conflict_icon red"></span>Conflict</div>
-                                           <div class="conflicting_event_popup" style="display: none;">{{event.conflict.title}}</div>
-                                        {{else}}
-                                           <div class="post_conflict_indicator"><span class="post_conflict_icon green"></span>No Conflicts</div>
-                                        {{/if}}
-                                    </div>
 
-
-
-                                <div class='post_event_time_holder'>
-                                    <div class='post_event_start_time'>{{event.start_time_string}}</div> to <div class='post_event_end_time'>{{event.end_time_string}}</div>
+                                    <span class="post_attending_label">Are you attending?</span>
+                                    <input type="radio" id="post_choose_yes_{{event.event_id}}" class="post_choose_attending_button" name="{{event.event_id}}" value="Yes"
+                                        {{#ifCond event.attend_status '==' "Attending"}}checked{{/ifCond}}>
+                                    <label for="post_choose_yes_{{event.event_id}}">Yes</label>
+                                    <input type="radio" id="post_choose_no_{{event.event_id}}" class="post_choose_attending_button" name="{{event.event_id}}" value="No"
+                                        {{#ifCond event.attend_status '==' "Not Attending"}}checked{{/ifCond}}>
+                                    <label for="post_choose_no_{{event.event_id}}">No</label>
+                                    <input type="radio" id="post_choose_maybe_{{event.event_id}}" class="post_choose_attending_button" name="{{event.event_id}}" value="Maybe"
+                                        {{#ifCond event.attend_status '==' "Maybe Attending"}}checked{{/ifCond}}>
+                                    <label for="post_choose_maybe_{{event.event_id}}">Maybe</label>
+                                    {{#if event.conflict}}
+                                    <div style="display:none;" class="post_conflict_indicator"><span class="post_conflict_icon red"></span>Conflict</div>
+                                    <div class="conflicting_event_popup" style="display: none;">{{event.conflict.title}}</div>
+                                    {{else}}
+                                    <div style="display:none;" class="post_conflict_indicator"><span class="post_conflict_icon green"></span>No Conflicts</div>
+                                    {{/if}}
                                 </div>
+
+
+
+
+
                                 <div class = 'post_functions event_functions'>
                                     <div class = 'post_functions_showr shower'>
                                     </div>
