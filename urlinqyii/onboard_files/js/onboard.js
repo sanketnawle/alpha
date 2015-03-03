@@ -356,12 +356,12 @@ $(document).ready(function () {
                     $tthread = $thread1;
                 }
                 var picture_url;
-                if(people_list[i]['picture_url']){
-                    picture_url = base_url + people_list[i]['picture_url'];
+                if(people_list[i]['pictureFile']){
+                    picture_url = base_url + people_list[i]['pictureFile']['file_url'];
                 }else{
                     picture_url = base_url + "/onboard_files/img/defaultGlyph.png";
                 }
-                $tthread.append("<div class='step_4_card' data-user_name='" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "' data-user_id='" + people_list[i]['user_id'].toString() + "'><img class='card_4_glyph' src='" + picture_url + "'><div class='card_4_txt'>" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "</div><div class='follow_btn card_4_btn'><em class = 'follow_icon'></em><span>Follow</span></div></div>");
+                $tthread.append("<div class='step_4_card' data-user_name='" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "' data-user_id='" + people_list[i]['user_id'].toString() + "'><div class='card_4_glyph' style='background-image:url(\"" + picture_url + "\")'></div><div class='card_4_txt'>" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "</div><div class='follow_btn card_4_btn'><em class = 'follow_icon'></em><span>Follow</span></div></div>");
 
             }
 

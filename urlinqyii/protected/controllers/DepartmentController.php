@@ -60,10 +60,42 @@ class DepartmentController extends Controller
 
         $department_data = $this->get_model_associations($department,array('courses'=>array('classes'=>array('pictureFile','professor'),'pictureFile'=>array(), 'department'=>array())));
 
+        if(sizeof($department_data['courses'])<10){
+            //$school = School::model()->find('school_id=:id',array(':id'=>$department->school_id));
+
+
+            $criteria = new CDbCriteria;
+            $criteria->condition = 'school_id=:sid and department_id!=:did';
+            $criteria->limit = 15;
+            $criteria->order = 'rand()';
+            $criteria->params = array(':sid' => $department->school_id,':did'=>$department->department_id);
+
+            $courses = Course::model()->findAll($criteria);
+            foreach($courses as $i=>$course){
+                $courses[$i] = $this->get_model_associations($course,array('classes'=>array('pictureFile','professor'),'pictureFile'=>array(), 'department'=>array()));
+            }
+            $courses = array_merge($department_data['courses'],$courses);
+            if(sizeof($courses)<10){
+                $criteria = new CDbCriteria;
+                $criteria->condition = 'school_id!=:sid';
+                $criteria->limit = 15;
+                $criteria->order = 'rand()';
+                $criteria->params = array(':sid' => $department->school_id);
+
+                $school_courses = Course::model()->findAll($criteria);
+                foreach($school_courses as $i=>$course){
+                    $school_courses[$i] = $this->get_model_associations($course,array('classes'=>array('pictureFile','professor'),'pictureFile'=>array(), 'department'=>array()));
+                }
+                $courses = array_merge($courses,$school_courses);
+
+            }
+        }else{
+            $courses = $department_data['courses'];
+        }
         //Loop through the courses and get the member count
 
 
-        $data = array('success'=>true, 'courses'=> $department_data['courses']);
+        $data = array('success'=>true, 'courses'=> $courses);
         $this->renderJSON($data);
         return;
 

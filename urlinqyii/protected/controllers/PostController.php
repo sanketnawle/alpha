@@ -1251,6 +1251,14 @@ class PostController extends Controller
         if($post->delete()){
             if(isset($event)){
                 if(!$event->delete()){
+                    $event_users = EventUser::model()->findAll('event_id=:eid',array(':eid'=>$event->event_id));
+                    foreach($event_users as $event_user){
+                        if(!$event_user->delete()){
+                            $return_data = array('success'=>false,'error_id'=>5, 'error_msg'=>'Error deleting event_user');
+                            $this->renderJSON($return_data);
+                            return;
+                        }
+                    }
                     $return_data = array('success'=>false,'error_id'=>5, 'error_msg'=>'Error deleting event');
                     $this->renderJSON($return_data);
                     return;

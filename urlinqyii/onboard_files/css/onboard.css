@@ -548,6 +548,7 @@ padding-bottom: 4px;
     width: 60px;
     border-radius: 1000px;
     float: left;
+    background-size: cover;
     margin-right: 10px;
 }
 

@@ -1061,8 +1061,8 @@
                                     <div class="post_choose_attending" style="display: none;" data-event_id='{{event.event_id}}'>
                                 {{else}}
                                     {{#if pownership}}
-                                        <div class='post_event_calendar_button added event_owner' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>Attending</div>
-                                        <div class="post_choose_attending" style="display: none;"  data-event_id='{{event.event_id}}'>
+                                        <div class='post_event_calendar_button added event_owner' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>My Event</div>
+                                        <div class="post_choose_attending"  data-event_id='{{event.event_id}}'>
                                     {{else}}
                                         <div class='post_event_calendar_button added' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon added"></span>Added</div>
                                         <div class="post_choose_attending"  data-event_id='{{event.event_id}}'>

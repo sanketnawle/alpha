@@ -723,7 +723,7 @@ margin-left: -12px;
 .post_functions.event_functions{
     float:right;
     position: relative;
-    width:100px;
+    width:66px;
     height: 35px;
 }
 .post_functions.event_functions .post_functions_box{
@@ -3751,7 +3751,6 @@ div.post_event_time_holder{
     padding-top: 10px;
     font-weight: 500;
     font-family: avenir;
-    top: -10px;
     position:relative;
 }
 
