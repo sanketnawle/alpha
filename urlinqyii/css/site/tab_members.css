@@ -154,10 +154,10 @@ span.office_hours.in_office{
     display:inline-block;
 }
 
-
+/*
 div#class_members_tab div.members_card_wrapper:nth-of-type(2){
     float:right;
-}
+}*/
 
 div.admin_member_controls{
     display: inline-block;

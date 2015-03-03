@@ -72,7 +72,7 @@ jQuery(document).ready(function(){
             var end_date = new_datetime(date_to_string(end_datetime_object) + ' 00:00:00');
 
 
-            if(start_date.getTime() == end_date.getTime()){
+            if(start_date.getTime() == end_date.getTime()){  //if dates are equal
                 var new_end_time_string;
                 console.log('hours '+start_datetime_object.getHours());
                 /*if(start_datetime_object.getHours() == 23){
@@ -185,7 +185,7 @@ jQuery(document).ready(function(){
         jQuery('#create_event_name_input').val('');
 
         var todays_date = new Date();
-
+        console.log('hello there');
         jQuery('#create_event_start_date_input').val(date_to_day_of_week_string(todays_date));
         jQuery('#create_event_start_date_input').attr('data-date',date_to_string(todays_date));
         jQuery('#create_event_end_date_input').val(date_to_day_of_week_string(todays_date));
@@ -403,8 +403,8 @@ jQuery(document).ready(function(){
             var checkbox_share_isset = $selected_group.children().find('.checkbox_share_event').is(':checked');
             if (checkbox_share_isset) {
                 console.log("yeah")
-                var post_post_url = "post/create"
-                var post_post_data = {"post" :
+                post_url = "post/create"
+                post_data = {"post" :
                                     {"text":"",
                                     "post_type":"event",
                                     "origin_type":event_origin_type,
@@ -421,11 +421,12 @@ jQuery(document).ready(function(){
                                              "description":event_description,
                                              "location":event_location,
                                              "origin_type":event_origin_type,
-                                             "origin_id": event_origin_id
+                                             "origin_id": event_origin_id,
+                                             "event_type": event_category
                                             }
                                     }
                             };
-                $.post(
+              /*  $.post(
                     post_post_url,
                     post_post_data,
                     function(response){
@@ -436,7 +437,7 @@ jQuery(document).ready(function(){
                         }
                     }
 
-                );
+                );*/
             }
         }
 

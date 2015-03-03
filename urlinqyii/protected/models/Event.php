@@ -49,8 +49,14 @@ class Event extends CActiveRecord
             return $event_user->color();
         }
     }
+    public function user_is_attending($user_id){
+        $event_id = $this->event_id;
+        $event_user = EventUser::model()->findBySql('SELECT * FROM `event_user` WHERE user_id = '.$user_id.' AND event_id = '.$event_id);
+        return $event_user;
+    }
 
-	/**
+
+    /**
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()

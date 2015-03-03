@@ -22,6 +22,7 @@
     </script>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
   <title>Urlinq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=.82">
   <meta name="google-site-verification" content="qv_TWutBCtliggYTCBDzJeXCNfJ3Dd3L5SkIhBSxm5Y" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta.css" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/waiting_animation.css" rel='stylesheet' type='text/css'>
@@ -695,6 +696,29 @@
                   <source src="<?php echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop4.webm" type = "video/webm">
                   
               </video>
+
+              <div class = "mobile_wrap mobile_wrap_primary">
+                <div class = "mobile_wrap_header_text">
+                  <h3>
+                    Urlinq
+                  </h3>
+                  <p>for the iPhone</p>
+                  <h6>
+                    Urlinq organizes your academic life, giving students and faculty an easier and faster way to access and interact with anything on campus.
+                  </h6>
+                </div>
+                <div class = "mobile_wrap_centered_demo">
+                  <div class = "iphone_skeleton">
+                    <div class = "app_screenshot">
+                    </div>
+                  </div>
+                </div>
+                <a>
+                  <div class = "mobile_wrap_centered_download_button">
+                  </div>
+                </a>
+              </div>
+
               <div class = "about_section">
                 <div class = "focus_area">
                   <div class = "icon_section icon_green">
@@ -750,6 +774,55 @@
           </ul>
           
           </div>
+
+          <div class = "mobile_panel_1 mobile_only_panel">
+            <div class = "mobile_wrap">
+              <div class = "2_panels">
+                <div class = "mobile_featurette featurette_1 left">
+                  <div class = "featurette_iphone_skeleton skeleton_bottom">
+                    <div class = "iphone_screenshot_bottom">
+                    </div>
+                  </div>
+                  <div class = "feature_blurb">
+                  </div>
+                </div>
+                <div class = "mobile_featurette featurette_2 right">
+                  <div class = "featurette_iphone_skeleton skeleton_top">
+                    <div class = "iphone_screenshot_top">
+                    </div>
+                  </div>
+                  <div class = "feature_blurb">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class = "mobile_panel_2 mobile_only_panel">
+            <div class = "mobile_wrap">
+              <div class = "big_app_icon">
+              </div>
+              <div class = "2_panels">
+                <div class = "left">
+                  <ul>
+                    <li>Fast planner to help you stay on top of schoolwork</li>
+                    <li>Ask questions to people in classes and departments</li>
+                    <li>Follow professors on your campus</li>
+                    <li>Discover classes and groups on campus</li>
+                  </ul>
+                </div>
+                <div class = "right">
+                  <a>
+                    <div class = "mobile_wrap_centered_download_button">
+                    </div>
+                    <div class = "made_in_ny">
+                    </div>
+                  </a>                  
+                </div>
+              </div>
+            </div>            
+          </div>
+
 
           <!--signup form-->
           <div class = "signup-container">
@@ -893,7 +966,7 @@
                       <h4 class = "header">Sign Up</h4>
                     </div>
                     <div class = "header-sec-right">
-                      <div class = "time-to-signup" style = "font-size:20px;">Learning made simpler</div>
+                      <div class = "time-to-signup" style = "font-size:20px;">your link to the university</div>
                       <!--<div class = "signup-slog">seconds to get started</div>-->
                     </div>
                   </div>
