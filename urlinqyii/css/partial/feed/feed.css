@@ -3752,6 +3752,7 @@ div.post_event_time_holder{
     font-weight: 500;
     font-family: avenir;
     top: -10px;
+    position:relative;
 }
 
 div.post_event_time_holder > .post_event_start_time{

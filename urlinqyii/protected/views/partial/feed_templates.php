@@ -1082,10 +1082,10 @@
                                         {{#ifCond event.attend_status '==' "Maybe Attending"}}checked{{/ifCond}}>
                                     <label for="post_choose_maybe_{{event.event_id}}">Maybe</label>
                                     {{#if event.conflict}}
-                                    <div style="display:none;" class="post_conflict_indicator"><span class="post_conflict_icon red"></span>Conflict</div>
+                                    <div class="post_conflict_indicator"><span class="post_conflict_icon red"></span></div>
                                     <div class="conflicting_event_popup" style="display: none;">{{event.conflict.title}}</div>
                                     {{else}}
-                                    <div style="display:none;" class="post_conflict_indicator"><span class="post_conflict_icon green"></span>No Conflicts</div>
+                                    <div class="post_conflict_indicator"><span class="post_conflict_icon green"></span></div>
                                     {{/if}}
                                 </div>
 
