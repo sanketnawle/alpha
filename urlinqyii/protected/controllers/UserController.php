@@ -180,11 +180,8 @@ class UserController extends Controller
     //            $this->renderJSON($data);
     //            return;
 
-                if (isset($_GET['limit_to_15'])) {
-                    $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 15');
-                } else {
                     $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
-                }
+
 
                 if ($notifications) {
 
