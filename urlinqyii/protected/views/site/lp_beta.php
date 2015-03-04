@@ -829,11 +829,23 @@
                       <img>
                       Follow professors on your campus
                     </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <h4>Schoolwork reminders</h4>
+                      <img>
+                      A intelligent reminder system notifies you to complete homework assignments, or to study for upcoming exams
+                    </li>   
                     <li>
                       <h4>Uncover your curriculum</h4>
                       <img>
                       Discover classes and groups on campus
-                    </li>
+                    </li>   
+                    <li>
+                      <h4>Stay up-to-date with your academic life</h4>
+                      <img>
+                      Do better in school through the campus feed, which organizes the conversation in your classes and clubs
+                    </li>                  
                   </ul>
                 </div>
                 <div class = "right">

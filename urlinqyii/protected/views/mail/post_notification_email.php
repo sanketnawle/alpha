@@ -349,7 +349,7 @@ table.body-wrap { width: 100%;}
 		FOOTER 
 ------------------------------------- */
 table.footer-wrap { width: 100%;	clear:both!important;
- background: #1d1f20; height: 110px; color: #FFF;}
+ background: #1d1f20; color: #FFF;}
 .footer-wrap .container td.content  p { border-top: 1px solid rgb(215,215,215); padding-top:15px;}
 .footer-wrap .container td.content p {
 	font-size:10px;
@@ -551,7 +551,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 					<td style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 						
 						<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #2BA6CB;">
-							<div class="thought_leader_frame_group" style="margin: 0 auto;padding: 3px;font-family: 'Open Sans', sans-serif;width: 110px;height: 110px;background: #FFF;position: relative;margin-top: -90px;border-radius: 5px;margin-left: 40px;">
+							<div class="thought_leader_frame_group" style="margin: 0 auto;padding: 3px;font-family: 'Open Sans', sans-serif;width: 110px;height: 110px;background: #FFF;position: relative;margin-top: -90px;border-radius: 5px;margin-left: 40px; margin-top:30px">
 							<img class="thought_leader_picture_group" src="<?php echo Yii::app()->getBaseUrl(true) . $actor->pictureFile->file_url; ?>" style="height: 100px;margin-top: 0px;border-radius: 3px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;width: 110px;">
 							</div>
 						</a>					
@@ -600,7 +600,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 </tbody></table><!-- /BODY -->
 
 <!-- FOOTER -->
-<table class="footer-wrap" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;background: #1d1f20;height: 110px;color: #FFF;clear: both!important;">
+<table class="footer-wrap" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;background: #27292b;color: #FFF;clear: both!important;">
 	<tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 		<td style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"></td>
 		<td class="container" style="margin: 0 auto!important;padding: 0;font-family: 'Open Sans', sans-serif;display: block!important;max-width: 800px!important;clear: both!important;">
@@ -613,7 +613,6 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 						<p class="footer_Text" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;">
 							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;">Urlinq, Inc 2015</a> |
 							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;">New York City</a> |
-							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;"><unsubscribe style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">Unsubscribe</unsubscribe></a>
 						</p>
 					</td>
 				</tr>

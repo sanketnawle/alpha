@@ -1008,6 +1008,9 @@
                                         <div class = "post_event_origin_holder">
                                             <div class = "post_event_origin"><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
                                         </div>
+                                        <div class='post_event_time_holder'>
+                                            from <div class='post_event_start_time'>{{event.start_time_string}}</div> to <div class='post_event_end_time'>{{event.end_time_string}}</div>
+                                        </div>
                                     </div>
                                 {{else}}
                                     {{#ifCond '<?php echo $user_id;?>' '!=' event.origin_id}}
@@ -1021,6 +1024,9 @@
                                             <div class = "post_event_origin_holder">
                                                 <div class = "post_event_origin"><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
                                             </div>
+                                            <div class='post_event_time_holder'>
+                                                from <div class='post_event_start_time'>{{event.start_time_string}}</div> to <div class='post_event_end_time'>{{event.end_time_string}}</div>
+                                            </div>                                        
                                         </div>
                                     {{/ifCond}}
 
@@ -1052,10 +1058,6 @@
                                     {{/ifCond}}
                                 {{/each}}
 
-                                <div class='post_event_time_holder'>
-                                    <div class='post_event_start_time'>{{event.start_time_string}}</div> to <div class='post_event_end_time'>{{event.end_time_string}}</div>
-                                </div>
-
                                 {{#ifCond event.attend_status '==' "none"}}
                                     <div class='post_event_calendar_button add_to_calendar_button' data-event_id='{{event.event_id}}'><span class = "add_to_cal_icon"></span>Add to Calendar</div>
                                     <div class="post_choose_attending" style="display: none;" data-event_id='{{event.event_id}}'>
@@ -1074,13 +1076,13 @@
                                     <span class="post_attending_label">Are you attending?</span>
                                     <input type="radio" id="post_choose_yes_{{event.event_id}}" class="post_choose_attending_button" name="{{event.event_id}}" value="Yes"
                                         {{#ifCond event.attend_status '==' "Attending"}}checked{{/ifCond}}>
-                                    <label for="post_choose_yes_{{event.event_id}}">Yes</label>
-                                    <input type="radio" id="post_choose_no_{{event.event_id}}" class="post_choose_attending_button" name="{{event.event_id}}" value="No"
-                                        {{#ifCond event.attend_status '==' "Not Attending"}}checked{{/ifCond}}>
-                                    <label for="post_choose_no_{{event.event_id}}">No</label>
+                                    <label class = "post_choose_yes_label" for="post_choose_yes_{{event.event_id}}">Yes</label>
                                     <input type="radio" id="post_choose_maybe_{{event.event_id}}" class="post_choose_attending_button" name="{{event.event_id}}" value="Maybe"
                                         {{#ifCond event.attend_status '==' "Maybe Attending"}}checked{{/ifCond}}>
-                                    <label for="post_choose_maybe_{{event.event_id}}">Maybe</label>
+                                    <label class = "post_choose_maybe_label" for="post_choose_maybe_{{event.event_id}}">Maybe</label>
+                                    <input type="radio" id="post_choose_no_{{event.event_id}}" class="post_choose_attending_button" name="{{event.event_id}}" value="No"
+                                        {{#ifCond event.attend_status '==' "Not Attending"}}checked{{/ifCond}}>
+                                    <label class = "post_choose_no_label" for="post_choose_no_{{event.event_id}}">No</label>
                                     {{#if event.conflict}}
                                     <div class="post_conflict_indicator"><span class="post_conflict_icon red"></span></div>
                                     <div class="conflicting_event_popup" style="display: none;">{{event.conflict.title}}</div>

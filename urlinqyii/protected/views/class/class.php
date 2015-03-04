@@ -373,7 +373,7 @@
                         </div>
                         <div class = "syllabus_events_wrapper">
                             <header class = "class_tasks">
-                                <h5>Class Work</h5>
+                                <h5>Syllabus Work</h5>
                                 <!-- <label>Order:</label>
                                 <ul class = "menu">
                                     <li>
