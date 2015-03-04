@@ -13,6 +13,8 @@
 
         globals.base_url = "<?php echo Yii::app()->getBaseUrl(true); ?>";
 
+
+
     </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -32,6 +34,8 @@
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
+
+
     <script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/embedly.js"> </script>
 
@@ -102,8 +106,9 @@
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_people/invite_people.css" type = "text/css" rel = "stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/feed/feed.css" rel="stylesheet" type="text/css"><!-- Avenir:L,N,B -->
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/bootstrap.css" rel="stylesheet" type="text/css"><!-- Avenir:L,N,B -->
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/bootstrap-theme.css" rel="stylesheet" type="text/css"><!-- Avenir:L,N,B -->
+    <!--<link href="/css/calendar/bootstrap.css" rel="stylesheet" type="text/css"><!-- Avenir:L,N,B -->
+
+    <!--<link href="/css/calendar/bootstrap-theme.css" rel="stylesheet" type="text/css"><!-- Avenir:L,N,B -->
 
 
 
@@ -200,7 +205,25 @@
             </div>
         </div>
         <div class="leftbar">
+           
             <!-- ng-click="openNewEvent()" for create button -->
+            <div class="create">
+                <div class="button left_panel_create_button">
+                    <div id='google_cal_button' class="full"><i></i> <?php include "googlecalendar.php"; ?></div>
+                    <div class="quick">
+                        <i></i>
+                        <div class="quick-dialog">
+                            <div class="wedge"></div>
+                            <form>
+                                <div>Quick Add Event</div>
+                                <input type="submit" value="Add">
+                                <input type="text" placeholder="Example: Homework due Tuesday 11pm">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sep"></div>
+                </div>
+            </div>
             <div class="create">
                 <div class="button left_panel_create_button">
                     <div id='create_new_event_button' class="full" ng-click="openNewEvent()"><i></i> Create</div>
@@ -287,6 +310,7 @@
         </div>
     </div>
 
+
 </body>
 
 
@@ -340,6 +364,12 @@
 
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/searchevents.js"></script>
 
-
+<script>
+    /*if(window.name){
+        console.log(window.name);
+       // var top = $('.event_holder[data-id=454]').position().top;
+        $('.scroll_view').scrollTop( 400 );
+    }*/
+</script>
 
 </html>

@@ -14,15 +14,29 @@ jQuery(document).ready(function(){
         $start_time_input.attr('data-time',start_time_string);
         $start_time_input.val(time_string_to_am_pm_string(start_time_string));
 
+        var end_datetime_object = new Date(datetime.getTime() + 60*60000);
+        var new_end_time_string = ints_to_time(end_datetime_object.getHours(), end_datetime_object.getMinutes(), end_datetime_object.getSeconds());
 
+        var $end_time_input = $('#create_event_end_time_input');
+        var $end_date_input = $('#create_event_end_date_input');
 
-        var end_time_string = ints_to_time(datetime.getHours() + 1,datetime.getMinutes(),datetime.getSeconds());
+        //make the time an hour from the start time
+        $end_time_input.attr('data-time', new_end_time_string);
+        $end_time_input.val(time_string_to_am_pm_string(new_end_time_string));
+        if(end_datetime_object.getDate() != datetime.getDate()){
+            $end_date_input.val(date_to_day_of_week_string(end_datetime_object));
+            $end_date_input.attr('data-date', date_to_string(end_datetime_object));
+        }
+
+   //     var end_time_string = ints_to_time(datetime.getHours() + 1,datetime.getMinutes(),datetime.getSeconds());
 
         //Set the default time for the time_inputs
-        var $end_time_input = $('#create_event_end_time_input');
+      //  var $end_time_input = $('#create_event_end_time_input');
 
-        $end_time_input.attr('data-time',end_time_string);
-        $end_time_input.val(time_string_to_am_pm_string(end_time_string));
+    //    $end_time_input.attr('data-time',end_time_string);
+     //   $end_time_input.val(time_string_to_am_pm_string(end_time_string));
+
+
 
         
 
@@ -72,7 +86,7 @@ jQuery(document).ready(function(){
             var end_date = new_datetime(date_to_string(end_datetime_object) + ' 00:00:00');
 
 
-            if(start_date.getTime() == end_date.getTime()){
+            if(start_date.getTime() == end_date.getTime()){  //if dates are equal
                 var new_end_time_string;
                 console.log('hours '+start_datetime_object.getHours());
                 /*if(start_datetime_object.getHours() == 23){
@@ -100,13 +114,10 @@ jQuery(document).ready(function(){
 
                 var new_end_time_string;
                 console.log('hours '+start_datetime_object.getHours());
-              //  if(start_datetime_object.getHours() == 23){
-                    end_datetime_object = new Date(start_datetime_object.getTime() + 60*60000);
-                    new_end_time_string = ints_to_time(end_datetime_object.getHours(), end_datetime_object.getMinutes(), end_datetime_object.getSeconds());
-              //  }else{
-               //     new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
 
-              //  }
+                end_datetime_object = new Date(start_datetime_object.getTime() + 60*60000);
+                new_end_time_string = ints_to_time(end_datetime_object.getHours(), end_datetime_object.getMinutes(), end_datetime_object.getSeconds());
+
                 //make the time an hour from the start time
                 $event_end_time.attr('data-time', new_end_time_string);
                 $event_end_time.val(time_string_to_am_pm_string(new_end_time_string));
@@ -185,11 +196,11 @@ jQuery(document).ready(function(){
         jQuery('#create_event_name_input').val('');
 
         var todays_date = new Date();
-
-        jQuery('#create_event_start_date_input').val(date_to_day_of_week_string(todays_date));
-        jQuery('#create_event_start_date_input').attr('data-date',date_to_string(todays_date));
-        jQuery('#create_event_end_date_input').val(date_to_day_of_week_string(todays_date));
-        jQuery('#create_event_end_date_input').attr('data-date',date_to_string(todays_date));
+        console.log('hello there');
+        //jQuery('#create_event_start_date_input').val(date_to_day_of_week_string(todays_date));
+        //jQuery('#create_event_start_date_input').attr('data-date',date_to_string(todays_date));
+        //jQuery('#create_event_end_date_input').val(date_to_day_of_week_string(todays_date));
+        //jQuery('#create_event_end_date_input').attr('data-date',date_to_string(todays_date));
 
         jQuery('#todo_checkbox').attr('checked', false);
         jQuery('#allday_checkbox').attr('checked', false);
@@ -403,8 +414,8 @@ jQuery(document).ready(function(){
             var checkbox_share_isset = $selected_group.children().find('.checkbox_share_event').is(':checked');
             if (checkbox_share_isset) {
                 console.log("yeah")
-                var post_post_url = "post/create"
-                var post_post_data = {"post" :
+                post_url = "post/create"
+                post_data = {"post" :
                                     {"text":"",
                                     "post_type":"event",
                                     "origin_type":event_origin_type,
@@ -421,11 +432,12 @@ jQuery(document).ready(function(){
                                              "description":event_description,
                                              "location":event_location,
                                              "origin_type":event_origin_type,
-                                             "origin_id": event_origin_id
+                                             "origin_id": event_origin_id,
+                                             "event_type": event_category
                                             }
                                     }
                             };
-                $.post(
+              /*  $.post(
                     post_post_url,
                     post_post_data,
                     function(response){
@@ -436,7 +448,7 @@ jQuery(document).ready(function(){
                         }
                     }
 
-                );
+                );*/
             }
         }
 
@@ -466,7 +478,9 @@ jQuery(document).ready(function(){
                     var new_response = response;
                     if(!new_response["event"]){
                         new_response = {};
-                        new_response["event"] = $.extend({}, response["post"]["event"],{"color" : {"color_id":3,"hex":"#669999"}});
+                        //new_response["event"] = $.extend({}, response["post"]["event"],{"color" : {"color_id":3,"hex":"#669999"}});
+                        new_response["event"] =response["post"]["event"];
+
                     }
 
                     //Delete the old event

@@ -573,7 +573,12 @@ class PostController extends Controller
                         $event = new Event;
                         $event->title = $_POST['post']['event']['title'];
                         $event->description = $_POST['post']['event']['description'];
-                        $event->event_type = 'event';
+                        if(isset($_POST['post']['event']['event_type'])){
+                            $event->event_type = $_POST['post']['event']['event_type'];
+                        }else{
+                            $event->event_type = 'event';
+                        }
+
                         $event->user_id = $user->user_id;
                         $event->origin_type = $_POST['post']['event']['origin_type'];
                         $event->origin_id = $_POST['post']['event']['origin_id'];
@@ -770,6 +775,9 @@ class PostController extends Controller
 
 
                         $post_data['event'] = $this->model_to_array($event);
+                        $post_data['event']['attend_status'] = "Attending";
+                        $post_data['event']['color'] = $this->get_user_event_color($user,$event);
+                       // $post_data['event']['color'] = ;
 
 
                         if($model->origin_type == 'class'){
@@ -1380,6 +1388,14 @@ class PostController extends Controller
         if($post->delete()){
             if(isset($event)){
                 if(!$event->delete()){
+                    $event_users = EventUser::model()->findAll('event_id=:eid',array(':eid'=>$event->event_id));
+                    foreach($event_users as $event_user){
+                        if(!$event_user->delete()){
+                            $return_data = array('success'=>false,'error_id'=>5, 'error_msg'=>'Error deleting event_user');
+                            $this->renderJSON($return_data);
+                            return;
+                        }
+                    }
                     $return_data = array('success'=>false,'error_id'=>5, 'error_msg'=>'Error deleting event');
                     $this->renderJSON($return_data);
                     return;
@@ -1841,6 +1857,83 @@ class PostController extends Controller
         $data = array('success'=>true,'replies'=>$replies_with_users);
         $this->renderJSON($data);
         return;
+
+    }
+
+    function get_user_event_color($user, $event){
+        $origin_type = '';
+        try{
+            $origin_type = $event['origin_type'];
+        }catch(Exception $e){
+            $origin_type = $event->origin_type;
+        }
+
+
+        $origin_id = '';
+        try{
+            $origin_id = $event['origin_id'];
+        }catch(Exception $e){
+            $origin_id = $event->origin_id;
+        }
+
+
+        $event_type = '';
+        try{
+            $event_type = $event['event_type'];
+        }catch(Exception $e){
+            $event_type = $event->event_type;
+        }
+
+        if($event_type == 'NYU Event'){
+            //Get the purple color
+            $color = Color::model()->find('color_id=:id', array(':id'=>16));
+            return $color;
+        }
+
+
+
+
+
+        if($origin_type == 'class'){
+
+
+            $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id',array(':user_id'=>$user->user_id,':class_id'=>$event['origin_id']));
+
+            if($class_user){
+                $color = Color::model()->find('color_id=:id',array(':id'=>$class_user->color_id));
+                return $color;
+            }else{
+                $class = ClassModel::model()->find('class_id=:id', array(':id'=>$origin_id));
+                if($class){
+                    if($user->user_id == $class->professor_id){
+                        $color = Color::model()->find('color_id=:id',array(':id'=>$class->color_id));
+                        return $color;
+                    }else{
+                        $color = Color::model()->find('color_id=:id',array(':id'=>3));
+                        return $color;
+                    }
+                }else{
+                    $color = Color::model()->find('color_id=:id',array(':id'=>3));
+                    return $color;
+                }
+
+
+            }
+
+        }else if($origin_type == 'club' || $origin_type == 'group'){
+            $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id,':group_id'=>$event['origin_id']));
+            if($group_user){
+                $color = Color::model()->find('color_id=:id',array(':id'=>$group_user->color_id));
+                return $color;
+            }else{
+                $color = Color::model()->find('color_id=:id',array(':id'=>3));
+                return $color;
+            }
+
+        }else {
+            $color = Color::model()->find('color_id=:id',array(':id'=>3));
+            return $color;
+        }
 
     }
 

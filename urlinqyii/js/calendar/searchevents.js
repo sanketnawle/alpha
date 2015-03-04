@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    
 ;(function($){
     $.fn.extend({
         donetyping: function(callback,timeout){
