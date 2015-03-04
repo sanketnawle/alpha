@@ -552,43 +552,33 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 						
 						<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #2BA6CB;">
 							<div class="thought_leader_frame_group" style="margin: 0 auto;padding: 3px;font-family: 'Open Sans', sans-serif;width: 110px;height: 110px;background: #FFF;position: relative;margin-top: -90px;border-radius: 5px;margin-left: 40px;">
-							<img class="thought_leader_picture_group" src="<?php if($post->anon == 1){ echo Yii::app()->getBaseUrl(true) . '/assets/avatars/9.png'; } else { echo Yii::app()->getBaseUrl(true) . $actor->pictureFile->file_url; } ?>" style="height: 100px;margin-top: 0px;border-radius: 3px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;width: 110px;">
+							<img class="thought_leader_picture_group" src="<?php if($reply->anon == 1){ echo Yii::app()->getBaseUrl(true) . '/assets/avatars/9.png'; } else{ echo Yii::app()->getBaseUrl(true) . $actor->pictureFile->file_url; }?>" style="height: 100px;margin-top: 0px;border-radius: 3px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;width: 110px;">
 							</div>
 						</a>					
 						<!-- Callout Panel -->
 						<p class="post_thought_leader_name" style="margin: 0 auto;padding: 7px 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: 600;font-size: 21px;line-height: 1.6;text-align: left;padding-bottom: 0;margin-left: 40px;">
-							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #222;text-decoration: none;"><?php if($post->anon == 1){ echo "Anonymous"; } else { if($actor->user_type == 'p'){ echo "Professor " . $actor->lastname; }else{ echo $actor->firstname . ' ' . $actor->lastname; } }?></a>
+							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #222;text-decoration: none;"><?php if($reply->anon == 1){ echo "Anonymous"; } else { if($actor->user_type == 'p'){ echo "Professor " . $actor->lastname; } else { echo $actor->firstname . ' ' . $actor->lastname; } }?></a>
 						</p>
 						<p class="post_callout" style="margin: 0;padding: 0px;font-family: 'Open Sans', sans-serif;margin-bottom: 15px;font-weight: 400;font-size: 18px;line-height: 1.6;background-color: #FFF;text-align: left;border-bottom: 1px solid #777;margin-left: 40px;padding-bottom: 6px;margin-right: 40px;">
 							<?php if($post->origin_type == 'class'){ ?>
 							    <span class="post_details" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #575757;"><?php $post_type = $post->post_type; if($post_type == 'discuss'){$post_type = 'discussion'; }?><?php echo ucfirst($post_type); ?> in <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $post->origin_type . '/' . $post->origin_id; ?>" class="section_course_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #029acf;text-decoration: none;"><?php echo $origin->course->course_tag . ', ' . $origin->class_name; ?></a></span>
 						    <?php }else if($post->origin_type == 'club' || $post->origin_type == 'group'){ ?>
-    							    <span class="post_details" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #575757;"><?php echo ucfirst($post->post_type); ?> in <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $post->origin_type . '/' . $post->origin_id; ?>" class="section_course_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #029acf;text-decoration: none;"><?php echo $origin->group_name; ?></a></span>
+    							    <span class="post_details" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #575757;">Replied to your post in <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $post->origin_type . '/' . $post->origin_id; ?>" class="section_course_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #029acf;text-decoration: none;"><?php echo $origin->group_name; ?></a></span>
                             <?php }else if($post->origin_type == 'department'){ ?>
-                                    <span class="post_details" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #575757;"><?php echo ucfirst($post->post_type); ?> in <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $post->origin_type . '/' . $post->origin_id; ?>" class="section_course_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #029acf;text-decoration: none;"><?php echo $origin->department_name; ?></a></span>
+                                    <span class="post_details" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #575757;">Replied to your post in <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $post->origin_type . '/' . $post->origin_id; ?>" class="section_course_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #029acf;text-decoration: none;"><?php echo $origin->department_name; ?></a></span>
                             <?php }else if($post->origin_type == 'school'){ ?>
-                                    <span class="post_details" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #575757;"><?php echo ucfirst($post->post_type); ?> in <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $post->origin_type . '/' . $post->origin_id; ?>" class="section_course_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #029acf;text-decoration: none;"><?php echo $origin->school_name; ?></a></span>
+                                    <span class="post_details" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #575757;">Replied to your post in <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $post->origin_type . '/' . $post->origin_id; ?>" class="section_course_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #029acf;text-decoration: none;"><?php echo $origin->school_name; ?></a></span>
                             <?php } ?>
 						</p><!-- /Callout Panel -->
 
 
-						<?php if($post->text != '' && $post->sub_text != ''){ ?>
-                            <p class="target_copy_title" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 21px;line-height: 1.6;color: #222;text-align: left;max-width: 700px;width: 80%;margin-top: 16px;"> <?php echo $post->text?></p>
-                            <p class="post_target_copy" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 16px;line-height: 1.6;color: #575757;text-align: left;max-width: 700px;width: 80%;margin-top: 7px;">
-                                <?php echo $post->sub_text?>
-                            </p>
-                        <?php }else{ ?>
-                            <p class="post_target_copy" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 16px;line-height: 1.6;color: #575757;text-align: left;max-width: 700px;width: 80%;margin-top: 7px;">
-                                <?php echo $post->text?>
-                            </p>
-                        <?php } ?>
+                            <p class="target_copy_title" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 21px;line-height: 1.6;color: #222;text-align: left;max-width: 700px;width: 80%;margin-top: 16px;"> <?php echo $reply->reply_msg; ?></p>
+                            <p class="post_target_copy" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 16px;line-height: 1.6;color: #575757;text-align: left;max-width: 700px;width: 80%;margin-top: 7px;"></p>
 
-						
 
 							<a class="btn group_link_btn" href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $post->origin_type . '/' . $post->origin_id; ?>" style="margin: 0 auto;padding: 10px 0;font-family: 'Open Sans', sans-serif;color: #FFF;text-decoration: none;background-color: #666;font-weight: bold;margin-right: 10px;text-align: center;cursor: pointer;display: inline-block;background: #1EC783;margin-top: 18px;max-width: 250px;width: 80%;border-radius: 4px;margin-left: 40px;font-size: 18px;border-bottom: 2px solid rgba(0, 0, 0, 0.21);margin-bottom: 6px;">Go to <?php echo ucfirst($post->origin_type); ?> Page</a>
 							<p class="reply_text" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 24px;font-weight: 200;font-size: 14px;line-height: 1.6;display: block;color: #777;margin-left: 40px;"></p>
-					
-					
+
 					</td>			
 				</tr>
 			</tbody></table>
