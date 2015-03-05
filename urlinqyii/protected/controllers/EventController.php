@@ -192,7 +192,14 @@ class EventController extends Controller
                 $events[$i]['origin'] = $this->model_to_array(Group::model()->find('group_id=:id',array(':id'=>$events[$i]['origin_id'])));
                 //reassign the name to make it easier to get in the handlebars
                 $events[$i]['origin']['name'] = $events[$i]['origin']['group_name'];
-            }
+            } else {
+
+
+                $event = Event::model()->find('event_id=:event_id', array(':event_id'=>$events[$i]['event_id']));
+                $events[$i]['origin'] = $this->model_to_array($event->user);
+                $events[$i]['origin_type'] = 'user';
+
+}
 
 	                        $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$events[$i]['event_id'], ':user_id'=>$user->user_id));
 
@@ -454,12 +461,16 @@ if ($event_user) {
 
 
         if(!isset($_GET['origin_type'])){
-            $data = array('success'=>false, 'error_msg'=>'Origin type not set');
+            $origin_type = '';
+            /*$data = array('success'=>false, 'error_msg'=>'Origin type not set');
             $this->renderJSON($data);
-            return;
+            return;*/
+        }
+        else{
+            
+        $origin_type = $_GET['origin_type'];
         }
 
-        $origin_type = $_GET['origin_type'];
         $origin_id = '';
 
 

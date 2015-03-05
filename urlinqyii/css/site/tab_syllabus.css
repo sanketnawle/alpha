@@ -291,28 +291,15 @@ div.black_action_explainer{
 }
 
 div.full_syllabus_box div.title{
-
-    border-bottom: 1px solid #e2e2e2;
-    
-
+    border-bottom: 1px solid #ccc;
     margin-right: 15px;
-
     font-family: Avenir;
-
     font-weight: 400;
-
     color: #333;
-    -webkit-box-shadow:0 -1px 1px #fff inset;
-    -moz-box-shadow:0 -1px 1px #fff inset;
-    box-shadow: 0 -1px 1px #fff inset;
     font-size: 16px; 
-
     color: #333;
-
     padding-bottom: 6px;
-
     font-weight: 500;   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-
     margin-bottom: 14px;
 
 }
