@@ -1085,9 +1085,9 @@
                                     <label class = "post_choose_no_label" for="post_choose_no_{{event.event_id}}">No</label>
                                     {{#if event.conflict}}
                                     <div class="post_conflict_indicator"><span class="post_conflict_icon red"></span></div>
-                                    <div class="conflicting_event_popup" style="display: none;">{{event.conflict.title}}</div>
+                                    <div class="conflicting_event_popup">Time conflict with: <span class = "conflict_event_name">{{event.conflict.title}}</span></div>
                                     {{else}}
-                                    <div class="post_conflict_indicator"><span class="post_conflict_icon green"></span></div>
+
                                     {{/if}}
                                 </div>
 

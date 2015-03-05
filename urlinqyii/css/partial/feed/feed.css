@@ -4333,6 +4333,9 @@ div.post_other_attendees_count{
 }
 .post_conflict_indicator{
     display:inline-block;
+    position: relative;
+    left: 4px;
+    top: 4px;
 }
 
 .post_choose_attending span.post_attending_label{
@@ -4346,10 +4349,14 @@ div.post_other_attendees_count{
 }
 
 .post_conflict_icon.red{
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 5px;
-    background-color: red;
+    background-color: rgb(255, 29, 55);
+    display: block;
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(245, 17, 17, 1);   
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(245, 17, 17, 1);      
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(245, 17, 17, 1);
     margin-left: 10px;
     margin-right: 4px;
 }
@@ -4361,16 +4368,54 @@ div.post_other_attendees_count{
     margin-left: 10px;
     margin-right: 4px;
 }
-.conflicting_event_popup{
-    display: none;
-    color: white;
-    background-color: black;
-    padding: 3px;
-    border-radius: 4px;
-    position: absolute;
-    left: 297px;
-    top: -30px;
+
+.post_choose_attending:hover .conflicting_event_popup{
+opacity:1;
+top: 40px;
+height: auto;
+z-index:3000;
+pointer-events: none;
 }
+
+
+.conflicting_event_popup{
+  opacity: 0;
+  transition: width 350ms cubic-bezier(0.23, 0.5, 0.32, 1), height 350ms cubic-bezier(0.23, 0.5, 0.32, 1), left 350ms cubic-bezier(0.23, 0.5, 0.32, 1), top 350ms cubic-bezier(0.23, 0.5, 0.32, 1), opacity 350ms cubic-bezier(0.23, 0.5, 0.32, 1);
+  -webkit-transition: width 350ms cubic-bezier(0.23, 0.5, 0.32, 1), height 350ms cubic-bezier(0.23, 0.5, 0.32, 1), left 350ms cubic-bezier(0.23, 0.5, 0.32, 1), top 350ms cubic-bezier(0.23, 0.5, 0.32, 1), opacity 350ms cubic-bezier(0.23, 0.5, 0.32, 1);
+  width: 201px;
+  border-radius: 4px;
+  position: absolute;
+  background-color: white;
+  display: block!important;
+  top: 35px;
+  z-index: 3000;
+  left: 107px;
+  height: auto;
+  padding-bottom: 7px;
+  font-size: 12.5px;
+  padding-top: 10px;
+  border: 1px solid #d6d6d6;   -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13);   -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13);   box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13);
+  padding-left: 8px;
+  padding-right: 8px;
+  color: #777;
+  pointer-events: none;
+}
+
+.conflicting_event_popup:before{
+  content: "";
+  background-image: none,url(../../../assets/wire_icons.svg);
+  background-repeat: no-repeat;
+  background-size: 305px auto;
+  background-position: 4px -142px;
+  height: 10px;
+  width: 30px;
+  position: absolute;
+  top: -10px;
+  display: block;
+  right: 12px;
+  background-position: 8px -141px;
+}
+
 .post_choose_attending{
     position:relative;
     margin-left: 27px;
@@ -4421,6 +4466,10 @@ background-image: -webkit-linear-gradient(top,#3d9400,#398a00);
 background-image: linear-gradient(top,#3d9400,#398a00);
 border-color: #29691d;
 
+}
+
+span.conflict_event_name{
+    color:#222;
 }
 
 input.post_choose_attending_button:checked + label.post_choose_maybe_label{

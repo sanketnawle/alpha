@@ -11,6 +11,18 @@ body#body_calendar .topbar_profile_link .icon_text{
     top: -3px;
 }
 
+.providers_scrollable .slimScrollRail{
+    background: #111111!important;
+    opacity: .33!important;
+    z-index: 100000;
+}
+
+.providers_scrollable .slimScrollBar{
+    background: #FFF!important;
+    z-index: 100000;
+    opacity: .45!important;
+}
+
 body#body_calendar .topbar_profile_link{
     width:65px;
 }
@@ -339,8 +351,8 @@ div.event_name.month_event_name
     box-shadow: !important;
     position:relative!important;
     border:1px solid transparent!important;
-    z-index:999;
 }
+
 .ul-calendar .leftbar .providers .provider{
     overflow: visible;
 }
