@@ -23,7 +23,13 @@ class ClassController extends Controller
         $user_id = 2;
 
         $class = ClassModel::model()->find('class_id=:id', array(':id' => $class_id));
+
+
         $user = $this->get_current_user();
+
+        if(!$user){
+            $this->redirect(array('/'));
+        }
 
         $course = $class->course;
 
