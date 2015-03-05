@@ -366,7 +366,7 @@ $(document).ready(function(){
                 show_events(json_data);
 
             }else{
-                alert('error getting planner events');
+                alert(JSON.stringify(json_data));
             }
         });
 
