@@ -461,12 +461,16 @@ if ($event_user) {
 
 
         if(!isset($_GET['origin_type'])){
-            $data = array('success'=>false, 'error_msg'=>'Origin type not set');
+            $origin_type = '';
+            /*$data = array('success'=>false, 'error_msg'=>'Origin type not set');
             $this->renderJSON($data);
-            return;
+            return;*/
+        }
+        else{
+            
+        $origin_type = $_GET['origin_type'];
         }
 
-        $origin_type = $_GET['origin_type'];
         $origin_id = '';
 
 

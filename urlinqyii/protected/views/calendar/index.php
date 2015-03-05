@@ -207,23 +207,8 @@
         <div class="leftbar">
            
             <!-- ng-click="openNewEvent()" for create button -->
-            <div class="create">
-                <div class="button left_panel_create_button">
-                    <div id='google_cal_button' class="full"><i></i> <?php include "googlecalendar.php"; ?></div>
-                    <div class="quick">
-                        <i></i>
-                        <div class="quick-dialog">
-                            <div class="wedge"></div>
-                            <form>
-                                <div>Quick Add Event</div>
-                                <input type="submit" value="Add">
-                                <input type="text" placeholder="Example: Homework due Tuesday 11pm">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="sep"></div>
-                </div>
-            </div>
+            <?php include "googlecalendar.php"; ?>
+            
             <div class="create">
                 <div class="button left_panel_create_button">
                     <div id='create_new_event_button' class="full" ng-click="openNewEvent()"><i></i> Create</div>

@@ -60,16 +60,26 @@ jQuery(document).ready(function(){
         $(group_div_selector).append(generated_html);
 
         update_color_index();
-        provider_height = $('.leftbar').height() - 224;
+        provider_height = $('.leftbar').height() - 267;
         $('.providers_scrollable').slimScroll({
-            height: provider_height
+            height: provider_height,
+            railVisible: true, 
+            touchScrollStep: "20",
+            size:"10px",
+            allowPageScroll: true,
+            distance: "3px"            
         });
     }
     
     $(window).on('resize',function(){
-        provider_height = $('.leftbar').height() - 224;
+        provider_height = $('.leftbar').height() - 267;
         $('.providers_scrollable').slimScroll({
-            height: provider_height
+            height: provider_height,
+            railVisible: true, 
+            touchScrollStep: "20",
+            size:"10px",
+            allowPageScroll: true,
+            distance: "3px"            
         });
     })
 
