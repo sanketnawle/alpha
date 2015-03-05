@@ -206,8 +206,7 @@
         </div>
         <div class="leftbar">
            
-            <!-- ng-click="openNewEvent()" for create button -->
-            <?php include "googlecalendar.php"; ?>
+            
             
             <div class="create">
                 <div class="button left_panel_create_button">
@@ -226,6 +225,10 @@
                     <div class="sep"></div>
                 </div>
             </div>
+
+            <!-- ng-click="openNewEvent()" for create button -->
+            <?php include "googlecalendar.php"; ?>
+            
             <div class = "providers_scrollable">
 
                 <div class="providers personal">

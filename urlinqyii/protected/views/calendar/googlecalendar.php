@@ -127,11 +127,11 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
  ************************************************/
 if (isset($authUrl)) {
   ?>
-  <div class="create">
+  <div class="create google_sync">
         <div class="button left_panel_create_button">
-                    <div id="google_cal_button" class="full"><i></i><a href="<?php echo $authUrl; ?>">Sync Google</a> </div>
+                    <div id="google_cal_button" class="full"><a href="<?php echo $authUrl; ?>">Sync Google</a> </div>
                 </div>
-            </div>';
+            </div>
 <?php
 } elseif($last_updated && $has_refresh_token && $last_updated > $google_user->last_updated) {
 
