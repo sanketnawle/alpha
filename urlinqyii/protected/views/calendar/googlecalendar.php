@@ -45,11 +45,11 @@ include 'Google/Utils/URITemplate.php';
   http://localhost:8080/user-example.php
  ************************************************/
  $client_id = "566213768963-rbdpvbo33oe0dn4rdhmj83que4f13vuc.apps.googleusercontent.com";
- //'960881917908-rgb9ujp6v6rf3ufmbfbg8nadb41f9tdl.apps.googleusercontent.com';
+ //$client_id = '960881917908-rgb9ujp6v6rf3ufmbfbg8nadb41f9tdl.apps.googleusercontent.com';
  $client_secret = "_HFKQAsU2GNSAp7yUE4n2BVv";
- //'W3U_-nJF1LFgLD1NWacK2a-_';
+ //$client_secret = 'W3U_-nJF1LFgLD1NWacK2a-_';
  $redirect_uri = 'http://beta.urlinq.com/calendar';
- //'http://127.0.0.1/alpha/urlinqyii/calendar';
+ //$redirect_uri = 'http://127.0.0.1/alpha/urlinqyii/calendar';
 /************************************************
   Make an API request on behalf of a user. In
   this case we need to have a valid OAuth 2.0
@@ -136,7 +136,9 @@ if (isset($authUrl)) {
 } elseif($last_updated && $has_refresh_token && $last_updated > $google_user->last_updated) {
 
   $complete_events = array();
-  $u_events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user_id." and time_added > '".$google_user->last_updated."'")->queryAll();
+  $u_personal_events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user_id." and time_added > '".$google_user->last_updated."'")->queryAll();
+  $u_attending_events = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " and event.time_added > '".$google_user->last_updated."'")->queryAll();
+  $u_events = array_merge($u_personal_events,$u_attending_events);
   $event = new Google_Service_Calendar_Event();
   $start = new Google_Service_Calendar_EventDateTime();
   $end = new Google_Service_Calendar_EventDateTime();
