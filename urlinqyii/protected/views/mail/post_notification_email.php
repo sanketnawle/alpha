@@ -552,12 +552,12 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 						
 						<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #2BA6CB;">
 							<div class="thought_leader_frame_group" style="margin: 0 auto;padding: 3px;font-family: 'Open Sans', sans-serif;width: 110px;height: 110px;background: #FFF;position: relative;margin-top: -90px;border-radius: 5px;margin-left: 40px;">
-							<img class="thought_leader_picture_group" src="<?php echo Yii::app()->getBaseUrl(true) . $actor->pictureFile->file_url; ?>" style="height: 100px;margin-top: 0px;border-radius: 3px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;width: 110px;">
+							<img class="thought_leader_picture_group" src="<?php if($post->anon == 1){ echo Yii::app()->getBaseUrl(true) . '/assets/avatars/9.png'; } else { echo Yii::app()->getBaseUrl(true) . $actor->pictureFile->file_url; } ?>" style="height: 100px;margin-top: 0px;border-radius: 3px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 100%;width: 110px;">
 							</div>
 						</a>					
 						<!-- Callout Panel -->
 						<p class="post_thought_leader_name" style="margin: 0 auto;padding: 7px 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: 600;font-size: 21px;line-height: 1.6;text-align: left;padding-bottom: 0;margin-left: 40px;">
-							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #222;text-decoration: none;"><?php if($actor->user_type == 'p'){ echo "Professor " . $actor->lastname; }else{ echo $actor->firstname . ' ' . $actor->lastname; } ?></a>
+							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #222;text-decoration: none;"><?php if($post->anon == 1){ echo "Anonymous"; } else { if($actor->user_type == 'p'){ echo "Professor " . $actor->lastname; }else{ echo $actor->firstname . ' ' . $actor->lastname; } }?></a>
 						</p>
 						<p class="post_callout" style="margin: 0;padding: 0px;font-family: 'Open Sans', sans-serif;margin-bottom: 15px;font-weight: 400;font-size: 18px;line-height: 1.6;background-color: #FFF;text-align: left;border-bottom: 1px solid #777;margin-left: 40px;padding-bottom: 6px;margin-right: 40px;">
 							<?php if($post->origin_type == 'class'){ ?>

@@ -13,14 +13,14 @@ border-top: none;
 
 border-bottom: none;
 font-family: 'Open Sans', sans-serif;
+ 
 
 
-/* overflow: hidden; */ 
-
-
-background: #27292B;;
-
-
+background: #27292b;
+background-image: url("../assets/campus_background.jpg");
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
 position: relative;
 
 }
@@ -40,6 +40,307 @@ position: relative;
     border-bottom-right-radius: 12px;
 }
 
+  div.mobile_wrap_primary{
+    display:none;
+  
+    margin-top: 70px;
+    position: fixed;
+    padding-top: 25px;
+    z-index: -1;
+    height: 700px;
+    background-image: url("../assets/campus_background.jpg"); background-size: cover; background-position: center; background-attachment: fixed;
+}
+
+
+  div.mobile_wrap_header_text{
+    margin-bottom: 10px;
+
+  }
+
+  div.mobile_panel_5{
+
+  }
+
+  div.mobile_panel_4{
+    background: #29292b;
+
+  
+    border-top: 2px solid #000000;
+    height: auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+  div.mobile_panel_4 > div.mobile_wrap > p{
+    color: #FFF;
+ 
+
+  
+    font-family: Avenir;
+    font-weight: 200;
+    font-size: 18px;
+}
+  div.mobile_wrap_header_text > h3{
+    font-size: 87px;
+    font-family: Avenir;
+    margin: 0;
+    font-weight: 900;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    color: #fff;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+   div.mobile_wrap_header_text > p{
+    margin: 0;
+
+  
+    font-family: Avenir;
+    font-size: 28px;
+    color: #1EC5FF;
+    margin-top: -10px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    font-weight: 900;
+}
+    div.mobile_wrap_header_text > h6{
+    margin: 16px 25px;
+
+  
+    font-family: Avenir;
+    font-size: 22px;
+    font-weight: 200;
+    color: #FFF;
+    margin-bottom: 14px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+} 
+
+  div.mobile_wrap_centered_demo{
+
+  
+}
+
+  div.iphone_skeleton{
+    background-image: url(../assets/black_iphone_6.png);
+
+  
+    background-size: auto;
+    margin: 24px auto;
+    width: 300px;
+    height: 400px;
+    margin-top: 32px;
+    margin-bottom: 0px;
+}
+
+  div.app_screenshot{
+
+  }
+
+  a.main_app_download_btn{
+    text-align: center;
+
+  
+    cursor: pointer;
+    position: relative;
+    top: 8px;
+}
+
+  div.mobile_wrap_centered_download_button{
+    background-image: url(../assets/app_store_badge.png);
+
+  
+    background-size: contain;
+    width: 270px;
+    height: 90px;
+    background-position: center center;
+    display: inline-block;
+    position: relative;
+    background-repeat: no-repeat;
+}
+
+.mobile_wrap_centered_download_button {}
+
+
+
+  div.mobile_featurette{
+    width: 50%;
+
+  
+    margin: 0;
+    display: inline-block;
+}
+
+  div.mobile_featurette.featurette_1{
+    float: left;
+
+  }
+
+  div.mobile_featurette.featurette_2{
+    float: right;
+
+  }
+
+  div.featurette_iphone_skeleton{
+
+  }
+
+  div.featurette_iphone_skeleton.skeleton_bottom{
+    background-image: url(../assets/gold_iphone_6.png); 
+    background-size: contain; 
+    margin: 24px auto; 
+    height: 615px;
+    width: 268px;   
+    background-repeat: no-repeat;
+    margin-bottom: 0px;
+
+  
+    margin-left: -55px;
+    margin-top: 87px;
+}
+  div.featurette_iphone_skeleton.skeleton_top{
+    background-image: url(../assets/blue_iphone_5.png); 
+    background-size: contain; margin: 24px auto; 
+    height: 671px; 
+    background-repeat: no-repeat;
+    width: 260px;  
+    margin-top: 86px;
+    
+  
+    margin-right: -57px;
+}
+
+  div.iphone_screenshot_bottom{
+
+  }
+
+  div.iphone_screenshot_top{
+
+  }
+
+  div.mobile_featurette div.feature_blurb{
+
+  }
+
+    .mobile_wrap{
+    text-align: center;
+
+  
+}
+
+div.dos_panels{
+
+  }
+
+  div.dos_panels > .left{
+
+  }
+  div.dos_panels > .right{
+    
+  }
+
+  div.mobile_panel_2 div.big_app_icon{
+
+  }
+
+  div.mobile_panel_2 div.big_app_icon.small{
+
+  }
+
+  div.mobile_panel_2 div.dos_panels{
+
+  }
+  div.mobile_panel_2 div.dos_panels > .left{
+    
+  }
+
+    .mobile_panel_5.big_pic{ background-size: cover; background-position: center; 
+    
+  
+    background: #000000 url("../assets/campus_background.jpg") no-repeat 50% 50%; background-size: 120% auto;
+ background-size: auto 100%; height: 360px; font-family: Avenir; font-size: 40px; display: none!important;} 
+
+  div.mobile_panel_2 div.dos_panels > .left > h2{
+    font-family: Avenir;
+
+  
+    font-weight: 100;
+    border: 2px solid #121212;
+    padding: 5px 23px;
+    border-radius: 6px;
+    font-size: 31px;
+    display: inline-block;
+    margin-top: 31px;
+    font-size: 1.5em;
+    padding: .5em 1.25em;
+}
+
+  div.mobile_panel_2 div.dos_panels h3{
+    font-family: Avenir;
+    
+  
+    margin: 5px 4px 20px;
+    font-weight: 100;
+    font-size: 19.5px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+    div.mobile_panel_2 div.dos_panels ul{
+    margin: 0;
+    
+  
+    list-style: none;
+    font-size: 14px; line-height: 1.5em; width: 50%; padding: 0; margin: 0 0 40px 0; text-align: left; float: left;
+}
+      div.mobile_panel_2 div.dos_panels ul > li{
+    list-style: none;
+    
+  
+    margin-bottom: 1.5em; padding: 0 0 0 100px; font-weight: 400; position: relative;
+    color: #777;
+    font-family: Avenir;
+    font-size: 16px;
+}
+
+        div.mobile_panel_2 div.dos_panels ul > li > img{
+    position: absolute; left: 30px; top: 5px;
+    
+  }
+
+        div.mobile_panel_2 div.dos_panels ul > li > h4{
+    margin: 0;
+    
+  
+    font-family: Avenir;
+    font-size: 20px;
+    font-weight: 100;
+    color: #121212;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+  div.computer_available{
+    display: inline-block;
+
+  }
+
+   div.computer_available > p{
+
+  } 
+  div.computer_available > p > span{
+
+  } 
+  div.computer_available > p > span > strong{
+
+  } 
+    div.mobile_panel_2 div.dos_panels > .right{
+    
+  }
+      div.mobile_panel_2 div.dos_panels > .right > a{
+    
+  }
+  div.mobile_panel_2 div.dos_panels > .right > a > div.mobile_wrap_centered_download_button{
+    background-image: url(../assets/app_download_btn.png);
+    
+  }
+  div.mobile_panel_2 div.dos_panels > .right > a > div.made_in_ny{
+    
+  }
 .signup_after_tabs{
     position: absolute;
 
@@ -66,6 +367,40 @@ color: #fff;
 background: rgba(18, 19, 20, 0.84);
 }
 
+.mobile_panel_1{
+    background: #3d3d3d;
+    z-index: 2000;
+    -moz-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52),0 -2px 2px -2px rgba(0, 0, 0, .52); 
+    -webkit-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52),0 -2px 2px -2px rgba(0, 0, 0, .52); 
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52),0 -2px 2px -2px rgba(0, 0, 0, .52); border-bottom: 2px solid black; 
+    border-top: 2px solid black;
+    width: 100%;
+    overflow: hidden;
+    height: auto!important;
+}
+
+.mobile_panel_2{
+  
+    margin: 8px 6px;
+    border-radius: 5px;  
+    background: rgba(255, 255, 255, 0.98);
+    color: #121212;
+    border: 1px solid #000;
+    border-color: rgba(105, 105, 105, 0.17);
+    height: auto!important;
+}
+
+.mobile_panel_3{
+    background: orange;
+  
+}
+
+.mobile_only_panel{
+    display: none;
+
+    height: 100%;
+    position: relative;
+}
 
 .signup_after_tabs .after_tab.active{
     
@@ -651,19 +986,15 @@ div.lp-main{
     /* fallback */  /* Saf4+, Chrome */  /* Chrome 10+, Saf5.1+ */  /* FF3.6+ */  /* IE10 */  /* Opera 11.10+ */  
 
   position: relative;
-  height: 100%;
-
-  left: 0px; 
+  height: 100%; 
   
-
-  right: 0px;
   
-
-  top: -1px;
-
-  bottom: 0px;
    
 
+
+    
+
+  width: 100%;
 
 }
 
@@ -674,7 +1005,7 @@ div.lp-main{
   left:0;
   right:0;
 
-  height: 60px;
+  height: 70px;
 
   border-bottom: none;
 
@@ -683,8 +1014,10 @@ div.lp-main{
 
 
 
-        z-index: 6000;   
-  -moz-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52); -webkit-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52); box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);  border-bottom: 1px solid black; 
+        
+  z-index: 6000;   
+  -moz-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52); -webkit-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52); box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);  
+  border-bottom: 2px solid black; 
   background-color: rgba(39, 41, 43, 0.92);
 }
 
@@ -801,17 +1134,18 @@ text-align: left;
 position: relative;
 margin: 0 auto;
 border:0;
-height: 60px;
+height: 70px;
 padding:0;
-max-width: 800px;
+max-width: 830px;
 }
 
 div.header{
-  position: relative;
-height: 60px;
+  position: fixed;
 
-  z-index: 3000;
-  width: 102%;
+  height: 72px;
+
+  z-index: 10000;
+  width: 100%;
   top: 0;
 }
 
@@ -819,16 +1153,25 @@ img.logo{
   vertical-align: middle;
   border:0;
   position:relative;
-  top: 15.5px;
+  top: 12.5px;
   display: inline-block;
   float: left;
   margin-left:10px;
-  height: 32px;
+  height: 46px;
+}
+
+img.logoText{
+    height: 29px;
+    position: relative;
+    left: 16px;
+    top: 21px;
 }
 
 div.main-market-area{
 
   margin: 0 auto;
+  
+
   position: absolute;
 
 
@@ -844,7 +1187,7 @@ div.main-market-area{
   height: 100%;
   
 
-  overflow: hidden;
+  /* overflow: hidden; */
 
   top: 0px;
   
@@ -866,7 +1209,8 @@ div.main-market-area{
   height: 100%;
   /* overflow: hidden; */
   position: relative;
-  top: -60px;        
+  top: -77px;        
+  overflow: hidden;
 }
 
 .footer-area{
@@ -882,9 +1226,9 @@ div.main-market-area{
 
 div.signup-container{
     display: block;
-    position: absolute;
+    position: fixed;
     width: 400px;
-    top: 180px;
+    top: 204px;
     border-radius: 8px;
     left: 50%;
     /* background: rgba(255, 255, 255, 0); */ padding: 4px;  z-index: 100;  
@@ -896,7 +1240,8 @@ div.signup-form-wrap{
     height: 380px;
     position: relative;
     padding: 5px;  
-  background:rgba(255, 255, 255, 0.95);
+  
+    background: rgba(255, 255, 255, 1);
   border-color:rgba(105, 105, 105, 0.17);
 }
 
@@ -969,9 +1314,10 @@ div.header-sec-left h4.header{
     padding-left: 0px;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     font-family: Avenir;
-    font-size: 3.7em; 
-    color: #FFF;
-    letter-spacing: -1.8px; 
+    font-size: 4.7em; 
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    color: #fff;
+    letter-spacing: -2px; 
 }
 
 div.header-sec-left{
@@ -985,7 +1331,7 @@ div.header-sec-left{
 }
 
 div.header-sec{
-    top: -74px;
+    top: -82px;
 
     z-index: 10000;
     position: relative;
@@ -1022,7 +1368,9 @@ div.header-sec div.header-sec-right{
     display: inline-block;
 
     float: left;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased; 
+    display: none;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 div.header-sec-right div.time-to-signup{
@@ -1039,11 +1387,15 @@ div.header-sec-right div.time-to-signup{
     float: left;
     
 
+    position: relative;
+
     line-height: 24px;
     font-family: Avenir;
     
 
     width: 175px;
+
+    top: -2px;
 
     padding-top: 1px;
 
@@ -1506,7 +1858,7 @@ div.signin-wrap{
 }
 
 form#login{
-    margin-top: -2px;
+    margin-top: -1px;
 }
 
 div.forgotPassword{
@@ -1528,9 +1880,12 @@ border: none;
 font-weight: 500;
 text-transform: capitalize;
   padding-right: 0;
+  cursor: pointer;
 }
 
-input.forgot_password_submit_button:hover{}
+input.forgot_password_submit_button:hover{
+    text-decoration: underline;
+}
 input.forgot_password_submit_button:active{}
 
 input#reset_password_email{
@@ -1539,11 +1894,14 @@ input#reset_password_email{
 box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33);
 border: none;
 
-  padding: 5px 6px;
+  padding: 8px 6px;
 
   outline: none;
   border-radius: 4px;
-font-size: 13.5px;
+
+  font-size: 14.5px;
+  border: 1px solid #000;
+  font-family: Avenir;
 }
 
 button#forgot_password{
@@ -1553,7 +1911,10 @@ button#forgot_password{
   color: #FFF;
   font-family: Avenir;
   padding: 0;
+  position: absolute;
+  top: 12px;
   font-weight: 600;
+  right: -125px;
   outline: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1592,11 +1953,12 @@ color: rgba(255, 255, 255, 0.65);
 
 input#login_email{
 border-radius: 4px;
-height: 31px;
+font-family: Avenir;
+height: 38px;
 outline-width: 0px;
 color: rgb(41, 47, 51);
 max-width: 250px;
-font-size: 12.5px;
+font-size: 14.5px;
 display: inline-block;
 padding: 8px 10px;
 -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33); 
@@ -1604,26 +1966,45 @@ padding: 8px 10px;
 box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33);    
 border: none;
 min-width: 50px;
+transition: border-color .15s ease;
 width: 38.5%;
+font-weight: 100;
+border: 1px solid #000;
+-webkit-transition: border-color .15s ease;
+}
+
+input#login_email:focus{
+  border-color: #FF1D00;
 }
 
 input#login_password{
   border-radius: 4px;
 
-  height: 31px;
-color: rgb(41, 47, 51);
+  height: 38px;
+
+  font-family: Avenir;
+  color: rgb(41, 47, 51);
 border: none;
 
   max-width: 250px;
-  outline-width: 1px;
-  font-size: 12.5px;
+  outline: none;
+  font-size: 14.5px;
 
   width: 39%;
 
+  font-weight: 100;
+  -webkit-transition: border-color .15s ease;
   margin-left: 5px;
 
 padding: 8px 10px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33); -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33);
+  font-family: Avenir;
+  transition: border-color .15s ease;
+  border: 1px solid #000;
+}
+
+input#login_password:focus{
+  border-color: #00BBFF;
 }
 
 button.SignIn{
@@ -1632,8 +2013,8 @@ position: relative;
 background-clip: padding-box;
 outline: none;
 border: none;
-padding-top: 8px;
-padding-bottom: 8px;
+padding-top: 9px;
+padding-bottom: 9px;
 overflow: hidden;
 height: auto;
 -moz-transition: all .1s ease;
@@ -1643,9 +2024,9 @@ right: -4px;
 color: #FFFFFF;
 display: inline-block;
 border-radius: 4px;
-font-size: 12.5px;
+font-size: 14.5px;
 border: 1px solid;
-font-weight: bold;
+font-weight: 400;
 text-align: center;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
@@ -1868,12 +2249,11 @@ div.bottom-container{
     position: absolute;
   
     width: 100%;
-    height: 100px; 
+    height: 63px; 
     margin: 0 auto;
-    z-index:100;
-    margin-top: -10px;
-    background: #27292B;
-    top: 100%;
+    z-index: 5000;
+    top: calc(100% - 8px);
+    background: transparent;   
 }
 
 /*
@@ -1929,16 +2309,14 @@ ul.color-border{
   margin: 0 auto;
   position: relative;
   padding: 0;
-  margin-top: 15px;
+  margin-top: 25px;
   width: 360px;
   padding-bottom: 0px;
-  display: inline-block;
-  display: inherit;
+  display: block;
   padding-left: 4px;
   border-radius: 0px;
-  background: #27292b;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.21);
-  border-top: 1px solid rgba(255, 255, 255, 0.21);
+  background: rgba(0,0,0,.3);
+  float: left;
 }
 
 ul.color-border li{
@@ -2084,20 +2462,22 @@ display: block;
 video.ur-video-playing{
   bottom: 0px;
   opacity:0;
-position: fixed;
+
+  position: absolute;
 display:none;
-  left: 0px;
-  min-width: 1300px;
+  left: -10%;
+  min-width: 190%;
   right: 0px;
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -webkit-filter: blur(5px);
-  filter: blur(4.5px);
+  -o-filter: blur(3.5px);
+  -ms-filter: blur(3.5px);
+  -moz-filter: blur(3.5px);
+  -webkit-filter: blur(3.5px);
+  filter: blur(3.5px);
   max-width: 100%;
-  top: -60px;
+  top: -25%;
   bottom:0px;
-  min-height: 100%;
+  display: none!important;
+  min-height: 172%;
   height:auto;
   width:auto;
   z-index:-100;
@@ -2249,7 +2629,24 @@ div.grabber div.grabber-container{
   div.grabber{
     left: 50%;
   }
+  div#forgot_password_div{
+    display: none;
+  }
+  .mobile_panel_1{
 
+  }
+
+  .mobile_panel_2{
+    
+  }
+
+  .mobile_panel_3{
+    
+  }
+
+  .mobile_only_panel{
+    
+  }
 }
 
 
@@ -2258,6 +2655,24 @@ div.grabber div.grabber-container{
  div.signup-container{
     left: 50%;
   
+}
+.mobile_panel_1{
+
+}
+
+.mobile_panel_2{
+  
+}
+
+.mobile_panel_3{
+  
+}
+
+.mobile_only_panel{
+  
+}
+img.logoText{
+    top: 26px;
 }
   div.about_section{
     left:33px;
@@ -2273,18 +2688,52 @@ div.grabber div.grabber-container{
   }
 
   @media(max-width:930px){
+        .mobile_wrap{
+
+  }
+
+  .mobile_wrap .dos_panels{
+
+  }
+
+  div.dos_panels > .left{
+
+  }
+  div.dos_panels > .right{
+    
+  }
  div.signup-container{
-    left:557px;
+    left: 50%;
   }
   div.grabber{
     left: 50%;
   }
+  .mobile_panel_1{
+
+}
+
+.mobile_panel_2{
+  
+}
+
+.mobile_panel_3{
+  
+}
+
+.mobile_only_panel{
+  
+}
+  img.logoText{}
   }
+
 
    @media(max-width:920px){
  div.signup-container{
-    left:527px;
+    left: 50%;
   }
+  img.logoText{
+    top: 22px;
+}
   div.grabber{
     left: 50%;
   }
@@ -2292,6 +2741,21 @@ div.grabber div.grabber-container{
   div.about_section{
     left:15px;
   }
+  .mobile_panel_1{
+
+}
+
+.mobile_panel_2{
+  
+}
+
+.mobile_panel_3{
+  
+}
+
+.mobile_only_panel{
+  
+}
 
   }
 
@@ -2399,8 +2863,35 @@ background-color: #fff;
 }
 
 @media(max-width: 890px){
+      .mobile_wrap{
+
+  }
+
+  .mobile_wrap .dos_panels{
+
+  }
+
+  div.dos_panels > .left{
+
+  }
+  div.dos_panels > .right{
+    
+  }
 div.urlinq-marketing{
   height: 130px;
+}
+    div.bottom-container{
+    -webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+  
+    background: #3d3d3d; 
+    padding-bottom: 28px;
+}
+
+
+body{
+  background: #F7F7F7;
 }
 
   div.about_section{
@@ -2416,16 +2907,16 @@ div.grabber{
 
 ul.color-border{
   top: 0px;
-  width: 400px;
-  padding-left: 100px;
+  position: absolute;
+  left: 50%;
+  margin-left: -175px;
+  border-top: 2px solid #4f4f4f;
+  border-bottom: 2px solid #4f4f4f;
+  background: transparent;
+  float: none!important;
 }
 
 div.signin-wrap{
-  position:absolute;
-  margin-left: 20px;
-  width: 78%;
-  right: -24px;
-  margin-top: 15px;
 }
 
 div.footer-sec button.FacebookConnect {
@@ -2442,7 +2933,7 @@ div.or-head {
 
 div.header-sec-right div.time-to-signup{
   padding-left: 0px;
-  padding-top: 3px;
+  padding-top: 0px;
 }
 
 ul.account-types li.student label {
@@ -2456,6 +2947,8 @@ width: auto;
 
 div.header-sec-left h4.header{
   margin-left: 0px;
+  text-shadow: none;
+  color: #1B1B1B;
 }
 div.fname-lname-sec input {
 width: 180px;
@@ -2485,8 +2978,9 @@ border: 1px solid rgba(105, 105, 105, 0.17);
 img.logo {
     padding-left:10px;
     margin-left: 0px;
-    height: 27px;
     width: auto;
+    margin-top: -2px;
+    height: 50px;
 }
 
 div.signup-container {
@@ -2496,8 +2990,8 @@ position: fixed;
 position:absolute;
 
 width: 400px;
-top: 170px;
-margin-left: -200px;
+top: 194px;
+margin-left: -210px;
 border-radius: 8px;
 left: 50%;
 background: rgba(255, 255, 255, 0);
@@ -2518,6 +3012,8 @@ position: relative;
 }
 div.main-market-area{
 
+  position: relative;
+
   height: 630px;
 }
 .content 
@@ -2530,22 +3026,69 @@ margin-left: 0px;
 }
 
 @media(max-width:790px){
+  div.dos_panels > .left {
+}
+div.dos_panels > .right {
+}
   div.forgotPassword{
   display:none;
   } 
+  .mobile_wrap .dos_panels {
+}
+    video{
+  display:none!important;
+  }
+  div.header-sec-left h4.header,div.header-sec-right div.time-to-signup{
+    color: #1B1B1B!important;
+  }
+    div.bottom-container{
+    -webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+  background-size: auto;margin-bottom: 0px; 
+    position: absolute;
+}
+
+  .mobile_panel_1{
+
+}
+
+.mobile_panel_2{
+  
+}
+
+.mobile_panel_3{
+  
+}
+
+.mobile_only_panel{
+    display: block!important;
+  
+}
+
+    img.logoText{
+  display:none;
+}
 
   div.signin-wrap{
-    margin-top:25px;
-  }
+    margin-top: 21px;
+  
+}
 
   .top-bar{
     height:77px;
-  }
+  
+    background: rgba(39, 41, 43, 1);
+}
 
   img.logo{
-    height: 26px;
-    padding-top: 13px;
-  }
+    float: left;
+  
+    margin-left: -8px;
+    padding-left: 0px;
+    height: 44px;
+    margin-top: 5px;
+}
 
   .announcement_board_writtable h4{
     font-size:40px;
@@ -2556,16 +3099,92 @@ margin-left: 0px;
   } 
 }
 
-@media(max-width:552px){
+@media(max-width:710px){
+  div.dos_panels > .left{
+    float: none;
+
+  
+    width: 100%;
+    display: block;
+}
+  div.dos_panels > .right{
+    float: none;
+    display: block;
+    width: 100%;
+}
+}
+
+@media(max-width:680px){
+    div.mobile_wrap_primary{
+    display:block;
+  
+}
   div.signup-container{
-    left:45%;
+  display:none!important;
+  } 
+}
+
+@media(max-width:640px){
+      .mobile_wrap{
+
   }
+
+  .mobile_panel_5.big_pic{
+
+  }  
+
+  .mobile_wrap .dos_panels{
+
+  }
+
+
+
+@media(max-width:552px){
+      .mobile_wrap{
+
+  }
+
+  .mobile_wrap .dos_panels{
+
+  }
+
+  div.dos_panels > .left{
+
+  }
+  div.dos_panels > .right{
+    
+  }
+  div.signup-container{
+    left: 50%;
+  }
+  .mobile_panel_1{
+
+}
+
+.mobile_panel_2{
+  
+}
+
+.mobile_panel_3{
+  
+}
+
+.mobile_only_panel{
+  
+}
+
+  body{
+    background:#eaeaea!important;
+  }
+
+  div.signin-wrap{position:absolute;right: 2px;}
 
   .fb-like {
   position: relative!important;
   left: 20px;
   top: 100%;
   }
+
 
   div.grabber{
     left:15%;
@@ -2583,6 +3202,39 @@ margin-left: 0px;
 }
 
 @media(max-width:500px){
+      .mobile_wrap{
+
+  }
+
+  .mobile_wrap .dos_panels{
+
+  }
+
+  div.dos_panels > .left{
+
+  }
+  div.dos_panels > .right{
+    
+  }
+
+
+
+.mobile_panel_1{
+
+}
+
+.mobile_panel_2{
+  
+}
+
+.mobile_panel_3{
+  
+}
+
+.mobile_only_panel{
+  
+}
+
 
   div.grabber{
 left: 0px!important;
@@ -2872,18 +3524,31 @@ margin-left: -400px!important;
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
 body{
-  background-image:url(../assets/mobile_landing_background.png);
-  background-size:cover;
-  /* background-attachment: fixed; */
-  max-width: 100%;
-  background-repeat:no-repeat;
-  margin: 0;
 }
+
+    .mobile_wrap{
+
+  }
+
+  .mobile_wrap .dos_panels{
+
+  }
+
+  div.dos_panels > .left{
+
+  }
+  div.dos_panels > .right{
+    
+  }
 
 #register_error_popup{
 left: 85!important;
 top: 0%!important;
 margin-top: 605px;
+}
+
+img.logoText{
+  display:none;
 }
 
 ul.color-border{
@@ -2892,11 +3557,11 @@ width: 706px;
 }
 
 video.ur-video-playing{
-  display:none!important;
+  display:none!important;     
 }
 
 div.lp-main{
-  width: 98%;
+  width: 100%;
 }
 
 div.main-market-area div.announcement_board {
@@ -2915,8 +3580,9 @@ height: 801px;
 }
 
 img.logo{
-  height: 35px;
-padding-top: 10px;
+  height: 56px;
+
+  margin-top: -3px;
 }
 
 .announcement_board_writtable h4 span{
@@ -3019,7 +3685,6 @@ list-style: none;
 font-size: 12px;
 margin: 0 auto;
 position: relative;
-background: rgba(0, 0, 0, 0.21);
 padding: 0;
 margin-top: -4px;
 width: 360px;
@@ -3027,8 +3692,6 @@ padding-bottom: 0px;
 display: inline-block;
 display: inherit;
 padding-left: 4px;
-border-radius: 3px;
-margin-left: 130px;
 }
 
 ul.color-border li{
@@ -3163,8 +3826,8 @@ ul.color-border li:nth-child(5):hover {
 
 
 #forgot_password_div {
-    position: fixed;
-    right: 200px;
-    top: 75px;
+    position: absolute;
+    right: -119px;
+    top: 64px;
     margin: 0px;
-}
+}obi

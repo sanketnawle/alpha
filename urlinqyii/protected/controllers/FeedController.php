@@ -409,47 +409,32 @@ class FeedController extends Controller
 
 
                     $posts[$i]['event'] = $event;
-                    $posts[$i]['user_attending'] = false;
-
-
-
-
-
-
-            //Get the origin data
-            if($posts[$i]['event']['origin_type'] == 'class'){
-                $posts[$i]['event']['origin'] = $this->model_to_array(ClassModel::model()->find('class_id=:id',array(':id'=>$posts[$i]['event']['origin_id'])));
-                //reassign the name to make it easier to get in the handlebars
-                $posts[$i]['event']['origin']['name'] = $posts[$i]['event']['origin']['class_name'];
-            }else if($posts[$i]['event']['origin_type'] == 'department'){
-                $posts[$i]['event']['origin'] = $this->model_to_array(Department::model()->find('department_id=:id',array(':id'=>$posts[$i]['event']['origin_id'])));
-                //reassign the name to make it easier to get in the handlebars
-                $posts[$i]['event']['origin']['name'] = $posts[$i]['event']['origin']['department_name'];
-            }else if($posts[$i]['event']['origin_type'] == 'school'){
-                $posts[$i]['event']['origin'] = $this->model_to_array(School::model()->find('school_id=:id',array(':id'=>$posts[$i]['event']['origin_id'])));
-                //reassign the name to make it easier to get in the handlebars
-                $posts[$i]['event']['origin']['name'] = $posts[$i]['event']['origin']['school_name'];
-
-            }else if($posts[$i]['event']['origin_type'] == 'club' || $posts[$i]['event']['origin_type'] == 'group'){
-                $posts[$i]['event']['origin'] = $this->model_to_array(Group::model()->find('group_id=:id',array(':id'=>$posts[$i]['event']['origin_id'])));
-                //reassign the name to make it easier to get in the handlebars
-                $posts[$i]['event']['origin']['name'] = $posts[$i]['event']['origin']['group_name'];
-            } else {
-                $event_new = Event::model()->find('event_id=:event_id', array(':event_id'=>$event['event_id']));
-                $posts[$i]['event']['origin'] = $this->model_to_array($event_new->user);
-                $posts[$i]['event']['origin_type'] = 'user';
-            }
-
-
+             //       $posts[$i]['attend'] = false;
 				   $posts[$i]['event']['attendance_count'] = count($post_event->event->attendees);
 
 
                     if($event['user_id'] == $user->user_id){
-                        $posts[$i]['user_attending'] = true;
+                        if($event['host_attending']=="attending"){
+                            $posts[$i]['event']['attend_status'] = "Attending";
+                        }else if($event['host_attending']=="not_attending") {
+                            $posts[$i]['event']['attend_status'] = "Not Attending";
+                        }else if($event['host_attending']=="maybe_attending") {
+                            $posts[$i]['event']['attend_status'] = "Maybe Attending";
+                        }
                     }else{
                         $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$event['event_id'], ':user_id'=>$user->user_id));
                         if($event_user){
-                            $posts[$i]['user_attending'] = true;
+                            if($event_user->attend_status=="attending"){
+                                $posts[$i]['event']['attend_status'] = "Attending";
+                            }else if($event_user->attend_status=="not_attending") {
+                                $posts[$i]['event']['attend_status'] = "Not Attending";
+                            }else if($event_user->attend_status=="maybe_attending") {
+                                $posts[$i]['event']['attend_status'] = "Maybe Attending";
+                            }else if($event_user->attend_status=="in_calendar") {
+                                $posts[$i]['event']['attend_status'] = "In Calendar";
+                            }
+                        }else{
+                            $posts[$i]['event']['attend_status'] = "none";
                         }
                     }
 
@@ -462,8 +447,12 @@ class FeedController extends Controller
                         }
                     }
 
+                    $conflicting_event = Yii::app()->db->createCommand('select * from event e where e.event_id!="'.$event['event_id'].'" and (e.user_id="'.$user->user_id.'" or exists (select * from event_user where event_id = e.event_id and user_id = "'.$user->user_id.'"))
+                        and e.start_date = "'.$event['start_date'].'" and not(e.end_time < "'.$event['start_time'].'" or e.start_time > "'.$event['end_time'].'")')->queryAll();
 
-
+                    if(sizeof($conflicting_event)>0){
+                        $posts[$i]['event']['conflict'] = $conflicting_event[0];
+                    }
 
                     if($post_model->origin_type == 'class'){
                         $class_user = ClassUser::model()->find('class_id=:class_id and user_id=:user_id', array(':class_id'=>$post_model->origin_id, ':user_id'=>$user->user_id));

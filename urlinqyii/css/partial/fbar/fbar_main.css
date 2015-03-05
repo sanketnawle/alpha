@@ -111,7 +111,7 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.post_button_text {
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.files_button_text {
-    margin-left: 3px;
+    margin-left: -4px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.discussion_button_text {
@@ -125,7 +125,7 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.question_button_text 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.event_button_text {}
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.notes_button_text {
-    margin-left: 4px;
+    margin-left: 0px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.opportunity_button_text {
@@ -182,7 +182,7 @@ i.fbar_button_icon#fbar_icon_discuss2{
     height: 30px;
     background-position: 0px 10px;
     top: -3px;
-    left: 26px;
+    left: 30px;
 }
 
 .fbar_button_icon#fbar_icon_event {

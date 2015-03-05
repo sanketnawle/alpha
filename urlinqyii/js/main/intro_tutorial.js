@@ -94,12 +94,12 @@ $(document).ready(function(){
             post_data.year_name=$.trim($('.post_year_name_input').val());
         }
         if($('.post_office_input').length && $.trim($('.post_office_input').val()) != ''){
-            post_data.office_location=$.trim($('.post_office_input').val());
+            post_data.location=$.trim($('.post_office_input').val());
         }
-       /* if($('.post_office_hours_input').length && $.trim($('.post_office_hours_input').val()) != ''){
-            post_data.office_hours=$.trim($('.post_office_hours_input').val());
-        }*/
-        if($('.post_office_hours_section').length && $('.post_office_hours_input.start_time').attr('data-start_time')
+        if($('.post_office_hours_input').length && $.trim($('.post_office_hours_input').val()) != ''){
+            post_data.hours=$.trim($('.post_office_hours_input').val());
+        }
+        /*if($('.post_office_hours_section').length && $('.post_office_hours_input.start_time').attr('data-start_time')
             && $('.post_office_hours_input.start_time').attr('data-end_time')){
             post_data.office_hours= [];
             $('.post_office_hours_time_input.start_time').each(function(index,elt){
@@ -114,7 +114,7 @@ $(document).ready(function(){
                 post_data.office_hours[index]['day'] = $(this).val();
             });
 
-        }
+        }*/
 
         
         if($('.post_bio_input').length && $.trim($('.post_bio_input').val()) != ''){
@@ -139,6 +139,8 @@ $(document).ready(function(){
     $(document).on('keyup','.post_bio_input',function(){
         $('.post_bio_input').attr('rows',Math.ceil($(this).val().length/$('.post_bio_input').attr('cols')));
     });
+
+
 
 
 });

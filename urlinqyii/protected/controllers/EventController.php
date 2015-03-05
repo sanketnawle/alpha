@@ -611,7 +611,7 @@ if ($event_user) {
             }else{
                 //$events = Event::model()->findAllBySql('select * from event e where e.end_date>=:start_date and (e.user_id=:user_id or exists (select * from event_user eu where eu.user_id=:user_id and eu.event_id=e.event_id)) and e.complete=:complete limit 8',array(':start_date'=>$start_date,':user_id'=>$user->user_id, ':complete'=>0));
                 $events = Yii::app()->db->createCommand("select * from event e where e.end_date>='" . $start_date . "' and (e.user_id=" . $user->user_id . " or exists (select * from event_user eu where eu.user_id=" . $user->user_id . " and eu.event_id=e.event_id)) and e.complete=0
-                 AND ((e.event_type = 'assignment' OR e.event_type = 'todo' OR e.event_type = 'project') OR ((e.end_date='".$date_now."' AND e.end_time>='".$time_now."') OR e.end_date>'".$date_now."'))
+                 AND ((e.event_type = 'homework' OR e.event_type = 'todo' OR e.event_type = 'project') OR ((e.end_date='".$date_now."' AND e.end_time>='".$time_now."') OR e.end_date>'".$date_now."'))
                  order by start_date,start_time limit 8")->queryAll();
                 $events = $this->add_event_data($events, $user);
             }
@@ -1161,7 +1161,7 @@ if ($event_user) {
         $event_user->color_id = get_random_color();
 
         if($event_user->save(false)){
-            $data = array('success'=>true);
+            $data = array('success'=>true, 'event'=>$event);
             $this->renderJSON($data);
             return;
         }else{
@@ -1291,6 +1291,60 @@ if ($event_user) {
         }
 
     }
+
+    public function actionChangeAttending(){
+        if(!isset($_POST['event_id']) || !isset($_POST['attend_status'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'all data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $event = Event::model()->find('event_id=:eid',array(':eid'=>$_POST['event_id']));
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'User doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $event_user = EventUser::model()->find('event_id=:eid and user_id=:uid', array(':eid'=>$event->event_id,':uid'=>$user->user_id));
+        if($event_user){
+            if($_POST['attend_status']=="Attending"){
+                $attend_status = "attending";
+            }else if($_POST['attend_status']=="Not Attending"){
+                $attend_status = "not_attending";
+            }else if($_POST['attend_status']=="Maybe Attending"){
+                $attend_status = "maybe_attending";
+            }
+            $event_user->attend_status = $attend_status;
+            $event_user->save(false);
+
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }else{
+            if(Event::model()->exists('event_id=:eid and user_id=:uid',array(':eid'=>$event->event_id,':uid'=>$user->user_id))){
+                if($_POST['attend_status']=="Attending"){
+                    $attend_status = "attending";
+                }else if($_POST['attend_status']=="Not Attending"){
+                    $attend_status = "not_attending";
+                }else if($_POST['attend_status']=="Maybe Attending"){
+                    $attend_status = "maybe_attending";
+                }
+                $event->host_attending=$attend_status;
+                $event->save(false);
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Event doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
 
 
 

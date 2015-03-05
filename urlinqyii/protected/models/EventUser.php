@@ -6,6 +6,9 @@
  * The followings are the available columns in table 'event_user':
  * @property integer $event_id
  * @property integer $user_id
+ * @property integer $color_id
+ * @property string $attend_status
+ * @property string $attend_timestamp
  */
 class EventUser extends CActiveRecord
 {
@@ -25,11 +28,13 @@ class EventUser extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, user_id', 'required'),
-			array('event_id, user_id', 'numerical', 'integerOnly'=>true),
+			array('event_id, user_id, color_id', 'required'),
+			array('event_id, user_id, color_id', 'numerical', 'integerOnly'=>true),
+			array('attend_status', 'length', 'max'=>15),
+			array('attend_timestamp', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('event_id, user_id', 'safe', 'on'=>'search'),
+			array('event_id, user_id, color_id, attend_status, attend_timestamp', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -41,7 +46,7 @@ class EventUser extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'user' => array(self::BELONGS_TO, 'User', 'user_id')
+            'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -53,6 +58,9 @@ class EventUser extends CActiveRecord
 		return array(
 			'event_id' => 'Event',
 			'user_id' => 'User',
+			'color_id' => 'Color',
+			'attend_status' => 'Attend Status',
+			'attend_timestamp' => 'Attend Timestamp',
 		);
 	}
 
@@ -76,6 +84,9 @@ class EventUser extends CActiveRecord
 
 		$criteria->compare('event_id',$this->event_id);
 		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('color_id',$this->color_id);
+		$criteria->compare('attend_status',$this->attend_status,true);
+		$criteria->compare('attend_timestamp',$this->attend_timestamp,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
