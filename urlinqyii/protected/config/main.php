@@ -98,7 +98,7 @@ return array(
                 'post/json' => '/post/index',
                 'about' => '/site/page/view/about',
 
-
+              'club/test'=>'club/test',
 
 
 

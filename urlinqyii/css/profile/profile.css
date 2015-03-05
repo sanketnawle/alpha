@@ -1361,3 +1361,15 @@ display: block;
     font-family: Avenir;
     vertical-align: bottom;
 }
+
+
+.class_privacy {
+    height: 40px;
+    width: 40px;
+    margin: 0px;
+    float: right;
+    position: relative;
+    padding: 0px;
+    right: 0;
+    bottom: 0;
+}

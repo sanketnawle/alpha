@@ -3,7 +3,31 @@ $(document).ready(function() {
     var old_origin_id;
 
 
+    Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
+        switch (operator) {
+            case '==':
+                return (v1 == v2) ? options.fn(this) : options.inverse(this);
+            case '===':
+                return (v1 === v2) ? options.fn(this) : options.inverse(this);
+            case '<':
+                return (v1 < v2) ? options.fn(this) : options.inverse(this);
+            case '<=':
+                return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+            case '>':
+                return (v1 > v2) ? options.fn(this) : options.inverse(this);
+            case '>=':
+                return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+            case '&&':
+                return (v1 && v2) ? options.fn(this) : options.inverse(this);
+            case '||':
+                return (v1 || v2) ? options.fn(this) : options.inverse(this);
+            case '!=':
+                return (v1 != v2) ? options.fn(this) : options.inverse(this);
+            default:
+                return options.inverse(this);
+        }
+    });
 
 
 
@@ -63,9 +87,15 @@ $(document).ready(function() {
                     $('#edit_profile_button.not_editing').click();
                 }
             }else */
+
+            console.log('JSON PROFILE DATA');
+            console.log(json_profile_data);
+
             if($('#profile_wrapper').length){
                 $('#profile_wrapper').remove();
                 $('#profile_background_overlay').remove();
+
+
 
 
                 render_profile(base_url,json_profile_data,edit_mode);
@@ -1787,5 +1817,40 @@ $(document).ready(function() {
             if(scripts[i].getAttribute('src') == src) return true;
         return false;
     }
+
+
+
+
+
+
+    $('.privacy_dropdown_link').click(function(){
+        $('.class_privacy').click();
+    });
+
+
+
+
+    $(".class_privacy").click(function(){
+        alert('aoksjdlasd');
+        $("#class_privacy_tooltip").hide();
+    });
+
+    $("li.privacy_list").click(function(){
+        $(this).removeClass("active");
+        $(this).addClass("active");
+    });
+
+
+
+    $(".class_privacy").mouseenter(function(){
+        $("#class_privacy_tooltip").fadeIn(250);
+    });
+
+    $(".class_privacy").mouseleave(function(){
+        $("#class_privacy_tooltip").fadeOut(250);
+    });
+
+
+
 });
 

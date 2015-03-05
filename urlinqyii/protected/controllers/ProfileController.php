@@ -1012,7 +1012,9 @@ class ProfileController extends Controller
         if($user->user_type == 's' || $user->user_type == 'a'){
             $class_users = ClassUser::model()->findAll('user_id=:user_id', array(':user_id'=>$user_id));
             foreach($class_users as $class_user){
-                array_push($classes, $class_user->class);
+                $class = $this->model_to_array($class_user->class);
+                $class['class_user'] = $this->model_to_array($class_user);
+                array_push($classes, $class);
             }
         }else if($user->user_type == 'p'){
             $classes = ClassModel::model()->find('professor_id=:user_id', array(':user_id'=>$user_id));
@@ -1021,7 +1023,7 @@ class ProfileController extends Controller
 
         function in_list($class, $departments){
             foreach($departments as $department){
-                if((string)$class->department_id == (string)$department['department_id']){
+                if((string)$class['department_id'] == (string)$department['department_id']){
                     return true;
                 }
             }
@@ -1042,7 +1044,8 @@ class ProfileController extends Controller
 
         foreach($classes as $class){
             if(!in_list($class, $departments)){
-                $new_department = $this->model_to_array($class->department);
+                $department = Department::model()->find('department_id=:id', array(':id'=>$class['department_id']));
+                $new_department = $this->model_to_array($department);
                 $new_department['classes'] = array();
 
                 array_push($departments, $new_department);
@@ -1057,11 +1060,9 @@ class ProfileController extends Controller
         }
 
 
-
-
         foreach($classes as $class){
             for($i = 0; $i < count($departments); $i++){
-                if($class->department_id == $departments[$i]['department_id']){
+                if($class['department_id'] == $departments[$i]['department_id']){
                     array_push($departments[$i]['classes'], $this->model_to_array($class));
                 }
             }
@@ -1107,7 +1108,7 @@ class ProfileController extends Controller
         }
         $data = array();
         $data['user_id']=intval($user->user_id);
-        $data['own_profile']= (intval($user->user_id) === intval($this->get_current_user()->user_id));
+        $data['own_profile'] = (intval($user->user_id) === intval($this->get_current_user()->user_id));
         $data['firstname']=$user->firstname;
         $data['lastname']=$user->lastname;
         $data['bio']=$user->user_bio;
@@ -1127,7 +1128,11 @@ class ProfileController extends Controller
 
         $data['email']=$user->user_email;
         $data['classes']=array();
-        foreach($user->classes as $i=>$class){
+        foreach($user->classUsersAll as $i=>$class_user){
+            $class = $class_user->class;
+            if($class_user->privacy == 'only_me' && !$data['own_profile']){
+                continue;
+            }
             if($class->course){
                 $data['classes'][$i]['course_name']=$class->course->course_name;
                 $data['classes'][$i]['description']= $class->course->course_desc;
@@ -1138,8 +1143,8 @@ class ProfileController extends Controller
             }
             $data['classes'][$i]['section']=$class->section_id;
             $data['classes'][$i]['class_id']=$class->class_id;
-            $data['classes'][$i]['class_picture']= ($class->pictureFile) ?
-                Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
+            $data['classes'][$i]['class_picture'] = ($class->pictureFile) ? Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
+            $data['classes'][$i]['class_user'] = $this->model_to_array($class_user);
         }
         $index = sizeof($data['classes']);
         if($user->user_type === "p"){
@@ -1286,7 +1291,11 @@ class ProfileController extends Controller
         $data['profile_pic'] = ($user->pictureFile) ?
             Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
         $data['background_pic'] = Yii::app()->getBaseUrl(true).'/assets/nice_background.jpg';
+
+
+
         $data['num_classes'] = sizeof($data['classes']);
+
         $data['num_clubs'] = sizeof($user->clubs);
         $data['num_following'] = sizeof($user->usersFollowed);
         $data['num_followers'] = sizeof($user->usersFollowing);
