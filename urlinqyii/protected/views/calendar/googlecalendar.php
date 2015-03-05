@@ -29,7 +29,7 @@ include 'Google/Auth/Abstract.php';
 include 'Google/Auth/OAuth2.php';
 include 'Google/Auth/Exception.php';
 include 'Google/Http/Request.php';
-include 'Google/Http/Rest.php';
+include 'Google/Http/REST.php';
 include 'Google/Http/CacheParser.php';
 include 'Google/Logger/Abstract.php';
 include 'Google/Logger/Null.php';
