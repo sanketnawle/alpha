@@ -43,9 +43,12 @@ include 'Google/Utils/URITemplate.php';
   the redirect URI is to this page, e.g:
   http://localhost:8080/user-example.php
  ************************************************/
- $client_id = '960881917908-rgb9ujp6v6rf3ufmbfbg8nadb41f9tdl.apps.googleusercontent.com';
- $client_secret = 'W3U_-nJF1LFgLD1NWacK2a-_';
- $redirect_uri = 'http://127.0.0.1/alpha/urlinqyii/calendar';
+ $client_id = "566213768963-rbdpvbo33oe0dn4rdhmj83que4f13vuc.apps.googleusercontent.com";
+ //'960881917908-rgb9ujp6v6rf3ufmbfbg8nadb41f9tdl.apps.googleusercontent.com';
+ $client_secret = "_HFKQAsU2GNSAp7yUE4n2BVv";
+ //'W3U_-nJF1LFgLD1NWacK2a-_';
+ $redirect_uri = 'http://beta.urlinq.com/calendar';
+ //'http://127.0.0.1/alpha/urlinqyii/calendar';
 /************************************************
   Make an API request on behalf of a user. In
   this case we need to have a valid OAuth 2.0
