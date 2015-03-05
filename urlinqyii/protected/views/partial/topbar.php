@@ -4,6 +4,10 @@
 
 <head>
     <title></title>
+
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/semantic/packaged/css/semantic.min.css">
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/semantic/packaged/javascript/semantic.min.js"></script>
+
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>

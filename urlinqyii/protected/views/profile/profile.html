@@ -386,7 +386,7 @@
                     {{#if classes}}
                     <div class="groups_wrapper">
                         {{#each classes}}
-                            <div class = "group_box" data-name="{{course_name}}">
+                            <div class = "group_box" data-name="{{course_name}}" data-type="class" data-id="{{class_id}}">
                                 <a class = "group_link" href="{{../base_url}}/class/{{class_id}}">
                                     <div class = "float_Left group_image" style="background-image: url('{{class_picture}}');">
                                     </div>
@@ -403,33 +403,18 @@
                                     <div class = "info_line info_about">{{description}}</div>
                                 </div>
 
-                                <div class="class_privacy help_div_shower">
 
 
-                                    <ul class="menu privacy_menu dropit">
-                                        <li class="no_relative dropit-trigger dropit-open">
-                                            <a class="privacy_dropdown_link"></a>
-                                            <ul class="privacy_dropdown dropit-submenu" data-privacy="" style="">
-                                                <li class="privacy_list active" data-privacy="" style="position:relative; border-bottom: 1px solid #fff;"><a>All</a><span></span></li>
-                                                <li class="privacy_list" data-privacy="s" style="position:relative; border-bottom: 1px solid #fff;"><a>Students</a><span></span></li>
-                                                <li class="privacy_list" data-privacy="a" style="position:relative;"><a>Admins</a><span></span></li>
-                                                <div class="help-wedge"></div>
-                                            </ul>
-
-                                            <input type="hidden" name="post_privacy">
-                                            <span></span>
-                                        </li>
-
-                                    </ul>
-
-
-                                    <div id="privacy_tooltip" class="help-div fbar_helpers" style="display: none;">
-                                        <div class="help-box">Edit privacy</div>
-                                        <div class="help-wedge">
-                                        </div>
+                                <div class='ui dropdown step_6_card_r1_choice group_privacy_dropdown' style="display: none;">
+                                    <div class='text'>{{class_user.privacy}}</div>
+                                    <i class='dropdown icon'></i>
+                                    <div class='menu admin_type_menu'>
+                                        <div class='item' data-value='public'>Public</div>
+                                        <div class='item' data-value='only_me'>Only me</div>
                                     </div>
                                 </div>
-\
+
+
                             </div>
                         {{/each}}
                     </div>
@@ -441,7 +426,7 @@
                     {{#if clubs}}
                     <div class="groups_wrapper">
                         {{#each clubs}}
-                        <div class = "group_box" data-name="{{club_name}}">
+                        <div class = "group_box" data-name="{{club_name}}" data-type="club" data-id="{{club_id}}">
                             <a class = "group_link" href="{{../base_url}}/club/{{club_id}}">
                                 <div class = "float_Left group_image" style="background-image: url('{{club_picture}}');">
                                 </div>
@@ -457,6 +442,17 @@
                                 <div class= "info_line indent">{{member_count}} Members</div>
                                 <div class = "info_line info_about">{{description}}</div>
                             </div>
+
+
+                            <div class='ui dropdown step_6_card_r1_choice group_privacy_dropdown' style="display: none;">
+                                <div class='text'>{{group_user.privacy}}</div>
+                                <i class='dropdown icon'></i>
+                                <div class='menu admin_type_menu'>
+                                    <div class='item' data-value='public'>Public</div>
+                                    <div class='item' data-value='only_me'>Only me</div>
+                                </div>
+                            </div>
+
                         </div>
                         {{/each}}
                     </div>

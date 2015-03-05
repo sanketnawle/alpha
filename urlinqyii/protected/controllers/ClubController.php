@@ -54,9 +54,7 @@ class ClubController extends Controller
 	{
 
 
-        if(!$this->authenticated()){
-            $this->redirect(array('/'));
-        }
+
 
         $club_id = $_GET['id'];
 
@@ -64,6 +62,10 @@ class ClubController extends Controller
         $club = Group::model()->find('group_id=:id', array(':id'=>$club_id));
 
         $user = $this->get_current_user();
+
+        if(!$user){
+            $this->redirect(array('/'));
+        }
 
         $group_user = GroupUser::model()->find('group_id=:group_id and user_id=:user_id', array(':group_id'=>$club->group_id, ':user_id'=>$user->user_id));
 

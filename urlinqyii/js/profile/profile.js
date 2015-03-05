@@ -31,8 +31,44 @@ $(document).ready(function() {
 
 
 
+    $(document).on('click','.item', function(){
+        var $this_item = $(this);
+        //Set this value as the menu selected value
+        $this_item.closest('.menu').attr('data-value',$this_item.attr('data-value'));
+        var $group_box = $this_item.closest('.group_box');
 
 
+        var origin_type = $group_box.attr('data-type');
+        var origin_id = $group_box.attr('data-id');
+        var privacy = $this_item.attr('data-value');
+
+        var post_url = globals.base_url + '/profile/updateGroupPrivacy';
+
+
+        var post_data = {
+            origin_type: origin_type,
+            origin_id: origin_id,
+            privacy: privacy
+        };
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                if(response['success']){
+                    console.log('Successfully updated group privacy.');
+                    console.log(response);
+                }else{
+                    alert('Error updating group privacy');
+
+                }
+            }
+
+        );
+
+
+
+    });
 
 
 
@@ -100,6 +136,8 @@ $(document).ready(function() {
 
                 render_profile(base_url,json_profile_data,edit_mode);
 
+
+
             }else{
 
                 render_profile(base_url,json_profile_data,edit_mode);
@@ -143,8 +181,17 @@ $(document).ready(function() {
                                 console.log('failed to get feed');
                             }
                         });
+
+
                     }
                 });
+
+
+
+
+
+
+
 
 
                 numShowcase=data.showcase_size;
@@ -193,6 +240,8 @@ $(document).ready(function() {
 
                 }
 
+
+
                 var profile_id = $('#profile_wrapper').attr('data-user_id');
                 $.getJSON(globals.base_url + '/profile/getDepartmentList',{user_id: profile_id} ,function(json_data){
                     if($('#department_circles').is(':empty')){
@@ -202,6 +251,24 @@ $(document).ready(function() {
                     }
 
                 });
+
+                //If user is looking at own profile
+                if(globals.user_id == data.user_id){
+                    //Initialize dropdown once the profile is rendered
+                    $('.ui.dropdown').dropdown();
+
+
+                    $('.group_privacy_dropdown').show();
+                    data.current_user = true;
+                }
+
+
+
+
+
+
+
+
             }
         });
     }

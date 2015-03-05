@@ -1084,7 +1084,7 @@ div.members_card_wrapper {
     width:39% !important;
 }
 #profile_wrapper .group_box{
-    height: 184px !important;
+    height: 200px !important;
 }
 
 #profile_wrapper div.group_box div.float_Left.group_image{
@@ -1372,4 +1372,40 @@ display: block;
     padding: 0px;
     right: 0;
     bottom: 0;
+}
+
+
+.step_6_card_r1_choice {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #efefef;
+
+    margin-left: 15px;
+    font-size: 14px;
+    font-weight: 600;
+
+
+    float: right!important;
+      margin-top: 68px;
+      margin-right: 10px;
+
+ background: #EFEFEF;
+border: 1px solid #ddd;
+position: relative;
+box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.78) inset, -1px 0px 0px rgba(255, 255, 255, 0.4) inset, 0px 1px 0px rgba(255, 255, 255, 0.4) inset, 0px -1px 0px rgba(216, 216, 216, 0.06) inset;
+}
+
+.step_6_card_r1_choice:hover{
+    background: #F4F4F4;
+    border: 1px solid #D8D8D8;
+}
+
+.step_6_card_r1_choice:active{
+border: 1px solid #CFCFCF;
+background: #E5E5E5;
+box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 234, 234, 0.4) inset, 0px 1px 0px rgba(226, 226, 226, 0.4) inset, 0px -1px 0px rgba(216, 216, 216, 0.4) inset;
 }
