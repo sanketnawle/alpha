@@ -1218,7 +1218,7 @@ div.float_Center.courses_list{
 #tabnav{
     position: relative;
 
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #c3c3c3;
     margin: 0px 0px 15px;
 }
 
@@ -1238,10 +1238,9 @@ padding: 10px 27px 9px;
 }
 
 ul.tabnav_tabs li.active div.tabnav_tab {
-border: 1px solid #ddd;
+border: 1px solid #c3c3c3;
 font-weight: 600;
 border-bottom: 1px solid #F4F4F4;
-box-shadow: 2px 0px 0px #FFF inset, -2px 0px 0px #FFF inset, 0px 2px 0px #FFF inset;
 cursor: default;
 }
 
