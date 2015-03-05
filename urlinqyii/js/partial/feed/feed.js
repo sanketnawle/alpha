@@ -446,6 +446,9 @@ function ready(globals){
                 if(response['success']){
                     console.log('Successfully deleted post ' + post_id);
                     $post.remove();
+                    if(event_id){
+                        $('#planner_body_holder').find('.event[data-event_id='+event_id+']').remove();
+                    }
                 }else{
                     alert('Error deleting this post, please try again later');
                 }

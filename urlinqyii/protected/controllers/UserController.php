@@ -160,9 +160,12 @@ class UserController extends Controller
 //            array_merge($users,));
 //        }
 
-
-        $users = $this->models_to_array(User::model()->findAllBySql('SELECT * FROM `user` WHERE user_id != ' . $user->user_id . ' LIMIT 10'));
-        $data = array('success'=>true,'users'=>$users);
+        $user_models = User::model()->findAllBySql('SELECT * FROM `user` WHERE user_id != ' . $user->user_id . ' and picture_file_id != 1 LIMIT 10');
+        foreach($user_models as $i=>$user){
+            $user_models[$i] = $this->get_model_associations($user,array('pictureFile'=>array()));
+        }
+        //$users = $this->models_to_array();
+        $data = array('success'=>true,'users'=>$user_models);
         $this->renderJSON($data);
         return;
     }

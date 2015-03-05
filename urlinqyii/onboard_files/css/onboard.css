@@ -300,7 +300,8 @@ div.card_0_text_0 span{
 .left_txt {
     float: left;
     color: #222;
-    font-size: 14px;
+    font-size: 15px;
+    font-family: Avenir;
     font-weight: 400;
     opacity: .7;
 }
@@ -316,7 +317,9 @@ div.card_0_text_0 span{
 
 .follow_all_btn {
     cursor: pointer;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #222;
+    font-weight: 100!important;
+    font-family: Avenir;
 }
 
 .right_txt span {
@@ -543,8 +546,9 @@ padding-bottom: 4px;
 .card_4_glyph {
     height: 60px;
     width: 60px;
-    border-radius: 2px;
+    border-radius: 1000px;
     float: left;
+    background-size: cover;
     margin-right: 10px;
 }
 
@@ -567,7 +571,7 @@ padding-bottom: 4px;
 
 .step_6_card_r0 {
     margin-top: 31px;
-    width: 100%;
+    width: 300px;
     float: left;
 }
 
@@ -583,7 +587,8 @@ padding-bottom: 4px;
 .step_6_card_r1 {
     float: left;
     margin-top: 25px;
-    width: 100%;
+    width: auto;
+    margin-left: 23px;
 }
 
 .step_6_card_r2 {
@@ -601,9 +606,10 @@ padding-bottom: 4px;
 
 .step_6_card_r4 {
     float: left;
-    margin-top: 10px;
-    width: 100%;
+    margin-top: 15px;
+    width: auto;
     font-size: 14px;
+    margin-left: 23px;
     font-weight: 600;
 }
 
@@ -1094,6 +1100,18 @@ input:focus:-moz-placeholder {
     border-radius: 0px!important;
 }
 
+.progress_content.c4 .scroll-wrapper .slimScrollRail, .progress_content.c5 .scroll-wrapper .slimScrollRail{
+    height:323px!important;
+}
+
+.progress_content.c6{
+    overflow: hidden;
+}
+
+.progress_content.c6 .slimScrollRail, .progress_content.c6 .scroll-bar{
+    display: none;
+}
+
 .progress_content.c2 .scroll-bar, .progress_content.c6 .scroll-bar {
     visibility: hidden;
 }
@@ -1249,19 +1267,24 @@ a.confirm_links.next_progress.hide{
 }
 
 div.update_picture_text > p{
+    position: relative;
     
+    top: -71px;
+    left: 10px;
+    font-family: Avenir;
+    font-size: 25px;
+    font-weight: 900;
+    color: #029acf;
 }
 
 div.gray_join_btn:active, div.follow_btn:active{
--webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
--moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
 background: #EEE;
-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+border-color: #D7D7D7;
 }
 
 #profile_image_upload_form {
-    width: 103px;
-    height: 103px;
+    width: 300px;
+    height: 300px;
     background-image: url(../img/6.png);
     background-size: cover;
     background-color: #f5f5f5;

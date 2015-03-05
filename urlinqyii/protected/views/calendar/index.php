@@ -208,6 +208,7 @@
            
             <!-- ng-click="openNewEvent()" for create button -->
             <?php include "googlecalendar.php"; ?>
+            
             <div class="create">
                 <div class="button left_panel_create_button">
                     <div id='create_new_event_button' class="full" ng-click="openNewEvent()"><i></i> Create</div>

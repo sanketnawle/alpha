@@ -414,7 +414,13 @@ class FeedController extends Controller
 
 
                     if($event['user_id'] == $user->user_id){
-                        $posts[$i]['event']['attend_status'] = "Attending";
+                        if($event['host_attending']=="attending"){
+                            $posts[$i]['event']['attend_status'] = "Attending";
+                        }else if($event['host_attending']=="not_attending") {
+                            $posts[$i]['event']['attend_status'] = "Not Attending";
+                        }else if($event['host_attending']=="maybe_attending") {
+                            $posts[$i]['event']['attend_status'] = "Maybe Attending";
+                        }
                     }else{
                         $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$event['event_id'], ':user_id'=>$user->user_id));
                         if($event_user){

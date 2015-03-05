@@ -137,7 +137,7 @@
                                     <?php }?>
 
                                 {{/ifCond}}
-                                <span class='event_name'>{{title}}</span>
+                                <span class='event_name event_link' data-event_id="{{event_id}}" data-event_start_date="{{start_date}}">{{title}}</span>
                                 {{#ifCond user_id '==' <?php echo $user->user_id;?>}}
                                     <span class="edit_button" style="display: none;">edit</span>
                                 {{/ifCond}}

@@ -171,6 +171,142 @@ class PostController extends Controller
 
 
 
+
+
+
+        function actionSendReplyEmailFunction(){
+
+            if(!isset($_POST['post_id']) || !isset($_POST['reply_id']) || !isset($_POST['actor_id']) || !isset($_POST['to_user_id']) || !isset($_POST['subject'])){
+                $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
+                $this->renderJSON($data);
+                return;
+            }
+
+
+            $reply_id = $_POST['reply_id'];
+
+
+            $actor_id = $_POST['actor_id'];
+
+            $actor = User::model()->find('user_id=:user_id', array(':user_id'=>$actor_id));
+
+            if(!$actor){
+                $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'user not logged in', 'post'=>$_POST);
+                $this->renderJSON($data);
+                return;
+            }
+
+
+            $subject = $_POST['subject'];
+
+
+            $to_user_id = $_POST['to_user_id'];
+
+            $to_user = User::model()->find('user_id=:user_id', array(':user_id'=>$to_user_id));
+
+            if(!$to_user){
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=> 'invalid user', 'post'=>$_POST);
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
+            $post_id = $_POST['post_id'];
+
+            $post = Post::model()->find('post_id=:post_id', array(':post_id'=>$post_id));
+
+            if(!$post){
+                $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid post', 'post'=>$_POST);
+                $this->renderJSON($data);
+                return;
+            }
+            $origin_type = $post->origin_type;
+            $origin_id = $post->origin_id;
+
+            $origin = null;
+
+            if($origin_type == 'class'){
+                $class = ClassModel::model()->find('class_id=:class_id', array(':class_id'=>$origin_id));
+                if($class){
+                    $origin = $class;
+                }else{
+                    $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid class', 'post'=>$_POST);
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else if($origin_type == 'group' || $origin_type == 'club'){
+                $group = Group::model()->find('group_id=:group_id', array(':group_id'=>$origin_id));
+                if($group){
+                    $origin = $group;
+                }else{
+                    $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid group', 'post'=>$_POST);
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else if($origin_type == 'department'){
+                $department = Department::model()->find('department_id=:department_id', array(':department_id'=>$origin_id));
+                if($department){
+                    $origin = $department;
+                }else{
+                    $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid department', 'post'=>$_POST);
+                    $this->renderJSON($data);
+                    return;
+                }
+            }
+            else if($origin_type == 'school'){
+                $school = School::model()->find('school_id=:school_id', array(':school_id'=>$origin_id));
+                if($school){
+                    $origin = $school;
+                }else{
+                    $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid school', 'post'=>$_POST);
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid origin ' . $origin_type, 'post'=>$_POST);
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
+
+            $reply = Reply::model()->find('reply_id=:id', array(':id'=>$reply_id));
+
+            if(!$reply){
+                $data = array('success'=>false,'error_id'=>6, 'error_msg'=> 'reply is invalid', 'post'=>$_POST);
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
+            if($reply->post_id != $post->post_id){
+                $data = array('success'=>false,'error_id'=>7, 'error_msg'=> 'reply is not for this post', 'post'=>$_POST);
+                $this->renderJSON($data);
+                return;
+            }
+
+            if (ERunActions::runBackground()) {
+                ERunActions::runScript('send_reply_email',$params=array('origin'=>$origin, 'to_user'=>$to_user,  'post'=>$post, 'subject'=>$subject, 'actor'=>$actor, 'reply'=>$reply),$scriptPath=null);
+
+
+                $data = array('success'=>true,'error_id'=>'run');
+                $this->renderJSON($data);
+                return;
+            }else {
+    //            $data = array('success'=>false,'error_id'=>'didnt run in background');
+    //            $this->renderJSON($data);
+    //            return;
+            }
+
+
+    }
+
+
+
+
     function actionSendGroupEventEmailFunction(){
 
         if(!isset($_POST['to_email']) || !isset($_POST['event_id']) || !isset($_POST['actor_id']) || !isset($_POST['to_user_id']) || !isset($_POST['subject'])){
@@ -640,6 +776,7 @@ class PostController extends Controller
 
                         $post_data['event'] = $this->model_to_array($event);
                         $post_data['event']['attend_status'] = "Attending";
+                        $post_data['event']['color'] = $this->get_user_event_color($user,$event);
                        // $post_data['event']['color'] = ;
 
 
@@ -1251,6 +1388,14 @@ class PostController extends Controller
         if($post->delete()){
             if(isset($event)){
                 if(!$event->delete()){
+                    $event_users = EventUser::model()->findAll('event_id=:eid',array(':eid'=>$event->event_id));
+                    foreach($event_users as $event_user){
+                        if(!$event_user->delete()){
+                            $return_data = array('success'=>false,'error_id'=>5, 'error_msg'=>'Error deleting event_user');
+                            $this->renderJSON($return_data);
+                            return;
+                        }
+                    }
                     $return_data = array('success'=>false,'error_id'=>5, 'error_msg'=>'Error deleting event');
                     $this->renderJSON($return_data);
                     return;
@@ -1551,9 +1696,17 @@ class PostController extends Controller
                 if($reply){
 
 
+
+
                     if($post->user_id != $user->user_id){
                        include_once 'notification/notification.php';
                        send_notification('reply',$user->user_id,$post->user_id,$reply->reply_id,'reply');
+
+
+                        $subject = 'Urlinq reply';
+                        $to_user_id = $post->user_id;
+                        $actor_id = $user->user_id;
+                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendReplyEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$post->post_id, 'reply_id'=>$reply->reply_id),$contentType=null);
                     }
 //                    //Send notification to the creator of this post
 //                    if ($user->user_id != $post->user_id) {
@@ -1704,6 +1857,83 @@ class PostController extends Controller
         $data = array('success'=>true,'replies'=>$replies_with_users);
         $this->renderJSON($data);
         return;
+
+    }
+
+    function get_user_event_color($user, $event){
+        $origin_type = '';
+        try{
+            $origin_type = $event['origin_type'];
+        }catch(Exception $e){
+            $origin_type = $event->origin_type;
+        }
+
+
+        $origin_id = '';
+        try{
+            $origin_id = $event['origin_id'];
+        }catch(Exception $e){
+            $origin_id = $event->origin_id;
+        }
+
+
+        $event_type = '';
+        try{
+            $event_type = $event['event_type'];
+        }catch(Exception $e){
+            $event_type = $event->event_type;
+        }
+
+        if($event_type == 'NYU Event'){
+            //Get the purple color
+            $color = Color::model()->find('color_id=:id', array(':id'=>16));
+            return $color;
+        }
+
+
+
+
+
+        if($origin_type == 'class'){
+
+
+            $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id',array(':user_id'=>$user->user_id,':class_id'=>$event['origin_id']));
+
+            if($class_user){
+                $color = Color::model()->find('color_id=:id',array(':id'=>$class_user->color_id));
+                return $color;
+            }else{
+                $class = ClassModel::model()->find('class_id=:id', array(':id'=>$origin_id));
+                if($class){
+                    if($user->user_id == $class->professor_id){
+                        $color = Color::model()->find('color_id=:id',array(':id'=>$class->color_id));
+                        return $color;
+                    }else{
+                        $color = Color::model()->find('color_id=:id',array(':id'=>3));
+                        return $color;
+                    }
+                }else{
+                    $color = Color::model()->find('color_id=:id',array(':id'=>3));
+                    return $color;
+                }
+
+
+            }
+
+        }else if($origin_type == 'club' || $origin_type == 'group'){
+            $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id,':group_id'=>$event['origin_id']));
+            if($group_user){
+                $color = Color::model()->find('color_id=:id',array(':id'=>$group_user->color_id));
+                return $color;
+            }else{
+                $color = Color::model()->find('color_id=:id',array(':id'=>3));
+                return $color;
+            }
+
+        }else {
+            $color = Color::model()->find('color_id=:id',array(':id'=>3));
+            return $color;
+        }
 
     }
 

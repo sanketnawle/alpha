@@ -349,7 +349,7 @@ table.body-wrap { width: 100%;}
         FOOTER 
 ------------------------------------- */
 table.footer-wrap { width: 100%;    clear:both!important;
- background: #1d1f20; height: 110px; color: #FFF;}
+ background: #1d1f20; color: #FFF;}
 .footer-wrap .container td.content  p { border-top: 1px solid rgb(215,215,215); padding-top:15px;}
 .footer-wrap .container td.content p {
     font-size:10px;
@@ -517,13 +517,13 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                                     <span class="user_first_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><?php echo $to_user->firstname; ?>,</span></td>
 
                                     <td align="right" class="urlinq_tri_color" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 33%;right: 10px;height: 5px;padding-top:7px;position: relative;">
-                                        <img class="logo tricolor_float_logo" src="http://beta.urlinq.com/assets/email_logo.png" style="background-repeat: no-repeat;background-size: contain;margin: 0;padding: 15px;font-family: 'Open Sans', sans-serif;width: 114px;left: 50%;position: absolute;height: 26px;right: 0px;top: -50px;>
+                                        <img class="logo tricolor_float_logo" src="http://beta.urlinq.com/assets/email_logo.png" style="background-repeat: no-repeat;background-size: contain;margin: 0;padding: 15px;font-family: 'Open Sans', sans-serif;width: 114px;left: 50%;position: absolute;height: 26px;right: 0px;top: -50px;">
 
-                                        <div class="tricolor_line red" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 32%;float: right;height: 7px;position: relative;display: inline-block;background: #ed4f68;"></div>
+                                        <div class="tricolor_line red" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 70px;float: right;height: 7px;position: relative;display: inline-block;background: #ed4f68;"></div>
 
-                                        <div class="tricolor_line blue" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 32%;float: right;height: 7px;position: relative;display: inline-block;background: #1da7d2;"></div>
+                                        <div class="tricolor_line blue" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 70px;float: right;height: 7px;position: relative;display: inline-block;background: #1da7d2;"></div>
 
-                                        <div class="tricolor_line green" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 32%;float: right;height: 7px;position: relative;display: inline-block;background: #2cc185;"></div>
+                                        <div class="tricolor_line green" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 70px;float: right;height: 7px;position: relative;display: inline-block;background: #2cc185;"></div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -562,7 +562,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                                             <p class="month" style="color: #FFF;text-align: center;font-size: 13.5px;width: auto;padding-bottom: 0px;font-weight: 600;padding-top: 7px;margin-bottom: 0px;text-shadow: rgba(0, 0, 0, 0.32) 1px 1px 0px;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;line-height: 1.6;">
                                             <?php echo date_string_to_month_name($event->start_date); ?></p>
 
-                                            <p class="day" style="color: #FFF;text-align: center;font-size: 20px;padding: 21px;width: auto;font-weight: bold;padding-top: 0px;margin-top: -2px;text-shadow: rgba(0, 0, 0, 0.32) 1px 1px 0px;margin: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;line-height: 1.6;">
+                                            <p class="day" style="color: #FFF;text-align: center;font-size: 20px;width: auto;font-weight: bold;padding-top: 0px;margin-top: -2px;text-shadow: rgba(0, 0, 0, 0.32) 1px 1px 0px;margin: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;line-height: 1.6;">
                                             <?php echo date_string_to_day_string($event->start_date); ?></p>
                                         </div>
 
@@ -577,7 +577,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                                                 <span class="vertical_bar" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">|</span>
                                                 <span class="event_where" style="color: #009933;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><?php echo $event->location; ?></span></p>
                                             <?php } ?>
-                                            <p class="post_target_copy event_description" style="width: 88%;margin-top: 0px;border-top: 1px solid #d8d8d8;border-bottom: 1px solid #d8d8d8;padding: 12px 8px;margin: 0 auto;font-family: 'Open Sans', sans-serif;margin-bottom: 18px;font-weight: normal;font-size: 16px;line-height: 1.6;color: #575757;text-align: left;max-width: 700px;margin-left: 0px;">
+                                            <p class="post_target_copy event_description" style="width: 88%;margin-top: 0px;padding: 12px 8px;margin: 0 auto;font-family: 'Open Sans', sans-serif;margin-bottom: 18px;font-weight: normal;font-size: 16px;line-height: 1.6;color: #575757;text-align: left;max-width: 700px;margin-left: 0px;">
                                             <?php echo $event->description; ?></p>
                                         </div><a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $event->origin_type . '/' . $event->origin_id; ?>" class="btn group_link_btn" style="display: block;margin: 0 auto;padding: 10px 0;font-family: 'Open Sans', sans-serif;color: #FFF;text-decoration: none;background-color: #666;font-weight: bold;margin-right: 10px;text-align: center;cursor: pointer;background: #029acf;max-width: 250px;width: 80%;border-radius: 4px;margin-left: 40px;font-size: 18px;border-bottom: 2px solid rgba(0, 0, 0, 0.21);margin-bottom: 26px;">See
                                         what's next 
@@ -595,7 +595,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
     </table><!-- /BODY -->
     <!-- FOOTER -->
 
-    <table class="footer-wrap" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;background: #1d1f20;height: 110px;color: #FFF;clear: both!important;">
+    <table class="footer-wrap" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;background: #27292b;color: #FFF;clear: both!important;">
         <tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
             <tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
                 <td style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"></td>
@@ -607,11 +607,10 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                         <table style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;border-spacing: 0;">
                             <tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
                                 <tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
-                                    <td align="center" style="margin: 0;padding: 44px;font-family: 'Open Sans', sans-serif;">
+                                    <td align="center" style="margin: 0;padding: 21px;font-family: 'Open Sans', sans-serif;">
                                         <p class="footer_Text" style="color:#2cc185;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;">
                                             <a href="http://www.urlinq.com" style="text-decoration:none;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;">Urlinq, Inc 2015</a> |
                                             <a href="http://www.urlinq.com" style="text-decoration:none;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;">New York City</a> |
-                                            <a href="http://www.urlinq.com" style="text-decoration:none;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;"><unsubscribe style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">Unsubscribe</unsubscribe></a>
                                         </p>
                                     </td>
                                 </tr>

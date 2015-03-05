@@ -950,7 +950,7 @@ function show_event(event,event_div_id){
         event['complete'] = 'not_complete';
     }
 
-    if(event['event_type'] == "todo" || event['event_type'] == "assignment" || event['event_type'] == "project"){
+    if(event['event_type'] == "todo" || event['event_type'] == "homework" || event['event_type'] == "project"){
         event['checkable'] = true;
     }else{
         event['checkable'] = false;
