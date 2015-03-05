@@ -16,7 +16,7 @@
  */
 
 function google_api_php_client_autoload($className) {
-  $classPath = explode('_', $className);
+  $classPath = explode('_', "$className");
   if ($classPath[0] != 'Google') {
     return;
   }
