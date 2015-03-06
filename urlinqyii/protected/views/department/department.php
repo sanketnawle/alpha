@@ -266,7 +266,7 @@
                                         </div>
                                         <div class = "group_box_secondary_info_section">
                                             <div class= "info_line indent"><?php echo count($course->classes); ?> classes</div>
-                                            <div class= "info_line indent">Department of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $course->department->department_id; ?>"><?php echo $course->department->department_name; ?></a></div>
+                                            <div class= "info_line indent"><?php echo ucfirst($department_front_end_name); ?> of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $course->department->department_id; ?>"><?php echo $course->department->department_name; ?></a></div>
                                             <div class = "info_line info_about"><?php echo $course->course_desc; ?></div>
                                         </div>
                                     </div>

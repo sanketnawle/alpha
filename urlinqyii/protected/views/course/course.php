@@ -1,5 +1,10 @@
 <html>
-
+    <?php
+        $department_front_end_name = 'department';
+        if($course->school->university_id == 4){
+            $department_front_end_name = 'program';
+        }
+    ?>
 
     <head>
         <script>
@@ -221,7 +226,7 @@
                                             <?php if($professor){ ?>
                                                 <div class="info_line indent profile_link" data-user_id="<?php echo $class->professor->user_id; ?>"><?php echo $class->professor->firstname . ' ' . $class->professor->lastname; ?></div>
                                             <?php } ?>
-                                            <div class= "info_line indent">Department of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $class->department->department_id; ?>"><?php echo $class->department->department_name; ?></a></div>
+                                            <div class= "info_line indent"><?php echo ucfirst($department_front_end_name); ?> of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $department_front_end_name . '/' . $class->department->department_id; ?>"><?php echo $class->department->department_name; ?></a></div>
                                             <div class = "info_line info_about">
                                                 <?php foreach($class_students as $student){ ?>
 

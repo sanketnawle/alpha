@@ -234,7 +234,7 @@ if($user->school->university_id == 4){
             <div id="nav_drop_down_container" class="closed">
                 <div class="nav_drop_down_scrollable">
                     <?php foreach($origin->courses as $course){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $course->course_id; ?>"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></div>
+                        <div class="nav_drop_down_section" data-id="<?php echo $course->course_id; ?>"><?php echo $course->course_name; if($course->course_tag != ''){ echo ' (' . $course->course_tag . ')'; }?></div>
                     <?php } ?>
                 </div>
 
@@ -300,7 +300,7 @@ if($user->school->university_id == 4){
                 <div id="nav_drop_down_bar_line"></div>
 
                 <div id="nav_drop_down_see_all_button" class = "departments">
-                    <div id="nav_drop_down_see_all_departments_text">See all departments</div>
+                    <div id="nav_drop_down_see_all_departments_text">See all <?php echo $department_front_end_name; ?>s</div>
                 </div>
             </div>
         </div>
