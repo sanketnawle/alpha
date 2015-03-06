@@ -75,11 +75,31 @@ class Controller extends CController
 
 
     public function is_urlinq_admin($user){
-        if(strpos($user->user_email, '@urlinq.com') === false){
-            return false;
-        }else{
+        if(strpos($user->user_email, '@urlinq.com') !== false){
             return true;
+        }else if(strpos($user->user_email,'ross.kopelman@student.touro.edu') !== false){
+            return true;
+        }else{
+            return false;
         }
+    }
+
+    public $supported_emails = ['nyu.edu', 'urlinq.com','student.touro.edu','touro.edu'];
+
+    function get_supported_email_list(){
+        return $this->supported_emails;
+    }
+
+    function is_supported_email($email){
+        foreach($this->supported_emails as $supported_email){
+            if(strpos($email, $supported_email)){
+                return true;
+            }
+        }
+
+
+        return false;
+
     }
 
 
@@ -117,19 +137,7 @@ class Controller extends CController
         }
     }
 
-    function valid_email($email){
-        $valid_emails = ['nyu.edu', 'urlinq.com'];
 
-        foreach($valid_emails as $valid_email){
-            if(strpos($email, $valid_email)){
-                return true;
-            }
-        }
-
-
-        return false;
-
-    }
 
 
     function is_assoc($array) {

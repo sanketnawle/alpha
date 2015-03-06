@@ -48,6 +48,7 @@ class PostQuestionOption extends CActiveRecord
 		return array(
             'post' => array(self::BELONGS_TO, 'Post', 'post_id'),
 			'postQuestionOptionAnswer' => array(self::HAS_ONE, 'PostQuestionOptionAnswer', 'option_id'),
+            'answers' => array(self::HAS_MANY, 'PostQuestionOptionAnswer', 'option_id'),
 		);
 	}
 

@@ -477,7 +477,7 @@ class SiteController extends Controller
         $origin_id = $_POST['origin_id'];
 
 
-        if(!$this->valid_email($email)){
+        if(!$this->is_supported_email($email)){
             $data = array('success'=>false,'error_id'=>3,'error_msg'=>'Invalid email address');
             $this->renderJSON($data);
             return;
@@ -697,7 +697,7 @@ class SiteController extends Controller
                 }
             }
 
-            if(!$this->valid_email($email)){
+            if(!$this->is_supported_email($email)){
                 $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'This email is not supported');
                 $this->renderJSON($data);
                 return;
@@ -1212,7 +1212,7 @@ class SiteController extends Controller
                 }
             }
 
-            if(strpos($email,'nyu.edu') == false && strpos($email, 'urlinq.com') == false){
+            if($this->is_supported_email($email)){
                 if(strpos($email,'poly.edu')){
                     $data = array('success'=>false,'error_id'=>6, 'error'=>'Poly emails are not accepted at this time');
                     $this->renderJSON($data);
@@ -1680,6 +1680,15 @@ public function actionSendReset(){
 
 
         $this->render('admin',array('user'=>$user));
+        return;
+    }
+
+
+
+    public function actionSupportedEmailList(){
+
+        $data = array('success'=>true, 'valid_email_list'=>$this->get_supported_email_list());
+        $this->renderJSON($data);
         return;
     }
 

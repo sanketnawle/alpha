@@ -363,17 +363,17 @@ class FeedController extends Controller
 
                 $post_model = Post::model()->find('post_id=:post_id',array(':post_id'=>$post['post_id']));
 
-                $posts[$i]['user_answer_option_id'] = null;
+              //  $posts[$i]['user_answer_option_id'] = null;
 
-                $options = $post_model->postQuestionOptions;
+              //  $options = $post_model->postQuestionOptions;
 
-                foreach($options as $this_option){
+       /*         foreach($options as $this_option){
                     //Check if the user voted for this option
-                    $user_vote = PostQuestionOptionAnswer::model()->find('option_id=:option_id and user_id=:user_id', array(':option_id'=>$this_option->option_id, ':user_id'=>$user->user_id));
+                    $user_vote = PostQuestionOptionAnswer::model()->find('option_id=:option_id and user_id=:user_id', array(':option_id'=>$option->option_id, ':user_id'=>$user->user_id));
                     if($user_vote){
                         $posts[$i]['user_answer_option_id'] = $user_vote->option_id;
                     }
-                }
+                }*/
 
 
                 // adding all the options to the array
@@ -381,6 +381,18 @@ class FeedController extends Controller
                 $options = self::convertModelToArray($post_que_options);
                 $posts[$i]['question']['options'] = self::getOptionsInfo($options);
 
+                $options_data = array();
+                $total_answers = 0;
+                foreach($post_model->postQuestionOptions as $j=>$option){
+                    $options_data[$j] = array();
+                    $options_data[$j]['answer'] = $option->option_text;
+                    $options_data[$j]['answer_count'] = sizeof($option->answers);
+                    $total_answers += sizeof($option->answers);
+                }
+
+                $posts[$i]['question']['options_data'] = $options_data;
+                $posts[$i]['question']['any_answers'] = $total_answers > 0;
+                $posts[$i]['question']['total_answers'] = $total_answers;
 //                // adding info of participants
 //                $option_ids = array_column($options, 'option_id');
 //                $post_que_mem = PostQuestionOptionAnswer::model()->findAll('option_id=:id', array(':id'=>$option_ids));

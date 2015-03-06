@@ -4445,6 +4445,60 @@ input.post_choose_attending_button + label{
     width: 39px;
 }
 
+input.post_choose_attending_button:checked + label{
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    background-color:#e0e0e0;
+}
+
+.question_analysis_holder{
+    float: left;
+    width: 226px;
+    height: 190px;
+    background-color: #FFF;
+    margin-top: 20px;
+    border-radius: 4px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.answer_labels_box{
+    height: 100%;
+    width: 71px;
+    float: right;
+    margin-top: -20px;
+}
+
+.answer_cell{
+    float: right;
+    width: 100%;
+}
+
+.answer_color_box{
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+.answer_label{
+    float: left;
+    font-size: 12px;
+    margin-top: 2px;
+    margin-left: 2px;
+    color: #424242;
+}
+
+.question_functions, .submitted_answer {
+    display: inline-block;
+}
+
+
 label.post_choose_yes_label{
     border-radius: 3px 0 0 3px;
 }
@@ -4480,5 +4534,6 @@ input.post_choose_attending_button:checked + label.post_choose_maybe_label{
 input.post_choose_attending_button:checked + label.post_choose_no_label{    
     text-shadow: none;
     background-color: #dd4b39; background-image: -webkit-linear-gradient(top,#dd4b39,#d14836); 
-    border: 1px solid rgba(0, 0, 0, 0.18); background-image: linear-gradient(top,#dd4b39,#d14836);  
+    border: 1px solid rgba(0, 0, 0, 0.18); background-image: linear-gradient(top,#dd4b39,#d14836);
+
 }

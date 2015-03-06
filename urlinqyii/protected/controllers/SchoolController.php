@@ -16,7 +16,7 @@ class SchoolController extends Controller
 
         $is_admin = false;
 
-        if(strpos($user->user_email,'@urlinq.com') !== false){
+        if($this->is_urlinq_admin($user)){
             $is_admin = true;
         }
         //var_dump($user);
