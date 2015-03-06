@@ -95,6 +95,12 @@
                     <?php } ?>
 
 
+                    <?php if($is_admin){ ?>
+                    <form action="/post/create" id="cover_photo_form" style="padding: 0px; margin: 0px;">
+                        <input type='file' class='step_6_upload' style='display:none;'>
+                    <?php } ?>
+
+
                         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
                             <div class = "blur_section_overflow_container">
                                 <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
@@ -113,7 +119,19 @@
                                     <?php } ?>
                                 </div>
                             </div>
+
+                            <?php if($is_admin){ ?>
+                            <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                                <div class="upload_cover_photo_text">Change cover</div>
+                            </div>
+                            <?php } ?>
+
                         </div>
+
+
+                    <?php if($is_admin){ ?>
+                    </form>
+                    <?php } ?>
 
                     <!--        close the cover photo dropzone form if user is an admin -->
                     <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>

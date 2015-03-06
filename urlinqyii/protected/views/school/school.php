@@ -90,36 +90,52 @@ if($school->university_id == 4){
 
     <div id="content_panel" class = "group_responsiveness">
     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'school','origin_id'=>$school->school_id,'origin'=>$school)); ?>
-    <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->coverFile->file_url ?>');">
-        <div class = "blur_section_overflow_container">
-            <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->pictureFile->file_url ?>');">
-            </div>
-        </div>  
-        <div class = "group_name">
-            <div class = "center_admin univ_art"><div class = "text"></div><div class = "university_arrow"></div></div>
-            <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $school->school_name; ?></span></p></div>
-        </div>
-        <div class = "group_right_info group_info_boxes">
-                <?php if($school->school_location) { ?>
-                <div class = "group_info_block school_location" id = "location">
-                    <em class ="small_icon_map"></em>
-                    <span><?php echo $school->school_location; ?></span>
+
+
+
+
+
+
+    <?php if($is_admin){ ?>
+    <form action="/post/create" id="cover_photo_form" style="padding: 0px; margin: 0px;">
+        <input type='file' class='step_6_upload' style='display:none;'>
+    <?php } ?>
+
+        <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->coverFile->file_url ?>');">
+            <div class = "blur_section_overflow_container">
+                <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->pictureFile->file_url ?>');">
                 </div>
-                <?php } else { }?>
+            </div>
+            <div class = "group_name">
+                <div class = "center_admin univ_art"><div class = "text"></div><div class = "university_arrow"></div></div>
+                <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $school->school_name; ?></span></p></div>
+            </div>
+            <div class = "group_right_info group_info_boxes">
+                    <?php if($school->school_location) { ?>
+                    <div class = "group_info_block school_location" id = "location">
+                        <em class ="small_icon_map"></em>
+                        <span><?php echo $school->school_location; ?></span>
+                    </div>
+                    <?php } else { }?>
+            </div>
+
+
+            <?php if($is_urlinq_admin){ ?>
+                <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                    <div class="upload_cover_photo_text">Change cover</div>
+                </div>
+            <?php } ?>
+
+
+
+
+
         </div>
 
 
-        <?php if($is_urlinq_admin){ ?>
-            <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
-                <div class="upload_cover_photo_text">Change cover</div>
-            </div>
-        <?php } ?>
-
-
-
-
-
-    </div>
+    <?php if($is_admin){ ?>
+    </form>
+    <?php } ?>
 
 
 
@@ -363,8 +379,9 @@ if($school->university_id == 4){
                         </div>
                         <div class = "members_tab_content tab_content">
 
-
-                            <?php foreach($school->users as $member){ ?>
+                            <?php $members = $school->users; ?>
+                            <?php for($i = 0; $i < 50; $i++){?>
+                                <?php $member = $members[$i]; ?>
                                 <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                     <div class = "members_card admin normal_size">
                                         <div class = "members_card_img profile_link" data-user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">

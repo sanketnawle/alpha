@@ -2562,19 +2562,21 @@ $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email
                     return;
                 }
 
+                if(!$this->is_urlinq_admin($user)){
+                    $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$origin_id));
+                    if(!$group_user){
+                        $data = array('success'=>false,'error_id'=>3,'error'=>'user is not a member of this group');
+                        $this->renderJSON($data);
+                        return;
+                    }
 
-                $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$origin_id));
-                if(!$group_user){
-                    $data = array('success'=>false,'error_id'=>3,'error'=>'user is not a member of this group');
-                    $this->renderJSON($data);
-                    return;
+                    if(!$group_user->is_admin){
+                        $data = array('success'=>false,'error_id'=>4,'error'=>'User is not authorized to upload a photo to this group');
+                        $this->renderJSON($data);
+                        return;
+                    }
                 }
 
-                if(!$group_user->is_admin){
-                    $data = array('success'=>false,'error_id'=>4,'error'=>'User is not authorized to upload a photo to this group');
-                    $this->renderJSON($data);
-                    return;
-                }
 
 
 
@@ -2616,17 +2618,21 @@ $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email
                 }
 
 
-                if($user->department_id != $department->department_id){
-                    $data = array('success'=>false,'error_id'=>6,'error'=>'user is not a member of this department');
-                    $this->renderJSON($data);
-                    return;
+                if(!$this->is_urlinq_admin($user)){
+                    if($user->department_id != $department->department_id){
+                        $data = array('success'=>false,'error_id'=>6,'error'=>'user is not a member of this department');
+                        $this->renderJSON($data);
+                        return;
+                    }
+
+                    if($user->user_type != 'a' && $user->user_type != 'p'){
+                        $data = array('success'=>false,'error_id'=>7,'error'=>'user is not an admin');
+                        $this->renderJSON($data);
+                        return;
+                    }
                 }
 
-                if($user->user_type != 'a' && $user->user_type != 'p'){
-                    $data = array('success'=>false,'error_id'=>7,'error'=>'user is not an admin');
-                    $this->renderJSON($data);
-                    return;
-                }
+
 
 
 
@@ -2657,7 +2663,72 @@ $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email
                 }
 
             }else if($origin_type == 'school'){
+                $school = school::model()->find('school_id=:id',array(":id"=>$origin_id));
 
+                if(!$school){
+                    $data = array('success'=>false,'error_id'=>3,'error'=>'invalid school');
+                    $this->renderJSON($data);
+                    return;
+                }
+
+
+
+                if(!$this->is_urlinq_admin($user)){
+                    $data = array('success'=>false,'error_id'=>3,'error'=>'cant change this');
+                    $this->renderJSON($data);
+                    return;
+                }
+
+
+                //User is now forsure an admin. Upload the photo
+                $file_data = $this->upload_cover_file($origin_type, $origin_id, $_FILES);
+                if($file_data['success']){
+
+                    //Assign this file id as the new cover id
+                    $school->picture_file_id = $file_data['file_id'];
+                    $school->cover_file_id = $file_data['file_id'];
+                    $school->save(false);
+
+                    $data = array('success'=>true, 'file'=>$file_data);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false, 'error_msg'=>'Error uploading school cover photo');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else if($origin_type == 'course'){
+                $course = Course::model()->find('course_id=:id',array(":id"=>$origin_id));
+
+                if(!$course){
+                    $data = array('success'=>false,'error_id'=>3,'error'=>'invalid course');
+                    $this->renderJSON($data);
+                    return;
+                }
+
+                if(!$this->is_urlinq_admin($user)){
+                    $data = array('success'=>false,'error_id'=>3,'error'=>'cant change this');
+                    $this->renderJSON($data);
+                    return;
+                }
+
+
+                //User is now forsure an admin. Upload the photo
+                $file_data = $this->upload_cover_file($origin_type, $origin_id, $_FILES);
+                if($file_data['success']){
+
+                    //Assign this file id as the new cover id
+                    $course->picture_file_id = $file_data['file_id'];
+                    $course->save(false);
+
+                    $data = array('success'=>true, 'file'=>$file_data);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false, 'error_msg'=>'Error uploading course cover photo');
+                    $this->renderJSON($data);
+                    return;
+                }
             }
 
 
