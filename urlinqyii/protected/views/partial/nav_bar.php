@@ -66,7 +66,7 @@
                         usort($departments, "compare_department_names");
                     ?>
                     <?php foreach($departments as $department){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></div>
+                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name; if($department->department_tag != ''){echo ' (' . $department->department_tag . ')'; }?></div>
                     <?php } ?>
                 </div>
             </div>

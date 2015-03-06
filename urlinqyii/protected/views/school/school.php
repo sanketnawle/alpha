@@ -108,6 +108,17 @@ if($school->university_id == 4){
                 <?php } else { }?>
         </div>
 
+
+        <?php if($is_urlinq_admin){ ?>
+            <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                <div class="upload_cover_photo_text">Change cover</div>
+            </div>
+        <?php } ?>
+
+
+
+
+
     </div>
 
 

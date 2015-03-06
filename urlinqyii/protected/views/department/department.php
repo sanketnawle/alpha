@@ -33,7 +33,7 @@
 
     </script>
 
-    <title><?php echo $department->department_tag . ' - ' . $department->department_name; ?></title>
+    <title><?php if($department->department_tag != ''){echo $department->department_tag . ' - '; } echo $department->department_name; ?></title>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
@@ -240,7 +240,7 @@
                                             </div>
                                         </a>
                                         <div class = "group_box_main_info">
-                                            <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></a>
+                                            <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name; if($course->course_tag != ''){ echo ' (' . $course->course_tag . ')'; } ?></a>
                                             <div class = "float_Right">
                                                 <span class = "group_type">Course</span>
                                             </div>
