@@ -3,7 +3,7 @@
 
 
 $department_front_end_name = 'department';
-if($department->school->university_id == 4){
+if($school->university_id == 4){
     $department_front_end_name = 'program';
 }
 
@@ -244,13 +244,13 @@ if($department->school->university_id == 4){
 
                             <?php foreach($departments as $department) { ?>
                                 <div class = "group_box group_course_box" data-name="<?php echo $department->department_name; ?>">
-                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $department->department_id ;?>">
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $department_front_end_name . '/' . $department->department_id ;?>">
                                         <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url; ?>')">
                                             <div class = "department_alias"><?php echo $department->department_tag ;?></div>
                                         </div>
                                     </a>
                                     <div class = "group_box_main_info">
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $department->department_id ;?>" class = "group_link"><?php echo $department->department_name; ?></a>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $department_front_end_name . '/' . $department->department_id ;?>" class = "group_link"><?php echo $department->department_name; ?></a>
                                         <div class = "float_Right">
                                             <span class = "group_type"><?php echo ucfirst($department_front_end_name); ?></span>
                                         </div>

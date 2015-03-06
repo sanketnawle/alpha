@@ -1,6 +1,18 @@
 <html>
 
 
+
+<?php
+    $department_front_end_name = 'department';
+    if($department->school->university_id == 4){
+        $department_front_end_name = 'program';
+    }
+
+?>
+
+
+?>
+
 <head>
     <script>
         var globals = {};
@@ -89,7 +101,7 @@
                                 </div>
                             </div>                           
                             <div class = "group_name">
-                                <div class = "center_admin"><div class = "department_of">Department of</div></div>
+                                <div class = "center_admin"><div class = "department_of"><?php echo ucfirst($department_front_end_name); ?> of</div></div>
                                 <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name; ?></span></p></div>
                             </div>
                             <div class = "group_right_info group_info_boxes">
@@ -116,7 +128,7 @@
                         <div class="tab feed active" data-panel_id="1">
                             <div class="tab_content">
                                 <div class="tab_img"></div>
-                                <div class="tab_text">Department Feed</div>
+                                <div class="tab_text"><?php echo ucfirst($department_front_end_name); ?> Feed</div>
                             </div>
                             <div class="tab_wedge"></div>
                         </div>
