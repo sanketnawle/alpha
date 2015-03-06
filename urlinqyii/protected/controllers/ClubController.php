@@ -79,6 +79,11 @@ class ClubController extends Controller
         }
 
 
+        if($this->is_urlinq_admin($user)){
+            $is_admin = true;
+        }
+
+
 //        if(strpos($user->user_email,'@urlinq.com') !== false){
 //            $is_admin = true;
 //        }

@@ -71,7 +71,7 @@ class ClassController extends Controller
 
 
 
-        if(strpos($user->user_email,'@urlinq.com') !== false){
+        if($this->is_urlinq_admin($user)){
             $is_admin = true;
         }
 
