@@ -78,6 +78,35 @@ $(document).ready(start(globals.origin_id));
         $('#panel_3').addClass('active');
     });
 
+
+    //CUSTOM ADMIN FUNCTION
+    $(document).on('click','#set_to_parents_photo', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var post_url = globals.base_url + '/admin/setToParentsPhoto';
+        var post_data = {
+            origin_type: globals.origin_type,
+            origin_id: globals.origin_id
+        };
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                if(response['success']){
+                    $('#cover_photo').css({'background-image': 'url("' + globals.base_url + response['file']['file_url'] + '")'});
+                }else{
+
+                }
+            },'json'
+        );
+
+    });
+
+
+
+
+
     $( "#page" ).scroll(function() {
 //        alert('SCROLL');
 
