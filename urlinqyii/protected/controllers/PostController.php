@@ -707,7 +707,7 @@ class PostController extends Controller
                     if(isset($_POST['post']['question']) && ($model->post_type == 'question' || $model->post_type == 'multiple_choice' || $model->post_type == 'true_false')){
 
                         $post_data['question'] = array('options'=>array());
-
+                        $post_data['question']['active']=true;
                         $question = new PostQuestion;
                         //$question->attributes = $_POST['PostQuestion'];
                         $question->post_id = $post_id;
@@ -1103,7 +1103,70 @@ class PostController extends Controller
 //		));
 	}
 
+    public function actionClearQuestion(){
+        if(!isset($_POST['post_id'])){
+            $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+            $this->renderJSON($return_data);
+            return;
+        }
 
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+        $options = $post->postQuestionOptions;
+
+        foreach($options as $this_option){
+            $user_vote = PostQuestionOptionAnswer::model()->find('option_id=:option_id and user_id=:user_id', array(':option_id'=>$this_option->option_id, ':user_id'=>$user->user_id));
+
+            if($user_vote){
+                 if(!$user_vote->delete()) {
+                     $return_data = array('success' => false, 'error_msg' => 'error saving vote', 'user_vote' => $user_vote);
+                     $this->renderJSON($return_data);
+                     return;
+                 }
+            }
+        }
+
+        $return_data = array('success'=>true);
+        $this->renderJSON($return_data);
+        return;
+
+    }
+
+    public function actionCloseQuestion(){
+        if(!isset($_POST['post_id'])){
+            $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+        $question = $post->postQuestion;
+        $question->active = 0;
+        if($question->save()){
+            $return_data = array('success'=>true);
+            $this->renderJSON($return_data);
+            return;
+        }else{
+            $return_data = array('success'=>false, 'error_msg'=>'error closing question');
+            $this->renderJSON($return_data);
+            return;
+        }
+    }
 
 
     public function actionAnswerQuestion(){
@@ -1146,14 +1209,13 @@ class PostController extends Controller
             $user_vote = PostQuestionOptionAnswer::model()->find('option_id=:option_id and user_id=:user_id', array(':option_id'=>$this_option->option_id, ':user_id'=>$user->user_id));
 
             if($user_vote){
-                if($user_vote->option_id == $option->option_id){
-                    //User already voted for this shit
-                    $return_data = array('success'=>true);
-                    $this->renderJSON($return_data);
-                    return;
-                }else{
-                    //Delete this vote because the user sent a new one
-                    $user_vote->delete();
+
+                if($user_vote->option_id != $option->option_id){
+                    if(!$user_vote->delete()){
+                        $return_data = array('success'=>false, 'error_msg'=>'error saving vote', 'user_vote'=>$user_vote);
+                        $this->renderJSON($return_data);
+                        return;
+                    }
                 }
             }else{
                 if($this_option->option_id == $option->option_id){
@@ -1161,11 +1223,7 @@ class PostController extends Controller
                     $new_user_vote->option_id = $option->option_id;
                     $new_user_vote->user_id = $user->user_id;
 
-                    if($new_user_vote->save(false)){
-                        $return_data = array('success'=>true);
-                        $this->renderJSON($return_data);
-                        return;
-                    }else{
+                    if(!$new_user_vote->save(false)){
                         $return_data = array('success'=>false, 'error_msg'=>'error saving vote', 'user_vote'=>$new_user_vote);
                         $this->renderJSON($return_data);
                         return;
@@ -1174,7 +1232,7 @@ class PostController extends Controller
             }
         }
 
-        $return_data = array('success'=>false, 'error_msg'=>'error with everything');
+        $return_data = array('success'=>true);
         $this->renderJSON($return_data);
         return;
 
@@ -1714,6 +1772,29 @@ class PostController extends Controller
         $this->renderJSON($data);
         return;
 
+    }
+
+    function actionGetQuestionStats(){
+        if(!isset($_POST['post_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'all data not set');
+            $this->renderJSON($data);
+            return;
+        }
+        $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+        if($post->post_type=="multiple_choice" || $post->post_type=="true_false"){
+            $options_data = array();
+            //$question = $post->postQuestion;
+            foreach($post->postQuestionOptions as $j=>$option){
+                $options_data[$option->option_text]  = sizeof($option->answers);
+            }
+            $data = array('success'=>true,'results'=>$options_data);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'not a question post');
+            $this->renderJSON($data);
+            return;
+        }
     }
 
     function get_user_event_color($user, $event){

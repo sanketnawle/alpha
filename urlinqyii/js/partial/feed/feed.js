@@ -104,8 +104,30 @@ function ready(globals){
         });
 
     }
+    var question_data = [];
+    var colors = ["#f04b5b","#4BAEF0","#FFFF4D","#8DEE6D"];
+    var highlights = ["#f26370","#63b9f2","#FFFF80","#BEF5AB"];
+    function show_question_data(post){
+        var pi_0 = $(".pie_"+post['post_id']).get(0).getContext("2d");
+        var answer_data = [];
+        var answers = post['question']['options'];
 
-
+        for(var i=0;i<answers.length;i++) {
+            answer_data[i]={
+                label:answers[i]['option_text'],
+                value: answers[i]['participants_count'],
+                color: colors[i],
+                highlight: highlights[i]
+            }
+        }
+        question_data[post['post_id']] = new Chart(pi_0).Doughnut(answer_data, {
+            percentageInnerCutout : 0,
+            segmentShowStroke : false,
+            showTooltips: true,
+            animationSteps : 75,
+            animationEasing: "easeOutCubic"
+        });
+    }
     function render_posts(jsonData){
 
         $.each(jsonData ,function(key,post) {
@@ -148,7 +170,19 @@ function ready(globals){
             }
 
 
+            if(post['post_type'] == 'multiple_choice' || post['post_type'] == 'true_false'){
+                for(var i=0;i<post['question']['options'].length;i++){
+                    post['question']['options'][i]['color'] = colors[i];
+                    post['question']['options'][i]['percentage'] =
+                        (post['question']['options'][i]['participants_count'] /
+                        post['question']['total_answers']) * 100;
+                    //post['question']['options'][i]['highlight'] = highlights[i];
+                }
+                //post['question']['closed'] = !post['question']['active'];
+                post['question']['active'] = (post['question']['active'] == "1");
+                post['question']['closed'] = !post['question']['active'];
 
+            }
 
             post['update_timestamp'] = moment(post['update_timestamp'], "X").fromNow();
 
@@ -156,9 +190,18 @@ function ready(globals){
 
             render_post(post);
 
+            if(post['post_type'] == 'multiple_choice' || post['post_type'] == 'true_false'){
+                if(post['pownership'] || !post['question']['active']){
+                    show_question_data(post);
+                }
+                if(post['question']['total_answers']==0){
+                    $('.post[data-post_id='+post['post_id']+']').find('.anl-content-box-mb-right').hide();
+                }
+
+
+            }
         });
     }
-
 
 
     Handlebars.registerHelper("theFileType", function(type, id){
@@ -215,9 +258,34 @@ function ready(globals){
 
 
 
+    function update_question_data(post_id){
+        var chart = question_data[post_id];
+        var post_url = globals.base_url+"/post/getQuestionStats";
+        var post_data = {post_id:post_id};
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                if(response['success']){
 
-    $(document).on('click', '.mc_question_radio_button', function() {
-        var $radio = $(this);
+                    for(var i=0;i<chart.segments.length;i++){
+                        console.log(chart.segments[i].label);
+                        console.log(chart.segments[i].value);
+                        console.log(response['results'][chart.segments[i].label]);
+                        chart.segments[i].value = response['results'][chart.segments[i].label];
+                    }
+                    chart.update();
+                }
+            }
+
+        );
+
+
+    }
+    $(document).on('click', '.submit_answer', function() {
+        var $question = $(this).closest('.mc_question');
+        var $radio = $question.find('.mc_question_radio_button:checked');
+        var post_id = $radio.closest('.post').attr('data-post_id');
         var option_id = $radio.closest('.mc_question_one_choice').attr('data-option_id');
 
         //alert(option_id);
@@ -231,6 +299,46 @@ function ready(globals){
             post_data,
             function(response){
                 console.log(response);
+
+                $question.closest('.post').find('.submitted_answer').fadeIn(250);
+                update_question_data(post_id);
+                //alert(JSON.stringify(response));
+            },'json'
+        );
+    });
+
+    $(document).on('click','.clear_answer',function(){
+        var $post = $(this).closest('.post');
+        var post_id = $post.attr('data-post_id');
+        var post_url = globals.base_url + '/post/clearQuestion';
+
+        var post_data = {post_id: post_id};
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                console.log(response);
+                update_question_data(post_id);
+                $post.find('.mc_question_radio_button:checked').prop('checked',false);
+                $post.find('.submitted_answer').fadeOut(250);
+                //alert(JSON.stringify(response));
+            },'json'
+        );
+    });
+
+    $(document).on('click','.close_question',function(){
+        var $post = $(this).closest('.post');
+        var post_id = $post.attr('data-post_id');
+        var post_url = globals.base_url + '/post/closeQuestion';
+        var post_data = {post_id: post_id};
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                console.log(response);
+                //update_question_data(post_id);
+                $post.find('.mc_question').fadeOut(250);
+                $post.find('.mc_question').delete();
                 //alert(JSON.stringify(response));
             },'json'
         );
@@ -772,5 +880,8 @@ function ready(globals){
     });*/
 
     $("div.comments:last-of-type").css({"border-bottom":"none"});
+    setInterval(function(){
+
+    },5000);
 
 }

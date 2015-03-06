@@ -612,11 +612,13 @@
                                                     </div>
 
                                                     {{#ifCond post_type '==' 'true_false'}}
+
                                                          <div class="mc_question">
+                                                             {{#if question.active}}
                                                             {{#each question.options}}
                                                                 <div class="mc_question_one_choice" id="{{question.answer_index}}" data-option_id="{{option_id}}">
 
-                                                                    <input type="radio" class="mc_question_radio_button" name="letter" >
+                                                                    <input type="radio" class="mc_question_radio_button" name="letter" {{#if user_answered}}checked{{/if}}>
 
                                                                     </input>
                                                                     <div class="mc_question_choice_letter" >
@@ -637,17 +639,30 @@
                                                                 </div>
 
                                                             {{/each}}
+                                                             <div class="question_functions">
+                                                                 <button class = "clear_answer">Clear</button>
+                                                                 <button class = "submit_answer">Submit</button>
+                                                                 {{#if pownership}}
+                                                                 <button class = "close_question">Close Question</button>
+                                                                 {{/if}}
+                                                             </div>
+                                                             {{/if}}
                                                         </div>
+
+
+
 
                                                     {{/ifCond}}
 
 
                                                     {{#ifCond post_type '==' 'multiple_choice'}}
+
                                                         <div class="mc_question">
+                                                            {{#if question.active}}
                                                             {{#each question.options}}
                                                                 <div class="mc_question_one_choice" id="{{question.answer_index}}" data-option_id="{{option_id}}">
 
-                                                                    <input type="radio" class="mc_question_radio_button" name="letter" >
+                                                                    <input type="radio" class="mc_question_radio_button" name="letter_{{../post_id}}" {{#if user_answered}}checked{{/if}}>
 
                                                                     </input>
                                                                     <div class="mc_question_choice_letter" >
@@ -668,10 +683,46 @@
                                                                 </div>
 
                                                             {{/each}}
+                                                            <div class="question_functions">
+                                                                <button class = "clear_answer">Clear</button>
+                                                                <button class = "submit_answer">Submit</button>
+                                                                {{#if pownership}}
+                                                                    <button class = "close_question">Close Question</button>
+                                                                {{/if}}
+                                                            </div>
+                                                            <div class="submitted_answer" style="display:none;">
+                                                                <span class="submitted_icon"></span>submitted
+                                                            </div>
+                                                            {{/if}}
                                                         </div>
 
 
+
                                                     {{/ifCond}}
+
+                                                    {{#ifCond post_type '!=' "question"}}
+                                                        {{#ifCond pownership '||' question.closed}}
+                                                            {{#if question.total_answers}}
+                                                             <div class='question_analysis_holder'>
+                                                            {{else}}
+                                                            <div class='question_analysis_holder' style="display:none;">
+                                                            {{/if}}
+                                                                <canvas class="pie_{{post_id}}" width="159" height="160"></canvas>
+                                                                <div class='answer_labels_box'>
+                                                                    {{#each question.options}}
+                                                                    <div class='answer_cell'>
+                                                                        <div class='answer_color_box' style="background-color:{{color}}"></div>
+
+                                                                        <div class='answer_label'>{{option_text}}</div>
+                                                                    </div>
+                                                                    {{/each}}
+                                                                </div>
+                                                             </div>
+
+                                                        {{/ifCond}}
+                                                    {{/ifCond}}
+
+
 
 
 
@@ -887,7 +938,11 @@
 
                                 <div>
                                     <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
+                                    {{#ifCond post_type '==' 'question'}}
                                     <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Respond to this question...' required></textarea>
+                                    {{else}}
+                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Discuss this question...' required></textarea>
+                                    {{/ifCond}}
                                     <div class = 'dragdrop_functions'>
                                         <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
                                         <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
