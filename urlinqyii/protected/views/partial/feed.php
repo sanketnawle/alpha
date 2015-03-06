@@ -24,6 +24,9 @@
     <script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/embedly.js"> </script>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/moment.js"> </script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/Chart.js-master/Chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/club/analytics.css">
+
     <script>
         moment().format();
     </script>
