@@ -116,7 +116,7 @@ function show_day_event(event_json){
             //Loop through each event and change the styling
             jQuery.each($this_day_time_events, function(index,$day_time_event){
                 $($day_time_event).css({'width': width.toString() + 'px'});
-                $($day_time_event).css({'left': left_pixels + 10 + 'px'});
+                $($day_time_event).css({'left': left_pixels + 'px'});
                 left_pixels += width;
             });
         }

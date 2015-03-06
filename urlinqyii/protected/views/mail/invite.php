@@ -347,7 +347,7 @@ table.body-wrap { width: 100%;}
 		FOOTER 
 ------------------------------------- */
 table.footer-wrap { width: 100%;	clear:both!important;
- background: #1d1f20; height: 110px; color: #FFF;}
+ background: #1d1f20; color: #FFF;}
 .footer-wrap .container td.content  p { border-top: 1px solid rgb(215,215,215); padding-top:15px;}
 .footer-wrap .container td.content p {
 	font-size:10px;
@@ -587,7 +587,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 </tbody></table><!-- /BODY -->
 
 <!-- FOOTER -->
-<table class="footer-wrap" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;background: #1d1f20;height: 110px;color: #FFF;clear: both!important;">
+<table class="footer-wrap" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;background: #1d1f20;color: #FFF;clear: both!important;">
 	<tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 		<td style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"></td>
 		<td class="container" style="margin: 0 auto!important;padding: 0;font-family: 'Open Sans', sans-serif;display: block!important;max-width: 800px!important;clear: both!important;">
@@ -596,11 +596,10 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 				<div class="content" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;max-width: 800px;display: block;padding-top: 0;">
 				<table style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;border-spacing: 0;">
 				<tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
-					<td align="center" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
+					<td align="center" style="margin: 0;padding: 21px;font-family: 'Open Sans', sans-serif;">
 						<p class="footer_Text" style="color:#2cc185;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;">
 							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;text-decoration:none;">Urlinq, Inc 2015</a> |
-							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;text-decoration:none;">New York City</a> |
-							<a href="http://www.urlinq.com" style="text-decoration:none;margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;"><unsubscribe style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">Unsubscribe</unsubscribe></a>
+							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;text-decoration:none;">New York City</a> 
 						</p>
 					</td>
 				</tr>

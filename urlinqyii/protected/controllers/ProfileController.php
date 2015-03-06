@@ -1012,7 +1012,9 @@ class ProfileController extends Controller
         if($user->user_type == 's' || $user->user_type == 'a'){
             $class_users = ClassUser::model()->findAll('user_id=:user_id', array(':user_id'=>$user_id));
             foreach($class_users as $class_user){
-                array_push($classes, $class_user->class);
+                $class = $this->model_to_array($class_user->class);
+                $class['class_user'] = $this->model_to_array($class_user);
+                array_push($classes, $class);
             }
         }else if($user->user_type == 'p'){
             $classes = ClassModel::model()->find('professor_id=:user_id', array(':user_id'=>$user_id));
@@ -1021,7 +1023,7 @@ class ProfileController extends Controller
 
         function in_list($class, $departments){
             foreach($departments as $department){
-                if((string)$class->department_id == (string)$department['department_id']){
+                if((string)$class['department_id'] == (string)$department['department_id']){
                     return true;
                 }
             }
@@ -1042,7 +1044,8 @@ class ProfileController extends Controller
 
         foreach($classes as $class){
             if(!in_list($class, $departments)){
-                $new_department = $this->model_to_array($class->department);
+                $department = Department::model()->find('department_id=:id', array(':id'=>$class['department_id']));
+                $new_department = $this->model_to_array($department);
                 $new_department['classes'] = array();
 
                 array_push($departments, $new_department);
@@ -1057,11 +1060,9 @@ class ProfileController extends Controller
         }
 
 
-
-
         foreach($classes as $class){
             for($i = 0; $i < count($departments); $i++){
-                if($class->department_id == $departments[$i]['department_id']){
+                if($class['department_id'] == $departments[$i]['department_id']){
                     array_push($departments[$i]['classes'], $this->model_to_array($class));
                 }
             }
@@ -1107,7 +1108,7 @@ class ProfileController extends Controller
         }
         $data = array();
         $data['user_id']=intval($user->user_id);
-        $data['own_profile']= (intval($user->user_id) === intval($this->get_current_user()->user_id));
+        $data['own_profile'] = (intval($user->user_id) === intval($this->get_current_user()->user_id));
         $data['firstname']=$user->firstname;
         $data['lastname']=$user->lastname;
         $data['bio']=$user->user_bio;
@@ -1127,7 +1128,11 @@ class ProfileController extends Controller
 
         $data['email']=$user->user_email;
         $data['classes']=array();
-        foreach($user->classes as $i=>$class){
+        foreach($user->classUsersAll as $i=>$class_user){
+            $class = $class_user->class;
+            if($class_user->privacy == 'only_me' && !$data['own_profile']){
+                continue;
+            }
             if($class->course){
                 $data['classes'][$i]['course_name']=$class->course->course_name;
                 $data['classes'][$i]['description']= $class->course->course_desc;
@@ -1138,8 +1143,8 @@ class ProfileController extends Controller
             }
             $data['classes'][$i]['section']=$class->section_id;
             $data['classes'][$i]['class_id']=$class->class_id;
-            $data['classes'][$i]['class_picture']= ($class->pictureFile) ?
-                Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
+            $data['classes'][$i]['class_picture'] = ($class->pictureFile) ? Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
+            $data['classes'][$i]['class_user'] = $this->model_to_array($class_user);
         }
         $index = sizeof($data['classes']);
         if($user->user_type === "p"){
@@ -1164,8 +1169,15 @@ class ProfileController extends Controller
             }
         }
 
+        $data['groups']=array();
+        foreach($user->groupUsersAll as $i=>$group_user){
+            $club = $group_user->group;
+            if($group_user->privacy == 'only_me' && !$data['own_profile']){
+                continue;
+            }
 
-        foreach($user->clubs as $i=>$club){
+            $data['clubs'][$i]['group_user'] = $this->model_to_array($group_user);
+            
             $data['clubs'][$i]['club_name']=$club->group_name;
             $data['clubs'][$i]['club_id']=$club->group_id;
             $data['clubs'][$i]['website']=$club->website;
@@ -1286,7 +1298,11 @@ class ProfileController extends Controller
         $data['profile_pic'] = ($user->pictureFile) ?
             Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
         $data['background_pic'] = Yii::app()->getBaseUrl(true).'/assets/nice_background.jpg';
+
+
+
         $data['num_classes'] = sizeof($data['classes']);
+
         $data['num_clubs'] = sizeof($user->clubs);
         $data['num_following'] = sizeof($user->usersFollowed);
         $data['num_followers'] = sizeof($user->usersFollowing);
@@ -1352,6 +1368,99 @@ class ProfileController extends Controller
             $user = User::model()->findByPk($_GET['user']);
             $is_admin = $user->user_id == $this->get_current_user_id();
             $this->renderPartial('/partial/profile_status_bar',array('user'=>$this->get_current_user(),'origin_type'=>'user','origin_id'=>$user->user_id,'is_admin'=>$is_admin));
+        }
+
+    }
+
+
+
+    public function actionUpdateGroupPrivacy(){
+        if(!isset($_POST['origin_type']) || !isset($_POST['origin_id']) || !isset($_POST['privacy'])){
+            $return_data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'All data is not set', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        $user = $this->get_current_user($_POST);
+        if(!$user){
+            $return_data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'user not authenticated', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        $origin_type = $_POST['origin_type'];
+        $origin_id = $_POST['origin_id'];
+        $privacy = $_POST['privacy'];
+
+
+
+        if($privacy != 'public' && $privacy != 'only_me'){
+            $return_data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'invalid prvviacy type', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        if($origin_type == 'class'){
+            $class = ClassModel::model()->find('class_id=:id', array(':id'=>$origin_id));
+            if(!$class){
+                $return_data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'invalid class', '$POST'=>$_POST);
+                $this->renderJSON($return_data);
+                return;
+            }
+
+            //Make sure this user is a user of this class
+            $class_user = classUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id,':class_id'=>$class->class_id));
+            if(!$class_user){
+                $return_data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'user is not apart of this class', '$POST'=>$_POST);
+                $this->renderJSON($return_data);
+                return;
+            }
+
+
+            $class_user->privacy = $privacy;
+            if($class_user->save(false)){
+                $return_data = array('success'=>true);
+                $this->renderJSON($return_data);
+                return;
+            }else{
+                $return_data = array('success'=>false,'error_msg'=>'error updating privacy for class user');
+                $this->renderJSON($return_data);
+                return;
+            }
+        }else if($origin_type == 'club' || $origin_type == 'group'){
+            $group = Group::model()->find('group_id=:id', array(':id'=>$origin_id));
+            if(!$group){
+                $return_data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'invalid group', '$POST'=>$_POST);
+                $this->renderJSON($return_data);
+                return;
+            }
+
+            //Make sure this user is a user of this group
+            $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id,':group_id'=>$group->group_id));
+            if(!$group_user){
+                $return_data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'user is not apart of this group', '$POST'=>$_POST);
+                $this->renderJSON($return_data);
+                return;
+            }
+
+
+            $group_user->privacy = $privacy;
+            if($group_user->save(false)){
+                $return_data = array('success'=>true);
+                $this->renderJSON($return_data);
+                return;
+            }else{
+                $return_data = array('success'=>false,'error_msg'=>'error updating privacy for group user');
+                $this->renderJSON($return_data);
+                return;
+            }
+
+        }else{
+            $return_data = array('success'=>false,'error_msg'=>'invalid origin type');
+            $this->renderJSON($return_data);
+            return;
         }
 
     }

@@ -3,6 +3,26 @@
     class ApiController extends Controller
     {
 
+
+ public function actionGetPicture() {
+            if (!isset($_GET['file_id'])) {
+                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'The valid data is not set.');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $file = File::model()->find('file_id=:file_id', array(':file_id'=>$_GET['file_id']));
+            if (!$file) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'Not a valid file.');
+                $this->renderJSON($data);
+                return;
+            }
+            header('Content-type: image/jpeg');
+            $file = Yii::app()->getBaseUrl(true) . $file->file_url;
+            readfile($file);
+            return;
+        }
+
         public function actionClassesForSchool() {
 
             $user = $this->get_current_user($_GET);
@@ -1458,22 +1478,41 @@ $user_email = $user->user_email;
                 $data = array('success'=>true,'school'=>$this->model_to_array($school));
 
 
-                $sql = "SELECT *
+                 $sql = "SELECT *
                     FROM user WHERE school_id = $school_id
                     LIMIT 10;";
 
                 $users = User::model()->findAllBySql($sql);
+		$users_data = array();
 
+		foreach($users as $user) {
+		
+			$new_user = $this->model_to_array($user);
+			$new_user['department'] = $user->department;	
+			array_push($users_data, $new_user);
 
-                $data['school']['admins'] = $school->admins;
-                $data['school']['members'] = $users;
+		}
+
+		$admins = $school->admins;
+
+		$admins_data = array();
+
+		foreach($admins as $user) {
+		
+			$new_user = $this->model_to_array($user);
+			$new_user['department'] = $user->department;	
+			array_push($admins_data, $new_user);
+
+		}
+
+                $data['school']['admins'] = $admins_data;
+                $data['school']['members'] = $users_data;
                 $data['school']['department_count'] = count($school->departments);
                 $data['school']['group_count'] = count($school->groups);
 
 
                 $this->renderJSON($data);
-                return;
-            }else{
+                return;            }else{
                 $data = array('success'=>false,'error_id'=>2);
                 $this->renderJSON($data);
                 return;

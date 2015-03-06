@@ -1,28 +1,19 @@
 body {
-
 min-height: 100%;
 margin: 0;
-
 position: relative;
 z-index: 2;
-
 padding-bottom: 0px;
-
-
+overflow-x: hidden;
 border-top: none;
-
 border-bottom: none;
 font-family: 'Open Sans', sans-serif;
- 
-
-
 background: #27292b;
 background-image: url("../assets/campus_background.jpg");
 background-size: cover;
 background-position: center;
 background-attachment: fixed;
 position: relative;
-
 }
 
 /* NEW OUTER TABS */
@@ -1974,7 +1965,7 @@ border: 1px solid #000;
 }
 
 input#login_email:focus{
-  border-color: #FF1D00;
+  border-color: #FF6B00;
 }
 
 input#login_password{
@@ -3025,6 +3016,12 @@ margin-left: 0px;
 
 }
 
+@media(max-width:850px){
+  .mobile_only_panel{
+    display: block!important;
+}
+}
+
 @media(max-width:790px){
   div.dos_panels > .left {
 }
@@ -3058,11 +3055,6 @@ div.dos_panels > .right {
 }
 
 .mobile_panel_3{
-  
-}
-
-.mobile_only_panel{
-    display: block!important;
   
 }
 

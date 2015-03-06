@@ -342,7 +342,7 @@ div#fbar_wrapper{
 }
 
 div#fbar_wrapper.fbar_home{
-    
+    width:550px;
 }
 
 div#fbar_wrapper.fbar_group{
@@ -1186,10 +1186,9 @@ ul.tabnav_tabs li{
     top:-28px;
 }
 .tab_members .tab_content_holder .tab_header, .tab_group_info .tab_content_holder .tab_header{
-    border-bottom: 1px solid #e2e2e2;
+    border-bottom: 1px solid #c3c3c3;
     padding: 15px 2px 5px;
     height: 35px;
-    box-shadow: 0 -1px 1px #fff inset;
 }
 
 .tab_header_courses.tab_header{
@@ -1219,7 +1218,7 @@ div.float_Center.courses_list{
 #tabnav{
     position: relative;
 
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #c3c3c3;
     margin: 0px 0px 15px;
 }
 
@@ -1239,10 +1238,9 @@ padding: 10px 27px 9px;
 }
 
 ul.tabnav_tabs li.active div.tabnav_tab {
-border: 1px solid #ddd;
+border: 1px solid #c3c3c3;
 font-weight: 600;
 border-bottom: 1px solid #F4F4F4;
-box-shadow: 2px 0px 0px #FFF inset, -2px 0px 0px #FFF inset, 0px 2px 0px #FFF inset;
 cursor: default;
 }
 
@@ -1718,7 +1716,7 @@ textarea:focus:-moz-placeholder {
 
     }  
      body#body_home .topbar #topbar_responsive_holder .center ul{
-    width: 547px;
+    width: 550px;
 
     } 
 
@@ -1862,9 +1860,13 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
         display:none!important;
     }   
     body#body_home .topbar #topbar_responsive_holder .center ul{
-    width: 551px;
+    width: 549px;
 
     }
+        body#body_calendar .topbar #topbar_responsive_holder .center ul{
+    width: 549px!important;
+
+    }  
     body.body_searchpage .topbar > #topbar_responsive_holder{
     margin-left: 279px!important;
 }
@@ -2001,7 +2003,7 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
         min-width:855px;
     }   
     body#body_home .topbar #topbar_responsive_holder .center ul{
-    width: 458px;
+    width: 460px;
 
     } 
      body.body_searchpage .topbar #topbar_responsive_holder .center ul{
@@ -2012,14 +2014,19 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
 
     }   
     body#body_calendar .topbar #topbar_responsive_holder .center ul{
-    width: 444px!important;
-
+    width: 460px!important;
     }  
 }
 @media screen and (max-width: 1040px) {
     body.body_searchpage .topbar > #topbar_responsive_holder{
     margin-left: 20px!important;
 }
+}
+
+@media screen and (max-width: 990px){
+    body#body_calendar .topbar #topbar_responsive_holder .center ul{
+    width: 458px!important;
+    }  
 }
 
 @media screen and (max-width: 900px) {

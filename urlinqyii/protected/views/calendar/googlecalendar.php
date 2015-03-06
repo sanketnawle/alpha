@@ -29,7 +29,7 @@ include 'Google/Auth/Abstract.php';
 include 'Google/Auth/OAuth2.php';
 include 'Google/Auth/Exception.php';
 include 'Google/Http/Request.php';
-include 'Google/Http/Rest.php';
+include 'Google/Http/REST.php';
 include 'Google/Http/CacheParser.php';
 include 'Google/Logger/Abstract.php';
 include 'Google/Logger/Null.php';
@@ -38,14 +38,18 @@ include 'Google/IO/Curl.php';
 include 'Google/Task/Runner.php';
 include 'Google/Utils/URITemplate.php';
 
+
 /************************************************
   ATTENTION: Fill in these values! Make sure
   the redirect URI is to this page, e.g:
   http://localhost:8080/user-example.php
  ************************************************/
- $client_id = '960881917908-rgb9ujp6v6rf3ufmbfbg8nadb41f9tdl.apps.googleusercontent.com';
- $client_secret = 'W3U_-nJF1LFgLD1NWacK2a-_';
- $redirect_uri = 'http://127.0.0.1/alpha/urlinqyii/calendar';
+ $client_id = "566213768963-rbdpvbo33oe0dn4rdhmj83que4f13vuc.apps.googleusercontent.com";
+ //$client_id = '960881917908-rgb9ujp6v6rf3ufmbfbg8nadb41f9tdl.apps.googleusercontent.com';
+ $client_secret = "_HFKQAsU2GNSAp7yUE4n2BVv";
+ //$client_secret = 'W3U_-nJF1LFgLD1NWacK2a-_';
+ $redirect_uri = 'http://beta.urlinq.com/calendar';
+ //$redirect_uri = 'http://127.0.0.1/alpha/urlinqyii/calendar';
 /************************************************
   Make an API request on behalf of a user. In
   this case we need to have a valid OAuth 2.0
@@ -53,128 +57,111 @@ include 'Google/Utils/URITemplate.php';
   through a login flow. To do this we need some
   information from our API console project.
  ************************************************/
+$user_id = $this->get_current_user_id([]);
+$has_refresh_token = false;
+$google_user = GoogleUser::model()->find('user_id=:id', array(':id'=>$user_id));
+if($google_user){
+  if($google_user->last_updated){
+    $has_refresh_token = true;
+  }
+}
+
+$user_last_updated = Event::model()->find('user_id=:user_id order by time_added DESC', array(':user_id' => $user_id));
+$last_updated = false;
+if($user_last_updated){
+  $last_updated = $user_last_updated->time_added;
+}
+
 $client = new Google_Client();
 $client->setClientId($client_id);
 $client->setClientSecret($client_secret);
 $client->setRedirectUri($redirect_uri);
-$client->addScope("https://www.googleapis.com/auth/calendar.readonly");
+$client->setAccessType("offline");
+$client->addScope("https://www.googleapis.com/auth/calendar");
 
 /************************************************
   We are going to create both YouTube and Drive
   services, and query both.
  ************************************************/
 $yt_service = new Google_Service_Calendar($client);
-$event_service = new Google_Service_Calendar_Events($client);
 
 
 /************************************************
   Boilerplate auth management - see
   user-example.php for details.
  ************************************************/
-if (isset($_REQUEST['logout'])) {
-  unset($_SESSION['access_token']);
-}
 if (isset($_GET['code'])) {
   $client->authenticate($_GET['code']);
   $_SESSION['access_token'] = $client->getAccessToken();
-  $_SESSION["store"] = true;
+
   $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
   header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 }
 
 if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   $client->setAccessToken($_SESSION['access_token']);
+  if(!$has_refresh_token){
+  $calList = $yt_service->calendarList->listCalendarList();
+  $refreshtoken = $client->getRefreshToken();
+  $google_calendar = new GoogleUser();
+  $google_calendar->user_id = $user_id;
+  $google_calendar->last_updated = NULL;
+  $google_calendar->refreshtoken = $refreshtoken;
+  $google_calendar->email = $calList->getItems()[0]->getId();
+  $google_calendar->save(false);
+  unset($_SESSION["access_token"]);
+  }
+
 } else {
+  if($has_refresh_token){
+    $client->refreshToken($google_user->refreshtoken);
+  }
+  else{
   $authUrl = $client->createAuthUrl();
+  }
 }
 
 /************************************************
   If we're signed in, retrieve channels from YouTube
   and a list of files from Drive.
  ************************************************/
-if ($client->getAccessToken()) {
-  $_SESSION['access_token'] = $client->getAccessToken();
-  $calList = $yt_service->calendarList->listCalendarList();
-}
-
-?>
-<div class="box">
-  <div class="request">
-<?php 
 if (isset($authUrl)) {
-  echo "<a class='login' href='" . $authUrl . "'>Sync Google</a>";
-} else {
+  ?>
+  <div class="create google_sync">
+        <div class="button left_panel_create_button">
+                    <div id="google_cal_button" class="full"><a href="<?php echo $authUrl; ?>">Sync Google</a> </div>
+                </div>
+            </div>
+<?php
+} elseif($last_updated && $has_refresh_token && $last_updated > $google_user->last_updated) {
 
   $complete_events = array();
-  foreach ($calList->getItems() as $calendarListEntry) {
-    $id = $calendarListEntry->getId();
-    $list_events = $yt_service->events->listEvents($id)->getItems();
-    foreach ($list_events as $list_event) {
-      $out_array = array();  
-      $out_array["created"] = $list_event->getCreated();
-      $out_array["description"] = $list_event->getDescription();
-      $out_array["location"] = $list_event->getLocation();
-      $out_array["summary"] = $list_event->getSummary();
-      if($out_array["summary"]){
-        $out_array["title"] = $out_array["summary"];
-      }
-      elseif ($out_array["description"]) {
-        $out_array["title"] = $out_array["description"];
-      }
-      else{
-        $out_array["title"] = "Google Calendar event";
-      }
-      $start = $list_event->getStart();
-      $end = $list_event->getEnd();
-      if(isset($start->dateTime)){
-        $out_array["start"] = $start->dateTime;
-      }
-      elseif(isset($start->date)){
-        $out_array["start"] = $start->date;
-      }
-      else{
-        $out_array["start"] = null;
-      }
-      if(isset($end->dateTime)){
-        $out_array["end"] = $end->dateTime;
-      }
-      elseif(isset($start->date)){
-        $out_array["end"] = $end->date;
-      }
-      else{
-        $out_array["end"] = null;
-      }
-      array_push($complete_events, $out_array);
-    }
-  }
-  if(isset($_SESSION["store"]) and $_SESSION["store"]){
-      $user_id = $this->get_current_user_id();
+  $u_personal_events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user_id." and time_added > '".$google_user->last_updated."'")->queryAll();
+  $u_attending_events = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " and event.time_added > '".$google_user->last_updated."'")->queryAll();
+  $u_events = array_merge($u_personal_events,$u_attending_events);
+  $event = new Google_Service_Calendar_Event();
+  $start = new Google_Service_Calendar_EventDateTime();
+  $end = new Google_Service_Calendar_EventDateTime();
+  if($u_events){
+    foreach ($u_events as $u_event){
+        $start_date = (new DateTime($u_event["start_date"]))->format("Y-m-d");
+        $start_time = (new DateTime($u_event["start_time"]))->format("H:i");
+        $start = $start_date." ".$start_time;
+        $end_date = (new DateTime($u_event["end_date"]))->format("Y-m-d");
+        $end_time = (new DateTime($u_event["end_time"]))->format("H:i");
+        $end = $end_date." ".$end_time;
 
-      foreach ($complete_events as $key => $value) {
-             # code...
-           $event_entry = new Event;
-          $event_entry->event_type = "";
-          $event_entry->origin_type = "";
-          $event_entry->origin_id = "";
-          $event_entry->user_id = $user_id;
-          $event_entry->title = $value["title"];
-          $event_entry->start_time = (new DateTime($value["start"]))->format("H:i:s");
-          $event_entry->end_time = (new DateTime($value["end"]))->format("H:i:s");
-          $event_entry->start_date = (new DateTime($value["start"]))->format("Y-m-d");
-          $event_entry->end_date = (new DateTime($value["end"]))->format("Y-m-d");
-          $event_entry->time_added = $value["created"];
-          $event_entry->location = $value["location"];
-          $event_check = Event::model()->exists("title=:title and user_id=:user_id and start_date=:start_date and end_date=:end_date and location=:location", array(":title"=>$event_entry->title, ":user_id" => $event_entry->user_id, ":start_date" => $event_entry->start_date, ":end_date" => $event_entry->end_date, ":location" => $event_entry->location));
-          if(!$event_check){
-            $event_entry->save(false);
-          }
-          }
-          $_SESSION["store"] = false;
+        $text_insert = $u_event["title"]." ". $start." - ".$end." ";
+        if($u_event["location"]!=""){
+          $text_insert = $text_insert." at ".$u_event["location"];
+        }
+    
+        $createdEvent = $yt_service->events->quickAdd($google_user->email, $text_insert);
       }
-echo "Synced!";
+  $google_user->last_updated = $last_updated;
+  $google_user->save(false);
+  }
+
+
 } 
 ?>
-  </div>
-</div>
-
-
