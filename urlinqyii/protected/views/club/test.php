@@ -18,6 +18,64 @@
 
 <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/messaging/messaging.js'></script>
 
+
+
+<script>
+
+    $(document).ready(function(){
+
+
+
+        $('#generate_password_button').click(function(){
+
+            var password = $('#password_input').val();
+
+
+
+            var post_url = globals.base_url + '/admin/generatePassword';
+            var post_data = {password: password};
+
+            $.post(
+                post_url,
+                post_data,
+                function(response){
+                    if(response['success']){
+                        $('#hashed_password').val(response['hashed_password']);
+                        $('#salt').val(response['salt']);
+                    }else{
+                        alert('Error hashing password');
+                        console.log(response);
+                    }
+                },'json'
+            );
+
+        });
+    });
+
+</script>
+
+
+<div id="generate_password">
+    <label for="hashed_password">Hashed password</label>
+    <br>
+    <textarea type="text" id="hashed_password" value="" readonly style="height: 150px; width: 300px;"></textarea>
+    <br>
+    <label for="salt">Salt</label>
+    <br>
+    <input type="text" id="salt" value="" readonly style="width: 300px;">
+    <br>
+    <div>Input password</div>
+    <input type="text" id="password_input" name="password" value="" placeholder="cleartext password here">
+    <br>
+    <button type="submit" id="generate_password_button">GENERATE</button>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+
+
 <!---->
 <!---->
 <!---->

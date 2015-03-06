@@ -38,35 +38,58 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
 
-
-
-  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/getURLPara.js"></script>
-
-  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/preload_img.js"></script>
   
   <script>
+  var globals = {};
+  globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+
+
+
+
+  function is_supported_email(email){
+      for(var i = 0; i < globals.supported_email_list.length; i++){
+          if(email.indexOf(globals.supported_email_list[i]) < 0){
+              return true;
+              break;
+          }
+      }
+      return false;
+    }
+
+
   $(document).ready(function() {
-      var href = $('.forgot').attr('href');
-      $('.forgot').click(function(e){
-        e.preventDefault();
-            $.ajax({
-               url: 'php/forgotemail.php',
-               type: 'POST',
-               data:{forgot:1},
-               success: function(data)
-               {
-                //alert("sucess");
-                window.location.href = href;
-               },
-               error: function(data)
-               { 
-                 //alert("fail");
-                 //console.log("fail");
-               }
-           
-         }); 
-         //return false;        
-     });      
+
+        $.getJSON(globals.base_url + '/site/supportedEmailList', function(json_data){
+            console.log(json_data);
+            if(json_data['success']){
+                globals.supported_email_list = json_data['supported_email_list'];
+            }else{
+                console.log('Error getting supported email list');
+            }
+        });
+
+//
+//      var href = $('.forgot').attr('href');
+//      $('.forgot').click(function(e){
+//        e.preventDefault();
+//            $.ajax({
+//               url: 'php/forgotemail.php',
+//               type: 'POST',
+//               data:{forgot:1},
+//               success: function(data)
+//               {
+//                //alert("sucess");
+//                window.location.href = href;
+//               },
+//               error: function(data)
+//               {
+//                 //alert("fail");
+//                 //console.log("fail");
+//               }
+//
+//         });
+//         //return false;
+//     });
       //window.location.href = href; //causes the browser to refresh and load the requested url
   /*error handling*/
   var signup_error=$.getUrlVar("error"); 
@@ -278,9 +301,13 @@
           return;
       }
 
-      if(email.indexOf('nyu.edu') < 0 && email.indexOf('urlinq.com') < 0) {
+
+
+
+
+      if(is_supported_email()) {
           //alert('An NYU email address is required.');
-          $error_div.text('An NYU email address is required');
+          $error_div.text('Email address not supported');
           $error_div.css({'left': email_position.left - 310});
           $error_div.css({'top': email_position.top});
           $('body').append($error_div).hide().fadeIn(250);
