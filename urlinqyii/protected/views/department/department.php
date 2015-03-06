@@ -86,11 +86,17 @@
 
 
                 <div id="content_panel" class = "department_content_panel group_responsiveness">
-                    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
+                    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department,'user'=>$user)); ?>
 
 
                     <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
                         <form action="/api/uploadCoverPhoto" id="cover_photo_form" style="padding: 0px; margin: 0px;">
+                        <input type='file' class='step_6_upload' style='display:none;'>
+                    <?php } ?>
+
+
+                    <?php if($is_admin){ ?>
+                    <form action="/post/create" id="cover_photo_form" style="padding: 0px; margin: 0px;">
                         <input type='file' class='step_6_upload' style='display:none;'>
                     <?php } ?>
 
@@ -113,7 +119,22 @@
                                     <?php } ?>
                                 </div>
                             </div>
+
+                            <?php if($is_admin){ ?>
+                            <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                                <div class="upload_cover_photo_text">Change cover</div>
+                                <div id="set_to_parents_photo" style="cursor:pointer;">SET TO PARENTS IMG</div>
+                            </div>
+
+
+                            <?php } ?>
+
                         </div>
+
+
+                    <?php if($is_admin){ ?>
+                    </form>
+                    <?php } ?>
 
                     <!--        close the cover photo dropzone form if user is an admin -->
                     <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
@@ -170,7 +191,7 @@
                             </div>
                         <?php }else if($own_department){ ?>
                             <div id="group_user_action_button" class="own_department">
-                                <div id="group_user_action_button_text">My Department</div>
+                                <div id="group_user_action_button_text">My <?php echo ucfirst($department_front_end_name); ?></div>
                             </div>
                         <?php }else{ ?>
                             <div id="group_user_action_button" class="non_member" data-action_url="join">
