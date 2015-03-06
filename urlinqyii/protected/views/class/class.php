@@ -145,7 +145,7 @@
 
 
         <div id="content_panel" class = "group_responsiveness">
-        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class)); ?>
+        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class,'user'=>$user)); ?>
 
 
 
@@ -172,7 +172,7 @@
                         </div>
                     <?php }else{ ?>
                     <?php } ?>
-                    <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name . ' (' . $class->course->course_tag . ') '; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
+                    <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name; if($class->course->course_tag != ''){ echo ' (' . $class->course->course_tag . ') '; } ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
                 </div>
                 <div class = "group_right_info group_info_boxes">
                     <?php if($class->location) { ?>

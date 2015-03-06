@@ -108,7 +108,7 @@
 
 
                 <div id="content_panel" class = "course_content_panel group_responsiveness">
-                    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'course','origin_id'=>$course->course_id,'origin'=>$course)); ?>
+                    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'course','origin_id'=>$course->course_id,'origin'=>$course,'user'=>$user)); ?>
 
 
 

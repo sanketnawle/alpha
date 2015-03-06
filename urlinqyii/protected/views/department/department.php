@@ -86,7 +86,7 @@
 
 
                 <div id="content_panel" class = "department_content_panel group_responsiveness">
-                    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
+                    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department,'user'=>$user)); ?>
 
 
                     <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
@@ -191,7 +191,7 @@
                             </div>
                         <?php }else if($own_department){ ?>
                             <div id="group_user_action_button" class="own_department">
-                                <div id="group_user_action_button_text">My Department</div>
+                                <div id="group_user_action_button_text">My <?php echo ucfirst($department_front_end_name); ?></div>
                             </div>
                         <?php }else{ ?>
                             <div id="group_user_action_button" class="non_member" data-action_url="join">

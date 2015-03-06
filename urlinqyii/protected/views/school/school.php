@@ -89,7 +89,7 @@ if($school->university_id == 4){
 
 
     <div id="content_panel" class = "group_responsiveness">
-    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'school','origin_id'=>$school->school_id,'origin'=>$school)); ?>
+    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'school','origin_id'=>$school->school_id,'origin'=>$school,'user'=>$user)); ?>
 
 
 
@@ -379,8 +379,14 @@ if($school->university_id == 4){
                         </div>
                         <div class = "members_tab_content tab_content">
 
-                            <?php $members = $school->users; ?>
-                            <?php for($i = 0; $i < 50; $i++){?>
+                            <?php
+                            $members = $school->users;
+                            $members_count = count($members);
+                            if($members_count > 50){
+                                $members_count = 50;
+                            }
+                            ?>
+                            <?php for($i = 0; $i < $members_count; $i++){?>
                                 <?php $member = $members[$i]; ?>
                                 <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                     <div class = "members_card admin normal_size">
