@@ -115,7 +115,7 @@
                             </div>
                         </div>                            
                         <div class = "group_name">
-                            <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></span></p></div>
+                            <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $course->course_name; if($course->course_tag != ''){ echo ' (' . $course->course_tag . ')'; } ?></span></p></div>
                         </div>
 
                     </div>
