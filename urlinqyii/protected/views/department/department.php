@@ -11,8 +11,6 @@
 ?>
 
 
-?>
-
 <head>
     <script>
         var globals = {};
@@ -445,7 +443,6 @@
 
     </div>
 
-    <!--            --><?php //echo Yii::app()->runController('partial/rightmenu'); ?>
 </div>
 
 
