@@ -31,11 +31,22 @@ class SearchController extends Controller
             return;
         }
 
+
+        $user = $this->get_current_user($_GET);
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not authenticated');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $university_id = $user->university_id;
+
         $query = urldecode($_GET['q']);
 
         $results = array();
 
-        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(LOWER(firstname),' ',LOWER(lastname)) LIKE LOWER('%" . $query ."%') LIMIT 5");
+        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(LOWER(firstname),' ',LOWER(lastname)) LIKE LOWER('%" . $query ."%') AND user.university_id = " . $university_id . " LIMIT 5");
 
         foreach($users as $user){
             $user = $this->get_model_associations($user, array('pictureFile'));
@@ -47,7 +58,7 @@ class SearchController extends Controller
         //array_push($results, $users);
 
 
-        $classes = ClassModel::model()->findAllBySql("SELECT * FROM `class` JOIN `course` ON ( course.course_tag LIKE '%" . $query ."%') WHERE class_name LIKE '%" . $query ."%' LIMIT 5");
+        $classes = ClassModel::model()->findAllBySql("SELECT * FROM `class` JOIN `course` ON ( course.course_tag LIKE '%" . $query ."%') WHERE class_name LIKE '%" . $query ."%' AND class.university_id = " . $university_id . " LIMIT 5");
 
         foreach($classes as $class){
             $class = $this->get_model_associations($class, array('pictureFile', 'course'));
@@ -58,7 +69,7 @@ class SearchController extends Controller
             array_push($results, $class);
         }
 
-        $groups = Group::model()->findAllBySql("SELECT * FROM `group` WHERE LOWER(group_name) LIKE LOWER('%" . $query . "%') LIMIT 5");
+        $groups = Group::model()->findAllBySql("SELECT * FROM `group` WHERE LOWER(group_name) LIKE LOWER('%" . $query . "%') AND group.university_id = " . $university_id . " LIMIT 5");
 
         foreach($groups as $group){
             $group = $this->get_model_associations($group, array('pictureFile'));
@@ -70,7 +81,7 @@ class SearchController extends Controller
         }
 
 
-        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query ."%' OR course_tag LIKE '%" . $query ."%' LIMIT 5");
+        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query ."%' OR course_tag LIKE '%" . $query ."%' AND course.university_id = " . $university_id . " LIMIT 5");
 
         foreach($courses as $course){
             $course = $this->get_model_associations($course, array('pictureFile'));
@@ -84,7 +95,7 @@ class SearchController extends Controller
 
         //array_push($results, $classes);
 
-        $schools = School::model()->findAllBySql("SELECT * FROM `school` WHERE school_name LIKE '%" . $query ."%' LIMIT 5");
+        $schools = School::model()->findAllBySql("SELECT * FROM `school` WHERE school_name LIKE '%" . $query ."%' AND school.university_id = " . $university_id . " LIMIT 5");
 
         foreach($schools as $school){
             $school = $this->get_model_associations($school, array('pictureFile'));
@@ -119,11 +130,20 @@ class SearchController extends Controller
             return;
         }
 
+        $user = $this->get_current_user($_GET);
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'user not authenticated');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $university_id = $user->university_id;
+
         $query = $_GET['q'];
 
         $results = array();
 
-        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname,' ',lastname) LIKE '%" . $query ."%'");
+        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname,' ',lastname) LIKE '%" . $query ."%' AND user.university_id = " . $university_id . "");
 
         foreach($users as $user){
             $user = $this->get_model_associations($user, array('pictureFile'));
@@ -165,7 +185,7 @@ class SearchController extends Controller
         $results = array();
 
 
-        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query ."%' OR course_tag LIKE '%" . $query ."%' LIMIT 20");
+        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query ."%' OR course_tag LIKE '%" . $query ."%' AND course.university_id = " . $university_id . " LIMIT 20");
 
         foreach($courses as $course){
             $course = $this->get_model_associations($course, array('pictureFile'=>array(),'classes'=>array('professor')));
@@ -187,6 +207,19 @@ class SearchController extends Controller
 
     public function actionJson()
     { //We want to render JSON to the front-end so search.js can decode it
+
+
+        $user = $this->get_current_user($_GET);
+        if(!$user){
+            $data = array('success'=>false, 'error_msg'=>'Using not authenticated');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $university_id = $user->university_id;
+
+
         $query = Yii::app()->request->getQuery('q');
         $filter = Yii::app()->request->getQuery('f');
         $user = $this->get_current_user();
@@ -199,6 +232,7 @@ class SearchController extends Controller
             ->from('user u')
             ->join('department d','u.department_id = d.department_id')
             ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
+            ->andWhere("u.university_id = " . $university_id)
             ->limit(30)
             ->queryAll();
 //        $students = Yii::app()->db->createCommand()
@@ -211,7 +245,7 @@ class SearchController extends Controller
 //            ->limit(30)
 //            ->queryAll();
 
-        $students = User::model()->findAllBySql("SELECT * FROM `user` WHERE (CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%') AND user_type = 's' LIMIT 30");
+        $students = User::model()->findAllBySql("SELECT * FROM `user` WHERE (CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%') AND user_type = 's' AND user.university_id = " . $university_id . " LIMIT 30");
         for($i = 0; $i < count($students); $i++){
             //CHeck if u are following this user
 
@@ -228,7 +262,7 @@ class SearchController extends Controller
             $students[$i]['own_profile'] = $students[$i]['user_id'] == $this->get_current_user_id();
         }
 
-        $faculty = User::model()->findAllBySql("SELECT * FROM `user` WHERE (CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%') AND (user_type = 'p' OR user_type = 'a') LIMIT 30");
+        $faculty = User::model()->findAllBySql("SELECT * FROM `user` WHERE (CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%') AND (user_type = 'p' OR user_type = 'a') AND user.university_id = " . $university_id . " LIMIT 30");
         for($i = 0; $i < count($faculty); $i++){
             //CHeck if u are following this user
             $faculty[$i] = $this->get_model_associations($faculty[$i], array('pictureFile'));
@@ -243,7 +277,7 @@ class SearchController extends Controller
         }
 
 
-        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query . "%' OR course_tag LIKE '%" . $query . "%' LIMIT 30");
+        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query . "%' OR course_tag LIKE '%" . $query . "%' AND course.university_id = " . $university_id . " LIMIT 30");
         for($i = 0; $i < count($courses); $i++){
             $courses[$i] = $this->get_model_associations($courses[$i], array('pictureFile', 'department'));
         }
@@ -263,6 +297,7 @@ class SearchController extends Controller
             ->from('department d')
             ->join('school s', 's.school_id = d.school_id')
             ->where(array('like', "d.department_name", '%'.$query.'%'))
+            ->andWhere("d.university_id = " . $university_id)
             ->limit(30)
             ->queryAll();
 
@@ -279,7 +314,7 @@ class SearchController extends Controller
             ->queryAll();
 
 
-        $departments = Department::model()->findAllBySql("SELECT * FROM `department` WHERE department.department_name LIKE '%" .$query. "%' LIMIT 30");
+        $departments = Department::model()->findAllBySql("SELECT * FROM `department` WHERE department.department_name LIKE '%" .$query. "%' AND department.university_id = " . $university_id . " LIMIT 30");
         for($i = 0; $i < count($departments); $i++){
             $course_count = count($departments[$i]->courses);
             $faculty_count = count($departments[$i]->admins);
@@ -340,7 +375,7 @@ class SearchController extends Controller
             ->limit(30)
             ->queryAll();
         //$schoolContent = School::model()->findAllBySql($ssql);
-        $groups = Group::model()->findAllBySql("SELECT * FROM `group` WHERE LOWER(group_name) LIKE LOWER('%" . $query . "%') LIMIT 20");
+        $groups = Group::model()->findAllBySql("SELECT * FROM `group` WHERE LOWER(group_name) LIKE LOWER('%" . $query . "%') AND group.university_id = " . $university_id . " LIMIT 20");
         foreach($groups as $i=>$group){
             $groups[$i] = $this->model_to_array($group);
             $groups[$i]['num_members'] = sizeof($group->users);

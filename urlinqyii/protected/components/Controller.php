@@ -74,14 +74,18 @@ class Controller extends CController
 
 
 
+
     public function is_urlinq_admin($user){
-        if(strpos($user->user_email, '@urlinq.com') !== false){
-            return true;
-        }else if(strpos($user->user_email,'ross.kopelman@student.touro.edu') !== false){
-            return true;
-        }else{
-            return false;
+
+        $admin_email_list = array('@urlinq.com', 'ross.kopelman@student.touro.edu', 'rkopelma@student.touro.edu');
+
+        foreach($admin_email_list as $admin_email){
+            if(strpos($user->user_email, $admin_email) !== false){
+                return true;
+            }
         }
+
+        return false;
     }
 
     public $supported_emails = ['nyu.edu', 'urlinq.com','student.touro.edu','touro.edu'];
