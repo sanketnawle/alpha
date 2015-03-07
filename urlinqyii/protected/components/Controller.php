@@ -97,11 +97,21 @@ class Controller extends CController
             }
         }
 
-
         return false;
-
     }
 
+
+
+    function get_university_id_by_email($email){
+        if(strpos($email, 'nyu.edu')){
+            return 1;
+        }else if(strpos($email, 'touro.edu')){
+            return 4;
+        }else{
+            return 1;
+        }
+
+    }
 
     //Returns the current User model
     //Use like this in the controllers:

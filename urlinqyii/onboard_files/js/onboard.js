@@ -103,9 +103,12 @@ $(document).ready(function () {
         else{
             //Get university id based on email function call will be here in the future
             //When there are multiple univs
-            var university_id = '1';
+//            var university_id = '1';
+
+
+
             //Get the schools at this university then start onboarding
-            $.getJSON(base_url + '/university/getSchools?university_id=1',function(json_data){
+            $.getJSON(base_url + '/university/getSchools?university_id=' + university_id,function(json_data){
                 if(json_data['success']){
                     school_list = json_data['schools'];
                     start_onboarding();

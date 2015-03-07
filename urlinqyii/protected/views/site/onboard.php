@@ -8,7 +8,7 @@
             first_name = '<?php echo Yii::app()->session['first_name']; ?>';
             last_name = '<?php echo Yii::app()->session['last_name']; ?>';
             user_type = '<?php echo Yii::app()->session['user_type']; ?>';
-
+            university_id = '<?php echo Yii::app()->session['university_id']; ?>';
 
 
             onboarding_step = -1;
@@ -163,7 +163,7 @@
     <script id="department_template" type="text/x-handlebars-template">
         <div class='step_0_card department' data-department_id="{{department_id}}" data-department_name="{{department_name}} ({{department_tag}})" style='background: url("{{base_url}}{{pictureFile.file_url}}") center center;'>
             <div class='card_0_info'>
-                <div class='card_0_text'><div class='card_0_text_0'>{{department_name}} <span>({{department_tag}})</span></div>
+                <div class='card_0_text'><div class='card_0_text_0'>{{department_name}}{{#ifCond department_tag '!=' ''}}  <span>({{department_tag}})</span>{{/ifCond}}</div>
                     <div class='card_0_text_1'>{{users.length}} people</div>
                 </div>
                 <div class='green_join_btn'><em class = 'white_plus_icon'></em><span>Join</span></div>
