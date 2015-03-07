@@ -2493,19 +2493,27 @@ div.no_select::-moz-selection { background:transparent; }
 */
     -webkit-border-radius: 100px;
     border-radius:100px;
-    height: 33px;
-    width:33px;
+    height: 27px;
+    width:27px;
     position: absolute;
     top:200px;
     opacity: 0;
     left:350px;
-    background: #029acf;
+    background: #121314;
     z-index: 10;
     display: none;
     -webkit-animation-name: pulsate;
-    -webkit-animation-duration: 1s;
+    -webkit-animation-duration: 1.5s;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite
+}
+
+#planner_column .pulse_tp_0{
+    background: #121314;
+}
+
+#planner_column .pulse_tp_0{
+    background: #121314;
 }
 
 

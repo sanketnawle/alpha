@@ -370,6 +370,17 @@ function ready(globals){
         var $reply_form = $(this).closest('.reply_form');
         $reply_form.submit();
     });
+    $(document).on('click','.post_like_btn', function(e){
+        e.stopPropagation();
+        var $post_like_btn = $(this);
+        $post_like_btn.find("i").toggleClass("press", 1000);
+        $post_like_btn.find("span").toggleClass("press", 1000);
+        $post_like_btn.find(".like_number").toggleClass("press", 1000);
+    });
+
+    $(".post_like_btn").one( "click", function() {
+      alert();
+    });
 
 
     $(document).on('click','.option_hide',function(){

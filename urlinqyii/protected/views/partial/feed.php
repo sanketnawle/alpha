@@ -34,7 +34,7 @@
     
 
     
-
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/icon_font/styles.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/feed/feed.css"> </link>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>

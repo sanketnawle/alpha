@@ -726,6 +726,7 @@ em.down_arrow {
 
 #post_privacy {
     margin-left: -14px;
+    display: none!important;
 }
 
 #post_privacy span {

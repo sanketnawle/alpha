@@ -44,7 +44,7 @@ $(document).ready(function () {
     }
 
     var progress_bar = ["14%", "28%", "43%", "57%", "71%", "86%", "100%"];
-    var btn_text = ["Join your School", "Join your Major/Department","", "Continue", "Continue", "Continue", "Let's Get Started"];
+    var btn_text = ["Select your School", "Select your major/department","", "Continue", "Continue", "Continue", "Let's Get Started"];
     var hint_text = ["Select your School", "Select your Major/Department", "Verify .edu Email", "Sign up for Courses - Pick your Section", "Who inspires you on campus?", "Find your Group", "Add a Photo"];
     var progress_bar_color = ["rgb(186, 81, 228)", "#009ed3", "rgb(110, 56, 169)", "rgb(0, 173, 61)", "rgb(242, 110, 0)", "#ec3856", "rgb(39, 178, 78)"];
 

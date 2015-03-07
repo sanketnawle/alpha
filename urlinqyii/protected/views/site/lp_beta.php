@@ -35,14 +35,15 @@
     <!--<link href="lp_beta_announce_special.css" rel='stylesheet' type='text/css'>-->
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
 
+
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
 
 
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/lp_beta.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/getURLPara.js"></script>
 
-  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/getURLPara.js"></script>
-
-  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/preload_img.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/preload_img.js"></script>
   
   <script>
   $(document).ready(function() {
@@ -300,7 +301,6 @@
 
 
 
-
       var post_data = {
           password: password,
           firstname: firstname,
@@ -427,7 +427,6 @@
 
   });
 
-
   $(".announce_support_input").keyup(function(event){
     if(event.keyCode == 13){
         $(".announce_support_button").click();
@@ -496,6 +495,10 @@
 
 
   <body>
+      <div class="school_bgd columbia-bgd"></div>
+      <div class="school_bgd nyu-bgd"></div>
+      <div class="school_bgd stern-bgd"></div>
+      <div class="school_bgd rochester-bgd"></div>
       <div id="fb-root"></div>
       <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -667,6 +670,7 @@
 
             </div>
           </div>
+
           <div class = "main-content-wrap">
             <div class = "main-market-area">
               <!--announcement board-->
@@ -1069,7 +1073,7 @@
                                   ?>">
                       </div>
                       <div class = "registration-sec-texts">
-                        <input type = "email" name = "email" autocomplete = "off" id="email" placeholder = "School email"
+                        <input type = "email" name = "email" autocomplete = "off" class = "email" id="email" placeholder = "School email"
                         value="<?php if(isset($_SESSION['register_email'])){
                                              echo $_SESSION['register_email'];
                                         }else{

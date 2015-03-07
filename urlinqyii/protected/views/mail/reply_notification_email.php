@@ -601,9 +601,9 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 				<tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 					<td align="center" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 						<p class="footer_Text" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;">
-							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;">Urlinq, Inc 2015</a> |
-							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;">New York City</a> |
-							<a href="http://www.urlinq.com" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;"><unsubscribe style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">Unsubscribe</unsubscribe></a>
+							<a href="http://www.urlinq.com" style="text-decoration:none; margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;">Urlinq, Inc 2015</a> |
+							<a href="http://www.urlinq.com" style="text-decoration:none; margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;">New York City</a> |
+							<a href="http://www.urlinq.com" style="text-decoration:none; margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;color: #fff;"><unsubscribe style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">Unsubscribe</unsubscribe></a>
 						</p>
 					</td>
 				</tr>

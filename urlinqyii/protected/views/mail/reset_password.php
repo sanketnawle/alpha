@@ -118,6 +118,7 @@
                                         <br>
                                         <br>
                                         TM and copyright © 2014 Urlinq LLC. New York City.
+                                        <a style = "text-decoration:none;margin: 0;padding: 0;color:#999;" href="http://www.urlinq.com">Unsubscribe</a>
 
                                     </p>
                                 </td>
