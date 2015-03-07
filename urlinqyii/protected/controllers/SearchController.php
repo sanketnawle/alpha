@@ -296,7 +296,7 @@ class SearchController extends Controller
             ->from('department d')
             ->join('school s', 's.school_id = d.school_id')
             ->where(array('like', "d.department_name", '%'.$query.'%'))
-            ->andWhere("d.university_id = " . $university_id)
+            //->andWhere("d.university_id = " . $university_id)
             ->limit(30)
             ->queryAll();
 
