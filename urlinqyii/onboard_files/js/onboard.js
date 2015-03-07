@@ -283,7 +283,14 @@ $(document).ready(function () {
 
 
         } else if (curr == 2) {
-            $canvas.append("<div class='step_2_card'><a href = 'http://mail.google.com/a/nyu.edu'><h1>Check your email</h1></a><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'><p class = 'confirm_link_wrapper'><span>Please confirm your email address</span><a href = 'http://mail.google.com/a/nyu.edu' class = 'confirm_links'>Check your inbox.</a><a class = 'next_progress confirm_links'>Resend email</a></p></div>");
+            var mail_link = 'http://mail.google.com/a/nyu.edu';
+
+            if(university_id == 4){
+                mail_link = 'https://mytouro.touro.edu/cas/login?service=https%3A%2F%2Fmytouro.touro.edu%2Fpaf%2Fauthorize';
+            }
+
+
+            $canvas.append("<div class='step_2_card'><a href = 'http://mail.google.com/a/nyu.edu'><h1>Check your email</h1></a><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'><p class = 'confirm_link_wrapper'><span>Please confirm your email address</span><a href = '" + mail_link + "' class = 'confirm_links'>Check your inbox.</a><a class = 'next_progress confirm_links'>Resend email</a></p></div>");
             $('.skip_progress').hide();
             $(".full_skip").hide();
         } else if (curr == 3) {
