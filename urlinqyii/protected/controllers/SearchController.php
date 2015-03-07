@@ -232,7 +232,6 @@ class SearchController extends Controller
             ->from('user u')
             ->join('department d','u.department_id = d.department_id')
             ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
-            ->andWhere("u.university_id = " . $university_id)
             ->limit(30)
             ->queryAll();
 //        $students = Yii::app()->db->createCommand()
