@@ -393,6 +393,14 @@ class FeedController extends Controller
                 $posts[$i]['question']['options_data'] = $options_data;
                 $posts[$i]['question']['any_answers'] = $total_answers > 0;
                 $posts[$i]['question']['total_answers'] = $total_answers;
+                if(!$post_que->active){
+                    $correct_answer =  PostQuestionOption::model()->find('option_id=:oid',array(':oid'=>$post_que->correct_answer_id));
+                    if($correct_answer){
+                        $posts[$i]['question']['correct_answer'] = $correct_answer->option_text;
+                    }
+
+                }
+
 //                // adding info of participants
 //                $option_ids = array_column($options, 'option_id');
 //                $post_que_mem = PostQuestionOptionAnswer::model()->findAll('option_id=:id', array(':id'=>$option_ids));

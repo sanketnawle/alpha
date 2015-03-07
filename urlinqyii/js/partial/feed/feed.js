@@ -105,12 +105,13 @@ function ready(globals){
 
     }
     var question_data = [];
+    var closed_questions = [];
     var colors = ["#f04b5b","#4BAEF0","#FFFF4D","#8DEE6D"];
     var highlights = ["#f26370","#63b9f2","#FFFF80","#BEF5AB"];
-    function show_question_data(post){
-        var pi_0 = $(".pie_"+post['post_id']).get(0).getContext("2d");
+    function show_question_data(post_id,options_data){
+        var pi_0 = $(".pie_"+post_id).get(0).getContext("2d");
         var answer_data = [];
-        var answers = post['question']['options'];
+        var answers = options_data;
 
         for(var i=0;i<answers.length;i++) {
             answer_data[i]={
@@ -120,14 +121,16 @@ function ready(globals){
                 highlight: highlights[i]
             }
         }
-        question_data[post['post_id']] = new Chart(pi_0).Doughnut(answer_data, {
+        question_data[post_id] = new Chart(pi_0).Doughnut(answer_data, {
             percentageInnerCutout : 0,
             segmentShowStroke : false,
             showTooltips: true,
-            animationSteps : 75,
+            animationSteps : 50,
             animationEasing: "easeOutCubic"
         });
+
     }
+    //function single_question_analytics()
     function render_posts(jsonData){
 
         $.each(jsonData ,function(key,post) {
@@ -181,7 +184,8 @@ function ready(globals){
                 //post['question']['closed'] = !post['question']['active'];
                 post['question']['active'] = (post['question']['active'] == "1");
                 post['question']['closed'] = !post['question']['active'];
-
+                post['question']['show_stats'] = post['pownership'] || post['question']['public_stats'] == "1";
+                console.log('show stats '+post['question']['show_stats'])
             }
 
             post['update_timestamp'] = moment(post['update_timestamp'], "X").fromNow();
@@ -191,14 +195,12 @@ function ready(globals){
             render_post(post);
 
             if(post['post_type'] == 'multiple_choice' || post['post_type'] == 'true_false'){
-                if(post['pownership'] || !post['question']['active']){
-                    show_question_data(post);
+                if(post['question']['show_stats']){
+                    show_question_data(post['post_id'],post['question']['options']);
+                    closed_questions[post['post_id']]= post['question']['closed'];
+                }else{
+                    question_data[post['post_id']] = "none";
                 }
-                if(post['question']['total_answers']==0){
-                    $('.post[data-post_id='+post['post_id']+']').find('.anl-content-box-mb-right').hide();
-                }
-
-
             }
         });
     }
@@ -259,7 +261,9 @@ function ready(globals){
 
 
     function update_question_data(post_id){
+
         var chart = question_data[post_id];
+
         var post_url = globals.base_url+"/post/getQuestionStats";
         var post_data = {post_id:post_id};
         $.post(
@@ -268,13 +272,55 @@ function ready(globals){
             function(response){
                 if(response['success']){
 
-                    for(var i=0;i<chart.segments.length;i++){
-                        console.log(chart.segments[i].label);
-                        console.log(chart.segments[i].value);
-                        console.log(response['results'][chart.segments[i].label]);
-                        chart.segments[i].value = response['results'][chart.segments[i].label];
+
+
+                    var $post = $('.post[data-post_id='+post_id+']');
+                    var $question_analytics_holder = $post.find('.question_analytics_holder');
+                    if($post.find('.mc_question').is(':visible') && response['closed']){
+                        closed_questions[post_id] = true;
+                        console.log(response);
+                        $post.find('.mc_question').fadeOut(250);
+
+                        if(response['correct_answer']){
+                            $post.find('span.correct_answer').text(response['correct_answer']);
+                        }else{
+                            $post.find('.correct_answer_text').hide();
+                        }
+                        $post.find('.closed_question').fadeIn(250);
                     }
-                    chart.update();
+                    if(response['public_stats']=="1"){
+                        if(!$question_analytics_holder.is(':visible')){
+                            $question_analytics_holder.fadeIn(250);
+                            show_question_data(post_id,response['results']);
+                        }
+
+                    }else if(response['owner'] == false){
+                            $question_analytics_holder.fadeOut(250);
+
+                    }
+                    if($question_analytics_holder.is(':visible')){
+                        var count = parseInt($question_analytics_holder.attr('data-answer_count'));
+                        $question_analytics_holder.attr('data-answer_count', response['answer_count']);
+                        if(response['answer_count']==0){
+                            $post.find('.chart_overlay').fadeIn(250);
+                        }else if(count == 0 && response['answer_count']>0){
+
+                            show_question_data(post_id,response['results']);
+                            $post.find('.chart_overlay').fadeOut(250);
+                        }else{
+                            for(var i=0;i<chart.segments.length;i++){
+                                var count;
+                                for(var j=0;j<response['results'].length;j++){
+
+                                    if(response['results'][j]['option_text']==chart.segments[i].label){
+                                        count=response['results'][j]['participants_count'];
+                                    }
+                                }
+                                chart.segments[i].value = count;
+                            }
+                            chart.update();
+                        }
+                    }
                 }
             }
 
@@ -335,14 +381,42 @@ function ready(globals){
             post_url,
             post_data,
             function(response){
+                if(response['success']){
+                    console.log(response);
+                    $post.find('.mc_question').fadeOut(250);
+
+                    if(response['correct_answer']){
+                        $post.find('span.correct_answer').text(response['correct_answer']);
+                    }else{
+                        $post.find('.correct_answer_text').hide();
+                    }
+                    $post.find('.closed_question').fadeIn(250);
+
+
+                }
+
+            },'json'
+        );
+    });
+    $(document).on('click','.show_hide_stats',function(){
+        var checked = $(this).is(':checked');
+        var $post = $(this).closest('.post');
+        var post_id = $post.attr('data-post_id');
+        var post_url = globals.base_url + '/post/showHideStats';
+        var post_data = {post_id: post_id, checked:checked};
+        $.post(
+            post_url,
+            post_data,
+            function(response){
                 console.log(response);
                 //update_question_data(post_id);
-                $post.find('.mc_question').fadeOut(250);
-                $post.find('.mc_question').delete();
+               // $post.find('.mc_question').fadeOut(250);
+                //$post.find('.mc_question').delete();
                 //alert(JSON.stringify(response));
             },'json'
         );
     });
+
 
 
     var i = 0;
@@ -881,7 +955,13 @@ function ready(globals){
 
     $("div.comments:last-of-type").css({"border-bottom":"none"});
     setInterval(function(){
+        for(var i in question_data){
+            console.log(question_data[i]['question_closed']);
+            if(!closed_questions[i]){
+                update_question_data(i);
+            }
 
+        }
     },5000);
 
 }
