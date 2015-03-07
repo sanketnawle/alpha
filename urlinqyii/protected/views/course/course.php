@@ -1,5 +1,10 @@
 <html>
-
+    <?php
+        $department_front_end_name = 'department';
+        if($course->school->university_id == 4){
+            $department_front_end_name = 'program';
+        }
+    ?>
 
     <head>
         <script>
@@ -108,18 +113,37 @@
 
 
                 <div id="content_panel" class = "course_content_panel group_responsiveness">
-                    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'course','origin_id'=>$course->course_id,'origin'=>$course)); ?>
+                    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'course','origin_id'=>$course->course_id,'origin'=>$course,'user'=>$user)); ?>
+
+
+
+                    <?php if($is_admin){ ?>
+                    <form action="/post/create" id="cover_photo_form" style="padding: 0px; margin: 0px;">
+                        <input type='file' class='step_6_upload' style='display:none;'>
+                    <?php } ?>
+
                     <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url ?>');">
                         <div class = "blur_section_overflow_container">
                             <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url ?>');">
                             </div>
                         </div>                            
                         <div class = "group_name">
-                            <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></span></p></div>
+                            <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $course->course_name; if($course->course_tag != ''){ echo ' (' . $course->course_tag . ')'; } ?></span></p></div>
                         </div>
+
+                        <?php if($is_admin){ ?>
+                        <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                            <div class="upload_cover_photo_text">Change cover</div>
+                            <div id="set_to_parents_photo" style="cursor:pointer;">SET TO PARENTS IMG</div>
+                        </div>
+                        <?php } ?>
 
                     </div>
 
+
+                    <?php if($is_admin){ ?>
+                    </form>
+                    <?php } ?>
 
 
 
@@ -202,7 +226,7 @@
                                             <?php if($professor){ ?>
                                                 <div class="info_line indent profile_link" data-user_id="<?php echo $class->professor->user_id; ?>"><?php echo $class->professor->firstname . ' ' . $class->professor->lastname; ?></div>
                                             <?php } ?>
-                                            <div class= "info_line indent">Department of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $class->department->department_id; ?>"><?php echo $class->department->department_name; ?></a></div>
+                                            <div class= "info_line indent"><?php echo ucfirst($department_front_end_name); ?> of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $department_front_end_name . '/' . $class->department->department_id; ?>"><?php echo $class->department->department_name; ?></a></div>
                                             <div class = "info_line info_about">
                                                 <?php foreach($class_students as $student){ ?>
 

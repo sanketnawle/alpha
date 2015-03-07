@@ -3,12 +3,72 @@ $(document).ready(function() {
     var old_origin_id;
 
 
+    Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+        switch (operator) {
+            case '==':
+                return (v1 == v2) ? options.fn(this) : options.inverse(this);
+            case '===':
+                return (v1 === v2) ? options.fn(this) : options.inverse(this);
+            case '<':
+                return (v1 < v2) ? options.fn(this) : options.inverse(this);
+            case '<=':
+                return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+            case '>':
+                return (v1 > v2) ? options.fn(this) : options.inverse(this);
+            case '>=':
+                return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+            case '&&':
+                return (v1 && v2) ? options.fn(this) : options.inverse(this);
+            case '||':
+                return (v1 || v2) ? options.fn(this) : options.inverse(this);
+            case '!=':
+                return (v1 != v2) ? options.fn(this) : options.inverse(this);
+            default:
+                return options.inverse(this);
+        }
+    });
 
 
 
+    $(document).on('click','.item', function(){
+        var $this_item = $(this);
+        //Set this value as the menu selected value
+        $this_item.closest('.menu').attr('data-value',$this_item.attr('data-value'));
+        var $group_box = $this_item.closest('.group_box');
+
+
+        var origin_type = $group_box.attr('data-type');
+        var origin_id = $group_box.attr('data-id');
+        var privacy = $this_item.attr('data-value');
+
+        var post_url = globals.base_url + '/profile/updateGroupPrivacy';
+
+
+        var post_data = {
+            origin_type: origin_type,
+            origin_id: origin_id,
+            privacy: privacy
+        };
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                if(response['success']){
+                    console.log('Successfully updated group privacy.');
+                    console.log(response);
+                }else{
+                    alert('Error updating group privacy');
+
+                }
+            }
+
+        );
 
 
 
+    });
 
 
 
@@ -63,12 +123,28 @@ $(document).ready(function() {
                     $('#edit_profile_button.not_editing').click();
                 }
             }else */
+
+            console.log('JSON PROFILE DATA');
+            console.log(json_profile_data);
+
+            json_profile_data['department_front_end_name'] = 'department';
+            if(json_profile_data['university_id'] == "4"){
+                json_profile_data['department_front_end_name'] = 'Program';
+            }
+
+
+//            if(json_profile_data['school'])
+
             if($('#profile_wrapper').length){
                 $('#profile_wrapper').remove();
                 $('#profile_background_overlay').remove();
 
 
+
+
                 render_profile(base_url,json_profile_data,edit_mode);
+
+
 
             }else{
 
@@ -113,8 +189,17 @@ $(document).ready(function() {
                                 console.log('failed to get feed');
                             }
                         });
+
+
                     }
                 });
+
+
+
+
+
+
+
 
 
                 numShowcase=data.showcase_size;
@@ -163,6 +248,8 @@ $(document).ready(function() {
 
                 }
 
+
+
                 var profile_id = $('#profile_wrapper').attr('data-user_id');
                 $.getJSON(globals.base_url + '/profile/getDepartmentList',{user_id: profile_id} ,function(json_data){
                     if($('#department_circles').is(':empty')){
@@ -172,6 +259,24 @@ $(document).ready(function() {
                     }
 
                 });
+
+                //If user is looking at own profile
+                if(globals.user_id == data.user_id){
+                    //Initialize dropdown once the profile is rendered
+                    $('.ui.dropdown').dropdown();
+
+
+                    $('.group_privacy_dropdown').show();
+                    data.current_user = true;
+                }
+
+
+
+
+
+
+
+
             }
         });
     }
@@ -1787,5 +1892,40 @@ $(document).ready(function() {
             if(scripts[i].getAttribute('src') == src) return true;
         return false;
     }
+
+
+
+
+
+
+    $('.privacy_dropdown_link').click(function(){
+        $('.class_privacy').click();
+    });
+
+
+
+
+    $(".class_privacy").click(function(){
+        alert('aoksjdlasd');
+        $("#class_privacy_tooltip").hide();
+    });
+
+    $("li.privacy_list").click(function(){
+        $(this).removeClass("active");
+        $(this).addClass("active");
+    });
+
+
+
+    $(".class_privacy").mouseenter(function(){
+        $("#class_privacy_tooltip").fadeIn(250);
+    });
+
+    $(".class_privacy").mouseleave(function(){
+        $("#class_privacy_tooltip").fadeOut(250);
+    });
+
+
+
 });
 

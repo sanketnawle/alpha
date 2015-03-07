@@ -811,7 +811,7 @@ class UserController extends Controller
                 and u.user_id !=' . $user->user_id . '
                 and not exists
                 (select * from user_connection where to_user_id = u.user_id
-                    and from_user_id='.$user->user_id.') ORDER BY rand() limit 2');
+                    and from_user_id='.$user->user_id.') and u.picture_file_id !="1" ORDER BY rand() limit 2');
             }else{
                 $suggested_users = User::model()->findAllBySql(
                     'select u.* from user u, school s
@@ -819,7 +819,7 @@ class UserController extends Controller
                 and u.user_id !=' . $user->user_id . '
                 and not exists
                 (select * from user_connection where to_user_id = u.user_id
-                    and from_user_id='.$user->user_id.') ORDER BY rand() limit 2');
+                    and from_user_id='.$user->user_id.') and u.picture_file_id !="1" ORDER BY rand() limit 2');
             }
         }else if($_GET['suggestion_type'] === "user_school_specific_suggestions"){
             $school =  $user->school;
@@ -830,14 +830,14 @@ class UserController extends Controller
                 and u.user_id !=' . $_GET['previous_user_id_2'] . '
                  and u.user_id !=' . $user->user_id . ' and not exists
                 (select * from user_connection where to_user_id = u.user_id
-                    and from_user_id='.$user->user_id.') ORDER BY rand() limit 2');
+                    and from_user_id='.$user->user_id.') and u.picture_file_id != "1" ORDER BY rand() limit 2');
             }else{
                 $suggested_users = User::model()->findAllBySql(
                     'select u.* from user u
                 where u.school_id=' . $school->school_id . '
                  and u.user_id !=' . $user->user_id . ' and not exists
                 (select * from user_connection where to_user_id = u.user_id
-                    and from_user_id='.$user->user_id.') ORDER BY rand() limit 2');
+                    and from_user_id='.$user->user_id.') and u.picture_file_id != "1" ORDER BY rand() limit 2');
             }
         }else{
             $this->renderJSON(array('success'=>false,'message'=>'invalid suggestion_type '.$_GET['suggestion_type']));

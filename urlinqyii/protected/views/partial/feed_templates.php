@@ -616,67 +616,97 @@
                                                                 {{sub_text}}
                                                     </div>
 
-                                                    {{#ifCond post_type '==' 'true_false'}}
-                                                         <div class="mc_question">
-                                                            {{#each question.options}}
-                                                                <div class="mc_question_one_choice" id="{{question.answer_index}}" data-option_id="{{option_id}}">
+                                                    {{#ifCond post_type '!=' 'question'}}
 
-                                                                    <input type="radio" class="mc_question_radio_button" name="letter" >
-
-                                                                    </input>
-                                                                    <div class="mc_question_choice_letter" >
-                                                                            <span class="choice_letter" id="{{question.answer_index}}">
-                                                                                {{question.answer_index}}
-                                                                            </span>
-                                                                    </div>
-
-                                                                    <div class="mc_question_choice_text">
-                                                                        {{#ifCond anon '==' 1}}
-                                                                            <span class="choice_text"> {{option_text}} </span>
-                                                                        {{else}}
-                                                                            <span class="choice_text" style="background-color: #E0E0E0; width : {{percent_selected}}%" id="{{the_choice_letter}}expanding"> {{option_text}} </span>
-
-                                                                        {{/ifCond}}
-                                                                    </div>
-
-                                                                </div>
-
-                                                            {{/each}}
-                                                        </div>
-
-                                                    {{/ifCond}}
-
-
-                                                    {{#ifCond post_type '==' 'multiple_choice'}}
                                                         <div class="mc_question">
+                                                            {{#if question.active}}
                                                             {{#each question.options}}
                                                                 <div class="mc_question_one_choice" id="{{question.answer_index}}" data-option_id="{{option_id}}">
 
-                                                                    <input type="radio" class="mc_question_radio_button" name="letter" >
+                                                                    <input type="radio" id="option_{{../post_id}}_{{option_text}}" class="mc_question_radio_button" data-option_id="{{option_id}}" name="letter_{{../post_id}}" {{#if user_answered}}checked{{/if}}>
+                                                                    <label for="option_{{../post_id}}_{{option_text}}">{{option_text}}</label>
 
-                                                                    </input>
-                                                                    <div class="mc_question_choice_letter" >
-                                                                            <span class="choice_letter" id="{{question.answer_index}}">
-                                                                                {{question.answer_index}}
-                                                                            </span>
-                                                                    </div>
 
-                                                                    <div class="mc_question_choice_text">
+                                                                   <!-- <div class="mc_question_choice_text">
                                                                         {{#ifCond anon '==' 1}}
                                                                             <span class="choice_text"> {{option_text}} </span>
                                                                         {{else}}
                                                                             <span class="choice_text" style="background-color: #E0E0E0; width : {{percent_selected}}%" id="{{the_choice_letter}}expanding"> {{option_text}} </span>
 
                                                                         {{/ifCond}}
-                                                                    </div>
+                                                                    </div>-->
 
                                                                 </div>
 
                                                             {{/each}}
+                                                            <div class="question_functions">
+                                                                <button class = "clear_answer">Clear</button>
+                                                                <button class = "submit_answer">Submit</button>
+                                                                {{#if pownership}}
+                                                                    <button class = "close_question">Close Question</button>
+                                                                    <input type="checkbox" class = "show_hide_stats" {{#ifCond question.public_stats '==' "1"}}checked{{/ifCond}}>Make Answer Statistics Public
+                                                                {{/if}}
+                                                            </div>
+                                                            <div class="submitted_answer" style="display:none;">
+                                                                <span class="submitted_icon"></span>submitted
+                                                            </div>
+                                                            {{/if}}
                                                         </div>
+                                                        {{#if question.active}}
+                                                        <div class="closed_question" style="display:none;">
+                                                            This question is closed.
+                                                            <div class="correct_answer_text">
+                                                                Correct Answer: <span class="correct_answer"></span>
+                                                            </div>
+                                                        </div>
+                                                        {{else}}
+                                                        <div class="closed_question">
+                                                            This question is closed.
+                                                            {{#if question.correct_answer}}
+                                                            <div class="correct_answer_text">
+                                                                Correct Answer: <span class="correct_answer">{{question.correct_answer}}</span>
+                                                            </div>
+                                                            {{/if}}
+                                                        </div>
+                                                        {{/if}}
 
 
                                                     {{/ifCond}}
+
+                                                    {{#ifCond post_type '!=' "question"}}
+                                                        {{#if question.show_stats}}
+
+                                                            <div class='question_analytics_holder' data-answer_count="{{question.total_answers}}">
+                                                        {{else}}
+                                                            <div class='question_analytics_holder' style="display:none" data-answer_count="{{question.total_answers}}">
+                                                        {{/if}}
+
+                                                                {{#if question.any_answers}}
+                                                                <div class="chart_overlay"  style="display:none">
+
+                                                                    <div class="overlay_text">No Answers</div>
+                                                                </div>
+                                                                {{else}}
+                                                                <div class="chart_overlay">
+
+                                                                    <div class="overlay_text">No Answers</div>
+                                                                </div>
+                                                                {{/if}}
+                                                                <canvas class="pie_{{post_id}}" width="159" height="160"></canvas>
+                                                                <div class='answer_labels_box'>
+                                                                    {{#each question.options}}
+                                                                    <div class='answer_cell'>
+                                                                        <div class='answer_color_box' style="background-color:{{color}}"></div>
+
+                                                                        <div class='answer_label'>{{option_text}}</div>
+                                                                    </div>
+                                                                    {{/each}}
+                                                                </div>
+                                                             </div>
+                                                    {{/ifCond}}
+
+
+
 
 
 
@@ -901,7 +931,11 @@
 
                                 <div>
                                     <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
+                                    {{#ifCond post_type '==' 'question'}}
                                     <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Respond to this question...' required></textarea>
+                                    {{else}}
+                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Discuss this question...' required></textarea>
+                                    {{/ifCond}}
                                     <div class = 'dragdrop_functions'>
                                         <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
                                         <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>

@@ -66,6 +66,14 @@ return array(
                 //Maps multiple views in one line
                 //'<action:(fileUpload|contact|login|test|json|home|register|logout|timezone|onboard|sendVerificationEmail|verify|finishOnboarding|resendVerificationEmail|sendVerificationEmailFunction|sendReset|reset|doReset)>'=>'site/<action>',
 
+
+
+                //Redirect program url to department
+                //added for Touro univ
+                'program/<id:\d+>'=>'department/view',
+                'program/<id:\d+>/<action:\w+>/'=>'department/<action>',
+                'program/<action:\w+>'=>'department/<action>',
+
                 'search' => 'search/view',
                 'calendar' => 'calendar/view',
 
@@ -93,12 +101,15 @@ return array(
 
 
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+
+
+
                 '<action:\w+>'=>'site/<action>',
 
                 'post/json' => '/post/index',
                 'about' => '/site/page/view/about',
 
-
+              'club/test'=>'club/test',
 
 
 
@@ -125,7 +136,6 @@ return array(
                 'search/json'=>'search/json',
 
                 'file/upload'=>'site/fileUpload',
-
 
 
 
