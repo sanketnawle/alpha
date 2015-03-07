@@ -13,6 +13,11 @@ class CourseController extends Controller
 
 
         $is_admin = false;
+
+
+        if($this->is_urlinq_admin($user)){
+            $is_admin = true;
+        }
         //echo CJSON::encode(array('success' => true, 'count' => count($Coursees), 'data' => $Coursees));
         //Yii::app()->end();
 

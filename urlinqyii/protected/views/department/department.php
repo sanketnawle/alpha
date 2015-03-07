@@ -11,8 +11,6 @@
 ?>
 
 
-?>
-
 <head>
     <script>
         var globals = {};
@@ -33,7 +31,7 @@
 
     </script>
 
-    <title><?php echo $department->department_tag . ' - ' . $department->department_name; ?></title>
+    <title><?php if($department->department_tag != ''){echo $department->department_tag . ' - '; } echo $department->department_name; ?></title>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
@@ -86,11 +84,17 @@
 
 
                 <div id="content_panel" class = "department_content_panel group_responsiveness">
-                    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
+                    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department,'user'=>$user)); ?>
 
 
                     <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
                         <form action="/api/uploadCoverPhoto" id="cover_photo_form" style="padding: 0px; margin: 0px;">
+                        <input type='file' class='step_6_upload' style='display:none;'>
+                    <?php } ?>
+
+
+                    <?php if($is_admin){ ?>
+                    <form action="/post/create" id="cover_photo_form" style="padding: 0px; margin: 0px;">
                         <input type='file' class='step_6_upload' style='display:none;'>
                     <?php } ?>
 
@@ -113,7 +117,22 @@
                                     <?php } ?>
                                 </div>
                             </div>
+
+                            <?php if($is_admin){ ?>
+                            <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                                <div class="upload_cover_photo_text">Change cover</div>
+                                <div id="set_to_parents_photo" style="cursor:pointer;">SET TO PARENTS IMG</div>
+                            </div>
+
+
+                            <?php } ?>
+
                         </div>
+
+
+                    <?php if($is_admin){ ?>
+                    </form>
+                    <?php } ?>
 
                     <!--        close the cover photo dropzone form if user is an admin -->
                     <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
@@ -170,7 +189,7 @@
                             </div>
                         <?php }else if($own_department){ ?>
                             <div id="group_user_action_button" class="own_department">
-                                <div id="group_user_action_button_text">My Department</div>
+                                <div id="group_user_action_button_text">My <?php echo ucfirst($department_front_end_name); ?></div>
                             </div>
                         <?php }else{ ?>
                             <div id="group_user_action_button" class="non_member" data-action_url="join">
@@ -240,14 +259,14 @@
                                             </div>
                                         </a>
                                         <div class = "group_box_main_info">
-                                            <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></a>
+                                            <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name; if($course->course_tag != ''){ echo ' (' . $course->course_tag . ')'; } ?></a>
                                             <div class = "float_Right">
                                                 <span class = "group_type">Course</span>
                                             </div>
                                         </div>
                                         <div class = "group_box_secondary_info_section">
                                             <div class= "info_line indent"><?php echo count($course->classes); ?> classes</div>
-                                            <div class= "info_line indent">Department of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $course->department->department_id; ?>"><?php echo $course->department->department_name; ?></a></div>
+                                            <div class= "info_line indent"><?php echo ucfirst($department_front_end_name); ?> of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $course->department->department_id; ?>"><?php echo $course->department->department_name; ?></a></div>
                                             <div class = "info_line info_about"><?php echo $course->course_desc; ?></div>
                                         </div>
                                     </div>
@@ -424,7 +443,6 @@
 
     </div>
 
-    <!--            --><?php //echo Yii::app()->runController('partial/rightmenu'); ?>
 </div>
 
 

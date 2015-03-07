@@ -150,95 +150,95 @@
         <input type="hidden" id="id" name="id" value="">
     </form>
       <script>
-          window.fbAsyncInit = function() {
-              FB.init({
-                    appId      : '237922879690774',
-                    xfbml      : true,
-                    version    : 'v2.0'
-             });
-            };
+//          window.fbAsyncInit = function() {
+//              FB.init({
+//                    appId      : '237922879690774',
+//                    xfbml      : true,
+//                    version    : 'v2.0'
+//             });
+//            };
+//
+//            (function(d, s, id){
+//                   var js, fjs = d.getElementsByTagName(s)[0];
+//                   if (d.getElementById(id)) {return;}
+//                   js = d.createElement(s); js.id = id;
+//                   js.src = "//connect.facebook.net/en_US/sdk.js";
+//                   fjs.parentNode.insertBefore(js, fjs);
+//          }(document, 'script', 'facebook-jssdk'));
+//          function fb_login(){
+//                    FB.getLoginStatus(function(response) {
+//                        if (response && response.status === 'connected') {
+//                                    testAPI();
+//                        }else{
+//                              FB.login(function(response) {
+//                                          if (response.authResponse) {
+//                                                console.log('Welcome!  Fetching your information.... ');
+//                                                testAPI();
+//                                                FB.api('/me', function(response) {
+//                                                        console.log('Good to see you, ' + response.name + '.');
+//
+//                                                });
+//                                          } else {
+//                                                console.log('User cancelled login or did not fully authorize.');
+//                                            }
+//                             });
+//
+//                        }
+//                  });
+//        }
+//        function testAPI() {
+//                console.log('Welcome!  Fetching your information.... ');
+//                FB.api('/me', function(response) {
+//                    var first=response.first_name;
+//                    var last=response.last_name;
+//                    var email=response.email;
+//                    console.log('Successful login for: ' + JSON.stringify(response));
+//                    //      document.getElementById('status').innerHTML =
+//                    //        'Thanks for logging in, ' + first + '!';
+//                    console.log(JSON.stringify(response));
+//                    /*$.ajax({
+//                    url: 'fblogin.php',
+//                    type: 'POST',
+//                    data:{firstname:first,lastname:last,email:email, id: response.id},
+//                    success: function(data)
+//                    {
+//                    $("#fbmessage").html(data);
+//                    },
+//                    error: function(data)
+//                    {
+//                    $("#fbmessage").html(data);
+//                     }
+//
+//                    });*/
+//
+//                    document.getElementById('first').value =first;
+//                    document.getElementById('last').value= last;
+//                    document.getElementById('email').value=email;
+//                    document.getElementById('id').value=response.id;
+//                    document.forms["test"].submit();
+//
+//              });
+//              FB.api(
+//                      "/me/picture",
+//                      function (response) {
+//                          if (response && !response.error) {
+//                                console.log(JSON.stringify(response));
+//                                var url=response.data.url;
+//                                console.log(url);
+//
+//                          }
+//                      }
+//              );
+//
+//        }
+//        var d = new Date()
+//        var n = d.getTimezoneOffset();
+//        document.getElementById('offset').value= -n/60;
+//        //document.getElementById('offset').value=('0' +  document.getElementById('offset').value).slice(-2)
+//        console.log(document.getElementById('offset').value);
+//
 
-            (function(d, s, id){
-                   var js, fjs = d.getElementsByTagName(s)[0];
-                   if (d.getElementById(id)) {return;}
-                   js = d.createElement(s); js.id = id;
-                   js.src = "//connect.facebook.net/en_US/sdk.js";
-                   fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));
-          function fb_login(){
-                    FB.getLoginStatus(function(response) {
-                        if (response && response.status === 'connected') {
-                                    testAPI();
-                        }else{
-                              FB.login(function(response) {
-                                          if (response.authResponse) {
-                                                console.log('Welcome!  Fetching your information.... ');
-                                                testAPI();
-                                                FB.api('/me', function(response) {
-                                                        console.log('Good to see you, ' + response.name + '.');
-
-                                                });
-                                          } else {
-                                                console.log('User cancelled login or did not fully authorize.');
-                                            }
-                             });
-
-                        }
-                  });
-        }
-        function testAPI() {
-                console.log('Welcome!  Fetching your information.... ');
-                FB.api('/me', function(response) {
-                    var first=response.first_name;
-                    var last=response.last_name;
-                    var email=response.email;
-                    console.log('Successful login for: ' + JSON.stringify(response));
-                    //      document.getElementById('status').innerHTML =
-                    //        'Thanks for logging in, ' + first + '!';
-                    console.log(JSON.stringify(response));
-                    /*$.ajax({
-                    url: 'fblogin.php',
-                    type: 'POST',
-                    data:{firstname:first,lastname:last,email:email, id: response.id},
-                    success: function(data)
-                    {
-                    $("#fbmessage").html(data);  
-                    },
-                    error: function(data)
-                    {
-                    $("#fbmessage").html(data); 
-                     }
-       
-                    });*/
-
-                    document.getElementById('first').value =first;
-                    document.getElementById('last').value= last;
-                    document.getElementById('email').value=email;
-                    document.getElementById('id').value=response.id;
-                    document.forms["test"].submit();
-
-              });
-              FB.api(
-                      "/me/picture",
-                      function (response) {
-                          if (response && !response.error) {
-                                console.log(JSON.stringify(response));
-                                var url=response.data.url;
-                                console.log(url);
-    
-                          }
-                      }
-              );
-
-        }
-        var d = new Date()
-        var n = d.getTimezoneOffset(); 
-        document.getElementById('offset').value= -n/60;
-        //document.getElementById('offset').value=('0' +  document.getElementById('offset').value).slice(-2)
-        console.log(document.getElementById('offset').value);
-
-
- </script>   
+ </script>
 
 
   </body>

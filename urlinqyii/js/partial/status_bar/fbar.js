@@ -860,163 +860,166 @@ function fbar_ready(origin_id) {
 
         var $fbar_dropzone_form = $('.dropzone#fbar_file_form');
     //    Dropzone.options.fbar_file_form = {
-        globals.myDropzone = new Dropzone('form#fbar_file_form', {
-            url: base_url + '/post/create',
-            autoProcessQueue: false,
-            uploadMultiple: true,
-            parallelUploads: 4,
-            maxFilesize: 16,
-            maxFiles: 10,
-            acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF,.doc,.docx,.ppt,.pptx,.zip,.xls,.xlsx,.pdf",
-            maxfilesexceeded: function(file) {
-                this.removeAllFiles();
-                this.addFile(file);
-            },
-            init: function() {
-                this.on("success", function(file, response) {
-
-                    console.log('RESPONSE');
-                    console.log(response);
-
-                    console.log('success counter: ' + success_counter.toString());
-                    success_counter++;
-
-                    if(success_counter == last_file_count){
-                        console.log('LAST SUCCESS');
-
-                        if(response['success']){
-                            //alert('success');
 
 
-                            reset_fbar();
-                            render_post(response['post'],'prepend');
+        try{
+                globals.myDropzone = new Dropzone('form#fbar_file_form', {
+                url: base_url + '/post/create',
+                autoProcessQueue: false,
+                uploadMultiple: true,
+                parallelUploads: 4,
+                maxFilesize: 16,
+                maxFiles: 10,
+                acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF,.doc,.docx,.ppt,.pptx,.zip,.xls,.xlsx,.pdf",
+                maxfilesexceeded: function(file) {
+                    this.removeAllFiles();
+                    this.addFile(file);
+                },
+                init: function() {
+                    this.on("success", function(file, response) {
 
-                        }
-                        //globals.myDropzone.emit("addedfile", file);
-                    }
+                        console.log('RESPONSE');
+                        console.log(response);
 
+                        console.log('success counter: ' + success_counter.toString());
+                        success_counter++;
 
-                });
+                        if(success_counter == last_file_count){
+                            console.log('LAST SUCCESS');
 
-
-            this.on("sendingmultiple", function(file, xhr, formData) {
-                last_file_count = globals.myDropzone.files.length;
-                success_counter = 0;
-                var post_data = get_post_data();
-
-    //            $.each(post_data, function(key, value){
-    //                alert(key + ' ' + value);
-    //                formData.append(key, value);
-    //            });
-
-                formData.append('post', JSON.stringify(post_data));
-                //formData.append('post_json', JSON.stringify(post_data));
-            });
-
-
-                this.on('addedfile',function(file){
-                    console.log(file);
-
-                    var source = $('#post_file_template').html();
-
-                    var template = Handlebars.compile(source);
-
-                    var file_type = file['type'];
-
-                    if(file['name'].indexOf('.doc') > -1){
-                        file['file_type'] = 'doc';
-                    }else if(file['name'].indexOf('.ppt') > -1){
-                        file['file_type'] = 'ppt';
-                    }else if(file['name'].indexOf('.pdf') > -1){
-                        file['file_type'] = 'pdf';
-                    }else if(file['name'].indexOf('.xls') > -1){
-                        file['file_type'] = 'xls';
-                    }else if(file['name'].indexOf('.zip') > -1){
-                        file['file_type'] = 'doc';
-                    }else if(file['name'].indexOf('.jpg') > -1){
-                        file['file_type'] = 'jpg';
-                    }else if(file['name'].indexOf('.png') > -1 ){
-                        file['file_type'] = 'png';
-                    }else if(file['name'].indexOf('.gif') > -1){
-                        file['file_type'] = 'doc';
-                    }
-
-                    var generated_html = template(file);
-
-                    var $file = $(generated_html);
+                            if(response['success']){
+                                //alert('success');
 
 
-
-
-                // Create the remove button
-                var removeButton = $("<span class='file_x_icon'></span>");
-
-
-
-                    // Add the button to the file preview element.
-                    $file.append(removeButton);
-
-                    var last_modified = $file.attr('data-last_modified');
-                    var name = $file.attr('data-name');
-
-
-                $file.find('.file_x_icon').on('click',function(e) {
-
-
-                        var $x_icon = $(this);
-
-                        // Make sure the button click doesn't submit the form:
-                        e.preventDefault();
-                        e.stopPropagation();
-
-
-
-
-    //                    $('.fbar_file').each(function(){
-    //                        var $this_file = $(this);
-    //
-    //                        if($this_file.attr('data-last_modified') == last_modified.toString()){
-    //                            globals.myDropzone.removeFile(this_file);
-    //                        }
-    //                    });
-
-
-
-                        // Remove the file preview
-
-
-                        //alert(globals.myDropzone.files);
-                        console.log(globals.myDropzone.files);
-                        for(var i = 0; i < globals.myDropzone.files.length; i++){
-                            var this_file = globals.myDropzone.files[i];
-                            //console.log(this_file);
-
-                            console.log('last modified of this file from dropzone: ' + this_file.lastModified);
-                            console.log('last modified of this file last shit fuck  : ' + last_modified.toString());
-
-
-                            console.log('1 name: ' + this_file.name.toString());
-                            console.log('2 name: ' + name.toString());
-
-                            if(this_file.lastModified.toString() == last_modified.toString() && this_file.name.toString() == name.toString()){
-                                globals.myDropzone.removeFile(this_file);
-                                $('.fbar_file[data-name="' + this_file.name + '"][data-last_modified="' + this_file.lastModified + '"]').remove();
+                                reset_fbar();
+                                render_post(response['post'],'prepend');
 
                             }
+                            //globals.myDropzone.emit("addedfile", file);
                         }
 
-
-                        console.log('Current dropzone files');
-                        console.log(globals.myDropzone.files);
 
                     });
 
 
-                    $('.post_form_template').append($file);
+                this.on("sendingmultiple", function(file, xhr, formData) {
+                    last_file_count = globals.myDropzone.files.length;
+                    success_counter = 0;
+                    var post_data = get_post_data();
+
+        //            $.each(post_data, function(key, value){
+        //                alert(key + ' ' + value);
+        //                formData.append(key, value);
+        //            });
+
+                    formData.append('post', JSON.stringify(post_data));
+                    //formData.append('post_json', JSON.stringify(post_data));
+                });
 
 
-                    // Capture the Dropzone instance as closure.
-                    var _this = this;
+                    this.on('addedfile',function(file){
+                        console.log(file);
+
+                        var source = $('#post_file_template').html();
+
+                        var template = Handlebars.compile(source);
+
+                        var file_type = file['type'];
+
+                        if(file['name'].indexOf('.doc') > -1){
+                            file['file_type'] = 'doc';
+                        }else if(file['name'].indexOf('.ppt') > -1){
+                            file['file_type'] = 'ppt';
+                        }else if(file['name'].indexOf('.pdf') > -1){
+                            file['file_type'] = 'pdf';
+                        }else if(file['name'].indexOf('.xls') > -1){
+                            file['file_type'] = 'xls';
+                        }else if(file['name'].indexOf('.zip') > -1){
+                            file['file_type'] = 'doc';
+                        }else if(file['name'].indexOf('.jpg') > -1){
+                            file['file_type'] = 'jpg';
+                        }else if(file['name'].indexOf('.png') > -1 ){
+                            file['file_type'] = 'png';
+                        }else if(file['name'].indexOf('.gif') > -1){
+                            file['file_type'] = 'doc';
+                        }
+
+                        var generated_html = template(file);
+
+                        var $file = $(generated_html);
+
+
+
+
+                    // Create the remove button
+                    var removeButton = $("<span class='file_x_icon'></span>");
+
+
+
+                        // Add the button to the file preview element.
+                        $file.append(removeButton);
+
+                        var last_modified = $file.attr('data-last_modified');
+                        var name = $file.attr('data-name');
+
+
+                    $file.find('.file_x_icon').on('click',function(e) {
+
+
+                            var $x_icon = $(this);
+
+                            // Make sure the button click doesn't submit the form:
+                            e.preventDefault();
+                            e.stopPropagation();
+
+
+
+
+        //                    $('.fbar_file').each(function(){
+        //                        var $this_file = $(this);
+        //
+        //                        if($this_file.attr('data-last_modified') == last_modified.toString()){
+        //                            globals.myDropzone.removeFile(this_file);
+        //                        }
+        //                    });
+
+
+
+                            // Remove the file preview
+
+
+                            //alert(globals.myDropzone.files);
+                            console.log(globals.myDropzone.files);
+                            for(var i = 0; i < globals.myDropzone.files.length; i++){
+                                var this_file = globals.myDropzone.files[i];
+                                //console.log(this_file);
+
+                                console.log('last modified of this file from dropzone: ' + this_file.lastModified);
+                                console.log('last modified of this file last shit fuck  : ' + last_modified.toString());
+
+
+                                console.log('1 name: ' + this_file.name.toString());
+                                console.log('2 name: ' + name.toString());
+
+                                if(this_file.lastModified.toString() == last_modified.toString() && this_file.name.toString() == name.toString()){
+                                    globals.myDropzone.removeFile(this_file);
+                                    $('.fbar_file[data-name="' + this_file.name + '"][data-last_modified="' + this_file.lastModified + '"]').remove();
+
+                                }
+                            }
+
+
+                            console.log('Current dropzone files');
+                            console.log(globals.myDropzone.files);
+
+                        });
+
+
+                        $('.post_form_template').append($file);
+
+
+                        // Capture the Dropzone instance as closure.
+                        var _this = this;
 
 
 
@@ -1024,7 +1027,7 @@ function fbar_ready(origin_id) {
 
 
 
-                    //globals.myDropzone.files.push(file);
+                        //globals.myDropzone.files.push(file);
 
 
 
@@ -1037,19 +1040,23 @@ function fbar_ready(origin_id) {
 
 
 
-                })
+                    })
 
-            }
+                }
 
 
 
-    //        addedfile: function(file){
-    //
-    //            alert(JSON.stringify(file));
-    //
-    //            return file;
-    //        }
-        });
+        //        addedfile: function(file){
+        //
+        //            alert(JSON.stringify(file));
+        //
+        //            return file;
+        //        }
+            });
+        }catch(err){
+            console.log('ERROR LOADING FBAR DROPZONE');
+        }
+
     //    }
 
 

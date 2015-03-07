@@ -1,3 +1,12 @@
+<?php
+
+$department_front_end_name = 'department';
+if($user->school->university_id == 4){
+    $department_front_end_name = 'program';
+}
+?>
+
+
 
 <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
 <script>
@@ -46,9 +55,9 @@
 				<div class = "LeftPanel_DeptSchoolHolder">
 					<div class = "LeftPanel_DSContentBox">
 						<div class = "LeftPanel_DSContentBoxHeader">
-							<b>Department</b>
+							<b><?php echo ucfirst($department_front_end_name); ?></b>
 						</div>
-						<a class = "LeftPanel_DSContentBoxName" href="<?php echo Yii::app()->getBaseUrl(true); ?>/department/<?php echo $user->department->department_id; ?>">
+						<a class = "LeftPanel_DSContentBoxName" href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $department_front_end_name; ?>/<?php echo $user->department->department_id; ?>">
 							<h5><?php echo $user->department->department_name; ?></h5>
 						</a>						
 					</div>

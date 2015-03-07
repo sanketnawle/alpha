@@ -8,6 +8,16 @@
         var globals = {};
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
 
+        globals.supported_email_list = [];
+
+        $.getJSON(globals.base_url + '/site/supportedEmailList', function(json_data){
+                console.log(json_data);
+                if(json_data['success']){
+                    globals['supported_email_list'] = json_data['supported_email_list'];
+                }else{
+                    console.log('Error getting supported email list');
+                }
+            });
 
     </script>
     <script>
@@ -40,33 +50,25 @@
 
   
   <script>
-  var globals = {};
-  globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
 
 
 
-
-  function is_supported_email(email){
-      for(var i = 0; i < globals.supported_email_list.length; i++){
-          if(email.indexOf(globals.supported_email_list[i]) < 0){
-              return true;
-              break;
-          }
-      }
-      return false;
-    }
 
 
   $(document).ready(function() {
 
-        $.getJSON(globals.base_url + '/site/supportedEmailList', function(json_data){
-            console.log(json_data);
-            if(json_data['success']){
-                globals.supported_email_list = json_data['supported_email_list'];
-            }else{
-                console.log('Error getting supported email list');
-            }
-        });
+
+
+
+      function is_supported_email(email){
+          for(var i = 0; i < globals.supported_email_list.length; i++){
+              if(email.indexOf(globals.supported_email_list[i]) < 0){
+                  return true;
+                  break;
+              }
+          }
+          return false;
+        }
 
 //
 //      var href = $('.forgot').attr('href');
@@ -92,67 +94,67 @@
 //     });
       //window.location.href = href; //causes the browser to refresh and load the requested url
   /*error handling*/
-  var signup_error=$.getUrlVar("error"); 
-  if(typeof signup_error!=='undefined'){
-    signup_error= signup_error.trim();
-
-    /*different error handling
-      0=sorry cannot signup right now
-      1=select the account type
-      2=All fields are to be filled
-      3=password contains name
-      4=please enter corresponding nyu.edu email
-      5=coming soon to your university
-      6=please enter  nyu.edu email
-      7=password length atleast 6 chars
-      9=already registered please check your mail to activate your account
-      10=link expired
-      11=already registered
-    */
-    if(signup_error==0){
-      $(".reg_error_text_prompt").text("sorry cannot signup right now");
-      $(".registration-sec-texts > input").addClass("error_box_log_color");
-    } 
-    if(signup_error==1){
-      $(".registration-sec-header").addClass("error_text_log_color");
-      $("ul.account-types").addClass("error_box_log_color");
-    }
-
-    if(signup_error==2){
-      $(".reg_error_text_prompt").text("All fields are to be filled");
-      $(".registration-sec-texts > input").addClass("error_box_log_color");
-    }
-
-    if(signup_error==3){
-      $(".reg_error_text_prompt").text("Password contains name");
-      $(".registration-sec-texts > #password").addClass("error_box_log_color");
-    }
-
-    if(signup_error==4){
-      $(".reg_error_text_prompt").text("Please enter corresponding nyu.edu email");
-      $(".registration-sec-texts > #email").addClass("error_box_log_color");
-    }
-
-    if(signup_error==5){
-      $(".reg_error_text_prompt").text("Coming soon to your university");
-    }
-
-    if(signup_error==6){
-      $(".reg_error_text_prompt").text("Please enter .edu email");
-      $(".registration-sec-texts > #email").addClass("error_box_log_color");
-    }
-
-    if(signup_error==7){
-      $(".reg_error_text_prompt").text("Password length at least 6");
-      $(".registration-sec-texts > #password").addClass("error_box_log_color");
-    }
-    if(signup_error==11){
-      $(".reg_error_text_prompt").text("This account has already been registered");
-      $(".registration-sec-texts > #email").addClass("error_box_log_color");
-    }
-
-
-  }
+//  var signup_error=$.getUrlVar("error");
+//  if(typeof signup_error!=='undefined'){
+//    signup_error= signup_error.trim();
+//
+//    /*different error handling
+//      0=sorry cannot signup right now
+//      1=select the account type
+//      2=All fields are to be filled
+//      3=password contains name
+//      4=please enter corresponding nyu.edu email
+//      5=coming soon to your university
+//      6=please enter  nyu.edu email
+//      7=password length atleast 6 chars
+//      9=already registered please check your mail to activate your account
+//      10=link expired
+//      11=already registered
+//    */
+//    if(signup_error==0){
+//      $(".reg_error_text_prompt").text("sorry cannot signup right now");
+//      $(".registration-sec-texts > input").addClass("error_box_log_color");
+//    }
+//    if(signup_error==1){
+//      $(".registration-sec-header").addClass("error_text_log_color");
+//      $("ul.account-types").addClass("error_box_log_color");
+//    }
+//
+//    if(signup_error==2){
+//      $(".reg_error_text_prompt").text("All fields are to be filled");
+//      $(".registration-sec-texts > input").addClass("error_box_log_color");
+//    }
+//
+//    if(signup_error==3){
+//      $(".reg_error_text_prompt").text("Password contains name");
+//      $(".registration-sec-texts > #password").addClass("error_box_log_color");
+//    }
+//
+//    if(signup_error==4){
+//      $(".reg_error_text_prompt").text("Please enter corresponding nyu.edu email");
+//      $(".registration-sec-texts > #email").addClass("error_box_log_color");
+//    }
+//
+//    if(signup_error==5){
+//      $(".reg_error_text_prompt").text("Coming soon to your university");
+//    }
+//
+//    if(signup_error==6){
+//      $(".reg_error_text_prompt").text("Please enter .edu email");
+//      $(".registration-sec-texts > #email").addClass("error_box_log_color");
+//    }
+//
+//    if(signup_error==7){
+//      $(".reg_error_text_prompt").text("Password length at least 6");
+//      $(".registration-sec-texts > #password").addClass("error_box_log_color");
+//    }
+//    if(signup_error==11){
+//      $(".reg_error_text_prompt").text("This account has already been registered");
+//      $(".registration-sec-texts > #email").addClass("error_box_log_color");
+//    }
+//
+//
+//  }
 
   $(document).delegate(".registration-sec-texts > input","click",function(){
     $(this).removeClass("error_box_log_color");
@@ -305,7 +307,7 @@
 
 
 
-      if(is_supported_email()) {
+      if(is_supported_email(email)) {
           //alert('An NYU email address is required.');
           $error_div.text('Email address not supported');
           $error_div.css({'left': email_position.left - 310});
@@ -1152,53 +1154,53 @@
         <input type="hidden" id="fboffset" name="offset" value="" >
     </form>
 <script>
-    window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '237922879690774',
-          xfbml      : true,
-          version    : 'v2.0'
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-      function fb_login(){
-            FB.getLoginStatus(function(response) {
-        if (response && response.status === 'connected') {
-            testAPI();
-        }else{
-             FB.login(function(response) {
-   if (response.authResponse) {
-     console.log('Welcome!  Fetching your information.... ');
-     testAPI();
-     FB.api('/me', function(response) {
-       console.log('Good to see you, ' + response.name + '.');
-
-     });
-   } else {
-     console.log('User cancelled login or did not fully authorize.');
-   }
- });
-
-        }
-    });
-        }
-        function testAPI() {
+//    window.fbAsyncInit = function() {
+//        FB.init({
+//          appId      : '237922879690774',
+//          xfbml      : true,
+//          version    : 'v2.0'
+//        });
+//      };
+//
+//      (function(d, s, id){
+//         var js, fjs = d.getElementsByTagName(s)[0];
+//         if (d.getElementById(id)) {return;}
+//         js = d.createElement(s); js.id = id;
+//         js.src = "//connect.facebook.net/en_US/sdk.js";
+//         fjs.parentNode.insertBefore(js, fjs);
+//       }(document, 'script', 'facebook-jssdk'));
+//      function fb_login(){
+//            FB.getLoginStatus(function(response) {
+//        if (response && response.status === 'connected') {
+//            testAPI();
+//        }else{
+//             FB.login(function(response) {
+//   if (response.authResponse) {
+//     console.log('Welcome!  Fetching your information.... ');
+//     testAPI();
+//     FB.api('/me', function(response) {
+//       console.log('Good to see you, ' + response.name + '.');
+//
+//     });
+//   } else {
+//     console.log('User cancelled login or did not fully authorize.');
+//   }
+// });
+//
+//        }
+//    });
+//        }
+//        function testAPI() {
     
-   console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-    var first=response.first_name;
-    var last=response.last_name;
-    var email=response.email;
-      console.log('Successful login for: ' + JSON.stringify(response));
-//      document.getElementById('status').innerHTML =
-//        'Thanks for logging in, ' + first + '!';
-     console.log(JSON.stringify(response));
+//   console.log('Welcome!  Fetching your information.... ');
+//    FB.api('/me', function(response) {
+//    var first=response.first_name;
+//    var last=response.last_name;
+//    var email=response.email;
+//      console.log('Successful login for: ' + JSON.stringify(response));
+////      document.getElementById('status').innerHTML =
+////        'Thanks for logging in, ' + first + '!';
+//     console.log(JSON.stringify(response));
      /*$.ajax({
        url: 'fblogin.php',
        type: 'POST',
@@ -1213,34 +1215,34 @@
        }
        
      });*/
-
-document.getElementById('first').value =first;
-document.getElementById('last').value= last;
-document.getElementById('fb_email').value=email;
-document.getElementById('id').value=response.id;
-document.forms["test"].submit();
-
-    });
-    FB.api(
-    "/me/picture",
-    function (response) {
-      if (response && !response.error) {
-        console.log(JSON.stringify(response));
-    var url=response.data.url;
-    console.log(url);
-    
-      }
-    }
-  );
-
-  }
-  var d = new Date()
-  var n = d.getTimezoneOffset(); 
-  document.getElementById('offset').value= -n/60;
-  document.getElementById('offset').value=('0' +  document.getElementById('offset').value).slice(-2);
-  document.getElementById('fboffset').value=document.getElementById('offset').value;
-  console.log(document.getElementById('offset').value);
-
+//
+//document.getElementById('first').value =first;
+//document.getElementById('last').value= last;
+//document.getElementById('fb_email').value=email;
+//document.getElementById('id').value=response.id;
+//document.forms["test"].submit();
+//
+//    });
+//    FB.api(
+//    "/me/picture",
+//    function (response) {
+//      if (response && !response.error) {
+//        console.log(JSON.stringify(response));
+//    var url=response.data.url;
+//    console.log(url);
+//
+//      }
+//    }
+//  );
+//
+//  }
+//  var d = new Date()
+//  var n = d.getTimezoneOffset();
+//  document.getElementById('offset').value= -n/60;
+//  document.getElementById('offset').value=('0' +  document.getElementById('offset').value).slice(-2);
+//  document.getElementById('fboffset').value=document.getElementById('offset').value;
+//  console.log(document.getElementById('offset').value);
+//
 
         </script>
 <script>
