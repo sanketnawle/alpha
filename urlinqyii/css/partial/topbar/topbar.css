@@ -508,6 +508,7 @@ border-radius: 4px;}
                     font-family: Avenir;
                     bottom: 8px;
                     position: relative;
+                    cursor: pointer;
                     font-weight: 200;
                     top: -5px;
                     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
@@ -533,7 +534,7 @@ border-radius: 4px;}
                     margin: auto;
                     display: inline-block;
                     height: 28px;
-                
+                    cursor: pointer;
                     background-size: auto;
                     top: -2px;
                     padding-right: 4px;

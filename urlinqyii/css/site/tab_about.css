@@ -470,7 +470,7 @@ div.group_display_icon{
     margin-left: 7px;
     display: inline-block;
     border-radius: 1.5px;
-    float: left;
+    /* float: left; */
     position: relative;
     margin-top: 6px;     position: relative;  ;
     height: 78px;

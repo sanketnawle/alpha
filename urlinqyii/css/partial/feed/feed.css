@@ -363,13 +363,15 @@ position: relative;
 
 .post_like_btn i {
   cursor:pointer;
-  padding: 5px 5.5px 2px;
+  padding: 5px 5.5px 1px;
   border: 1px solid #15A312;
   border-radius:50%;
   display:inline-block;
   position: relative;
   line-height: 14px;
+  height: auto;
   margin:0 0 15px;
+  width: auto;
   font-size: 10.8px;
   z-index: 10000;
   color: #17B325;
@@ -627,7 +629,7 @@ position: absolute;
 width: 15px;
 padding-left: 11px;
 height: 21px;
-right: -22px;  
+right: -21px;  
 border: 1px solid #05BB15;
 padding-right: 6px;
 border-left: none;               
