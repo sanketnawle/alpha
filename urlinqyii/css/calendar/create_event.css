@@ -878,7 +878,7 @@ input.checkbox_share_event[type=checkbox] ~ label.flat7bcal > span.move{
 }
 
 input.checkbox_share_event[type=checkbox] ~ span.share_in_feed_text{
-    opacity: .7;
+    opacity: 1;
     
 }
 
@@ -895,21 +895,41 @@ input.checkbox_share_event[type=checkbox]:checked ~ label.flat7bcal > span.move{
 
 input.checkbox_share_event[type=checkbox]:checked ~ span.share_in_feed_text{
     opacity: 1;
-    
+    color: rgba(255, 255, 255, 1);
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 span.share_in_feed_text{
 
     opacity: 1;
-    font-size: 12px;
+    
+
+    font-size: 11px;
     
 
     position: relative;
 
     top: -1px;
 
+    padding-left: 5px;
+
+    width: 74px;
+
+    left: -6px;
+
+    text-align: right;
+
+    z-index: 1000000000000;
+
+    padding-right: 4px;
+
     float: left;
     font-weight: 100;
+    
+
+    color: rgba(255, 255, 255, 0.69);
+
     text-transform: lowercase;
 }
 

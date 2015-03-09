@@ -242,6 +242,12 @@ background-image: url(../../assets/create_event_icon.png);
     width: 130px;
 }
 
+.ul-calendar .leftbar .create.google_sync .button:active{
+    -webkit-box-shadow: none!important;
+  -moz-box-shadow: none!important;
+  box-shadow: none!important;
+}
+
 .ul-calendar .leftbar .create.google_sync{
 
 }
