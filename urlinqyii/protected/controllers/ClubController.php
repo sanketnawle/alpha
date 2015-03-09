@@ -246,10 +246,10 @@ class ClubController extends Controller
 
                 //Loop through all events this user has for this group and delete them
                 //Or else the database will get fucked up
-                $user_events = Event::model()->findAllBySql("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " .$user_id . " AND event.origin_type = 'group' AND event.origin_id = " . $group_id);
+                $user_events = Event::model()->findAllBySql("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " .$user_id . " AND (event.origin_type = 'group' OR event.origin_type = 'club') AND event.origin_id = " . $group_id);
 
                 //Get the events that this
-                $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND event.origin_type = 'group' AND event.origin_id = " . $group_id);
+                $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND (event.origin_type = 'group' OR event.origin_type = 'club') AND event.origin_id = " . $group_id);
 
                 $all_events = array_merge($events,$user_events);
                 foreach($all_events as $event){

@@ -333,7 +333,11 @@ function ready(globals){
         var $radio = $question.find('.mc_question_radio_button:checked');
         var post_id = $radio.closest('.post').attr('data-post_id');
         var option_id = $radio.closest('.mc_question_one_choice').attr('data-option_id');
-
+        if($radio.length==0){
+            $question.closest('.post').find('.submitted_answer').text('Select an answer');
+            $question.closest('.post').find('.submitted_answer').fadeIn(250);
+            return;
+        }
         //alert(option_id);
 
         var post_url = globals.base_url + '/post/answerQuestion';
@@ -345,7 +349,7 @@ function ready(globals){
             post_data,
             function(response){
                 console.log(response);
-
+                $question.closest('.post').find('.submitted_answer').text('Submitted');
                 $question.closest('.post').find('.submitted_answer').fadeIn(250);
                 update_question_data(post_id);
                 //alert(JSON.stringify(response));
@@ -355,7 +359,10 @@ function ready(globals){
 
     $(document).on('click','.clear_answer',function(){
         var $post = $(this).closest('.post');
-        var post_id = $post.attr('data-post_id');
+
+        $post.find('.mc_question_radio_button:checked').prop('checked',false);
+        $post.find('.submitted_answer').fadeOut(250);
+        /*var post_id = $post.attr('data-post_id');
         var post_url = globals.base_url + '/post/clearQuestion';
 
         var post_data = {post_id: post_id};
@@ -369,7 +376,7 @@ function ready(globals){
                 $post.find('.submitted_answer').fadeOut(250);
                 //alert(JSON.stringify(response));
             },'json'
-        );
+        );*/
     });
 
     $(document).on('click','.close_question',function(){
