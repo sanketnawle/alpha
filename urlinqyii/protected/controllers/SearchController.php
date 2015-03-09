@@ -184,6 +184,8 @@ class SearchController extends Controller
 
         $results = array();
 
+        $university_id = $user->user_id;
+
 
         $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query ."%' OR course_tag LIKE '%" . $query ."%' AND course.university_id = " . $university_id . " LIMIT 20");
 
@@ -223,7 +225,10 @@ class SearchController extends Controller
         $query = Yii::app()->request->getQuery('q');
         $filter = Yii::app()->request->getQuery('f');
         $user = $this->get_current_user();
-        $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
+
+
+
+
         //$user = User::model()->find('user_id=:id', array(':id'=>1)); //temporary...
 
         //just gets everything that contains the search string (unspecific search)
@@ -244,7 +249,7 @@ class SearchController extends Controller
 //            ->limit(30)
 //            ->queryAll();
 
-        $students = User::model()->findAllBySql("SELECT * FROM `user` WHERE (CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%') AND user_type = 's' AND user.university_id = " . $university_id . " LIMIT 30");
+        $students = User::model()->findAllBySql("SELECT * FROM `user` WHERE ((CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%') AND user_type = 's') AND user.university_id = " . $university_id . " LIMIT 30");
         for($i = 0; $i < count($students); $i++){
             //CHeck if u are following this user
 
@@ -261,7 +266,7 @@ class SearchController extends Controller
             $students[$i]['own_profile'] = $students[$i]['user_id'] == $this->get_current_user_id();
         }
 
-        $faculty = User::model()->findAllBySql("SELECT * FROM `user` WHERE (CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%') AND (user_type = 'p' OR user_type = 'a') AND user.university_id = " . $university_id . " LIMIT 30");
+        $faculty = User::model()->findAllBySql("SELECT * FROM `user` WHERE ((CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%') AND (user_type = 'p' OR user_type = 'a')) AND user.university_id = " . $university_id . " LIMIT 30");
         for($i = 0; $i < count($faculty); $i++){
             //CHeck if u are following this user
             $faculty[$i] = $this->get_model_associations($faculty[$i], array('pictureFile'));
@@ -276,7 +281,7 @@ class SearchController extends Controller
         }
 
 
-        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query . "%' OR course_tag LIKE '%" . $query . "%' AND course.university_id = " . $university_id . " LIMIT 30");
+        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE (course_name LIKE '%" . $query . "%' OR course_tag LIKE '%" . $query . "%') AND course.university_id = " . $university_id . " LIMIT 30");
         for($i = 0; $i < count($courses); $i++){
             $courses[$i] = $this->get_model_associations($courses[$i], array('pictureFile', 'department'));
         }

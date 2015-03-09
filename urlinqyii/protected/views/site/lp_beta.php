@@ -1,6 +1,9 @@
 
 <html>
 <head>
+
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
     <script>
         base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
 
@@ -46,8 +49,7 @@
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
 
 
-    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
-    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
+
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/lp_beta.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/getURLPara.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/preload_img.js"></script>
@@ -65,6 +67,8 @@
 
 
       function is_supported_email(email){
+          alert(JSON.stringify(globals.supported_email_list));
+
           for(var i = 0; i < globals.supported_email_list.length; i++){
               if(email.indexOf(globals.supported_email_list[i]) < 0){
                   return true;
@@ -306,8 +310,6 @@
           $('body').append($error_div).hide().fadeIn(250);
           return;
       }
-
-
 
 
 
