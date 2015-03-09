@@ -229,7 +229,7 @@ width: 980px!important;
 #topbar_responsive_holder{
     max-width: 1145px;
     margin: 0px auto; 
-    padding-right: 220px;
+    /* padding-right: 220px; */
     height: 48px;
     position: relative;
 }
@@ -842,7 +842,7 @@ body .topbar div.calendar_link{}
 
 @media(max-width:1348px){
 #topbar_responsive_holder{
-    padding-right:196px;
+    /* padding-right:196px; */
 }
 body .topbar div.calendar_link{}
 
@@ -863,7 +863,7 @@ body.body_group .topbar > #topbar_responsive_holder > .right{}
 
 @media(max-width:1330px){
 #topbar_responsive_holder{
-    padding-right:186px;
+    /* padding-right:186px; */
 }
 body .topbar div.calendar_link{}
 
