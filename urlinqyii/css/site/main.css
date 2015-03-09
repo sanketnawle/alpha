@@ -1839,7 +1839,7 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
     }  
 
     body.first_visit_two .topbar > #topbar_responsive_holder > .center {
-        margin-left: 178px!important;
+/*        margin-left: 178px!important;*/
     }
 
     #body_home #content_panel{
@@ -1951,7 +1951,7 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
     }
 
     body.first_visit_two .topbar .center form{
-        max-width: 456px!important;
+        /*max-width: 456px!important;*/
     }
     body.first_visit_two .topbar > #topbar_responsive_holder > .center{
         width:457px!important;
