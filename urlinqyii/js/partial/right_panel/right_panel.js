@@ -144,7 +144,7 @@ $(document).ready(function() {
         $follow_icon.addClass("followed_icon");
         var post_url = base_url + "/user/follow";
         //var post_data = {user_id:$user_block.attr('data-suggestion_id')};
-        var post_data = {user_id: $button.attr('data-user_id')};
+        var post_data = {user_id: $user_block.attr('data-suggestion_id')};
         var suggest_type = $('.suggestion_type.active').attr('data-suggestion_type');
 
 
