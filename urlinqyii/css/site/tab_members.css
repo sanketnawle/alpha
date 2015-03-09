@@ -81,7 +81,7 @@ div.members_tab_content div.members_card_wrapper.class_admin div.user_main_info{
 }
 
 div.members_tab_content div.members_card_wrapper.class_admin div.user_more_info{
-    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 4px 7px 4px; font-size: 14px; font-weight: 500;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 4px 7px 4px; font-size: 14px; font-weight: 500; height: 30px;
     
 }
 

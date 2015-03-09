@@ -245,7 +245,12 @@
                     <div class="tab_text">Members</div>
                     <div class = "tab_amount">
                         <?php if(count($class->users)>0){
-                            echo count($class->users);
+                            if($class->professor && !$class->professor()){
+                                echo count($class->users)+1;
+                            }else{
+                                echo count($class->users);
+                            }
+
                         }?>
                     </div>
                 </div>
@@ -831,7 +836,7 @@
                 <div id="class_members_tab" class= "members_tab_content tab_content">
 
                     <?php
-                        $professor = $class->professor();
+                        $professor = $class->professor;
                         if($professor){
                     ?>
                         <div class = "members_card_wrapper class_admin" data-user_id='<?php echo $professor->user_id; ?>' data-name="<?php echo $professor->full_name(); ?>">
@@ -847,12 +852,15 @@
                                         <span>In office</span>
                                     </span>-->
                                 </div>
+                                <?php if($professor->department){ ?>
                                 <div class = "user_more_info">
                                     <span class = "label">Department <br> </span><a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $professor->department->department_id; ?>" class = "data department_link"><?php echo $professor->department->department_name; ?></a>
                                 </div>
+                                <?php } if($professor->professorAttribute->office_location){ ?>
                                 <div class = "user_more_info">
                                     <span class = "label">Office location <br> </span><span class = "data location"><?php echo $professor->professorAttribute->office_location; ?></span>
                                 </div>
+                                <?php } ?>
                                 <div class = "user_more_info">
                                     <span class = "label">Email address <br> </span><span class = "data email"><?php echo $professor->user_email; ?></span>
                                 </div>
