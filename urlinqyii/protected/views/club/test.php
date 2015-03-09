@@ -1,4 +1,6 @@
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<script type="text/javascript" src="http://<?php echo Yii::app()->nodeSocket->host;?>:<?php echo Yii::app()->nodeSocket->port;?>/socket.io/socket.io.js" > </script>
+<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/messaging/YiiNodeSocket.js" > </script>
 <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
 
 
@@ -8,7 +10,10 @@
     globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
     globals.user_id = '<?php echo $user->user_id; ?>';
 
+    globals.socket_io_url = 'http://<?php echo Yii::app()->nodeSocket->host;?>:<?php echo Yii::app()->nodeSocket->port;?>/client';
 
+    console.log('socket io url');
+    console.log(globals.socket_io_url);
 </script>
 
 <!--<script src='--><?php //echo Yii::app()->getBaseUrl(true); ?><!--/js/file_upload.js'></script>-->
@@ -96,6 +101,9 @@
     {{text}}
     </div>
 </script>
+
+
+
 
 <div class="chat_box" data-target_id="2" data-target_type="user">
     <div class="chat_box_text">

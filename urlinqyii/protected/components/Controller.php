@@ -132,13 +132,22 @@ class Controller extends CController
         if($post && isset($post['token'])){
             $user_token = UserToken::model()->find('token=:token',array(':token'=>$post['token']));
             if($user_token){
+
                 return User::model()->find('user_id=:id', array(':id'=>$user_token->user_id));
             }else{
                 return null;
             }
         }
+        $user = User::model()->find('user_id=:id', array(':id'=>Yii::app()->session['user_id']));
+        //$this->register_node_js_user($user->user_id);
 
-        return User::model()->find('user_id=:id', array(':id'=>Yii::app()->session['user_id']));
+        return $user;
+    }
+
+    function register_node_js_user($user_id){
+//        $frame = Yii::app()->nodeSocket->getFrameFactory()->createAuthenticationFrame();
+//        $frame->setUserId($user_id);
+//        $frame->send();
     }
 
 
