@@ -60,7 +60,7 @@ padding-bottom: 3px;
     background-position: 0px -1384px;
 
     width: 100px;
-    height: 120px;
+    height: 100px;
 }
 
 .no_posts_container div.no_posts_message{
@@ -375,7 +375,9 @@ position: relative;
   font-size: 10.8px;
   z-index: 10000;
   color: #17B325;
+  height: 23px;
   transition:.2s;
+  opacity: 1;
 }
 
 .post_like_btn{
@@ -735,6 +737,7 @@ div.post_comment_btn:active> span{
     position: relative;
     display: block; 
     float: left;
+    height: 18px;
     color: #029acf;
     top: 9px;
     margin-left: 4px;
