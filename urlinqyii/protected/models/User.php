@@ -268,19 +268,19 @@ class User extends CActiveRecord
 	}
 
 
-    public function behaviors() {
-        return array(
-            // attach channel behavior
-            'channel' => array(
-                'class' => '\YiiNodeSocket\Behaviors\ArChannel',
-                'updateOnSave' => true
-            ),
-            // attach subscriber behavior
-            'subscriber' => array(
-                'class' => '\YiiNodeSocket\Behaviors\ArSubscriber'
-            )
-        );
-    }
+//    public function behaviors() {
+//        return array(
+//            // attach channel behavior
+//            'channel' => array(
+//                'class' => 'application.extensions.yii-node-socket.lib.php.behaviors.ArChannel',
+//                'updateOnSave' => true
+//            ),
+//            // attach subscriber behavior
+//            'subscriber' => array(
+//                'class' => 'application.extensions.yii-node-socket.lib.php.behaviors.ArSubscriber'
+//            )
+//        );
+//    }
 
 
 
