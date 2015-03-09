@@ -36,6 +36,9 @@ class SiteController extends Controller
     // urlinq.com/
 	public function actionIndex()
 	{
+
+
+        Yii::app()->nodeSocket->registerClientScripts();
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
         $test_str = 'Testing passing data from controller to front end';

@@ -1,10 +1,88 @@
 $(document).ready(function() {
 
+// create object
+var socket = new YiiNodeSocket();
+
+// enable debug mode
+socket.debug(true);
+
+socket.on('*', function (data) {
+    console.log(data);
+});
+socket.on('event.example', function (data) {
+    console.log(data);
+});
+
+socket.on('message', function (data) {
+    console.log('RECEIVING DATA: ');
+    console.log(data);
+});
+
+
+
+socket.on('connect', function(socket) {
+    console.log("CONNECTED TO SOCKET.IO");
+
+
+    socket.on('message', function (data) {
+        console.log('RECEIVING DATA: ');
+        console.log(data);
+    });
+
+
+    socket.emit('global.event', {
+        message : {
+            id : 12,
+            title : 'This is a test message'
+        }
+    });
+
+    socket.on('global.event', function (data) {
+        console.log(data.message); // you will see in console `This is a test message`
+    });
+
+
+
+
+});
+
+
+
 
 init();
 
 
+
+
+
 function init(){
+
+
+
+
+
+
+
+//    var socket = new YiiNodeSocket();
+//    // catch global event
+//    socket.on('test.event', function () {
+//        console.log('Trigger test.event, is a global event, for all clients');
+//        console.log(arguments);
+//    });
+//
+//    // catch room event
+//    socket.room('testRoom').join(function (isConnected, numberOfRoomClients) {
+//        if (isConnected) {
+//            // catch test.event only for this rooom
+//            this.on('test.event', function () {
+//                 console.log('arguments');
+//            });
+//        }
+//    });
+
+
+
+
 
     $.getJSON(globals.base_url + '/message/load', {}, function(json_data){
         if(json_data['success']){
@@ -33,27 +111,37 @@ function poll(last_update){
     var get_data = {last_update: last_update};
 
 
+
+
     $.ajax({
+        type:"GET",
         dataType: "json",
         async: true,
         url: get_url,
         data: get_data,
-        timeout: 10000,
-        cache: false
-    }).done(function(response){
-        console.log('Polling complete.');
-        console.log(response);
-        if(response['success']){
-            $.each(response['messages'], function(index, message_json){
-                render_message(message_json);
-            });
+        timeout: 1000000,
+        cache: false,
 
-            poll(response['last_update']);
-        }else{
-            console.log("Error polling messages");
+        success: function(response) {
+            console.log('Polling complete.');
             console.log(response);
+            if(response['success']){
+                $.each(response['messages'], function(index, message_json){
+                    render_message(message_json);
+                });
+
+                poll(response['last_update']);
+            }else{
+                console.log("Error polling messages");
+                console.log(response);
+            }
+        },
+        error: function(){
+           console.log("ERROR POLLING MESSAGES");
         }
-    }).always(poll(last_update));
+    });
+
+
 
 }
 
@@ -110,20 +198,45 @@ $(document).on('keydown', '.chat_input', function(e){
             text: text
         };
 
-        $.post(
-            post_url,
-            post_data,
-            function(response){
-                alert(JSON.stringify(response));
 
+
+        socket.emit('message', {
+            message : {
+                id : 12,
+                text : text
+            }
+        });
+
+        socket.emit('event.example', {
+            message : {
+                id : 12,
+                text : text
+            }
+        });
+
+
+
+        $.ajax({
+            type:"POST",
+            dataType: "json",
+            async: true,
+            url: post_url,
+            data: post_data,
+            cache: false,
+
+            success: function(response) {
+                alert(JSON.stringify(response));
 
                 if(response['success']){
                     render_message(response['message']);
                 }else{
 
                 }
-            },'json'
-        );
+            },
+            error: function(){
+               console.log("ERROR SENDING MESSAGE");
+            }
+        });
 
     }
 });

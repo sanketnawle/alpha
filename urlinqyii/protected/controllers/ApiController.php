@@ -1876,6 +1876,7 @@ $user_email = $user->user_email;
 
             if($course){
                 $data = array('success'=>true,'course'=>$this->get_model_associations($course,array('pictureFile'=>array(), 'department'=>array(), 'users'=>array('pictureFile'))));
+				$data['course']['classes'] = $course->classes;
 
                 $this->renderJSON($data);
                 return;
