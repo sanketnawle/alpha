@@ -112,6 +112,7 @@ body#body_home #page{
 #right_panel {
     position: fixed;
     top: 48px;
+    display: none;
     right: 0px;
     width: 205px;
     bottom: 0;
@@ -128,7 +129,7 @@ body#body_home #page{
 #main_panel{
     max-width: 1145px;
     margin: 0px auto;
-    padding-right: 220px;
+    /*padding-right: 220px;*/
 
 }
 
@@ -1720,7 +1721,7 @@ textarea:focus:-moz-placeholder {
 
     } 
 
-    body#body_home.first_visit .topbar #topbar_responsive_holder .center ul{
+    body#body_home.first_visit_two .topbar #topbar_responsive_holder .center ul{
         width: 551px;
     }
 
@@ -1743,7 +1744,7 @@ textarea:focus:-moz-placeholder {
 
 body.left_panel_hidden_p2.left_panel_hidden #topbar_responsive_holder{
 width:980px!important;
-padding-right: 220px!important;
+/* padding-right: 220px!important; */
 }
 
 /* Media Queries */
@@ -1758,11 +1759,11 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
     }
 
     body.left_panel_hidden.left_panel_hidden_p2 #main_panel.group_responsiveness{
-        padding-right:220px;
+        /* padding-right:220px; */
     }
 
     #right_panel.group_responsiveness{
-        display:none;
+        display: none!important;
     }
 
     /*body#body_home #right_panel.group_responsiveness{
@@ -1813,7 +1814,7 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
     }
     body.body_searchpage .topbar > #topbar_responsive_holder{}
 
-    #body_home.first_visit #main_panel {
+    #body_home.first_visit_two #main_panel {
         padding-right: 0px;
     }
 
@@ -1837,7 +1838,7 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
 
     }  
 
-    body.first_visit .topbar > #topbar_responsive_holder > .center {
+    body.first_visit_two .topbar > #topbar_responsive_holder > .center {
         margin-left: 178px!important;
     }
 
@@ -1908,7 +1909,7 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
     .topbar .center form{
 
     }
-    body#body_home.first_visit .topbar #topbar_responsive_holder .center ul{
+    body#body_home.first_visit_two .topbar #topbar_responsive_holder .center ul{
         width: 470px;
     }
 
@@ -1941,18 +1942,18 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
     border-radius: 5px!important;
     }
 
-    body.first_visit .topbar > #topbar_responsive_holder > .center{
+    body.first_visit_two .topbar > #topbar_responsive_holder > .center{
         margin-left:0px!important;
     }
 
-    body.first_visit .topbar > #topbar_responsive_holder > .left{
+    body.first_visit_two .topbar > #topbar_responsive_holder > .left{
         margin-left: 15px!important;
     }
 
-    body.first_visit .topbar .center form{
+    body.first_visit_two .topbar .center form{
         max-width: 456px!important;
     }
-    body.first_visit .topbar > #topbar_responsive_holder > .center{
+    body.first_visit_two .topbar > #topbar_responsive_holder > .center{
         width:457px!important;
     }
 
@@ -2906,38 +2907,34 @@ display: none;
   left:0px;
 }
 
-body#body_home.first_visit div#right_panel{
+body#body_home.first_visit_two div#right_panel{
     display: none!important;
 }
 
-body.first_visit .topbar > #topbar_responsive_holder > .left {
-margin-left: 37px;
-margin-right: 13px;
+body.first_visit_two .topbar > #topbar_responsive_holder > .left {
+/* margin-left: 37px; */
+/* margin-right: 13px; */
 }
 
-body.first_visit .topbar > #topbar_responsive_holder > .center {
-margin-left: 154px;
-width: 550px;
-margin-right: 12px;
+body.first_visit_two .topbar > #topbar_responsive_holder > .center {
+/* margin-left: 154px; */
+/* width: 550px; */
+/* margin-right: 12px; */
 }
 
-body.first_visit #nav_bar{
+body.first_visit_two #nav_bar{
     z-index: 98!important;
 }
 
-body.first_visit .topbar{
-    z-index: 99!important;
+body.first_visit_two .topbar .center form {
+/* max-width: 537px; */
 }
 
-body.first_visit .topbar .center form {
-max-width: 537px;
-}
-
-body#body_home.first_visit #main_panel {
+body#body_home.first_visit_two #main_panel {
     padding-right: 0px;
 }
 
-body#body_home.first_visit #topbar_responsive_holder{
+body#body_home.first_visit_two #topbar_responsive_holder{
     padding-right: 0px!important;
 }
 

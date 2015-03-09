@@ -756,6 +756,43 @@ class SiteController extends Controller
 
 	}
 
+
+
+    public function actionUnsubscribe() {
+        if(!isset($_GET['email'])){
+            $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'Email is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $email = $_GET['email'];
+
+        $email_unsubscribe = EmailUnsubscribe::model()->find('email=:email', array(':email'=>$email));
+
+
+
+        $success = false;
+
+        if($email_unsubscribe){
+            $success = true;
+        }else{
+            $email_unsubscribe = new EmailUnsubscribe;
+            $email_unsubscribe->email = $email;
+            if($email_unsubscribe->save(false)){
+                $success = true;
+            }
+        }
+
+
+
+        $this->render('unsubscribe',array('success'=>$success));
+
+    }
+
+
+
+
+
     public function actionLogout() {
         Yii::app()->session->destroy();
         $this->redirect(Yii::app()->getBaseUrl(true) . '/');
