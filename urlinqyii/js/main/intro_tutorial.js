@@ -14,12 +14,14 @@ $(document).ready(function(){
 
             //$(".intro_div_1").pulse($(".pulse_tp_0"),{x:10,y:10});
 
-            var promptHeader1=["Your Account Menu","Your Account Menu"];
-            var promptHeader2 = ["The Planner","Planner"];
-            var promptHeader3 = ["Collaboration Bar","Collaboration Bar"];
+            var promptHeader1=["Your Account Menu"];
+            var promptHeader2 = ["The Planner"];
+            var promptHeader3 = ["Collaboration Bar"];
             var promptContent=["As you add your classes and groups all of the events will automatically sync into your planner so that you stay up-to-date with the things that you most care about on campus and in your classes"];
-            var footer= "<p>Seen this before? <a>Opt out of these tips</a></p>";
+            var promptContent2=["Now you can share content and crowdsource answers to questions you have among your peers from your department and school. You choose your audience and you can even post things anonymously so that no question goes unanswered!"];
 
+            var footer= "<p>Seen this before? <a>Opt out of these tips</a></p>";
+/*
             if($tutorial_starter_button.hasClass('show_profile_tutorial')) {
                 $(".intro_div_1").addClass('show_tutorial');
                 $(".intro_div_1").tooltip({
@@ -30,14 +32,14 @@ $(document).ready(function(){
                     footer: footer,
                     wedge: 'left'
                 });
-            }
+            }*/
             if($tutorial_starter_button.hasClass('show_planner_tutorial')){
                 $(".intro_div_2").addClass('show_tutorial');
                 $(".intro_div_2").tooltip({x:-525, y:-300, promptHeader: promptHeader2, promptContent: promptContent, footer:footer, wedge:'right'});
             }
             if($tutorial_starter_button.hasClass('show_fbar_tutorial')){
                 $(".intro_div_3").addClass('show_tutorial');
-                $(".intro_div_3").tooltip({x:12, y:23, promptHeader: promptHeader3, promptContent: promptContent, footer:footer, wedge:'top'});
+                $(".intro_div_3").tooltip({x:12, y:23, promptHeader: promptHeader3, promptContent: promptContent2, footer:footer, wedge:'top'});
             }
             $(".intro_div.show_tutorial").pulse($(".pulse_tp_0"),{x:10,y:10});
             if(already_clicked){
@@ -51,11 +53,9 @@ $(document).ready(function(){
 
 
 	});
-    if((!$('#tutorial_starter').hasClass('show_profile_tutorial')||
-        !$('#tutorial_starter').hasClass('show_planner_tutorial')||
+    if((!$('#tutorial_starter').hasClass('show_planner_tutorial')||
         !$('#tutorial_starter').hasClass('show_fbar_tutorial'))&&
-        ($('#tutorial_starter').hasClass('show_profile_tutorial')||
-        $('#tutorial_starter').hasClass('show_planner_tutorial')||
+        ($('#tutorial_starter').hasClass('show_planner_tutorial')||
         $('#tutorial_starter').hasClass('show_fbar_tutorial'))){
         already_clicked=true;
         $('#tutorial_starter').click();

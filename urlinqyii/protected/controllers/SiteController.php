@@ -77,22 +77,21 @@ class SiteController extends Controller
             $first_time=false;
         }
         if($user->show_planner_tutorial){
-            $show_profile_tutorial = "show_planner_tutorial";
+            $show_planner_tutorial = "show_planner_tutorial";
             //$show_tutorial_button = true;
         }else{
             $first_time=false;
         }
-        if($user->show_profile_tutorial){
+       /* if($user->show_profile_tutorial){
             $show_planner_tutorial = "show_profile_tutorial";
             //$show_tutorial_button = true;
         }else{
             $first_time=false;
-        }
+        }*/
         //Can specify specific layout inside view
         //$this->layout = 'new';
         $this->render('home',array('user'=>$user
-            ,'show_fbar_tutorial'=>$show_fbar_tutorial,'show_planner_tutorial'=>$show_planner_tutorial
-            ,'show_profile_tutorial'=>$show_profile_tutorial, 'first_time'=>$first_time));
+            ,'show_fbar_tutorial'=>$show_fbar_tutorial,'show_planner_tutorial'=>$show_planner_tutorial, 'first_time'=>$first_time));
     }
 
     public function actionCompleteTutorial(){
