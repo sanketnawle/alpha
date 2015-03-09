@@ -1744,7 +1744,7 @@ textarea:focus:-moz-placeholder {
 
 body.left_panel_hidden_p2.left_panel_hidden #topbar_responsive_holder{
 width:980px!important;
-padding-right: 220px!important;
+/* padding-right: 220px!important; */
 }
 
 /* Media Queries */
@@ -1759,11 +1759,11 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
     }
 
     body.left_panel_hidden.left_panel_hidden_p2 #main_panel.group_responsiveness{
-        padding-right:220px;
+        /* padding-right:220px; */
     }
 
     #right_panel.group_responsiveness{
-        display:none;
+        display: none!important;
     }
 
     /*body#body_home #right_panel.group_responsiveness{

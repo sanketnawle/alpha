@@ -900,7 +900,7 @@ body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
 
 @media(max-width:1315px){
 #topbar_responsive_holder{
-    padding-right: 186px;
+    /* padding-right: 186px; */
 }
 .body_searchpage #right_panel{
     display: none!important;
@@ -947,7 +947,7 @@ body.body_group .topbar > #topbar_responsive_holder > .right{
 }
 
 body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
-    margin-left: 0px;
+    /* margin-left: 0px; */
 
 }
 
@@ -1055,7 +1055,7 @@ body.body_group #topbar_responsive_holder{
 body.body_group .topbar > #topbar_responsive_holder > .left a{margin-left:0px!important;
 }
 body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
-    margin-left: 18px;
+    /* margin-left: 18px; */
 
 }
 
