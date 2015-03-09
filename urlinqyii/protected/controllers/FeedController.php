@@ -420,6 +420,8 @@ class FeedController extends Controller
                     $event = $this->model_to_array($post_event->event);
 
 
+
+
                     $posts[$i]['event'] = $event;
              //       $posts[$i]['attend'] = false;
 				   $posts[$i]['event']['attendance_count'] = count($post_event->event->attendees);
@@ -477,6 +479,33 @@ class FeedController extends Controller
                             $posts[$i]['event']['color'] = $group_user->color;
                         }
                     }
+
+
+
+            //Get the origin data
+            if($posts[$i]['event']['origin_type'] == 'class'){
+                $posts[$i]['event']['origin'] = $this->model_to_array(ClassModel::model()->find('class_id=:id',array(':id'=>$posts[$i]['event']['origin_id'])));
+                //reassign the name to make it easier to get in the handlebars
+                $posts[$i]['event']['origin']['name'] = $posts[$i]['event']['origin']['class_name'];
+            }else if($posts[$i]['event']['origin_type'] == 'department'){
+                $posts[$i]['event']['origin'] = $this->model_to_array(Department::model()->find('department_id=:id',array(':id'=>$posts[$i]['event']['origin_id'])));
+                //reassign the name to make it easier to get in the handlebars
+                $posts[$i]['event']['origin']['name'] = $posts[$i]['event']['origin']['department_name'];
+            }else if($posts[$i]['event']['origin_type'] == 'school'){
+                $posts[$i]['event']['origin'] = $this->model_to_array(School::model()->find('school_id=:id',array(':id'=>$posts[$i]['event']['origin_id'])));
+                //reassign the name to make it easier to get in the handlebars
+                $posts[$i]['event']['origin']['name'] = $posts[$i]['event']['origin']['school_name'];
+
+            }else if($posts[$i]['event']['origin_type'] == 'club' || $posts[$i]['event']['origin_type'] == 'group'){
+                $posts[$i]['event']['origin'] = $this->model_to_array(Group::model()->find('group_id=:id',array(':id'=>$posts[$i]['event']['origin_id'])));
+                //reassign the name to make it easier to get in the handlebars
+                $posts[$i]['event']['origin']['name'] = $posts[$i]['event']['origin']['group_name'];
+            } else {
+                $event_new = Event::model()->find('event_id=:event_id', array(':event_id'=>$event['event_id']));
+                $posts[$i]['event']['origin'] = $this->model_to_array($event_new->user);
+                $posts[$i]['event']['origin_type'] = 'user';
+            }
+
                 }else{
                     //REmove this post from the array
                     unset($posts[$i]);
