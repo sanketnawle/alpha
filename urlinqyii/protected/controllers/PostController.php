@@ -841,9 +841,11 @@ class PostController extends Controller
     //                echo "awesome";
 
                     if(isset($_POST['post']['question']) && ($model->post_type == 'question' || $model->post_type == 'multiple_choice' || $model->post_type == 'true_false')){
-
+                        $colors = ["#f04b5b","#4BAEF0","#FFFF4D","#8DEE6D"];
                         $post_data['question'] = array('options'=>array());
                         $post_data['question']['active']=true;
+                        $post_data['question']['total_answers']=0;
+                        $post_data['question']['show_stats']=true;
                         $question = new PostQuestion;
                         //$question->attributes = $_POST['PostQuestion'];
                         $question->post_id = $post_id;
@@ -870,24 +872,32 @@ class PostController extends Controller
                                         $question->correct_answer_id = $option->option_id;
                                         $question->save(false);
                                     }
-
-                                    array_push($post_data['question']['options'], $this->model_to_array($option));
+                                    $option_array = $this->model_to_array($option);
+                                    $option_array['color']=$colors[$i];
+                                    array_push($post_data['question']['options'], $option_array);
                                 }
                             }
+
                         }else if($model->post_type == 'true_false'){
                             $option = new PostQuestionOption;
                             $option->option_text = 'True';
                             $option->post_id = $post_id;
                             $option->save(false);
 
-                            array_push($post_data['question']['options'], $this->model_to_array($option));
+                            $option_array = $this->model_to_array($option);
+                            $option_array['color']=$colors[0];
+
+                            array_push($post_data['question']['options'], $option_array);
 
                             $option = new PostQuestionOption;
                             $option->option_text = 'False';
                             $option->post_id = $post_id;
                             $option->save(false);
 
-                            array_push($post_data['question']['options'], $this->model_to_array($option));
+                            $option_array = $this->model_to_array($option);
+                            $option_array['color']=$colors[1];
+
+                            array_push($post_data['question']['options'], $option_array);
                         }
 
 
@@ -1255,6 +1265,17 @@ class PostController extends Controller
         }
 
         $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+        $question = $post->postQuestion;
+        if(!$question){
+            $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'post is not a question');
+            $this->renderJSON($return_data);
+            return;
+        }
+        if(!$question->active){
+            $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'question is closed');
+            $this->renderJSON($return_data);
+            return;
+        }
         $options = $post->postQuestionOptions;
 
         foreach($options as $this_option){
@@ -1274,6 +1295,51 @@ class PostController extends Controller
         return;
 
     }
+    public function actionShowHideStats(){
+        if(!isset($_POST['post_id']) || !isset($_POST['checked'])){
+            $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+        if($post->user_id != $user->user_id){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'not the owner of this post');
+            $this->renderJSON($return_data);
+            return;
+        }
+        $question=$post->postQuestion;
+        if(!$question){
+            $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'post is not a question');
+            $this->renderJSON($return_data);
+            return;
+        }
+        if($_POST['checked']){
+            $question->public_stats=1;
+        }else{
+            $question->public_stats=0;
+        }
+        if($question->save(false)){
+            $return_data = array('success'=>true,'result'=>$question->public_stats);
+            $this->renderJSON($return_data);
+            return;
+        }else{
+            $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error saving');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+
+    }
 
     public function actionCloseQuestion(){
         if(!isset($_POST['post_id'])){
@@ -1291,10 +1357,29 @@ class PostController extends Controller
         }
 
         $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+        if($post->user_id != $user->user_id){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'not the owner of this post');
+            $this->renderJSON($return_data);
+            return;
+        }
+
         $question = $post->postQuestion;
+        if(!$question){
+            $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'post is not a question');
+            $this->renderJSON($return_data);
+            return;
+        }
         $question->active = 0;
+
         if($question->save()){
-            $return_data = array('success'=>true);
+
+            $correct_answer =  PostQuestionOption::model()->find('option_id=:oid',array(':oid'=>$question->correct_answer_id));
+            if($correct_answer){
+                $return_data = array('success'=>true,'correct_answer'=>$correct_answer->option_text);
+            }else{
+                $return_data = array('success'=>true);
+            }
+
             $this->renderJSON($return_data);
             return;
         }else{
@@ -1323,6 +1408,8 @@ class PostController extends Controller
 
         $option_id = $_POST['option_id'];
 
+
+
         $option = PostQuestionOption::model()->find('option_id=:id', array(':id'=>$option_id));
 
         if(!$option){
@@ -1336,6 +1423,20 @@ class PostController extends Controller
 
         //Check if this user has already voted for this question
         $post = $option->post;
+
+        //check if post is a question
+        $question = $post->postQuestion;
+        if(!$question){
+            $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'post is not a question');
+            $this->renderJSON($return_data);
+            return;
+        }
+        //check if question is closed
+        if(!$question->active){
+            $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'question is closed');
+            $this->renderJSON($return_data);
+            return;
+        }
 
         $options = $post->postQuestionOptions;
 
@@ -1924,14 +2025,35 @@ class PostController extends Controller
             $this->renderJSON($data);
             return;
         }
+        $user = $this->get_current_user($_GET);
+        if (!$user) {
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'not a valid user.');
+            $this->renderJSON($data);
+            return;
+        }
         $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
         if($post->post_type=="multiple_choice" || $post->post_type=="true_false"){
             $options_data = array();
             //$question = $post->postQuestion;
+            $total_answers = 0;
             foreach($post->postQuestionOptions as $j=>$option){
-                $options_data[$option->option_text]  = sizeof($option->answers);
+                $options_data[$j]=array();
+                $options_data[$j]['option_text'] = $option->option_text;
+                $options_data[$j]['participants_count'] = sizeof($option->answers);
+                //$options_data[$option->option_text]  = sizeof($option->answers);
+                $total_answers += sizeof($option->answers);
             }
-            $data = array('success'=>true,'results'=>$options_data);
+            $question = $post->postQuestion;
+
+            $correct_answer = PostQuestionOption::model()->find('option_id=:oid',array(':oid'=>$question->correct_answer_id));
+
+            if(!$question->active && $correct_answer){
+                $data = array('success'=>true,'results'=>$options_data, 'answer_count'=>$total_answers, 'owner'=>($user->user_id == $post->user_id),
+                    'public_stats'=>$question->public_stats,'closed'=>!$question->active, 'correct_answer'=>$correct_answer->option_text);
+            }else{
+                $data = array('success'=>true,'results'=>$options_data, 'answer_count'=>$total_answers, 'owner'=>($user->user_id == $post->user_id),
+                    'public_stats'=>$question->public_stats,'closed'=>!$question->active);
+            }
             $this->renderJSON($data);
             return;
         }else{

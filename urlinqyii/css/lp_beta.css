@@ -15,6 +15,35 @@ background-position: center;
 background-attachment: fixed;
 position: relative;
 }
+.school_bgd{
+  position:fixed;
+  height:100%;
+  width:100%;
+  padding:0;
+  margin:0;
+  display:none;
+  z-index:1;
+  background-position: bottom;
+  background-attachment:fixed;
+  background-size: cover!important;
+}
+
+.columbia-bgd {
+  background:url(../assets/columbia.jpg) center center no-repeat fixed;
+}
+
+.nyu-bgd {
+  background: url(../assets/nyu2.jpg) center center no-repeat fixed;
+}
+
+.rochester-bgd {
+  background: url(../assets/rochester.jpg) center center no-repeat fixed;
+}
+
+.stern-bgd {
+  background: url(../assets/nyu-stern.jpg) center center no-repeat fixed;
+  z-index:2;
+}
 
 /* NEW OUTER TABS */
 
@@ -2867,6 +2896,10 @@ background-color: #fff;
   }
   div.dos_panels > .right{
     
+  }
+
+  .school_bgd{
+    display: none!important;
   }
 div.urlinq-marketing{
   height: 130px;
