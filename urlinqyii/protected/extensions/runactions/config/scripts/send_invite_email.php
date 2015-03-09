@@ -15,7 +15,7 @@ if (ERunActions::runBackground()){
 
 
     $mail = new YiiMailer('invite', array('actor'=>$actor, 'to_email'=>$to_email));
-    $mail->setFrom($from_email, 'urlinq team');
+    $mail->setFrom($from_email, 'Urlinq');
     $mail->setSubject($subject);
     $mail->setTo($to_email);
     $mail->SMTPDebug = 1; //optional

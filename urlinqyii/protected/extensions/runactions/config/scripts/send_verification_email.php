@@ -10,7 +10,7 @@ if (ERunActions::runBackground()){
     $user_firstname = 'Alex';
     $message = $params['message'];
     $mail = new YiiMailer('confirmation', array('key'=>$key, 'user_firstname'=>$user_firstname, 'message'=>$message, 'to_email'=>$to_email));
-    $mail->setFrom($from_email, 'urlinq team');
+    $mail->setFrom($from_email, 'Urlinq');
     $mail->setSubject($subject);
     $mail->setTo($to_email);
     $mail->SMTPDebug = 1; //optional
