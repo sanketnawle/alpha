@@ -118,6 +118,9 @@ class ClubController extends Controller
 
     public function actionTest()
     {
+        Yii::app()->nodeSocket->registerClientScripts();
+
+
         $user = $this->get_current_user();
 
 

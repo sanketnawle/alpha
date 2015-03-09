@@ -15,9 +15,9 @@ $(document).ready(function(){
             //$(".intro_div_1").pulse($(".pulse_tp_0"),{x:10,y:10});
 
             var promptHeader1=["Your Account Menu","Your Account Menu"];
-            var promptHeader2 = ["Planner","Planner"];
+            var promptHeader2 = ["The Planner","Planner"];
             var promptHeader3 = ["Collaboration Bar","Collaboration Bar"];
-            var promptContent=["On your account menu you can edit your profile and account settings, change your online status, and set preferences for things like notifications, message display settings, and more.","This is the final step prompt"];
+            var promptContent=["As you add your classes and groups all of the events will automatically sync into your planner so that you stay up-to-date with the things that you most care about on campus and in your classes"];
             var footer= "<p>Seen this before? <a>Opt out of these tips</a></p>";
 
             if($tutorial_starter_button.hasClass('show_profile_tutorial')) {

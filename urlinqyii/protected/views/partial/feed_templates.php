@@ -153,29 +153,8 @@
                                                 <div class = 'post_tools'>
 
                                                     <div class = 'post_lc ' >
-
-                                                        {{#ifCond like_status '==' true}}
-                                                            <div class = 'post_liked'>
-                                                                <span class = 'post_like_icon'></span>
-                                                                <p class = 'post_like_link'></p>
-                                                        {{else}}
-                                                            <div class = 'post_like'>
-                                                                <span class = 'post_like_icon'></span>
-                                                                <p class = 'post_like_link'>Like</p>
-                                                        {{/ifCond}}
-
-                                                                {{#ifCond like_count '>=' 1}}
-                                                                <div class = 'like_number'>
-
-                                                                    {{like_count}}
-
-                                                                </div>
-                                                                {{/ifCond}}
-
-                                                            </div>
-
                                                         <div class = 'post_comment_btn'>
-                                                            <span class = "reply_icon"></span>
+                                                            <span class = "reply_icon icon icon-comment-discussion"></span>
                                                             {{#ifCond reply_count '>=' 1}}
                                                             <div class = 'reply_number'>
 
@@ -184,6 +163,32 @@
                                                             </div>
                                                             {{/ifCond}}
                                                         </div>
+
+                                                        {{#ifCond like_status '==' true}}
+                                                            <div class = 'post_liked post_like_btn'>
+                                                                <i class = "press icon icon-plus"></i>
+                                                                <span class = "press">liked</span>
+                                                                {{#ifCond like_count '>=' 1}}
+                                                                <div class = 'press like_number'>
+                                                                    {{like_count}}
+                                                                </div>
+                                                                {{/ifCond}}                                                                
+                                                        {{else}}
+                                                            <div class = 'post_like post_like_btn'>
+                                                                <i class = "icon icon-plus"></i>
+                                                                <span>liked</span>
+                                                                {{#ifCond like_count '>=' 1}}
+                                                                <div class = 'like_number'>
+                                                                    {{like_count}}
+                                                                </div>
+                                                                {{/ifCond}}                                                                
+                                                        {{/ifCond}}
+
+
+
+                                                            </div>
+
+                                                        
                                                     </div>
                                             <div class = 'post_functions'>
                                                 <div class = 'post_functions_showr shower'>
@@ -611,74 +616,25 @@
                                                                 {{sub_text}}
                                                     </div>
 
-                                                    {{#ifCond post_type '==' 'true_false'}}
-
-                                                         <div class="mc_question">
-                                                             {{#if question.active}}
-                                                            {{#each question.options}}
-                                                                <div class="mc_question_one_choice" id="{{question.answer_index}}" data-option_id="{{option_id}}">
-
-                                                                    <input type="radio" class="mc_question_radio_button" name="letter" {{#if user_answered}}checked{{/if}}>
-
-                                                                    </input>
-                                                                    <div class="mc_question_choice_letter" >
-                                                                            <span class="choice_letter" id="{{question.answer_index}}">
-                                                                                {{question.answer_index}}
-                                                                            </span>
-                                                                    </div>
-
-                                                                    <div class="mc_question_choice_text">
-                                                                        {{#ifCond anon '==' 1}}
-                                                                            <span class="choice_text"> {{option_text}} </span>
-                                                                        {{else}}
-                                                                            <span class="choice_text" style="background-color: #E0E0E0; width : {{percent_selected}}%" id="{{the_choice_letter}}expanding"> {{option_text}} </span>
-
-                                                                        {{/ifCond}}
-                                                                    </div>
-
-                                                                </div>
-
-                                                            {{/each}}
-                                                             <div class="question_functions">
-                                                                 <button class = "clear_answer">Clear</button>
-                                                                 <button class = "submit_answer">Submit</button>
-                                                                 {{#if pownership}}
-                                                                 <button class = "close_question">Close Question</button>
-                                                                 {{/if}}
-                                                             </div>
-                                                             {{/if}}
-                                                        </div>
-
-
-
-
-                                                    {{/ifCond}}
-
-
-                                                    {{#ifCond post_type '==' 'multiple_choice'}}
+                                                    {{#ifCond post_type '!=' 'question'}}
 
                                                         <div class="mc_question">
                                                             {{#if question.active}}
                                                             {{#each question.options}}
                                                                 <div class="mc_question_one_choice" id="{{question.answer_index}}" data-option_id="{{option_id}}">
 
-                                                                    <input type="radio" class="mc_question_radio_button" name="letter_{{../post_id}}" {{#if user_answered}}checked{{/if}}>
+                                                                    <input type="radio" id="option_{{../post_id}}_{{option_text}}" class="mc_question_radio_button" data-option_id="{{option_id}}" name="letter_{{../post_id}}" {{#if user_answered}}checked{{/if}}>
+                                                                    <label for="option_{{../post_id}}_{{option_text}}">{{option_text}}</label>
 
-                                                                    </input>
-                                                                    <div class="mc_question_choice_letter" >
-                                                                            <span class="choice_letter" id="{{question.answer_index}}">
-                                                                                {{question.answer_index}}
-                                                                            </span>
-                                                                    </div>
 
-                                                                    <div class="mc_question_choice_text">
+                                                                   <!-- <div class="mc_question_choice_text">
                                                                         {{#ifCond anon '==' 1}}
                                                                             <span class="choice_text"> {{option_text}} </span>
                                                                         {{else}}
                                                                             <span class="choice_text" style="background-color: #E0E0E0; width : {{percent_selected}}%" id="{{the_choice_letter}}expanding"> {{option_text}} </span>
 
                                                                         {{/ifCond}}
-                                                                    </div>
+                                                                    </div>-->
 
                                                                 </div>
 
@@ -688,6 +644,7 @@
                                                                 <button class = "submit_answer">Submit</button>
                                                                 {{#if pownership}}
                                                                     <button class = "close_question">Close Question</button>
+                                                                    <input type="checkbox" class = "show_hide_stats" {{#ifCond question.public_stats '==' "1"}}checked{{/ifCond}}>Make Answer Statistics Public
                                                                 {{/if}}
                                                             </div>
                                                             <div class="submitted_answer" style="display:none;">
@@ -695,18 +652,46 @@
                                                             </div>
                                                             {{/if}}
                                                         </div>
-
+                                                        {{#if question.active}}
+                                                        <div class="closed_question" style="display:none;">
+                                                            This question is closed.
+                                                            <div class="correct_answer_text">
+                                                                Correct Answer: <span class="correct_answer"></span>
+                                                            </div>
+                                                        </div>
+                                                        {{else}}
+                                                        <div class="closed_question">
+                                                            This question is closed.
+                                                            {{#if question.correct_answer}}
+                                                            <div class="correct_answer_text">
+                                                                Correct Answer: <span class="correct_answer">{{question.correct_answer}}</span>
+                                                            </div>
+                                                            {{/if}}
+                                                        </div>
+                                                        {{/if}}
 
 
                                                     {{/ifCond}}
 
                                                     {{#ifCond post_type '!=' "question"}}
-                                                        {{#ifCond pownership '||' question.closed}}
-                                                            {{#if question.total_answers}}
-                                                             <div class='question_analysis_holder'>
-                                                            {{else}}
-                                                            <div class='question_analysis_holder' style="display:none;">
-                                                            {{/if}}
+                                                        {{#if question.show_stats}}
+
+                                                            <div class='question_analytics_holder' data-answer_count="{{question.total_answers}}">
+                                                        {{else}}
+                                                            <div class='question_analytics_holder' style="display:none" data-answer_count="{{question.total_answers}}">
+                                                        {{/if}}
+
+                                                                {{#if question.any_answers}}
+                                                                <div class="chart_overlay"  style="display:none">
+
+                                                                    <div class="overlay_text">No Answers</div>
+                                                                </div>
+                                                                {{else}}
+                                                                <div class="chart_overlay">
+
+                                                                    <div class="overlay_text">No Answers</div>
+                                                                </div>
+                                                                {{/if}}
                                                                 <canvas class="pie_{{post_id}}" width="159" height="160"></canvas>
                                                                 <div class='answer_labels_box'>
                                                                     {{#each question.options}}
@@ -718,9 +703,8 @@
                                                                     {{/each}}
                                                                 </div>
                                                              </div>
-
-                                                        {{/ifCond}}
                                                     {{/ifCond}}
+
 
 
 
@@ -781,30 +765,8 @@
                                                 </div>
                                                 <div class = 'post_tools'>
                                                     <div class = 'post_lc'>
-
-                                                        {{#ifCond like_status '==' true}}
-                                                            <div class = 'post_liked'>
-                                                                <span class = 'post_like_icon'></span>
-                                                                <p class = 'post_like_link'></p>
-                                                        {{else}}
-                                                            <div class = 'post_like'>
-                                                                <span class = 'post_like_icon'></span>
-                                                                <p class = 'post_like_link'>Like</p>
-                                                        {{/ifCond}}
-
-                                                                {{#ifCond like_count '>=' 1}}
-                                                                <div class = 'like_number'>
-
-                                                                    {{like_count}}
-
-                                                                </div>
-                                                                {{/ifCond}}
-
-
-                                                            </div>
-
                                                         <div class = 'post_comment_btn'>
-                                                            <span class = "reply_icon"></span>
+                                                            <span class = "reply_icon icon icon-comment-discussion"></span>
                                                             {{#ifCond reply_count '>=' 1}}
                                                             <div class = 'reply_number'>
 
@@ -813,6 +775,37 @@
                                                             </div>
                                                             {{/ifCond}}
                                                         </div>
+
+                                                        {{#ifCond like_status '==' true}}
+                                                            <div class = 'post_liked post_like_btn'>
+                                                                <i class = "icon icon-plus press"></i>
+                                                                <span class = 'press'>liked</span>
+                                                                {{#ifCond like_count '>=' 1}}
+                                                                <div class = 'like_number press'>
+
+                                                                    {{like_count}}
+
+                                                                </div>
+                                                                {{/ifCond}}                                                                
+                                                        {{else}}
+                                                            <div class = 'post_like post_like_btn'>
+                                                                <i class = "icon icon-plus"></i>
+                                                                <span>liked</span>
+                                                                {{#ifCond like_count '>=' 1}}
+                                                                <div class = 'like_number'>
+
+                                                                    {{like_count}}
+
+                                                                </div>
+                                                                {{/ifCond}}                                                                
+                                                        {{/ifCond}}
+
+
+
+
+                                                            </div>
+
+                                                        
 
                                                         <div class = 'show_analytics_btn'>
 
@@ -1534,29 +1527,8 @@
                                                 </div>
                                                 <div class = 'post_tools'>
                                                     <div class = 'post_lc'>
-                                                        {{#ifCond like_status '==' true}}
-                                                            <div class = 'post_liked'>
-                                                                <span class = 'post_like_icon'></span>
-                                                                <p class = 'post_like_link'></p>
-                                                        {{else}}
-                                                            <div class = 'post_like'>
-                                                                <span class = 'post_like_icon'></span>
-                                                                <p class = 'post_like_link'>Like</p>
-                                                        {{/ifCond}}
-
-                                                                {{#ifCond like_count '>=' 1}}
-                                                                <div class = 'like_number'>
-
-                                                                    {{like_count}}
-
-                                                                </div>
-                                                                {{/ifCond}}
-
-
-                                                            </div>
-
                                                         <div class = 'post_comment_btn'>
-                                                            <span class = "reply_icon"></span>
+                                                            <span class = "reply_icon icon icon-comment-discussion"></span>
                                                             {{#ifCond reply_count '>=' 1}}
                                                             <div class = 'reply_number'>
 
@@ -1565,6 +1537,36 @@
                                                             </div>
                                                             {{/ifCond}}
                                                         </div>
+                                                        {{#ifCond like_status '==' true}}
+                                                            <div class = 'post_liked post_like_btn'>
+                                                                <i class = 'icon icon-plus press'></i>
+                                                                <span class = 'press'>liked</span>
+                                                                {{#ifCond like_count '>=' 1}}
+                                                                <div class = 'like_number press'>
+
+                                                                    {{like_count}}
+
+                                                                </div>
+                                                                {{/ifCond}}                                                               
+                                                        {{else}} 
+                                                            <div class = 'post_like post_like_btn'>
+                                                                <i class = "icon icon-plus"></i>
+                                                                <span>liked</span>
+                                                                {{#ifCond like_count '>=' 1}}
+                                                                <div class = 'like_number'>
+
+                                                                    {{like_count}}
+
+                                                                </div>
+                                                                {{/ifCond}}                                                                
+                                                        {{/ifCond}}
+
+
+
+
+                                                            </div>
+
+                                                        
                                                     </div>
                                                             <div class = 'post_functions'>
                                                 <div class = 'post_functions_showr'>
