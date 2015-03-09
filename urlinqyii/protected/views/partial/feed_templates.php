@@ -640,11 +640,20 @@
 
                                                             {{/each}}
                                                             <div class="question_functions">
+                                                                <button class = "submit_answer">Submit Answer</button>
                                                                 <button class = "clear_answer">Clear</button>
-                                                                <button class = "submit_answer">Submit</button>
+                                                                
                                                                 {{#if pownership}}
-                                                                    <button class = "close_question">Close Question</button>
-                                                                    <input type="checkbox" class = "show_hide_stats" {{#ifCond question.public_stats '==' "1"}}checked{{/ifCond}}>Make Answer Statistics Public
+                                                                    <button class = "close_question"></button>
+                                                                    <div class = "help_div">
+                                                                        <div class = "wedge">
+                                                                        </div>
+                                                                        <div class = "box">
+                                                                        Close this question 
+                                                                        </div>
+                                                                    </div>
+                                                                    <input type="checkbox" class = "show_hide_stats" {{#ifCond question.public_stats '==' "1"}}checked{{/ifCond}}><label for ></label>Make Answer Statistics Public
+
                                                                 {{/if}}
                                                             </div>
                                                             <div class="submitted_answer" style="display:none;">
@@ -689,10 +698,10 @@
                                                                 {{else}}
                                                                 <div class="chart_overlay">
 
-                                                                    <div class="overlay_text">No Answers</div>
+                                                                    <div class="overlay_text">No Answers Yet</div>
                                                                 </div>
                                                                 {{/if}}
-                                                                <canvas class="pie_{{post_id}}" width="159" height="160"></canvas>
+                                                                <canvas class="pie_{{post_id}}" width="120" height="120"></canvas>
                                                                 <div class='answer_labels_box'>
                                                                     {{#each question.options}}
                                                                     <div class='answer_cell'>

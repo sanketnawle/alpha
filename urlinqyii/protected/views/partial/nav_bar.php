@@ -85,7 +85,7 @@ if($user->school->university_id == 4){
 
         <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'club/' . $origin_id; ?>" data-link_type="club">
             <div class="nav_picture"></div>
-            <div class="nav_text">Clubs</div>
+            <div class="nav_text">Groups</div>
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="last_nav_drop_down_home home_nav_dropdown closed">
                 <div class="nav_drop_down_scrollable">
@@ -309,7 +309,7 @@ if($user->school->university_id == 4){
 
         <div class="nav_section drop_down nav_bar_no_repeat" id="home_nav" data-link_url="/<?php echo 'club/' . $origin_id; ?>" data-link_type="club">
             <div class="nav_picture"></div>
-            <div class="nav_text">Clubs</div>
+            <div class="nav_text">Groups</div>
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="home_nav_dropdown closed">
                 <div class="nav_drop_down_scrollable">
@@ -335,7 +335,7 @@ if($user->school->university_id == 4){
                 <div id="nav_drop_down_bar_line"></div>
 
                 <div id="nav_drop_down_see_all_button" class = "clubs">
-                    <div id="nav_drop_down_see_all_clubs_text">See all clubs</div>
+                    <div id="nav_drop_down_see_all_clubs_text">See all groups</div>
                 </div>
             </div>
         </div>
