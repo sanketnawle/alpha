@@ -11,16 +11,7 @@
         var globals = {};
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
 
-        globals.supported_email_list = [];
 
-        $.getJSON(globals.base_url + '/site/supportedEmailList', function(json_data){
-                console.log(json_data);
-                if(json_data['success']){
-                    globals['supported_email_list'] = json_data['supported_email_list'];
-                }else{
-                    console.log('Error getting supported email list');
-                }
-            });
 
     </script>
     <script>
@@ -63,16 +54,30 @@
 
   $(document).ready(function() {
 
+      globals.supported_email_list = ['nyu.edu', 'urlinq.com','student.touro.edu','touro.edu'];
+
+//        $.getJSON(globals.base_url + '/site/supportedEmailList', function(json_data){
+//                console.log(json_data);
+//                if(json_data['success']){
+//                    globals.supported_email_list = json_data['supported_email_list'];
+//                }else{
+//                    console.log('Error getting supported email list');
+//                }
+//            });
+
+
+
+//        alert(JSON.stringify(globals.supported_email_list));
+
 
 
 
       function is_supported_email(email){
-          alert(JSON.stringify(globals.supported_email_list));
-
-          for(var i = 0; i < globals.supported_email_list.length; i++){
-              if(email.indexOf(globals.supported_email_list[i]) < 0){
+            var emails = ['nyu.edu', 'urlinq.com','student.touro.edu','touro.edu'];
+          for(var i = 0; i < emails.length; i++){
+              //alert(email.indexOf(emails[i]));
+              if(email.indexOf(emails[i]) > 0){
                   return true;
-                  break;
               }
           }
           return false;
@@ -313,7 +318,8 @@
 
 
 
-      if(is_supported_email(email)) {
+      if(!is_supported_email(email)) {
+          alert("invalid email");
           //alert('An NYU email address is required.');
           $error_div.text('Email address not supported');
           $error_div.css({'left': email_position.left - 310});
