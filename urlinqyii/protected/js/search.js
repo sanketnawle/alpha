@@ -61,7 +61,7 @@ $(document).ready(function(){
                 //Set the text for the query
                 $('.search_results_header_sentence').find('.query').text("'" + local_q + "'");
                 $('.search_results_header_sentence').find('.query').text("'" + local_q + "'");
-                document.title = local_q + " - Urlinq Search";
+
                 $('#top_search_bar').val(local_q);
                 //alert(JSON.stringify(search_json_data)); //test, returns JSON object
                 //alert(JSON.stringify(search_json_data));

@@ -644,7 +644,7 @@
                                                                 <button class = "clear_answer">Clear</button>
                                                                 
                                                                 {{#if pownership}}
-                                                                    <button class = "close_question"></button>
+                                                                    <div class = "close_question"></div>
                                                                     <div class = "help_div">
                                                                         <div class = "wedge">
                                                                         </div>
