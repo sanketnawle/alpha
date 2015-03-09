@@ -122,7 +122,7 @@ return array(
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
 
-
+                //Comment this out to access /gii
                 '<action:\w+>'=>'site/<action>',
 
                 'post/json' => '/post/index',

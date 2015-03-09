@@ -73,7 +73,7 @@
             <div id="page">
                 <div id = "main_panel">
                     <div id="content_holder">
-                        <div id="left_panel" class = "intro_div intro_div_1">
+                        <div id="left_panel">
                             <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'home','origin_id'=>'')); ?>
                         </div>
                         <div id = "content_panel" class = "content_panel_home">
@@ -97,7 +97,7 @@
                                         <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'user','origin_id'=>$user->user_id ,'is_admin'=>false)); ?>
                                     </div>
 
-                                    <div id = "tutorial_starter" class = "welcome_button <?php echo $show_fbar_tutorial.' '.$show_profile_tutorial.' '.$show_planner_tutorial;?>">
+                                    <div id = "tutorial_starter" class = "welcome_button <?php echo $show_fbar_tutorial.' '.$show_planner_tutorial;?>">
                                         <h5>Discover how Urlinq can improve your education</h5>
                                     </div>
 

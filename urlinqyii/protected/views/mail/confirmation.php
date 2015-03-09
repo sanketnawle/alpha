@@ -118,8 +118,7 @@
                                         <br>
                                         <br>
                                         TM and copyright © 2014 Urlinq LLC. New York City.
-                                        <a href = "http://www.urlinq.com" style = "text-decoration:none;color:#999;">Unsubscribe</a>
-
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/unsubscribe?email=<?php echo $to_email; ?>" style = "text-decoration:none;color:#999;">Unsubscribe</a>
                                     </p>
                                 </td>
                             </tr>

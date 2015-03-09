@@ -22,14 +22,17 @@ if (ERunActions::runBackground()){
         $mail->setTo($to_user->user_email);
         $mail->SMTPDebug = 1; //optional
 
-        if($mail->send())
-        {
-            Yii::log('', CLogger::LEVEL_ERROR, 'Successfully sent the email');
-        }
-        else
-        {
+        include_once "email/email.php";
+        if(!unsubscribed($to_user->user_email)){
+            if($mail->send())
+            {
+                Yii::log('', CLogger::LEVEL_ERROR, 'Successfully sent the email');
+            }
+            else
+            {
 
-            Yii::log('', CLogger::LEVEL_ERROR, $mail->getError());
+                Yii::log('', CLogger::LEVEL_ERROR, $mail->getError());
+            }
         }
 
 }
