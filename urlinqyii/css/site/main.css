@@ -2926,10 +2926,6 @@ body.first_visit_two #nav_bar{
     z-index: 98!important;
 }
 
-body.first_visit_two .topbar{
-    z-index: 99!important;
-}
-
 body.first_visit_two .topbar .center form {
 /* max-width: 537px; */
 }

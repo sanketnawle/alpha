@@ -652,7 +652,7 @@
                                                                         Close this question 
                                                                         </div>
                                                                     </div>
-                                                                    <input type="checkbox" class = "show_hide_stats" {{#ifCond question.public_stats '==' "1"}}checked{{/ifCond}}><label for ></label>Make Answer Statistics Public
+                                                                    <input id = "show_hide_stats_{{post_id}}" type="checkbox" class = "show_hide_stats" {{#ifCond question.public_stats '==' "1"}}checked{{/ifCond}}><label for = "show_hide_stats_{{post_id}}" class = "flat7b"><span class = "move"></span></label><span class = "show_hide_stats_text">Make answer stats public</span>
 
                                                                 {{/if}}
                                                             </div>
