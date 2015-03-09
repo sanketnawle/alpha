@@ -113,7 +113,7 @@
 			tooltipFontColor: "#fff",
 
 			// String - Tooltip title font declaration for the scale label
-			tooltipTitleFontFamily: 'Open Sans', sans-serif;,
+			tooltipTitleFontFamily: "'Open Sans', sans-serif",
 
 			// Number - Tooltip title font size in pixels
 			tooltipTitleFontSize: 11,

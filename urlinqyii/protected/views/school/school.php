@@ -107,7 +107,11 @@ if($school->university_id == 4){
                 </div>
             </div>
             <div class = "group_name">
+                <?php if($school->university_id == 1){ ?>
                 <div class = "center_admin univ_art"><div class = "text"></div><div class = "university_arrow"></div></div>
+                <?php }elseif($school->university_id == 4){ ?>
+                <div class = "center_admin univ_art"><div class = "text touro"></div><div class = "university_arrow"></div></div>
+                <?php } ?>
                 <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $school->school_name; ?></span></p></div>
             </div>
             <div class = "group_right_info group_info_boxes">

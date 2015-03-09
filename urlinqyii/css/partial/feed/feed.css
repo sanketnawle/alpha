@@ -60,7 +60,7 @@ padding-bottom: 3px;
     background-position: 0px -1384px;
 
     width: 100px;
-    height: 120px;
+    height: 100px;
 }
 
 .no_posts_container div.no_posts_message{
@@ -375,7 +375,9 @@ position: relative;
   font-size: 10.8px;
   z-index: 10000;
   color: #17B325;
+  height: 23px;
   transition:.2s;
+  opacity: 1;
 }
 
 .post_like_btn{
@@ -735,6 +737,7 @@ div.post_comment_btn:active> span{
     position: relative;
     display: block; 
     float: left;
+    height: 18px;
     color: #029acf;
     top: 9px;
     margin-left: 4px;
@@ -4599,7 +4602,7 @@ input.post_choose_attending_button:checked + label{
     height: 125px;
     background-color: #FFF;
     position: relative;
-    margin-top: 12px;
+    margin-top: 15px;
     width: 516px;
     padding-bottom: 12px;
     padding-left: 0px;
@@ -4649,6 +4652,7 @@ input.post_choose_attending_button:checked + label{
     margin-top: 0px;
     padding: 8px 8px 6px;
     font-family: Avenir;
+    position: relative;
     color: #575757;
     font-size: 12px;
     border-radius: 0 0 4px 4px;   background-color: #F9F9F9;   
@@ -4788,17 +4792,33 @@ button.submit_answer{
     font-size: 14px;
 }
 
-button.close_question{
-    background: none!important;
+div.close_question{
+    /* background: none!important; */
 
     border: none!important;
     background-image: url(../../../assets/small_icons.png);
-    background-position: -5px -1450px;
+    background-position: -48.5px -1497px;
     background-size: auto!important;
-    width: 25px;
-    height: 25px!important;   
+    width: 26px;
+    display: inline-block;
+    float: left;
+    margin-right: 5px;
+    height: 26px!important;   
+    opacity: .7;
     padding: 0px!important;
+    cursor: pointer;
     background-repeat: no-repeat;
+}
+
+div.close_question:hover{
+    opacity: 1;
+  
+}
+
+div.close_question:hover ~ div.help_div{
+    opacity: 1;
+
+    z-index: 1;
 }
 
 input.show_hide_stats{
@@ -4815,6 +4835,26 @@ button.close_question:hover ~ div.help_div{
 
 input.show_hide_stats:checked + label{
 
+}
+
+.question_functions .help_div .box{
+    background: rgba(34, 34, 34, 0.87);
+
+    color: #FFF;
+    font-weight: 900;
+    margin-left: 17px;
+    margin-top: -5px;
+}
+
+.question_functions .help_div {
+  z-index: 1;
+}
+
+.question_functions .help_div .wedge{
+  
+    border-bottom-color: rgba(34, 34, 34, 0.87);
+    top: -5px;
+    left: 23px;
 }
 
 div.mc_question_one_choice:first-child input.mc_question_radio_button + label{
