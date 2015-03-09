@@ -12,7 +12,7 @@ if (ERunActions::runBackground()){
 
         $origin = $params['origin'];
 
-        $subject = $params['subject'];
+        $subject = "[Urlinq] Notification - new post in ".$origin." from ".$actor;
 
 
 

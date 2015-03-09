@@ -5,7 +5,6 @@
     <?php
         include_once 'module/datetime_helper.php';
     ?>
-    <title style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">Club Event</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
     <link href="email.css" rel="stylesheet" type="text/css" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300" rel="stylesheet" type="text/css" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">

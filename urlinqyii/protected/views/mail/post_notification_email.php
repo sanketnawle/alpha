@@ -2,8 +2,6 @@
 <!-- If you delete this tag, the sky will fall on your head -->
 <meta name="viewport" content="width=device-width" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 
-<title style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">Class Link</title>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 	
 <link rel="stylesheet" type="text/css" href="email.css" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
@@ -564,7 +562,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                             <?php
                                 $post_type = $post->post_type;
                                 if($post_type == 'discuss'){
-                                    $post_type = 'discussion';
+                                    $post_type = 'Discussion';
                                 }
                             ?>
 

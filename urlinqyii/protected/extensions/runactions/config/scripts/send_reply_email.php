@@ -10,9 +10,9 @@ if (ERunActions::runBackground()){
         $to_user = $params['to_user'];
         $post = $params['post'];
         $origin = $params['origin'];
-        $subject = $params['subject'];
         $reply = $params['reply'];
 
+        $subject = "[Urlinq] Reply in ".$origin." from ".$actor." - ".$reply;
 
 
 

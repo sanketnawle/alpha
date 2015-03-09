@@ -14,7 +14,7 @@ if (ERunActions::runBackground()){
 
         $event = $params['event'];
 
-        $subject = $params['subject'];
+        
 
 
         $origin_type = $event->origin_type;
@@ -22,6 +22,7 @@ if (ERunActions::runBackground()){
 
         $origin_name = $params['origin_name'];
 
+        $subject = "[Urlinq] ".$origin_type." Event - ".$event." was added to ".$origin_name."&#x27;s calendar";
 
 
         $mail = new YiiMailer('event_email', array('user'=>$user, 'event'=>$event, 'origin_type'=>$origin_type, 'origin_id'=>$origin_id, 'origin_name'=>$origin_name, 'to_user'=>$to_user));

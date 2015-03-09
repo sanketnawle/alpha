@@ -2,7 +2,6 @@
 <!-- If you delete this tag, the sky will fall on your head -->
 <meta name="viewport" content="width=device-width" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 
-<title style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">Class Link</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 	
