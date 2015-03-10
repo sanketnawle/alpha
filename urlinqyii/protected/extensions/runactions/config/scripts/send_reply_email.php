@@ -13,7 +13,14 @@ if (ERunActions::runBackground()){
         $reply = $params['reply'];
         $origin_name = $params['origin_name'];
 
-        $subject = "[Urlinq] Reply in " . $origin_name . " from " . $actor->firstname . ' ' . $actor->lastname . " - " . $reply->reply_msg;
+
+
+
+        if($reply->anon){
+            $subject = "[Urlinq] Reply in " . $origin_name . " from " . $actor->firstname . ' ' . " from Anonymous";
+        }else{
+            $subject = "[Urlinq] Reply in " . $origin_name . " from " . $actor->firstname . ' ' . $actor->lastname . " - " . $reply->reply_msg;
+        }
 
 
 

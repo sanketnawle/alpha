@@ -11,6 +11,8 @@
     cursor: default;
 }
 
+
+
 body#body_home .menu_hider, body#body_calendar .menu_hider, body.body_searchpage .menu_hider{
 display:none;
 }

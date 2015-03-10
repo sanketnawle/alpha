@@ -333,231 +333,28 @@
         </div>
 
         <?php if($is_member){ ?>
-        <div class="panel tab_syllabus" id="panel_2">
+        <div class="panel tab_syllabus" style="left:-9px;width:100%" id="panel_2">
         <?php }else{ ?>
         <div class="panel tab_syllabus" id="panel_2" style="display:none">
         <?php } ?>
-            <div class = "class_syllabus_tab">
-                <div class = "syllabus_tab_holder">
-                    <div class = "full_syllabus_box syllabus_tagger">
-
-                        <div class = "title">
-                            Class Syllabus <div style="padding-right:20px;" class = "syllabus_download_btn"><a id="class_syllabus_pdf" download>Download</a></div>
-                        </div>
-                        <div id="pdfContainer">
-                        </div>
-                        <!-- <div class = "rendered_syllabus_page_holder" id = "page1">
-                            <div class = "paper_shadowonblack">
-                            </div>
-                        </div>
-
-                        <div class = "rendered_syllabus_page_holder" id = "page2">
-                            <div class = "paper_shadowonblack">
-                            </div>
-                        </div>
-
-                        <div class = "rendered_syllabus_page_holder" id = "page3">
-                            <div class = "paper_shadowonblack">
-                            </div>
-                        </div>
-
-                        <div class = "rendered_syllabus_page_holder" id = "page4">
-                            <div class = "paper_shadowonblack">
-                            </div>
-                        </div>
- -->
-                    </div>
-                    <div class = "class_events_holder order_kind">
-                        <div class = "black_action_box" id="add_syllabus_wrap">
-                            <button id="btn_add_syllabus" class = "scan_syllabus">
-                                <em class = "syla_plus"></em>Add Syllabus
-                            </button>
-                            <input style="display:none;" type="file" accept=".pdf" id="syllabus_pdf_upload"/>
-                            <div class = "black_explainer">
-                                By importing your syllabus, our algorithm will generate a list of events within this class's calendar. 
-                            </div>
-                        </div>
-                        <div class = "syllabus_events_wrapper">
-                            <header class = "class_tasks">
-                                <h5>Syllabus Work</h5>
-                                <!-- <label>Order:</label>
-                                <ul class = "menu">
-                                    <li>
-                                        <a href = "#"><div class = "order_sort_dropdown"><span id = "selected_syllabus_event_order">Kind</span><em></em></div></a>
-                                        <ul><div class = "order_dropdown_box"><li id = "syllabus_event_order_kind" class = "syllabus_event_order"><a href = "#">Kind</a></li><li id = "syllabus_event_order_date" class = "syllabus_event_order"><a href = "#">Date</a></li></div></ul>
-                                    </li>
-                                </ul> -->
-
-
-                            </header>
-                            <br>
-                            <div id="events_list">
-                                
-                            </div>
-                        </div>
-<!--                         <div class = "syllabus_events_wrapper">
-                            <header class = "class_tasks">
-                                <h5>Class Work</h5>
-                                <label>Order:</label>
-                                <ul class = "menu">
-                                    <li>
-                                        <a href = "#"><div class = "order_sort_dropdown"><span id = "selected_syllabus_event_order">Kind</span><em></em></div></a>
-                                        <ul><div class = "order_dropdown_box"><li id = "syllabus_event_order_kind" class = "syllabus_event_order"><a href = "#">Kind</a></li><li id = "syllabus_event_order_date" class = "syllabus_event_order"><a href = "#">Date</a></li></div></ul>
-                                    </li>
-                                </ul>
-
-
-                            </header>
-                            <div class = "events_by_kind events_ordered_list">
-                                <div class = "kind_section">
-                                    <h5>Assignments</h5>
-                                    <div class = "syllabus_event">
-                                        <div class = "day_month_box day_box_color">
-                                            <div class = "calendar_top_border"></div>
-                                            <div class = "calendar_bottom_section">
-                                                <span class = "day">10</span>
-                                                <span class = "month">Nov</span>
-                                            </div>
-                                        </div>
-                                        <div class = "event_name_buttons">
-                                            <span class ="event_name_text">
-                                                Midterm 1
-                                            </span>
-                                            <input class = "syla_tab_event_editor" type = "text" name = "event_name" placeholder = "Enter a title...">
-                                            <div class ="complete_incomplete_button syllabus_event_button incomplete active">
-                                                <span class = "todo_checkbox">
-                                                </span>
-                                                <div class="help-div">
-                                                    <div class="help-wedge">
-                                                    
-                                                    </div>
-                                                    <div class="help-box">Mark as Complete</div>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    
-                                    </div>
-                                    <div class = "syllabus_event editable">
-                                        <div class = "day_month_box day_box_color">
-                                            <div class = "calendar_top_border"></div>
-                                            <div class = "calendar_bottom_section">
-                                                <span class = "day">10</span>
-                                                <span class = "month">Nov</span>
-                                            </div>
-                                        </div>
-                                        <div class = "event_name_buttons">
-                                            <span class ="event_name_text">
-                                                Midterm 1
-                                            </span>
-                                            <input class = "syla_tab_event_editor" type = "text" name = "event_name" placeholder = "Enter a title...">
-                                            <div class ="complete_incomplete_button syllabus_event_button incomplete active">
-                                                <span class = "todo_checkbox">
-                                                </span>
-                                                <div class="help-div">
-                                                    <div class="help-wedge">
-                                                    
-                                                    </div>
-                                                    <div class="help-box">Mark as Complete</div>
-                                                </div>
-                                            </div>
-                                            <div class = "done_editing_button">
-                                                Done
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class = "kind_section">
-                                    <h5>Exams</h5>
-
-                                    <div class = "syllabus_event">
-                                        <div class = "day_month_box day_box_color">
-                                            <div class = "calendar_top_border"></div>
-                                            <div class = "calendar_bottom_section">
-                                                <span class = "day">10</span>
-                                                <span class = "month">Nov</span>
-                                            </div>
-                                        </div>
-                                        <div class = "event_name_buttons">
-                                            <span class ="event_name_text">
-                                                Midterm 1
-                                            </span>
-                                            <div class ="complete_incomplete_button incomplete">
-                                                <span></span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class = "kind_section">
-                                    <h5>Projects</h5>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                </div>
-                                <div class = "kind_section">
-                                    <h5>Papers</h5>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                </div>
-                                <div class = "kind_section">
-                                    <h5>Lecture</h5>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                </div>
-                                <div class = "kind_section">
-                                    <h5>Labs</h5>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "events_by_date events_ordered_list">
-                                <div class = "week_section">
-                                    <h5>Week 1</h5>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                </div>
-                                <div class = "week_section">
-                                    <h5>Week 2</h5>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                </div>
-                                <div class = "week_section">
-                                    <h5>Week 3</h5>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                </div>
-                                <div class = "week_section">
-                                    <h5>Week 4</h5>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                </div>
-                                <div class = "week_section">
-                                    <h5>Week 5</h5>
-                                    <div class = "syllabus_event">
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
+            <div style="width:100%"> 
+                <div class = "black_action_box" style="width:70%;left:-5px;float:left;bottom: -6px;" id="add_syllabus_wrap">
+                    <button id="btn_add_syllabus" style="width:20%;float: left;height:29px;left: -6px;margin-top:0px; border-radius:4px;border-style: ridge;">
+                      Add Syllabus
+                    </button>
+                    <input style="display:none;" type="file" accept=".pdf" id="syllabus_pdf_upload"/>
+                </div>
+                <div class = "syllabus_download_btn" style="display:none;"><a id="class_syllabus_pdf" download>Download</a></div>
+                <div style="width:25%;float:right;">
+                    <input class="text" style="height: 29px;border-color: transparent;border-radius: 15px;float:right;right:4px;" type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="&nbsp;&nbsp;Search your events...">
                 </div>
             </div>
+            <hr style="opacity:0.5;width:100%">
+
+            <br>
+            <div id="pdfContainer">
+            </div>
+
         </div>
 
         <?php if($is_member){ ?>

@@ -362,6 +362,11 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
 }
 
 
+.notification {
+    overflow-y: hidden !important;
+}
+
+
 .notification_link * {
     cursor: pointer;
 }
