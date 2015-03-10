@@ -15,6 +15,9 @@ if (ERunActions::runBackground()){
     $mail->setTo($to_email);
     $mail->SMTPDebug = 1; //optional
 
+
+    $mail->AltBody = $subject;
+
     include_once "email/email.php";
     if(!unsubscribed($to_email)){
         if($mail->send())

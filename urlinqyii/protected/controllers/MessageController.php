@@ -284,8 +284,8 @@ class MessageController extends Controller
 //                $event->send();
 
                 $event = Yii::app()->nodeSocket->getFrameFactory()->createEventFrame();
-                $event->setEventName('message');
-                $event->setData(array('msg'=>$message->text));
+                $event->setEventName('user_' . $target_id);
+                $event->setData(array('user_id'=>$user->user_id,'text'=>$message->text));
                 $event->send();
 
 
