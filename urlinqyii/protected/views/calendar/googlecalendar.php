@@ -22,6 +22,8 @@ include 'Google/Model.php';
 include 'Google/Collection.php';
 include 'Google/Exception.php';
 include 'Google/Service.php';
+include 'Google/Task/Retryable.php';
+include 'Google/Service/Exception.php';
 include 'Google/Utils.php';
 include 'Google/Service/Resource.php';
 include 'Google/Service/Calendar.php';
@@ -37,6 +39,7 @@ include 'Google/IO/Abstract.php';
 include 'Google/IO/Curl.php';
 include 'Google/Task/Runner.php';
 include 'Google/Utils/URITemplate.php';
+include 'Google/Http/Batch.php';
 
 
 /************************************************
@@ -44,12 +47,14 @@ include 'Google/Utils/URITemplate.php';
   the redirect URI is to this page, e.g:
   http://localhost:8080/user-example.php
  ************************************************/
+  //Uncomment the three lines for running on local and make sure you uncomment the live ones
+ /*$client_id = '960881917908-rgb9ujp6v6rf3ufmbfbg8nadb41f9tdl.apps.googleusercontent.com';
+ $client_secret = 'W3U_-nJF1LFgLD1NWacK2a-_';
+ $redirect_uri = 'http://127.0.0.1/alpha/urlinqyii/calendar';*/
+ //uncomment three lines for running on live and make sure you uncomment the local ones
  $client_id = "566213768963-rbdpvbo33oe0dn4rdhmj83que4f13vuc.apps.googleusercontent.com";
- //$client_id = '960881917908-rgb9ujp6v6rf3ufmbfbg8nadb41f9tdl.apps.googleusercontent.com';
  $client_secret = "_HFKQAsU2GNSAp7yUE4n2BVv";
- //$client_secret = 'W3U_-nJF1LFgLD1NWacK2a-_';
  $redirect_uri = 'http://beta.urlinq.com/calendar';
- //$redirect_uri = 'http://127.0.0.1/alpha/urlinqyii/calendar';
 /************************************************
   Make an API request on behalf of a user. In
   this case we need to have a valid OAuth 2.0
@@ -79,13 +84,24 @@ $client->setRedirectUri($redirect_uri);
 $client->setAccessType("offline");
 $client->addScope("https://www.googleapis.com/auth/calendar");
 
+$client_batch = new Google_Client();
+$client_batch->setClientId($client_id);
+$client_batch->setClientSecret($client_secret);
+$client_batch->setRedirectUri($redirect_uri);
+$client_batch->setAccessType("offline");
+$client_batch->setUseBatch(true);
+$client_batch->addScope("https://www.googleapis.com/auth/calendar");
+
 /************************************************
   We are going to create both YouTube and Drive
   services, and query both.
  ************************************************/
 $yt_service = new Google_Service_Calendar($client);
+$yt_service_batch = new Google_Service_Calendar($client_batch);
 
+ $batch = new Google_Http_Batch($client_batch);
 
+ 
 /************************************************
   Boilerplate auth management - see
   user-example.php for details.
@@ -100,8 +116,10 @@ if (isset($_GET['code'])) {
 
 if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   $client->setAccessToken($_SESSION['access_token']);
+  $client_batch->setAccessToken($_SESSION['access_token']);
   if(!$has_refresh_token){
   $calList = $yt_service->calendarList->listCalendarList();
+  var_dump($calList);
   $refreshtoken = $client->getRefreshToken();
   $google_calendar = new GoogleUser();
   $google_calendar->user_id = $user_id;
@@ -115,6 +133,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 } else {
   if($has_refresh_token){
     $client->refreshToken($google_user->refreshtoken);
+    $client_batch->refreshToken($google_user->refreshtoken);
   }
   else{
   $authUrl = $client->createAuthUrl();
@@ -137,27 +156,32 @@ if (isset($authUrl)) {
 
   $complete_events = array();
   $u_personal_events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user_id." and time_added > '".$google_user->last_updated."'")->queryAll();
-  $u_attending_events = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " and event.time_added > '".$google_user->last_updated."'")->queryAll();
+  $u_attending_events = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user_id . " and event.time_added > '".$google_user->last_updated."'")->queryAll();
   $u_events = array_merge($u_personal_events,$u_attending_events);
-  $event = new Google_Service_Calendar_Event();
-  $start = new Google_Service_Calendar_EventDateTime();
-  $end = new Google_Service_Calendar_EventDateTime();
+
+
   if($u_events){
     foreach ($u_events as $u_event){
-        $start_date = (new DateTime($u_event["start_date"]))->format("Y-m-d");
-        $start_time = (new DateTime($u_event["start_time"]))->format("H:i");
-        $start = $start_date." ".$start_time;
-        $end_date = (new DateTime($u_event["end_date"]))->format("Y-m-d");
-        $end_time = (new DateTime($u_event["end_time"]))->format("H:i");
-        $end = $end_date." ".$end_time;
+        $event = new Google_Service_Calendar_Event();
+        $event->setSummary($u_event["title"]);
 
-        $text_insert = $u_event["title"]." ". $start." - ".$end." ";
-        if($u_event["location"]!=""){
-          $text_insert = $text_insert." at ".$u_event["location"];
-        }
-    
-        $createdEvent = $yt_service->events->quickAdd($google_user->email, $text_insert);
+        $start = new Google_Service_Calendar_EventDateTime();
+        $start->setDateTime(date(DATE_RFC3339, (new DateTime($u_event["start_date"]."T".$u_event["start_time"]))->getTimestamp()));//((new DateTime($u_event["start_time"]))->format("H:i:sP"));
+        $event->setStart($start);
+
+        $end = new Google_Service_Calendar_EventDateTime();
+        $end->setDateTime(date(DATE_RFC3339, (new DateTime($u_event["end_date"]." ".$u_event["end_time"]))->getTimestamp()));//((new DateTime($u_event["end_time"]))->format("H:i:sP"));
+        $event->setEnd($end);
+
+
+        /* add event inserts in the batch spool */
+        $req = $yt_service_batch->events->insert($google_user->email, $event);
+
+        $batch->add($req, false);
+        $req = null;
       }
+    $resultsBatch = $batch->execute();
+
   $google_user->last_updated = $last_updated;
   $google_user->save(false);
   }
