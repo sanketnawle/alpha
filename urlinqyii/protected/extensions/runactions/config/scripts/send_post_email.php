@@ -11,10 +11,9 @@ if (ERunActions::runBackground()){
         $post = $params['post'];
 
         $origin = $params['origin'];
+        $origin_name = $params['origin_name'];
 
-        $subject = "[Urlinq] Notification - new post in ".$origin." from ".$actor;
-
-
+        $subject = "[Urlinq] Notification - new post in " . $origin_name . " from " . $actor->firstname . ' ' . $actor->lastname;
 
 
 
