@@ -563,7 +563,7 @@ form#fbar_form.show {
 }
 
 .answer_check input {
-    margin-top: -10px;
+    margin-top: 0px;
 }
 
 .answer_check input:checked {
@@ -586,7 +586,7 @@ form#fbar_form.show {
 .letter_choice {
     background-color: rgba(153, 153, 153, 0.78);
     border-radius: 2px;
-    display: none;
+    display: none!important;
     text-align: center;
     width: 18px;
     left: 10px;
@@ -599,7 +599,7 @@ form#fbar_form.show {
 .add_choice {
     height: 20px;
     width: 20px;
-    display: inline-block;
+    display: inline-block!important;
 }
 
 .letter_choice span {
