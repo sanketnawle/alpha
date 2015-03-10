@@ -44,7 +44,7 @@ $(document).ready(function () {
     }
 
     var progress_bar = ["14%", "28%", "43%", "57%", "71%", "86%", "100%"];
-    var btn_text = ["Join your School", "Join your Major/Department","", "Continue", "Continue", "Continue", "Let's Get Started"];
+    var btn_text = ["Select your School", "Select your major/department","", "Continue", "Continue", "Continue", "Let's Get Started"];
     var hint_text = ["Select your School", "Select your Major/Department", "Verify .edu Email", "Sign up for Courses - Pick your Section", "Who inspires you on campus?", "Find your Group", "Add a Photo"];
     var progress_bar_color = ["rgb(186, 81, 228)", "#009ed3", "rgb(110, 56, 169)", "rgb(0, 173, 61)", "rgb(242, 110, 0)", "#ec3856", "rgb(39, 178, 78)"];
 
@@ -103,9 +103,12 @@ $(document).ready(function () {
         else{
             //Get university id based on email function call will be here in the future
             //When there are multiple univs
-            var university_id = '1';
+//            var university_id = '1';
+
+
+
             //Get the schools at this university then start onboarding
-            $.getJSON(base_url + '/university/getSchools?university_id=1',function(json_data){
+            $.getJSON(base_url + '/university/getSchools?university_id=' + university_id,function(json_data){
                 if(json_data['success']){
                     school_list = json_data['schools'];
                     start_onboarding();
@@ -280,7 +283,14 @@ $(document).ready(function () {
 
 
         } else if (curr == 2) {
-            $canvas.append("<div class='step_2_card'><a href = 'http://mail.google.com/a/nyu.edu'><h1>Check your email</h1></a><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'><p class = 'confirm_link_wrapper'><span>Please confirm your email address</span><a href = 'http://mail.google.com/a/nyu.edu' class = 'confirm_links'>Check your inbox.</a><a class = 'next_progress confirm_links'>Resend email</a></p></div>");
+            var mail_link = 'http://mail.google.com/a/nyu.edu';
+
+            if(university_id == 4){
+                mail_link = 'https://mytouro.touro.edu/cas/login?service=https%3A%2F%2Fmytouro.touro.edu%2Fpaf%2Fauthorize';
+            }
+
+
+            $canvas.append("<div class='step_2_card'><a href = 'http://mail.google.com/a/nyu.edu'><h1>Check your email</h1></a><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'><p class = 'confirm_link_wrapper'><span>Please confirm your email address</span><a href = '" + mail_link + "' class = 'confirm_links'>Check your inbox.</a><a class = 'next_progress confirm_links'>Resend email</a></p></div>");
             $('.skip_progress').hide();
             $(".full_skip").hide();
         } else if (curr == 3) {

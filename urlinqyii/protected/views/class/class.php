@@ -145,7 +145,7 @@
 
 
         <div id="content_panel" class = "group_responsiveness">
-        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class)); ?>
+        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class,'user'=>$user)); ?>
 
 
 
@@ -172,7 +172,7 @@
                         </div>
                     <?php }else{ ?>
                     <?php } ?>
-                    <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name . ' (' . $class->course->course_tag . ') '; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
+                    <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name; if($class->course->course_tag != ''){ echo ' (' . $class->course->course_tag . ') '; } ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
                 </div>
                 <div class = "group_right_info group_info_boxes">
                     <?php if($class->location) { ?>
@@ -193,6 +193,7 @@
                 <?php if($is_admin){ ?>
                 <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
                     <div class="upload_cover_photo_text">Change cover</div>
+                    <div id="set_to_parents_photo" style="cursor:pointer;">SET TO PARENTS IMG</div>
                 </div>
                 <?php } ?>                
 
@@ -244,7 +245,12 @@
                     <div class="tab_text">Members</div>
                     <div class = "tab_amount">
                         <?php if(count($class->users)>0){
-                            echo count($class->users);
+                            if($class->professor && !$class->professor()){
+                                echo count($class->users)+1;
+                            }else{
+                                echo count($class->users);
+                            }
+
                         }?>
                     </div>
                 </div>
@@ -629,7 +635,7 @@
                 <div id="class_members_tab" class= "members_tab_content tab_content">
 
                     <?php
-                        $professor = $class->professor();
+                        $professor = $class->professor;
                         if($professor){
                     ?>
                         <div class = "members_card_wrapper class_admin" data-user_id='<?php echo $professor->user_id; ?>' data-name="<?php echo $professor->full_name(); ?>">
@@ -645,12 +651,15 @@
                                         <span>In office</span>
                                     </span>-->
                                 </div>
+                                <?php if($professor->department){ ?>
                                 <div class = "user_more_info">
                                     <span class = "label">Department <br> </span><a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $professor->department->department_id; ?>" class = "data department_link"><?php echo $professor->department->department_name; ?></a>
                                 </div>
+                                <?php } if($professor->professorAttribute->office_location){ ?>
                                 <div class = "user_more_info">
                                     <span class = "label">Office location <br> </span><span class = "data location"><?php echo $professor->professorAttribute->office_location; ?></span>
                                 </div>
+                                <?php } ?>
                                 <div class = "user_more_info">
                                     <span class = "label">Email address <br> </span><span class = "data email"><?php echo $professor->user_email; ?></span>
                                 </div>

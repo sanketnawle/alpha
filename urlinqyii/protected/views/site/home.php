@@ -65,7 +65,7 @@
     </head>
 
 
-    <body id = "body_home" <?php if($first_time) echo 'class="first_visit"';?>>
+    <body id = "body_home" <?php if($first_time) { ?>class="first_visit first_visit_two"<?php } else { ?>class="first_visit_two"<?php } ?>>
 
         <?php echo Yii::app()->runController('partial/topbar');     ?>
 
@@ -73,7 +73,7 @@
             <div id="page">
                 <div id = "main_panel">
                     <div id="content_holder">
-                        <div id="left_panel" class = "intro_div intro_div_1">
+                        <div id="left_panel">
                             <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'home','origin_id'=>'')); ?>
                         </div>
                         <div id = "content_panel" class = "content_panel_home">
@@ -97,7 +97,7 @@
                                         <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'user','origin_id'=>$user->user_id ,'is_admin'=>false)); ?>
                                     </div>
 
-                                    <div id = "tutorial_starter" class = "welcome_button <?php echo $show_fbar_tutorial.' '.$show_profile_tutorial.' '.$show_planner_tutorial;?>">
+                                    <div id = "tutorial_starter" class = "welcome_button <?php echo $show_fbar_tutorial.' '.$show_planner_tutorial;?>">
                                         <h5>Discover how Urlinq can improve your education</h5>
                                     </div>
 
@@ -118,8 +118,8 @@
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
                                      <?php if($first_time){ ?>
                                      <div class = 'post new_fd' id = 'welcome_post'>
-
-                                        <div class="post_main">
+                                        <div class = "welcome_post_banner"></div>
+                                        <div class="post_main welcome_post">
                                         <div class = "post_type_marker reg_post_type">
                                             <span class = "post_type_icon"></span>
                                         </div>
@@ -127,14 +127,14 @@
                                         <div class="post_title">
                                             <div class = 'image_container'>
 
-                                                    <div class = 'post_user_icon'  style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test.jpg')">
+                                                    <div class = 'post_user_icon'  style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/professor_urlinq.png')">
                                                     </div>
 
 
                                             </div>
 
 
-                                                <span class = 'post_owner' >
+                                                <span class = 'post_owner prof_urlinq_post_owner' >
                                                     Professor Urlinq
                                                 </span>
 
@@ -155,7 +155,9 @@
 
                                             <div class = 'post_msg post_lr_link_msg'>
                                                     <span class='msg_span seemore_anchor'>
-                                                               Hi! I'm Professor Urlinq. Welcome to our site!
+                                                        Hi <?php echo $user->firstname ?>,
+                                                        <br>
+                                                        I am Professor Urlinq. Welcome to your university's Academic Network. We are excited to have you join this growing community. Use Urlinq to search classes, departments, faculty, and groups on your campus. The planner to the right will help you keep track of everything happening in your busy schedule. These tools, and many others you'll soon discover, will put you on track to a more successful academic journey. 
                                                     </span>
 
 
@@ -172,22 +174,23 @@
                                   <?php if($user->show_edit_profile_post){?>
                                     <div class = 'post new_fd' id = 'welcome_post_2'>
 
-                                        <div class="post_main">
+                                        <div class="post_main welcome_post">
                                         <div class = "post_type_marker reg_post_type">
                                             <span class = "post_type_icon"></span>
                                         </div>
+                                        <div class = "profile_post_banner"></div>
                                         <div class="post_head">
                                         <div class="post_title">
                                             <div class = 'image_container'>
 
-                                                    <div class = 'post_user_icon'  style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test.jpg')">
+                                                    <div class = 'post_user_icon'  style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/professor_urlinq.png')">
                                                     </div>
 
 
                                             </div>
 
 
-                                                <span class = 'post_owner' >
+                                                <span class = 'post_owner prof_urlinq_post_owner' >
                                                     Professor Urlinq
                                                 </span>
 
@@ -208,11 +211,11 @@
 
                                             <div class = 'post_msg post_lr_link_msg'>
                                                     <span class='msg_span seemore_anchor'>
-                                                         <div class="welcome_post_header">Tell us about yourself</div>
+                                                         <div class="welcome_post_header">Please help us get to know you better by entering the following information.</div>
                                                          <?php if($user->user_type == "s" && $user->studentAttributes){
                                                                 if(sizeof($user->majors)==0){?>
                                                                    <div class="post_major_section">
-                                                                       <div class="post_major_add welcome_post_label">Add your major</div>
+                                                                       <div class="post_major_add welcome_post_label">Add your major<br><span>What is your focus?</span></div>
                                                                        <input class = "post_major_input">
                                                                    </div>
                                                               <?php  }?>
@@ -271,7 +274,7 @@
                                                         <?php }?>
                                                         <?php if(!$user->user_bio){?>
                                                             <div class="post_bio_section">
-                                                                <div class="post_bio_add welcome_post_label">Add a short bio</div>
+                                                                <div class="post_bio_add welcome_post_label">Add a Description<br><span>Tell members of the university who you are and what you're passionate about.</span></div>
                                                                 <textarea maxlength="240" type="text" class="post_bio_input" id="bio_input" cols="29" wrap="hard"></textarea>
                                                             </div>
                                                         <?php }?>

@@ -229,7 +229,7 @@ width: 980px!important;
 #topbar_responsive_holder{
     max-width: 1145px;
     margin: 0px auto; 
-    padding-right: 220px;
+    /* padding-right: 220px; */
     height: 48px;
     position: relative;
 }
@@ -492,6 +492,7 @@ border-radius: 4px;}
                 padding-top: 4px;
                 padding-left: 10px;
                 padding-right: 0px;
+                cursor: pointer;
                 color: #a8acaf;
                 padding-bottom: 1px;
                 height: 27px;
@@ -507,6 +508,7 @@ border-radius: 4px;}
                     font-family: Avenir;
                     bottom: 8px;
                     position: relative;
+                    cursor: pointer;
                     font-weight: 200;
                     top: -5px;
                     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
@@ -532,7 +534,7 @@ border-radius: 4px;}
                     margin: auto;
                     display: inline-block;
                     height: 28px;
-                
+                    cursor: pointer;
                     background-size: auto;
                     top: -2px;
                     padding-right: 4px;
@@ -840,7 +842,7 @@ body .topbar div.calendar_link{}
 
 @media(max-width:1348px){
 #topbar_responsive_holder{
-    padding-right:196px;
+    /* padding-right:196px; */
 }
 body .topbar div.calendar_link{}
 
@@ -861,7 +863,7 @@ body.body_group .topbar > #topbar_responsive_holder > .right{}
 
 @media(max-width:1330px){
 #topbar_responsive_holder{
-    padding-right:186px;
+    /* padding-right:186px; */
 }
 body .topbar div.calendar_link{}
 
@@ -898,7 +900,7 @@ body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
 
 @media(max-width:1315px){
 #topbar_responsive_holder{
-    padding-right: 186px;
+    /* padding-right: 186px; */
 }
 .body_searchpage #right_panel{
     display: none!important;
@@ -945,7 +947,7 @@ body.body_group .topbar > #topbar_responsive_holder > .right{
 }
 
 body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
-    margin-left: 0px;
+    /* margin-left: 0px; */
 
 }
 
@@ -1053,7 +1055,7 @@ body.body_group #topbar_responsive_holder{
 body.body_group .topbar > #topbar_responsive_holder > .left a{margin-left:0px!important;
 }
 body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
-    margin-left: 18px;
+    /* margin-left: 18px; */
 
 }
 

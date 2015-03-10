@@ -91,7 +91,7 @@
 
 
                     <div id="content_panel" class = "group_responsiveness">
-                        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'club','origin_id'=>$club->group_id,'origin'=>$club)); ?>
+                        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'club','origin_id'=>$club->group_id,'origin'=>$club,'user'=>$user)); ?>
 
                         <?php if($is_admin){ ?>
                             <form action="/post/create" id="cover_photo_form" style="padding: 0px; margin: 0px;">

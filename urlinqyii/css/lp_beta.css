@@ -15,6 +15,35 @@ background-position: center;
 background-attachment: fixed;
 position: relative;
 }
+.school_bgd{
+  position:fixed;
+  height:100%;
+  width:100%;
+  padding:0;
+  margin:0;
+  display:none;
+  z-index:1;
+  background-position: bottom;
+  background-attachment:fixed;
+  background-size: cover!important;
+}
+
+.columbia-bgd {
+  background:url(../assets/columbia.jpg) center center no-repeat fixed;
+}
+
+.nyu-bgd {
+  background: url(../assets/nyu2.jpg) center center no-repeat fixed;
+}
+
+.rochester-bgd {
+  background: url(../assets/rochester.jpg) center center no-repeat fixed;
+}
+
+.stern-bgd {
+  background: url(../assets/nyu-stern.jpg) center center no-repeat fixed;
+  z-index:2;
+}
 
 /* NEW OUTER TABS */
 
@@ -2868,22 +2897,26 @@ background-color: #fff;
   div.dos_panels > .right{
     
   }
+
+/*  .school_bgd{
+    display: none!important;
+  }*/
 div.urlinq-marketing{
   height: 130px;
 }
-    div.bottom-container{
+/*    div.bottom-container{
     -webkit-box-shadow: none!important;
     -moz-box-shadow: none!important;
     box-shadow: none!important;
   
     background: #3d3d3d; 
     padding-bottom: 28px;
-}
+}*/
 
 
-body{
+/*body{
   background: #F7F7F7;
-}
+}*/
 
   div.about_section{
     display:none;
@@ -2896,7 +2929,7 @@ div.grabber{
 
 
 
-ul.color-border{
+/*ul.color-border{
   top: 0px;
   position: absolute;
   left: 50%;
@@ -2905,7 +2938,7 @@ ul.color-border{
   border-bottom: 2px solid #4f4f4f;
   background: transparent;
   float: none!important;
-}
+}*/
 
 div.signin-wrap{
 }
@@ -2938,17 +2971,17 @@ width: auto;
 
 div.header-sec-left h4.header{
   margin-left: 0px;
-  text-shadow: none;
-  color: #1B1B1B;
+/*  text-shadow: none;
+  color: #1B1B1B;*/
 }
 div.fname-lname-sec input {
 width: 180px;
 }
 
-ul.account-types li.account-type {
+/*ul.account-types li.account-type {
 width: s;
 }
-
+*/
 .registration-sec-texts input{
 width: 370px;
 
@@ -3017,9 +3050,9 @@ margin-left: 0px;
 }
 
 @media(max-width:850px){
-  .mobile_only_panel{
+/*  .mobile_only_panel{
     display: block!important;
-}
+}*/
 }
 
 @media(max-width:790px){
@@ -3036,15 +3069,15 @@ div.dos_panels > .right {
   display:none!important;
   }
   div.header-sec-left h4.header,div.header-sec-right div.time-to-signup{
-    color: #1B1B1B!important;
+/*    color: #1B1B1B!important;*/
   }
-    div.bottom-container{
+/*    div.bottom-container{
     -webkit-box-shadow: none!important;
     -moz-box-shadow: none!important;
     box-shadow: none!important;
   background-size: auto;margin-bottom: 0px; 
     position: absolute;
-}
+}*/
 
   .mobile_panel_1{
 
@@ -3092,7 +3125,7 @@ div.dos_panels > .right {
 }
 
 @media(max-width:710px){
-  div.dos_panels > .left{
+/*  div.dos_panels > .left{
     float: none;
 
   
@@ -3103,17 +3136,17 @@ div.dos_panels > .right {
     float: none;
     display: block;
     width: 100%;
-}
+}*/
 }
 
 @media(max-width:680px){
-    div.mobile_wrap_primary{
+/*    div.mobile_wrap_primary{
     display:block;
   
 }
   div.signup-container{
   display:none!important;
-  } 
+  } */
 }
 
 @media(max-width:640px){
@@ -3165,9 +3198,9 @@ div.dos_panels > .right {
   
 }
 
-  body{
+/*  body{
     background:#eaeaea!important;
-  }
+  }*/
 
   div.signin-wrap{position:absolute;right: 2px;}
 

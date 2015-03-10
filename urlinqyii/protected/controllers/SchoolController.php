@@ -16,12 +16,21 @@ class SchoolController extends Controller
 
         $is_admin = false;
 
-        if(strpos($user->user_email,'@urlinq.com') !== false){
+        if($this->is_urlinq_admin($user)){
             $is_admin = true;
         }
+
+
+
+        $is_urlinq_admin = false;
+
+        if($this->is_urlinq_admin($user)){
+            $is_urlinq_admin = true;
+        }
+
         //var_dump($user);
         //$members=User::model()->find('school_id:=id', array(':id'=>1));
-        $this->render('school',array('user'=>$user,'school'=>$school, 'departments'=>$school->departments, 'users'=>$school->users,'is_member'=>$is_member, 'is_admin'=>$is_admin));
+        $this->render('school',array('user'=>$user,'school'=>$school, 'departments'=>$school->departments, 'users'=>$school->users,'is_member'=>$is_member, 'is_admin'=>$is_admin, 'is_urlinq_admin'=>$is_urlinq_admin));
     }
 
     public function actionFollowDept(){

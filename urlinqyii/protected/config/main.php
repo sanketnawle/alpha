@@ -11,13 +11,14 @@ return array(
     'name'=>'My Web Application',
 //    'timeZone' => 'UTC',
     // preloading 'log' component
-    'preload'=>array('log'),
+    'preload'=>array('log','nodeSocket'),
 
     // autoloading model and component classes
     'import'=>array(
         'application.models.*',
         'application.components.*',
         'ext.YiiMailer.YiiMailer',
+        'ext.yii-node-socket.lib.php.NodeSocket.php'
     ),
 
     'modules'=>array(
@@ -28,13 +29,31 @@ return array(
             'password'=>'test',
             // If removed, Gii defaults to localhost only. Edit carefully to taste.
             'ipFilters'=>array('127.0.0.1','::1'),
-        ),
-        //*/
+        )
+
     ),
+
+
+
+
+
+
+
+
+
+
 
     // application components
     'components'=>array(
 
+
+
+        'nodeSocket' => array(
+            'class' => 'ext.yii-node-socket.lib.php.NodeSocket',
+            'host' => 'localhost',  // default is 127.0.0.1, can be ip or domain name, without http
+            'port' => 3001,      // default is 3001, should be integer
+            'allowedServerAddresses'=>array('127.0.0.1')
+        ),
 
 
 
@@ -66,6 +85,14 @@ return array(
                 //Maps multiple views in one line
                 //'<action:(fileUpload|contact|login|test|json|home|register|logout|timezone|onboard|sendVerificationEmail|verify|finishOnboarding|resendVerificationEmail|sendVerificationEmailFunction|sendReset|reset|doReset)>'=>'site/<action>',
 
+
+
+                //Redirect program url to department
+                //added for Touro univ
+                'program/<id:\d+>'=>'department/view',
+                'program/<id:\d+>/<action:\w+>/'=>'department/<action>',
+                'program/<action:\w+>'=>'department/<action>',
+
                 'search' => 'search/view',
                 'calendar' => 'calendar/view',
 
@@ -93,6 +120,9 @@ return array(
 
 
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+
+
+                //Comment this out to access /gii
                 '<action:\w+>'=>'site/<action>',
 
                 'post/json' => '/post/index',
@@ -125,7 +155,6 @@ return array(
                 'search/json'=>'search/json',
 
                 'file/upload'=>'site/fileUpload',
-
 
 
 

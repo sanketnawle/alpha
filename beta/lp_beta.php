@@ -1,4 +1,9 @@
-  <?php
+  
+<script>
+window.location.href('http://beta.urlinq.com');
+</script>
+
+<?php
 /*
 In this page getting the user's login info both for fb and normal login
 if he is logging in with fb sending him to fblogin.php
@@ -342,6 +347,7 @@ header('location:home.php');
   </script>
 
 </head>
+
 
 
 

@@ -59,3 +59,18 @@
 .icon-ellipsis:before {
   content: "g";
 }
+.icon-plus:before {
+  content: "h";
+}
+.icon-comment-discussion:before {
+  content: "i";
+}
+.icon-comment:before {
+  content: "j";
+}
+.icon-talk-chat-2:before {
+  content: "k";
+}
+.icon-quote:before {
+  content: "l";
+}

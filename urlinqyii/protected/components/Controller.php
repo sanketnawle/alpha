@@ -74,14 +74,48 @@ class Controller extends CController
 
 
 
+
     public function is_urlinq_admin($user){
-        if(strpos($user->user_email, '@urlinq.com') === false){
-            return false;
-        }else{
-            return true;
+
+        $admin_email_list = array('@urlinq.com', 'ross.kopelman@student.touro.edu', 'rkopelma@student.touro.edu');
+
+        foreach($admin_email_list as $admin_email){
+            if(strpos($user->user_email, $admin_email) !== false){
+                return true;
+            }
         }
+
+        return false;
     }
 
+    public $supported_emails = ['nyu.edu', 'urlinq.com','student.touro.edu','touro.edu'];
+
+    function get_supported_email_list(){
+        return $this->supported_emails;
+    }
+
+    function is_supported_email($email){
+        foreach($this->supported_emails as $supported_email){
+            if(strpos($email, $supported_email)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
+    function get_university_id_by_email($email){
+        if(strpos($email, 'nyu.edu')){
+            return 1;
+        }else if(strpos($email, 'touro.edu')){
+            return 4;
+        }else{
+            return 1;
+        }
+
+    }
 
     //Returns the current User model
     //Use like this in the controllers:
@@ -98,13 +132,22 @@ class Controller extends CController
         if($post && isset($post['token'])){
             $user_token = UserToken::model()->find('token=:token',array(':token'=>$post['token']));
             if($user_token){
+
                 return User::model()->find('user_id=:id', array(':id'=>$user_token->user_id));
             }else{
                 return null;
             }
         }
+        $user = User::model()->find('user_id=:id', array(':id'=>Yii::app()->session['user_id']));
+        //$this->register_node_js_user($user->user_id);
 
-        return User::model()->find('user_id=:id', array(':id'=>Yii::app()->session['user_id']));
+        return $user;
+    }
+
+    function register_node_js_user($user_id){
+//        $frame = Yii::app()->nodeSocket->getFrameFactory()->createAuthenticationFrame();
+//        $frame->setUserId($user_id);
+//        $frame->send();
     }
 
 
@@ -117,19 +160,7 @@ class Controller extends CController
         }
     }
 
-    function valid_email($email){
-        $valid_emails = ['nyu.edu', 'urlinq.com'];
 
-        foreach($valid_emails as $valid_email){
-            if(strpos($email, $valid_email)){
-                return true;
-            }
-        }
-
-
-        return false;
-
-    }
 
 
     function is_assoc($array) {

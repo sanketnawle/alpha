@@ -34,6 +34,7 @@ jQuery(document).ready(function(){
                 $clubs_div.append('<p>No clubs</p>');
             }
 
+
             jQuery.each(json_data['departments'],function(index, dept_json){
                 dept_json['name'] = dept_json['department_name'];
                 dept_json['type'] = 'department';

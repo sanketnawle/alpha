@@ -363,23 +363,43 @@ class FeedController extends Controller
 
                 $post_model = Post::model()->find('post_id=:post_id',array(':post_id'=>$post['post_id']));
 
-                $posts[$i]['user_answer_option_id'] = null;
+              //  $posts[$i]['user_answer_option_id'] = null;
 
-                $options = $post_model->postQuestionOptions;
+              //  $options = $post_model->postQuestionOptions;
 
-                foreach($options as $this_option){
+       /*         foreach($options as $this_option){
                     //Check if the user voted for this option
-                    $user_vote = PostQuestionOptionAnswer::model()->find('option_id=:option_id and user_id=:user_id', array(':option_id'=>$this_option->option_id, ':user_id'=>$user->user_id));
+                    $user_vote = PostQuestionOptionAnswer::model()->find('option_id=:option_id and user_id=:user_id', array(':option_id'=>$option->option_id, ':user_id'=>$user->user_id));
                     if($user_vote){
                         $posts[$i]['user_answer_option_id'] = $user_vote->option_id;
                     }
-                }
+                }*/
 
 
                 // adding all the options to the array
                 $post_que_options = PostQuestionOption::model()->findAll('post_id=:id', array(':id'=>$post['post_id']));
                 $options = self::convertModelToArray($post_que_options);
                 $posts[$i]['question']['options'] = self::getOptionsInfo($options);
+
+                $options_data = array();
+                $total_answers = 0;
+                foreach($post_model->postQuestionOptions as $j=>$option){
+                    $options_data[$j] = array();
+                    $options_data[$j]['answer'] = $option->option_text;
+                    $options_data[$j]['answer_count'] = sizeof($option->answers);
+                    $total_answers += sizeof($option->answers);
+                }
+
+                $posts[$i]['question']['options_data'] = $options_data;
+                $posts[$i]['question']['any_answers'] = $total_answers > 0;
+                $posts[$i]['question']['total_answers'] = $total_answers;
+                if(!$post_que->active){
+                    $correct_answer =  PostQuestionOption::model()->find('option_id=:oid',array(':oid'=>$post_que->correct_answer_id));
+                    if($correct_answer){
+                        $posts[$i]['question']['correct_answer'] = $correct_answer->option_text;
+                    }
+
+                }
 
 //                // adding info of participants
 //                $option_ids = array_column($options, 'option_id');
@@ -406,6 +426,8 @@ class FeedController extends Controller
 
                 if($event){
                     $event = $this->model_to_array($post_event->event);
+
+
 
 
                     $posts[$i]['event'] = $event;
@@ -465,6 +487,33 @@ class FeedController extends Controller
                             $posts[$i]['event']['color'] = $group_user->color;
                         }
                     }
+
+
+
+            //Get the origin data
+            if($posts[$i]['event']['origin_type'] == 'class'){
+                $posts[$i]['event']['origin'] = $this->model_to_array(ClassModel::model()->find('class_id=:id',array(':id'=>$posts[$i]['event']['origin_id'])));
+                //reassign the name to make it easier to get in the handlebars
+                $posts[$i]['event']['origin']['name'] = $posts[$i]['event']['origin']['class_name'];
+            }else if($posts[$i]['event']['origin_type'] == 'department'){
+                $posts[$i]['event']['origin'] = $this->model_to_array(Department::model()->find('department_id=:id',array(':id'=>$posts[$i]['event']['origin_id'])));
+                //reassign the name to make it easier to get in the handlebars
+                $posts[$i]['event']['origin']['name'] = $posts[$i]['event']['origin']['department_name'];
+            }else if($posts[$i]['event']['origin_type'] == 'school'){
+                $posts[$i]['event']['origin'] = $this->model_to_array(School::model()->find('school_id=:id',array(':id'=>$posts[$i]['event']['origin_id'])));
+                //reassign the name to make it easier to get in the handlebars
+                $posts[$i]['event']['origin']['name'] = $posts[$i]['event']['origin']['school_name'];
+
+            }else if($posts[$i]['event']['origin_type'] == 'club' || $posts[$i]['event']['origin_type'] == 'group'){
+                $posts[$i]['event']['origin'] = $this->model_to_array(Group::model()->find('group_id=:id',array(':id'=>$posts[$i]['event']['origin_id'])));
+                //reassign the name to make it easier to get in the handlebars
+                $posts[$i]['event']['origin']['name'] = $posts[$i]['event']['origin']['group_name'];
+            } else {
+                $event_new = Event::model()->find('event_id=:event_id', array(':event_id'=>$event['event_id']));
+                $posts[$i]['event']['origin'] = $this->model_to_array($event_new->user);
+                $posts[$i]['event']['origin_type'] = 'user';
+            }
+
                 }else{
                     //REmove this post from the array
                     unset($posts[$i]);

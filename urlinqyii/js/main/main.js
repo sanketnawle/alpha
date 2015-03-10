@@ -1,12 +1,18 @@
+//alert(JSON.stringify(globals));
+$(document).ready(start(globals.origin_id));
 
 
+    function start(origin_id){
 
-$(document).ready(function(){
+
+        return function(){
+
+            globals.origin_id = origin_id;
 
     $(function(){
         $('body.body_club div#fixed_element div.about_box').slimScroll({
             height: 'auto',
-            railVisible: true, 
+            railVisible: true,
             touchScrollStep: "20",
             size:"10px",
             allowPageScroll: true,
@@ -15,7 +21,7 @@ $(document).ready(function(){
 
         $('div.about_box p.school_about').slimScroll({
             height: '300px',
-            railVisible: true, 
+            railVisible: true,
             touchScrollStep: "20",
             size:"10px",
             allowPageScroll: true,
@@ -23,7 +29,7 @@ $(document).ready(function(){
         });
         $('body.body_club #group_about_box > .class_description_holder').slimScroll({
             height: '120px',
-            railVisible: true, 
+            railVisible: true,
             touchScrollStep: "20",
             size:"10px",
             allowPageScroll: true,
@@ -31,12 +37,12 @@ $(document).ready(function(){
         });
         $('body.body_class #group_about_box > .class_description_holder').slimScroll({
             height: '340',
-            railVisible: true, 
+            railVisible: true,
             touchScrollStep: "20",
             size:"10px",
             allowPageScroll: true,
             distance: "3px"
-        });        
+        });
     });
 
     $('.tab').click(function(){
@@ -55,22 +61,51 @@ $(document).ready(function(){
         $('.tab.active').removeClass('active');
         $(".tab.courses").addClass('active');
         $('.panel.active').removeClass('active');
-        $('#panel_2').addClass('active');        
+        $('#panel_2').addClass('active');
     });
 
     $('#nav_drop_down_see_all_button.departments').click(function(){
         $('.tab.active').removeClass('active');
         $(".tab.departments").addClass('active');
         $('.panel.active').removeClass('active');
-        $('#panel_2').addClass('active');        
+        $('#panel_2').addClass('active');
     });
-    
+
     $('#nav_drop_down_see_all_button.clubs').click(function(){
         $('.tab.active').removeClass('active');
         $(".tab.clubs").addClass('active');
         $('.panel.active').removeClass('active');
-        $('#panel_3').addClass('active');        
+        $('#panel_3').addClass('active');
     });
+
+
+    //CUSTOM ADMIN FUNCTION
+    $(document).on('click','#set_to_parents_photo', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var post_url = globals.base_url + '/admin/setToParentsPhoto';
+        var post_data = {
+            origin_type: globals.origin_type,
+            origin_id: globals.origin_id
+        };
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                if(response['success']){
+                    $('#cover_photo').css({'background-image': 'url("' + globals.base_url + response['file']['file_url'] + '")'});
+                }else{
+
+                }
+            },'json'
+        );
+
+    });
+
+
+
+
 
     $( "#page" ).scroll(function() {
 //        alert('SCROLL');
@@ -103,7 +138,7 @@ $(document).ready(function(){
         if(Math.floor(scroll_offset_top) >= 189.5){
 
             ////console.log("SETTING TO FIXED");
-            
+
             //alert(y);
             //$("#cover_photo").css({"transform":"translateY("+ -y+"px)"});
 
@@ -118,7 +153,7 @@ $(document).ready(function(){
             $nav_bar.css({'position':'relative'});
             $nav_bar.css({'top':'200.5px'});
 
-            
+
 
 
 
@@ -141,7 +176,7 @@ $(document).ready(function(){
 
         }if(Math.floor(scroll_offset_top) <= 191){
             $nav_bar.css({'position':'fixed'});
-            $nav_bar.css({'top':'56px'});            
+            $nav_bar.css({'top':'56px'});
         }
 
         if(Math.floor(scroll_offset_top) <= 234){
@@ -191,7 +226,7 @@ $(document).ready(function(){
 
     });
 
-    //Admin members tab controls in class and club to remove group members 
+    //Admin members tab controls in class and club to remove group members
 
     $("#remove_button").click(function(){
         var $remove_button = $(".admin_member_controls");
@@ -251,20 +286,20 @@ $(document).ready(function(){
 
         var $about_section = $(this).find(".about_scroll_container");
         var $about_section_span_height = $(this).find("div.about").height();
-       
+
         if($about_section_span_height >= 50){
             $about_section.addClass("scroller");
         }
-            
+
     });
 
     $('.group_box').mouseleave(function(){
         var $about_section = $(this).find(".about_scroll_container");
         var $about_section_span_height = $(this).find("div.about").height();
-       
+
         if($about_section_span_height >= 50){
             $about_section.removeClass("scroller");
-        }          
+        }
     });
 
     $("#page").scroll(function() {
@@ -272,7 +307,7 @@ $(document).ready(function(){
         var opacityShift = y*1;
         //alert(y);
         $("div.group_info_block").css({"opacity":1-opacityShift});
-    }); 
+    });
 
     //Handles the member leave/join/follow button
     $('#group_user_action_button').mouseenter(function(){
@@ -329,14 +364,14 @@ $(document).ready(function(){
             $(window).on('resize', function(){
                 var group_name_left = $("p#group_name").position().left;
                 $("div.center_admin").css({"left":group_name_left})
-            });          
+            });
 
             setTimeout(function(){
                 var $quote = $("#group_name > #name_title");
                 var $class_title_info = $(".class_title_info");
-                
+
                 var $numWords = $quote.text().split("").length;
-                
+
                 if (($numWords >= 1) && ($numWords < 10)) {
                     $quote.css("font-size", "48.5px");
                     $quote.css("letter-spacing", "1.55px;");
@@ -363,12 +398,12 @@ $(document).ready(function(){
                     $class_title_info.css("font-size","10.4px");
                     $class_title_info.css("margin-top","4px");
                     $class_title_info.css("line-height","12.8px");
-                }    
+                }
 
                 var group_name_left = $("p#group_name").position().left;
                 var group_name_left = $("p#group_name").position().left;
-                $("div.center_admin").css({"left":group_name_left});  
-                setTimeout(function(){          
+                $("div.center_admin").css({"left":group_name_left});
+                setTimeout(function(){
                     $("div.group_name").css({"opacity":"1"});
                 }, 200);
             }, 450);
@@ -778,7 +813,9 @@ $(document).ready(function(){
 
 
 
-});
+}
+
+}
 
 
 

@@ -193,7 +193,7 @@
                 <div class="profile_tab feed active" data-panel_id="1">
                     <div class="profile_tab_content">
 
-                        <div class="profile_tab_text">{{firstname}}'s Feed</div>
+                        <div class="profile_tab_text">Feed</div>
                     </div>
 
                 </div>
@@ -251,8 +251,8 @@
                 </div>
 
                 <div class="info_section" id = "department_section">
-                    <div class="info_label" id = "department_label">
-                        Department:
+                    <div class="info_label" id = "department_label" style="text-transform: capitalize;">
+                        {{department_front_end_name}}:
                     </div>
                     <a href="{{base_url}}/department/{{department_id}}" class="info_name" id="department_name">{{department}} {{department_tag}}</a>
                     <select class="edit_field dropdown" id="department_dropdown"></select>

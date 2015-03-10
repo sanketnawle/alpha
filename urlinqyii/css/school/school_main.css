@@ -15,6 +15,11 @@ margin: 0 auto;
 width: 101px;
 background-repeat: no-repeat;
 margin-bottom: 10px;
+height:40px;
+}
+
+div.univ_art div.text.touro{
+  background-image:url(../../assets/touro_logo.png);
 }
 
 #group_user_action_button.my_school_btn:hover{

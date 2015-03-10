@@ -1,6 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+
+
+    <?php
+        $department_front_end_name = 'department';
+        if($user->school->university_id == 4){
+            $department_front_end_name = 'program';
+        }
+
+    ?>
     <title>Urlinq Calendar</title>
     <script>
         window.base_url = "<?php echo Yii::app()->getBaseUrl(true); ?>";
@@ -241,7 +250,9 @@
                 </div>
                 <div class="providers class"></div>
                 <div class="providers clubs"></div>
-                <div class="providers depts"></div>
+                <div class="providers depts">
+                    <?php echo ucfirst($department_front_end_name); ?>s
+                </div>
             </div>
             <div class="mini-calendar" ng-controller="MiniMonthController">
                 <div class = "mini_calendar_cover"></div>

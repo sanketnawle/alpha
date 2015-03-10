@@ -1,3 +1,12 @@
+<?php
+
+$department_front_end_name = 'department';
+if($user->school->university_id == 4){
+    $department_front_end_name = 'program';
+}
+?>
+
+
 <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/nav_bar/nav_bar.css">
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/nav_bar/nav_bar.js"></script>
 
@@ -48,9 +57,9 @@
 
         <div class="nav_arrow"></div>
 
-        <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'department/' . $origin_id; ?>" data-link_type="department">
+        <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'program/' . $origin_id; ?>" data-link_type="<?php echo $department_front_end_name; ?>">
             <div class="nav_picture"></div>
-            <div class="nav_text">Departments</div>
+            <div class="nav_text"><?php echo ucfirst($department_front_end_name);?>s</div>
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="home_nav_dropdown closed">
                 <div class="nav_drop_down_scrollable">
@@ -66,7 +75,7 @@
                         usort($departments, "compare_department_names");
                     ?>
                     <?php foreach($departments as $department){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></div>
+                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name; if($department->department_tag != ''){echo ' (' . $department->department_tag . ')'; }?></div>
                     <?php } ?>
                 </div>
             </div>
@@ -76,7 +85,7 @@
 
         <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'club/' . $origin_id; ?>" data-link_type="club">
             <div class="nav_picture"></div>
-            <div class="nav_text">Clubs</div>
+            <div class="nav_text">Groups</div>
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="last_nav_drop_down_home home_nav_dropdown closed">
                 <div class="nav_drop_down_scrollable">
@@ -148,7 +157,7 @@
         <div class="nav_arrow"></div>
 
 
-        <div class="nav_section" data-link_url="/<?php echo 'department/' . $origin->department->department_id; ?>">
+        <div class="nav_section" data-link_url="/<?php echo $department_front_end_name . '/' . $origin->department->department_id; ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->department->department_name; ?></div>
         </div>
@@ -176,7 +185,7 @@
         <div class="nav_arrow"></div>
 
 
-        <div class="nav_section" data-link_url="/<?php echo 'department/' . $origin->department->department_id; ?>">
+        <div class="nav_section" data-link_url="/<?php echo $department_front_end_name . '/' . $origin->department->department_id; ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->department->department_name; ?></div>
         </div>
@@ -207,7 +216,7 @@
         <div class="nav_arrow nav_arrow_white"></div>
 
 
-        <div class="nav_section active" data-link_url="/<?php echo 'department/' . $origin_id; ?>">
+        <div class="nav_section active" data-link_url="/<?php echo $department_front_end_name . '/' . $origin_id; ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->department_name; ?></div>
         </div>
@@ -225,7 +234,7 @@
             <div id="nav_drop_down_container" class="closed">
                 <div class="nav_drop_down_scrollable">
                     <?php foreach($origin->courses as $course){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $course->course_id; ?>"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></div>
+                        <div class="nav_drop_down_section" data-id="<?php echo $course->course_id; ?>"><?php echo $course->course_name; if($course->course_tag != ''){ echo ' (' . $course->course_tag . ')'; }?></div>
                     <?php } ?>
                 </div>
 
@@ -257,9 +266,9 @@
 
 
         <!-- Store the link type so we can use it in the js        -->
-        <div class="nav_section drop_down nav_bar_no_repeat" id="home_nav" data-link_url="/<?php echo 'department/' . $origin_id; ?>" data-link_type="department">
+        <div class="nav_section drop_down nav_bar_no_repeat" id="home_nav" data-link_url="/<?php echo $department_front_end_name . '/' . $origin_id; ?>" data-link_type="<?php echo $department_front_end_name; ?>">
             <div class="nav_picture"></div>
-            <div class="nav_text">Departments</div>
+            <div class="nav_text"><?php echo ucfirst($department_front_end_name); ?>s</div>
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="closed">
                 <div class="nav_drop_down_scrollable">
@@ -278,7 +287,7 @@
 
 
                     <?php foreach($origin->departments as $department){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></div>
+                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name; if($department->department_tag != ''){ echo ' (' . $department->department_tag . ')'; } ?></div>
                     <?php } ?>
 
 
@@ -291,7 +300,7 @@
                 <div id="nav_drop_down_bar_line"></div>
 
                 <div id="nav_drop_down_see_all_button" class = "departments">
-                    <div id="nav_drop_down_see_all_departments_text">See all departments</div>
+                    <div id="nav_drop_down_see_all_departments_text">See all <?php echo $department_front_end_name; ?>s</div>
                 </div>
             </div>
         </div>
@@ -300,7 +309,7 @@
 
         <div class="nav_section drop_down nav_bar_no_repeat" id="home_nav" data-link_url="/<?php echo 'club/' . $origin_id; ?>" data-link_type="club">
             <div class="nav_picture"></div>
-            <div class="nav_text">Clubs</div>
+            <div class="nav_text">Groups</div>
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="home_nav_dropdown closed">
                 <div class="nav_drop_down_scrollable">
@@ -326,7 +335,7 @@
                 <div id="nav_drop_down_bar_line"></div>
 
                 <div id="nav_drop_down_see_all_button" class = "clubs">
-                    <div id="nav_drop_down_see_all_clubs_text">See all clubs</div>
+                    <div id="nav_drop_down_see_all_clubs_text">See all groups</div>
                 </div>
             </div>
         </div>

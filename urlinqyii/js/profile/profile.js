@@ -127,6 +127,14 @@ $(document).ready(function() {
             console.log('JSON PROFILE DATA');
             console.log(json_profile_data);
 
+            json_profile_data['department_front_end_name'] = 'department';
+            if(json_profile_data['university_id'] == "4"){
+                json_profile_data['department_front_end_name'] = 'Program';
+            }
+
+
+//            if(json_profile_data['school'])
+
             if($('#profile_wrapper').length){
                 $('#profile_wrapper').remove();
                 $('#profile_background_overlay').remove();

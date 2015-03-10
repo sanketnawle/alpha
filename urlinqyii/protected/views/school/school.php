@@ -1,5 +1,13 @@
 ﻿<html>
+<?php
 
+
+$department_front_end_name = 'department';
+if($school->university_id == 4){
+    $department_front_end_name = 'program';
+}
+
+?>
 
 <head>
     <script>
@@ -81,26 +89,57 @@
 
 
     <div id="content_panel" class = "group_responsiveness">
-    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'school','origin_id'=>$school->school_id,'origin'=>$school)); ?>
-    <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->coverFile->file_url ?>');">
-        <div class = "blur_section_overflow_container">
-            <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->pictureFile->file_url ?>');">
-            </div>
-        </div>  
-        <div class = "group_name">
-            <div class = "center_admin univ_art"><div class = "text"></div><div class = "university_arrow"></div></div>
-            <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $school->school_name; ?></span></p></div>
-        </div>
-        <div class = "group_right_info group_info_boxes">
-                <?php if($school->school_location) { ?>
-                <div class = "group_info_block school_location" id = "location">
-                    <em class ="small_icon_map"></em>
-                    <span><?php echo $school->school_location; ?></span>
+    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'school','origin_id'=>$school->school_id,'origin'=>$school,'user'=>$user)); ?>
+
+
+
+
+
+
+    <?php if($is_admin){ ?>
+    <form action="/post/create" id="cover_photo_form" style="padding: 0px; margin: 0px;">
+        <input type='file' class='step_6_upload' style='display:none;'>
+    <?php } ?>
+
+        <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->coverFile->file_url ?>');">
+            <div class = "blur_section_overflow_container">
+                <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->pictureFile->file_url ?>');">
                 </div>
-                <?php } else { }?>
+            </div>
+            <div class = "group_name">
+                <?php if($school->university_id == 1){ ?>
+                <div class = "center_admin univ_art"><div class = "text"></div><div class = "university_arrow"></div></div>
+                <?php }elseif($school->university_id == 4){ ?>
+                <div class = "center_admin univ_art"><div class = "text touro"></div><div class = "university_arrow"></div></div>
+                <?php } ?>
+                <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $school->school_name; ?></span></p></div>
+            </div>
+            <div class = "group_right_info group_info_boxes">
+                    <?php if($school->school_location) { ?>
+                    <div class = "group_info_block school_location" id = "location">
+                        <em class ="small_icon_map"></em>
+                        <span><?php echo $school->school_location; ?></span>
+                    </div>
+                    <?php } else { }?>
+            </div>
+
+
+            <?php if($is_urlinq_admin){ ?>
+                <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                    <div class="upload_cover_photo_text">Change cover</div>
+                </div>
+            <?php } ?>
+
+
+
+
+
         </div>
 
-    </div>
+
+    <?php if($is_admin){ ?>
+    </form>
+    <?php } ?>
 
 
 
@@ -118,7 +157,7 @@
                     <div class="tab departments" data-panel_id="2">
                         <div class="tab_content">
                             <div class="tab_img"></div>
-                            <div class="tab_text">Departments</div>
+                            <div class="tab_text"><?php echo ucfirst($department_front_end_name); ?>s</div>
                             <div class = "tab_amount"><?php echo count($departments); ?></div>
                         </div>
                         <div class="tab_wedge"></div>
@@ -224,11 +263,11 @@
                                 <div class = "small_search" class = "fade_input_small">
                                     <em id = "left_search_icon">
                                     </em>
-                                    <input type = "text" name = "people_search_input" placeholder = "Search departments" class = "name_search_input people_search_input small_search_input">
+                                    <input type = "text" name = "people_search_input" placeholder = "Search <?php echo $department_front_end_name; ?>s" class = "name_search_input people_search_input small_search_input">
                                 </div>                                        
                             </div>
                             <div class = "header_sentence">
-                                Departments at <?php echo $school->school_name; ?>
+                                <?php echo ucfirst($department_front_end_name); ?>s at <?php echo $school->school_name; ?>
                             </div>
                         </div>
                         <div class = "group_info_tab_content tab_content">
@@ -236,15 +275,15 @@
 
                             <?php foreach($departments as $department) { ?>
                                 <div class = "group_box group_course_box" data-name="<?php echo $department->department_name; ?>">
-                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $department->department_id ;?>">
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $department_front_end_name . '/' . $department->department_id ;?>">
                                         <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url; ?>')">
                                             <div class = "department_alias"><?php echo $department->department_tag ;?></div>
                                         </div>
                                     </a>
                                     <div class = "group_box_main_info">
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $department->department_id ;?>" class = "group_link"><?php echo $department->department_name; ?></a>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $department_front_end_name . '/' . $department->department_id ;?>" class = "group_link"><?php echo $department->department_name; ?></a>
                                         <div class = "float_Right">
-                                            <span class = "group_type">Department</span>
+                                            <span class = "group_type"><?php echo ucfirst($department_front_end_name); ?></span>
                                         </div>
                                     </div>
                                     <div class = "group_box_secondary_info_section">
@@ -344,8 +383,15 @@
                         </div>
                         <div class = "members_tab_content tab_content">
 
-
-                            <?php foreach($school->users as $member){ ?>
+                            <?php
+                            $members = $school->users;
+                            $members_count = count($members);
+                            if($members_count > 50){
+                                $members_count = 50;
+                            }
+                            ?>
+                            <?php for($i = 0; $i < $members_count; $i++){?>
+                                <?php $member = $members[$i]; ?>
                                 <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                     <div class = "members_card admin normal_size">
                                         <div class = "members_card_img profile_link" data-user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
