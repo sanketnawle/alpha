@@ -1720,7 +1720,7 @@ textarea:focus:-moz-placeholder {
     } 
 
     body#body_home.first_visit_two .topbar #topbar_responsive_holder .center ul{
-        width: 551px;
+        width: 550px;
     }
 
     body.body_searchpage .topbar > #topbar_responsive_holder > .right{float:right;margin-left: 0px;}

@@ -516,13 +516,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                                     <span class="user_first_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><?php echo $to_user->firstname; ?>,</span></td>
 
                                     <td align="right" class="urlinq_tri_color" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 33%;right: 10px;height: 5px;padding-top:7px;position: relative;">
-                                        <img class="logo tricolor_float_logo" src="http://beta.urlinq.com/assets/email_logo.png" style="background-repeat: no-repeat;background-size: contain;margin: 0;padding: 15px;font-family: 'Open Sans', sans-serif;width: 114px;left: 50%;position: absolute;height: 26px;right: 0px;top: -50px;">
-
-                                        <div class="tricolor_line red" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 70px;float: right;height: 7px;position: relative;display: inline-block;background: #ed4f68;"></div>
-
-                                        <div class="tricolor_line blue" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 70px;float: right;height: 7px;position: relative;display: inline-block;background: #1da7d2;"></div>
-
-                                        <div class="tricolor_line green" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 70px;float: right;height: 7px;position: relative;display: inline-block;background: #2cc185;"></div>
+                                        <img class="logo tricolor_float_logo" src="http://beta.urlinq.com/assets/email_logo.png" style="background-repeat: no-repeat;background-size: contain;margin: 0;padding: 15px;font-family: 'Open Sans', sans-serif;width: 114px;left: 50%;position: absolute;height: 26px;right: 0px; margin-top:8px;">
                                     </td>
                                 </tr>
                             </tbody>

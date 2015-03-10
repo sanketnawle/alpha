@@ -519,10 +519,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 									Hi <span class="user_first_name" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><?php echo $to_user->firstname; ?>,</span>
 								</td>
 								<td align="right" class="urlinq_tri_color" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 33%;right: 10px;height: 5px;top: 35px;position: relative;">
-									<img class="logo tricolor_float_logo" style="background-repeat: no-repeat;background-size: contain;margin: 0;padding: 15px;font-family: 'Open Sans', sans-serif;max-width: 100%;width: 114px;left: 50%;position: absolute;height: 26px;right: 0px;top: -50px;margin-left: -57px;" src="http://beta.urlinq.com/assets/email_logo.png">										
-									<div class="tricolor_line red" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 32%;float: right;height: 7px;position: relative;display: inline-block;background: #ed4f68;"></div>
-									<div class="tricolor_line blue" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 32%;float: right;height: 7px;position: relative;display: inline-block;background: #1da7d2;"></div>
-									<div class="tricolor_line green" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 32%;float: right;height: 7px;position: relative;display: inline-block;background: #2cc185;"></div>
+									<img class="logo tricolor_float_logo" style="background-repeat: no-repeat;background-size: contain;margin: 0;padding: 15px;font-family: 'Open Sans', sans-serif;max-width: 100%;width: 114px;left: 50%;position: absolute;height: 26px;right: 0px;margin-top: 8px;margin-left: -57px;" src="http://beta.urlinq.com/assets/email_logo.png">										
 								</td>
 					
 							</tr>
@@ -589,7 +586,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 </tbody></table><!-- /BODY -->
 
 <!-- FOOTER -->
-<table class="footer-wrap" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;background: #1d1f20;height: 110px;color: #FFF;clear: both!important;">
+<table class="footer-wrap" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;width: 100%;background: #1d1f20;color: #FFF;clear: both!important;">
 	<tbody style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"><tr style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;">
 		<td style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;"></td>
 		<td class="container" style="margin: 0 auto!important;padding: 0;font-family: 'Open Sans', sans-serif;display: block!important;max-width: 800px!important;clear: both!important;">
