@@ -113,7 +113,7 @@ body {
     float: right;
     height: 14px;
     width: 14px;
-    background: url('../img/OnboardingIconMap.png') no-repeat scroll 0px -32px transparent;
+    background: url('../img/OnboardingIconMap.png') no-repeat scroll 0px -30px transparent;
     -moz-transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
