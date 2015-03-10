@@ -27,6 +27,8 @@ if (ERunActions::runBackground()){
         $mail->setFrom('team@urlinq.com', 'Urlinq');
         $mail->setSubject($subject);
         $mail->setTo($to_user->user_email);
+
+        $mail->AltBody = $subject;
         $mail->SMTPDebug = 1; //optional
 
         include_once "email/email.php";

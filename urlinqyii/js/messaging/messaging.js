@@ -18,34 +18,45 @@ socket.on('message', function (data) {
     console.log(data);
 });
 
-
-
-socket.on('connect', function(socket) {
-    console.log("CONNECTED TO SOCKET.IO");
-
-
-    socket.on('message', function (data) {
-        console.log('RECEIVING DATA: ');
-        console.log(data);
-    });
-
-
-    socket.emit('global.event', {
-        message : {
-            id : 12,
-            title : 'This is a test message'
-        }
-    });
-
-    socket.on('global.event', function (data) {
-        console.log(data.message); // you will see in console `This is a test message`
-    });
-
-
-
-
+socket.on('user_' + globals.user_id, function (data) {
+    alert('DATA FROM THIS USER SOCKETT');
+    console.log(alert(JSON.stringify(data))); // you will see in console `This is a test message`
 });
 
+
+//
+//socket.on('connect', function(socket) {
+//    console.log("CONNECTED TO SOCKET.IO");
+//
+//
+//    socket.on('user_' + globals.user_id, function (data) {
+//        alert('DATA FROM THIS USER SOCKETT');
+//        console.log(data.message); // you will see in console `This is a test message`
+//    });
+//
+//
+//    socket.on('message', function (data) {
+//        console.log('RECEIVING DATA: ');
+//        console.log(data);
+//    });
+//
+//
+//    socket.emit('global.event', {
+//        message : {
+//            id : 12,
+//            title : 'This is a test message'
+//        }
+//    });
+//
+//    socket.on('global.event', function (data) {
+//        console.log(data.message); // you will see in console `This is a test message`
+//    });
+//
+//
+//
+//
+//});
+//
 
 
 
@@ -200,19 +211,19 @@ $(document).on('keydown', '.chat_input', function(e){
 
 
 
-        socket.emit('message', {
-            message : {
-                id : 12,
-                text : text
-            }
-        });
-
-        socket.emit('event.example', {
-            message : {
-                id : 12,
-                text : text
-            }
-        });
+//        socket.emit('message', {
+//            message : {
+//                id : 12,
+//                text : text
+//            }
+//        });
+//
+//        socket.emit('event.example', {
+//            message : {
+//                id : 12,
+//                text : text
+//            }
+//        });
 
 
 
