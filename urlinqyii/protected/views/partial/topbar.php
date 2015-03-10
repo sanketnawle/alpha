@@ -204,9 +204,13 @@
     {{/if}}
 
 
+        {{#ifCond origin.anon '==' '1'}}
+            <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/avatars/9.png')"></div>
+        {{else}}
+            <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{actor.pictureFile.file_url}}')"></div>
+        {{/ifCond}}
 
 
-        <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{actor.pictureFile.file_url}}')"></div>
         <div class="close delete_notification"><span class = "close_text">hide</span></div>
         <div class="content">
                 {{#ifCond type '==' 'follow'}}
@@ -241,15 +245,15 @@
                 {{#ifCond type '==' 'reply'}}
 
                     {{#ifCond origin.user_id '==' '<?php echo $user->user_id; ?>'}}
-                        <div class="message full"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> replied to your post{{#if origin.post_origin}} in <span class = "actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
+                        <div class="message full"><span class = "actor_name">{{#ifCond origin.anon '==' '1'}}Anonymous{{else}}{{actor.firstname}} {{actor.lastname}}{{/ifCond}}</span> replied to your post{{#if origin.post_origin}} in <span class = "actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
                     {{else}}
-                        <div class="message full"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> replied to a post{{#if origin.post_origin}} in <span class ="actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
+                        <div class="message full"><span class = "actor_name">{{#ifCond origin.anon '==' '1'}}Anonymous{{else}}{{actor.firstname}} {{actor.lastname}}{{/ifCond}}</span> replied to a post{{#if origin.post_origin}} in <span class ="actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
                     {{/ifCond}}
                 {{/ifCond}}
 
                 {{#ifCond type '==' 'post'}}
                     {{#ifCond origin.post_type '==' 'event'}}
-                        <div class="message"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> posted the event <span class = "actor_name">{{event.title}}</span> {{#if origin.post_origin}} to <span class = "actor_name">{{origin.post_origin.name}}</span>{{/if}}</div>
+                        <div class="message"><span class = "actor_name">{{#ifCond origin.anon '==' '1'}}Anonymous{{else}}{{actor.firstname}} {{actor.lastname}}{{/ifCond}}</span> posted the event <span class = "actor_name">{{event.title}}</span> {{#if origin.post_origin}} to <span class = "actor_name">{{origin.post_origin.name}}</span>{{/if}}</div>
 
                         {{#if event.attending}}
                         <div class = "right">
@@ -261,7 +265,7 @@
                         </div>
                         {{/if}}
                     {{else}}
-                        <div class="message full"><span class = "actor_name">{{actor.firstname}} {{actor.lastname}}</span> posted{{#if origin.post_origin}} in <span class = "actor_name"><a class = 'noti_group_name' href='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}'>{{origin.post_origin.name}}</a></span>{{/if}}</div>
+                        <div class="message full"><span class = "actor_name">{{#ifCond origin.anon '==' '1'}}Anonymous{{else}}{{actor.firstname}} {{actor.lastname}}{{/ifCond}}</span> posted{{#if origin.post_origin}} in <span class = "actor_name"><a class = 'noti_group_name' href='<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin.origin_type}}/{{origin.origin_id}}'>{{origin.post_origin.name}}</a></span>{{/if}}</div>
                     {{/ifCond}}
 
                 {{/ifCond}}
