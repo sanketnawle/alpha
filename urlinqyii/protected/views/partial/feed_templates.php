@@ -664,6 +664,9 @@
                                                         {{#if question.active}}
                                                         <div class="closed_question" style="display:none;">
                                                             This question is closed.
+                                                            <div class="your_answer_text">
+                                                                Your Answer: <span class="your_answer"></span>
+                                                            </div>
                                                             <div class="correct_answer_text">
                                                                 Correct Answer: <span class="correct_answer"></span>
                                                             </div>
@@ -671,11 +674,17 @@
                                                         {{else}}
                                                         <div class="closed_question">
                                                             This question is closed.
+                                                            {{#if question.your_answer}}
+                                                            <div class="your_answer_text">
+                                                                Your Answer: <span class="your_answer">{{question.your_answer}}</span>
+                                                            </div>
+                                                            {{/if}}
                                                             {{#if question.correct_answer}}
                                                             <div class="correct_answer_text">
                                                                 Correct Answer: <span class="correct_answer">{{question.correct_answer}}</span>
                                                             </div>
                                                             {{/if}}
+
                                                         </div>
                                                         {{/if}}
 
