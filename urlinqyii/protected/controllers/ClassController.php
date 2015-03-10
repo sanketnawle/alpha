@@ -519,7 +519,7 @@ class ClassController extends Controller
                             $event_entry->origin_type = "class";
                             $event_entry->origin_id = $class_id;
                             $event_entry->user_id = $user_id;
-                            $event_entry->title = "Lecture: ".$class->class_name;
+                            $event_entry->title = "Lecture";
                             $event_entry->start_time = (new DateTime($start_end[0]))->format("H:i:s");
                             $event_entry->end_time = (new DateTime($start_end[1]))->format("H:i:s");
                             $event_entry->start_date = $Day->format("Y-m-d");
