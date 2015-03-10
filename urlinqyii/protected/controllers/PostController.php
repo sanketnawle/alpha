@@ -109,10 +109,13 @@ class PostController extends Controller
 
         $origin = null;
 
+        $origin_name = '';
+
         if($origin_type == 'class'){
             $class = ClassModel::model()->find('class_id=:class_id', array(':class_id'=>$origin_id));
             if($class){
                 $origin = $class;
+                $origin_name = $class->class_name;
             }else{
                 $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid class', 'post'=>$_POST);
                 $this->renderJSON($data);
@@ -122,6 +125,7 @@ class PostController extends Controller
             $group = Group::model()->find('group_id=:group_id', array(':group_id'=>$origin_id));
             if($group){
                 $origin = $group;
+                $origin_name = $group->group_name;
             }else{
                 $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid group', 'post'=>$_POST);
                 $this->renderJSON($data);
@@ -131,6 +135,7 @@ class PostController extends Controller
             $department = Department::model()->find('department_id=:department_id', array(':department_id'=>$origin_id));
             if($department){
                 $origin = $department;
+                $origin_name = $department->department_name;
             }else{
                 $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid department', 'post'=>$_POST);
                 $this->renderJSON($data);
@@ -141,6 +146,7 @@ class PostController extends Controller
             $school = School::model()->find('school_id=:school_id', array(':school_id'=>$origin_id));
             if($school){
                 $origin = $school;
+                $origin_name = $school->school_name;
             }else{
                 $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid school', 'post'=>$_POST);
                 $this->renderJSON($data);
@@ -154,7 +160,7 @@ class PostController extends Controller
 
 
         if (ERunActions::runBackground()) {
-            ERunActions::runScript('send_post_email',$params=array('origin'=>$origin, 'to_user'=>$to_user,  'post'=>$post, 'subject'=>$subject, 'actor'=>$actor),$scriptPath=null);
+            ERunActions::runScript('send_post_email',$params=array('origin'=>$origin, 'origin_name'=>$origin_name, 'to_user'=>$to_user,  'post'=>$post, 'subject'=>$subject, 'actor'=>$actor),$scriptPath=null);
 
 
             $data = array('success'=>true,'error_id'=>'run');
@@ -226,10 +232,13 @@ class PostController extends Controller
 
             $origin = null;
 
+            $origin_name = '';
+
             if($origin_type == 'class'){
                 $class = ClassModel::model()->find('class_id=:class_id', array(':class_id'=>$origin_id));
                 if($class){
-                    $origin = $class;
+                    $origin = $this->model_to_array($class);
+                    $origin_name = $class->class_name;
                 }else{
                     $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid class', 'post'=>$_POST);
                     $this->renderJSON($data);
@@ -238,7 +247,8 @@ class PostController extends Controller
             }else if($origin_type == 'group' || $origin_type == 'club'){
                 $group = Group::model()->find('group_id=:group_id', array(':group_id'=>$origin_id));
                 if($group){
-                    $origin = $group;
+                    $origin = $this->model_to_array($group);
+                    $origin_name = $group->group_name;
                 }else{
                     $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid group', 'post'=>$_POST);
                     $this->renderJSON($data);
@@ -247,7 +257,8 @@ class PostController extends Controller
             }else if($origin_type == 'department'){
                 $department = Department::model()->find('department_id=:department_id', array(':department_id'=>$origin_id));
                 if($department){
-                    $origin = $department;
+                    $origin = $this->model_to_array($department);
+                    $origin_name = $department->department_name;
                 }else{
                     $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid department', 'post'=>$_POST);
                     $this->renderJSON($data);
@@ -257,7 +268,8 @@ class PostController extends Controller
             else if($origin_type == 'school'){
                 $school = School::model()->find('school_id=:school_id', array(':school_id'=>$origin_id));
                 if($school){
-                    $origin = $school;
+                    $origin = $this->model_to_array($school);
+                    $origin_name = $school->school_name;
                 }else{
                     $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'invalid school', 'post'=>$_POST);
                     $this->renderJSON($data);
@@ -289,7 +301,7 @@ class PostController extends Controller
             }
 
             if (ERunActions::runBackground()) {
-                ERunActions::runScript('send_reply_email',$params=array('origin'=>$origin, 'to_user'=>$to_user,  'post'=>$post, 'subject'=>$subject, 'actor'=>$actor, 'reply'=>$reply),$scriptPath=null);
+                ERunActions::runScript('send_reply_email',$params=array('origin'=>$origin,'origin_name'=>$origin_name,'to_user'=>$to_user,  'post'=>$post, 'subject'=>$subject, 'actor'=>$actor, 'reply'=>$reply),$scriptPath=null);
 
 
                 $data = array('success'=>true,'error_id'=>'run');

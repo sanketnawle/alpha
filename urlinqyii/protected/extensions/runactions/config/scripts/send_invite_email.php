@@ -11,7 +11,7 @@ if (ERunActions::runBackground()){
 
     $actor = $params['actor'];
 
-    $subject = $actor." has invited you to join Urlinq - an easier way to interact with your school";
+    $subject = $actor->firstname .  ' ' . $actor->lastname . " has invited you to join Urlinq - an easier way to interact with your school";
 
 
     $mail = new YiiMailer('invite', array('actor'=>$actor, 'to_email'=>$to_email));
