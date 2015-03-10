@@ -11,8 +11,9 @@ if (ERunActions::runBackground()){
         $post = $params['post'];
         $origin = $params['origin'];
         $reply = $params['reply'];
+        $origin_name = $params['origin_name'];
 
-        $subject = "[Urlinq] Reply in ".$origin." from ".$actor." - ".$reply;
+        $subject = "[Urlinq] Reply in " . $origin_name . " from " . $actor->firstname . ' ' . $actor->lastname . " - " . $reply->reply_msg;
 
 
 
