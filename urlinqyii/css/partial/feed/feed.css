@@ -114,12 +114,14 @@ em.posted_to {
     display: inline-block;
     width: 11px;
     background-size: auto;
+    float: left;
     height: 19px;
     background-position: -44px -463px;
     position: relative;
     left: 6px;
-    top: 5px;
+    top: -1px;
     opacity: .8;
+    margin-right: 3px;
 }
 
 .post_main {
@@ -165,7 +167,7 @@ em.posted_to {
 
 .post_head .image_container {
     display: block;
-    position: absolute;
+    /* position: absolute; */
     background-color: transparent;
     width: auto;
     margin-left: -68px;
@@ -246,18 +248,21 @@ em.posted_to {
 .post_title a
 {
     text-decoration: none;
+    display: block;
 }
 
 .post_owner, .post_group {
     color: #222;
     font-size: 15.5px;
-    top: 8px;
+    top: 0px;
     position: relative;
     cursor: pointer;
     /* font-weight: bold; */
     /* -webkit-font-smoothing: antialiased; */
     -moz-osx-font-smoothing: grayscale;
+    margin-right: 2px;
     left: 4px;
+    float: left;
     display: inline-block;
     -webkit-transition: color .218s;
     -moz-transition: color .218s;
@@ -299,9 +304,10 @@ div.post:hover .post_user_icon, div.comments:hover .comment_owner_container {
     display: inline-block;
     font-size: 12.5px;
     font-weight: 300 !important;
-    margin-top: 6px;
-    color: #777;
-    margin-left: 89px;
+    margin-top: 29px;
+    color: #575757;
+    position: absolute;
+    left: 82px;
 }
 
 span.time_icon {
@@ -4082,7 +4088,7 @@ div.post_event_origin_holder div.post_event_origin > a {
     -o-transition: color .218s;
     transition: color .218s;
     text-transform: capitalize;
-    max-width: 252px;
+    max-width: 230px;
     display: inline-block;
     text-overflow: ellipsis;
     vertical-align: top;
