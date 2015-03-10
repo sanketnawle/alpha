@@ -397,6 +397,18 @@ function ready(globals){
                     }else{
                         $post.find('.correct_answer_text').hide();
                     }
+                    if(response['your_answer']){
+                        $post.find('span.your_answer').text(response['your_answer']);
+                     /*   if(response['correct_answer']){
+                            if(response['correct_answer']===response['your_answer']){
+                                $post.find('.your_answer_text').addClass('correct');
+                            }else{
+                                $post.find('.your_answer_text').addClass('incorrect');
+                            }
+                        }*/
+                    }else{
+                        $post.find('.your_answer_text').hide();
+                    }
                     $post.find('.closed_question').fadeIn(250);
 
 
