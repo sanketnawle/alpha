@@ -865,8 +865,11 @@ class PostController extends Controller
 
 
                         if($model->post_type == 'multiple_choice' && isset($_POST['post']['question']['answer_index'])){
-                            $correct_answer_index = $_POST['post']['question']['answer_index'];
 
+                            $correct_answer_index = $_POST['post']['question']['answer_index'];
+                            if($correct_answer_index===""){
+                                $correct_answer_index=-1;
+                            }
                             $post_data['question']['answer_index'] = $correct_answer_index;
 
 
@@ -1387,10 +1390,19 @@ class PostController extends Controller
 
             $correct_answer =  PostQuestionOption::model()->find('option_id=:oid',array(':oid'=>$question->correct_answer_id));
             if($correct_answer){
-                $return_data = array('success'=>true,'correct_answer'=>$correct_answer->option_text);
-            }else{
-                $return_data = array('success'=>true);
+                $correct_answer=$correct_answer->option_text;
             }
+            $your_answer=null;
+            foreach($post->postQuestionOptions as $j=>$option){
+                $answer = PostQuestionOptionAnswer::model()->find('user_id=:uid and option_id=:oid',array(':oid'=>$option->option_id,':uid'=>$user->user_id));
+                if($answer){
+                    $your_answer=$answer->option->option_text;
+                }
+
+            }
+
+            $return_data = array('success'=>true,'correct_answer'=>$correct_answer,'your_answer'=>$your_answer);
+
 
             $this->renderJSON($return_data);
             return;
@@ -2044,6 +2056,11 @@ class PostController extends Controller
             return;
         }
         $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+        if (!$post) {
+            $data = array('success'=>false,'error_id'=>3,'error_msg'=>'post is deleted.');
+            $this->renderJSON($data);
+            return;
+        }
         if($post->post_type=="multiple_choice" || $post->post_type=="true_false"){
             $options_data = array();
             //$question = $post->postQuestion;

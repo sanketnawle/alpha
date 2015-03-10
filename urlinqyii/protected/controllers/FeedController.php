@@ -381,16 +381,17 @@ class FeedController extends Controller
                 $options = self::convertModelToArray($post_que_options);
                 $posts[$i]['question']['options'] = self::getOptionsInfo($options);
 
-                $options_data = array();
+               // $options_data = array();
                 $total_answers = 0;
                 foreach($post_model->postQuestionOptions as $j=>$option){
-                    $options_data[$j] = array();
-                    $options_data[$j]['answer'] = $option->option_text;
-                    $options_data[$j]['answer_count'] = sizeof($option->answers);
+                    $your_answer = PostQuestionOptionAnswer::model()->find('user_id=:uid and option_id=:oid',array(':oid'=>$option->option_id,':uid'=>$user->user_id));
+                    if($your_answer){
+                        $posts[$i]['question']['your_answer']=$your_answer->option->option_text;
+                    }
                     $total_answers += sizeof($option->answers);
                 }
 
-                $posts[$i]['question']['options_data'] = $options_data;
+             //   $posts[$i]['question']['options_data'] = $options_data;
                 $posts[$i]['question']['any_answers'] = $total_answers > 0;
                 $posts[$i]['question']['total_answers'] = $total_answers;
                 if(!$post_que->active){
@@ -679,7 +680,7 @@ class FeedController extends Controller
 				  where p.created_at < '" . $created_at . "' and (p.origin_type = 'user' and p.origin_id = ".$_GET['id'].")
 				  and not exists (select * from post_hide where user_id= " . $user->user_id . " and post_id = p.post_id)
 				  and (p.origin_id != p.user_id or p.anon = 0)
-					ORDER BY last_activity DESC	LIMIT ".self::$start_rec.",".self::POST_LIMIT;
+					ORDER BY created_at DESC	LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 
         $command = Yii::app()->db->createCommand($posts_sql_profile);
         if($posts = $command->queryAll()){
