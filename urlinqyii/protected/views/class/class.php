@@ -331,23 +331,26 @@
         <?php }else{ ?>
         <div class="panel tab_syllabus" id="panel_2" style="display:none">
         <?php } ?>
-            <div style="width:100%"> 
-                <div class = "black_action_box" style="width:70%;left:-5px;float:left;bottom: -6px;" id="add_syllabus_wrap">
-                    <button id="btn_add_syllabus" style="width:20%;float: left;height:29px;left: -6px;margin-top:0px; border-radius:4px;border-style: ridge;">
+            <div class = "syllabus_tab_header" style="width:100%"> 
+                <div class = "black_action_box" id="add_syllabus_wrap">
+                    <button id="btn_add_syllabus">
                       Add Syllabus
                     </button>
-                    <input style="display:none;" type="file" accept=".pdf" id="syllabus_pdf_upload"/>
+                    
                 </div>
                 <div class = "syllabus_download_btn" style="display:none;"><a id="class_syllabus_pdf" download>Download</a></div>
-                <div style="width:25%;float:right;">
-                    <input class="text" style="height: 29px;border-color: transparent;border-radius: 15px;float:right;right:4px;" type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="&nbsp;&nbsp;Search your events...">
+                <div class = "small_search fade_input_small events_search_syllabus_wrapper">
+                    <em class = "left_search_icon search_icon"></em>
+                    <input class="text small_search_input" type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="Search events...">
                 </div>
             </div>
-            <hr style="opacity:0.5;width:100%">
-            <div id="events_template_loc" style="height:auto;min-height:300px;">
-                <?php include("/js/bower_components/core-animated-pages/events_template.php"); ?>
+            <div id="events_template_loc" style="height:auto;min-height:390px;">
+                <?php include("js/bower_components/core-animated-pages/events_template.php"); ?>
              </div>
-            <br>
+            <div class = "pdf_separator">
+                <div class = "pdf_sep_line"></div>
+                <div class = "pdf_title">Syllabus</div>
+            </div>
             <div id="pdfContainer">
             </div>
 

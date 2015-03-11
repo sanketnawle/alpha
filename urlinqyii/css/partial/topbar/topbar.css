@@ -949,8 +949,7 @@ body.body_group .topbar > #topbar_responsive_holder > .right{
 }
 
 body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
-    /* margin-left: 0px; */
-
+    margin-left: 0px;
 }
 
 
