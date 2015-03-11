@@ -9,11 +9,13 @@ var class_color = "";
 
 
 window.onload = function () {
+  var edit_access = true;
   class_color = get_class_color();
   file_json = get_pdf();
   if(file_json["file_id"]){
     if(!file_json["edit_access"]){
       editable = "";
+      edit_access = false;
       $('#btn_add_syllabus').html("View Syllabus");
       $('#btn_add_syllabus').attr("id", "btn_view_syllabus");
 
@@ -33,7 +35,7 @@ window.onload = function () {
             selectedAlbum: null,
 
             right_arrow: "block",
-
+            edit_access: edit_access,
             left_arrow: "none",
 
             pagecount: Math.ceil(events_list.length/4),
@@ -45,12 +47,14 @@ window.onload = function () {
             descinput:false,
 
             showdescinput: function(e){
-              if(this.descinput){
-                this.descinput = false;
-              }
-              else{
-                this.descinput =true;
-              }
+              if(this.edit_access){
+                if(this.descinput){
+                  this.descinput = false;
+                }
+                else{
+                  this.descinput =true;
+                }
+            }
             },
 
             change_description: function() {
@@ -76,11 +80,14 @@ window.onload = function () {
             locationinput:false,
 
             showlocationinput: function(e){
-              if(this.locationinput){
-              this.locationinput =false;
-              }
-              else{
-              this.locationinput =true;
+              if(this.edit_access){
+
+                if(this.locationinput){
+                this.locationinput =false;
+                }
+                else{
+                this.locationinput =true;
+                }
               }
             },
 
