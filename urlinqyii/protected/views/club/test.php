@@ -103,6 +103,32 @@
 </script>
 
 
+
+
+<?php
+    $email = 'lol@med.nyu.edu';
+
+    $supported_email = 'nyu.edu';
+
+    $b = false;
+    if(strpos($email, $supported_email)){
+        $b = true;
+    }
+
+?>
+
+
+<script>
+    alert('<?php echo $b; ?>');
+</script>
+
+
+
+
+
+
+
+
 <?php
 $id = 1;
 if($user->user_id == 1){
