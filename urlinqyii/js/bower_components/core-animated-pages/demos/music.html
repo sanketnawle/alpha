@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <script src="../../TemplateBinding/load.js"></script>
+  </head>
+  <body>
+    <h1>Bind To Attributes</h1>
+
+    <ul>
+    <template id="colors" repeat="{{ colors }}">
+      <li>{{color}}</li>
+    </template>
+    </ul>
+
+    <button id="rotateText">Rotate</button>
+    <button id="rotateText2">Rotate2</button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var t = document.getElementById('colors');
+      t.model = {
+        colors: [
+          { color: 'red' },
+          { color: 'blue' },
+          { color: 'green' },
+          { color: 'pink' }
+        ],
+        items: [
+          { color: 'red2' },
+          { color: 'blue2' },
+          { color: 'green2' },
+          { color: 'pink2' },
+          { color: 'red3' },
+          { color: 'blue3' },
+          { color: 'green3' },
+          { color: 'pink3' }
+        ]
+
+      };
+      // Needed to detect model changes if Object.observe
+      // is not available in the JS VM.
+      var b = document.getElementById('rotateText');
+      var b2 = document.getElementById('rotateText2');
+      b.addEventListener('click', function() {
+        t.model.colors = t.model.items;
+        /*for(i=0; i<4; i++){
+        t.model.colors.pop(t.model.colors[i]);
+          
+        }
+        for(i=0; i<4; i++){
+        t.model.colors.push(t.model.items[0]);
+        }*/
+        console.log(t.model.items);
+        Platform.performMicrotaskCheckpoint();
+      });
+      b2.addEventListener('click', function() {
+        t.model.colors.pop(t.model.colors[0]);
+        Platform.performMicrotaskCheckpoint();
+      });
+    });
+    </script>
+  </body>
+</html>

@@ -276,17 +276,8 @@ function ready(globals){
 
                     var $post = $('.post[data-post_id='+post_id+']');
                     var $question_analytics_holder = $post.find('.question_analytics_holder');
-                    if($post.find('.mc_question').is(':visible') && response['closed']){
-                        closed_questions[post_id] = true;
-                        console.log(response);
-                        $post.find('.mc_question').fadeOut(250);
-
-                        if(response['correct_answer']){
-                            $post.find('span.correct_answer').text(response['correct_answer']);
-                        }else{
-                            $post.find('.correct_answer_text').hide();
-                        }
-                        $post.find('.closed_question').fadeIn(250);
+                    if(!$post.find('.mc_question_one_choice').hasClass('closed') && response['closed']){
+                        close_question($post,response['correct_answer'],response['your_answer']);
                     }
                     if(response['public_stats']=="1"){
                         if(!$question_analytics_holder.is(':visible')){
@@ -378,7 +369,32 @@ function ready(globals){
             },'json'
         );*/
     });
+    function close_question($post,correct_answer,your_answer){
+        var post_id = $post.attr('data-post_id');
+        closed_questions[post_id] = true;
+        $post.find('.question_functions *').fadeOut(250);
+        $post.find('.question_functions').text('This question is closed.');
+        $post.find('.submitted_answer').fadeOut(250);
+        $post.find('.mc_question_radio_button:checked').prop('checked',false);
+        $post.find('.mc_question_radio_button').attr('disabled',true);
+        $post.find('.mc_question_one_choice').addClass('closed');
 
+        if(correct_answer){
+            $post.find('.mc_question_radio_button[data-option_id='+correct_answer+']').addClass('green');
+            // $post.find('span.correct_answer').text(response['correct_answer']);
+        }
+        if(your_answer){
+            if(correct_answer){
+                if(your_answer != correct_answer){
+                    $post.find('.mc_question_radio_button[data-option_id='+your_answer+']').addClass('red');
+                }
+            }else{
+                $post.find('.mc_question_radio_button[data-option_id='+your_answer+']').addClass('blue');
+            }
+
+
+        }
+    }
     $(document).on('click','.close_question',function(){
         var $post = $(this).closest('.post');
         var post_id = $post.attr('data-post_id');
@@ -389,29 +405,7 @@ function ready(globals){
             post_data,
             function(response){
                 if(response['success']){
-                    console.log(response);
-                    $post.find('.mc_question').fadeOut(250);
-
-                    if(response['correct_answer']){
-                        $post.find('span.correct_answer').text(response['correct_answer']);
-                    }else{
-                        $post.find('.correct_answer_text').hide();
-                    }
-                    if(response['your_answer']){
-                        $post.find('span.your_answer').text(response['your_answer']);
-                     /*   if(response['correct_answer']){
-                            if(response['correct_answer']===response['your_answer']){
-                                $post.find('.your_answer_text').addClass('correct');
-                            }else{
-                                $post.find('.your_answer_text').addClass('incorrect');
-                            }
-                        }*/
-                    }else{
-                        $post.find('.your_answer_text').hide();
-                    }
-                    $post.find('.closed_question').fadeIn(250);
-
-
+                    close_question($post,response['correct_answer'],response['your_answer']);
                 }
 
             },'json'

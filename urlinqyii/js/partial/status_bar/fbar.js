@@ -766,7 +766,7 @@ function fbar_ready(origin_id) {
                 $(this).prop("checked", false);
             }
             else {
-                if($globals.$fbar.find(".answer_check input").prop("checked", true)) {
+                if(globals.$fbar.find(".answer_check input").prop("checked", true)) {
                     globals.$fbar.find(".answer_check input").prop("checked", false);
                     globals.$fbar.find(".answer_check").removeClass("selected_answer");
                     globals.$fbar.find(".answer_check").css("display", "none");

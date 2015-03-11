@@ -4982,14 +4982,16 @@ input.mc_question_radio_button + label {
     color: #777 !important;
 }
 
-input.mc_question_radio_button:hover + label {
+.mc_question_one_choice:not(.closed) > input.mc_question_radio_button:hover + label {
     background: rgba(2, 154, 207, 0.07);
     color: #FFF !important;
     border-color: rgba(2, 154, 207, 0.46);
     color: rgba(19, 183, 240, 0.91) !important;
 }
 
-input.mc_question_radio_button:hover + label {}
+input.mc_question_radio_button:hover + label {
+
+}
 
 input.mc_question_radio_button:checked + label {
     width: 100%;
@@ -5181,3 +5183,12 @@ input.show_hide_stats:checked ~ span.show_hide_stats_text {
 }
 
 
+.mc_question_radio_button.green + label {
+    background-color: lightgreen;
+}
+.mc_question_radio_button.red + label{
+    background-color: pink;
+}
+.mc_question_radio_button.blue + label{
+    background-color: lightblue;
+}
