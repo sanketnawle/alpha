@@ -100,11 +100,24 @@ var load_events = function (pdf_id) {
                 else{
                   time="";
                 }
+                if(value["location"]==""){
+                  event_location = "Add location";
+                }
+                else{
+                  event_location = value["location"];
+                }
+                if(value["description"]==""){
+                  description = "Add description";
+                }
+                else{
+                  description = value["description"];
+                }
+                
                 var event_value ={
                   title: value["title"].slice(0,15)+"...",
                   full_title: value["title"],
-                  location: value["location"],
-                  description: value["description"],
+                  location: event_location,
+                  description: description,
                   event_id: value["event_id"],
                   day: d.getDate(),
                   month: month[d.getMonth()],
