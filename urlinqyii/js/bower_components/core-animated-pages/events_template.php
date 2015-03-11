@@ -220,7 +220,7 @@
           <br>
           <div id="event_description" style="width:100%" title="Click to edit">
                 <div on-tap="{{showdescinput}}">
-                   Description: {{selectedAlbum.description}}
+                   Description: <br>{{selectedAlbum.description}}
                 </div>
                 <template if="{{descinput}}">
                   <div id="event_description_input" style="width:100%">
@@ -238,7 +238,7 @@
               <br>
               <div id="event_location" style="width:100%" title="Click to edit">
                 <div on-tap="{{showlocationinput}}" >
-                  Location: {{selectedAlbum.location}}
+                  Location: <br>{{selectedAlbum.location}}
                 </div>
                 <template if="{{locationinput}}">
                   <div id="event_location_input" style="width:100%">
