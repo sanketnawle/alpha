@@ -421,7 +421,7 @@ $(document).ready(function() {
 
 
                             reset_fbar();
-                            render_post(response['post'],'prepend');
+                            render_post(response['post']);
 
                         }
                     }

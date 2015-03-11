@@ -145,7 +145,7 @@
 
 
         <div id="content_panel" class = "group_responsiveness">
-        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class)); ?>
+        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class, 'user'=>$user)); ?>
 
 
 
@@ -344,9 +344,7 @@
                 </div>
             </div>
             <hr style="opacity:0.5;width:100%">
-            <div id="events_template_loc" style="height:auto;min-height:300px;">
-                <?php include("/js/bower_components/core-animated-pages/events_template.php"); ?>
-            </div>
+
             <br>
             <div id="pdfContainer">
             </div>
