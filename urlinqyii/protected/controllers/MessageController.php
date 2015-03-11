@@ -219,6 +219,55 @@ class MessageController extends Controller
 
 
 
+    //Emits message to nodejs/socketio in the background
+    public function actionSendFunction() {
+
+        if(!isset($_POST['message_id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $message_id = $_POST['message_id'];
+
+        //$user = $this->get_current_user($_POST);
+
+        $message = Message::model()->find('id=:id', array(':id'=>$message_id));
+
+        if(!$message){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'Msg doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+//        //Make sure this user is the sender of this msg
+//        if($message->user_id != $user->user_id){
+//            $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'User cannot send this msg');
+//            $this->renderJSON($data);
+//            return;
+//        }
+
+        if (ERunActions::runBackground()) {
+
+            $event = Yii::app()->nodeSocket->getFrameFactory()->createEventFrame();
+            $event->setEventName($message->target_type . '_' . $message->target_id);
+            $event->setData(array('user_id'=>$message->user_id,'target_type'=>$message->target_type,'target_id'=>$message->target_id,'text'=>$message->text));
+            $event->send();
+
+            $data = array('success'=>true,'error_id'=>'run');
+            $this->renderJSON($data);
+            return;
+        }
+        else {
+            $data = array('success'=>false,'error_id'=>'error running in background');
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
+
+
 	public function actionSend() {
         if(!isset($_POST['text']) || !isset($_POST['target_id']) || !isset($_POST['target_type'])){
             $return_data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'data is not set', 'post'=>$_POST);
@@ -269,9 +318,9 @@ class MessageController extends Controller
 //
 //            }
             Yii::app()->nodeSocket->registerClientScripts();
-            $frame = Yii::app()->nodeSocket->getFrameFactory()->createAuthenticationFrame();
-            $frame->setUserId($user->user_id);
-            $frame->send();
+//            $frame = Yii::app()->nodeSocket->getFrameFactory()->createAuthenticationFrame();
+//            $frame->setUserId($user->user_id);
+//            $frame->send();
 
 
 
@@ -283,10 +332,8 @@ class MessageController extends Controller
 //                $event->setData = array('msg'=>'asdasd');
 //                $event->send();
 
-                $event = Yii::app()->nodeSocket->getFrameFactory()->createEventFrame();
-                $event->setEventName('user_' . $target_id);
-                $event->setData(array('user_id'=>$user->user_id,'text'=>$message->text));
-                $event->send();
+                //Emit the message event to nodejs/socket.io asynchronously
+                ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/message/sendFunction',$postData=array('message_id'=>$message->id),$contentType=null);
 
 
                 $return_data = array('success'=>true, 'message'=>$message, 'last_update'=>date('Y-m-d H:i:s'));

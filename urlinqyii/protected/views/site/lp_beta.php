@@ -76,7 +76,7 @@
             var emails = ['nyu.edu', 'urlinq.com','student.touro.edu','touro.edu'];
           for(var i = 0; i < emails.length; i++){
               //alert(email.indexOf(emails[i]));
-              if(email.indexOf(emails[i]) > 0){
+              if(email.indexOf(emails[i]) > -1){
                   return true;
               }
           }
