@@ -385,6 +385,7 @@ class ClassController extends Controller
         $event->origin_id = $_POST["class_id"];
         $event->start_date = $_POST["event_date"];
         $event->end_date = $_POST["event_date"];
+        $event->description = $_POST["description"];
         $event->start_time = "00:00:00";
         $event->end_time = "00:00:00";
         $event->location = "";

@@ -114,8 +114,7 @@ var load_events = function (pdf_id) {
                 }
                 
                 var event_value ={
-                  title: value["title"].slice(0,15)+"...",
-                  full_title: value["title"],
+                  title: value["title"],
                   location: event_location,
                   description: description,
                   event_id: value["event_id"],

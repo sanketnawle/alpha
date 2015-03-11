@@ -212,7 +212,7 @@
             <div class="card-icon" style="background:{{selectedAlbum.color}};"></div>
           </div>
           <div flex>
-            <div class="card-album-title">{{selectedAlbum.full_title}}</div>
+            <div class="card-album-title">{{selectedAlbum.title}}</div>
           </div>
         </div>
         <hr style="opacity:0.6;">

@@ -350,34 +350,17 @@ var add_event_to_ui = function(events_generated){
   
   $.each(events_generated,function(index, value){
     var stamp = new Date(Date.parse(index));
+    description = value;
+    value = get_valid_title(value);
     if(stamp && added_events.indexOf(String(stamp))<0){
       var php_time = pdf_year+"-"+(stamp.getMonth()+1)+"-"+stamp.getDate()+" "+stamp.getHours()+":"+stamp.getMinutes()+":"+stamp.getSeconds();
-      var get_data_json = {"class_id":globals.origin_id,"file_id":String(file_id),"event_title":value,"event_date":php_time,"event_type":"default"}; 
+      var get_data_json = {"class_id":globals.origin_id,"file_id":String(file_id),"event_title":value,"event_date":php_time,"event_type":"default", "description":description}; 
       $.ajax({
          url: "StoreEvent",
          type: "POST",
          data: get_data_json,
          success: function(response) {
-          //var parsed_response = ;
-          html_text='<div id="'+response+'" class = "syllabus_event editable">\
-                    <div  style="background-color:'+class_color+';" class = "day_month_box day_box_color">\
-                        <div class = "calendar_top_border"></div>\
-                        <div class = "calendar_bottom_section">\
-                            <span class = "day">'+stamp.getDate()+'</span>\
-                            <span class = "month">'+month[stamp.getMonth()]+'</span>\
-                        </div>\
-                    </div>\
-                    <div class = "event_name_buttons">\
-                        <span class ="event_name_text">\
-                            Midterm 1\
-                        </span>\
-                        <input class = "syla_tab_event_editor" type = "text" name = "event_name" value="'+value+'"">\
-                        <div class = "done_editing_button">\
-                            Done\
-                        </div>\
-                    </div>\
-                </div>';
-            $('div#events_list').append(html_text);
+
             
          },
          error: function(jqXHR, textStatus, errorMessage) {
@@ -481,4 +464,35 @@ var get_date_v2= function(input){
   }
 }
 
+var get_valid_title= function(title){
+  mid_term_keywords = ["midterm","mid"];
+  test_keywords = ["test"];
+  exam_keywords = ["final exam", "finals", "exam", "final"];
+  lab_keywords = ["lab", "practical"];
+  lecture_keywords = ["lecture", "class", "session"];
+  lower_case_title = title.toLowerCase();
+
+  for(i=0; i<mid_term_keywords.length; i++){
+    if(lower_case_title.indexOf(mid_term_keywords[i])>=0){
+      return "Midterm";
+    }
+  }
+  for(i=0; i<exam_keywords.length; i++){
+    if(lower_case_title.indexOf(exam_keywords[i])>=0){
+      return "Final Exam";
+    }
+  }
+  for(i=0; i<lab_keywords.length; i++){
+    if(lower_case_title.indexOf(lab_keywords[i])>=0){
+      return "Lab";
+    }
+  }
+  for(i=0; i<lecture_keywords.length; i++){
+    if(lower_case_title.indexOf(lecture_keywords[i])>=0){
+      return "Lecture";
+    }
+  }
+  console.log("Returning default");
+  return "Lecture";
+};
 //(((.*)((\d{1,2}\s?am|pm)|(((\d{1,2}:\d{1,2})?)(\s?)((am|pm)?))))?)
