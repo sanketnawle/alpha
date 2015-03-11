@@ -385,6 +385,7 @@ class ClassController extends Controller
         $event->origin_id = $_POST["class_id"];
         $event->start_date = $_POST["event_date"];
         $event->end_date = $_POST["event_date"];
+        $event->description = $_POST["description"];
         $event->start_time = "00:00:00";
         $event->end_time = "00:00:00";
         $event->location = "";
@@ -399,9 +400,20 @@ class ClassController extends Controller
     }
 
     public function actionUpdateSyllabusEvent(){
+        if(isset($_POST["description"])){
+            $to_edit = "description";
+        }
+        elseif(isset($_POST["location"])){
+            $to_edit = "location";
+        }
+        else{
+            $data = array('success'=>false);
+            $this->renderJSON($data);
+            return;
+        }
         $event = Event::model()->find('event_id=:id', array(':id'=>$_POST["id"]));
         if($event){
-            $event->updateByPk($event->event_id, array("title"=>$_POST["title"]));
+            $event->updateByPk($event->event_id, array($to_edit=>$_POST[$to_edit]));
             $data = array('success'=>true);
             $this->renderJSON($data);
             return;

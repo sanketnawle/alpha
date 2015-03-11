@@ -1390,13 +1390,13 @@ class PostController extends Controller
 
             $correct_answer =  PostQuestionOption::model()->find('option_id=:oid',array(':oid'=>$question->correct_answer_id));
             if($correct_answer){
-                $correct_answer=$correct_answer->option_text;
+                $correct_answer=$correct_answer->option_id;
             }
             $your_answer=null;
             foreach($post->postQuestionOptions as $j=>$option){
                 $answer = PostQuestionOptionAnswer::model()->find('user_id=:uid and option_id=:oid',array(':oid'=>$option->option_id,':uid'=>$user->user_id));
                 if($answer){
-                    $your_answer=$answer->option->option_text;
+                    $your_answer=$answer->option->option_id;
                 }
 
             }
@@ -2075,13 +2075,20 @@ class PostController extends Controller
             $question = $post->postQuestion;
 
             $correct_answer = PostQuestionOption::model()->find('option_id=:oid',array(':oid'=>$question->correct_answer_id));
+            $your_answer=null;
+            foreach($post->postQuestionOptions as $j=>$option){
+                $answer = PostQuestionOptionAnswer::model()->find('user_id=:uid and option_id=:oid',array(':oid'=>$option->option_id,':uid'=>$user->user_id));
+                if($answer){
+                    $your_answer=$answer->option->option_id;
+                }
 
+            }
             if(!$question->active && $correct_answer){
                 $data = array('success'=>true,'results'=>$options_data, 'answer_count'=>$total_answers, 'owner'=>($user->user_id == $post->user_id),
-                    'public_stats'=>$question->public_stats,'closed'=>!$question->active, 'correct_answer'=>$correct_answer->option_text);
+                    'public_stats'=>$question->public_stats,'closed'=>!$question->active, 'correct_answer'=>$correct_answer->option_id,'your_answer'=>$your_answer);
             }else{
                 $data = array('success'=>true,'results'=>$options_data, 'answer_count'=>$total_answers, 'owner'=>($user->user_id == $post->user_id),
-                    'public_stats'=>$question->public_stats,'closed'=>!$question->active);
+                    'public_stats'=>$question->public_stats,'closed'=>!$question->active,'your_answer'=>$your_answer);
             }
             $this->renderJSON($data);
             return;
