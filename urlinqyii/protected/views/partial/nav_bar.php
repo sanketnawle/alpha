@@ -1,5 +1,6 @@
 <?php
 
+
 $department_front_end_name = 'department';
 if($user->school->university_id == 4){
     $department_front_end_name = 'program';

@@ -134,7 +134,7 @@
         <div class='step_3_card' id="course_{{course_id}}" data-course_id='{{course_id}}' data-course_name='{{course_tag}} - {{course_name}}'>
             <div class='step_3_show'>
                 <img class='card_3_glyph' src='{{base_url}}{{pictureFile.file_url}}'>
-                <div class='step_3_line_0'>{{course_tag}} - {{course_name}}</div>
+                <div class='step_3_line_0'>{{course_name}} - <span style = "color:#777;">{{course_tag}}</span></div>
                 <div class='step_3_line_1'>
                     <div class='step_3_line_1_0'><span>{{department.department_name}}</span></div>
                     <!--<span class='adot'>&#8226;</span>-->

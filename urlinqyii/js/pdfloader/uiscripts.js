@@ -2,7 +2,14 @@ $(document).on("click",'#btn_add_syllabus', function(event){
         event.preventDefault();
         $("#syllabus_pdf_upload").trigger("click");
 });
+$(document).ready(function(){
 
+  $(document).on("click", "#btn_view_syllabus", function() {
+      $('html, body').animate({
+          scrollTop: $("div#pdfContainer").offset().top
+      }, 1000);
+  });
+});
 $(document).on("change",'#syllabus_pdf_upload', function(event){
         event.preventDefault();
 
@@ -74,38 +81,59 @@ $(document).on("change",'#syllabus_pdf_upload', function(event){
     month[11] = "Dec";
 
 var load_events = function (pdf_id) {
-  $.ajax({
+  var event_array_list = new Array();
+  var resp = $.ajax({
          url: "GetEvents",
          type: "GET",
+         async: false,
          data: {"class_id":globals.origin_id, "file_id":pdf_id},
          success: function(response) {
-          $.each(response,function(index,value){
-            var d = new Date(value["start_date"]);
-            html_text='<div id="'+value["event_id"]+'" class = "syllabus_event'+editable+'">\
-                    <div style="background-color:'+class_color+';" class = "day_month_box day_box_color">\
-                        <div class = "calendar_top_border"></div>\
-                        <div class = "calendar_bottom_section">\
-                            <span class = "day">'+d.getDate()+'</span>\
-                            <span class = "month">'+month[d.getMonth()]+'</span>\
-                        </div>\
-                    </div>\
-                    <div class = "event_name_buttons">\
-                        <span title="'+value["title"]+'" class ="event_name_text">\
-                            '+value["title"].slice(0,20)+"..."+'\
-                        </span>\
-                        <input class = "syla_tab_event_editor" type = "text" name = "event_name" value="'+value["title"]+'"">\
-                        <div class = "done_editing_button">\
-                            Done\
-                        </div>\
-                    </div>\
-                </div>';
-            $('div#events_list').append(html_text);
-          });
+          $.each(response, function(index,value){
+                var d = new Date(value["start_date"]+" "+ value["start_time"]);
+                var dt = new Date(value["end_date"]+" "+ value["end_time"]);
+                if(d.getHours()!="0" && dt.getHours()!="0"){
+                  time = "from "+d.getHours()+" to "+dt.getHours();
+                }
+                else if(d.getHours()!="0"){
+                  time="from " + d.getHours();
+                }
+                else{
+                  time="";
+                }
+                if(value["location"]==""){
+                  event_location = "Add location";
+                }
+                else{
+                  event_location = value["location"];
+                }
+                if(value["description"]==""){
+                  description = "Add description";
+                }
+                else{
+                  description = value["description"];
+                }
+                
+                var event_value ={
+                  title: value["title"],
+                  location: event_location,
+                  description: description,
+                  event_id: value["event_id"],
+                  day: d.getDate(),
+                  month: month[d.getMonth()],
+                  event_id: value["event_id"],
+                  time: time,
+                  color: class_color,
+                };
+                  event_array_list.push(event_value);
+               
+              });
          },
          error: function(jqXHR, textStatus, errorMessage) {
              console.log(errorMessage); // Optional
          }
       });
+      
+         return event_array_list;
 };
 
 

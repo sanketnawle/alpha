@@ -18,6 +18,9 @@ if (ERunActions::runBackground()){
     $mail->setFrom($from_email, 'Urlinq');
     $mail->setSubject($subject);
     $mail->setTo($to_email);
+
+
+    $mail->AltBody = $subject;
     $mail->SMTPDebug = 1; //optional
 
     include_once "email/email.php";

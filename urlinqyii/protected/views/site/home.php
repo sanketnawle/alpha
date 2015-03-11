@@ -157,6 +157,7 @@
                                                     <span class='msg_span seemore_anchor'>
                                                         Hi <?php echo $user->firstname ?>,
                                                         <br>
+                                                        <br>
                                                         I am Professor Urlinq. Welcome to your university's Academic Network. We are excited to have you join this growing community. Use Urlinq to search classes, departments, faculty, and groups on your campus. The planner to the right will help you keep track of everything happening in your busy schedule. These tools, and many others you'll soon discover, will put you on track to a more successful academic journey. 
                                                     </span>
 

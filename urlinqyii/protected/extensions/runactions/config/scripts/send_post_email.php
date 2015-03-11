@@ -13,7 +13,13 @@ if (ERunActions::runBackground()){
         $origin = $params['origin'];
         $origin_name = $params['origin_name'];
 
-        $subject = "[Urlinq] Notification - new post in " . $origin_name . " from " . $actor->firstname . ' ' . $actor->lastname;
+
+
+        if($post->anon){
+            $subject = "[Urlinq] Notification - new post in " . $origin_name . " from Anonymous";
+        }else{
+            $subject = "[Urlinq] Notification - new post in " . $origin_name . " from " . $actor->firstname . ' ' . $actor->lastname;
+        }
 
 
 
@@ -21,6 +27,8 @@ if (ERunActions::runBackground()){
         $mail->setFrom('team@urlinq.com', 'Urlinq');
         $mail->setSubject($subject);
         $mail->setTo($to_user->user_email);
+
+        $mail->AltBody = $subject;
         $mail->SMTPDebug = 1; //optional
 
         include_once "email/email.php";
