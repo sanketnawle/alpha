@@ -619,24 +619,16 @@
                                                     {{#ifCond post_type '!=' 'question'}}
 
                                                         <div class="mc_question">
+
+
                                                             {{#if question.active}}
                                                             {{#each question.options}}
-                                                                <div class="mc_question_one_choice" id="{{question.answer_index}}" data-option_id="{{option_id}}">
+                                                            <div class="mc_question_one_choice" id="{{question.answer_index}}" data-option_id="{{option_id}}">
 
-                                                                    <input type="radio" id="option_{{../post_id}}_{{option_text}}" class="mc_question_radio_button" data-option_id="{{option_id}}" name="letter_{{../post_id}}" {{#if user_answered}}checked{{/if}}>
-                                                                    <label for="option_{{../post_id}}_{{option_text}}">{{option_text}}</label>
+                                                                <input type="radio" id="option_{{../post_id}}_{{option_text}}" class="mc_question_radio_button" data-option_id="{{option_id}}" name="letter_{{../post_id}}" {{#if user_answered}}checked{{/if}}>
+                                                                <label for="option_{{../post_id}}_{{option_text}}">{{option_text}}</label>
 
-
-                                                                   <!-- <div class="mc_question_choice_text">
-                                                                        {{#ifCond anon '==' 1}}
-                                                                            <span class="choice_text"> {{option_text}} </span>
-                                                                        {{else}}
-                                                                            <span class="choice_text" style="background-color: #E0E0E0; width : {{percent_selected}}%" id="{{the_choice_letter}}expanding"> {{option_text}} </span>
-
-                                                                        {{/ifCond}}
-                                                                    </div>-->
-
-                                                                </div>
+                                                            </div>
 
                                                             {{/each}}
                                                             <div class="question_functions">
@@ -659,34 +651,41 @@
                                                             <div class="submitted_answer" style="display:none;">
                                                                 <span class="submitted_icon"></span>submitted
                                                             </div>
+                                                            {{else}}
+                                                                {{#each question.options}}
+                                                                    <div class="mc_question_one_choice closed" id="{{question.answer_index}}" data-option_id="{{option_id}}">
+
+                                                                        <input type="radio" id="option_{{../post_id}}_{{option_text}}" class="mc_question_radio_button
+                                                                            {{#if correct_answer}}
+                                                                                green
+                                                                            {{else}}
+                                                                                {{#if user_answered}}
+                                                                                    {{#if any_correct_answer}}
+                                                                                    red
+                                                                                    {{else}}
+                                                                                    blue
+                                                                                    {{/if}}
+                                                                                {{/if}}
+                                                                            {{/if}}"
+                                                                               data-option_id="{{option_id}}" name="letter_{{../post_id}}" disabled >
+                                                                        <label for="option_{{../post_id}}_{{option_text}}">{{option_text}}</label>
+
+                                                                    </div>
+
+                                                                {{/each}}
+                                                            <div class="question_functions">This question is closed.</div>
                                                             {{/if}}
+
                                                         </div>
-                                                        {{#if question.active}}
+                                                       <!-- {{#if question.active}}
                                                         <div class="closed_question" style="display:none;">
                                                             This question is closed.
-                                                            <div class="your_answer_text">
-                                                                Your Answer: <span class="your_answer"></span>
-                                                            </div>
-                                                            <div class="correct_answer_text">
-                                                                Correct Answer: <span class="correct_answer"></span>
-                                                            </div>
                                                         </div>
                                                         {{else}}
                                                         <div class="closed_question">
                                                             This question is closed.
-                                                            {{#if question.your_answer}}
-                                                            <div class="your_answer_text">
-                                                                Your Answer: <span class="your_answer">{{question.your_answer}}</span>
-                                                            </div>
-                                                            {{/if}}
-                                                            {{#if question.correct_answer}}
-                                                            <div class="correct_answer_text">
-                                                                Correct Answer: <span class="correct_answer">{{question.correct_answer}}</span>
-                                                            </div>
-                                                            {{/if}}
-
                                                         </div>
-                                                        {{/if}}
+                                                        {{/if}} -->
 
 
                                                     {{/ifCond}}
