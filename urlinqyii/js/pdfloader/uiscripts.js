@@ -92,10 +92,10 @@ var load_events = function (pdf_id) {
                 var d = new Date(value["start_date"]+" "+ value["start_time"]);
                 var dt = new Date(value["end_date"]+" "+ value["end_time"]);
                 if(d.getHours()!="0" && dt.getHours()!="0"){
-                  time = "from "+d.getHours()+" to "+dt.getHours();
+                  time = "from "+formatAMPM(d)+" to "+formatAMPM(dt);
                 }
                 else if(d.getHours()!="0"){
-                  time="from " + d.getHours();
+                  time="@ " + formatAMPM(d);
                 }
                 else{
                   time="";
@@ -123,6 +123,7 @@ var load_events = function (pdf_id) {
                   event_id: value["event_id"],
                   time: time,
                   color: class_color,
+                  origin_type: value["origin_type"],
                 };
                   event_array_list.push(event_value);
                
@@ -167,4 +168,15 @@ var get_class_color = function(){
                }
             });
   return resp.responseText;
+}
+
+function formatAMPM(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return strTime;
 }
