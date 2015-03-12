@@ -1576,6 +1576,7 @@ $user_email = $user->user_email;
                 $data['department']['members'] = $users;
                 $data['department']['class_count'] = count($department->classes);
                 $data['department']['member_count'] = count($department->members);
+                $data['department']['courses'] = $department->courses;
                 $user = $this->get_current_user($_GET);
                 if($user) {
                     $is_attending = DepartmentFollow::model()->find("department_id=:id and user_id=:user_id", array(":id"=>$department_id, ":user_id"=>$user->user_id));
