@@ -179,7 +179,7 @@ i.fbar_button_icon#fbar_icon_discuss2{
 
 .fbar_button_icon#fbar_icon_notes {
     width: 30px;
-    height: 30px;
+    height: 35px;
     background-position: 0px 10px;
     top: -3px;
     left: 30px;
@@ -542,8 +542,16 @@ form#fbar_form.show {
     border: 1px solid rgba(239, 239, 239, 0.72);
     padding: 5px 5px 0;
     height: 30px;
-    border-width: 2px;
-    margin-top: -2px;
+    border-width: 1px;
+    margin-top: -1px;
+}
+
+.question_choice_line:first-of-type{
+    border-radius:6px 6px 0 0;
+}
+
+.question_choice_line:last-of-type{
+    border-radius:0 0 6px 6px;
 }
 
 .correct_check_text {
@@ -1580,9 +1588,7 @@ body#body_home input#event_location {
 
 body#body_home input#event_start_date,
 body#body_home input#event_end_date {
-
     width: 105px;
-
 }
 
 

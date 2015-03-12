@@ -406,7 +406,7 @@ span.time_icon {
     margin: 0 0 15px;
     width: auto;
     font-size: 10.8px;
-    z-index: 10000;
+    z-index: 1;
     color: #17B325;
     height: 23px;
     transition: .2s;
@@ -4972,6 +4972,7 @@ border-top-color:rgba(181, 181, 181, 0.3)!important;
 input.mc_question_radio_button + label {
     display: block;
     width: 100%;
+    position: relative;
     padding: 6px 0;
     height: 100%;
     font-size: 13.9px;
@@ -5155,6 +5156,7 @@ input.show_hide_stats:checked + label {
 
 div.mc_question_one_choice:first-child input.mc_question_radio_button + label {
     border-radius: 6px 6px 0 0;
+    overflow: hidden;
     border-bottom-width: 1px;
 }
 
@@ -5197,4 +5199,89 @@ input.show_hide_stats:checked ~ span.show_hide_stats_text {
     color: #333;
 }
 
+span.closed_question_tip{
+    display: none;
+}
+
+span.closed_question_tip{
+    position: absolute;
+
+    padding-top: 7px;
+    right: 0;
+    text-shadow: rgba(127, 127, 127, 0.39) 0 -1px;
+    top: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 10.5px;
+    font-family: Avenir;
+    bottom: 0;
+    width: 100px;
+}
+
+span.closed_question_tip em{
+    background-image: url(../../../assets/small_icons.png);
+    background-size: auto;
+    display: inline-block;
+    width: 15px;
+    position: relative;
+    height: 14px;
+}
+
+span.closed_question_tip.yours{
+    background: #029acf;
+}
+
+span.closed_question_tip.wrong{
+    background: #ff0000;
+    width: 120px;
+}
+
+span.closed_question_tip.wrong em{
+    background-position: 2px -64px;
+
+    top: 3px;
+}
+
+span.closed_question_tip.yourcorrect{
+    background: rgba(0, 219, 100, 1);
+    text-align: center;
+    width: 124px;
+}
+span.closed_question_tip.yourcorrect em{
+    background-position: -29px -119px;
+    position: relative;
+    top: 2px;
+}
+span.closed_question_tip.correct{
+    background: rgba(0, 219, 100, 1);   text-align: center;   
+    width: 126px;
+}
+span.closed_question_tip.correct em{
+    background-position: -29px -119px;   position: relative;   top: 2px;
+    left: 3px;
+}
+
+input.mc_question_radio_button.blue + label > span.closed_question_tip.yours{
+display: inline-block;
+}
+
+input.mc_question_radio_button.green.blue + label > span.closed_question_tip.yourcorrect{
+display: inline-block;
+}
+
+input.mc_question_radio_button.green.blue + label > span.closed_question_tip.correct{
+display: none!important;
+}
+
+input.mc_question_radio_button.green.blue + label > span.closed_question_tip.yours{
+display: none!important;
+}
+
+input.mc_question_radio_button.green + label > span.closed_question_tip.correct{
+display: inline-block;
+}
+
+input.mc_question_radio_button.red + label > span.closed_question_tip.wrong{
+display: inline-block;
+}
 

@@ -431,7 +431,7 @@ form.top_search_bar_form{
     padding: 0px 0;  
     top: -4px;
     font-family: Avenir;
-    font-weight: 200;
+    font-weight: 500;
     position: relative;
     padding-left: 4px;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
@@ -511,7 +511,7 @@ border-radius: 4px;}
                     bottom: 8px;
                     position: relative;
                     cursor: pointer;
-                    font-weight: 200;
+                    font-weight: 500;
                     top: -5px;
                     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
 }

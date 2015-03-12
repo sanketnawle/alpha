@@ -327,7 +327,7 @@
         </div>
 
         <?php if($is_member){ ?>
-        <div class="panel tab_syllabus" style="left:-9px;width:100%" id="panel_2">
+        <div class="panel tab_syllabus" style="left:-9px;width:100%;" id="panel_2">
         <?php }else{ ?>
         <div class="panel tab_syllabus" id="panel_2" style="display:none">
         <?php } ?>

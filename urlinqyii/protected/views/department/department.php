@@ -103,19 +103,23 @@
                             <div class = "blur_section_overflow_container">
                                 <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
                                 </div>
-                            </div>                           
+                            </div>
+                            <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
+                                <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                                    <div class="upload_cover_photo_text">Change cover</div>
+                                </div>                                        
+                            <?php } ?>                                                       
                             <div class = "group_name">
-                                <div class = "center_admin"><div class = "department_of"><?php echo ucfirst($department_front_end_name); ?> of</div></div>
+                                <div class = "center_admin"><div class = "department_of"><?php if($department->school->university_id == 4){?><?php }else{?>Department of <?php }?></div></div>
                                 <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name; ?></span></p></div>
                             </div>
                             <div class = "group_right_info group_info_boxes">
+                                <?php if($department->department_location) { ?>
                                 <div class = "group_info_block" id = "location">
                                     <em class ="small_icon_map"></em>
-                                    <span><?php echo $department->school->school_name; ?></span>
-                                    <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
-                                        <div class="upload_cover_photo_button">Upload cover photo</div>
-                                    <?php } ?>
+                                    <span><?php echo $department->department_location; ?></span>
                                 </div>
+                                 <?php } else { }?>
                             </div>
 
                             <?php if($is_admin){ ?>
@@ -191,6 +195,13 @@
                             <div id="group_user_action_button" class="own_department">
                                 <div id="group_user_action_button_text">My <?php echo ucfirst($department_front_end_name); ?></div>
                             </div>
+                            <div class="help_div light" id="help_4">
+                                <div class="wedge">
+                                </div>
+                                <div class="box">
+                                    This is your primary department. Change this information by editing your profile. 
+                                </div>
+                            </div>                            
                         <?php }else{ ?>
                             <div id="group_user_action_button" class="non_member" data-action_url="join">
                                 <div id="group_user_action_button_text">Follow</div>
@@ -261,7 +272,7 @@
                                         <div class = "group_box_main_info">
                                             <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name; if($course->course_tag != ''){ echo ' (' . $course->course_tag . ')'; } ?></a>
                                             <div class = "float_Right">
-                                                <span class = "group_type">Course</span>
+                                                <span class = "group_type"></span>
                                             </div>
                                         </div>
                                         <div class = "group_box_secondary_info_section">
