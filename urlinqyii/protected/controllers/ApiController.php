@@ -1885,7 +1885,7 @@ $user_email = $user->user_email;
 
                     array_push($class_data, $new_class);
                 }
-                $datap['course']['classes'] = $class_data;
+                $data['course']['classes'] = $class_data;
 
                 $this->renderJSON($data);
                 return;
