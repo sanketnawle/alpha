@@ -993,7 +993,7 @@ $(document).ready(function () {
 
 
 
-                        alert("USER TPY S");
+                        //alert("USER TPY S");
                         //Skip the email step
                         get_course_data();
                     }else{
