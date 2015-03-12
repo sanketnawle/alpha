@@ -344,6 +344,7 @@
                     <input class="text small_search_input" type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="Search events...">
                 </div>
             </div>
+
             <div id="events_template_loc" style="height:auto;min-height:390px;">
                 <?php include("js/bower_components/core-animated-pages/events_template.php"); ?>
              </div>

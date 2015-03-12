@@ -94,27 +94,40 @@ function init(){
 //    });
 
 
+    //Load recent messages for the active chats
 
-
-
-    $.getJSON(globals.base_url + '/message/load', {}, function(json_data){
-        if(json_data['success']){
-            $.each(json_data['messages'], function(index, message_json){
-                render_message(message_json);
-            });
-
-
-            //poll(json_data['last_update']);
-        }else{
-            console.log("Error loading messages");
-            console.log(json_data);
-        }
-
+    $('.chat_box').each(function(){
+        load_chat_box($(this));
     });
 
 
-
 }
+
+
+
+    function load_chat_box($chat_box){
+        var target_id = $chat_box.attr('data-id');
+        var target_type = $chat_box.attr('data-type');
+
+
+
+        $.getJSON(globals.base_url + '/message/recentChat', {target_id: target_id, target_type: target_type}, function(json_data){
+            if(json_data['success']){
+                $.each(json_data['messages'], function(index, message_json){
+                    render_message(message_json);
+                });
+
+                $('.chat_box_text').scrollTop(2000);
+
+
+                //poll(json_data['last_update']);
+            }else{
+                console.log("Error loading messages");
+                console.log(json_data);
+            }
+
+        });
+    }
 
 
 
@@ -159,6 +172,9 @@ function init(){
 //}
 
 
+
+
+
 function render_message(message_json){
 
     var chat_box_id = message_json['user_id'];
@@ -170,6 +186,8 @@ function render_message(message_json){
     }
 
     var $chat_box = $(".chat_box[data-type='" + message_json['target_type'] + "'][data-id='" + chat_box_id + "']");
+
+
     //Check if chat box is active for this message
     if($chat_box.length){
         //Add this message to chatbox
@@ -179,6 +197,12 @@ function render_message(message_json){
         //Create new active chatbox
         //alert('chat box doesnt exist');
     }
+
+
+    var $chat_box_text = $chat_box.find('.chat_box_text');
+    var $chat_message_wrap = $chat_box.find('.chat_message_wrap');
+
+
     var source = '';
     if(message_json['user_id'] == globals.user_id){
         source = $('#this_user_message_template').html();
@@ -192,14 +216,9 @@ function render_message(message_json){
 
 
     //alert('RENDERING MESSAGE: ' + JSON.stringify(message_json));
-    var $chat_box_text = $chat_box.find('.chat_box_text');
-    var $chat_message_wrap = $chat_box.find('.chat_message_wrap');
 
+    $chat_message_wrap.append($(generated_html));
 
-    $chat_message_wrap.append($(generated_html).hide().fadeIn());
-
-    //Scroll the chatbox down
-    $chat_box_text.animate({scrollTop: $chat_message_wrap.height() * 3}, 'slow');
 }
 
 

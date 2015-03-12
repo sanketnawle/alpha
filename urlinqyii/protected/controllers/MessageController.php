@@ -39,6 +39,64 @@ class MessageController extends Controller
 
 	}
 
+
+
+     //GET
+    //Loads recent messages with a specfic user/group
+    public function actionRecentChat() {
+
+        if(!isset($_GET['target_type']) || !isset($_GET['target_id'])){
+            $return_data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'data not set');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $target_id = $_GET['target_id'];
+        $target_type = $_GET['target_type'];
+
+
+		$user = $this->get_current_user($_GET);
+        if(!$user){
+            $return_data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        $messages = array();
+        if($target_type == 'user'){
+                $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (user_id = ' . $user->user_id . ' AND target_type = "user" AND target_id = ' . $target_id . ') OR (user_id = ' . $target_id . ' AND target_type = "user" AND target_id = ' . $user->user_id . ') ORDER BY id LIMIT 50');
+        }elseif($target_type == 'group'){
+
+            $message_group = MessageGroup::model()->find('id=:id', array(':id'=>$target_id));
+            if(!$message_group){
+                $return_data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'message group doesnt exist');
+                $this->renderJSON($return_data);
+                return;
+            }
+
+            //Make sure this user is a member of this group
+            $message_group_user = MessageGroupUser::model()->find('user_id=:user_id and message_group_id=:message_group_id', array(':user_id'=>$user->user_id, ':message_group_id'=>$message_group->id));
+            if(!$message_group_user){
+                $return_data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'user is not a member of this group');
+                $this->renderJSON($return_data);
+                return;
+            }
+
+            $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (target_type = "' . $target_type . '" AND target_id = ' . $target_id . ') ORDER BY id LIMIT 50');
+        }
+
+
+
+        $return_data = array('success'=>true, 'messages'=>$messages, 'last_update'=>date('Y-m-d H:i:s'));
+        $this->renderJSON($return_data);
+        return;
+
+	}
+
+
+
+
     public function actionPoll()
     {
 

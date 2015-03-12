@@ -104,23 +104,19 @@
 
 
 
-
+<!---->
 <?php
-    $email = 'lol@med.nyu.edu';
+//    $email = 'lol@med.nyu.edu';
+//
+//    $supported_email = 'nyu.edu';
+//
+//    $b = false;
+//    if(strpos($email, $supported_email)){
+//        $b = true;
+//    }
+//
+//?>
 
-    $supported_email = 'nyu.edu';
-
-    $b = false;
-    if(strpos($email, $supported_email)){
-        $b = true;
-    }
-
-?>
-
-
-<script>
-    alert('<?php echo $b; ?>');
-</script>
 
 
 
