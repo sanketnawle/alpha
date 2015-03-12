@@ -1881,7 +1881,7 @@ $user_email = $user->user_email;
                 foreach ($classes as $class) {
                     $new_class = $this->model_to_array($class);
                     $new_class['department'] = $class->department;
-                    $new_class['user_count'] = count($class->members);
+                    $new_class['user_count'] = count($class->students);
 
                     array_push($class_data, $new_class);
                 }
