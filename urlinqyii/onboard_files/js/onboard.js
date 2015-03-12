@@ -116,6 +116,9 @@ $(document).ready(function () {
             //If the flag starts at 2, send a verification email
             send_verification_email();
         }
+        else if(progress_flag == 4){
+            follow_panel();
+        }
         else{
             //Get university id based on email function call will be here in the future
             //When there are multiple univs
@@ -365,6 +368,13 @@ $(document).ready(function () {
         }else if (curr == 4) {
             $('.skip_progress').show();
             $(".full_skip").show();
+
+            if(university_id == 4){
+                if(user_type == 's'){
+                    $('.progress_goback').hide();
+                }
+            }
+
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
             $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt right_txt_adjust'><span class='follow_all_btn'>Follow All</span></div></div>");
@@ -392,6 +402,9 @@ $(document).ready(function () {
             }
 
         }else if (curr == 5) {
+
+
+
 
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
@@ -678,12 +691,17 @@ $(document).ready(function () {
             //alert('PUSHING CLASS ID  ' + class_id);
         });
 
+         progress_flag++;
 
-        $.getJSON(base_url + '/user/getSuggestedUsers',function(json_data){
+        follow_panel();
+    }
+
+
+    function follow_panel(){
+        $.getJSON(base_url + '/user/getSuggestedUsers?university_id=' + university_id,function(json_data){
             if(json_data['success']){
                 people_list = json_data['users'];
 
-                progress_flag++;
                 progress_check(progress_flag);
                 content_paint(progress_flag);
                 return;
@@ -691,9 +709,7 @@ $(document).ready(function () {
                 alert('Error getting suggested users data');
             }
         });
-        console.log(JSON.stringify(selected_data));
     }
-
 
 
     function change_to_club_panel(){
@@ -965,8 +981,19 @@ $(document).ready(function () {
 
                     if(user_type == 's'){
 
-                        progress_flag += 2;
 
+                        if(university_id == 4){
+                            progress_flag += 3;
+
+                            follow_panel();
+                            return;
+                        }else{
+                            progress_flag += 2;
+                        }
+
+
+
+                        alert("USER TPY S");
                         //Skip the email step
                         get_course_data();
                     }else{

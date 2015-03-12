@@ -1017,7 +1017,7 @@ class SiteController extends Controller
 
                 if($department->department_name == 'First Year Medical Student'){
                     $_POST['graduation_date'] = '2018';
-                    $department = Department::model()->find('department_name=:name', array(':name'=>'First Year Medical Student'));
+                    //$department = Department::model()->find('department_name=:name', array(':name'=>'First Year Medical Student'));
                     foreach($department->courses as $course){
                         foreach($course->classes as $class){
                             $class_user = new ClassUser;
@@ -1032,7 +1032,22 @@ class SiteController extends Controller
 
                 if($department->department_name == 'Master of Biological & Physical Sciences'){
                     $_POST['graduation_date'] = '2015';
-                    $department = Department::model()->find('department_name=:name', array(':name'=>'Master of Biological & Physical Sciences'));
+                    //$department = Department::model()->find('department_name=:name', array(':name'=>'Master of Biological & Physical Sciences'));
+                    foreach($department->courses as $course){
+                        foreach($course->classes as $class){
+                            $class_user = new ClassUser;
+                            $class_user->class_id = $class->class_id;
+                            $class_user->user_id = $user->user_id;
+                            $class_user->color_id = get_random_color();
+                            $class_user->save(false);
+                        }
+                    }
+                }
+
+
+                if($department->department_name == 'Second Year Medical Student'){
+                    $_POST['graduation_date'] = '2017';
+                    //$department = Department::model()->find('department_name=:name and university_id=:university_id', array(':name'=>$department->department_name));
                     foreach($department->courses as $course){
                         foreach($course->classes as $class){
                             $class_user = new ClassUser;
