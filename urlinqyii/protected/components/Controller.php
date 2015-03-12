@@ -58,7 +58,7 @@ class Controller extends CController
         $user = $this->get_current_user();
 
 
-        if($user && $user->status == 'active'){
+        if($user && ($user->status == 'active' || $user->status == 'onboarded')){
             return $user;
         }else{
             return false;

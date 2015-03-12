@@ -65,6 +65,31 @@ $(document).ready(function () {
     var selected_data = {'clubs':[], 'classes':[], 'follow_users':[], 'gender':'','picture_file_id':'1'};
 
     var professor_classes = [];
+
+
+    function get_course_data(){
+        //Load the course/class data before initializing
+        $.getJSON(base_url + '/department/getCourses?department_id=' + department_id.toString(),function(json_data){
+            if(json_data['success']){
+                course_list = json_data['courses'];
+                original_course_list = course_list;
+
+
+
+//                try{
+//                    payload_function();
+//                }catch(err) {
+//                    console.log(err);
+//                    console.log("error calling payload function");
+//                }
+                start_onboarding();
+            }else{
+                alert('Error getting school data');
+            }
+        });
+    }
+
+
     init();
 
 
@@ -79,21 +104,12 @@ $(document).ready(function () {
 
 
 
-            function get_course_data(){
-                //Load the course/class data before initializing
-                $.getJSON(base_url + '/department/getCourses?department_id=' + department_id.toString(),function(json_data){
-                    if(json_data['success']){
-                        course_list = json_data['courses'];
-                        original_course_list = course_list;
-                        start_onboarding();
-                    }else{
-                        alert('Error getting school data');
-                    }
-                });
+            function payload_function(){
+                start_onboarding();
             }
 
 
-            get_course_data();
+            get_course_data(payload_function);
 
 
         }else if(progress_flag == 2){
@@ -835,6 +851,9 @@ $(document).ready(function () {
     $(document).delegate(".progress_goback", "click", function () {
         if ((progress_flag > 0) && (progress_flag != 3)) {
 
+
+            var decrement = 1;
+
             if(progress_flag == 1){
                 delete selected_data["school_id"];
                 school_click_count = 0;
@@ -842,9 +861,10 @@ $(document).ready(function () {
 
             if(progress_flag == 4){
                 delete selected_data["classes"];
+                //decrement = 2;
             }
 
-            progress_flag--;
+            progress_flag -= decrement;
             progress_check(progress_flag);
             content_paint(progress_flag);
         };
@@ -893,6 +913,10 @@ $(document).ready(function () {
     function send_verification_email(payload_function){
         var post_url = base_url + '/sendVerificationEmail';
         var post_data = {school_id: selected_data['school_id'], department_id: selected_data['department_id']};
+
+
+        department_id = selected_data['department_id'];
+        school_id = selected_data['school_id'];
         $.post(
             post_url,
             post_data,
@@ -938,9 +962,21 @@ $(document).ready(function () {
                 $self.removeClass("left");
                 setTimeout(function () {
                     $self.addClass("right");
-                    progress_flag++;
-                    progress_check(progress_flag);
-                    content_paint(progress_flag);
+
+                    if(user_type == 's'){
+
+                        progress_flag += 2;
+
+                        //Skip the email step
+                        get_course_data();
+                    }else{
+                        progress_flag++;
+                        start_onboarding();
+
+                    }
+
+
+
                     return;
                 }, 250);
             }

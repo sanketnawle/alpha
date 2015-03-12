@@ -271,7 +271,12 @@ class SiteController extends Controller
                 //User has successfully verified.
                 //Set their status to onboarding so we know they
                 //still have some steps to complete
-                $user->status = 'onboarding';
+
+                if($user->user_type == 's'){
+                    $user->status = 'active';
+                }else{
+                    $user->status = 'onboarding';
+                }
 
                 if($user->save(false)){
                     //Delete user_confirmation for this user
@@ -285,7 +290,13 @@ class SiteController extends Controller
                         Yii::app()->session['user_type'] = $user->user_type;
                         Yii::app()->session['user_id'] = $user_id;
 
-                        $this->redirect(Yii::app()->getBaseUrl(true) . '/onboard');
+
+                        if($user->user_type == 's'){
+                            $this->redirect(Yii::app()->getBaseUrl(true) . '/home');
+                        }else{
+                            $this->redirect(Yii::app()->getBaseUrl(true) . '/onboard');
+                        }
+
                         return;
                     }else{
                         $data = array('success'=>false,'error_id'=>6,'error_msg'=>'Error deleting user confirmation');
@@ -530,12 +541,30 @@ class SiteController extends Controller
         $user = $this->get_current_user();
 
         if($user){
-            if($user->status == 'active' || $user->status == 'onboarding'){
-                $data = array('success'=>false, 'error_msg'=>'user is already verified', 'error_id'=>10);
-                $this->renderJSON($data);
-                return;
 
-            }else if($user->status == 'unverified'){
+            $send = false;
+
+            if($user->user_type == 's'){
+                if($user->status != 'active'){
+                    $send = true;
+                }
+            }else{
+
+                //If user is p or a
+                if($user->status == 'active' || $user->status == 'onboarding'){
+                    $data = array('success'=>false, 'error_msg'=>'user is already verified', 'error_id'=>10);
+                    $this->renderJSON($data);
+                    return;
+
+                }elseif($user->status = 'unverified'){
+                    $send = true;
+                }
+            }
+
+
+
+
+            if($send){
                 $user->school_id = $school_id;
                 $user->department_id = $department_id;
 
@@ -880,19 +909,22 @@ class SiteController extends Controller
         Yii::app()->session['onboarding_step'] = 0;
 
         //Take user directly to step 4
-        if($user->status == 'onboarding'){
-            Yii::app()->session['onboarding_step'] = 3;
-
-            $school = $user->school;
-            if($school){
-                //Skip the select class portion for Touro students
-                if($school->university_id == 4){
-                    Yii::app()->session['onboarding_step'] = 4;
-                }
+        if($user->status == 'p' || $user->status == 'a'){
+            if($user->status == 'onboarding'){
+                Yii::app()->session['onboarding_step'] = 3;
             }
-
-
         }
+
+
+
+        $school = $user->school;
+        if($school){
+            //Skip the select class portion for Touro students
+            if($school->university_id == 4){
+                Yii::app()->session['onboarding_step'] = 4;
+            }
+        }
+
 
 
 
@@ -1246,7 +1278,18 @@ class SiteController extends Controller
 
         //Finally, change the user type to active
         //indicating that the user is done with onboarding
-        $user->status = 'active';
+
+        if($user->user_type == 's'){
+            if($user->status != 'active'){
+                //Set this users status to "onboarded",
+                //which is a temporary state for students where they
+                //have not activated their email
+                $user->status = 'onboarded';
+            }
+        }else{
+            $user->status = 'active';
+        }
+
         if($user->save(false)){
             $data = array('success'=>true);
             $this->renderJSON($data);
@@ -1428,7 +1471,7 @@ class SiteController extends Controller
                     $professor->university_id = $university_id;
                     $professor->school_id = null;
                     $professor->department_id = null;
-                    $professor->status = 'temp';
+                    $professor->status = 'onboarding';
                     try{
                         $professor->save(false);
 
@@ -1542,7 +1585,7 @@ class SiteController extends Controller
                     $user->university_id = $university_id;
                     //$user->department_id = null;
                     $user->department_id = null;
-                    $user->status = 'unverified';
+                    $user->status = 'onboarding';
                     $user->save(false);
 
 
