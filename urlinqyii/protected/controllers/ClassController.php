@@ -436,7 +436,7 @@ class ClassController extends Controller
         $user = $this->get_current_user($_GET);
         $user_id = $user->user_id;
 
-        $class_events = Event::model()->findAll('origin_id=:id and file_id=:file_id order by start_date desc', array(':id'=>$class_id, ':file_id'=>$file_id));
+        $class_events = Event::model()->findAll('origin_id=:id order by start_date asc', array(':id'=>$class_id));
 
         $this->renderJSON($class_events);
     }

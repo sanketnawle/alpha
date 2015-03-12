@@ -855,7 +855,7 @@ class ClubController extends Controller
         if($club){
             $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
             if($club_user || (strpos($user->user_email,'@urlinq.com') !== false)){
-                if($club_user->is_admin || (strpos($user->user_email,'@urlinq.com') !== false)){
+                if((strpos($user->user_email,'@urlinq.com') !== false) || $club_user->is_admin || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"){
                     $club->group_desc = $_POST['description'];
                     if($club->save(false)){
                         $this->renderJSON(array('success'=>true));
@@ -877,8 +877,8 @@ class ClubController extends Controller
         $club = Group::model()->find('group_id=:id',array(':id'=>$_POST['club_id']));
         if($club){
             $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
-            if($club_user  || (strpos($user->user_email,'@urlinq.com') !== false)){
-                if($club_user->is_admin  || (strpos($user->user_email,'@urlinq.com') !== false)){
+            if($club_user  || (strpos($user->user_email,'@urlinq.com') !== false)  || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"){
+                if((strpos($user->user_email,'@urlinq.com') !== false)  ||  $club_user->is_admin){
                     $club->mission_statement = $_POST['mission'];
                     if($club->save(false)){
                         $this->renderJSON(array('success'=>true));
@@ -921,7 +921,7 @@ class ClubController extends Controller
         if($club){
             $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
             if($club_user  || (strpos($user->user_email,'@urlinq.com') !== false)){
-                if($club_user->is_admin  || (strpos($user->user_email,'@urlinq.com') !== false)){
+                if($club_user->is_admin  || (strpos($user->user_email,'@urlinq.com') !== false)  || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"){
                     $extension = pathinfo($_FILES["file"]["name"])['extension'];
                     if($extension == "jpg" || $extension == "png" || $extension == "gif") {
                         $result = file_upload($_FILES, "club/");

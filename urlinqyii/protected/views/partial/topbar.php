@@ -157,7 +157,35 @@
                 <div class = "quick_cal_arrow">
                 </div>
             </a>
-        </div> 
+        </div>
+
+
+
+
+
+        <?php
+            //If this user went thru onboarding
+            //and has not verified their email yet, show a msg
+            if($user->status == 'onboarded'){
+        ?>
+
+            <?php
+                $mail_link = 'http://mail.google.com/a/nyu.edu';
+                if($user->university_id == 4){
+                    $mail_link = 'https://mytouro.touro.edu/cas/login?service=https%3A%2F%2Fmytouro.touro.edu%2Fpaf%2Fauthorize';
+                }
+            ?>
+
+
+            <div id="verify_email_banner">Verify your email <a href="<?php echo $mail_link; ?>">here</a></div>
+            <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/verify_email_banner.css' rel='stylesheet' type='text/css'>
+
+
+        <?php
+            }
+        ?>
+
+
     </div>
 
 <script id="search_result_template" type="text/x-handlebars-template">

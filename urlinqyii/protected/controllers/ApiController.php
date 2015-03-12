@@ -1576,6 +1576,7 @@ $user_email = $user->user_email;
                 $data['department']['members'] = $users;
                 $data['department']['class_count'] = count($department->classes);
                 $data['department']['member_count'] = count($department->members);
+                $data['department']['courses'] = $department->courses;
                 $user = $this->get_current_user($_GET);
                 if($user) {
                     $is_attending = DepartmentFollow::model()->find("department_id=:id and user_id=:user_id", array(":id"=>$department_id, ":user_id"=>$user->user_id));
@@ -1876,7 +1877,16 @@ $user_email = $user->user_email;
 
             if($course){
                 $data = array('success'=>true,'course'=>$this->get_model_associations($course,array('pictureFile'=>array(), 'department'=>array(), 'users'=>array('pictureFile'))));
-				$data['course']['classes'] = $course->classes;
+				$classes = $course->classes;
+                $class_data = array();
+                foreach ($classes as $class) {
+                    $new_class = $this->model_to_array($class);
+                    $new_class['department'] = $class->department;
+                    $new_class['user_count'] = count($class->students);
+
+                    array_push($class_data, $new_class);
+                }
+                $data['course']['classes'] = $class_data;
 
                 $this->renderJSON($data);
                 return;
