@@ -345,6 +345,7 @@
             </div>
             <hr style="opacity:0.5;width:100%">
             <div id="events_template_loc" style="height:auto;min-height:300px;">
+                <?php $base_url = Yii::app()->getBaseUrl(true); ?>
                 <?php include("/js/bower_components/core-animated-pages/events_template.php"); ?>
              </div>
             <br>
