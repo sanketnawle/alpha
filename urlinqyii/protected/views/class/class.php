@@ -336,6 +336,7 @@
                     <button id="btn_add_syllabus">
                       Add Syllabus
                     </button>
+                    <input style="display:none;" type="file" accept=".pdf" id="syllabus_pdf_upload"/>
                     
                 </div>
                 <div class = "syllabus_download_btn" style="display:none;"><a id="class_syllabus_pdf" download>Download</a></div>
