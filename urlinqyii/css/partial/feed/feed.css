@@ -590,13 +590,13 @@ div.html5-info-bar.ytp-can-shar {
 .post_attached_image_flier.post_attached_image {
     width: 100%;
 
-    height: 440px;
+    height: 200px;
 }
 
 .post_attached_image_container_flier.post_attached_image_container {
     margin-bottom: 20px;
 
-    height: 440px;
+    height: 200px;
     margin-left: -1px;
     overflow: hidden;
     padding-bottom: 0;
@@ -2309,7 +2309,7 @@ div.post:hover div.post_attached_image_caption {
     box-sizing: content-box;
     border-radius: 0px;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.51) inset;
-    background-position: center center;
+    background-position: top center;
 }
 
 div.post_attachment_review:hover span.download_icon {
@@ -4053,7 +4053,7 @@ div.post_event_title {
     color: #333;
     font-size: 16.5px;
     font-weight: 500;
-    padding: 8.5px 74px 4px;
+    padding: 2.5px 74px 8px;
     text-transform: capitalize;
 }
 
@@ -4106,7 +4106,7 @@ div.post_event_origin_holder div.post_event_origin > a:hover {
 }
 
 .post_event_content {
-    padding-top: 20px;
+    padding-top: 15px;
     padding-bottom: 10px;
     padding-left: 17px;
 }
@@ -4236,7 +4236,7 @@ div.event_post_toparea {
 .post_event_location_holder {
     position: absolute;
 
-    top: 6px;
+    top: 65px;
     font-size: 12px;
     right: 10px;
     color: #93999c;
@@ -4996,7 +4996,7 @@ input.mc_question_radio_button:checked + label {
     height: 100%;
     background-image: none;
     outline: 0;
-    background-color: #029acf;
+    background-color: #029acf!important;
     text-shadow: #7f7f7f 0 -1px;
     color: #FFF !important;
     border-color: #029acf;

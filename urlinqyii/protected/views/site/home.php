@@ -235,7 +235,15 @@
                                                              <?php if(!$user->studentAttributes->year){?>
                                                                  <div class="post_year_section">
                                                                      <div class="post_year_add welcome_post_label">Add your year of graduation</div>
-                                                                     <input class = "post_year_input">
+                                                                     <select class="post_year_input">
+                                                                         <option value="2014">2014</option>
+                                                                         <option value="2015">2015</option>
+                                                                         <option value="2016">2016</option>
+                                                                         <option value="2017">2017</option>
+                                                                         <option value="2018">2018</option>
+                                                                         <option value="2019">2019</option>
+                                                                         <option value="2020">2020</option>
+                                                                     </select>
                                                                  </div>
 
                                                              <?php }?>

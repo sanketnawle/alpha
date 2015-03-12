@@ -208,7 +208,11 @@ class FeedController extends Controller
 
 
     public function getOptionsInfo($options){
+        if(sizeof($options)){
+            $question = PostQuestion::model()->find('post_id=:pid',array(':pid'=>$options[0]['post_id']));
+        }
         foreach($options as $k=>$option){
+
             $post_opt_mem = PostQuestionOptionAnswer::model()->findAll('option_id=:id', array(':id'=>$option['option_id']));
             $participants = self::convertModelToArray($post_opt_mem);
 
@@ -231,6 +235,16 @@ class FeedController extends Controller
                 $options [$k] ['user_answered'] = TRUE;
             else
                 $options [$k] ['user_answered'] = FALSE;
+
+            if(!$question->active){
+                if($question->correct_answer_id == $option['option_id'])
+                    $options [$k] ['correct_answer'] = TRUE;
+                else
+                    $options [$k] ['correct_answer'] = FALSE;
+            }
+
+            $options [$k] ['any_correct_answer'] = $question->correct_answer_id != null;
+
         }
         return $options;
     }
@@ -388,6 +402,8 @@ class FeedController extends Controller
                     if($your_answer){
                         $posts[$i]['question']['your_answer']=$your_answer->option->option_text;
                     }
+
+
                     $total_answers += sizeof($option->answers);
                 }
 
@@ -399,7 +415,6 @@ class FeedController extends Controller
                     if($correct_answer){
                         $posts[$i]['question']['correct_answer'] = $correct_answer->option_text;
                     }
-
                 }
 
 //                // adding info of participants
