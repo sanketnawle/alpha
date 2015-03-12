@@ -252,38 +252,7 @@ div.syllabus_event{
 }
 
 div.black_action_box{
-     width: 91%;
 
-
-    
-     text-align: left;
-    
-    
-    
-    margin: 0 auto;
-    
-    
-     padding-bottom: 8px;
-     color: #333;
-     margin-top: 0px;
-     margin-left: 1px;
-     position: relative;
-     border-radius: 4px;
-    
-     /* background: #fff; */  
-     font-weight: 500;
-     
-     
-    
-    
-    
-     font-size: 12.5px;  
-     padding: 0px 10px 10px;
-     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;      
-     /* border: 1px solid #D5D6D7; */ 
-     /* box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); */ 
-     -moz-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); 
-     /* -webkit-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); */
 }
 
 div.black_action_explainer{
@@ -606,4 +575,127 @@ span.event_name_text{
 
 div.syllabus_tagger{
 
+}
+
+#btn_add_syllabus{
+      margin-left: 4px;
+  font-family: 'Open Sans', sans-serif;
+  border: 1px solid #C0C0C0;
+  background-color: #fcfcfc;
+  background-image: -webkit-linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60%, rgba(225,225,225,.6));
+  background-image: linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60%, rgba(225,225,225,.6));
+  -moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+  -webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+  box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+  color: #575757!important;
+  
+      padding: 7px 16px;
+  
+      border-radius: 3px;
+  
+      font-size: 14px;
+  -moz-transition: all .1s ease;
+  margin-right: 4px;
+  -webkit-transition: all .1s ease;
+  transition: all .1s ease;
+  font-weight: 600;
+}
+
+div.events_search_syllabus_wrapper{
+
+    display: inline-block;
+    position: absolute;
+    
+
+    right: 10px;
+    
+
+    top: -4px;
+
+}
+
+div#add_syllabus_wrap{
+    display: inline-block;
+
+}
+
+#btn_add_syllabus:hover{
+    color: #333!important;
+    outline: 0;
+    background-color: #f9f9f9;
+    border-color: #B8B8B8 #969696 #7E7E7E;
+}
+
+div.events_search_syllabus{
+
+}
+
+div.pdf_separator{
+    width: 100%;
+
+}
+
+div.pdf_sep_line{
+    border-bottom: 2px solid #c3c3c3;
+
+    width: 100%;
+}
+
+div.pdf_title{
+    display: block;
+    
+    margin: 0 auto;
+    padding: 10px 12px;
+    text-align: center;
+    width: 80px;
+    font-family: Avenir;
+    font-size: 17px;
+    text-transform: uppercase;
+    color: #777;
+    border: 2px solid #c3c3c3;
+    position: relative;
+    border-radius: 2px;
+    font-weight: 100;
+    box-shadow: 0 0 0 1px #f7f7f7;
+    top: -24px;
+    background-size: auto;
+    background-image: url(../../assets/noise_bg.gif);
+}
+
+div.events_search_syllabus_wrapper input{
+    height: 35px!important;
+
+}
+
+div.events_search_syllabus_wrapper em{
+    top: 5px;
+}
+
+
+div.syllabus_tab_header{
+    position: relative;
+
+    padding-bottom: 7px;
+    border-bottom: 1px solid #c3c3c3;
+}
+
+span.month_text{
+
+}
+
+span.day_text{
+
+}
+
+div.chip-album-title{
+
+}
+
+#btn_add_syllabus:active{
+    text-shadow: none;
+  border-color: #B8B8B8 #969696 #7E7E7E;
+  background-color: #eee;
+  -moz-box-shadow: inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+  -webkit-box-shadow: inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+  box-shadow: inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
 }
