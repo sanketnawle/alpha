@@ -29,7 +29,7 @@ window.onload = function () {
             page: 0,
 
             items: events_list.slice(0,4),
-            count_text : "Total "+events_list.length+" events this semester",
+            count_text : events_list.length+" Total events this semester",
             allitems: events_list,
 
             selectedAlbum: null,
