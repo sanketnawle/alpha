@@ -1876,7 +1876,16 @@ $user_email = $user->user_email;
 
             if($course){
                 $data = array('success'=>true,'course'=>$this->get_model_associations($course,array('pictureFile'=>array(), 'department'=>array(), 'users'=>array('pictureFile'))));
-				$data['course']['classes'] = $course->classes;
+				$classes = $course->classes;
+                $class_data = array();
+                foreach ($classes as $class) {
+                    $new_class = $this->model_to_array($class);
+                    $new_class['department'] = $class->department;
+                    $new_class['user_count'] = count($class->students);
+
+                    array_push($class_data, $new_class);
+                }
+                $data['classes'] = $class_data;
 
                 $this->renderJSON($data);
                 return;

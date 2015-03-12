@@ -104,10 +104,41 @@
 
 
 
+<!---->
+<?php
+//    $email = 'lol@med.nyu.edu';
+//
+//    $supported_email = 'nyu.edu';
+//
+//    $b = false;
+//    if(strpos($email, $supported_email)){
+//        $b = true;
+//    }
+//
+//?>
 
-<div class="chat_box" data-target_id="2" data-target_type="user">
+
+
+
+
+
+
+
+
+<?php
+$id = 1;
+if($user->user_id == 1){
+    $id = 2;
+}
+?>
+
+
+
+<div class="chat_box" data-id="<?php echo $id; ?>" data-type="user">
     <div class="chat_box_text">
+        <div class="chat_message_wrap">
 
+        </div>
     </div>
 
 

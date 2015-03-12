@@ -7,15 +7,145 @@ var previous_title_empty = false;
 var previous_title_index = "";
 var class_color = "";
 
+
 window.onload = function () {
+  var edit_access = true;
   class_color = get_class_color();
   file_json = get_pdf();
   if(file_json["file_id"]){
     if(!file_json["edit_access"]){
       editable = "";
-      $('#add_syllabus_wrap').remove();
+      edit_access = false;
+      $('#btn_add_syllabus').html("View Syllabus");
+      $('#btn_add_syllabus').attr("id", "btn_view_syllabus");
+
     }
-  load_events(file_json["file_id"]);
+
+    events_list = load_events(file_json["file_id"]);
+    if(events_list.length>0){
+      //$("#events_template_loc").show();
+      Polymer('music-demo', {
+
+            page: 0,
+
+            items: events_list.slice(0,4),
+            count_text : "Total "+events_list.length+" events this semester",
+            allitems: events_list,
+
+            selectedAlbum: null,
+
+            right_arrow: "block",
+            edit_access: edit_access,
+            left_arrow: "none",
+
+            pagecount: Math.ceil(events_list.length/4),
+
+            current_page: 0,
+
+            showdesctext:false,
+
+            descinput:false,
+
+            showdescinput: function(e){
+              if(this.edit_access){
+                if(this.descinput){
+                  this.descinput = false;
+                }
+                else{
+                  this.descinput =true;
+                }
+            }
+            },
+
+            change_description: function() {
+              desc_text_value = this.$.event_description.querySelector('textarea').value;
+              desc_event_id = this.$.event_description.querySelector('span').textContent;
+              $.ajax({
+                   url: "UpdateSyllabusEvent",
+                   type: "POST",
+                   data: {"id":desc_event_id,"description":desc_text_value},
+                   success: function(response) {
+                   },
+                   error: function(jqXHR, textStatus, errorMessage) {
+                       console.log(errorMessage); // Optional
+                   }
+              });
+              this.descinput=false;
+              this.showdesctext=true;
+              this.selectedAlbum.description=desc_text_value;
+            },
+
+            showlocationtext:true,
+
+            locationinput:false,
+
+            showlocationinput: function(e){
+              if(this.edit_access){
+
+                if(this.locationinput){
+                this.locationinput =false;
+                }
+                else{
+                this.locationinput =true;
+                }
+              }
+            },
+
+            change_location: function() {
+              location_text_value = this.$.event_location.querySelector('textarea').value;
+              location_event_id = this.$.event_location.querySelector('span').textContent;
+              $.ajax({
+                   url: "UpdateSyllabusEvent",
+                   type: "POST",
+                   data: {"id":location_event_id,"location":location_text_value},
+                   success: function(response) {
+                   },
+                   error: function(jqXHR, textStatus, errorMessage) {
+                       console.log(errorMessage); // Optional
+                   }
+              });
+              this.locationinput=false;
+              this.showlocationtext=true;
+              this.selectedAlbum.location=location_text_value;
+            },
+
+            transition: function(e) {
+              if (this.page === 0 && e.target.templateInstance.model.item) {
+                this.selectedAlbum = e.target.templateInstance.model.item;
+                this.page = 1;
+              } else {
+                this.page = 0;
+              }
+            },
+
+            clicked_previous: function(e){
+              var page_value = this.current_page;
+                  this.current_page = this.current_page - 1;
+                  if(page_value-1==0){
+                    this.left_arrow = "none";
+                  }
+                  start = (page_value)*4;
+                  this.items = this.allitems.slice(start-4,start);
+                  console.log(start-4 ,start);
+                  Platform.performMicrotaskCheckpoint();
+                  this.right_arrow = "block";
+            },
+            clicked_next:function(e){
+              console.log(this.items);
+               var page_value = this.current_page;
+                  this.current_page = this.current_page + 1;
+                  if(page_value+2==this.pagecount){
+                    this.right_arrow = "none";
+                  }
+                  start = (page_value+1)*4;
+                  this.items = this.allitems.slice(start,start+4);
+                  Platform.performMicrotaskCheckpoint();
+                  this.left_arrow = "block";
+            }
+        });
+   
+        }
+
   run_pdf_algo(false, globals.base_url+file_json["file_url"]);
   }
   
@@ -27,7 +157,7 @@ var run_pdf_algo = function(db, pdf_url){
     return;
   }
 
-  var scale = 0.85; //Set this to whatever you want. This is basically the "zoom" factor for the PDF.
+  var scale = 1.34; //Set this to whatever you want. This is basically the "zoom" factor for the PDF.
 
   function loadPdf(pdfPath) {
     var pdf = PDFJS.getDocument(pdfPath);
@@ -220,34 +350,17 @@ var add_event_to_ui = function(events_generated){
   
   $.each(events_generated,function(index, value){
     var stamp = new Date(Date.parse(index));
+    description = value;
+    value = get_valid_title(value);
     if(stamp && added_events.indexOf(String(stamp))<0){
       var php_time = pdf_year+"-"+(stamp.getMonth()+1)+"-"+stamp.getDate()+" "+stamp.getHours()+":"+stamp.getMinutes()+":"+stamp.getSeconds();
-      var get_data_json = {"class_id":globals.origin_id,"file_id":String(file_id),"event_title":value,"event_date":php_time,"event_type":"default"}; 
+      var get_data_json = {"class_id":globals.origin_id,"file_id":String(file_id),"event_title":value,"event_date":php_time,"event_type":"default", "description":description}; 
       $.ajax({
          url: "StoreEvent",
          type: "POST",
          data: get_data_json,
          success: function(response) {
-          //var parsed_response = ;
-          html_text='<div id="'+response+'" class = "syllabus_event editable">\
-                    <div  style="background-color:'+class_color+';" class = "day_month_box day_box_color">\
-                        <div class = "calendar_top_border"></div>\
-                        <div class = "calendar_bottom_section">\
-                            <span class = "day">'+stamp.getDate()+'</span>\
-                            <span class = "month">'+month[stamp.getMonth()]+'</span>\
-                        </div>\
-                    </div>\
-                    <div class = "event_name_buttons">\
-                        <span class ="event_name_text">\
-                            Midterm 1\
-                        </span>\
-                        <input class = "syla_tab_event_editor" type = "text" name = "event_name" value="'+value+'"">\
-                        <div class = "done_editing_button">\
-                            Done\
-                        </div>\
-                    </div>\
-                </div>';
-            $('div#events_list').append(html_text);
+
             
          },
          error: function(jqXHR, textStatus, errorMessage) {
@@ -351,4 +464,35 @@ var get_date_v2= function(input){
   }
 }
 
+var get_valid_title= function(title){
+  mid_term_keywords = ["midterm","mid"];
+  test_keywords = ["test"];
+  exam_keywords = ["final exam", "finals", "exam", "final"];
+  lab_keywords = ["lab", "practical"];
+  lecture_keywords = ["lecture", "class", "session"];
+  lower_case_title = title.toLowerCase();
+
+  for(i=0; i<mid_term_keywords.length; i++){
+    if(lower_case_title.indexOf(mid_term_keywords[i])>=0){
+      return "Midterm";
+    }
+  }
+  for(i=0; i<exam_keywords.length; i++){
+    if(lower_case_title.indexOf(exam_keywords[i])>=0){
+      return "Final Exam";
+    }
+  }
+  for(i=0; i<lab_keywords.length; i++){
+    if(lower_case_title.indexOf(lab_keywords[i])>=0){
+      return "Lab";
+    }
+  }
+  for(i=0; i<lecture_keywords.length; i++){
+    if(lower_case_title.indexOf(lecture_keywords[i])>=0){
+      return "Lecture";
+    }
+  }
+  console.log("Returning default");
+  return "Lecture";
+};
 //(((.*)((\d{1,2}\s?am|pm)|(((\d{1,2}:\d{1,2})?)(\s?)((am|pm)?))))?)

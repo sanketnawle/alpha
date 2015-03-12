@@ -145,7 +145,7 @@
 
 
         <div id="content_panel" class = "group_responsiveness">
-        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class,'user'=>$user)); ?>
+        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class, 'user'=>$user)); ?>
 
 
 
@@ -172,7 +172,7 @@
                         </div>
                     <?php }else{ ?>
                     <?php } ?>
-                    <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name; if($class->course->course_tag != ''){ echo ' (' . $class->course->course_tag . ') '; } ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
+                    <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name . ' (' . $class->course->course_tag . ') '; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
                 </div>
                 <div class = "group_right_info group_info_boxes">
                     <?php if($class->location) { ?>
@@ -193,7 +193,6 @@
                 <?php if($is_admin){ ?>
                 <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
                     <div class="upload_cover_photo_text">Change cover</div>
-                    <div id="set_to_parents_photo" style="cursor:pointer;">SET TO PARENTS IMG</div>
                 </div>
                 <?php } ?>                
 
@@ -245,12 +244,7 @@
                     <div class="tab_text">Members</div>
                     <div class = "tab_amount">
                         <?php if(count($class->users)>0){
-                            if($class->professor && !$class->professor()){
-                                echo count($class->users)+1;
-                            }else{
-                                echo count($class->users);
-                            }
-
+                            echo count($class->users);
                         }?>
                     </div>
                 </div>
@@ -337,21 +331,26 @@
         <?php }else{ ?>
         <div class="panel tab_syllabus" id="panel_2" style="display:none">
         <?php } ?>
-            <div style="width:100%"> 
-                <div class = "black_action_box" style="width:70%;left:-5px;float:left;bottom: -6px;" id="add_syllabus_wrap">
-                    <button id="btn_add_syllabus" style="width:20%;float: left;height:29px;left: -6px;margin-top:0px; border-radius:4px;border-style: ridge;">
+            <div class = "syllabus_tab_header" style="width:100%"> 
+                <div class = "black_action_box" id="add_syllabus_wrap">
+                    <button id="btn_add_syllabus">
                       Add Syllabus
                     </button>
-                    <input style="display:none;" type="file" accept=".pdf" id="syllabus_pdf_upload"/>
+                    
                 </div>
                 <div class = "syllabus_download_btn" style="display:none;"><a id="class_syllabus_pdf" download>Download</a></div>
-                <div style="width:25%;float:right;">
-                    <input class="text" style="height: 29px;border-color: transparent;border-radius: 15px;float:right;right:4px;" type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="&nbsp;&nbsp;Search your events...">
+                <div class = "small_search fade_input_small events_search_syllabus_wrapper">
+                    <em class = "left_search_icon search_icon"></em>
+                    <input class="text small_search_input" type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="Search events...">
                 </div>
             </div>
-            <hr style="opacity:0.5;width:100%">
-
-            <br>
+            <div id="events_template_loc" style="height:auto;min-height:390px;">
+                <?php include("js/bower_components/core-animated-pages/events_template.php"); ?>
+             </div>
+            <div class = "pdf_separator">
+                <div class = "pdf_sep_line"></div>
+                <div class = "pdf_title">Syllabus</div>
+            </div>
             <div id="pdfContainer">
             </div>
 
@@ -633,7 +632,7 @@
                 <div id="class_members_tab" class= "members_tab_content tab_content">
 
                     <?php
-                        $professor = $class->professor;
+                        $professor = $class->professor();
                         if($professor){
                     ?>
                         <div class = "members_card_wrapper class_admin" data-user_id='<?php echo $professor->user_id; ?>' data-name="<?php echo $professor->full_name(); ?>">
@@ -649,15 +648,12 @@
                                         <span>In office</span>
                                     </span>-->
                                 </div>
-                                <?php if($professor->department){ ?>
                                 <div class = "user_more_info">
                                     <span class = "label">Department <br> </span><a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $professor->department->department_id; ?>" class = "data department_link"><?php echo $professor->department->department_name; ?></a>
                                 </div>
-                                <?php } if($professor->professorAttribute->office_location){ ?>
                                 <div class = "user_more_info">
                                     <span class = "label">Office location <br> </span><span class = "data location"><?php echo $professor->professorAttribute->office_location; ?></span>
                                 </div>
-                                <?php } ?>
                                 <div class = "user_more_info">
                                     <span class = "label">Email address <br> </span><span class = "data email"><?php echo $professor->user_email; ?></span>
                                 </div>
