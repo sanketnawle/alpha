@@ -1007,7 +1007,7 @@
                         </div>
                         <div class="post_last_user_joined">
                             <div class="post_last_user_image profile_link" data-user_id="{{event.last_joined.user_id}}" style="background-image:url("<?php echo Yii::app()->getBaseUrl(true);?>{{event.last_joined.pictureFile.file_url}}")"></div>
-                            <div class="post_last_user_text"><a><span class="post_last_user_name profile_link" data_user-id="{{event.last_joined.user_id}}">{{event.last_joined.firstname}} {{event.last_joined.lastname}}</span></a> is attending</div>
+                            <div class="post_last_user_text"><a><span class="post_last_user_name profile_link" data-user_id="{{event.last_joined.user_id}}">{{event.last_joined.firstname}} {{event.last_joined.lastname}}</span></a> is attending</div>
                         </div>
 
                         {{#if event.other_attendees}}
