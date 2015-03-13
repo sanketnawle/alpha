@@ -69,7 +69,7 @@
 
         <?php echo Yii::app()->runController('partial/topbar');     ?>
 
-        <div id = "wrapper">
+        <div id = "wrapper" class="<?php echo $user->status; ?>">
             <div id="page">
                 <div id = "main_panel">
                     <div id="content_holder">

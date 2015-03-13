@@ -45,8 +45,7 @@
             </div>
         </div>
     </script>
-
-    <div class="topbar">
+    <div class="topbar <?php echo $user->status; ?>">
         <div id = "topbar_responsive_holder">
             <div class="left">
                 <!--<a href="./home.php" class="urlinq"></a>-->
@@ -177,7 +176,7 @@
             ?>
 
 
-            <div id="verify_email_banner">Verify your email <a href="<?php echo $mail_link; ?>">here</a></div>
+            <div id="verify_email_banner">Verify your email <a class = "verify_button" href="<?php echo $mail_link; ?>">here</a></div>
             <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/verify_email_banner.css' rel='stylesheet' type='text/css'>
 
 

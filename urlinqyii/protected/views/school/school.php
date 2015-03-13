@@ -60,7 +60,7 @@ if($school->university_id == 4){
 <body class = "body_group body_school">
 
     <?php echo Yii::app()->runController('partial/topbar'); ?>
-    <div id="wrapper">
+    <div id="wrapper" class="<?php echo $user->status; ?>">
     <!--        --><?php //echo Yii::app()->runController('partial/leftmenu'); ?>
 
     <?php

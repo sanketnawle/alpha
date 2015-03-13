@@ -89,7 +89,7 @@
     <body class = "body_group">
 
         <?php echo Yii::app()->runController('partial/topbar'); ?>
-        <div id="wrapper">
+        <div id="wrapper" class="<?php echo $user->status; ?>">
         <!--        --><?php //echo Yii::app()->runController('partial/leftmenu'); ?>
 
 

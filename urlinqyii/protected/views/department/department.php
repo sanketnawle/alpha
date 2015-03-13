@@ -60,7 +60,7 @@
 <body class = "body_group body_department" id = "body_department">
 
 <?php echo Yii::app()->runController('partial/topbar'); ?>
-<div id="wrapper">
+<div id="wrapper" class="<?php echo $user->status; ?>">
 
 
 
