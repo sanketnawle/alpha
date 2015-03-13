@@ -384,15 +384,11 @@ function ready(globals){
             // $post.find('span.correct_answer').text(response['correct_answer']);
         }
         if(your_answer){
-            if(correct_answer){
-                if(your_answer != correct_answer){
-                    $post.find('.mc_question_radio_button[data-option_id='+your_answer+']').addClass('red');
-                }
+            if(correct_answer && your_answer != correct_answer){
+                $post.find('.mc_question_radio_button[data-option_id='+your_answer+']').addClass('red');
             }else{
                 $post.find('.mc_question_radio_button[data-option_id='+your_answer+']').addClass('blue');
             }
-
-
         }
     }
     $(document).on('click','.close_question',function(){
