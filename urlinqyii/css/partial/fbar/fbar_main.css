@@ -382,6 +382,7 @@ div.form_wrapper footer {
     border-top: 1px solid rgba(181, 181, 181, 0.3);
     border-radius: 0px 0px 6px 6px;
     padding-right:15px;
+    padding-left:0px;
 }
 
 div.form_wrapper footer div {

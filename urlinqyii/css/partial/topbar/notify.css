@@ -67,7 +67,9 @@
     margin-top: 8px;
     background-color: #fff;
     border-radius: 3px;   
-    border: 1px solid #d6d6d6; -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13);
+    border: 1px solid #d6d6d6; 
+    height: 352px;
+    -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13);
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window * {
     /* opacity: 0; */
@@ -122,8 +124,8 @@
     -ms-transition: background-color .3s;
     transition: background-color .3s;
 }
-.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:last-child {
-    border-: none;
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li:last-of-type {
+    border-bottom: none;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon {
     float: left;
@@ -327,8 +329,11 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
     right: 44px;
 }
 .topbar > #topbar_responsive_holder .right .notify.board .notify-window .window .noti-scrollable {
-    bottom: 0;
     width:358px!important;
+    top: 0px;
+    position: relative;
+    height: -webkit-calc(100% - 51px);
+    height: calc(100% - 51px);
 }
 .topbar > #topbar_responsive_holder .right .notify.active .notify-window {
     opacity: 1;

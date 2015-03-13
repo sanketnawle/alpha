@@ -167,7 +167,7 @@ function toggleMenu(active) {
 
         // notification
 
-        $(".entries").slimScroll({ height: 300, wrapperClass: "noti-scrollable" });        
+        
         $(document).mouseup(function (e) {
             var container = $(".topbar > .right .notify .notify-window").removeClass("active");;
             if (!container.is(e.target) && container.has(e.target).length === 0) {

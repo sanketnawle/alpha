@@ -45,7 +45,8 @@
             </div>
         </div>
     </script>
-    <div class="topbar <?php echo $user->status; ?>">
+
+    <div class="topbar">
         <div id = "topbar_responsive_holder">
             <div class="left">
                 <!--<a href="./home.php" class="urlinq"></a>-->
@@ -130,7 +131,8 @@
                         <div class="window">
                             <div class="header">Notices</div>
                             <span class = "noti_header_hint">Notifications and reminders</span>
-                            <ul class="entries">
+                            <div class = "noti-scrollable">
+                                <ul class="entries">
 
 
 
@@ -138,7 +140,8 @@
 
 
 
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
