@@ -328,6 +328,7 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
 }
 .topbar > #topbar_responsive_holder .right .notify.board .notify-window .window .noti-scrollable {
     bottom: 0;
+    width:358px!important;
 }
 .topbar > #topbar_responsive_holder .right .notify.active .notify-window {
     opacity: 1;

@@ -11,7 +11,13 @@
     cursor: default;
 }
 
+.verify_email_banner{
 
+}
+
+.verify_email_banner > a.verify_button{
+
+}
 
 body#body_home .menu_hider, body#body_calendar .menu_hider, body.body_searchpage .menu_hider{
 display:none;
@@ -341,7 +347,7 @@ form.top_search_bar_form{
                 cursor: text;
                 height: 22px;
             
-                font-family: Avenir;
+                /* font-family: Avenir; */
 }
 
             .topbar #topbar_responsive_holder .center form .submit {
@@ -430,8 +436,8 @@ form.top_search_bar_form{
     
     padding: 0px 0;  
     top: -4px;
-    font-family: Avenir;
-    font-weight: 200;
+    /* font-family: Avenir; */
+    font-weight: 500;
     position: relative;
     padding-left: 4px;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
@@ -507,11 +513,11 @@ border-radius: 4px;}
                 .topbar > #topbar_responsive_holder > .right .notify.calendar .button div,.topbar > #topbar_responsive_holder > .right .notify.board .button div {
                     text-align: center;
                     display: inline-block;
-                    font-family: Avenir;
+                    /* font-family: Avenir; */
                     bottom: 8px;
                     position: relative;
                     cursor: pointer;
-                    font-weight: 200;
+                    font-weight: 500;
                     top: -5px;
                     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
 }
@@ -1323,7 +1329,7 @@ a.calendar_link_wrap:hover {
 a.calendar_link_wrap h5{
     font-size: 14.5px;
     
-    font-family: Avenir;
+    /* font-family: Avenir; */
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
     font-weight: 200;

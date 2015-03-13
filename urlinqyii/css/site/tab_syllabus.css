@@ -18,6 +18,10 @@ li#syllabus_event_order_kind{
     border-bottom: 1px solid #dcdcdc;
 }
 
+div.panel.tab_syllabus {
+    margin-top:-25px!important;
+}
+
 header.class_tasks{  
     
     margin-right: 10px;

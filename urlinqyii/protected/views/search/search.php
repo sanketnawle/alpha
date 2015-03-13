@@ -95,7 +95,7 @@
 <body class = "body_searchpage">
 
     <?php echo Yii::app()->runController('partial/topbar'); ?>
-    <div id="wrapper" class = "wrapper_searchpage">
+    <div id="wrapper" class = "wrapper_searchpage <?php echo $user->status; ?>">
         <div id="page" class = "page_search page_search_all_members_results">
             <div class = "black_background_row" style="display: none !important; ">
             </div>

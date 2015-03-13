@@ -1085,6 +1085,13 @@ div.members_card_wrapper {
 }
 #profile_wrapper .group_box{
     height: 200px !important;
+    position: relative;
+}
+
+.group_privacy_dropdown{
+    position: absolute!important;
+    bottom: 10px;
+    right: 0px;
 }
 
 #profile_wrapper div.group_box div.float_Left.group_image{
