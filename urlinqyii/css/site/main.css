@@ -646,8 +646,10 @@ div.tab div.tab_img{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     display: inline-block;
-    font-weight: bold;
+    font-weight: 500;
     padding-left: 2px;
+    position: relative;
+    top: -8px;
 }
 
 /* Default the wedge to hidden */
