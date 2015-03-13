@@ -78,9 +78,9 @@ body#body_home #wrapper{
     padding-top:47px!important;
 }
 
-body#body_home #wrapper.onboarded{
+/*body#body_home #wrapper.onboarded{
     padding-top:86px!important;
-}
+}*/
 
 div#nav_bar .slimScrollDiv{
     top:0px;
