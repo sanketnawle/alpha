@@ -3971,8 +3971,8 @@ input.mc_question_radio_button {
 
 /*events*/
 .post_event_date_box {
-    height: 58px;
-    width: 58px;
+    height: 62px;
+    width: 62px;
     background-color: #777;
     float: left;
     margin-top: 1px;
@@ -4000,7 +4000,7 @@ input.mc_question_radio_button {
 }
 
 div.post_event_month {
-    font-size: 12.25px;
+    font-size: 13px;
     font-weight: 200;
     text-transform: capitalize;
     letter-spacing: .5px;
@@ -4008,10 +4008,10 @@ div.post_event_month {
 }
 
 div.post_event_day {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 200;
     line-height: 11px;
-    margin-top: 6px;
+    margin-top: 7px;
 }
 
 div.post_event_date_box div.top_dark_area {
@@ -4053,7 +4053,7 @@ div.post_event_title {
     color: #333;
     font-size: 16.5px;
     font-weight: 500;
-    padding: 2.5px 74px 8px;
+    padding: 0px 78px 4px;
     text-transform: capitalize;
 }
 
@@ -4088,7 +4088,7 @@ div.post_event_origin_holder div.post_event_origin > a {
     -o-transition: color .218s;
     transition: color .218s;
     text-transform: capitalize;
-    max-width: 230px;
+    max-width: 210px;
     display: inline-block;
     text-overflow: ellipsis;
     vertical-align: top;
@@ -4144,14 +4144,15 @@ div.post_event_time_holder > .post_event_start_time {
     display: inline-block;
 
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;   color: #777;
 }
 
 div.post_event_time_holder > .post_event_end_time {
     display: inline-block;
 
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
+    color: #777;
 }
 
 div.event_post_toparea {
@@ -4188,6 +4189,8 @@ div.event_post_toparea {
 
 .event_description_holder a {
     color: #029acf !important;
+    top: 2px;
+    position: relative;
 }
 
 .event_description_holder a:hover {
@@ -4236,11 +4239,11 @@ div.event_post_toparea {
 .post_event_location_holder {
     position: absolute;
 
-    top: 65px;
-    font-size: 12px;
-    right: 10px;
+    top: 60px;
+    font-size: 11px;
+    left: 84px;
     color: #93999c;
-    font-family: Avenir;
+    /* font-family: Avenir; */
 }
 
 .post_event_location_holder .post_event_location {
@@ -4261,8 +4264,9 @@ span.location_icon_dark {
 }
 
 div.event_context {
-    padding-left: 74px;
+    padding-left: 7px;
     font-size: 13.5px;
+    overflow: hidden;
 }
 
 span.add_to_cal_icon {
@@ -5207,14 +5211,14 @@ span.closed_question_tip{
     position: absolute;
 
     padding-top: 7px;
-    right: 0;
-    text-shadow: rgba(127, 127, 127, 0.39) 0 -1px;
-    top: 0;
+    right: -1px;
+    /* text-shadow: rgba(127, 127, 127, 0.39) 0 -1px; */
+    top: -1px;
     color: #fff;
     text-transform: uppercase;
     font-size: 10.5px;
     font-family: Avenir;
-    bottom: 0;
+    bottom: -1px;
     width: 100px;
 }
 
