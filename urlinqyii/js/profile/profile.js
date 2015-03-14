@@ -174,7 +174,12 @@ $(document).ready(function() {
 
                         globals.$fbar.find('.menu_audience').dropit({});
                         globals.$fbar.find('.privacy_menu').dropit({});
-                        populate_audience_select();
+                        if(globals.user_id == data.user_id) {
+                            populate_audience_select();
+                        }else{
+                            globals.$fbar.find('.menu_audience').hide();
+                            globals.$fbar.find('.audience_default').show();
+                        }
                         set_dropzone();
                         //get feed
                         $.getJSON( base_url + '/profile/'+data.user_id+'/feed', function( json_feed_data ) {

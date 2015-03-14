@@ -60,7 +60,7 @@ if($school->university_id == 4){
 <body class = "body_group body_school">
 
     <?php echo Yii::app()->runController('partial/topbar'); ?>
-    <div id="wrapper">
+    <div id="wrapper" class="<?php echo $user->status; ?>">
     <!--        --><?php //echo Yii::app()->runController('partial/leftmenu'); ?>
 
     <?php
@@ -330,7 +330,7 @@ if($school->university_id == 4){
                                     <a href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>">
                                         <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url; ?>')">
                                             <div class = "group_link"><?php echo $club->group_name; ?></div>
-                                            <span class = "group_type group_with_button">Group</span>
+                                            <span class = "group_type group_with_button"></span>
 
                                         </div>
                                     </a>

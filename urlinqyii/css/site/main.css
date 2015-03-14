@@ -78,6 +78,10 @@ body#body_home #wrapper{
     padding-top:47px!important;
 }
 
+/*body#body_home #wrapper.onboarded{
+    padding-top:86px!important;
+}*/
+
 div#nav_bar .slimScrollDiv{
     top:0px;
 }
@@ -275,9 +279,9 @@ div#planner_column.planner_column_group{
 }
 
 #planner_column.planner_column_home #right_column_specs #fixed_element{
-    top: 15px;
+    top: 62px;
     height: 380px;
-    position: relative;
+    position: fixed;
 }
 
 #planner_column.planner_column_home #right_column_specs #fixed_element .planner_container{  
@@ -438,7 +442,7 @@ body.body_department .blur_section_overflow_container{
 }
 
 #cover_photo {
-
+    overflow: hidden;
     /*display: block;*/
     /*transition-property: opacity;*/
 
@@ -646,8 +650,10 @@ div.tab div.tab_img{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     display: inline-block;
-    font-weight: bold;
+    font-weight: 500;
     padding-left: 2px;
+    position: relative;
+    top: -8px;
 }
 
 /* Default the wedge to hidden */
@@ -1030,7 +1036,7 @@ border-radius: 4px;
 padding-left: 10px;
 }
 
-.my_school_btn:hover ~ #help_4{
+.my_school_btn:hover ~ #help_4, .own_department:hover ~ #help_4{
     z-index:1;
     opacity: 1;
 }
@@ -1055,10 +1061,8 @@ font-weight: 400;
 border-radius: 2px;
 font-family: Avenir;
 padding: 5px 7px 10px;
-border: 1px solid #d9d9d9;
 color: #333;
 background: rgba(255, 255, 255, 1);
-border: 1px solid rgba(0, 0, 0, .15); 
 border-radius: 2px; 
 -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07);
 box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07);
@@ -1748,9 +1752,7 @@ width:980px!important;
 /* Media Queries */
 
 @media screen and (max-width:1350px){
-    body#body_home div#content_panel div#nav_bar div#nav_drop_down_container.last_nav_drop_down_home{
-         margin-left: -73px!important;
-    }
+
 }
 
 @media screen and (max-width: 1310px) {
@@ -1990,7 +1992,7 @@ width:980px!important;
     }
 
     #body_home #planner_column.planner_column_home #right_column_specs #fixed_element{
-        top:15px!important;
+        top:62px!important;
     }
 
     .panel_feed div#feed_column.feed_column_group{
@@ -2041,6 +2043,10 @@ width:980px!important;
     }
     body.left_panel_hidden.left_panel_hidden_p2 .members_tab_content div.members_card_wrapper{
         width:24.6%!important;
+    }
+    #body_home #planner_column.planner_column_home #right_column_specs #fixed_element{
+        top: 15px!important;
+        position: relative!important;
     }
     #main_panel.main_panel_search{
         padding-right:150px;
@@ -2210,7 +2216,7 @@ div.group_info_boxes.group_desc_box .group_info_block{
 .group_info_block_new.upload_cover_container{ background: rgba(18, 19, 20, 0.85); 
     border-radius: 0 1.5px 1.5px 0; color: #fff; font-size: 12.5px; -moz-box-shadow: 0px 0 3px rgba(0,0,0,0.5); -webkit-box-shadow: 0px 0 3px rgba(0,0,0,0.5); box-shadow: 0px 0 3px rgba(0,0,0,0.5);
     position: absolute;
-    left: 0px;
+    left:0px;
     padding:2.5px 8px;
     top: 60px;
     float: left;
@@ -2225,7 +2231,6 @@ div.group_info_boxes.group_desc_box .group_info_block{
     -webkit-box-shadow: inset -1px -1px 0px rgba(255, 255, 255, 0.81), inset 0px 1px 0px rgba(255, 255, 255, 0.8);
     -moz-box-shadow: inset -1px -1px 0px rgba(255, 255, 255, 0.81), inset 0px 1px 0px rgba(255, 255, 255, 0.8);
     box-shadow: inset -1px -1px 0px rgba(255, 255, 255, 0.81), inset 0px 1px 0px rgba(255, 255, 255, 0.8);
-
     outline: 2px solid rgba(0, 0, 0, 1);
 }
 

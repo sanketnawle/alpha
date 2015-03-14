@@ -19,8 +19,8 @@
 
 
 <div class='anl-frame'>
-<div class='anl-header'>
-    <span><?php echo $club->group_name; ?> ANALYTICS</span>
+<div class='anl-header main-header'>
+    <span><?php echo $club->group_name; ?> Analytics</span>
     <div class='anl_btn_left'>
         <div class='ga_btn ga_btn_0 anl_btn_active'>General Analytics</div>
     </div>

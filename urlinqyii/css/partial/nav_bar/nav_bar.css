@@ -216,7 +216,8 @@ body#body_home div#content_panel div#nav_bar div#nav_drop_down_container {
 body#body_home div#content_panel div#nav_bar div#nav_drop_down_container.last_nav_drop_down_home{
     border-top: none;
     margin-top: -3px;
-    margin-left: -72px;
+    position: absolute;
+    right:-1px;
     border-left: none;
     padding-top: 2px;
 }

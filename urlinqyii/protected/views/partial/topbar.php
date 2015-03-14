@@ -131,7 +131,8 @@
                         <div class="window">
                             <div class="header">Notices</div>
                             <span class = "noti_header_hint">Notifications and reminders</span>
-                            <ul class="entries">
+                            <div class = "noti-scrollable">
+                                <ul class="entries">
 
 
 
@@ -139,7 +140,8 @@
 
 
 
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -177,7 +179,7 @@
             ?>
 
 
-            <div id="verify_email_banner">Verify your email <a href="<?php echo $mail_link; ?>">here</a></div>
+            <div id="verify_email_banner">Verify your email <a class = "verify_button" href="<?php echo $mail_link; ?>">here</a></div>
             <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/verify_email_banner.css' rel='stylesheet' type='text/css'>
 
 
