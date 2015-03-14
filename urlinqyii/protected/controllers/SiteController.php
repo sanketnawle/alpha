@@ -1011,6 +1011,9 @@ class SiteController extends Controller
                             $class_user->user_id = $user->user_id;
                             $class_user->color_id = get_random_color();
                             $class_user->save(false);
+
+
+                            //Get all events for this class
                         }
                     }
                 }
