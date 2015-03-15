@@ -313,7 +313,6 @@ class FeedController extends Controller
                     if($origin){
                         $posts [$i]['origin'] = $this->model_to_array($origin);
                     }else{
-                        $post_model->delete();
                         $posts [$i]['origin'] = null;
                     }
 
@@ -322,7 +321,6 @@ class FeedController extends Controller
                     $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post['origin_id']));
 
                     if(!$class){
-                        $post_model->delete();
                         unset($posts[$i]);
                         continue;
                     }
@@ -334,8 +332,6 @@ class FeedController extends Controller
                     $course = Course::model()->find('course_id=:id', array(':id'=>$post['origin_id']));
 
                     if(!$course){
-                        //Delete this post
-                        $post_model->delete();
                         unset($posts[$i]);
                         continue;
                     }
@@ -346,7 +342,6 @@ class FeedController extends Controller
                 elseif($post['origin_type']=="department"){
                     $department = Department::model()->find('department_id=:id', array(':id'=>$post['origin_id']));
                     if(!$department){
-                        $post_model->delete();
                         unset($posts[$i]);
                         continue;
                     }
@@ -359,7 +354,6 @@ class FeedController extends Controller
                 elseif($post['origin_type']=="school"){
                     $school = School::model()->find('school_id=:id', array(':id'=>$post['origin_id']));
                     if(!$school){
-                        $post_model->delete();
                         unset($posts[$i]);
                         continue;
                     }
@@ -371,7 +365,6 @@ class FeedController extends Controller
                 elseif($post['origin_type'] == "group" || $post['origin_type'] == 'club'){
                     $group = Group::model()->find('group_id=:id', array(':id'=>$post['origin_id']));
                     if(!$group){
-                        $post_model->delete();
                         unset($posts[$i]);
                         continue;
                     }
@@ -490,7 +483,6 @@ class FeedController extends Controller
                     $post_event = PostEvent::model()->find('post_id=:id',array(':id'=>$post['post_id']));
 
                     if(!$post_event){
-                        $post_model->delete();
                         unset($posts[$i]);
                         continue;
                     }
@@ -568,9 +560,6 @@ class FeedController extends Controller
                     $class = ClassModel::model()->find('class_id=:id',array(':id'=>$posts[$i]['event']['origin_id']));
                     if(!$class){
                         //If the class doesnt exist, this post shouldnt exist
-                        $event->delete();
-                        $post_model()->delete();
-
                         unset($posts[$i]);
                         continue;
                     }
@@ -580,9 +569,7 @@ class FeedController extends Controller
                 }else if($posts[$i]['event']['origin_type'] == 'department'){
                     $department = Department::model()->find('department_id=:id',array(':id'=>$posts[$i]['event']['origin_id']));
                     if(!$department){
-                        //If the dept doesnt exist, this post shouldnt exist
-                        $event->delete();
-                        $post_model()->delete();
+                        //If the class doesnt exist, this post shouldnt exist
                         unset($posts[$i]);
                         continue;
                     }
@@ -594,9 +581,6 @@ class FeedController extends Controller
                 }else if($posts[$i]['event']['origin_type'] == 'school'){
                     $school = School::model()->find('school_id=:id',array(':id'=>$posts[$i]['event']['origin_id']));
                     if(!$school){
-                        //If the dept doesnt exist, this post shouldnt exist
-                        $event->delete();
-                        $post_model()->delete();
                         //If the class doesnt exist, this post shouldnt exist
                         unset($posts[$i]);
                         continue;
@@ -608,9 +592,6 @@ class FeedController extends Controller
                 }else if($posts[$i]['event']['origin_type'] == 'club' || $posts[$i]['event']['origin_type'] == 'group'){
                     $group = Group::model()->find('group_id=:id',array(':id'=>$posts[$i]['event']['origin_id']));
                     if(!$group){
-                        //If the dept doesnt exist, this post shouldnt exist
-                        $event->delete();
-                        $post_model()->delete();
                         //If the class doesnt exist, this post shouldnt exist
                         unset($posts[$i]);
                         continue;
@@ -622,9 +603,6 @@ class FeedController extends Controller
                 } else {
                     $event_new = Event::model()->find('event_id=:event_id', array(':event_id'=>$event['event_id']));
                     if(!$event_new){
-                        //If the dept doesnt exist, this post shouldnt exist
-                        $event->delete();
-                        $post_model()->delete();
                          //If the class doesnt exist, this post shouldnt exist
                         unset($posts[$i]);
                         continue;
