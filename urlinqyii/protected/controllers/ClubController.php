@@ -124,7 +124,156 @@ class ClubController extends Controller
         $user = $this->get_current_user();
 
 
-        $this->render('test',array('user'=>$user));
+
+
+        $assets_directory = '/assets/test';
+
+        $full_directory = dirname(__FILE__) . '/../..' . $assets_directory;
+
+        $delete_list = array();
+
+        $dir = new DirectoryIterator($full_directory);
+
+        $count = 0;
+        foreach ($dir as $fileinfo) {
+
+            if (!$fileinfo->isDot()) {
+
+                $count += 1;
+
+
+                $file_name = $fileinfo->getFilename();
+
+
+                $file_path = $full_directory . '/' . $file_name;
+
+                $file_url = $assets_directory . '/' . $file_name;
+                var_dump($file_url);
+                //var_dump($file_url);
+                $file = File::model()->find('file_url=:url', array(':url'=>$file_url));
+
+
+                if($file){
+                    //Check if this file is being referenced anywhere in the DB
+                    //Tables that currently use file_id's:
+                    //class, class_file, class_syllabus
+                    //course
+                    //department
+                    //event
+                    //group, group_file,
+                    //post, post_file
+                    //reply
+                    //school
+                    //showcase
+                    $file_id = $file->file_id;
+
+                    $class = ClassModel::model()->find('picture_file_id=:id or cover_file_id=:id', array(':id'=>$file_id));
+                    if($class){
+                        //There is a class referencing this file so do nothing
+                        continue;
+                    }
+
+                    $class_file = ClassFile::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($class_file){
+                        continue;
+                    }
+
+
+                    $class_syllabus = ClassSyllabus::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($class_syllabus){
+                        continue;
+                    }
+
+                    $course = Course::model()->find('picture_file_id=:id', array(':id'=>$file_id));
+                    if($course){
+                        continue;
+                    }
+
+                    $department = Department::model()->find('picture_file_id=:id or cover_file_id=:id', array(':id'=>$file_id));
+                    if($department){
+                        //There is a department referencing this file so do nothing
+                        continue;
+                    }
+
+                    $event = event::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($event){
+                        //There is a event referencing this file so do nothing
+                        continue;
+                    }
+
+                    $group = Group::model()->find('picture_file_id=:id or cover_file_id=:id', array(':id'=>$file_id));
+                    if($group){
+                        //There is a group referencing this file so do nothing
+                        continue;
+                    }
+
+                    $group_file = GroupFile::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($group_file){
+                        continue;
+                    }
+
+                    $post = Post::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($post){
+                        //There is a post referencing this file so do nothing
+                        continue;
+                    }
+
+                    $post_file = postFile::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($post_file){
+                        continue;
+                    }
+
+                    $reply = Reply::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($reply){
+                        continue;
+                    }
+
+
+                    $school = School::model()->find('picture_file_id=:id or cover_file_id=:id', array(':id'=>$file_id));
+                    if($school){
+                        //There is a school referencing this file so do nothing
+                        continue;
+                    }
+
+                    $showcase = Showcase::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($showcase){
+                        continue;
+                    }
+
+                    $user = User::model()->find('picture_file_id=:id', array(':id'=>$file_id));
+                    if($showcase){
+                        continue;
+                    }
+                    
+
+
+                    //If we get to this point, we know this file isnt used
+                    //any where in the database and is safe to delete
+                    array_push($delete_list, $file_path);
+
+                }else{
+                    //If file is not referenced in db, delete it.
+                    //unlink($file_path);
+                    array_push($delete_list, $file_path);
+                }
+            }
+        }
+
+//
+//        foreach($delete_list as $file_path){
+//            unlink($file_path);
+//        }
+
+        var_dump($count);
+        var_dump($delete_list);
+
+
+
+
+
+
+
+        $this->render('test',array('user'=>$user, 'delete_list'=>$delete_list));
 
 
 

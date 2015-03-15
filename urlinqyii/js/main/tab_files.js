@@ -289,7 +289,7 @@ $(document).ready(function(){
 
     $(document).on('click','#upload_text_button', function(){
         //activate the dropzone file prompt
-        $('.dropzone').click();
+        $('#demo-upload.dropzone').click();
     });
 
 
