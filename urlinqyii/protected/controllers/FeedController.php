@@ -286,6 +286,9 @@ class FeedController extends Controller
                     unset($posts[$i]);
                     continue;
                 }
+
+
+                $post_model = Post::model()->find('post_id=:id', array(':id'=>$post['post_id']));
     //            else{
     //                echo "Aha!";
     //            }
@@ -405,6 +408,12 @@ class FeedController extends Controller
                 if($post['post_type'] == 'question' || $post['post_type'] == 'multiple_choice' || $post['post_type'] == 'true_false'){
                     $post_que = PostQuestion::model()->find('post_id=:id', array(':id'=>$post['post_id']));
 
+
+                    if(!$post_que){
+                        unset($posts[$i]);
+                        continue;
+                    }
+
                     $posts[$i]['active'] = $post_que->active;
                     $posts[$i]['question'] = self::convertModelToArray($post_que);
 
@@ -412,7 +421,7 @@ class FeedController extends Controller
 
                      //Check if this user has already voted for this question
 
-                    $post_model = Post::model()->find('post_id=:post_id',array(':post_id'=>$post['post_id']));
+
 
                   //  $posts[$i]['user_answer_option_id'] = null;
 
@@ -430,6 +439,9 @@ class FeedController extends Controller
                     // adding all the options to the array
                     $post_que_options = PostQuestionOption::model()->findAll('post_id=:id', array(':id'=>$post['post_id']));
                     $options = self::convertModelToArray($post_que_options);
+
+
+
                     $posts[$i]['question']['options'] = self::getOptionsInfo($options);
 
                    // $options_data = array();
@@ -465,7 +477,7 @@ class FeedController extends Controller
 
                 elseif($post['post_type'] == 'event' || $post['post_type'] == 'opportunity'){
 
-                    $post_model = Post::model()->find('post_id=:id', array(':id'=>$post['post_id']));
+
 
 
                     $post_event = PostEvent::model()->find('post_id=:id',array(':id'=>$post['post_id']));
