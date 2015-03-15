@@ -60,6 +60,10 @@
    .img_arrows{
       display: inline-block;
       margin-right: 10px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       width: 42px;
       height: 86px;
       background: rgba(18, 19, 20, 0.9);
