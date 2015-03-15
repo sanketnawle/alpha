@@ -143,6 +143,8 @@ div.day_event_holder div.event_name{
 font-weight: 600;
 font-size: 14.5px;
 margin-left: 14px;
+display: block;
+width: 100%;
 }
 
 .body .day-view div.day-grid{
@@ -211,8 +213,9 @@ top: 3px;
 div.day_event_holder div.event_description {
 display: inline-block;
 font-size: 13.6px;
-line-height: 24px;
-padding-left: 10px;
+line-height: 22px;
+padding-left: 14px;
+width: 79%;
 }
 
 div.day_event_holder.event_holder.colorfied div.event_description, div.day_event_holder.event_holder.colorfied div.event_location, div.day_event_holder.event_holder.colorfied div.event_location > span{
@@ -267,8 +270,10 @@ a.event_origin_link {
 position: absolute;
 right: 0px;
 bottom: 54%;
+width: 23%;
 height: 15px;
 margin: 2px 3px -7.5px 0px;
+text-align: right;
 font-size: 11.5px;
 color: #1D1D1D!important;
 }
@@ -329,6 +334,7 @@ div.inspect_data{
     color: #333;
     position: relative;
     top: 0px;
+    line-height: 17px;
     padding: 2.5px 0;
 }
 

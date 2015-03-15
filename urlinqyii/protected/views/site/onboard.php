@@ -262,7 +262,7 @@
 
             {{#ifCond user_type '==' 's'}}
                 <div class='step_6_card_r1'>
-                    <div class='step_6_card_r1_txt'>Graduation date</div>
+                    <div class='step_6_card_r1_txt'>Graduation year</div>
 
                     <div class='ui dropdown step_6_card_r1_choice'>
                         <div class='text'>2015</div>

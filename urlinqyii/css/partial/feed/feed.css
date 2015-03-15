@@ -399,18 +399,18 @@ span.time_icon {
     padding: 5px 5.5px 1px;
     border: 1px solid #15A312;
     border-radius: 50%;
-    display: inline-block;
+    display: inline-block!important;
     position: relative;
-    line-height: 14px;
-    height: auto;
-    margin: 0 0 15px;
-    width: auto;
+    line-height: 14px!important;
+    height: auto!important;
+    margin: 0 0 15px!important;
+    width: auto!important;
     font-size: 10.8px;
     z-index: 1;
     color: #17B325;
-    height: 23px;
+    height: 23px!important;
     transition: .2s;
-    opacity: 1;
+    opacity: 1!important;
 }
 
 .post_like_btn {
@@ -5209,10 +5209,9 @@ span.closed_question_tip{
 
 span.closed_question_tip{
     position: absolute;
-
+    text-shadow: 0 1px 1px rgba(0,0,0,0.1);
     padding-top: 7px;
     right: -1px;
-    /* text-shadow: rgba(127, 127, 127, 0.39) 0 -1px; */
     top: -1px;
     color: #fff;
     text-transform: uppercase;

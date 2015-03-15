@@ -17,6 +17,11 @@ body {
     padding: 0;
 }
 
+.dz-details img{
+    width:300px;
+    height:300px;
+}
+
 .wrapper {
     display: table;
     height: 100%;
