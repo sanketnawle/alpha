@@ -17,7 +17,7 @@ class FeedController extends Controller
     public function __construct(){
         self::$cur_user_id = Yii::app()->session['user_id'];
         self::$user = User::model()->find('user_id=:id', array(':id'=> self::$cur_user_id));
-        self::$cur_sem = "fall";
+        self::$cur_sem = "spring";
 
         // setting start_rec value
         if(isset($_POST['start_rec'])) self::$start_rec = 10*$_POST['start_rec'];
@@ -559,99 +559,111 @@ class FeedController extends Controller
 	public function actionGetHomePosts()
 	{
 
-        $user = $this->get_current_user($_GET);
+
+        try{
 
 
-        if(!$user){
-            $this->renderJSON(array('success'=>false, 'error_msg'=>'User not logged in'));
-            return;
-        }
+            $user = $this->get_current_user($_GET);
 
 
-        //I was getting issues passing the date time string
-        //in the standard ?created_at=2015-14-12 11:11:11 format,
-        //so I put the data in a param and the created_at and last_activity into
-        //a json string then decoded it here so it wouldnt get fucked up
-        //in transit
-        $created_at = new DateTime('now');
-        $created_at = $created_at->format('Y-m-d H:i:s');
-        $last_activity = new DateTime('now');
-        $created_at = $last_activity->format('Y-m-d H:i:s');
-        if(isset($_GET['params']) || isset($_GET['created_at']) && isset($_GET['last_activity'])){
-            $params = json_decode($_GET['params'], true);
-
-            if(isset($params['created_at'])){
-                $created_at = $params['created_at'];
-                $last_activity = $params['last_activity'];
+            if(!$user){
+                $this->renderJSON(array('success'=>false, 'error_msg'=>'User not logged in'));
+                return;
             }
 
-        }
+
+            //I was getting issues passing the date time string
+            //in the standard ?created_at=2015-14-12 11:11:11 format,
+            //so I put the data in a param and the created_at and last_activity into
+            //a json string then decoded it here so it wouldnt get fucked up
+            //in transit
+            $created_at = new DateTime('now');
+            $created_at = $created_at->format('Y-m-d H:i:s');
+            $last_activity = new DateTime('now');
+            $created_at = $last_activity->format('Y-m-d H:i:s');
+            if(isset($_GET['params']) || isset($_GET['created_at']) && isset($_GET['last_activity'])){
+                $params = json_decode($_GET['params'], true);
+
+                if(isset($params['created_at'])){
+                    $created_at = $params['created_at'];
+                    $last_activity = $params['last_activity'];
+                }
+
+            }
 
 
 
-        $privacy_type = $user->user_type;
+            $semester = 'spring';
 
-        if($privacy_type == 'p'){
+            $privacy_type = $user->user_type;
 
-            //Group professors and admins in the same privacy setting
-            $privacy_type = 'a';
-        }
+            if($privacy_type == 'p'){
 
-        // or (post.origin_type = 'user' )
+                //Group professors and admins in the same privacy setting
+                $privacy_type = 'a';
+            }
 
-
-        $posts_sql_home = "SELECT distinct *
-                            from post
-                            join post_user_inv
-                              on (post.post_id = post_user_inv.post_id)
-                           where ((post_user_inv.user_id IN (SELECT to_user_id from user_connection where from_user_id = " . $user->user_id .")
-                              or post_user_inv.user_id = " . $user->user_id . ")
-
-                              or (origin_type = 'university' and origin_id = " . $user->school_id . ")
-                              or (origin_type = 'department' and origin_id = " . $user->department_id .")
+            // or (post.origin_type = 'user' )
 
 
-                              or (origin_type = 'club' and origin_id IN (SELECT group_user.group_id
-                                                                         from `group_user`
-                                                                         join `group`
-                                                                         on (group_user.group_id = group.group_id)
-                                                                         where group_user.user_id = " . $user->user_id . "))
+            $posts_sql_home = "SELECT distinct *
+                                from post
+                                join post_user_inv
+                                  on (post.post_id = post_user_inv.post_id)
+                               where ((post_user_inv.user_id IN (SELECT to_user_id from user_connection where from_user_id = " . $user->user_id .")
+                                  or post_user_inv.user_id = " . $user->user_id . ")
 
-                              or (origin_type = 'group' and origin_id IN (SELECT group_user.group_id
-                                                                         from `group_user`
-                                                                         join `group`
-                                                                         on (group_user.group_id = group.group_id)
-                                                                         where group_user.user_id = " . $user->user_id . "))
-
-                              or (origin_type = 'department' and origin_id IN (SELECT department_follow.department_id
-                                                                         from `department_follow`
-                                                                         join `department`
-                                                                         on (department_follow.department_id = department.department_id)
-                                                                         where department_follow.user_id = " . $user->user_id . "))
+                                  or (origin_type = 'university' and origin_id = " . $user->school_id . ")
+                                  or (origin_type = 'department' and origin_id = " . $user->department_id .")
 
 
-                              or (origin_type = 'class' and origin_id IN (SELECT cu.class_id
-                                                                            from class_user cu join class cs
-                                                                              on (cu.class_id = cs.class_id)
-                                                                              where user_id = " . $user->user_id . " and cs.semester = '" . self::$cur_sem . "' and cs.`year` = ".date('Y').")))
+                                  or (origin_type = 'club' and origin_id IN (SELECT group_user.group_id
+                                                                             from `group_user`
+                                                                             join `group`
+                                                                             on (group_user.group_id = group.group_id)
+                                                                             where group_user.user_id = " . $user->user_id . "))
+
+                                  or (origin_type = 'group' and origin_id IN (SELECT group_user.group_id
+                                                                             from `group_user`
+                                                                             join `group`
+                                                                             on (group_user.group_id = group.group_id)
+                                                                             where group_user.user_id = " . $user->user_id . "))
+
+                                  or (origin_type = 'department' and origin_id IN (SELECT department_follow.department_id
+                                                                             from `department_follow`
+                                                                             join `department`
+                                                                             on (department_follow.department_id = department.department_id)
+                                                                             where department_follow.user_id = " . $user->user_id . "))
+
+
+                                  or (origin_type = 'class' and origin_id IN (SELECT cu.class_id
+                                                                                from class_user cu join class cs
+                                                                                  on (cu.class_id = cs.class_id)
+                                                                                  where user_id = " . $user->user_id . " and cs.semester = '" . $semester . "' and cs.`year` = ".date('Y').")))
 
 
 
 
 
-                              and (post.privacy = '' or (post.privacy = '" . $privacy_type . "') or (post.privacy != '" . $privacy_type . "' and post.user_id = " . $user->user_id . "))
+                                  and (post.privacy = '' or (post.privacy = '" . $privacy_type . "') or (post.privacy != '" . $privacy_type . "' and post.user_id = " . $user->user_id . "))
 
-                              and not exists (select * from post_hide where user_id= " . $user->user_id . " and post_id = post.post_id)
-                              and created_at < '" . $created_at . "'
-                              ORDER BY created_at DESC
-                              LIMIT ".self::$start_rec.",".self::POST_LIMIT;
+                                  and not exists (select * from post_hide where user_id= " . $user->user_id . " and post_id = post.post_id)
+                                  and created_at < '" . $created_at . "'
+                                  ORDER BY created_at DESC
+                                  LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 
 
-        $command = Yii::app()->db->createCommand($posts_sql_home);
-        if($posts = $command->queryAll()){
-            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user), $user)));
-        }else{
-            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
+            $command = Yii::app()->db->createCommand($posts_sql_home);
+            if($posts = $command->queryAll()){
+                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user), $user)));
+            }else{
+                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
+            }
+
+
+        }catch(Exception $e){
+            $this->renderJSON(array('success'=>false, 'error_msg'=>$e->getMessage()));
+            return;
         }
 
 
