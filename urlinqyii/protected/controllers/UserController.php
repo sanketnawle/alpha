@@ -137,7 +137,11 @@ class UserController extends Controller
     //Returns people this user should follow
     public function actionGetSuggestedUsers(){
 
-
+        if(!isset($_GET['university_id'])){
+            $data = array('success'=>false, 'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
 
         $user = $this->get_current_user();
 
@@ -146,6 +150,11 @@ class UserController extends Controller
             $this->renderJSON($data);
             return;
         }
+
+
+        $university_id = $_GET['university_id'];
+        $department_id = $user->department_id;
+        $school_id = $user->school_id;
 
 
 //        $users = $this->models_to_array(User::model()->findAllBySql('SELECT * FROM `user` WHERE department_id = ' . $user->department_id . ' AND user_id != ' . $user->user_id . ' LIMIT 10'));
@@ -160,7 +169,36 @@ class UserController extends Controller
 //            array_merge($users,));
 //        }
 
-        $user_models = User::model()->findAllBySql('SELECT * FROM `user` WHERE user_id != ' . $user->user_id . ' and picture_file_id != 1 LIMIT 10');
+
+        //$user_models = User::model()->findAllBySql('SELECT * FROM `user` WHERE user_id != ' . $user->user_id . ' and picture_file_id != 1 ORDER BY RAND() LIMIT 10');
+        $user_models = array();
+        if($department_id){
+           // echo 'department'.$department_id;
+            $user_models = User::model()->findAllBySql('SELECT * FROM `user` WHERE user_id != ' . $user->user_id . ' and picture_file_id != 1 and department_id = ' . $department_id . ' LIMIT 15');
+        }
+
+        if(sizeof($user_models)<10){
+            $new_user_models = array();
+            if($school_id){
+               // echo 'school'.$school_id;
+                $new_user_models = User::model()->findAllBySql('SELECT * FROM `user` WHERE user_id != ' . $user->user_id . ' and picture_file_id != 1
+                    and school_id = ' . $school_id . ' and department_id != ' . $department_id . ' LIMIT 15');
+            }
+
+            $user_models = array_merge($user_models,$new_user_models);
+            if(sizeof($user_models)<10){
+                $new_user_models = array();
+                // 'univ'.$university_id;
+                $new_user_models = User::model()->findAllBySql('SELECT * FROM `user` WHERE user_id != ' . $user->user_id . ' and picture_file_id != 1
+                    and university_id = ' . $university_id . ' and school_id != ' . $school_id . '  LIMIT 15');
+
+
+                $user_models = array_merge($user_models,$new_user_models);
+            }
+
+
+        }
+
         foreach($user_models as $i=>$user){
             $user_models[$i] = $this->get_model_associations($user,array('pictureFile'=>array()));
         }

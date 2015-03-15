@@ -131,7 +131,8 @@
                         <div class="window">
                             <div class="header">Notices</div>
                             <span class = "noti_header_hint">Notifications and reminders</span>
-                            <ul class="entries">
+                            <div class = "noti-scrollable">
+                                <ul class="entries">
 
 
 
@@ -139,7 +140,8 @@
 
 
 
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -157,7 +159,35 @@
                 <div class = "quick_cal_arrow">
                 </div>
             </a>
-        </div> 
+        </div>
+
+
+
+
+
+        <?php
+            //If this user went thru onboarding
+            //and has not verified their email yet, show a msg
+            if($user->status == 'onboarded'){
+        ?>
+
+            <?php
+                $mail_link = 'http://mail.google.com/a/nyu.edu';
+                if($user->university_id == 4){
+                    $mail_link = 'https://mytouro.touro.edu/cas/login?service=https%3A%2F%2Fmytouro.touro.edu%2Fpaf%2Fauthorize';
+                }
+            ?>
+
+
+            <div id="verify_email_banner">Verify your email <a class = "verify_button" href="<?php echo $mail_link; ?>">here</a></div>
+            <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/verify_email_banner.css' rel='stylesheet' type='text/css'>
+
+
+        <?php
+            }
+        ?>
+
+
     </div>
 
 <script id="search_result_template" type="text/x-handlebars-template">
@@ -207,7 +237,11 @@
         {{#ifCond origin.anon '==' '1'}}
             <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/avatars/9.png')"></div>
         {{else}}
-            <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{actor.pictureFile.file_url}}')"></div>
+            {{#ifCond reply.anon '==' '1'}}
+                <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/avatars/9.png')"></div>
+            {{else}}
+                <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{actor.pictureFile.file_url}}')"></div>
+            {{/ifCond}}
         {{/ifCond}}
 
 
@@ -245,9 +279,9 @@
                 {{#ifCond type '==' 'reply'}}
 
                     {{#ifCond origin.user_id '==' '<?php echo $user->user_id; ?>'}}
-                        <div class="message full"><span class = "actor_name">{{#ifCond origin.anon '==' '1'}}Anonymous{{else}}{{actor.firstname}} {{actor.lastname}}{{/ifCond}}</span> replied to your post{{#if origin.post_origin}} in <span class = "actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
+                        <div class="message full"><span class = "actor_name">{{#ifCond reply.anon '==' '1'}}Anonymous{{else}}{{actor.firstname}} {{actor.lastname}}{{/ifCond}}</span> replied to your post{{#if origin.post_origin}} in <span class = "actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
                     {{else}}
-                        <div class="message full"><span class = "actor_name">{{#ifCond origin.anon '==' '1'}}Anonymous{{else}}{{actor.firstname}} {{actor.lastname}}{{/ifCond}}</span> replied to a post{{#if origin.post_origin}} in <span class ="actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
+                        <div class="message full"><span class = "actor_name">{{#ifCond reply.anon '==' '1'}}Anonymous{{else}}{{actor.firstname}} {{actor.lastname}}{{/ifCond}}</span> replied to a post{{#if origin.post_origin}} in <span class ="actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
                     {{/ifCond}}
                 {{/ifCond}}
 

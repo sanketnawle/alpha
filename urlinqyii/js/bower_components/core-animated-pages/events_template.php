@@ -60,6 +60,10 @@
    .img_arrows{
       display: inline-block;
       margin-right: 10px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       width: 42px;
       height: 86px;
       background: rgba(18, 19, 20, 0.9);
@@ -196,7 +200,7 @@
         font-weight: 500;
         font-size: 15px;
         color: #222;
-        height: 46px;
+        height: 30px;
         overflow: hidden;
       }
 
@@ -205,7 +209,7 @@
       }
 
       .card {
-        height: 300px;
+        height: 332px;
         border-radius: 3px;
         text-align: start;
         overflow: hidden;
@@ -307,6 +311,23 @@
       background: rgba(18, 19, 20, 0.89);
       }
 
+      .scrollbar-container .inner {
+          height: 2011px;
+          width: 1985px;
+          padding: 1em;
+          background-color: white;
+          font-family: sans-serif;
+      }
+      ::-webkit-scrollbar {
+          background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+          background-color: rgba(0, 0, 0, 0.2);
+          border: solid whiteSmoke 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+          background-color: rgba(0, 0, 0, 0.3);
+      }
 
     </style>
     <core-animated-pages selected="{{page}}" transitions="hero-transition" on-core-animated-pages-transition-end="{{complete}}">
@@ -338,7 +359,7 @@
             </div>
             <div class="chip-bottom">
               <div class="chip-album-title">{{item.title}}</div>
-              <div class="chip-artist"></div>
+              <div class="chip-artist">{{item.origin_type}}</div>
             </div>
           </div>
         </div>
@@ -348,7 +369,7 @@
     <span style="display:{{left_arrow}}" on-tap="{{clicked_previous}}" class="img_arrows img_lt" style="display:none;"/><em></em></span>
     <span style="display:{{right_arrow}}" on-tap="{{clicked_next}}" class="img_arrows img_rt"><em></em></span>
   </section>
-  <section id="details" style="top: -201px;">
+  <section id="details" style="top: -183px;height: 100%;width: 100%;left: -86px;">
 
     <div class="card" layout horizontal hero-id="{{selectedAlbum.event_id}}" hero >
       <div class="card-left" on-tap="{{transition}}" style="background:{{selectedAlbum.color}};" hero-id="{{selectedAlbum.event_id}}-art" hero>
@@ -368,10 +389,11 @@
           </div>
           <div flex>
             <div class="card-album-title">{{selectedAlbum.title}}</div>
+            <div class="card-artist">{{selectedAlbum.origin_type}}</div>
           </div>
         </div>
         <hr style="opacity:0.6;">
-        <div class="desc_loc_class">
+        <div class="desc_loc_class scrollbar-container">
           <br>
           <div id="event_description" style="width:100%" title="Click to edit">
                 <div on-tap="{{showdescinput}}">

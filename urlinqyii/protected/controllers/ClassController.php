@@ -436,7 +436,7 @@ class ClassController extends Controller
         $user = $this->get_current_user($_GET);
         $user_id = $user->user_id;
 
-        $class_events = Event::model()->findAll('origin_id=:id and file_id=:file_id order by start_date desc', array(':id'=>$class_id, ':file_id'=>$file_id));
+        $class_events = Event::model()->findAll('origin_id=:id order by start_date asc', array(':id'=>$class_id));
 
         $this->renderJSON($class_events);
     }
@@ -584,13 +584,16 @@ class ClassController extends Controller
 
                 //Loop through all events this user has for this class and delete them
                 //Or else the database will get fucked up
-                $user_events = Event::model()->findAllBySql("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " AND event.origin_type = 'class' AND event.origin_id = " . $class_id);
+                $user_events = EventUser::model()->findAllBySql("SELECT event_user.* FROM `event_user` JOIN `event` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " AND event.origin_type = 'class' AND event.origin_id = " . $class_id);
 
+                foreach($user_events as $event_user){
+                    $event_user->delete();
+                }
                 //Get the events that this
                 $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND event.origin_type = 'class' AND event.origin_id = " . $class_id);
 
-                $all_events = array_merge($events,$user_events);
-                foreach($all_events as $event){
+                //$all_events = array_merge($events,$user_events);
+                foreach($events as $event){
                     $event->delete();
                 }
 

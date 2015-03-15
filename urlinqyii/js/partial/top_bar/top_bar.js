@@ -293,7 +293,7 @@ $(document).ready(function(){
         $('.prelist').hide();
         $("#top_search_bar").css({"color":"#999"});
         $(".topbar .center form").css({"border-radius":"4px"});
-        $(".top_search_bar_form").css({"background-color":"rgba(0, 0, 0, 0.15)"});
+        $(".top_search_bar_form").css({"background-color":"rgba(0, 0, 0, 0.1)"});
     });
 
 });

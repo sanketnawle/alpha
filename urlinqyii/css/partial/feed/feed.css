@@ -399,18 +399,18 @@ span.time_icon {
     padding: 5px 5.5px 1px;
     border: 1px solid #15A312;
     border-radius: 50%;
-    display: inline-block;
+    display: inline-block!important;
     position: relative;
-    line-height: 14px;
-    height: auto;
-    margin: 0 0 15px;
-    width: auto;
+    line-height: 14px!important;
+    height: auto!important;
+    margin: 0 0 15px!important;
+    width: auto!important;
     font-size: 10.8px;
-    z-index: 10000;
+    z-index: 1;
     color: #17B325;
-    height: 23px;
+    height: 23px!important;
     transition: .2s;
-    opacity: 1;
+    opacity: 1!important;
 }
 
 .post_like_btn {
@@ -3971,8 +3971,8 @@ input.mc_question_radio_button {
 
 /*events*/
 .post_event_date_box {
-    height: 58px;
-    width: 58px;
+    height: 62px;
+    width: 62px;
     background-color: #777;
     float: left;
     margin-top: 1px;
@@ -4000,7 +4000,7 @@ input.mc_question_radio_button {
 }
 
 div.post_event_month {
-    font-size: 12.25px;
+    font-size: 13px;
     font-weight: 200;
     text-transform: capitalize;
     letter-spacing: .5px;
@@ -4008,10 +4008,10 @@ div.post_event_month {
 }
 
 div.post_event_day {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 200;
     line-height: 11px;
-    margin-top: 6px;
+    margin-top: 7px;
 }
 
 div.post_event_date_box div.top_dark_area {
@@ -4053,7 +4053,7 @@ div.post_event_title {
     color: #333;
     font-size: 16.5px;
     font-weight: 500;
-    padding: 2.5px 74px 8px;
+    padding: 0px 78px 4px;
     text-transform: capitalize;
 }
 
@@ -4088,7 +4088,7 @@ div.post_event_origin_holder div.post_event_origin > a {
     -o-transition: color .218s;
     transition: color .218s;
     text-transform: capitalize;
-    max-width: 230px;
+    max-width: 210px;
     display: inline-block;
     text-overflow: ellipsis;
     vertical-align: top;
@@ -4144,14 +4144,15 @@ div.post_event_time_holder > .post_event_start_time {
     display: inline-block;
 
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;   color: #777;
 }
 
 div.post_event_time_holder > .post_event_end_time {
     display: inline-block;
 
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
+    color: #777;
 }
 
 div.event_post_toparea {
@@ -4188,6 +4189,8 @@ div.event_post_toparea {
 
 .event_description_holder a {
     color: #029acf !important;
+    top: 2px;
+    position: relative;
 }
 
 .event_description_holder a:hover {
@@ -4236,11 +4239,11 @@ div.event_post_toparea {
 .post_event_location_holder {
     position: absolute;
 
-    top: 65px;
-    font-size: 12px;
-    right: 10px;
+    top: 60px;
+    font-size: 11px;
+    left: 84px;
     color: #93999c;
-    font-family: Avenir;
+    /* font-family: Avenir; */
 }
 
 .post_event_location_holder .post_event_location {
@@ -4261,8 +4264,9 @@ span.location_icon_dark {
 }
 
 div.event_context {
-    padding-left: 74px;
+    padding-left: 7px;
     font-size: 13.5px;
+    overflow: hidden;
 }
 
 span.add_to_cal_icon {
@@ -4961,9 +4965,18 @@ div.mc_question_one_choice:hover + div.question_functions {
     border-top-color: rgba(2, 154, 207, 0.46);
 }
 
+div.mc_question_one_choice.closed:hover + div.mc_question_one_choice input.mc_question_radio_button + label{
+    border-top-color:#eee!important;
+} 
+
+div.mc_question_one_choice.closed:hover + div.question_functions{
+border-top-color:rgba(181, 181, 181, 0.3)!important;
+}
+
 input.mc_question_radio_button + label {
     display: block;
     width: 100%;
+    position: relative;
     padding: 6px 0;
     height: 100%;
     font-size: 13.9px;
@@ -4982,11 +4995,20 @@ input.mc_question_radio_button + label {
     color: #777 !important;
 }
 
+div.mc_question_one_choice.closed, div.mc_question_one_choice.closed label{
+    cursor: default!important;
+}
+
 input.mc_question_radio_button:hover + label {
     background: rgba(2, 154, 207, 0.07);
-    color: #FFF !important;
     border-color: rgba(2, 154, 207, 0.46);
     color: rgba(19, 183, 240, 0.91) !important;
+}
+
+div.mc_question_one_choice.closed input.mc_question_radio_button:hover + label{
+    background: #fff!important;
+    color:#777 !important;
+    border-color:#eee!important;
 }
 
 input.mc_question_radio_button:hover + label {}
@@ -5138,6 +5160,7 @@ input.show_hide_stats:checked + label {
 
 div.mc_question_one_choice:first-child input.mc_question_radio_button + label {
     border-radius: 6px 6px 0 0;
+    overflow: hidden;
     border-bottom-width: 1px;
 }
 
@@ -5180,4 +5203,88 @@ input.show_hide_stats:checked ~ span.show_hide_stats_text {
     color: #333;
 }
 
+span.closed_question_tip{
+    display: none;
+}
+
+span.closed_question_tip{
+    position: absolute;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    padding-top: 7px;
+    right: -1px;
+    top: -1px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 10.5px;
+    font-family: Avenir;
+    bottom: -1px;
+    width: 100px;
+}
+
+span.closed_question_tip em{
+    background-image: url(../../../assets/small_icons.png);
+    background-size: auto;
+    display: inline-block;
+    width: 15px;
+    position: relative;
+    height: 14px;
+}
+
+span.closed_question_tip.yours{
+    background: #029acf;
+}
+
+span.closed_question_tip.wrong{
+    background: #ff0000;
+    width: 120px;
+}
+
+span.closed_question_tip.wrong em{
+    background-position: 2px -64px;
+
+    top: 3px;
+}
+
+span.closed_question_tip.yourcorrect{
+    background: rgba(0, 219, 100, 1);
+    text-align: center;
+    width: 124px;
+}
+span.closed_question_tip.yourcorrect em{
+    background-position: -29px -119px;
+    position: relative;
+    top: 2px;
+}
+span.closed_question_tip.correct{
+    background: rgba(0, 219, 100, 1);   text-align: center;   
+    width: 126px;
+}
+span.closed_question_tip.correct em{
+    background-position: -29px -119px;   position: relative;   top: 2px;
+    left: 3px;
+}
+
+input.mc_question_radio_button.blue + label > span.closed_question_tip.yours{
+display: inline-block;
+}
+
+input.mc_question_radio_button.green.blue + label > span.closed_question_tip.yourcorrect{
+display: inline-block;
+}
+
+input.mc_question_radio_button.green.blue + label > span.closed_question_tip.correct{
+display: none!important;
+}
+
+input.mc_question_radio_button.green.blue + label > span.closed_question_tip.yours{
+display: none!important;
+}
+
+input.mc_question_radio_button.green + label > span.closed_question_tip.correct{
+display: inline-block;
+}
+
+input.mc_question_radio_button.red + label > span.closed_question_tip.wrong{
+display: inline-block;
+}
 

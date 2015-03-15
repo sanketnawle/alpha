@@ -236,6 +236,7 @@ class ClubController extends Controller
 
         $user_id = $user->user_id;
 
+
         $group_id = $_POST['id'];
         $group_user = GroupUser::model()->find('group_id=:id and user_id=:user_id', array(':id'=>$group_id,':user_id'=>$user_id));
         //Check if this user is even in this group
@@ -246,13 +247,18 @@ class ClubController extends Controller
 
                 //Loop through all events this user has for this group and delete them
                 //Or else the database will get fucked up
-                $user_events = Event::model()->findAllBySql("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " .$user_id . " AND (event.origin_type = 'group' OR event.origin_type = 'club') AND event.origin_id = " . $group_id);
+                $user_events = EventUser::model()->findAllBySql("SELECT event_user.* FROM `event_user` JOIN `event` ON (event_user.event_id = event.event_id) WHERE event_user.user_id = " .$user_id . " AND (event.origin_type = 'group' OR event.origin_type = 'club') AND event.origin_id = " . $group_id);
 
-                //Get the events that this
+                foreach($user_events as $event_user){
+                    echo $event_user->event_id;
+                    echo $event_user->user_id;
+                    $event_user->delete();
+                }
+                //Get the events that this user created
                 $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND (event.origin_type = 'group' OR event.origin_type = 'club') AND event.origin_id = " . $group_id);
 
-                $all_events = array_merge($events,$user_events);
-                foreach($all_events as $event){
+               // $all_events = array_merge($events,$user_events);
+                foreach($events as $event){
                     $event->delete();
                 }
 
@@ -878,7 +884,7 @@ class ClubController extends Controller
         if($club){
             $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
             if($club_user  || (strpos($user->user_email,'@urlinq.com') !== false)  || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"){
-                if((strpos($user->user_email,'@urlinq.com') !== false)  ||  $club_user->is_admin){
+                if((strpos($user->user_email,'@urlinq.com') !== false) || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"  ||  $club_user->is_admin){
                     $club->mission_statement = $_POST['mission'];
                     if($club->save(false)){
                         $this->renderJSON(array('success'=>true));

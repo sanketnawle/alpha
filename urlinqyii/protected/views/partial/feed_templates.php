@@ -626,7 +626,7 @@
                                                             <div class="mc_question_one_choice" id="{{question.answer_index}}" data-option_id="{{option_id}}">
 
                                                                 <input type="radio" id="option_{{../post_id}}_{{option_text}}" class="mc_question_radio_button" data-option_id="{{option_id}}" name="letter_{{../post_id}}" {{#if user_answered}}checked{{/if}}>
-                                                                <label for="option_{{../post_id}}_{{option_text}}">{{option_text}}</label>
+                                                                <label for="option_{{../post_id}}_{{option_text}}">{{option_text}}<span class = "closed_question_tip yours">Your answer</span><span class = "closed_question_tip correct">Correct answer<em></em></span><span class = "closed_question_tip wrong">Your answer <em></em></span><span class = "closed_question_tip yourcorrect">Your answer <em></em></span></label>
 
                                                             </div>
 
@@ -658,6 +658,9 @@
                                                                         <input type="radio" id="option_{{../post_id}}_{{option_text}}" class="mc_question_radio_button
                                                                             {{#if correct_answer}}
                                                                                 green
+                                                                                {{#if user_answered}}
+                                                                                blue
+                                                                                {{/if}}
                                                                             {{else}}
                                                                                 {{#if user_answered}}
                                                                                     {{#if any_correct_answer}}
@@ -668,7 +671,7 @@
                                                                                 {{/if}}
                                                                             {{/if}}"
                                                                                data-option_id="{{option_id}}" name="letter_{{../post_id}}" disabled >
-                                                                        <label for="option_{{../post_id}}_{{option_text}}">{{option_text}}</label>
+                                                                        <label for="option_{{../post_id}}_{{option_text}}">{{option_text}}<span class = "closed_question_tip yours">Your answer</span><span class = "closed_question_tip correct">Correct answer<em></em></span><span class = "closed_question_tip wrong">Your answer <em></em></span><span class = "closed_question_tip yourcorrect">Your answer <em></em></span></label>
 
                                                                     </div>
 

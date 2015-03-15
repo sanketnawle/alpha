@@ -121,7 +121,7 @@
 
 
     <?php echo Yii::app()->runController('partial/topbar'); ?>
-        <div id="wrapper">
+        <div id="wrapper" class="<?php echo $user->status; ?>">
         <!--        --><?php //echo Yii::app()->runController('partial/leftmenu'); ?>
 
 
@@ -327,7 +327,7 @@
         </div>
 
         <?php if($is_member){ ?>
-        <div class="panel tab_syllabus" style="left:-9px;width:100%" id="panel_2">
+        <div class="panel tab_syllabus" style="left:-9px;width:100%;" id="panel_2">
         <?php }else{ ?>
         <div class="panel tab_syllabus" id="panel_2" style="display:none">
         <?php } ?>
@@ -336,6 +336,7 @@
                     <button id="btn_add_syllabus">
                       Add Syllabus
                     </button>
+                    <input style="display:none;" type="file" accept=".pdf" id="syllabus_pdf_upload"/>
                     
                 </div>
                 <div class = "syllabus_download_btn" style="display:none;"><a id="class_syllabus_pdf" download>Download</a></div>

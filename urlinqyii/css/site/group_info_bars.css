@@ -200,6 +200,7 @@ div.group_box_main_info .group_link:active, div.group_box_secondary_info_section
 div.group_box_main_info div.float_Right span.group_type{
     font-size: 12.5px;  
     position: relative;
+    display: none!important;
     top: 9px;
     font-family: Avenir;
     color: #999;

@@ -25,6 +25,8 @@
                 return $data;
             }
 
+
+
             $notification['actor'] = get_model_associations($actor,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
 
 
@@ -155,6 +157,11 @@
                 $reply = model_to_array($reply);
                 $notification['origin'] = model_to_array($post);
                 $notification['reply']= $reply;
+
+
+                if($reply['anon'] == 1){
+                    $notification['actor'] = null;
+                }
 
 
                 if($post->origin_type == 'class'){

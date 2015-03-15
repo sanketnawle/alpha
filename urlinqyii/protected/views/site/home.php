@@ -69,7 +69,7 @@
 
         <?php echo Yii::app()->runController('partial/topbar');     ?>
 
-        <div id = "wrapper">
+        <div id = "wrapper" class="<?php echo $user->status; ?>">
             <div id="page">
                 <div id = "main_panel">
                     <div id="content_holder">
@@ -312,7 +312,7 @@
                 </div>
 
                 <div id="right_panel" class = "group_responsiveness">
-                    <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'home','origin_id'=>$user->user_id)); ?>
+                    <?php echo $this->renderPartial('/partial/right_panel_messaging',array('user'=>$user,'origin_type'=>'home','origin_id'=>$user->user_id)); ?>
                 </div>
             </div>
         </div>
