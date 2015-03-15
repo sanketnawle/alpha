@@ -237,7 +237,11 @@
         {{#ifCond origin.anon '==' '1'}}
             <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/avatars/9.png')"></div>
         {{else}}
-            <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{actor.pictureFile.file_url}}')"></div>
+            {{#ifCond reply.anon '==' '1'}}
+                <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/avatars/9.png')"></div>
+            {{else}}
+                <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{actor.pictureFile.file_url}}')"></div>
+            {{/ifCond}}
         {{/ifCond}}
 
 
@@ -275,9 +279,9 @@
                 {{#ifCond type '==' 'reply'}}
 
                     {{#ifCond origin.user_id '==' '<?php echo $user->user_id; ?>'}}
-                        <div class="message full"><span class = "actor_name">{{#ifCond origin.anon '==' '1'}}Anonymous{{else}}{{actor.firstname}} {{actor.lastname}}{{/ifCond}}</span> replied to your post{{#if origin.post_origin}} in <span class = "actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
+                        <div class="message full"><span class = "actor_name">{{#ifCond reply.anon '==' '1'}}Anonymous{{else}}{{actor.firstname}} {{actor.lastname}}{{/ifCond}}</span> replied to your post{{#if origin.post_origin}} in <span class = "actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
                     {{else}}
-                        <div class="message full"><span class = "actor_name">{{#ifCond origin.anon '==' '1'}}Anonymous{{else}}{{actor.firstname}} {{actor.lastname}}{{/ifCond}}</span> replied to a post{{#if origin.post_origin}} in <span class ="actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
+                        <div class="message full"><span class = "actor_name">{{#ifCond reply.anon '==' '1'}}Anonymous{{else}}{{actor.firstname}} {{actor.lastname}}{{/ifCond}}</span> replied to a post{{#if origin.post_origin}} in <span class ="actor_name">{{origin.post_origin.name}}{{/if}}</span></div>
                     {{/ifCond}}
                 {{/ifCond}}
 
