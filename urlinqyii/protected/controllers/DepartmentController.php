@@ -12,6 +12,10 @@ class DepartmentController extends Controller
 
         $user = $this->get_current_user();
 
+        if(!$user){
+            $this->redirect(array('/?url=/department/' . $department_id));
+        }
+
 
 
         $is_admin = false;

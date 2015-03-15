@@ -11,6 +11,10 @@ class SchoolController extends Controller
         $user = $this->get_current_user();
 
 
+        if(!$user){
+            $this->redirect(array('/?url=/school/' . $school_id));
+        }
+
         $is_member = true;
 
 
