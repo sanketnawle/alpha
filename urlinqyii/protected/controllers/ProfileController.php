@@ -1370,7 +1370,7 @@ class ProfileController extends Controller
         if(isset($_GET['user'])){
             $user = User::model()->findByPk($_GET['user']);
             $is_admin = $user->user_id == $this->get_current_user_id();
-            $this->renderPartial('/partial/profile_status_bar',array('user'=>$this->get_current_user(),'origin_type'=>'user','origin_id'=>$user->user_id,'is_admin'=>$is_admin));
+            $this->renderPartial('/partial/profile_status_bar',array('user'=>$user,'origin_type'=>'user','origin_id'=>$user->user_id,'is_admin'=>$is_admin));
         }
 
     }

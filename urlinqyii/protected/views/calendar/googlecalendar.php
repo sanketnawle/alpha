@@ -81,6 +81,7 @@ $client = new Google_Client();
 $client->setClientId($client_id);
 $client->setClientSecret($client_secret);
 $client->setRedirectUri($redirect_uri);
+$client->setApprovalPrompt("force");
 $client->setAccessType("offline");
 $client->addScope("https://www.googleapis.com/auth/calendar");
 
@@ -89,6 +90,7 @@ $client_batch->setClientId($client_id);
 $client_batch->setClientSecret($client_secret);
 $client_batch->setRedirectUri($redirect_uri);
 $client_batch->setAccessType("offline");
+$client_batch->setApprovalPrompt("force");
 $client_batch->setUseBatch(true);
 $client_batch->addScope("https://www.googleapis.com/auth/calendar");
 
@@ -119,7 +121,6 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   $client_batch->setAccessToken($_SESSION['access_token']);
   if(!$has_refresh_token){
   $calList = $yt_service->calendarList->listCalendarList();
-  var_dump($calList);
   $refreshtoken = $client->getRefreshToken();
   $google_calendar = new GoogleUser();
   $google_calendar->user_id = $user_id;
