@@ -48,9 +48,17 @@ class SiteController extends Controller
             $this->redirect(array('/home'));
         }
 
+        $redirect_url = '';
+        if(isset($_GET['url'])){
+            $redirect_url = $_GET['url'];
+        }
+
+
+
+
         //Can specify specific layout inside view
         //$this->layout = 'new';
-		$this->render('lp_beta',array('test_str'=>$test_str));
+		$this->render('lp_beta',array('test_str'=>$test_str, 'redirect_url'=>$redirect_url));
 	}
 
     // urlinq.com/home
@@ -716,6 +724,13 @@ class SiteController extends Controller
             $password = $_POST['login_password'];
 
 
+            $redirect_url = null;
+            if(isset($_POST['redirect_url'])){
+                $redirect_url = $_POST['redirect_url'];
+            }
+
+
+
 
 
             //Ross requested that we block these emails
@@ -771,7 +786,7 @@ class SiteController extends Controller
 
 
 
-                $data = array('success'=>true);
+                $data = array('success'=>true, 'redirect_url'=>$redirect_url);
                 $this->renderJSON($data);
                 return;
             }else{
