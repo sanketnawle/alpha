@@ -1565,7 +1565,7 @@ $user_email = $user->user_email;
                 $data = array('success'=>true,'department'=>$this->model_to_array($department));
 
                 $data['department']['admins'] = $department->admins;
-                $data['department']['members'] = $department->users;
+                $data['department']['members'] = $department->students;
                 $data['department']['member_count'] = count($department->users);
                 $data['department']['courses'] = $department->courses;
                 $user = $this->get_current_user($_GET);
