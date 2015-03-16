@@ -28,7 +28,7 @@ class ClassController extends Controller
         $user = $this->get_current_user();
 
         if(!$user){
-            $this->redirect(array('/'));
+            $this->redirect(array('/?url=/class/' . $class_id));
         }
 
         $course = $class->course;

@@ -1564,18 +1564,25 @@ $user_email = $user->user_email;
             if($department){
                 $data = array('success'=>true,'department'=>$this->model_to_array($department));
 
+                $admins = array();
 
-                $sql = "SELECT *
-                    FROM user WHERE department_id = $department_id
-                    LIMIT 10;";
+                foreach ($admins as $admin) {
+                    $new_admin = $this->model_to_array($admin);
+                    $new_admin['department'] = $admin->department;
+                    array_push($admins, $new_admin);
+                }
 
-                $users = User::model()->findAllBySql($sql);
+                $students = array();
 
+                foreach ($students as $student) {
+                    $new_student = $this->model_to_array($student);
+                    $new_student['department'] = $student->department;
+                    array_push($students, $new_student);
+                }
 
-                $data['department']['admins'] = $department->admins;
-                $data['department']['members'] = $users;
-                $data['department']['class_count'] = count($department->classes);
-                $data['department']['member_count'] = count($department->members);
+                $data['department']['admins'] = $admins;
+                $data['department']['members'] = $students;
+                $data['department']['member_count'] = count($department->users);
                 $data['department']['courses'] = $department->courses;
                 $user = $this->get_current_user($_GET);
                 if($user) {

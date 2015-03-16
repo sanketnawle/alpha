@@ -45,13 +45,33 @@ $(document).ready(function () {
 
     var progress_bar = ["14%", "28%", "43%", "57%", "71%", "86%", "100%"];
     var btn_text = ["Select your School", "Select your major/department","", "Continue", "Continue", "Continue", "Let's Get Started"];
-    var hint_text = ["Select your School", "Select your Major/Department", "Verify .edu Email", "Sign up for Courses - Pick your Section", "Who inspires you on campus?", "Find your Group", "Add a Photo"];
+
+
+
+
+    var department_header_text = "Select your Major/Department";
+    if(university_id == 4){
+        department_header_text = "Select your Program";
+    }
+
+    var hint_text = ["Select your School", department_header_text, "Verify .edu Email", "Sign up for Courses - Pick your Section", "Who inspires you on campus?", "Find your Group", "Add a Photo"];
+
+
+
+
+
     var progress_bar_color = ["rgb(186, 81, 228)", "#009ed3", "rgb(110, 56, 169)", "rgb(0, 173, 61)", "rgb(242, 110, 0)", "#ec3856", "rgb(39, 178, 78)"];
 
     var canvas_hint = ["", "", "", "Here are some of the most popular classes in your department.", "Share your notes, take part in discussions, and see what they are up to.", "These are some of the most active clubs at your school.", ""];
 
 
-    var searchbar_hint = ["Search schools", "Search departments", "", "Search all classes", "Search people", "Search clubs", ""];
+
+    var department_search_text = "Search departments";
+    if(university_id == 4){
+        department_search_text = "Search programs";
+    }
+
+    var searchbar_hint = ["Search schools", department_search_text, "", "Search all classes", "Search people", "Search clubs", ""];
 
     /*the following lists should be retreived from php*/
     var school_list = [];

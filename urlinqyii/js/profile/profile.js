@@ -276,6 +276,15 @@ $(document).ready(function() {
                 }
 
 
+                if(data.university_id == 4){
+                    $('#major_section').hide();
+                    $('#level_section').hide();
+                }else{
+                    $('#major_section').show();
+                    $('#level_section').show();
+                }
+
+
 
 
 
