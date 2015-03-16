@@ -1564,8 +1564,24 @@ $user_email = $user->user_email;
             if($department){
                 $data = array('success'=>true,'department'=>$this->model_to_array($department));
 
-                $data['department']['admins'] = $department->admins;
-                $data['department']['members'] = $department->students;
+                $admins = array();
+
+                foreach ($admins as $admin) {
+                    $new_admin = $this->model_to_array($admin);
+                    $new_admin['department'] = $admin->department;
+                    array_push($admins, $new_admin);
+                }
+
+                $students = array();
+
+                foreach ($students as $student) {
+                    $new_student = $this->model_to_array($student);
+                    $new_student['department'] = $student->department;
+                    array_push($students, $new_student);
+                }
+
+                $data['department']['admins'] = $admins;
+                $data['department']['members'] = $students;
                 $data['department']['member_count'] = count($department->users);
                 $data['department']['courses'] = $department->courses;
                 $user = $this->get_current_user($_GET);
