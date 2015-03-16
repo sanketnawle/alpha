@@ -1497,9 +1497,9 @@ textarea.form-control {
 .reply_functions {
     display: none;
     clear: both;
-    overflow: hidden;
+    /* overflow: hidden; */
     margin-top: 0px;
-    height: 32px;
+    height: 34px;
     margin-bottom: 6px;
 }
 
@@ -1546,7 +1546,7 @@ textarea.form-control {
     padding: 2.4px 12px;
     border-radius: 4px;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 100;
     font-family: avenir;
     color: white;
     text-transform: capitalize;
@@ -1558,27 +1558,38 @@ textarea.form-control {
     -moz-transition: all 0s;
     -o-transition: all 0s;
     float: right;
-    cursor: pointer;
-    padding: 4px 12px 3px;
     border-radius: 4px;
     font-size: 13.5px;
     color: #FFF;
+    top: -2px;
+    position: rela;
     cursor: pointer;
     font-family: Avenir;
     padding: 0px 16px;
-    height: 28px;
-    line-height: 30px;
+    height: 32px;
+    line-height: 33px;
     border: 1px solid #eee;
     border-bottom-color: #E4E4E4;
     background-color: #fcfcfc;
     background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);
     background-image: linear-gradient(#fafafa, #f8f8f8);
-    color: #575757 !important;
+    color: #222 !important;
 }
 
-.reply_functions .reply_button:hover {}
+.reply_functions .reply_button:hover {
+    border-color: #ddd;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07),inset 0 1px 0 rgba(255,255,255,1),inset -1px 0 0 rgba(248,248,248,1),inset 0 -1px 0 rgba(248,248,248,.5),inset 1px 0 0 rgba(248,248,248,1);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07),inset 0 1px 0 rgba(255,255,255,1),inset -1px 0 0 rgba(248,248,248,1),inset 0 -1px 0 rgba(248,248,248,.5),inset 1px 0 0 rgba(248,248,248,1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07),inset 0 1px 0 rgba(255,255,255,1),inset -1px 0 0 rgba(248,248,248,1),inset 0 -1px 0 rgba(248,248,248,.5),inset 1px 0 0 rgba(248,248,248,1);
+}
 
-.reply_functions .reply_button:active {}
+.reply_functions .reply_button:active {
+    background: #F4F4F4;      
+    border-color: #E2E2E2;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0),inset 0 1px 0 rgba(161, 161, 161, 0.08),inset -1px 0 0 rgba(205, 205, 205, 0.14),inset 0 -1px 0 rgba(255, 255, 255, 0.5),inset 1px 0 0 rgba(202, 202, 202, 0.25);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0),inset 0 1px 0 rgba(161, 161, 161, 0.08),inset -1px 0 0 rgba(205, 205, 205, 0.14),inset 0 -1px 0 rgba(255, 255, 255, 0.5),inset 1px 0 0 rgba(202, 202, 202, 0.25);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0),inset 0 1px 0 rgba(161, 161, 161, 0.08),inset -1px 0 0 rgba(205, 205, 205, 0.14),inset 0 -1px 0 rgba(255, 255, 255, 0.5),inset 1px 0 0 rgba(202, 202, 202, 0.25);
+}
 
 textarea.form-control::-webkit-input-placeholder {
     color: #999;
@@ -2194,19 +2205,19 @@ div.lesscmt_bar {
 {
     width: calc(100% - 7px);
     width: -webkit-calc(100% - 7px);
-    border-radius: 2px;
-    color: #FFF;
-    line-height: 32px;
-    height: 32px;
+    border-radius: 0px;
+    color: #222;
+    line-height: 25px;
+    height: ato;
     float: left;
     font-size: 13.5px;
+    background: transparent!important;
     /* padding-left: 7px; */
     margin-right: 0px;
     margin-bottom: 7px;
     margin-top: -1px;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5) inset;
+    position: relative;
     padding-left: 8px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 
 div.post_attached_image_caption {
@@ -2321,40 +2332,65 @@ div.post_attachment_review:hover span.download_icon {
 }
 
 span.download_icon {
-    background-image: url(../../../assets/small_icons.png);
+    background-image: url(../../../assets/download_icon.png);
     opacity: .5;
-    background-position: -32px -515px;
     display: inline-block;
-    float: right;
-    width: 26px;
-    height: 26px;
-    position: relative;
-    top: 2px;
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    background-repeat: no-repeat;
+    margin-top: -10px;
 }
 
-.jpg.post_attachment_review, .png.post_attachment_review {
+.post_attachment_review span.file_type{
+    font-family: Avenir;
+
+    text-transform: uppercase;
+    font-size: 11.5px;
+    padding-left: 14px;
+    color: #999;
+}
+
+.post_attachment_review span.file_name{
+    width: 100%;
+    
+    display: block;
+    padding-left: 14px;
+}
+
+em.file_type_color_bar{
+    position: absolute;
+
+    width: 4px;
+    top: 0px;
+    bottom: 0px;
+    border-radius: 8px;
+}
+
+.jpg.post_attachment_review em, .png.post_attachment_review em{
     background: #CDCDCD;
 }
 
-.pptx.post_attachment_review, .ppt.post_attachment_review {
+.pptx.post_attachment_review em, .ppt.post_attachment_review em{
     background: #ff5d0f;
 }
 
-.doc.post_attachment_review, .docx.post_attachment_review {
+.doc.post_attachment_review em, .docx.post_attachment_review em{
     background: #2ea0da;
 }
 
-.pdf.post_attachment_review {
-    background: #d14c3f;
+.pdf.post_attachment_review em{
+    background:#d14c3f;
 }
 
-.zip.post_attachment_review {
-    background: #999;
+.zip.post_attachment_review em{
+    background:#999;
 }
 
-.xls.post_attachment_review, .csv.post_attachment_review {
-    background: #4eb63b;
-    ;
+.xls.post_attachment_review em, .csv.post_attachment_review em{
+    background:#4eb63b;
 }
 
 .post_attachment_review_img
@@ -3988,11 +4024,16 @@ input.mc_question_radio_button {
 }
 
 .post_main.event_post a.event_link {
-    color: #333;
-    -webkit-transition: color .218s;
-    -moz-transition: color .218s;
-    -o-transition: color .218s;
-    transition: color .218s;
+  color: #333;
+  -webkit-transition: color .218s;
+  -moz-transition: color .218s;
+  -o-transition: color .218s;
+  transition: color .218s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 445px;
+  display: block;
+  white-space: nowrap;
 }
 
 .post_main.event_post a.event_link:hover {
@@ -5218,7 +5259,7 @@ span.closed_question_tip{
     font-size: 10.5px;
     font-family: Avenir;
     bottom: -1px;
-    width: 100px;
+    width: 126px;
 }
 
 span.closed_question_tip em{
@@ -5236,7 +5277,7 @@ span.closed_question_tip.yours{
 
 span.closed_question_tip.wrong{
     background: #ff0000;
-    width: 120px;
+    width: 126px;
 }
 
 span.closed_question_tip.wrong em{
@@ -5248,7 +5289,7 @@ span.closed_question_tip.wrong em{
 span.closed_question_tip.yourcorrect{
     background: rgba(0, 219, 100, 1);
     text-align: center;
-    width: 124px;
+    width: 126px;
 }
 span.closed_question_tip.yourcorrect em{
     background-position: -29px -119px;

@@ -16,7 +16,7 @@
   font-weight: 200;
   position: fixed;
   text-align: center;
-  border-left: 1px solid #f0c36d;   -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);   -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);   box-shadow: 0 2px 4px rgba(0,0,0,0.2);      background-color: #f9edbe;
+  border-left: 1px solid #f0c36d;   -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);   -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);   box-shadow: 0 2px 4px rgba(0,0,0,0.2);      background-color: rgba(249, 237, 190, 0.87);
 }
 
 #verify_email_banner a{

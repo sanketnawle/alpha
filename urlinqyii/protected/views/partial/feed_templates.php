@@ -106,9 +106,9 @@
                                                     </div>
                                                     {{else}}
                                                         {{#ifCond download_count '==' 0}}
-                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
                                                         {{else}}
-                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
                                                         {{/ifCond}}
                                                     {{/ifCond}}
                                                 {{/each}}
@@ -279,7 +279,7 @@
 
                                     {{#if file_id}}
 
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
                                     {{/if}}
 
                                     {{#ifCond user_info.user_id '==' '<?php echo $user_id; ?>'}}                                         <div class='reply_delete_button'></div>                                     {{/ifCond}}
@@ -397,7 +397,7 @@
 
                                         {{#if file_id}}
 
-                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
                                         {{/if}}
 
                                         {{#ifCond user_info.user_id '==' '<?php echo $user_id; ?>'}}                                         <div class='reply_delete_button'></div>                                     {{/ifCond}}
@@ -451,7 +451,7 @@
 
                         {{#if file_id}}
 
-                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
                         {{/if}}
 
                         {{#ifCond user_info.user_id '==' '<?php echo $user_id; ?>'}}                                         <div class='reply_delete_button'></div>                                     {{/ifCond}}
@@ -504,7 +504,7 @@
 
                                         {{#if file_id}}
 
-                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
                                         {{/if}}
 
 
@@ -732,7 +732,7 @@
 
                                                     {{#if file_id}}
 
-                                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
                                                     {{/if}}
 
 
@@ -921,7 +921,7 @@
 
                                     {{#if file_id}}
 
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
                                     {{/if}}
 
 
@@ -1119,9 +1119,9 @@
                                     </div>
                                     {{else}}
                                         {{#ifCond download_count '==' 0}}
-                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
                                         {{else}}
-                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
                                         {{/ifCond}}
                                     {{/ifCond}}
                                 {{/each}}
@@ -1259,9 +1259,9 @@
                                     </div>
                                     {{else}}
                                         {{#ifCond download_count '==' 0}}
-                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
                                         {{else}}
-                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
                                         {{/ifCond}}
                                     {{/ifCond}}
                                 {{/each}}
@@ -1360,9 +1360,9 @@
                                         </div>
                                         {{else}}
                                             {{#ifCond download_count '==' 0}}
-                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
                                             {{else}}
-                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
                                             {{/ifCond}}
                                         {{/ifCond}}
                                     {{/each}}
@@ -1523,9 +1523,9 @@
                                                     </div>
                                                     {{else}}
                                                         {{#ifCond download_count '==' 0}}
-                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
                                                         {{else}}
-                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
                                                         {{/ifCond}}
                                                     {{/ifCond}}
                                                 {{/each}}
@@ -1683,9 +1683,9 @@
                                         </div>
                                         {{else}}
                                             {{#ifCond download_count '==' 0}}
-                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
                                             {{else}}
-                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
                                             {{/ifCond}}
                                         {{/ifCond}}
                                     {{/each}}
