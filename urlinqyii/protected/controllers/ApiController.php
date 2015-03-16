@@ -1409,6 +1409,7 @@ $user_email = $user->user_email;
 
             $department_new = $this->model_to_array($user->department);
             $department_new['department_connection_type'] = 'userdept';
+            array_push($departments, $department_new);
 
             $data = array('success'=>true,'departments'=>$departments);
             $this->renderJSON($data);
