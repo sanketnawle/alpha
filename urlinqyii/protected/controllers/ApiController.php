@@ -1382,6 +1382,39 @@ $user_email = $user->user_email;
             }
         }
 
+        public  function  actionGetUserDepartmentAndFollowing(){
+            if(!isset($_GET['user_id'])){
+                $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user_id not set');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $user_id = $_GET['user_id'];
+
+            $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
+
+            if(!$user){
+                $data = array('success'=>false,'error_id'=>2);
+                $this->renderJSON($data);
+                return;
+            }
+
+            $departments = array();
+
+            foreach ($user->departments as $department) {
+                $department_new = $this->model_to_array($department);
+                $department_new['department_connection_type'] = 'userfollowing';
+                array_push($departments, $department_new);
+            }
+
+            $department_new = $this->model_to_array($user->department);
+            $department_new['department_connection_type'] = 'userdept';
+
+            $data = array('success'=>true,'departments'=>$departments);
+            $this->renderJSON($data);
+            return;
+        }
+
         //ERROR ID's
         // 1 - all data not set
         // 2 - User doesnt exist
