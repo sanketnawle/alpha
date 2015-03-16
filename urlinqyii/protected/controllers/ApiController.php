@@ -1566,7 +1566,7 @@ $user_email = $user->user_email;
 
                 $admins = array();
 
-                foreach ($admins as $admin) {
+                foreach ($department->admins as $admin) {
                     $new_admin = $this->model_to_array($admin);
                     $new_admin['department'] = $admin->department;
                     array_push($admins, $new_admin);
@@ -1574,7 +1574,7 @@ $user_email = $user->user_email;
 
                 $students = array();
 
-                foreach ($students as $student) {
+                foreach ($department->students as $student) {
                     $new_student = $this->model_to_array($student);
                     $new_student['department'] = $student->department;
                     array_push($students, $new_student);
