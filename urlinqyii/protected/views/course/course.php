@@ -30,6 +30,8 @@
         <title><?php echo $course->course_name; ?></title>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
+
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/location_input/location_input.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
         <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
@@ -89,7 +91,7 @@
     <body class = "body_group">
 
         <?php echo Yii::app()->runController('partial/topbar'); ?>
-        <div id="wrapper">
+        <div id="wrapper" class="<?php echo $user->status; ?>">
         <!--        --><?php //echo Yii::app()->runController('partial/leftmenu'); ?>
 
 

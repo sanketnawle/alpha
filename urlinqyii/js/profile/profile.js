@@ -174,7 +174,12 @@ $(document).ready(function() {
 
                         globals.$fbar.find('.menu_audience').dropit({});
                         globals.$fbar.find('.privacy_menu').dropit({});
-                        populate_audience_select();
+                        if(globals.user_id == data.user_id) {
+                            populate_audience_select();
+                        }else{
+                            globals.$fbar.find('.menu_audience').hide();
+                            globals.$fbar.find('.audience_default').show();
+                        }
                         set_dropzone();
                         //get feed
                         $.getJSON( base_url + '/profile/'+data.user_id+'/feed', function( json_feed_data ) {
@@ -268,6 +273,15 @@ $(document).ready(function() {
 
                     $('.group_privacy_dropdown').show();
                     data.current_user = true;
+                }
+
+
+                if(data.university_id == 4){
+                    $('#major_section').hide();
+                    $('#level_section').hide();
+                }else{
+                    $('#major_section').show();
+                    $('#level_section').show();
                 }
 
 

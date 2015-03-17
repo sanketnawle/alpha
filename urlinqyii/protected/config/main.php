@@ -84,7 +84,7 @@ return array(
             'rules'=>array(
                 //Maps multiple views in one line
                 //'<action:(fileUpload|contact|login|test|json|home|register|logout|timezone|onboard|sendVerificationEmail|verify|finishOnboarding|resendVerificationEmail|sendVerificationEmailFunction|sendReset|reset|doReset)>'=>'site/<action>',
-
+		'home/feed' => 'feed/getHomePosts',
 
 
                 //Redirect program url to department
@@ -101,7 +101,7 @@ return array(
 
 
 
-                'home/feed' => 'feed/getHomePosts',
+                
                 'profile/<id:\d+>/feed' => 'feed/getProfilePosts',
                 'class/<id:[\w|-]+>/feed' => 'feed/getClassPosts',
 

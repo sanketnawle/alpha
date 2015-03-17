@@ -1330,7 +1330,72 @@ function fbar_ready(origin_id) {
 
 
 
+        function populate_audience_select(){
+            $.getJSON(base_url + '/user/getGroupData', function(json_data){
+                var $audience_select_list = globals.$fbar.find("#audience_select_list");
 
+
+                $audience_select_list.hide();
+
+                $.each(json_data['classes'], function(index, class_json){
+                    var source = $('#audience_template').html();
+                    var template = Handlebars.compile(source);
+
+
+                    class_json['name'] = class_json['class_name'];
+                    class_json['id'] = class_json['class_id'];
+                    class_json['audience'] = 'class';
+
+                    var generated_html = template(class_json);
+                    var $audience = $(generated_html);
+
+
+
+                    $audience_select_list.append($audience.hide().fadeIn());
+                });
+
+
+                $.each(json_data['clubs'], function(index, club_json){
+                    var source = $('#audience_template').html();
+                    var template = Handlebars.compile(source);
+
+
+                    club_json['name'] = club_json['group_name'];
+                    club_json['id'] = club_json['group_id'];
+
+                    club_json['audience'] = 'club';
+
+                    var generated_html = template(club_json);
+                    var $audience = $(generated_html);
+
+
+
+                    $audience_select_list.append($audience.hide().fadeIn());
+                });
+
+                $.each(json_data['groups'], function(index, group_json){
+                    var source = $('#audience_template').html();
+                    var template = Handlebars.compile(source);
+
+
+                    group_json['name'] = group_json['group_name'];
+                    group_json['id'] = group_json['group_id'];
+
+                    group_json['audience'] = 'group';
+
+                    var generated_html = template(group_json);
+                    var $audience = $(generated_html);
+
+
+
+                    $audience_select_list.append($audience.hide().fadeIn());
+                });
+
+
+
+
+            });
+        }
 
 
 
@@ -1571,7 +1636,9 @@ function fbar_ready(origin_id) {
         function init(){
 
             //if(globals.origin_type == 'club' || globals.origin_type == 'department' || globals.origin_type == 'group' || globals.origin_type == 'class'){
-
+            if(globals.origin_type == 'home' || globals.origin_type == 'user'){
+                populate_audience_select();
+            }
             if(globals.origin_type != 'school'){
                 //get the current datetime object
                 var datetime = new Date();
@@ -1769,6 +1836,7 @@ function fbar_ready(origin_id) {
 
 
         }
+
         globals.$fbar.find('.menu_audience').dropit({
         });
         globals.$fbar.find('.privacy_menu').dropit({

@@ -60,6 +60,7 @@
             </ul>
         </li>
     </ul>
+    <a class = "audience_default" style="display:none;"><div id = "audience_select"><span>To <span class = "selected_audience"><?php echo $user->full_name() ?></span></span></div></a>
     <div id = "discussion_form_content" class = "post_type_header active post_type_discussion"><span>Post</span></div>
     <div id = "notes_form_content" class = "post_type_header active post_type_notes"><span>Notes/Files</span></div>
     <div id = "question_form_content" class = "question_type_button active regular_question" id = "hide_both_question_types" data-question_post_type = "question">Regular Question</div><div id = "question_form_content" class = "question_type_button multiple_choice_btn" data-question_post_type = "multiple_choice"><em></em>Multiple Choice</div><div id = "question_form_content" data-question_post_type = "true_false" class = "question_type_button true_or_false_btn"><em></em>True or False</div>

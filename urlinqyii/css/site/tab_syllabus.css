@@ -18,6 +18,10 @@ li#syllabus_event_order_kind{
     border-bottom: 1px solid #dcdcdc;
 }
 
+div.panel.tab_syllabus {
+    margin-top:-25px;
+}
+
 header.class_tasks{  
     
     margin-right: 10px;
@@ -462,7 +466,7 @@ top: 36px;
 right: -10px;
 }
 
-div.help-div .help-wedge {
+div.tab_syllabus div.help-div .help-wedge {
 border-color: transparent;
 border-bottom-color: rgba(51, 51, 51, 0.87);
 border-style: dashed dashed solid;
@@ -475,7 +479,7 @@ position: relative;
 left: 114px;
 }
 
-div.help-div div.help-box {
+div.tab_syllabus div.help-div div.help-box {
 width: 136px;
 font-size: 12px;
 line-height: 14px;

@@ -1323,6 +1323,7 @@ if ($event_user) {
                 $attend_status = "maybe_attending";
             }
             $event_user->attend_status = $attend_status;
+            $event_user->attend_timestamp = new CDbExpression('NOW()');
             $event_user->save(false);
 
             $data = array('success'=>true);

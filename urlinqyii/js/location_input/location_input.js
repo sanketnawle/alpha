@@ -1,7 +1,7 @@
        //var location_data_strings = JSON.stringify(json_data);
 
 $(document).ready(function(){
-    $(document).on('keyup','.location_input',function() { 
+    $(document).on('keyup','.location_input',function() {
         var $location_input = $(this);
         $location_input.removeClass("valid_location_entered");
         var $locations_list = $(".location_matches_list");
@@ -12,7 +12,6 @@ $(document).ready(function(){
             $location_input.addClass("dropdown_box_active");
             $locations_list.addClass('active');
             $.getJSON(base_url + "/js/partial/status_bar/NYU_locations.json", function(data){
-
 
                 $.each(data['buildings'],function(key, building_data){
                     // console.log(building_data);

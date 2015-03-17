@@ -12,6 +12,8 @@
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
 
 
+        globals.redirect_url = '<?php echo $redirect_url; ?>';
+
 
     </script>
     <script>
@@ -598,6 +600,12 @@
 
 
 
+
+                            post_data.push({name: 'redirect_url', value: globals.redirect_url});
+
+
+
+
                             $.post(
                                 post_url,
                                 post_data,
@@ -605,7 +613,13 @@
                                     //alert(JSON.stringify(response));
 
                                     if(response['success']){
-                                        window.location.replace(globals.base_url + '/home');
+
+                                        //alert(JSON.stringify(response));
+                                        if(response['redirect_url']){
+                                            window.location.replace(globals.base_url + response['redirect_url']);
+                                        }else{
+                                            window.location.replace(globals.base_url + '/home');
+                                        }
                                     }else{
                                         $('#login_error_popup').remove();
                                         var email_position = $('input#login_email').offset();

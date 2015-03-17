@@ -45,13 +45,33 @@ $(document).ready(function () {
 
     var progress_bar = ["14%", "28%", "43%", "57%", "71%", "86%", "100%"];
     var btn_text = ["Select your School", "Select your major/department","", "Continue", "Continue", "Continue", "Let's Get Started"];
-    var hint_text = ["Select your School", "Select your Major/Department", "Verify .edu Email", "Sign up for Courses - Pick your Section", "Who inspires you on campus?", "Find your Group", "Add a Photo"];
+
+
+
+
+    var department_header_text = "Select your Major/Department";
+    if(university_id == 4){
+        department_header_text = "Select your Program";
+    }
+
+    var hint_text = ["Select your School", department_header_text, "Verify .edu Email", "Sign up for Courses - Pick your Section", "Who inspires you on campus?", "Find your Group", "Add a Photo"];
+
+
+
+
+
     var progress_bar_color = ["rgb(186, 81, 228)", "#009ed3", "rgb(110, 56, 169)", "rgb(0, 173, 61)", "rgb(242, 110, 0)", "#ec3856", "rgb(39, 178, 78)"];
 
     var canvas_hint = ["", "", "", "Here are some of the most popular classes in your department.", "Share your notes, take part in discussions, and see what they are up to.", "These are some of the most active clubs at your school.", ""];
 
 
-    var searchbar_hint = ["Search schools", "Search departments", "", "Search all classes", "Search people", "Search clubs", ""];
+
+    var department_search_text = "Search departments";
+    if(university_id == 4){
+        department_search_text = "Search programs";
+    }
+
+    var searchbar_hint = ["Search schools", department_search_text, "", "Search all classes", "Search people", "Search clubs", ""];
 
     /*the following lists should be retreived from php*/
     var school_list = [];
@@ -65,6 +85,31 @@ $(document).ready(function () {
     var selected_data = {'clubs':[], 'classes':[], 'follow_users':[], 'gender':'','picture_file_id':'1'};
 
     var professor_classes = [];
+
+
+    function get_course_data(){
+        //Load the course/class data before initializing
+        $.getJSON(base_url + '/department/getCourses?department_id=' + department_id.toString(),function(json_data){
+            if(json_data['success']){
+                course_list = json_data['courses'];
+                original_course_list = course_list;
+
+
+
+//                try{
+//                    payload_function();
+//                }catch(err) {
+//                    console.log(err);
+//                    console.log("error calling payload function");
+//                }
+                start_onboarding();
+            }else{
+                alert('Error getting school data');
+            }
+        });
+    }
+
+
     init();
 
 
@@ -79,26 +124,20 @@ $(document).ready(function () {
 
 
 
-            function get_course_data(){
-                //Load the course/class data before initializing
-                $.getJSON(base_url + '/department/getCourses?department_id=' + department_id.toString(),function(json_data){
-                    if(json_data['success']){
-                        course_list = json_data['courses'];
-                        original_course_list = course_list;
-                        start_onboarding();
-                    }else{
-                        alert('Error getting school data');
-                    }
-                });
+            function payload_function(){
+                start_onboarding();
             }
 
 
-            get_course_data();
+            get_course_data(payload_function);
 
 
         }else if(progress_flag == 2){
             //If the flag starts at 2, send a verification email
             send_verification_email();
+        }
+        else if(progress_flag == 4){
+            follow_panel();
         }
         else{
             //Get university id based on email function call will be here in the future
@@ -349,6 +388,13 @@ $(document).ready(function () {
         }else if (curr == 4) {
             $('.skip_progress').show();
             $(".full_skip").show();
+
+            if(university_id == 4){
+                if(user_type == 's'){
+                    $('.progress_goback').hide();
+                }
+            }
+
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
             $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt right_txt_adjust'><span class='follow_all_btn'>Follow All</span></div></div>");
@@ -376,6 +422,9 @@ $(document).ready(function () {
             }
 
         }else if (curr == 5) {
+
+
+
 
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
@@ -662,12 +711,17 @@ $(document).ready(function () {
             //alert('PUSHING CLASS ID  ' + class_id);
         });
 
+         progress_flag++;
 
-        $.getJSON(base_url + '/user/getSuggestedUsers',function(json_data){
+        follow_panel();
+    }
+
+
+    function follow_panel(){
+        $.getJSON(base_url + '/user/getSuggestedUsers?university_id=' + university_id,function(json_data){
             if(json_data['success']){
                 people_list = json_data['users'];
 
-                progress_flag++;
                 progress_check(progress_flag);
                 content_paint(progress_flag);
                 return;
@@ -675,9 +729,7 @@ $(document).ready(function () {
                 alert('Error getting suggested users data');
             }
         });
-        console.log(JSON.stringify(selected_data));
     }
-
 
 
     function change_to_club_panel(){
@@ -835,6 +887,9 @@ $(document).ready(function () {
     $(document).delegate(".progress_goback", "click", function () {
         if ((progress_flag > 0) && (progress_flag != 3)) {
 
+
+            var decrement = 1;
+
             if(progress_flag == 1){
                 delete selected_data["school_id"];
                 school_click_count = 0;
@@ -842,9 +897,10 @@ $(document).ready(function () {
 
             if(progress_flag == 4){
                 delete selected_data["classes"];
+                //decrement = 2;
             }
 
-            progress_flag--;
+            progress_flag -= decrement;
             progress_check(progress_flag);
             content_paint(progress_flag);
         };
@@ -893,6 +949,10 @@ $(document).ready(function () {
     function send_verification_email(payload_function){
         var post_url = base_url + '/sendVerificationEmail';
         var post_data = {school_id: selected_data['school_id'], department_id: selected_data['department_id']};
+
+
+        department_id = selected_data['department_id'];
+        school_id = selected_data['school_id'];
         $.post(
             post_url,
             post_data,
@@ -938,9 +998,32 @@ $(document).ready(function () {
                 $self.removeClass("left");
                 setTimeout(function () {
                     $self.addClass("right");
-                    progress_flag++;
-                    progress_check(progress_flag);
-                    content_paint(progress_flag);
+
+                    if(user_type == 's'){
+
+
+                        if(university_id == 4){
+                            progress_flag += 3;
+
+                            follow_panel();
+                            return;
+                        }else{
+                            progress_flag += 2;
+                        }
+
+
+
+                        //alert("USER TPY S");
+                        //Skip the email step
+                        get_course_data();
+                    }else{
+                        progress_flag++;
+                        start_onboarding();
+
+                    }
+
+
+
                     return;
                 }, 250);
             }

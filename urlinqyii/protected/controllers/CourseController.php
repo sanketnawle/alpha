@@ -7,6 +7,12 @@ class CourseController extends Controller
         $course_id = $_GET['id'];
         $user = $this->get_current_user();
 
+
+
+        if(!$user){
+            $this->redirect(array('/?url=/course/' . $course_id));
+        }
+
         $course = Course::model()->find('course_id=:id', array(':id' =>$course_id));
 
         $is_member = true;

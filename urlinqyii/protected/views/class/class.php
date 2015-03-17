@@ -35,6 +35,9 @@
     <title><?php echo $class->class_name; ?></title>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
+
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/location_input/location_input.js"></script>
+
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"> </script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/render_post.js"></script>
@@ -123,7 +126,7 @@
 
 
     <?php echo Yii::app()->runController('partial/topbar'); ?>
-        <div id="wrapper">
+        <div id="wrapper" class="<?php echo $user->status; ?>">
         <!--        --><?php //echo Yii::app()->runController('partial/leftmenu'); ?>
 
 

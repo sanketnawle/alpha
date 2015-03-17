@@ -64,7 +64,72 @@ class ClubController extends Controller
         $user = $this->get_current_user();
 
         if(!$user){
-            $this->redirect(array('/'));
+            $this->redirect(array('/?url=/club/' . $club_id));
+        }
+
+        $group_user = GroupUser::model()->find('group_id=:group_id and user_id=:user_id', array(':group_id'=>$club->group_id, ':user_id'=>$user->user_id));
+
+        $is_member = false;
+        $is_admin = false;
+        if($group_user){
+            $is_member = true;
+            if($group_user->is_admin){
+                $is_admin = true;
+            }
+        }
+
+
+        if($this->is_urlinq_admin($user)){
+            $is_admin = true;
+        }
+
+
+//        if(strpos($user->user_email,'@urlinq.com') !== false){
+//            $is_admin = true;
+//        }
+
+
+
+        if($club->privacy && (!$is_member)){
+            //user cannot see this page
+            $this->redirect(array('/home'));
+        }
+
+
+
+        $file_count = 5;
+
+        $sql = "SELECT u.user_id, u.user_type, u.firstname, u.lastname, un.school_name from `user_connection` c, user u, school un where c.from_user_id = " . $user->user_id . " AND c.to_user_id = u.user_id and un.school_id = u.school_id AND u.status = 'active'";
+
+
+
+        $command = Yii::app()->db->createCommand($sql);
+        $connected_users = $command->queryAll();
+
+
+
+
+        $this->render('club',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count,'is_member'=>$is_member,'connected_users'=>$connected_users  ));
+	}
+
+
+
+
+    public function actionTest2()
+	{
+
+        Yii::app()->nodeSocket->registerClientScripts();
+
+
+        $club_id = 1;
+
+
+        $club = Group::model()->find('group_id=:id', array(':id'=>$club_id));
+
+        $user = $this->get_current_user();
+
+        if(!$user){
+            $this->redirect(array('/?url=/club/' . $club_id));
         }
 
         $group_user = GroupUser::model()->find('group_id=:group_id and user_id=:user_id', array(':group_id'=>$club->group_id, ':user_id'=>$user->user_id));
@@ -123,8 +188,161 @@ class ClubController extends Controller
 
         $user = $this->get_current_user();
 
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not logged in');
+            $this->renderJSON($data);
+            return;
+        }
 
-        $this->render('test',array('user'=>$user));
+
+        $assets_directory = '/assets/test';
+
+        $full_directory = dirname(__FILE__) . '/../..' . $assets_directory;
+
+        $delete_list = array();
+
+        $dir = new DirectoryIterator($full_directory);
+
+        $count = 0;
+        foreach ($dir as $fileinfo) {
+
+            if (!$fileinfo->isDot()) {
+
+                $count += 1;
+
+
+                $file_name = $fileinfo->getFilename();
+
+
+                $file_path = $full_directory . '/' . $file_name;
+
+                $file_url = $assets_directory . '/' . $file_name;
+                //var_dump($file_url);
+                //var_dump($file_url);
+                $file = File::model()->find('file_url=:url', array(':url'=>$file_url));
+
+
+                if($file){
+                    //Check if this file is being referenced anywhere in the DB
+                    //Tables that currently use file_id's:
+                    //class, class_file, class_syllabus
+                    //course
+                    //department
+                    //event
+                    //group, group_file,
+                    //post, post_file
+                    //reply
+                    //school
+                    //showcase
+                    $file_id = $file->file_id;
+
+                    $class = ClassModel::model()->find('picture_file_id=:id or cover_file_id=:id', array(':id'=>$file_id));
+                    if($class){
+                        //There is a class referencing this file so do nothing
+                        continue;
+                    }
+
+                    $class_file = ClassFile::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($class_file){
+                        continue;
+                    }
+
+
+                    $class_syllabus = ClassSyllabus::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($class_syllabus){
+                        continue;
+                    }
+
+                    $course = Course::model()->find('picture_file_id=:id', array(':id'=>$file_id));
+                    if($course){
+                        continue;
+                    }
+
+                    $department = Department::model()->find('picture_file_id=:id or cover_file_id=:id', array(':id'=>$file_id));
+                    if($department){
+                        //There is a department referencing this file so do nothing
+                        continue;
+                    }
+
+                    $event = event::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($event){
+                        //There is a event referencing this file so do nothing
+                        continue;
+                    }
+
+                    $group = Group::model()->find('picture_file_id=:id or cover_file_id=:id', array(':id'=>$file_id));
+                    if($group){
+                        //There is a group referencing this file so do nothing
+                        continue;
+                    }
+
+                    $group_file = GroupFile::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($group_file){
+                        continue;
+                    }
+
+                    $post = Post::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($post){
+                        //There is a post referencing this file so do nothing
+                        continue;
+                    }
+
+                    $post_file = postFile::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($post_file){
+                        continue;
+                    }
+
+                    $reply = Reply::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($reply){
+                        continue;
+                    }
+
+
+                    $school = School::model()->find('picture_file_id=:id or cover_file_id=:id', array(':id'=>$file_id));
+                    if($school){
+                        //There is a school referencing this file so do nothing
+                        continue;
+                    }
+
+                    $showcase = Showcase::model()->find('file_id=:id', array(':id'=>$file_id));
+                    if($showcase){
+                        continue;
+                    }
+
+                    $test_user = User::model()->find('picture_file_id=:id', array(':id'=>$file_id));
+                    if($test_user){
+                        continue;
+                    }
+                    
+
+
+                    //If we get to this point, we know this file isnt used
+                    //any where in the database and is safe to delete
+                    array_push($delete_list, $file_path);
+
+                }else{
+                    //If file is not referenced in db, delete it.
+                    //unlink($file_path);
+                    array_push($delete_list, $file_path);
+                }
+            }
+        }
+
+//
+//        foreach($delete_list as $file_path){
+//            unlink($file_path);
+//        }
+
+//        var_dump($count);
+//        var_dump($delete_list);
+
+
+
+
+
+
+
+        $this->render('test',array('user'=>$user, 'delete_list'=>$delete_list));
 
 
 
@@ -236,6 +454,7 @@ class ClubController extends Controller
 
         $user_id = $user->user_id;
 
+
         $group_id = $_POST['id'];
         $group_user = GroupUser::model()->find('group_id=:id and user_id=:user_id', array(':id'=>$group_id,':user_id'=>$user_id));
         //Check if this user is even in this group
@@ -246,13 +465,18 @@ class ClubController extends Controller
 
                 //Loop through all events this user has for this group and delete them
                 //Or else the database will get fucked up
-                $user_events = Event::model()->findAllBySql("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " .$user_id . " AND (event.origin_type = 'group' OR event.origin_type = 'club') AND event.origin_id = " . $group_id);
+                $user_events = EventUser::model()->findAllBySql("SELECT event_user.* FROM `event_user` JOIN `event` ON (event_user.event_id = event.event_id) WHERE event_user.user_id = " .$user_id . " AND (event.origin_type = 'group' OR event.origin_type = 'club') AND event.origin_id = " . $group_id);
 
-                //Get the events that this
+                foreach($user_events as $event_user){
+                    echo $event_user->event_id;
+                    echo $event_user->user_id;
+                    $event_user->delete();
+                }
+                //Get the events that this user created
                 $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND (event.origin_type = 'group' OR event.origin_type = 'club') AND event.origin_id = " . $group_id);
 
-                $all_events = array_merge($events,$user_events);
-                foreach($all_events as $event){
+               // $all_events = array_merge($events,$user_events);
+                foreach($events as $event){
                     $event->delete();
                 }
 
@@ -878,7 +1102,7 @@ class ClubController extends Controller
         if($club){
             $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
             if($club_user  || (strpos($user->user_email,'@urlinq.com') !== false)  || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"){
-                if((strpos($user->user_email,'@urlinq.com') !== false)  ||  $club_user->is_admin){
+                if((strpos($user->user_email,'@urlinq.com') !== false) || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"  ||  $club_user->is_admin){
                     $club->mission_statement = $_POST['mission'];
                     if($club->save(false)){
                         $this->renderJSON(array('success'=>true));

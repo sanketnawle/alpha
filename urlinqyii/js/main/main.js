@@ -18,7 +18,15 @@ $(document).ready(start(globals.origin_id));
             allowPageScroll: true,
             distance: "3px"
         });
-
+        $(".entries").slimScroll({ 
+            height: 'auto',
+            wrapperClass: "noti-scrollable",
+            railVisible: true,
+            touchScrollStep: "20",
+            size:"10px",
+            allowPageScroll: true,
+            distance: "3px" 
+        });  
         $('div.about_box p.school_about').slimScroll({
             height: '300px',
             railVisible: true,
