@@ -8,7 +8,7 @@ var previous_title_index = "";
 var class_color = "";
 
 
-window.onload = function () {
+$(document).ready(function(){
   var edit_access = true;
   class_color = get_class_color();
   file_json = get_pdf();
@@ -22,134 +22,12 @@ window.onload = function () {
     }
 
     events_list = load_events(file_json["file_id"]);
-    if(events_list.length>0){
-      //$("#events_template_loc").show();
-      Polymer('music-demo', {
-
-            page: 0,
-
-            items: events_list.slice(0,4),
-            count_text : events_list.length+" Total events this semester",
-            allitems: events_list,
-
-            selectedAlbum: null,
-
-            right_arrow: "block",
-            edit_access: edit_access,
-            left_arrow: "none",
-
-            pagecount: Math.ceil(events_list.length/4),
-
-            current_page: 0,
-
-            showdesctext:false,
-
-            descinput:false,
-
-            showdescinput: function(e){
-              if(this.edit_access){
-                if(this.descinput){
-                  this.descinput = false;
-                }
-                else{
-                  this.descinput =true;
-                }
-            }
-            },
-
-            change_description: function() {
-              desc_text_value = this.$.event_description.querySelector('textarea').value;
-              desc_event_id = this.$.event_description.querySelector('span').textContent;
-              $.ajax({
-                   url: "UpdateSyllabusEvent",
-                   type: "POST",
-                   data: {"id":desc_event_id,"description":desc_text_value},
-                   success: function(response) {
-                   },
-                   error: function(jqXHR, textStatus, errorMessage) {
-                       console.log(errorMessage); // Optional
-                   }
-              });
-              this.descinput=false;
-              this.showdesctext=true;
-              this.selectedAlbum.description=desc_text_value;
-            },
-
-            showlocationtext:true,
-
-            locationinput:false,
-
-            showlocationinput: function(e){
-              if(this.edit_access){
-
-                if(this.locationinput){
-                this.locationinput =false;
-                }
-                else{
-                this.locationinput =true;
-                }
-              }
-            },
-
-            change_location: function() {
-              location_text_value = this.$.event_location.querySelector('textarea').value;
-              location_event_id = this.$.event_location.querySelector('span').textContent;
-              $.ajax({
-                   url: "UpdateSyllabusEvent",
-                   type: "POST",
-                   data: {"id":location_event_id,"location":location_text_value},
-                   success: function(response) {
-                   },
-                   error: function(jqXHR, textStatus, errorMessage) {
-                       console.log(errorMessage); // Optional
-                   }
-              });
-              this.locationinput=false;
-              this.showlocationtext=true;
-              this.selectedAlbum.location=location_text_value;
-            },
-
-            transition: function(e) {
-              if (this.page === 0 && e.target.templateInstance.model.item) {
-                this.selectedAlbum = e.target.templateInstance.model.item;
-                this.page = 1;
-              } else {
-                this.page = 0;
-              }
-            },
-
-            clicked_previous: function(e){
-              var page_value = this.current_page;
-                  this.current_page = this.current_page - 1;
-                  if(page_value-1==0){
-                    this.left_arrow = "none";
-                  }
-                  start = (page_value)*4;
-                  this.items = this.allitems.slice(start-4,start);
-                  console.log(start-4 ,start);
-                  Platform.performMicrotaskCheckpoint();
-                  this.right_arrow = "block";
-            },
-            clicked_next:function(e){
-              console.log(this.items);
-               var page_value = this.current_page;
-                  this.current_page = this.current_page + 1;
-                  if(page_value+2==this.pagecount){
-                    this.right_arrow = "none";
-                  }
-                  start = (page_value+1)*4;
-                  this.items = this.allitems.slice(start,start+4);
-                  Platform.performMicrotaskCheckpoint();
-                  this.left_arrow = "block";
-            }
-        });
-   
-        }
+    display_events(events_list);
 
   run_pdf_algo(false, globals.base_url+file_json["file_url"]);
   }
   
-};
+});
 
 var run_pdf_algo = function(db, pdf_url){
   if (typeof PDFJS === 'undefined') {

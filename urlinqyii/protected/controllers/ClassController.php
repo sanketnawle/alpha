@@ -836,6 +836,86 @@ class ClassController extends Controller
     }
 
 
+    public function actionEventFileUpload(){
+        if (empty($_FILES)) {
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'class id not set', '_files'=>$_FILES,'_post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        if(!isset($_POST['id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'class id not set','_files'=>$_FILES,'_post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+        include "file_upload.php";
+        try{
+            $class_id = $_POST['id'];
+            $local_directory = 'class/' . $class_id . '/';
+
+
+            $data = file_upload($_FILES,$local_directory);
+            if($data['success']){
+                $event_file = new EventFiles;
+                $event_file->event_id = $_POST['event_id'];
+                $event_file->user_id = $this->get_current_user_id();
+                $event_file->file_id = $data['file_id'];
+                $event_file->origin_id = $_POST['id'];
+                $event_file->save(false);
+                if($event_file){
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false,'error_id'=>4);  
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $data = array('success'=>false,'error_id'=>3);
+                $this->renderJSON($data);
+                return;
+            }
+
+        }catch(Exception $e){
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+
+    }
+
+    public function actionGetEventFiles(){
+
+        if(!isset($_GET['id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'parameters not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $event_id = $_GET["id"];
+        $origin_id = $_GET["origin_id"];
+        $user_id = $this->get_current_user();
+
+        $event_files = EventFiles::model()->findAll('origin_id=:id and event_id=:event_id', array(':id'=>$origin_id, ':event_id'=>$event_id));
+        $filearray = array();
+        foreach ($event_files as $key => $value) {
+            array_push($filearray, $value->file_id);
+        }
+        $criteria = new CDbCriteria();
+        $criteria->select = "*";
+        $criteria->addInCondition('file_id', $filearray);
+        $event_json = File::model()->findAll($criteria);
+
+
+
+        $this->renderJSON($event_json);
+        return;
+    }
 
 
 
