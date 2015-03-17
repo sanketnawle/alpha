@@ -11,7 +11,20 @@ $(document).ready(function(){
           scrollTop: $("div#pdfContainer").offset().top
       }, 1000);
   });
+  $(document).on("click", ".add_event_button", function() {
+      $('.tab.active').removeClass('active');
+      $(".tab.feed").addClass('active');
+      $('.panel.active').removeClass('active');
+      $('#panel_1').addClass('active');
+  });
+
+
+
 });
+
+
+
+
 $(document).on("change",'#syllabus_pdf_upload', function(event){
         event.preventDefault();
 
@@ -196,7 +209,7 @@ function list_events(events, img_left, img_right, page_value){
   display_text = '\
                   <div id="event_count">'+events_length+' Total events this semester</div>\
                     <div class = "syllabus_tab_add_event_wrapper">\
-                      <div class = "add_event_button">\
+                      <div class = "add_event_button fbar_buttonwrapper" id = "fbar_button_event" data-post_button_type="event">\
                       </div>\
                       <div class = "add_event_hint">\
                           <div class = "wedge">\
@@ -231,7 +244,59 @@ function list_events(events, img_left, img_right, page_value){
     $("#events_template_loc").html(display_text);
 }
 
+
+function getPosition(element) {
+      var xPosition = 0;
+      var yPosition = 0;
+    
+      while(element) {
+          xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+          yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+          element = element.offsetParent;
+      }
+      return { x: xPosition, y: yPosition };
+}
+
+
+
 $(document).on("click", ".chip", function(event){
+// var $chip = $(this);
+
+// var $events_template_loc = $("#events_template_loc");
+
+// var $chip_top = $chip.find(".chip-top");
+// var $chip_bottom = $chip.find(".chip-bottom");
+
+// var chip_start_position = getPosition($events_template_loc[0]);
+// var x_chip_start_position = chip_start_position.x;
+// var y_chip_start_position = chip_start_position.y;
+
+
+// var chip_top_position = getPosition($chip_top[0]);
+// var x_top = chip_top_position.x;
+// var y_top = chip_top_position.y;
+
+// var chip_bottom_position = getPosition($chip_bottom[0]);
+// var x_bottom = chip_bottom_position.x;
+// var y_bottom = chip_bottom_position.y;
+
+// var x_card_left_start = x_top - x_chip_start_position;
+// var y_card_left_start = y_top - y_chip_start_position;
+
+// var x_card_right_start = x_bottom - x_chip_start_position;
+// var y_card_right_start = y_bottom - y_chip_start_position;
+
+// var $card_left = $("#card-left");
+// var $card_right = $("#card-right");
+
+// $card_left.css({"left":x_card_left_start,"top":y_card_left_start});
+// $card_right.css({"left":x_card_right_start,"top":y_card_right_start});
+
+  
+
+
+
+
   event.preventDefault();
     index = $(this).attr("index");
     files_html = '';
@@ -306,6 +371,7 @@ $(document).on("click", ".chip", function(event){
           </div>';
     $("#chip_card").html(card_html);
     $("#chip_card").show(1000);
+
     $("#events_template_loc").hide();
 });
 
