@@ -1617,7 +1617,17 @@ $user_email = $user->user_email;
                 $data['department']['admins'] = $admins;
                 $data['department']['members'] = $students;
                 $data['department']['member_count'] = count($department->users);
-                $data['department']['courses'] = $department->courses;
+
+                $courses = array();
+
+                foreach ($department->courses as $course) {
+                    $course_new = $this->model_to_array($course);
+                    $course_new['class_count'] = count($course->classes);
+                    array_push($courses, $course_new);
+                }
+
+                $data['department']['courses'] = $courses;
+
                 $user = $this->get_current_user($_GET);
                 if($user) {
                     $is_attending = DepartmentFollow::model()->find("department_id=:id and user_id=:user_id", array(":id"=>$department_id, ":user_id"=>$user->user_id));
