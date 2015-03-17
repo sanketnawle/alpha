@@ -1623,6 +1623,7 @@ $user_email = $user->user_email;
                 foreach ($department->courses as $course) {
                     $course_new = $this->model_to_array($course);
                     $course_new['class_count'] = count($course->classes);
+                    $course_new['department'] = $course->department;
                     array_push($courses, $course_new);
                 }
 
