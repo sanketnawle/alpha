@@ -785,6 +785,13 @@ div.header-sec-right div.time-to-signup
   transform:translate(298px,153px) scale(.355,0.355);
 }
 
+#reset_password{
+    display: inline-block;
+    margin-left: 0px;
+    position: absolute;
+    top:58px;
+}
+
 #other_panel_3 .header-sec
 {
   -ms-transform:translate(295px,46px) scale(.355,0.355);
@@ -2959,14 +2966,15 @@ ul.color-border li:nth-child(1),a.cb-link1:visited
   }
 }
 
-@mediamax-height640px {
+
+@media(max-height640px) {
   body
   {
     overflow:auto!important;
   }
 }
 
-@mediamax-width500px {
+@media(max-width500px) {
   div.grabber
   {
     left:0!important;
@@ -3035,4 +3043,13 @@ ul.color-border li:nth-child(1),a.cb-link1:visited
   {
     font-size:25px;
   }
+
+
+
+
+#forgot_password_div {
+    position: absolute;
+    right: -119px;
+    top: 64px;
+    margin: 0px;
 }

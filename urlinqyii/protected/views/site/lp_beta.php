@@ -48,10 +48,15 @@
 
 
 
+<<<<<<< HEAD
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/lp_beta.js"></script>
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/getURLPara.js"></script>
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/preload_img.js"></script>
 
+=======
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/getURLPara.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/preload_img.js"></script>
+>>>>>>> 5b9f45f81092f2c28ca07f389f7a6e257f4d8335
 
   <script>
     $(document).ready(function() {

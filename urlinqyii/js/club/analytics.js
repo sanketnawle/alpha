@@ -73,74 +73,74 @@ $(document).ready(function() {
 
 
 
-        if(page_view_json['total_page_views'] != 0){
-            percent_increase = new_page_views_count / page_view_json['total_page_views'];
-        }
+            if(page_view_json['total_page_views'] != 0){
+                percent_increase = new_page_views_count / page_view_json['total_page_views'];
+            }
 
 
 
 
 
-        var page_view_data = [
-                        {
-                            value: page_view_json['total_page_views'] - new_page_views_count,
-                            color:"#e5e5e5",
-                            highlight: "#fff",
-                            label: "Old dogs"
-                            },
-                        {
-                            value: new_page_views_count,
-                            color: "#4BAEF0",
-                            highlight: "#63b9f2",
-                            label: "Newbie"
-                            }
-        ];
+            var page_view_data = [
+                            {
+                                value: page_view_json['total_page_views'] - new_page_views_count,
+                                color:"#e5e5e5",
+                                highlight: "#fff",
+                                label: "Old dogs"
+                                },
+                            {
+                                value: new_page_views_count,
+                                color: "#4BAEF0",
+                                highlight: "#63b9f2",
+                                label: "Newbie"
+                                }
+            ];
 
 
-        dn_0.canvas.width = 110;
-        dn_0.canvas.height = 110;
+            dn_0.canvas.width = 110;
+            dn_0.canvas.height = 110;
 
 
-        var chart_dn0= new Chart(dn_0).Doughnut(page_view_data, {
-            percentageInnerCutout : 87,
-            segmentShowStroke : false,
-            showTooltips: false,
-            animationSteps : 75,
-            animationEasing: "easeOutCubic"
-            });
+            var chart_dn0= new Chart(dn_0).Doughnut(page_view_data, {
+                percentageInnerCutout : 87,
+                segmentShowStroke : false,
+                showTooltips: false,
+                animationSteps : 75,
+                animationEasing: "easeOutCubic"
+                });
 
-        //Round to two decimal points
-        percent_increase = Math.round(percent_increase * 100) / 100;
-        if(percent_increase > 1){
-            percent_increase = 1;
-        }
+            //Round to two decimal points
+            percent_increase = Math.round(percent_increase * 100) / 100;
+            if(percent_increase > 1){
+                percent_increase = 1;
+            }
 
-        //reset left margin
-        var $percent_text = $('#page_views_percent_increase_text');
-        $percent_text.css('margin-left', '13px');
+            //reset left margin
+            var $percent_text = $('#page_views_percent_increase_text');
+            $percent_text.css('margin-left', '13px');
 
-        var percent_increase_str = '';
-        if(percent_increase < 1){
-            $percent_text.css('margin-left', function (index, curValue) {
-                return parseInt(curValue, 10) + 0 + 'px';
-            });
-            percent_increase_str = '+' + (percent_increase * 100).toString() + '%';
-        }else if(percent_increase == 1){
-            percent_increase_str = (percent_increase * 100).toString() + '%';
-        }else{
-            $percent_text.css('margin-left', function (index, curValue) {
-                return parseInt(curValue, 10) + 20 + 'px';
-            });
-            percent_increase_str = '+' + (percent_increase * 100).toString() + '%';
-        }
-
-
-        $percent_text.text(percent_increase_str);
-        $('#total_page_views_text').text(page_view_json['total_page_views'].toString());
-        $('#new_page_views_text').text(new_page_views_count.toString());
+            var percent_increase_str = '';
+            if(percent_increase < 1){
+                $percent_text.css('margin-left', function (index, curValue) {
+                    return parseInt(curValue, 10) + 0 + 'px';
+                });
+                percent_increase_str = '+' + (percent_increase * 100).toString() + '%';
+            }else if(percent_increase == 1){
+                percent_increase_str = (percent_increase * 100).toString() + '%';
+            }else{
+                $percent_text.css('margin-left', function (index, curValue) {
+                    return parseInt(curValue, 10) + 20 + 'px';
+                });
+                percent_increase_str = '+' + (percent_increase * 100).toString() + '%';
+            }
 
 
-    });
+            $percent_text.text(percent_increase_str);
+            $('#total_page_views_text').text(page_view_json['total_page_views'].toString());
+            $('#new_page_views_text').text(new_page_views_count.toString());
+
+
+        });
 
 
 
@@ -373,11 +373,9 @@ gender_data = null;
 
 function show_gender_data(){
 
-//        console.log("GROUP ID");
-//        console.log(group_id);
+
         $.getJSON(base_url + "/club/" + group_id + '/getGenderData', { group_id: group_id}, function(json_data) {
-//            console.log("Gender json data for group " + group_id);
-//            console.log(json_data);
+
             gender_data = [
                 {
                     label:'Female',
@@ -412,45 +410,45 @@ function show_gender_data(){
             var male_percentage = (json_data['male_count'] / user_total) * 100;
             $("#male_count_span").text('Male: ' + male_percentage + '%');
 
-            });
+        });
 
 
-            }
-
-
-
+}
 
 
 
 
 
-            show_line_graph();
+
+
+
+            //show_line_graph();
             function show_line_graph(){
-                $.getScript('js/getURLPara.js', function(){
+
                     var group_id = '';
                     if ($.getUrlVar("group_id") != null) {
                         group_id = $.getUrlVar("group_id").toString();
                     }
 
-            $.getJSON("php/analytics/club_line_graph_semester_data.php", { group_id: group_id}, function(json_data) {
+                $.getJSON("php/analytics/club_line_graph_semester_data.php", { group_id: group_id}, function(json_data) {
 
-                var line_graph_data = {
-                    //"7/08", "7/15", "7/21", "8/05", "8/12", "8/19", "8/27","9/05","9/12"
-            labels: [],
-            datasets: [
-                        {
-                            label: "Attendence Trends",
-                            fillColor: "rgba(151,187,205,0.2)",
-                            strokeColor: "rgba(151,187,205,1)",
-                            pointColor: "rgba(151,187,205,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(151,187,205,1)",
-                            //25, 30, 20, 20, 22, 55, 40,25,39
-                            data: []
-                            }
-            ]
-            };
+                    var line_graph_data = {
+                        //"7/08", "7/15", "7/21", "8/05", "8/12", "8/19", "8/27","9/05","9/12"
+                        labels: [],
+                        datasets: [
+                                    {
+                                        label: "Attendence Trends",
+                                        fillColor: "rgba(151,187,205,0.2)",
+                                        strokeColor: "rgba(151,187,205,1)",
+                                        pointColor: "rgba(151,187,205,1)",
+                                        pointStrokeColor: "#fff",
+                                        pointHighlightFill: "#fff",
+                                        pointHighlightStroke: "rgba(151,187,205,1)",
+                                        //25, 30, 20, 20, 22, 55, 40,25,39
+                                        data: []
+                                        }
+                        ]
+                };
 
 
             json_data['dates'] = json_data['dates'].reverse();
@@ -462,7 +460,7 @@ function show_gender_data(){
                     var this_date = new Date(this_date_key);
                     //Add 1 to month because getUTCMonth/getMonth return 0-11
                     var this_date_str = (this_date.getUTCMonth() + 1).toString() + '/' + this_date.getUTCDate().toString();
-            line_graph_data['labels'].push(this_date_str);
+                    line_graph_data['labels'].push(this_date_str);
                     line_graph_data['datasets'][0]['data'].push(attendance_count);
                 });
 
@@ -477,7 +475,7 @@ function show_gender_data(){
                 $("#average_attendance_text").text(attendance_percentage.toString() + '%');
 
             });
-            });
+
 
             }
 
@@ -531,7 +529,7 @@ function show_gender_data(){
 
             /*non graph part*/
 
-            $(document).delegate(".ga_btn","mouseenter",function(){
+$(document).delegate(".ga_btn","mouseenter",function(){
     if(!$(this).hasClass("anl_btn_active")){
     $(this).addClass("ga_btn_hover");
     }
@@ -628,89 +626,89 @@ $(document).delegate(".box-ga-header","mouseleave",function(){
             });
 
             function add_tag(tag,$member_div){
-                $.getScript('js/getURLPara.js', function(){
+
                     var group_id = '';
                     if ($.getUrlVar("group_id") != null) {
                         group_id = $.getUrlVar("group_id").toString();
                     }
 
-            var user_id = $member_div.data('user_id');
-            var post_data = {'user_id':user_id,'group_id':group_id,'tag':tag};
+                var user_id = $member_div.data('user_id');
+                var post_data = {'user_id':user_id,'group_id':group_id,'tag':tag};
 
 
-            $.post(
-            'php/analytics/club_user_add_tag',
-            post_data,
-            function(response) {
-                if(response['success'] == 'true'){
+                $.post(
+                    'php/analytics/club_user_add_tag',
+                    post_data,
+                    function(response) {
+                        if(response['success'] == 'true'){
 
-                }else{
+                        }else{
 
-                }
-            }, 'json'
-            );
+                        }
+                    }, 'json'
+                );
 
-            });
+
             }
 
             function remove_tag(tag,$member_div){
 
                 //remove the minus sign and space from tag
                 tag = tag.replace('- ','');
-                $.getScript('js/getURLPara.js', function(){
+
                 var group_id = '';
                 if ($.getUrlVar("group_id") != null) {
                 group_id = $.getUrlVar("group_id").toString();
                 }
 
-            var user_id = $member_div.data('user_id');
-            var post_data = {'user_id':user_id,'group_id':group_id,'tag':tag};
+                var user_id = $member_div.data('user_id');
+                var post_data = {'user_id':user_id,'group_id':group_id,'tag':tag};
 
-            console.log('REMOVING TAG ' + tag + ' from user: ' + user_id);
+                console.log('REMOVING TAG ' + tag + ' from user: ' + user_id);
 
 
-            $.post(
-            'php/analytics/club_user_remove_tag',
-            post_data,
-            function(response) {
-                if(response['success'] == 'true'){
+                $.post(
+                    'php/analytics/club_user_remove_tag',
+                    post_data,
+                    function(response) {
+                        if(response['success'] == 'true'){
 
-                }else{
+                        }else{
 
-                }
-            }, 'json'
-            );
+                        }
+                    }, 'json'
+                );
 
-            });
+
             }
 
             $(document).delegate(".plus_button","click",function(){
                 if(!$(this).hasClass("wait_to_tag")){
-                $(this).addClass("wait_to_tag");
-                $(this).closest(".am_cell").find(".cell_right_tags_wrap").hide();
-                $(this).closest(".am_cell").find(".cell_right_input").show();
+                    $(this).addClass("wait_to_tag");
+                    $(this).closest(".am_cell").find(".cell_right_tags_wrap").hide();
+                    $(this).closest(".am_cell").find(".cell_right_input").show();
                 }else{
-                var new_tag= $(this).closest(".am_cell").find(".cell_right_input").val().trim();
+                    var new_tag= $(this).closest(".am_cell").find(".cell_right_input").val().trim();
 
-                if(new_tag!=""){
+                    if(new_tag!=""){
 
-                add_tag(new_tag,$(this).closest(".member"));
-                $(this).removeClass("wait_to_tag");
-                $(this).closest(".am_cell").find(".cell_right_input").val("");
-                $(this).closest(".am_cell").find(".cell_right_input").hide();
-                $(this).closest(".am_cell").find(".cell_right_tags_wrap").show();
+                        add_tag(new_tag,$(this).closest(".member"));
+                        $(this).removeClass("wait_to_tag");
+                        $(this).closest(".am_cell").find(".cell_right_input").val("");
+                        $(this).closest(".am_cell").find(".cell_right_input").hide();
+                        $(this).closest(".am_cell").find(".cell_right_tags_wrap").show();
 
-                $(this).closest(".tags").append("<div class='cell_right_a_tag'>" + new_tag + "</div>");
-                $(this).closest(".am_cell").find(".cell_right_tags_wrap").append("<div class='cell_right_a_tag'>" + new_tag + "</div>");
+                        $(this).closest(".tags").append("<div class='cell_right_a_tag'>" + new_tag + "</div>");
+                        $(this).closest(".am_cell").find(".cell_right_tags_wrap").append("<div class='cell_right_a_tag'>" + new_tag + "</div>");
 
-                //Handle tag overflow here
-//            if($(this).closest(".am_cell").find(".cell_right_tags_wrap").children().length>=2){
-//
-//            }else{
-//                $(this).closest(".am_cell").find(".cell_right_tags_wrap").append("<div class='cell_right_a_tag'>"+x+"</div>");
-//            }
-            }
-            }
+                        //Handle tag overflow here
+        //            if($(this).closest(".am_cell").find(".cell_right_tags_wrap").children().length>=2){
+        //
+        //            }else{
+        //                $(this).closest(".am_cell").find(".cell_right_tags_wrap").append("<div class='cell_right_a_tag'>"+x+"</div>");
+        //            }
+                    }
+                }
 
             });
 
@@ -807,256 +805,254 @@ $(document).delegate(".box-ga-header","mouseleave",function(){
 
 
 
-            show_event_breakdown();
+            //show_event_breakdown();
             function show_event_breakdown(){
-                $.getScript('js/getURLPara.js', function(){
+
                     var group_id = '';
                     if ($.getUrlVar("group_id") != null) {
                         group_id = $.getUrlVar("group_id").toString();
                     }
 
-            $.getJSON("php/analytics/club_event_data.php", { group_id: group_id}, function(json_data) {
-                console.log(json_data);
+                $.getJSON("php/analytics/club_event_data.php", { group_id: group_id}, function(json_data) {
+                    console.log(json_data);
 
-                $.each( json_data['events'], function( index, event_data) {
-                var $event_div = $(" \
-                        <div class='ev_cell'> \
-                        <div class='ev_nondetail'> \
-                        <div class='ev_cell_left'> \
-                        <div class='ev_cell_left_photo event_image' style='background-image: url(<?php echo Yii::app()->getBaseUrl(true); ?>/dummy_2.jpg)'></div> \
-                    <div class='ev_cell_left_name event_title' ></div> \
-                    </div> \
-                    <div class='ev_cell_mid_0 event_datetime' ></div> \
-                    <div class='ev_cell_mid_1 event_total_attendance'></div> \
-                    <div class='ev_cell_mid_2 event_attendance_percent'></div> \
-                    <div class='ev_cell_right'> \
-                        <span class='show_detail_of_event'><div class='anl_header_dropdown_showr_wedgedown'></div>Detail</span> \
-                    </div> \
-                    </div> \
-                    <div class='ev_detail'> \
-                        <div class='anl-header detail-anl-header'> \
-                        <span>Member Breakdown</span> \
-                    <div class = 'anl_header_dropdown'> \
-                        <div class = 'anl_header_dropdown_showr'> \
-                        <div class='anl_header_dropdown_showr_wedgedown'></div> All Schools \
-                    </div> \
-                    <div class = 'anl_header_dropdown_box'> \
-                        <div class = 'anl_header_dropdown_option anl_option_edit'>School 1</div> \
-                    <hr class = 'anl_option_hr'> \
-                        <div class = 'anl_header_dropdown_option anl_option_edit'>School 2</div> \
-                    <hr class = 'anl_option_hr'> \
-                        <div class = 'anl_header_dropdown_option anl_option_edit'>School 3</div> \
-                    <hr class = 'anl_option_hr'> \
-                        <div class = 'anl_header_dropdown_option anl_option_edit'>All Schools</div> \
-                    </div> \
-                    </div> \
-                    </div> \
-                    <div class='anl-content-box-mb detail_mb'> \
-                        <div class='anl-content-box-mb-left'> \
+                    $.each( json_data['events'], function( index, event_data) {
+                    var $event_div = $(" \
+                            <div class='ev_cell'> \
+                            <div class='ev_nondetail'> \
+                            <div class='ev_cell_left'> \
+                            <div class='ev_cell_left_photo event_image' style='background-image: url(<?php echo Yii::app()->getBaseUrl(true); ?>/dummy_2.jpg)'></div> \
+                        <div class='ev_cell_left_name event_title' ></div> \
+                        </div> \
+                        <div class='ev_cell_mid_0 event_datetime' ></div> \
+                        <div class='ev_cell_mid_1 event_total_attendance'></div> \
+                        <div class='ev_cell_mid_2 event_attendance_percent'></div> \
+                        <div class='ev_cell_right'> \
+                            <span class='show_detail_of_event'><div class='anl_header_dropdown_showr_wedgedown'></div>Detail</span> \
+                        </div> \
+                        </div> \
+                        <div class='ev_detail'> \
+                            <div class='anl-header detail-anl-header'> \
+                            <span>Member Breakdown</span> \
+                        <div class = 'anl_header_dropdown'> \
+                            <div class = 'anl_header_dropdown_showr'> \
+                            <div class='anl_header_dropdown_showr_wedgedown'></div> All Schools \
+                        </div> \
+                        <div class = 'anl_header_dropdown_box'> \
+                            <div class = 'anl_header_dropdown_option anl_option_edit'>School 1</div> \
+                        <hr class = 'anl_option_hr'> \
+                            <div class = 'anl_header_dropdown_option anl_option_edit'>School 2</div> \
+                        <hr class = 'anl_option_hr'> \
+                            <div class = 'anl_header_dropdown_option anl_option_edit'>School 3</div> \
+                        <hr class = 'anl_option_hr'> \
+                            <div class = 'anl_header_dropdown_option anl_option_edit'>All Schools</div> \
+                        </div> \
+                        </div> \
+                        </div> \
+                        <div class='anl-content-box-mb detail_mb'> \
+                            <div class='anl-content-box-mb-left'> \
+                            <div class='anl-content-box-mb-left-cell'> \
+                            <div class='anl-content-box-mb-left-cell-left'><span>Freshman</span></div> \
+                        <div class='anl-content-box-mb-left-cell-mid'> \
+                            <div class='mb-left-cell-mid-grey'> \
+                            <div class='mb-left-cell-mid-color bar_color_blue freshman_percent_bar' style='width:0%'></div> \
+                        </div> \
+                        <div class='mb-left-cell-mid-percent freshman_percent_text'>0%</div> \
+                        </div> \
+                        <div class='anl-content-box-mb-left-cell-right freshman_count'>0</div> \
+                        </div> \
                         <div class='anl-content-box-mb-left-cell'> \
-                        <div class='anl-content-box-mb-left-cell-left'><span>Freshman</span></div> \
-                    <div class='anl-content-box-mb-left-cell-mid'> \
-                        <div class='mb-left-cell-mid-grey'> \
-                        <div class='mb-left-cell-mid-color bar_color_blue freshman_percent_bar' style='width:0%'></div> \
-                    </div> \
-                    <div class='mb-left-cell-mid-percent freshman_percent_text'>0%</div> \
-                    </div> \
-                    <div class='anl-content-box-mb-left-cell-right freshman_count'>0</div> \
-                    </div> \
-                    <div class='anl-content-box-mb-left-cell'> \
-                        <div class='anl-content-box-mb-left-cell-left'><span>Sophomore</span></div> \
-                    <div class='anl-content-box-mb-left-cell-mid'> \
-                        <div class='mb-left-cell-mid-grey'> \
-                        <div class='mb-left-cell-mid-color bar_color_blue sophomore_percent_bar' style='width:0%'></div> \
-                    </div> \
-                    <div class='mb-left-cell-mid-percent sophomore_percent_text'>0%</div> \
-                    </div> \
-                    <div class='anl-content-box-mb-left-cell-right sophomore_count'>0</div> \
-                    </div> \
-                    <div class='anl-content-box-mb-left-cell'> \
-                        <div class='anl-content-box-mb-left-cell-left'><span>Junior</span></div> \
-                    <div class='anl-content-box-mb-left-cell-mid'> \
-                        <div class='mb-left-cell-mid-grey'> \
-                        <div class='mb-left-cell-mid-color bar_color_blue junior_percent_bar' style='width:0%'></div> \
-                    </div> \
-                    <div class='mb-left-cell-mid-percent junior_percent_text'>0%</div> \
-                    </div> \
-                    <div class='anl-content-box-mb-left-cell-right junior_count'>0</div> \
-                    </div> \
-                    <div class='anl-content-box-mb-left-cell'> \
-                        <div class='anl-content-box-mb-left-cell-left'><span>Senior</span></div> \
-                    <div class='anl-content-box-mb-left-cell-mid'> \
-                        <div class='mb-left-cell-mid-grey'> \
-                        <div class='mb-left-cell-mid-color bar_color_blue senior_percent_bar' style='width:0%'></div> \
-                    </div> \
-                    <div class='mb-left-cell-mid-percent senior_percent_text'>0%</div> \
-                    </div> \
-                    <div class='anl-content-box-mb-left-cell-right senior_count'>0</div> \
-                    </div> \
-                    <div class='anl-content-box-mb-left-cell'> \
-                        <div class='anl-content-box-mb-left-cell-left'><span>Graduate</span></div> \
-                    <div class='anl-content-box-mb-left-cell-mid'> \
-                        <div class='mb-left-cell-mid-grey'> \
-                        <div class='mb-left-cell-mid-color bar_color_blue graduate_percent_bar' style='width:0%'></div> \
-                    </div> \
-                    <div class='mb-left-cell-mid-percent graduate_percent_text'>0%</div> \
-                    </div> \
-                    <div class='anl-content-box-mb-left-cell-right graduate_count'>0</div> \
-                    </div> \
-                    </div> \
-                    <div class='anl-content-box-mb-right'> \
-                        <canvas class='pie_i gender_piechart' width='159' height='160'></canvas> \
-                    <div class='anl-content-box-mb-right-right gender_percent_div' > \
+                            <div class='anl-content-box-mb-left-cell-left'><span>Sophomore</span></div> \
+                        <div class='anl-content-box-mb-left-cell-mid'> \
+                            <div class='mb-left-cell-mid-grey'> \
+                            <div class='mb-left-cell-mid-color bar_color_blue sophomore_percent_bar' style='width:0%'></div> \
+                        </div> \
+                        <div class='mb-left-cell-mid-percent sophomore_percent_text'>0%</div> \
+                        </div> \
+                        <div class='anl-content-box-mb-left-cell-right sophomore_count'>0</div> \
+                        </div> \
+                        <div class='anl-content-box-mb-left-cell'> \
+                            <div class='anl-content-box-mb-left-cell-left'><span>Junior</span></div> \
+                        <div class='anl-content-box-mb-left-cell-mid'> \
+                            <div class='mb-left-cell-mid-grey'> \
+                            <div class='mb-left-cell-mid-color bar_color_blue junior_percent_bar' style='width:0%'></div> \
+                        </div> \
+                        <div class='mb-left-cell-mid-percent junior_percent_text'>0%</div> \
+                        </div> \
+                        <div class='anl-content-box-mb-left-cell-right junior_count'>0</div> \
+                        </div> \
+                        <div class='anl-content-box-mb-left-cell'> \
+                            <div class='anl-content-box-mb-left-cell-left'><span>Senior</span></div> \
+                        <div class='anl-content-box-mb-left-cell-mid'> \
+                            <div class='mb-left-cell-mid-grey'> \
+                            <div class='mb-left-cell-mid-color bar_color_blue senior_percent_bar' style='width:0%'></div> \
+                        </div> \
+                        <div class='mb-left-cell-mid-percent senior_percent_text'>0%</div> \
+                        </div> \
+                        <div class='anl-content-box-mb-left-cell-right senior_count'>0</div> \
+                        </div> \
+                        <div class='anl-content-box-mb-left-cell'> \
+                            <div class='anl-content-box-mb-left-cell-left'><span>Graduate</span></div> \
+                        <div class='anl-content-box-mb-left-cell-mid'> \
+                            <div class='mb-left-cell-mid-grey'> \
+                            <div class='mb-left-cell-mid-color bar_color_blue graduate_percent_bar' style='width:0%'></div> \
+                        </div> \
+                        <div class='mb-left-cell-mid-percent graduate_percent_text'>0%</div> \
+                        </div> \
+                        <div class='anl-content-box-mb-left-cell-right graduate_count'>0</div> \
+                        </div> \
+                        </div> \
+                        <div class='anl-content-box-mb-right'> \
+                            <canvas class='pie_i gender_piechart' width='159' height='160'></canvas> \
+                        <div class='anl-content-box-mb-right-right gender_percent_div' > \
+                            <div class='anl-content-box-mb-right-right-cell'> \
+                            <div class='pattern_0 anl_pi_pattern'> \
+                            <div class = 'card-tag-pattern'> \
+                            <div class = 'tag-wedge-pattern'></div> \
+                        <div class = 'tag-box-pattern'> \
+                            <span class='female_percent_span'></span> \
+                        </div> \
+                        </div> \
+                        </div> \
+                        <div class='mb-right-cell-tag'>Female</div> \
+                        </div> \
                         <div class='anl-content-box-mb-right-right-cell'> \
-                        <div class='pattern_0 anl_pi_pattern'> \
-                        <div class = 'card-tag-pattern'> \
-                        <div class = 'tag-wedge-pattern'></div> \
-                    <div class = 'tag-box-pattern'> \
-                        <span class='female_percent_span'></span> \
-                    </div> \
-                    </div> \
-                    </div> \
-                    <div class='mb-right-cell-tag'>Female</div> \
-                    </div> \
-                    <div class='anl-content-box-mb-right-right-cell'> \
-                        <div class='pattern_1 anl_pi_pattern'> \
-                        <div class = 'card-tag-pattern'> \
-                        <div class = 'tag-wedge-pattern'></div> \
-                    <div class = 'tag-box-pattern'> \
-                        <span class='female_percent_span'></span> \
-                    </div> \
-                    </div> \
-                    </div> \
-                    <div class='mb-right-cell-tag'>Male</div> \
-                    </div> \
-                    </div> \
-                    </div> \
-                    </div> \
-                    <div class='anl-header detail-anl-header attendees_header'> \
-                        <span>Presented Attendances</span> \
-                    <div class='anl_tea'>Total Events Attendence</div> \
-                    <div class='anl_pea'>% Total Events Attendence</div> \
-                    </div> \
-                    <div class='anl-content-box-am detail_anl-content-box-am attendees'></div> \
-                    </div> \
-                    </div>");
-                //$event_div.find('.event_name').css('background-image', 'url(' + imageUrl + ')');
-                $event_div.data('event_id',event_data['event_id']);
-                $event_div.find('.event_title').text(event_data['event_title']);
-                var $event_datetime = new Date(event_data['datetime']);
-                var $event_datetime_str = ($event_datetime.getUTCMonth() + 1).toString() + '/' + $event_datetime.getUTCDate().toString();
+                            <div class='pattern_1 anl_pi_pattern'> \
+                            <div class = 'card-tag-pattern'> \
+                            <div class = 'tag-wedge-pattern'></div> \
+                        <div class = 'tag-box-pattern'> \
+                            <span class='female_percent_span'></span> \
+                        </div> \
+                        </div> \
+                        </div> \
+                        <div class='mb-right-cell-tag'>Male</div> \
+                        </div> \
+                        </div> \
+                        </div> \
+                        </div> \
+                        <div class='anl-header detail-anl-header attendees_header'> \
+                            <span>Presented Attendances</span> \
+                        <div class='anl_tea'>Total Events Attendence</div> \
+                        <div class='anl_pea'>% Total Events Attendence</div> \
+                        </div> \
+                        <div class='anl-content-box-am detail_anl-content-box-am attendees'></div> \
+                        </div> \
+                        </div>");
+                    //$event_div.find('.event_name').css('background-image', 'url(' + imageUrl + ')');
+                    $event_div.data('event_id',event_data['event_id']);
+                    $event_div.find('.event_title').text(event_data['event_title']);
+                    var $event_datetime = new Date(event_data['datetime']);
+                    var $event_datetime_str = ($event_datetime.getUTCMonth() + 1).toString() + '/' + $event_datetime.getUTCDate().toString();
 
-                $event_div.find('.event_datetime').text($event_datetime_str);
-                $event_div.find('.event_total_attendance').text(event_data['accepted_invite_count']);
-                var $event_attendance_percent_str = (event_data['accepted_invite_count'] / event_data['invite_count'] * 100).toString() + '%';
-                $event_div.find('.event_attendance_percent').text($event_attendance_percent_str);
+                    $event_div.find('.event_datetime').text($event_datetime_str);
+                    $event_div.find('.event_total_attendance').text(event_data['accepted_invite_count']);
+                    var $event_attendance_percent_str = (event_data['accepted_invite_count'] / event_data['invite_count'] * 100).toString() + '%';
+                    $event_div.find('.event_attendance_percent').text($event_attendance_percent_str);
 
-                $.each( event_data['attendees'], function( index, attendee_data) {
-                var $attendee_div = $("\
-                            <div class='am_cell attendee'> \
-                                <div class='am_cell_left'> \
-                                    <div class='am_cell_left_photo attendee_img' style='background-image: url(google.com)'></div> \
-                                    <div class='am_cell_left_name attendee_name'></div> \
-                                </div> \
-                                <div class='am_cell_mid_0 attendee_total_attendance'></div> \
-                                <div class='am_cell_mid_1 attendee_attendance_percent'></div> \
-                            </div>\
-                        ");
-                $attendee_div.data('user_id',attendee_data['id']);
-                $attendee_div.find('.attendee_name').text(attendee_data['name']);
-                $attendee_div.find('.attendee_total_attendance').text(attendee_data['attendance_count']);
-                $attendee_div.find('.attendee_attendance_percent').text(attendee_data['attendance_percent_str']);
-                //$attendee_div.find('.attendee_img').css('background-image', 'url(' + imageUrl + ')');
+                    $.each( event_data['attendees'], function( index, attendee_data) {
+                    var $attendee_div = $("\
+                                <div class='am_cell attendee'> \
+                                    <div class='am_cell_left'> \
+                                        <div class='am_cell_left_photo attendee_img' style='background-image: url(google.com)'></div> \
+                                        <div class='am_cell_left_name attendee_name'></div> \
+                                    </div> \
+                                    <div class='am_cell_mid_0 attendee_total_attendance'></div> \
+                                    <div class='am_cell_mid_1 attendee_attendance_percent'></div> \
+                                </div>\
+                            ");
+                    $attendee_div.data('user_id',attendee_data['id']);
+                    $attendee_div.find('.attendee_name').text(attendee_data['name']);
+                    $attendee_div.find('.attendee_total_attendance').text(attendee_data['attendance_count']);
+                    $attendee_div.find('.attendee_attendance_percent').text(attendee_data['attendance_percent_str']);
+                    //$attendee_div.find('.attendee_img').css('background-image', 'url(' + imageUrl + ')');
 
-                $event_div.find('.attendees').append($attendee_div);
+                    $event_div.find('.attendees').append($attendee_div);
+
+                    });
+
+
+                    //Show gender breakdown
+                    var gender_data = [
+                                {
+                                    label:'Female',
+                                    value: event_data['female_count'],
+                                    color: "#f04b5b",
+                                    highlight: "#f26370"
+                                    },
+                                {
+                                    label: "Male",
+                                    value: event_data['male_count'],
+                                    color:"#4BAEF0",
+                                    highlight: "#63b9f2"
+                                    }
+                    ];
+
+                    var $event_piechart = $event_div.find('.gender_piechart').get(0).getContext("2d");
+                    //console.log(gender_data);
+                    var chart_pi0 = new Chart($event_piechart).Doughnut(gender_data, {
+                        percentageInnerCutout : 0,
+                        segmentShowStroke : false,
+                        showTooltips: true,
+                        animationSteps : 75,
+                        animationEasing: "easeOutCubic"
+                        });
+
+                    //Update the mouse over data for male/female breakdown
+                    var user_total = event_data['accepted_invite_count'];
+
+
+                    if(user_total > 0){
+                        var female_percentage = (event_data['female_count'] / user_total) * 100;
+                        $event_div.find('.female_percent_span').text('Female: ' + female_percentage + '%');
+
+                        var male_percentage = (event_data['male_count'] / user_total) * 100;
+                        $event_div.find('.male_percent_span').text('Male: ' + male_percentage + '%');
+
+
+
+                        //Show breakdown of event class rank data
+                        var freshman_percent_str = (event_data['freshman_count'] / user_total * 100).toString() + '%';
+                        var sophomore_percent_str = (event_data['sophomore_count'] / user_total * 100).toString() + '%';
+                        var junior_percent_str = (event_data['junior_count'] / user_total * 100).toString() + '%';
+                        var senior_percent_str = (event_data['senior_count'] / user_total * 100).toString() + '%';
+                        var graduate_percent_str = (event_data['graduate_count'] / user_total * 100).toString() + '%';
+
+                        //Set the width of the horizontal bar graphs
+                        $event_div.find('.freshman_percent_bar').width(freshman_percent_str);
+                        $event_div.find('.sophomore_percent_bar').width(sophomore_percent_str);
+                        $event_div.find('.junior_percent_bar').width(junior_percent_str);
+                        $event_div.find('.senior_percent_bar').width(senior_percent_str);
+                        $event_div.find('.graduate_percent_bar').width(graduate_percent_str);
+
+                        //Set percent text
+                        $event_div.find('.freshman_percent_text').text(freshman_percent_str);
+                        $event_div.find('.sophomore_percent_text').text(sophomore_percent_str);
+                        $event_div.find('.junior_percent_text').text(junior_percent_str);
+                        $event_div.find('.senior_percent_text').text(senior_percent_str);
+                        $event_div.find('.graduate_percent_text').text(graduate_percent_str);
+
+                        //Set class rank count
+                        $event_div.find('.freshman_count').text(event_data['freshman_count']);
+                        $event_div.find('.sophomore_count').text(event_data['sophomore_count']);
+                        $event_div.find('.junior_count').text(event_data['junior_count']);
+                        $event_div.find('.senior_count').text(event_data['senior_count']);
+                        $event_div.find('.graduate_count').text(event_data['graduate_count']);
+                    }else{
+                        //If no users went to this event, hide the female/male box and the "presented attendances" section
+                        $event_div.find('.gender_percent_div').hide();
+                        $event_div.find('.attendees_header').hide();
+                    }
+
+
+
+
+                    $('#events').append($event_div);
 
                 });
 
-
-            //Show gender breakdown
-            var gender_data = [
-                        {
-                            label:'Female',
-                            value: event_data['female_count'],
-                            color: "#f04b5b",
-                            highlight: "#f26370"
-                            },
-                        {
-                            label: "Male",
-                            value: event_data['male_count'],
-                            color:"#4BAEF0",
-                            highlight: "#63b9f2"
-                            }
-            ];
-
-            var $event_piechart = $event_div.find('.gender_piechart').get(0).getContext("2d");
-            //console.log(gender_data);
-            var chart_pi0 = new Chart($event_piechart).Doughnut(gender_data, {
-                percentageInnerCutout : 0,
-                segmentShowStroke : false,
-                showTooltips: true,
-                animationSteps : 75,
-                animationEasing: "easeOutCubic"
-                });
-
-            //Update the mouse over data for male/female breakdown
-            var user_total = event_data['accepted_invite_count'];
-
-
-            if(user_total > 0){
-                var female_percentage = (event_data['female_count'] / user_total) * 100;
-                $event_div.find('.female_percent_span').text('Female: ' + female_percentage + '%');
-
-                var male_percentage = (event_data['male_count'] / user_total) * 100;
-                $event_div.find('.male_percent_span').text('Male: ' + male_percentage + '%');
-
-
-
-                //Show breakdown of event class rank data
-                var freshman_percent_str = (event_data['freshman_count'] / user_total * 100).toString() + '%';
-                var sophomore_percent_str = (event_data['sophomore_count'] / user_total * 100).toString() + '%';
-                var junior_percent_str = (event_data['junior_count'] / user_total * 100).toString() + '%';
-                var senior_percent_str = (event_data['senior_count'] / user_total * 100).toString() + '%';
-                var graduate_percent_str = (event_data['graduate_count'] / user_total * 100).toString() + '%';
-
-                //Set the width of the horizontal bar graphs
-                $event_div.find('.freshman_percent_bar').width(freshman_percent_str);
-                $event_div.find('.sophomore_percent_bar').width(sophomore_percent_str);
-                $event_div.find('.junior_percent_bar').width(junior_percent_str);
-                $event_div.find('.senior_percent_bar').width(senior_percent_str);
-                $event_div.find('.graduate_percent_bar').width(graduate_percent_str);
-
-                //Set percent text
-                $event_div.find('.freshman_percent_text').text(freshman_percent_str);
-                $event_div.find('.sophomore_percent_text').text(sophomore_percent_str);
-                $event_div.find('.junior_percent_text').text(junior_percent_str);
-                $event_div.find('.senior_percent_text').text(senior_percent_str);
-                $event_div.find('.graduate_percent_text').text(graduate_percent_str);
-
-                //Set class rank count
-                $event_div.find('.freshman_count').text(event_data['freshman_count']);
-                $event_div.find('.sophomore_count').text(event_data['sophomore_count']);
-                $event_div.find('.junior_count').text(event_data['junior_count']);
-                $event_div.find('.senior_count').text(event_data['senior_count']);
-                $event_div.find('.graduate_count').text(event_data['graduate_count']);
-                }else{
-                //If no users went to this event, hide the female/male box and the "presented attendances" section
-                $event_div.find('.gender_percent_div').hide();
-                $event_div.find('.attendees_header').hide();
-                }
-
-
-
-
-            $('#events').append($event_div);
-
             });
 
-            });
-            });
-
-            }
-
+        }
 
             var member_attendance_data = null;
 
@@ -1064,6 +1060,9 @@ $(document).delegate(".box-ga-header","mouseleave",function(){
                 member_attendance_data = json_data;
                 show_member_attendance();
             });
+
+
+
 
 
 
@@ -1085,39 +1084,40 @@ $(document).delegate(".box-ga-header","mouseleave",function(){
                 }
 
 
-            $.each( member_attendance_data['users'], function( index, user_data) {
-//            var $user = $('<tr class="user"></tr>');
-//            $('<td class="id">' + user_json['user_id'] +'</td>').appendTo($user);
-//            $('<td class="name">' + user_json['name'] +'</td>').appendTo($user);
-//            $('<td class="joined_datetime">' + user_json['joined_datetime'] +'</td>').appendTo($user);
-//            $group.append($user);
+                $.each( member_attendance_data['users'], function( index, user_data) {
+    //            var $user = $('<tr class="user"></tr>');
+    //            $('<td class="id">' + user_json['user_id'] +'</td>').appendTo($user);
+    //            $('<td class="name">' + user_json['name'] +'</td>').appendTo($user);
+    //            $('<td class="joined_datetime">' + user_json['joined_datetime'] +'</td>').appendTo($user);
+    //            $group.append($user);
 
 
-                var $user_div = $("\
-            <div class='am_cell member' data-user_id='" + user_data['id'] + "'> \
-                <div class='am_cell_left'> \
-                    <div class='am_cell_left_photo' style='background-image: url(google.com)'></div> \
-                    <div class='am_cell_left_name'>" + user_data['name'] + "</div> \
-                </div> \
-                <div class='am_cell_mid_0'>" + user_data['attendance_count'].toString() + "</div> \
-                <div class='am_cell_mid_1'>" + user_data['attendance_percent_str'] + "</div> \
-                <div class='am_cell_right'> \
-                    <div class='cell_right_tags_wrap tags'></div> \
-                    <input class='cell_right_input' type='text' placeholder='add a tag' maxlength='11'> \
-                </div> \
-            </div>");
+                    var $user_div = $("\
+                <div class='am_cell member' data-user_id='" + user_data['id'] + "'> \
+                    <div class='am_cell_left'> \
+                        <div class='am_cell_left_photo' style='background-image: url(google.com)'></div> \
+                        <div class='am_cell_left_name'>" + user_data['name'] + "</div> \
+                    </div> \
+                    <div class='am_cell_mid_0'>" + user_data['attendance_count'].toString() + "</div> \
+                    <div class='am_cell_mid_1'>" + user_data['attendance_percent_str'] + "</div> \
+                    <div class='am_cell_right'> \
+                        <div class='cell_right_tags_wrap tags'></div> \
+                        <input class='cell_right_input' type='text' placeholder='add a tag' maxlength='11'> \
+                    </div> \
+                </div>");
 
 
-                //                <button class='plus_button'></button> \
+                    //                <button class='plus_button'></button> \
 
-                $.each( user_data['tags'], function( index, tag) {
-                    $user_div.find('.tags').append($("<div class='cell_right_a_tag'>" + tag + "</div>"));
+                    $.each( user_data['tags'], function( index, tag) {
+                        $user_div.find('.tags').append($("<div class='cell_right_a_tag'>" + tag + "</div>"));
+                    });
+
+                    $('#members').append($user_div);
+
                 });
-
-                $('#members').append($user_div);
-
-            });
             }
+
 
             function sort_key(key,desc) {
                 return function(a,b){

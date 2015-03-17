@@ -644,7 +644,7 @@
 			'type' : 'global'
 		});
 
-		socket = io.connect(globals.socket_io_url);
+		socket = io.connect(messaging_globals.socket_io_url);
 
 		var systemEventsHandlerBinder = new SystemEventsHandlerBinder(this);
 

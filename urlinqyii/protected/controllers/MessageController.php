@@ -41,6 +41,162 @@ class MessageController extends Controller
 
 
 
+    //GET
+    //gets the usres/classes/clubs this user sees in message panel
+    public function actionLoadout()
+	{
+		$user = $this->get_current_user($_GET);
+        if(!$user){
+            $return_data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        //Get recent incoming messages sent to this user
+        $recent_messages = Message::model()->findAllBySql("SELECT *
+                                                        FROM message
+                                                        WHERE (target_type = 'custom' AND EXISTS (SELECT * FROM message_group_user WHERE user_id = " . $user->user_id . " AND message_group_id = message.target_id))
+                                                        OR (target_type = 'user' AND target_id = " . $user->user_id . ")
+                                                        GROUP BY
+                                                            user_id, target_type, target_id
+                                                        ORDER BY
+                                                                id DESC
+                                                        LIMIT 5");
+
+        //OR (user_id = " . $user->user_id . ") for outgoing msgs
+
+        include_once 'user/user.php';
+
+        $recents = array();
+
+
+        //Load related item to message
+        for($x = 0; $x < count($recent_messages); $x++){
+            $message = $recent_messages[$x];
+            if($message->target_type == 'custom'){
+                //Get the msg group
+                $message_group = MessageGroup::model()->find('id=:id', array(':id'=>$message->target_id));
+                if(!$message_group){
+                    $return_data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'msg group doesnt exist');
+                    $this->renderJSON($return_data);
+                    return;
+                }
+
+                $message_group = $this->model_to_array($message_group);
+                $message_group['type'] = 'custom';
+
+
+                array_push($recents, $message_group);
+
+            }else if($message->target_type == 'user'){
+                $other_user_id = $message->target_id;
+
+                if($other_user_id == $user->user_id){
+                    $other_user_id = $message->user_id;
+                }
+
+                $other_user = User::model()->find('user_id=:id', array(':id'=>$other_user_id));
+
+
+
+                if(!$other_user){
+                    $return_data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'user doesnt exist');
+                    $this->renderJSON($return_data);
+                    return;
+                }
+
+
+                $is_online = is_online($other_user);
+
+                $other_user = $this->get_model_associations($other_user,array('pictureFile'));
+
+
+                $other_user['type'] = 'user';
+                $other_user['id'] = $other_user['user_id'];
+                $other_user['name'] = $other_user['firstname'] . ' ' . $other_user['lastname'];
+                $other_user['is_online'] = $is_online;
+
+
+                array_push($recents, $other_user);
+            }else if($message->target_type == 'class'){
+                $class = ClassModel::model()->find('class_id=:id', array(':id'=>$message->target_id));
+                if(!$class){
+                    $return_data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'class doesnt exist');
+                    $this->renderJSON($return_data);
+                    return;
+                }
+
+                $class = $this->get_model_associations($class,array('pictureFile', 'coverFile'));
+                $class['type'] = 'class';
+                $class['id'] = $class['class_id'];
+                $class['name'] = $class['class_name'];
+
+
+                array_push($recents, $class);
+            }else if($message->target_type == 'group'){
+                $group = Group::model()->find('group_id=:id', array(':id'=>$message->target_id));
+                if(!$group){
+                    $return_data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'group doesnt exist');
+                    $this->renderJSON($return_data);
+                    return;
+                }
+
+                $class = $this->get_model_associations($group,array('pictureFile', 'coverFile'));
+                $group['type'] = 'group';
+                $group['id'] = $group['group_id'];
+                $group['name'] = $group['group_name'];
+
+
+                array_push($recents, $group);
+            }
+        }
+
+
+        //Get the users that this user has followed
+        $users = $user->usersFollowed;
+
+        for($i = 0; $i < count($users); $i++){
+            $users[$i] = $this->get_model_associations($users[$i],array('pictureFile'));
+            $users[$i]['name'] = $users[$i]['firstname'] . ' ' . $users[$i]['lastname'];
+            $users[$i]['type'] = 'user';
+            $users[$i]['id'] = $users[$i]['user_id'];
+        }
+
+
+        //Get this users classes
+        $classes = $user->classes;
+
+        for($i = 0; $i < count($classes); $i++){
+            $classes[$i] = $this->get_model_associations($classes[$i],array('pictureFile', 'coverFile'));
+            $classes[$i]['name'] = $classes[$i]['class_name'];
+            $classes[$i]['type'] = 'class';
+            $classes[$i]['id'] = $classes[$i]['class_id'];
+        }
+
+
+        $groups = $user->groups;
+
+
+        for($i = 0; $i < count($groups); $i++){
+            $groups[$i] = $this->get_model_associations($groups[$i],array('pictureFile', 'coverFile'));
+            $groups[$i]['name'] = $groups[$i]['group_name'];
+            $groups[$i]['type'] = 'class';
+            $groups[$i]['id'] = $groups[$i]['class_id'];
+        }
+
+
+        array_merge($groups, $user->clubs);
+
+
+
+        $return_data = array('success'=>true, 'recent'=>$recents, 'users'=>$users, 'classes'=>$classes, 'groups'=>$groups);
+        $this->renderJSON($return_data);
+        return;
+	}
+
+
+
      //GET
     //Loads recent messages with a specfic user/group
     public function actionRecentChat() {
@@ -65,8 +221,8 @@ class MessageController extends Controller
 
         $messages = array();
         if($target_type == 'user'){
-                $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (user_id = ' . $user->user_id . ' AND target_type = "user" AND target_id = ' . $target_id . ') OR (user_id = ' . $target_id . ' AND target_type = "user" AND target_id = ' . $user->user_id . ') ORDER BY id LIMIT 50');
-        }elseif($target_type == 'group'){
+            $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (user_id = ' . $user->user_id . ' AND target_type = "user" AND target_id = ' . $target_id . ') OR (user_id = ' . $target_id . ' AND target_type = "user" AND target_id = ' . $user->user_id . ') ORDER BY id LIMIT 50');
+        }elseif($target_type == 'custom'){
 
             $message_group = MessageGroup::model()->find('id=:id', array(':id'=>$target_id));
             if(!$message_group){
@@ -83,12 +239,14 @@ class MessageController extends Controller
                 return;
             }
 
+
+           // $messages = Message::model()->findAllBySql("SELECT * FROM `message` WHERE (target_type = 'group' AND target_id = '1') ORDER BY id LIMIT 50");
+
             $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (target_type = "' . $target_type . '" AND target_id = ' . $target_id . ') ORDER BY id LIMIT 50');
         }
 
 
-
-        $return_data = array('success'=>true, 'messages'=>$messages, 'last_update'=>date('Y-m-d H:i:s'));
+        $return_data = array('success'=>true, 'messages'=>$messages, 'last_update'=>date('Y-m-d H:i:s'), 'target_type'=>$target_type);
         $this->renderJSON($return_data);
         return;
 
@@ -309,6 +467,8 @@ class MessageController extends Controller
 
             $event = Yii::app()->nodeSocket->getFrameFactory()->createEventFrame();
             $event->setEventName($message->target_type . '_' . $message->target_id);
+            //$event->setEventName($message->target_type . '_' . $message->target_id);
+
             $event->setData(array('user_id'=>$message->user_id,'target_type'=>$message->target_type,'target_id'=>$message->target_id,'text'=>$message->text));
             $event->send();
 
@@ -403,7 +563,50 @@ class MessageController extends Controller
                 return;
             }
 
-        }else if($target_type == 'group'){
+        }else if($target_type == 'custom'){
+
+
+            //Verify target message group exists
+            $message_group = MessageGroup::model()->find('id=:id', array(':id'=>$target_id));
+            if(!$message_group){
+                $return_data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'msg group target does not exist', 'post'=>$_POST);
+                $this->renderJSON($return_data);
+                return;
+            }
+
+
+            //Make sure this user is apart of group
+            $group_user = MessageGroupUser::model()->find('message_group_id=:id and user_id=:user_id', array(':id'=>$message_group->id, ':user_id'=>$user->user_id));
+
+            if(!$group_user){
+                $return_data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'user not allowed to send msg to this group', 'post'=>$_POST);
+                $this->renderJSON($return_data);
+                return;
+            }
+
+
+
+            $message = new Message;
+            $message->user_id = $user->user_id;
+            $message->text = $text;
+            $message->target_id = $target_id;
+            $message->target_type = $target_type;
+
+            if($message->save(false)){
+
+                //Emit the message event to nodejs/socket.io asynchronously
+                ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/message/sendFunction',$postData=array('message_id'=>$message->id),$contentType=null);
+
+
+                $return_data = array('success'=>true, 'message'=>$message, 'last_update'=>date('Y-m-d H:i:s'));
+                $this->renderJSON($return_data);
+                return;
+            }else{
+                $return_data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'error saving message', 'post'=>$_POST);
+                $this->renderJSON($return_data);
+                return;
+            }
+
 
         }else{
             $return_data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'target type not supported', 'post'=>$_POST);
