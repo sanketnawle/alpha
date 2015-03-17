@@ -32,7 +32,7 @@
   </script>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
   <title>Urlinq</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
   <meta name="google-site-verification" content="qv_TWutBCtliggYTCBDzJeXCNfJ3Dd3L5SkIhBSxm5Y" />
   <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta.css" />
   <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta_mobile.css" />
@@ -79,7 +79,8 @@
         var id = $(this).attr('href');
         activeWindow = $('.mobileLoginWindow' + id).css({'opacity':'0', 'top':'50%', 'left':'50%', 'display':'block'}).fadeTo(500, 1);
 
-        $('.lp-main').append('<div id="blind" />').find('#blind').css('opacity','0').fadeTo(500, 0.8).click(function(e){
+        $('body').addClass('modal-open');
+        $('.mobile-login').prepend('<div id="blind" />').find('#blind').css('opacity','0').fadeTo(500, 0.8).click(function(e){
           closeModal();
         });
       });
@@ -90,6 +91,7 @@
       function closeModal() {
         activeWindow.fadeOut(250, function(){ $(this).css('display','none')});
         $('#blind').fadeOut(250, function(){ $(this).remove(); });
+        $('body').removeClass('modal-open');
       }
 
       globals.supported_email_list = ['nyu.edu', 'urlinq.com', 'student.touro.edu', 'touro.edu'];
@@ -862,6 +864,24 @@
 
         </video>
 
+        <!--mobile login-->
+        <div class="mobile-login">
+          <div id="loginModal" class="mobileLoginWindow">
+            <div class="loginModalContent">
+              <h2>Log In</h2>
+              <form name="login" id="login" method="post" action="<?php echo Yii::app()->request->baseUrl; ?>/login">
+                    <input type="text" name="login_email" id="login_email" autocomplete="on" placeholder="School Email">
+                    <input type="password" name="login_password" id="login_password" placeholder="Password">
+                    <input type="hidden" id="offset" name="offset" value="">
+                    <button name="submit" id="submit" type="submit" class="rounded Button SignIn smallBtn">
+                      <span class="buttonText">Log In</span>
+                    </button>
+                  </form>
+              <a href="#" class="close">Close</a>
+            </div>
+          </div>
+        </div>
+
         <div class="mobile-background"></div>
         <div class="mobile_wrap mobile_wrap_primary">
           <div class="mobile_wrap_header_text">
@@ -1028,23 +1048,6 @@
     <div class="mobile_panel_4 mobile_only_panel footer">
       <div class="mobile_wrap">
         <p>&#169; 2015 Urlinq, Inc. All Rights Reserved.</p>
-      </div>
-    </div>
-
-    <!--mobile login-->
-
-    <div id="loginModal" class="mobileLoginWindow">
-      <div class="loginModalContent">
-        <h2>Log In</h2>
-        <form name="login" id="login" method="post" action="<?php echo Yii::app()->request->baseUrl; ?>/login">
-              <input type="text" name="login_email" id="login_email" autocomplete="on" placeholder="School Email">
-              <input type="password" name="login_password" id="login_password" placeholder="Password">
-              <input type="hidden" id="offset" name="offset" value="">
-              <button name="submit" id="submit" type="submit" class="rounded Button SignIn smallBtn">
-                <span class="buttonText">Log In</span>
-              </button>
-            </form>
-        <a href="#" class="close">Close</a>
       </div>
     </div>
 

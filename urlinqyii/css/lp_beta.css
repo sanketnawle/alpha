@@ -77,6 +77,11 @@ div.mobile_wrap_primary
   width:100%;
 }
 
+div.mobile-login {
+  display:none;
+}
+
+
 div.mobile_wrap_header_text
 {
   margin-bottom:10px;
@@ -1678,6 +1683,13 @@ div.forgotPassword
   position:relative;
 }
 
+#forgot_password_div {
+  position:absolute;
+  right: -8px;
+  top: 12px;
+  width:auto;
+}
+
 input.forgot_password_submit_button
 {
   background:none;
@@ -1712,15 +1724,13 @@ input#reset_password_email
 
 button#forgot_password
 {
-  margin-left:12px;
   background:none;
   border:none;
+  width:120px;
   color:#FFF;
   font-family:Avenir;
   position:absolute;
-  top:12px;
   font-weight:600;
-  right:-125px;
   outline:none;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
@@ -2585,14 +2595,6 @@ div.help-div div.help-box
   background-position:0 0!important;
 }
 
-#forgot_password_div
-{
-  position:absolute;
-  right:-119px;
-  top:64px;
-  margin:0;
-}
-
 div.mobile_featurette.featurette_1,input#fname
 {
   float:left;
@@ -3043,13 +3045,3 @@ ul.color-border li:nth-child(1),a.cb-link1:visited
   {
     font-size:25px;
   }
-
-
-
-
-#forgot_password_div {
-    position: absolute;
-    right: -119px;
-    top: 64px;
-    margin: 0px;
-}
