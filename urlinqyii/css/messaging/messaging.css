@@ -2,6 +2,22 @@
     /*overflow: hidden;*/
 }
 
+
+#messaging_pic {
+    float: left;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+}
+
+
+#messaging_button {
+    float:  right;
+    width: 100px;
+    height: 40px;
+    background-color: yellow;
+}
+
 .chat_box {
 
     width: 180px;
@@ -18,3 +34,91 @@
 .chat_input {
     width: 100%;
 }
+
+#messaging_panel {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+#messaging_panel #header {
+    width: 100%;
+    height: 60px;
+    background-color: black;
+}
+
+#messaging_panel #messaging_pic {
+    background-repeat: no-repeat;
+}
+
+#messaging_panel #header #messaging_button_text {
+    color:red;
+}
+
+
+#messaging_panel #messaging_list {
+    overflow-y: scroll;
+    height: 2000px;
+    background-color: #BA2121;
+}
+
+
+#messaging_panel .messaging_list_item_pic {
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    margin: 0px;
+    padding: 0px;
+
+
+
+
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#messaging_panel .messaging_list_item {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+}
+
+#messaging_panel .messaging_list_item_left_holder {
+    float: left;
+    width: 20%;
+}
+
+#messaging_panel .message_list_item_right_holder {
+    float: right;
+    width: 70%;
+}
+
+
+#messaging_panel .messaging_list_item_name {
+
+}
+
+
+#messaging_panel .online_indicator {
+    float: left;
+    width: 10px;
+    height: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: green;
+
+    float: left;
+    margin: 0px;
+    padding: 0px;
+
+
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+
+
+
+

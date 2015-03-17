@@ -115,6 +115,71 @@ class ClubController extends Controller
 
 
 
+    public function actionTest2()
+	{
+
+        Yii::app()->nodeSocket->registerClientScripts();
+
+
+        $club_id = 1;
+
+
+        $club = Group::model()->find('group_id=:id', array(':id'=>$club_id));
+
+        $user = $this->get_current_user();
+
+        if(!$user){
+            $this->redirect(array('/?url=/club/' . $club_id));
+        }
+
+        $group_user = GroupUser::model()->find('group_id=:group_id and user_id=:user_id', array(':group_id'=>$club->group_id, ':user_id'=>$user->user_id));
+
+        $is_member = false;
+        $is_admin = false;
+        if($group_user){
+            $is_member = true;
+            if($group_user->is_admin){
+                $is_admin = true;
+            }
+        }
+
+
+        if($this->is_urlinq_admin($user)){
+            $is_admin = true;
+        }
+
+
+//        if(strpos($user->user_email,'@urlinq.com') !== false){
+//            $is_admin = true;
+//        }
+
+
+
+        if($club->privacy && (!$is_member)){
+            //user cannot see this page
+            $this->redirect(array('/home'));
+        }
+
+
+
+        $file_count = 5;
+
+        $sql = "SELECT u.user_id, u.user_type, u.firstname, u.lastname, un.school_name from `user_connection` c, user u, school un where c.from_user_id = " . $user->user_id . " AND c.to_user_id = u.user_id and un.school_id = u.school_id AND u.status = 'active'";
+
+
+
+        $command = Yii::app()->db->createCommand($sql);
+        $connected_users = $command->queryAll();
+
+
+
+
+        $this->render('club',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count,'is_member'=>$is_member,'connected_users'=>$connected_users  ));
+	}
+
+
+
+
 
     public function actionTest()
     {
@@ -123,7 +188,11 @@ class ClubController extends Controller
 
         $user = $this->get_current_user();
 
-
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not logged in');
+            $this->renderJSON($data);
+            return;
+        }
 
 
         $assets_directory = '/assets/test';
@@ -148,7 +217,7 @@ class ClubController extends Controller
                 $file_path = $full_directory . '/' . $file_name;
 
                 $file_url = $assets_directory . '/' . $file_name;
-                var_dump($file_url);
+                //var_dump($file_url);
                 //var_dump($file_url);
                 $file = File::model()->find('file_url=:url', array(':url'=>$file_url));
 
@@ -240,8 +309,8 @@ class ClubController extends Controller
                         continue;
                     }
 
-                    $user = User::model()->find('picture_file_id=:id', array(':id'=>$file_id));
-                    if($showcase){
+                    $test_user = User::model()->find('picture_file_id=:id', array(':id'=>$file_id));
+                    if($test_user){
                         continue;
                     }
                     
@@ -264,8 +333,8 @@ class ClubController extends Controller
 //            unlink($file_path);
 //        }
 
-        var_dump($count);
-        var_dump($delete_list);
+//        var_dump($count);
+//        var_dump($delete_list);
 
 
 
