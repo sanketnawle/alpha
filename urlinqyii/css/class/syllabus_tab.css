@@ -206,7 +206,7 @@ a.filename{
       }
 
       .img_arrows > em{
-        background-image: url('../assets/small_icons.png');
+        background-image: url('../../assets/small_icons.png');
         background-size: auto;
         display: block;
         width: 20px;
@@ -363,7 +363,7 @@ a.filename{
       }
 
       div.syllabus_tab_add_event_wrapper > div.add_event_button{
-        background-image: url('../assets/small_icons.png');
+        background-image: url('../../assets/small_icons.png');
         background-position: -3px -1542px;
         width: 29px;
         height: 24px;

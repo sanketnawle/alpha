@@ -1,3 +1,4 @@
+var events_length = 0;
 $(document).on("click",'#btn_add_syllabus', function(event){
         event.preventDefault();
         
@@ -187,12 +188,13 @@ function display_events(events){
   $("#events_template_loc").data('data-form', events);
   $("#events_template_loc").attr('current_page', 0);
   $("#events_template_loc").attr('pagecount', Math.ceil(events.length/4));
+  events_length = events.length;
   list_events(events.slice(0,4), "none", "block");
 }
 
 function list_events(events, img_left, img_right){
   display_text = '\
-                  <div id="event_count">'+(events.length).toString()+'Total events this semester</div>\
+                  <div id="event_count">'+events_length+' Total events this semester</div>\
                     <div class = "syllabus_tab_add_event_wrapper">\
                       <div class = "add_event_button">\
                       </div>\
@@ -224,7 +226,7 @@ function list_events(events, img_left, img_right){
                     </div>';
         };
     display_text+='</div>\
-                    <span style="display:'+img_left+'" class="img_arrows img_lt"/><em></em></span>\
+                    <span style="display:'+img_left+'" class="img_arrows img_lt"><em></em></span>\
                     <span style="display:'+img_right+'" class="img_arrows img_rt"><em></em></span>';
     $("#events_template_loc").html(display_text);
 }
