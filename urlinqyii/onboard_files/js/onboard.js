@@ -553,6 +553,16 @@ $(document).ready(function () {
                     var sub_generated_html = sub_template(classes[j]);
 
                     var $sub_card = $(sub_generated_html);
+
+                    var $section_detail_card = $sub_card.find('.section_detail_right');
+
+
+
+                    //Added so classes with no data some atleast class name
+                    if($section_detail_card.text().trim() == ''){
+                        $section_detail_card.text(classes[j]['class_name']);
+                    }
+
                     $expand.append($sub_card);
                 }
             }

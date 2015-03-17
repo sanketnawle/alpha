@@ -52,6 +52,14 @@ class ClassModel extends CActiveRecord
 
      //Returns professor model object
     public function professor(){
+        if($this->professor_id){
+            $professor = User::model()->find('user_id=:id', array(':id'=>$this->professor_id));
+            if($professor){
+                return $professor;
+            }
+        }
+
+
         foreach($this->admins as $admin){
             if($admin->user_type == 'p'){
                 return $admin;
