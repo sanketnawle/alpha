@@ -368,7 +368,7 @@ span.time_icon {
     display: block;
     font-weight: 500;
     color: #121314;
-    white-space: pre-line;
+    white-space: inherit;
 }
 
 .post_tools .post_lc {
@@ -546,9 +546,10 @@ span.time_icon {
 
     word-break: initial;
     overflow: hidden;
-    height: 98px;
+    max-height: 98px;
     line-height: 19px;
     padding-top: 4px;
+    min-height: 76px;
     color: #323232;
     margin-top: 2px;
 }
@@ -580,6 +581,7 @@ div.html5-info-bar.ytp-can-shar {
 }
 
 #embedly_video_box .embedly_info {
+    display: none;
 }
 
 #embedly_video_box .embedly_image {
