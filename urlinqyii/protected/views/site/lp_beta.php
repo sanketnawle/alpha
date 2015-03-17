@@ -43,7 +43,6 @@
 
 
 
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/lp_beta.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/getURLPara.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/preload_img.js"></script>
 

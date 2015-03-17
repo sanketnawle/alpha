@@ -922,6 +922,8 @@ div.header-sec-right div.time-to-signup{
 #reset_password{
     display: inline-block;
     margin-left: 0px;
+    position: absolute;
+    top:58px;
 }
 #register_error_popup{
     position: absolute;
@@ -3844,8 +3846,6 @@ ul.color-border li:nth-child(5):hover {
  background-color: #de445d;
 }
 
-}
-
 
 
 
@@ -3855,4 +3855,4 @@ ul.color-border li:nth-child(5):hover {
     right: -119px;
     top: 64px;
     margin: 0px;
-}obi
+}
