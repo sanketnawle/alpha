@@ -324,6 +324,30 @@ class UserController extends Controller
     }
 
 
+
+    //Updates users last_activity field
+    //to indicate when user was last online
+    public function actionPing(){
+        $user = $this->get_current_user($_GET);
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user->last_activity = date("Y-m-d H:i:s");
+
+        if($user->save(false)){
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user saving user');
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
     public function actionNotificationsSeen(){
         if(!isset($_POST['notification_id_list'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'notification_id_list is not set');

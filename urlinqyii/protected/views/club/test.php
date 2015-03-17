@@ -6,11 +6,11 @@
 
 
 <script>
-    var globals = {};
-    globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
-    globals.user_id = '<?php echo $user->user_id; ?>';
+    var messaging_globals = {};
+    messaging_globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+    messaging_globals.user_id = '<?php echo $user->user_id; ?>';
 
-    globals.socket_io_url = 'http://<?php echo Yii::app()->nodeSocket->host;?>:<?php echo Yii::app()->nodeSocket->port;?>/client';
+    messaging_globals.socket_io_url = 'http://<?php echo Yii::app()->nodeSocket->host;?>:<?php echo Yii::app()->nodeSocket->port;?>/client';
 
     console.log('socket io url');
     console.log(globals.socket_io_url);

@@ -42,6 +42,7 @@ class MessageGroup extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'users' => array(self::MANY_MANY, 'User', 'message_group_user(message_group_id, user_id)'),
 		);
 	}
 

@@ -123,6 +123,14 @@ if($user->school->university_id == 4){
 			</div>					
 		</div>
 
+
+        <?php echo $this->renderPartial('/partial/messaging_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id,'origin_name'=>$club->group_name)); ?>
+
+
+
+
+
+
         <!--<div class = "LeftPanelSection LeftPanel_Clubs">
 			<div class = "LeftPanel_SectionHeader">
 				<div class = "SectionHeader_holder">
