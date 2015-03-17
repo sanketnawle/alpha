@@ -94,6 +94,16 @@ if($user->school->university_id == 4){
                             <a data-class_id = "<?php echo $class->class_id; ?>" href="<?php echo Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id; ?>"><?php echo $class->class_name; ?></a>
                         </li>
                     <?php } ?>
+
+                    <?php
+                    if($user->user_type == 'p'){
+                        foreach($user->teachingClasses as $class){?>
+                        <li>
+                            <a data-class_id = "<?php echo $class->class_id; ?>" href="<?php echo Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id; ?>"><?php echo $class->class_name; ?></a>
+                        </li>
+                    <?php
+                        }
+                    }?>
 				</ul>
 			</div>						
 		</div>
