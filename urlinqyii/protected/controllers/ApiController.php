@@ -1382,6 +1382,40 @@ $user_email = $user->user_email;
             }
         }
 
+        public  function  actionGetUserDepartmentAndFollowing(){
+            if(!isset($_GET['user_id'])){
+                $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user_id not set');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $user_id = $_GET['user_id'];
+
+            $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
+
+            if(!$user){
+                $data = array('success'=>false,'error_id'=>2);
+                $this->renderJSON($data);
+                return;
+            }
+
+            $departments = array();
+
+            foreach ($user->departments as $department) {
+                $department_new = $this->model_to_array($department);
+                $department_new['department_connection_type'] = 'userfollowing';
+                array_push($departments, $department_new);
+            }
+
+            $department_new = $this->model_to_array($user->department);
+            $department_new['department_connection_type'] = 'userdept';
+            array_push($departments, $department_new);
+
+            $data = array('success'=>true,'departments'=>$departments);
+            $this->renderJSON($data);
+            return;
+        }
+
         //ERROR ID's
         // 1 - all data not set
         // 2 - User doesnt exist
@@ -1564,10 +1598,37 @@ $user_email = $user->user_email;
             if($department){
                 $data = array('success'=>true,'department'=>$this->model_to_array($department));
 
-                $data['department']['admins'] = $department->admins;
-                $data['department']['members'] = $department->students;
+                $admins = array();
+
+                foreach ($department->admins as $admin) {
+                    $new_admin = $this->model_to_array($admin);
+                    $new_admin['department'] = $admin->department;
+                    array_push($admins, $new_admin);
+                }
+
+                $students = array();
+
+                foreach ($department->students as $student) {
+                    $new_student = $this->model_to_array($student);
+                    $new_student['department'] = $student->department;
+                    array_push($students, $new_student);
+                }
+
+                $data['department']['admins'] = $admins;
+                $data['department']['members'] = $students;
                 $data['department']['member_count'] = count($department->users);
-                $data['department']['courses'] = $department->courses;
+
+                $courses = array();
+
+                foreach ($department->courses as $course) {
+                    $course_new = $this->model_to_array($course);
+                    $course_new['class_count'] = count($course->classes);
+                    $course_new['department'] = $course->department;
+                    array_push($courses, $course_new);
+                }
+
+                $data['department']['courses'] = $courses;
+
                 $user = $this->get_current_user($_GET);
                 if($user) {
                     $is_attending = DepartmentFollow::model()->find("department_id=:id and user_id=:user_id", array(":id"=>$department_id, ":user_id"=>$user->user_id));
