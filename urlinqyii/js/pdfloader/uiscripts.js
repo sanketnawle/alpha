@@ -189,10 +189,10 @@ function display_events(events){
   $("#events_template_loc").attr('current_page', 0);
   $("#events_template_loc").attr('pagecount', Math.ceil(events.length/4));
   events_length = events.length;
-  list_events(events.slice(0,4), "none", "block");
+  list_events(events.slice(0,4), "none", "block", 0);
 }
 
-function list_events(events, img_left, img_right){
+function list_events(events, img_left, img_right, page_value){
   display_text = '\
                   <div id="event_count">'+events_length+' Total events this semester</div>\
                     <div class = "syllabus_tab_add_event_wrapper">\
@@ -208,7 +208,7 @@ function list_events(events, img_left, img_right){
 
       for(i=0;i<events.length; i++){
                     display_text+='<div class="chip_content">\
-                      <div class="chip" index="'+i.toString()+'" hero-id="'+events[i]["event_id"]+'">\
+                      <div class="chip" index="'+(page_value*4+i)+'" hero-id="'+events[i]["event_id"]+'">\
                         <div class="chip-top" style="background:'+events[i]["color"]+';">\
                           <div class="month">\
                             <span class = "month_text">'+events[i]["month"]+'</span>\
@@ -438,7 +438,7 @@ $(document).on("click", ".img_lt", function(event){
                   }
                   start = (page_value)*4;
                   events = $("#events_template_loc").data('data-form').slice(start-4,start);
-                  list_events(events, show_left, "block");
+                  list_events(events, show_left, "block", page_value-1);
 });
 
 $(document).on("click", ".img_rt", function clicked_next(event){
@@ -450,5 +450,5 @@ $(document).on("click", ".img_rt", function clicked_next(event){
                   }
                   start = (page_value+1)*4;
                   events = $("#events_template_loc").data('data-form').slice(start,start+4);
-                  list_events(events, "block", show_right);
+                  list_events(events, "block", show_right, page_value+1);
 });

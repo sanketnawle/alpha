@@ -26,6 +26,9 @@ $(document).ready(function(){
 
   run_pdf_algo(false, globals.base_url+file_json["file_url"]);
   }
+  else{
+    $("#pdfContainer").html("<center>No pdf found</center>");
+  }
   
 });
 
@@ -252,6 +255,8 @@ var add_event_to_ui = function(events_generated){
       console.log(index);
     }
   });
+  events_list = load_events(file_id);
+    display_events(events_list);
 }
 
 
