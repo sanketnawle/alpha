@@ -35,7 +35,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
   <meta name="google-site-verification" content="qv_TWutBCtliggYTCBDzJeXCNfJ3Dd3L5SkIhBSxm5Y" />
   <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta.css" />
-  <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta_mobile.css" />
+  <link rel="stylesheet" type="text/css" media="only screen and (max-width: 480px)" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta_mobile.css" />
   <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/waiting_animation.css" rel='stylesheet' type='text/css'>
   <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
   <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>

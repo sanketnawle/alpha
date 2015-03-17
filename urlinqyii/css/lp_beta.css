@@ -1682,7 +1682,7 @@ div.forgotPassword
   position:relative;
 }
 
-#forgot_password_div {
+div#forgot_password_div {
   position:absolute;
   right: -8px;
   top: 12px;

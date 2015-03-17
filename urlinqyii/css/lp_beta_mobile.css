@@ -36,12 +36,16 @@ div.bottom-container
   background-color:#27292b;
 }
 ul.color-border {
-	margin:0 !important;
-	width:100% !important;
-	padding:0 !important;
-	text-align:center;
-	background-color:#27292b;
-	border-top:2px solid #000;
+  margin:0 !important;
+  width:100% !important;
+  padding:0 !important;
+  text-align:center;
+  background-color:#27292b;
+  border-top:2px solid #000;
+}
+
+div#forgot_password_div {
+  display:none;
 }
 
 #register_error_popup
