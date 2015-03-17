@@ -124,7 +124,7 @@ if($user->school->university_id == 4){
 		</div>
 
 
-        <?php echo $this->renderPartial('/partial/messaging_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id,'origin_name'=>$club->group_name)); ?>
+<!--        --><?php //echo $this->renderPartial('/partial/messaging_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id,'origin_name'=>$club->group_name)); ?>
 
 
 
