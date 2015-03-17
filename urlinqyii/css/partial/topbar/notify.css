@@ -332,8 +332,8 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
     width:358px!important;
     top: 0px;
     position: relative;
-    height: -webkit-calc(100% - 51px);
-    height: calc(100% - 51px);
+    height: -webkit-calc(100% - 51px)!important;
+    height: calc(100% - 51px)!important;
 }
 .topbar > #topbar_responsive_holder .right .notify.active .notify-window {
     opacity: 1;

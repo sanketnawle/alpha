@@ -94,6 +94,16 @@ if($user->school->university_id == 4){
                             <a data-class_id = "<?php echo $class->class_id; ?>" href="<?php echo Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id; ?>"><?php echo $class->class_name; ?></a>
                         </li>
                     <?php } ?>
+
+                    <?php
+                    if($user->user_type == 'p'){
+                        foreach($user->teachingClasses as $class){?>
+                        <li>
+                            <a data-class_id = "<?php echo $class->class_id; ?>" href="<?php echo Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id; ?>"><?php echo $class->class_name; ?></a>
+                        </li>
+                    <?php
+                        }
+                    }?>
 				</ul>
 			</div>						
 		</div>
@@ -122,6 +132,14 @@ if($user->school->university_id == 4){
 				</ul>				
 			</div>					
 		</div>
+
+
+<!--        --><?php //echo $this->renderPartial('/partial/messaging_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id,'origin_name'=>$club->group_name)); ?>
+
+
+
+
+
 
         <!--<div class = "LeftPanelSection LeftPanel_Clubs">
 			<div class = "LeftPanel_SectionHeader">

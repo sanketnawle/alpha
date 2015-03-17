@@ -198,6 +198,8 @@ class User extends CActiveRecord
 
             'classes' => array(self::MANY_MANY, 'ClassModel', 'class_user(user_id, class_id)'),
 
+            'teachingClasses' => array(self::HAS_MANY,'ClassModel',array('professor_id'=>'user_id')),
+
             'usersFollowed' => array(self::MANY_MANY, 'User', 'user_connection(from_user_id, to_user_id)'),
             'usersFollowing' => array(self::MANY_MANY, 'User', 'user_connection(to_user_id, from_user_id)'),
 

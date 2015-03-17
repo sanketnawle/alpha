@@ -559,7 +559,7 @@ class SiteController extends Controller
             }else{
 
                 //If user is p or a
-                if($user->status == 'active' || $user->status == 'onboarding'){
+                if($user->status == 'active'){
                     $data = array('success'=>false, 'error_msg'=>'user is already verified', 'error_id'=>10);
                     $this->renderJSON($data);
                     return;
@@ -924,7 +924,7 @@ class SiteController extends Controller
         Yii::app()->session['onboarding_step'] = 0;
 
         //Take user directly to step 4
-        if($user->status == 'p' || $user->status == 'a'){
+        if($user->user_type == 'p' || $user->user_type == 'a'){
             if($user->status == 'onboarding'){
                 Yii::app()->session['onboarding_step'] = 3;
             }
@@ -936,7 +936,9 @@ class SiteController extends Controller
         if($school){
             //Skip the select class portion for Touro students
             if($school->university_id == 4){
-                Yii::app()->session['onboarding_step'] = 4;
+                if($user->user_type == 's'){
+                    Yii::app()->session['onboarding_step'] = 4;
+                }
             }
         }
 
@@ -1011,77 +1013,73 @@ class SiteController extends Controller
 
 
         //Custom solution for auto adding Touro students to their classes
-        if($user->school->university_id == 4){
-            if($user->user_type == 's'){
+        if($user->school->university_id == 4 && $user->user_type == 's'){
+            $department = $user->department;
+            if($department->department_name == 'Master of Biological & Physical Sciences' || $department->department_name == 'First Year Medical Student'){
+
+                $first_year_masters_department = Department::model()->find('department_name=:name', array(':name'=>'First Year/Masters'));
+                foreach($first_year_masters_department->courses as $course){
+                    foreach($course->classes as $class){
+                        $class_user = new ClassUser;
+                        $class_user->class_id = $class->class_id;
+                        $class_user->user_id = $user->user_id;
+                        $class_user->color_id = get_random_color();
+                        $class_user->save(false);
 
 
-                $department = $user->department;
-                if($department->department_name == 'Master of Biological & Physical Sciences' || $department->department_name == 'First Year Medical Student'){
-
-                    $first_year_masters_department = Department::model()->find('department_name=:name', array(':name'=>'First Year/Masters'));
-                    foreach($first_year_masters_department->courses as $course){
-                        foreach($course->classes as $class){
-                            $class_user = new ClassUser;
-                            $class_user->class_id = $class->class_id;
-                            $class_user->user_id = $user->user_id;
-                            $class_user->color_id = get_random_color();
-                            $class_user->save(false);
-
-
-                            //Get all events for this class
-                        }
+                        //Get all events for this class
                     }
                 }
-
-                if($department->department_name == 'First Year Medical Student'){
-                    $_POST['graduation_date'] = '2018';
-                    //$department = Department::model()->find('department_name=:name', array(':name'=>'First Year Medical Student'));
-                    foreach($department->courses as $course){
-                        foreach($course->classes as $class){
-                            $class_user = new ClassUser;
-                            $class_user->class_id = $class->class_id;
-                            $class_user->user_id = $user->user_id;
-                            $class_user->color_id = get_random_color();
-                            $class_user->save(false);
-                        }
-                    }
-                }
-
-
-                if($department->department_name == 'Master of Biological & Physical Sciences'){
-                    $_POST['graduation_date'] = '2015';
-                    //$department = Department::model()->find('department_name=:name', array(':name'=>'Master of Biological & Physical Sciences'));
-                    foreach($department->courses as $course){
-                        foreach($course->classes as $class){
-                            $class_user = new ClassUser;
-                            $class_user->class_id = $class->class_id;
-                            $class_user->user_id = $user->user_id;
-                            $class_user->color_id = get_random_color();
-                            $class_user->save(false);
-                        }
-                    }
-                }
-
-
-                if($department->department_name == 'Second Year Medical Student'){
-                    $_POST['graduation_date'] = '2017';
-                    //$department = Department::model()->find('department_name=:name and university_id=:university_id', array(':name'=>$department->department_name));
-                    foreach($department->courses as $course){
-                        foreach($course->classes as $class){
-                            $class_user = new ClassUser;
-                            $class_user->class_id = $class->class_id;
-                            $class_user->user_id = $user->user_id;
-                            $class_user->color_id = get_random_color();
-                            $class_user->save(false);
-                        }
-                    }
-                }
-
-
-
-            }else if($user->user_type == 'p'){
-
             }
+
+            if($department->department_name == 'First Year Medical Student'){
+                $_POST['graduation_date'] = '2018';
+                //$department = Department::model()->find('department_name=:name', array(':name'=>'First Year Medical Student'));
+                foreach($department->courses as $course){
+                    foreach($course->classes as $class){
+                        $class_user = new ClassUser;
+                        $class_user->class_id = $class->class_id;
+                        $class_user->user_id = $user->user_id;
+                        $class_user->color_id = get_random_color();
+                        $class_user->save(false);
+                    }
+                }
+            }
+
+
+            if($department->department_name == 'Master of Biological & Physical Sciences'){
+                $_POST['graduation_date'] = '2015';
+                //$department = Department::model()->find('department_name=:name', array(':name'=>'Master of Biological & Physical Sciences'));
+                foreach($department->courses as $course){
+                    foreach($course->classes as $class){
+                        $class_user = new ClassUser;
+                        $class_user->class_id = $class->class_id;
+                        $class_user->user_id = $user->user_id;
+                        $class_user->color_id = get_random_color();
+                        $class_user->save(false);
+                    }
+                }
+            }
+
+
+            if($department->department_name == 'Second Year Medical Student'){
+                $_POST['graduation_date'] = '2017';
+                //$department = Department::model()->find('department_name=:name and university_id=:university_id', array(':name'=>$department->department_name));
+                foreach($department->courses as $course){
+                    foreach($course->classes as $class){
+                        $class_user = new ClassUser;
+                        $class_user->class_id = $class->class_id;
+                        $class_user->user_id = $user->user_id;
+                        $class_user->color_id = get_random_color();
+                        $class_user->save(false);
+                    }
+                }
+            }
+
+//
+//            else if($user->user_type == 'p'){
+//
+//            }
 
 
 
@@ -1091,35 +1089,56 @@ class SiteController extends Controller
                     $class = ClassModel::model()->find('class_id=:id',array(':id'=>$class_id));
                     if($class){
 
-                        //Check if this already exists
-                        $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id',array(':user_id'=>$user->user_id, ':class_id'=>$class_id));
-                        if(!$class_user){
-                            //See if this user is already in a class with the same course id
-                            foreach($user->classes as $other_class){
-                                if($other_class->course_id == $class->course_id){
-                                    $data = array('success'=>false, 'error_id'=>11, 'error_msg'=>'Already in a class with this course');
+
+                        if($user->user_type == 's' || $user->user_type == 'a'){
+                            //Check if this already exists
+                            $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id',array(':user_id'=>$user->user_id, ':class_id'=>$class_id));
+                            if(!$class_user){
+                                //See if this user is already in a class with the same course id
+                                foreach($user->classes as $other_class){
+                                    if($other_class->course_id == $class->course_id){
+                                        $data = array('success'=>false, 'error_id'=>11, 'error_msg'=>'Already in a class with this course');
+                                        $this->renderJSON($data);
+                                        return;
+                                    }
+                                }
+
+
+
+                                $class_user = new ClassUser;
+                                $class_user->user_id = $user->user_id;
+                                $class_user->class_id = $class_id;
+                                $class_user->color_id = get_random_color();
+
+                                if($user->user_type == 'p' || $user->user_type == 'a'){
+                                    $class_user->is_admin = true;
+                                }
+
+                                if(!$class_user->save(false)){
+                                    $data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'Error saving class user');
+                                    $this->renderJSON($data);
+                                    return;
+                                }
+                            }
+                        }elseif($user->user_type == 'p'){
+                            //For now, trust that the user is who the say the are
+                            //(since we know they atleast verified their email, its unlikely
+                            //that the user is fake))
+                            //and set class's professor to this user
+                            //Also check if class id is null, because if its not
+                            //theres a huge chance the correct professor has already been added to the database
+                            if($class->professor_id == NULL){
+                                $class->professor_id = $user->user_id;
+                                if(!$class->save(false)){
+                                    $data = array('success'=>false, 'error_id'=>6, 'error_msg'=>'Error updating professor id in class');
                                     $this->renderJSON($data);
                                     return;
                                 }
                             }
 
-
-
-                            $class_user = new ClassUser;
-                            $class_user->user_id = $user->user_id;
-                            $class_user->class_id = $class_id;
-                            $class_user->color_id = get_random_color();
-
-                            if($user->user_type == 'p' || $user->user_type == 'a'){
-                                $class_user->is_admin = true;
-                            }
-
-                            if(!$class_user->save(false)){
-                                $data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'Error saving class user');
-                                $this->renderJSON($data);
-                                return;
-                            }
                         }
+
+
                     }else{
                         $data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'invalid class id');
                         $this->renderJSON($data);
@@ -1443,7 +1462,7 @@ class SiteController extends Controller
             include "password_encryption.php";
 
             if($user_type == 'p' || $user_type == 'a'){
-                $professor = User::model()->findBySql("SELECT * FROM `user` LEFT JOIN `professor_attribute` ON (user.user_id = professor_attribute.professor_id) WHERE LOWER(user.user_email) LIKE LOWER(" . $email . ") OR LOWER(professor_attribute.alternate_email) LIKE LOWER(" . $email . ") LIMIT 1");
+                $professor = User::model()->findBySql("SELECT * FROM `user` LEFT JOIN `professor_attribute` ON (user.user_id = professor_attribute.professor_id) WHERE LOWER(user.user_email) LIKE LOWER('" . $email . "') OR LOWER(professor_attribute.alternate_email) LIKE LOWER('" . $email . "') LIMIT 1");
                 if($professor){
                     //Professor is already in our database
 
@@ -1504,13 +1523,13 @@ class SiteController extends Controller
                     $professor->university_id = $university_id;
                     $professor->school_id = null;
                     $professor->department_id = null;
-                    $professor->status = 'onboarding';
+                    $professor->status = 'unverified';
                     try{
                         $professor->save(false);
 
                         $this->add_default_user_events($professor);
                     }catch(Exception $e){
-                        $data = array('success'=>false,'error_id'=>12, 'error'=>'Error saving professor');
+                        $data = array('success'=>false,'error_id'=>12, 'error'=>'Error saving professor', 'error_msg'=>$e->getMessage());
                         $this->renderJSON($data);
                         return;
                     }
