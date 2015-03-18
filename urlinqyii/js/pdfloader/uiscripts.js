@@ -1,3 +1,48 @@
+$(document).ready(function(){
+    
+;(function($){
+    $.fn.extend({
+        donetyping: function(callback,timeout){
+            timeout = timeout || 1e3; // 1 second default timeout
+            var timeoutReference,
+                doneTyping = function(el){
+                    if (!timeoutReference) return;
+                    timeoutReference = null;
+                    callback.call(el);
+                };
+            return this.each(function(i,el){
+                var $el = $(el);
+                // Chrome Fix (Use keyup over keypress to detect backspace)
+                // thank you @palerdot
+                $el.is(':input') && $el.on('keyup keypress',function(e){
+                    // This catches the backspace button in chrome, but also prevents
+                    // the event from triggering too premptively. Without this line,
+                    // using tab/shift+tab will make the focused element fire the callback.
+                    if (e.type=='keyup' && e.keyCode!=8) return;
+                    
+                    // Check if timeout has been set. If it has, "reset" the clock and
+                    // start over again.
+                    if (timeoutReference) clearTimeout(timeoutReference);
+                    timeoutReference = setTimeout(function(){
+                        // if we made it here, our timeout has elapsed. Fire the
+                        // callback
+                        doneTyping(el);
+                    }, timeout);
+                }).on('blur',function(){
+                    // If we can, fire the event since we're leaving the field
+                    doneTyping(el);
+                });
+            });
+        }
+    });
+})(jQuery);
+
+$('#txt_initial_search').donetyping(function(){
+  search_events();
+});
+});
+
+
 var events_length = 0;
 $(document).on("click",'#btn_add_syllabus', function(event){
         event.preventDefault();
@@ -197,17 +242,27 @@ function formatAMPM(date) {
 }
 
 
-function display_events(events){
+function display_events(events, is_root){
   $("#events_template_loc").data('data-form', events);
   $("#events_template_loc").attr('current_page', 0);
   $("#events_template_loc").attr('pagecount', Math.ceil(events.length/4));
   events_length = events.length;
-  list_events(events.slice(0,4), "none", "block", 0);
+  right = "block";
+  if(events_length<=4){
+    right = "none";
+  }
+  if(is_root){
+    search_text = " Total events this semester";
+  }
+  else{
+    search_text = " Total events found"
+  }
+  list_events(events.slice(0,4), "none", right, 0, search_text);
 }
 
-function list_events(events, img_left, img_right, page_value){
+function list_events(events, img_left, img_right, page_value, result_text){
   display_text = '\
-                  <div id="event_count">'+events_length+' Total events this semester</div>\
+                  <div id="event_count">'+events_length+ result_text+'</div>\
                     <div class = "syllabus_tab_add_event_wrapper">\
                       <div class = "add_event_button fbar_buttonwrapper" id = "fbar_button_event" data-post_button_type="event">\
                       </div>\
@@ -312,6 +367,9 @@ $(document).on("click", ".chip", function(event){
                   </div>\
                 <div class="time_card">\
                     <span>'+form_data["time"]+'</span>\
+                </div>\
+                <br>\
+                <div style="margin-left: 10px;margin-right: 10px;">'+ get_people_attending(form_data["event_id"])+'\
                 </div>\
             </div>\
             <div class="card-right">\
@@ -504,7 +562,7 @@ $(document).on("click", ".img_lt", function(event){
                   }
                   start = (page_value)*4;
                   events = $("#events_template_loc").data('data-form').slice(start-4,start);
-                  list_events(events, show_left, "block", page_value-1);
+                  list_events(events, show_left, "block", page_value-1, " Total events this semester");
 });
 
 $(document).on("click", ".img_rt", function clicked_next(event){
@@ -516,5 +574,89 @@ $(document).on("click", ".img_rt", function clicked_next(event){
                   }
                   start = (page_value+1)*4;
                   events = $("#events_template_loc").data('data-form').slice(start,start+4);
-                  list_events(events, "block", show_right, page_value+1);
+                  list_events(events, "block", show_right, page_value+1, " Total events this semester");
 });
+
+var search_events = function(){
+    var event_array_list = new Array();
+    keyword = $("#txt_initial_search").val();
+    var resp = $.ajax({
+               url: "SearchEvents",
+               type: "POST",
+               data: {"origin_id":globals.origin_id, "keyword": keyword},
+               async: false,
+               success: function(response) {
+                  $.each(response, function(index,value){
+                    var d = new Date(value["start_date"]+" "+ value["start_time"]);
+                    var dt = new Date(value["end_date"]+" "+ value["end_time"]);
+                    if(d.getHours()!="0" && dt.getHours()!="0"){
+                      time = "from "+formatAMPM(d)+" to "+formatAMPM(dt);
+                    }
+                    else if(d.getHours()!="0"){
+                      time="@ " + formatAMPM(d);
+                    }
+                    else{
+                      time="";
+                    }
+                    if(value["location"]==""){
+                      event_location = "Add location";
+                    }
+                    else{
+                      event_location = value["location"];
+                    }
+                    if(value["description"]==""){
+                      description = "Add description";
+                    }
+                    else{
+                      description = value["description"];
+                    }
+                    
+                    var event_value ={
+                      title: value["title"],
+                      location: event_location,
+                      description: description,
+                      event_id: value["event_id"],
+                      day: d.getDate(),
+                      month: month[d.getMonth()],
+                      event_id: value["event_id"],
+                      time: time,
+                      color: class_color,
+                      origin_type: value["origin_type"],
+                    };
+                      event_array_list.push(event_value);
+                   
+                  });
+               },
+               error: function(jqXHR, textStatus, errorMessage) {
+                   console.log(errorMessage); // Optional
+               }
+            });
+    if(keyword==""){
+      is_root = 1;
+    }
+    else{
+      is_root = 0;
+    }
+    display_events(event_array_list, is_root);
+    
+};
+
+function get_people_attending(event_id){
+  console.log(event_id);
+  var people_attending_html = "";
+ var resp = $.ajax({
+               url: "GetPeopleAttending",
+               type: "POST",
+               data: {"event_id":event_id},
+               async: false,
+               success: function(response) {
+                $.each(response, function(index, value){
+                    people_attending_html+='<div class="card-icon" title="'+value["firstname"]+" "+value["lastname"]+'" style="background-size: contain;background:url('+globals.base_url+value["file_url"]+');"></div>';
+                });
+               },
+               error: function(jqXHR, textStatus, errorMessage) {
+                   console.log(errorMessage); // Optional
+               }
+            });
+ return people_attending_html;
+}
