@@ -920,6 +920,24 @@ class ClassController extends Controller
         return;
     }
 
+    public function actionSearchEvents(){
+
+        if(!isset($_POST['origin_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'parameters not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $origin_id = $_POST["origin_id"];
+        $keyword = $_POST["keyword"];
+        $user_id = $this->get_current_user();
+
+        $events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.origin_id=".$origin_id." AND (event.title LIKE '%" . $keyword . "%' OR description LIKE '%" . $keyword . "%')")->queryAll();
+
+        $this->renderJSON($events);
+        return;
+    }
+
 
 
 
