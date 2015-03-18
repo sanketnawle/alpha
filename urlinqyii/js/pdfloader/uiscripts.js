@@ -368,6 +368,9 @@ $(document).on("click", ".chip", function(event){
                 <div class="time_card">\
                     <span>'+form_data["time"]+'</span>\
                 </div>\
+                <br>\
+                <div style="margin-left: 10px;margin-right: 10px;">'+ get_people_attending(form_data["event_id"])+'\
+                </div>\
             </div>\
             <div class="card-right">\
               <div>\
@@ -637,3 +640,23 @@ var search_events = function(){
     display_events(event_array_list, is_root);
     
 };
+
+function get_people_attending(event_id){
+  console.log(event_id);
+  var people_attending_html = "";
+ var resp = $.ajax({
+               url: "GetPeopleAttending",
+               type: "POST",
+               data: {"event_id":event_id},
+               async: false,
+               success: function(response) {
+                $.each(response, function(index, value){
+                    people_attending_html+='<div class="card-icon" title="'+value["firstname"]+" "+value["lastname"]+'" style="background-size: contain;background:url('+globals.base_url+value["file_url"]+');"></div>';
+                });
+               },
+               error: function(jqXHR, textStatus, errorMessage) {
+                   console.log(errorMessage); // Optional
+               }
+            });
+ return people_attending_html;
+}

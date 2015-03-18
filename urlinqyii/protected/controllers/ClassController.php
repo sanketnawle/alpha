@@ -938,6 +938,31 @@ class ClassController extends Controller
         return;
     }
 
+    public function actiongetpeopleattending(){
+        if(!isset($_POST['event_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'parameters not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $event_id = $_POST["event_id"];
+
+        $users = Yii::app()->db->createCommand("SELECT user_id FROM `event_user` WHERE event_user.event_id=".$event_id)->queryAll();
+        if($users){
+            $clause = '';
+            foreach ($users as $key) {
+
+                $clause = $clause.$key["user_id"].',';
+                # code...
+            }
+            $user_details = Yii::app()->db->createCommand("SELECT user.firstname, user.lastname, file.file_url from `user`, `file` WHERE user.user_id in (".rtrim($clause, ",").") and user.picture_file_id=file.file_id")->queryAll();
+            $this->renderJSON($user_details);
+            return;
+        }
+            $this->renderJSON(array());
+            return;
+    }
+
 
 
 
