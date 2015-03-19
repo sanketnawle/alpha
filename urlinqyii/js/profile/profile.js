@@ -590,7 +590,7 @@ $(document).ready(function() {
 
 
 
-            render_post(post, 'prepend');
+            render_post(post);
         });
     }
 
