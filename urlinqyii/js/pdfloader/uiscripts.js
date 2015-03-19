@@ -183,7 +183,7 @@ var load_events = function (pdf_id) {
                   event_id: value["event_id"],
                   time: time,
                   color: class_color,
-                  origin_type: value["origin_type"],
+                  origin_type: value["event_type"],
                 };
                   event_array_list.push(event_value);
                
