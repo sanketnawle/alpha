@@ -21,8 +21,7 @@ $(document).ready(function(){
 
     }
 
-    events_list = load_events(file_json["file_id"]);
-    display_events(events_list, 1);
+    file_id = file_json["file_id"];
 
   run_pdf_algo(false, globals.base_url+file_json["file_url"]);
   }

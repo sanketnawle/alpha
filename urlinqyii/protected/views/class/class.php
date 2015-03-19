@@ -222,7 +222,7 @@
                 <div class="tab_wedge"></div>
             </div>
 
-            <div class="tab syllabus" data-panel_id="2">
+            <div class="tab syllabus" id="_syllabus_tab" data-panel_id="2">
                 <div class="tab_content">
                     <div class="tab_img"></div>
                     <div class="tab_text">Syllabus</div>

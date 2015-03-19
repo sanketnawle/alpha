@@ -183,7 +183,7 @@ var load_events = function (pdf_id) {
                   event_id: value["event_id"],
                   time: time,
                   color: class_color,
-                  origin_type: value["origin_type"],
+                  origin_type: value["event_type"],
                 };
                   event_array_list.push(event_value);
                
@@ -660,3 +660,8 @@ function get_people_attending(event_id){
             });
  return people_attending_html;
 }
+
+$(document).on("click", "#_syllabus_tab", function(event){
+  events_list = load_events(file_id);
+  display_events(events_list, 1);
+});

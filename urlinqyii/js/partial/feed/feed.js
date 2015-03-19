@@ -680,6 +680,7 @@ function ready(globals){
             var url = findUrlInPost(post_data['reply_text']);
             post_data['reply_text']=post_data['reply_text'].replace(url,'<a href="'+url+'" target = "_blank" >'+url+'</a>');
         }
+        post_data['reply_text']=post_data['reply_text'].replace(/(?:\r\n|\r|\n)/g, '<br />');
         var post_url = globals.base_url + '/post/reply';
 
         console.log('SENDING POST REPLY');
