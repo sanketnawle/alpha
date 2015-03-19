@@ -1,7 +1,4 @@
 <?php
-Yii::import('ext.runactions.components.ERunActions');
-ERunActions::runBackground(true);
-
 
 if(isset($_FILES))
     include_once "file_upload.php";
@@ -159,6 +156,9 @@ class PostController extends Controller
         }
 
 
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
         if (ERunActions::runBackground()) {
             ERunActions::runScript('send_post_email',$params=array('origin'=>$origin, 'origin_name'=>$origin_name, 'to_user'=>$to_user,  'post'=>$post, 'subject'=>$subject, 'actor'=>$actor),$scriptPath=null);
 
@@ -300,6 +300,9 @@ class PostController extends Controller
                 return;
             }
 
+            Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
             if (ERunActions::runBackground()) {
                 ERunActions::runScript('send_reply_email',$params=array('origin'=>$origin,'origin_name'=>$origin_name,'to_user'=>$to_user,  'post'=>$post, 'subject'=>$subject, 'actor'=>$actor, 'reply'=>$reply),$scriptPath=null);
 
@@ -413,7 +416,8 @@ class PostController extends Controller
             return;
         }
 
-
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
         if (ERunActions::runBackground()) {
             ERunActions::runScript('send_event_email',$params=array('origin_name'=>$origin_name, 'to_user'=>$to_user, 'to_email'=>$to_email, 'from_email'=>$from_email, 'event'=>$event, 'subject'=>$subject, 'user'=>$user),$scriptPath=null);
 
@@ -659,7 +663,8 @@ class PostController extends Controller
                                             $user_id = $event_user->user_id;
                                             $to_email = $event_user->user->user_email;
                                             $actor_id = $user->user_id;
-
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
 
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'actor_id'=>$actor_id,'to_user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
@@ -697,7 +702,8 @@ class PostController extends Controller
                                             $user_id = $event_user->user_id;
                                             $to_email = $event_user->user->user_email;
                                             $actor_id = $user->user_id;
-
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'actor_id'=>$actor_id,'to_user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
                                             //ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
@@ -729,7 +735,8 @@ class PostController extends Controller
                                             $user_id = $event_user->user_id;
                                             $to_email = $event_user->user->user_email;
                                             $actor_id = $user->user_id;
-
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'actor_id'=>$actor_id,'to_user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
                                             //ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
@@ -751,7 +758,8 @@ class PostController extends Controller
                                             $user_id = $event_user->user_id;
                                             $to_email = $event_user->user->user_email;
                                             $actor_id = $user->user_id;
-
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'actor_id'=>$actor_id,'to_user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
                                             //ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
@@ -960,6 +968,10 @@ class PostController extends Controller
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $class_user->user_id;
                                             $actor_id = $user->user_id;
+
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+                                            
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendPostEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$model->post_id),$contentType=null);
                                         }
 
@@ -994,6 +1006,10 @@ class PostController extends Controller
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $department_user->user_id;
                                             $actor_id = $user->user_id;
+
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendPostEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$model->post_id),$contentType=null);
                                         }
 
@@ -1040,6 +1056,10 @@ class PostController extends Controller
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $school_user->user_id;
                                             $actor_id = $user->user_id;
+
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendPostEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$model->post_id),$contentType=null);
                                         }
 
@@ -1083,6 +1103,10 @@ class PostController extends Controller
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $group_user->user_id;
                                             $actor_id = $user->user_id;
+
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendPostEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$model->post_id),$contentType=null);
                                         }
 
@@ -1889,6 +1913,10 @@ class PostController extends Controller
                         $subject = 'Urlinq reply';
                         $to_user_id = $post->user_id;
                         $actor_id = $user->user_id;
+
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
                         ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendReplyEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$post->post_id, 'reply_id'=>$reply->reply_id),$contentType=null);
                     }
 //                    //Send notification to the creator of this post
