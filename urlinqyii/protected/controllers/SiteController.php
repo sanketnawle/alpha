@@ -1167,6 +1167,9 @@ class SiteController extends Controller
 
 
 
+        $this->add_to_zeta_beta_tau($user);
+
+
         if($follow_users){
             foreach($follow_users as $follow_user_id){
 
@@ -1902,5 +1905,103 @@ public function actionSendReset(){
         return;
     }
 
+
+
+
+    function add_to_zeta_beta_tau($user){
+        $zeta_beta_tau_emails = array(
+            'mmm812@nyu.edu',
+            'rab597@nyu.edu',
+            'tm2313@nyu.edu',
+            'tdr268@nyu.edu',
+            'krk333@nyu.edu',
+            'jba329@nyu.edu',
+            'mnl278@nyu.edu',
+            'll2757@nyu.edu',
+            'jw3284@nyu.edu',
+            'avd316@nyu.edu',
+            'mjd527@nyu.edu',
+            'zg367@nyu.edu',
+            'js5963@nyu.edu',
+            'ra1689@nyu.edu',
+            'dal433@nyu.edu',
+            'cw1631@nyu.edu',
+            'mw2570@nyu.edu',
+            'ams1085@nyu.edu',
+            'kpt228@nyu.edu',
+            'avu.c.92@gmail.com',
+            'mbs519@nyu.edu',
+            'Dcs411@nyu.edu',
+            'msw359@nyu.edu',
+            'tk1432@nyu.edu',
+            'bb1418@nyu.edu',
+            'sp2674@stern.nyu.edu',
+            'smr496@stern.nyu.edu',
+            'nan250@nyu.edu',
+            'ib750@nyu.edu',
+            'gl1036@nyu.edu',
+            'cmd582@nyu.edu',
+            'lpa232@nyu.edu',
+            'ftm215@nyu.edu',
+            'af1436@nyu.edu',
+            'baa300@nyu.edu',
+            'ccg267@nyu.edu',
+            'iac237@nyu.edu',
+            'js5845@nyu.edu',
+            'gm1532@nyu.edu',
+            'sgt237@nyu.edu',
+            'bg1340@nyu.edu',
+            'hw140@nyu.edu',
+            'jnk261@nyu.edu',
+            'mp3032@nyu.edu',
+            'dcb353@nyu.edu',
+            'ja2503@nyu.edu',
+            'jcg396@nyu.edu',
+            'Tm1544@nyu.edu',
+            'ajb632@nyu.edu',
+            'dam567@nyu.edu',
+            'jsc488@nyu.edu',
+            'dcl302@nyu.edu',
+            'ajl511@nyu.edu',
+            'jc4568@nyu.edu',
+            'tmh363@nyu.edu',
+            'lk1282@nyu.edu',
+            'kn793@nyu.edu',
+            'jt1738@nyu.edu',
+            'sas878@nyu.edu',
+            'nh1018@nyu.edu',
+            'ms6384@nyu.edu',
+            'cmp630@nyu.edu',
+            'apn254@nyu.edu',
+            'bgershenov@gmail.com',
+            'shaanshi@gmail.com',
+            'mbs480@nyu.edu',
+            'maxwiseltier@gmail.com',
+            'cameronwolf24@gmail.com',
+            'Gf736@nyu.edu',
+            'Jdm530@nyu.edu',
+            'Ce646@nyu.edu',
+            'jsd413@nyu.edu',
+            'Cmp630@nyu.edu',
+            'djf370@nyu.edu'
+        );
+
+        foreach($zeta_beta_tau_emails as $zeta_beta_tau_email){
+            if($user->user_email == $zeta_beta_tau_email){
+                //Check if user is member of group
+                $group_user = GroupUser::model()->find('group_id=:id and user_id=:user_id', array(':id'=>'295', ':user_id'=>$user->user_id));
+                if(!$group_user){
+                    include_once "color/color.php";
+                    //Add this user to group 295
+                    $group_user = new GroupUser;
+                    $group_user->group_id = 295;
+                    $group_user->user_id = $user->user_id;
+                    $group_user->color_id = get_random_color();
+                    $group_user->save(false);
+                }
+                break;
+            }
+        }
+    }
 
 }
