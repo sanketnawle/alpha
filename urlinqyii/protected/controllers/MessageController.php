@@ -195,6 +195,85 @@ class MessageController extends Controller
         return;
 	}
 
+    function get_message_data($message){
+
+
+        $origin = null;
+
+        if($message->target_type == 'user'){
+            $user = User::model()->find('user_id=:id', array(':id'=>$message->target_id));
+            if(!$user){
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'user doesnt exist');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $origin = $this->model_to_array($user);
+            $origin['name']  = $user['firstname'] . ' ' . $user['lastname'];
+            $origin['type'] = 'user';
+            $origin['id'] = $user['user_id'];
+        }elseif($message->target_type == 'group' || $message->target_type == 'club'){
+
+            $group = Group::model()->find('group_id=:id', array(':id'=>$message->target_id));
+            if(!$group){
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'group doesnt exist');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $origin = $this->model_to_array($group);
+            $origin['name']  = $group['group_name'];
+            $origin['type'] = 'group';
+            $origin['id'] = $group['group_id'];
+
+
+        }elseif($message->target_type == 'class'){
+            $class = ClassModel::model()->find('class_id=:id', array(':id'=>$message->target_id));
+            if(!$class){
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'Class doesnt exist');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $origin = $this->model_to_array($class);
+            $origin['name']  = $class['class_name'];
+            $origin['type'] = 'class';
+            $origin['id'] = $class['class_id'];
+
+        }elseif($message->target_type == 'custom'){
+            $message_group = MessageGroup::model()->find('id=:id', array(':id'=>$message->target_id));
+            if(!$message_group){
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'Msg group doesnt exist');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $origin = $this->model_to_array($message_group);
+        }
+
+
+        $message = $this->model_to_array($message);
+
+        $message['origin'] = $origin;
+
+
+        return $message;
+
+    }
+
+
+
+    function get_messages_data($messages){
+
+        for($i = 0; $i< count($messages); $i++){
+            $messages[$i] = $this->get_message_data($messages[$i]);
+        }
+
+
+
+        return $messages;
+    }
+
 
 
      //GET
@@ -246,7 +325,12 @@ class MessageController extends Controller
         }
 
 
-        $return_data = array('success'=>true, 'messages'=>$messages, 'last_update'=>date('Y-m-d H:i:s'), 'target_type'=>$target_type);
+
+
+
+
+
+        $return_data = array('success'=>true, 'messages'=>$this->get_messages_data($messages), 'last_update'=>date('Y-m-d H:i:s'), 'target_type'=>$target_type);
         $this->renderJSON($return_data);
         return;
 
@@ -463,58 +547,7 @@ class MessageController extends Controller
 //            return;
 //        }
 
-        $origin = null;
-
-        if($message->target_type == 'user'){
-            $user = User::model()->find('user_id=:id', array(':id'=>$message->target_id));
-            if(!$user){
-                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'user doesnt exist');
-                $this->renderJSON($data);
-                return;
-            }
-
-            $origin = $this->model_to_array($user);
-            $origin['name']  = $user['firstname'] . ' ' . $user['lastname'];
-            $origin['type'] = 'user';
-            $origin['id'] = $user['user_id'];
-        }elseif($message->target_type == 'group' || $message->target_type == 'club'){
-
-            $group = Group::model()->find('group_id=:id', array(':id'=>$message->target_id));
-            if(!$group){
-                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'group doesnt exist');
-                $this->renderJSON($data);
-                return;
-            }
-
-            $origin = $this->model_to_array($group);
-            $origin['name']  = $group['group_name'];
-            $origin['type'] = 'group';
-            $origin['id'] = $group['group_id'];
-
-
-        }elseif($message->target_type == 'class'){
-            $class = ClassModel::model()->find('class_id=:id', array(':id'=>$message->target_id));
-            if(!$class){
-                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'Class doesnt exist');
-                $this->renderJSON($data);
-                return;
-            }
-
-            $origin = $this->model_to_array($class);
-            $origin['name']  = $class['class_name'];
-            $origin['type'] = 'class';
-            $origin['id'] = $class['class_id'];
-
-        }elseif($message->target_type == 'custom'){
-            $message_group = MessageGroup::model()->find('id=:id', array(':id'=>$message->target_id));
-            if(!$message_group){
-                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'Msg group doesnt exist');
-                $this->renderJSON($data);
-                return;
-            }
-
-            $origin = $this->model_to_array($message_group);
-        }
+        $origin = $this->get_message_data($message)['origin'];
 
 
 
@@ -609,7 +642,7 @@ class MessageController extends Controller
                 ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/message/sendFunction',$postData=array('message_id'=>$message->id),$contentType=null);
 
 
-                $return_data = array('success'=>true, 'message'=>$message, 'last_update'=>date('Y-m-d H:i:s'));
+                $return_data = array('success'=>true, 'message'=>$this->get_message_data($message), 'last_update'=>date('Y-m-d H:i:s'));
                 $this->renderJSON($return_data);
                 return;
             }else{
