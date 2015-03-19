@@ -660,3 +660,8 @@ function get_people_attending(event_id){
             });
  return people_attending_html;
 }
+
+$(document).on("click", "#_syllabus_tab", function(event){
+  events_list = load_events(file_id);
+  display_events(events_list, 1);
+});
