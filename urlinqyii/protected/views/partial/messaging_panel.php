@@ -25,7 +25,7 @@
 
 
 <script id="messaging_list_item_template" type="text/x-handlebars-template">
-    <div class="messaging_list_item" data-id='{{id}}' data-type='{{type}}'>
+    <div class="messaging_list_item" data-id='{{id}}' data-type='{{type}}' data-name="{{name}}">
         <div class="messaging_list_item_left_holder">
             <div class='messaging_list_item_pic' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{pictureFile.file_url}}');">
                 {{#if is_online}}
@@ -81,6 +81,26 @@
 </div>
 
 
+
+<script id="extra_chat_boxes_template" type="text/x-handlebars-template">
+    <div id="extra_chat_boxes" style="display: none;">
+        <div id="extra_chat_boxes_list" style="display: none;"></div>
+        <div id="extra_chat_boxes_text">More chats</div>
+        <div id="extra_chat_boxes_count"></div>
+    </div>
+</script>
+
+
+
+<script id="extra_chat_box_template" type="text/x-handlebars-template">
+    <div class="extra_chat_box" data-type="{{type}}" data-id="{{id}}" data-name="{{name}}">
+        {{name}}
+    </div>
+</script>
+
+
+
+
 <script id="this_user_message_template" type="text/x-handlebars-template">
     <div class="this_user_message" data-user_id='{{user_id}}'>
     {{text}}
@@ -99,7 +119,7 @@
 <script id="chat_box_template" type="text/x-handlebars-template">
 
 
-    <div class="chat_box" data-id="{{id}}" data-type="{{type}}">
+    <div class="chat_box" data-id="{{id}}" data-type="{{type}}" data-name="{{name}}">
         <div class="chat_box_text">
             <div class="chat_message_wrap">
 

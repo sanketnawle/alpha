@@ -83,6 +83,7 @@ $client->setClientSecret($client_secret);
 $client->setRedirectUri($redirect_uri);
 $client->setApprovalPrompt("force");
 $client->setAccessType("offline");
+$client->setApprovalPrompt("force");
 $client->addScope("https://www.googleapis.com/auth/calendar");
 
 $client_batch = new Google_Client();

@@ -76,6 +76,8 @@
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_settings.js'></script>
+<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/class/syllabus_tab.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_syllabus.css" rel="import">
       
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/pdfloader/minimal.css" rel="stylesheet" media="screen" />
       <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/util.js"></script>
@@ -330,7 +332,7 @@
         </div>
 
         <?php if($is_member){ ?>
-        <div class="panel tab_syllabus" style="left:-9px;width:100%;" id="panel_2">
+        <div class="panel tab_syllabus" style="left:-16px;width:100%" id="panel_2">
         <?php }else{ ?>
         <div class="panel tab_syllabus" id="panel_2" style="display:none">
         <?php } ?>
@@ -344,20 +346,24 @@
                 </div>
                 <div class = "syllabus_download_btn" style="display:none;"><a id="class_syllabus_pdf" download>Download</a></div>
                 <div class = "small_search fade_input_small events_search_syllabus_wrapper">
-                    <em class = "left_search_icon search_icon"></em>
-                    <input class="text small_search_input" type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="Search events...">
+                        <em class = "left_search_icon search_icon"></em>
+                        <input class="text small_search_input" type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="Search events...">
                 </div>
             </div>
 
-            <div id="events_template_loc" style="height:auto;min-height:390px;">
-                <?php include("js/bower_components/core-animated-pages/events_template.php"); ?>
-             </div>
-            <div class = "pdf_separator">
-                <div class = "pdf_sep_line"></div>
-                <div class = "pdf_title">Syllabus</div>
+            <div style="height:100%">
+                <div id="events_template_loc" style="height:79%;display:block;"></div>
+                <div id="chip_card" style="height:79%;display:none;padding-left: 3px;"></div>
+                <div> 
+                    <div class = "pdf_separator">
+                        <div class = "pdf_sep_line"></div>
+                        <div class = "pdf_title">Syllabus</div>
+                    </div>
+                    <div id="pdfContainer">
+                    </div>
+                </div>
             </div>
-            <div id="pdfContainer">
-            </div>
+             <br>
 
         </div>
 
