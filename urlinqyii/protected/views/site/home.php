@@ -99,6 +99,11 @@
                             </div>
                             <div id = "feed_column" class = "feed_column_home">
                                 <div id = "stream_holder" class = "stream_holder_home">
+                                    <?php /*
+                                    <div id = "video_box_wrapper">
+                                        <?php echo $this->renderPartial('/partial/video_box',array('user'=>$user,'origin_type'=>'user','origin_id'=>$user->user_id ,'is_admin'=>false));?>
+                                    </div>
+                                      */?>
                                     <div id = "fbar_wrapper" class = "fbar_home intro_div intro_div_3">
                                         <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'user','origin_id'=>$user->user_id ,'is_admin'=>false)); ?>
                                     </div>

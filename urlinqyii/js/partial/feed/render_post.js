@@ -48,7 +48,7 @@ function render_post(single_post, prepend){
 
         }
     }
-
+    single_post['text']=single_post['text'].replace(/(?:\r\n|\r|\n)/g, '<br />');
     if(findUrlInPost(single_post['text']) || findUrlInPost(single_post['sub_text'])
         || ((single_post['post_type']==="event" || single_post['post_type']==="opportunity")&&findUrlInPost(single_post['event']['description']))) {
         var url = findUrlInPost(single_post['text']);

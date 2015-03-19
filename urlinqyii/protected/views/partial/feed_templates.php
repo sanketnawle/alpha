@@ -1589,7 +1589,7 @@
                                                         
                                                     </div>
                                                             <div class = 'post_functions'>
-                                                <div class = 'post_functions_showr'>
+                                                <div class = 'post_functions_showr shower'>
                                                 </div>
                                                 <div class = 'post_functions_box'>
                                                     {{#ifCond pownership '||' '<?php echo $is_admin;?>'}}
