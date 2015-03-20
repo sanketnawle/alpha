@@ -286,10 +286,12 @@ function list_events(events, img_left, img_right, page_value, result_text){
                             <span>'+events[i]["time"]+'</span>\
                           </div>\
                         </div>\
+                        <div class="collapse-date">'+events[i]["month"]+' '+events[i]["day"]+'</div>\
                         <div class="chip-bottom">\
                           <div class="chip-album-title">'+events[i]["title"]+'</div>\
                           <div class="chip-artist">'+events[i]["origin_type"]+'</div>\
                         </div>\
+                        <div class="collapse-info"><div class="collapse-info-hover"></div></div>\
                       </div>\
                     </div>';
         };
@@ -371,30 +373,6 @@ var $chip = $(this);
                           <textarea type="text" id="txt_desc" class="input_text" value="'+form_data["description"]+'"></textarea>\
                         </div>\
                         <div style="margin-bottom:5px;margin-top:5px; width:25%;float:right;">\
-                <br>\
-                <div style="margin-left: 10px;margin-right: 10px;">'+ get_people_attending(form_data["event_id"])+'\
-                </div>\
-            </div>\
-            <div class="card-right">\
-              <div>\
-                <div>\
-                  <div class="card-icon" style="background:'+form_data["color"]+';"></div>\
-                </div>\
-                <div>\
-                  <div class="card-album-title">'+form_data["title"]+'</div>\
-                  <div class="card-artist">'+form_data["origin_type"]+'</div>\
-                </div>\
-              </div>\
-              <hr style="opacity:0.8;">\
-              <div class="desc_loc_class scrollbar-container">\
-                <br>\
-                <div style="width:100%" title="Click to edit">\
-                         Description: <br> <a href="#" id="edit_description">'+form_data["description"]+'</a>\
-                        <div id="event_description_input" style="width:100%;display:none;">\
-                          <div style="width:75%;float:left;">\
-                            <textarea type="text" id="txt_desc" class="input_text" value="'+form_data["description"]+'"></textarea>\
-                          </div>\
-                          <div style="margin-bottom:5px;margin-top:5px; width:25%;float:right;">\
                           <button class="btn_update" id="btn_update_description">Update</button>\
                         </div>\
                       </div><br>\
@@ -410,10 +388,10 @@ var $chip = $(this);
                         </div>\
                       </div><br>\
                     </div>\
+                  <div class="people-attending">'+ get_people_attending(form_data["event_id"])+'</div>\
                 </div>\
                 <div class="card-upload">Materials <button>Upload</button><button>Import from drive</button></div>';
     card_content = $(card_content_temp).html(card_html);
-    collapse_info = $('<div class="collapse-info"></div>');
 
     if (!$($chip).hasClass('expanded')) {
         $($chip).addClass('expanded');
@@ -429,27 +407,11 @@ var $chip = $(this);
         $('.chip').not(this).children('.chip-bottom').css({
           "display": "none"
         });
-        $('.chip').not(this).find('.time').css({
-          "display": "none"
-        });
-        $('.chip').not(this).find('.month').animate({ borderSpacing:-90 }, {
-          step: function(now,fx) {
-            $(this).css('-webkit-transform','rotate('+now+'deg)'); 
-            $(this).css('-moz-transform','rotate('+now+'deg)');
-            $(this).css('transform','rotate('+now+'deg)');
-          }, duration: 'slow'
-        },'linear').animate({
-          marginLeft: "-25px",
-          width: "50px"
-        });
-        $('.chip').not(this).find('span.month_text, span.day_text').animate({
-          fontSize:"15px"
-        }).css({
-          "display": "inline-block"
-        });
+        $('.chip').not(this).find('.month, .time').fadeOut();
         $('.chip').not(this).children('.card-content').detach();
         setTimeout(function(){
-          $('.chip').not($chip).append(collapse_info);
+          $('.chip').not($chip).children('.collapse-info').fadeIn();
+          $('.chip').not($chip).children('.collapse-date').fadeIn();
         }, 400);
 
         //active chip
@@ -463,33 +425,17 @@ var $chip = $(this);
         $($chip).children('.chip-bottom').css({
           "display": "none"
         });
-        $($chip).find('.month, .time').css({
-          "display": "block"
-        });
+        $($chip).find('.month, .time').fadeIn();
         setTimeout(function(){
           $($chip).append(card_content);
         }, 400);
-        $($chip).find('.month').animate({
-          marginLeft: "0px",
-          width: "auto"
-        }).animate({ borderSpacing:0 }, {
-          step: function(now,fx) {
-            $(this).css('-webkit-transform','rotate('+now+'deg)'); 
-            $(this).css('-moz-transform','rotate('+now+'deg)');
-            $(this).css('transform','rotate('+now+'deg)');
-          }, duration: 'slow'
-        },'linear');
-        $($chip).find('span.month_text').animate({
-          fontSize:"33px"
-        }).css({
-          "display": "block"
+        $($chip).children('.collapse-info').css({
+          "display": "none"
         });
-        $($chip).find('span.day_text').animate({
-          fontSize:"51px"
-        }).css({
-          "display": "block"
+        $($chip).children('.collapse-date').css({
+          "display": "none"
         });
-        $($chip).children('.collapse-info').detach();
+
 
     } else {
         $('.chip').animate({
@@ -502,43 +448,17 @@ var $chip = $(this);
         $('.chip').children('.chip-bottom').css({
           "display": "block"
         });
-        $('.chip').find('.month, .time').css({
-          "display": "block"
+        $('.chip').find('.month, .time').fadeIn();
+        $('.chip').children('.collapse-info').css({
+          "display": "none"
         });
-
-        $('.chip').find('.month').animate({
-          marginLeft: "0px",
-          width: "auto"
-        }).animate({ borderSpacing:0 }, {
-          step: function(now,fx) {
-            $(this).css('-webkit-transform','rotate('+now+'deg)'); 
-            $(this).css('-moz-transform','rotate('+now+'deg)');
-            $(this).css('transform','rotate('+now+'deg)');
-          }, duration: 'slow'
-        },'linear');
-        $('.chip').find('span.month_text').animate({
-          fontSize:"33px"
-        }).css({
-          "display": "block"
+        $('.chip').children('.collapse-date').css({
+          "display": "none"
         });
-        $('.chip').find('span.day_text').animate({
-          fontSize:"51px"
-        }).css({
-          "display": "block"
-        });
-
-        $('.chip').children('.collapse-info').detach();
         $($chip).children('.card-content').detach();
         $($chip).removeClass('expanded');
     }
       
-
-});
-
-$(document).on("click", "#card_left", function(event){
-
-  $("#events_template_loc").show("slow");
-  $("#chip_card").hide(1000);
 
 });
 
