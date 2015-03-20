@@ -347,6 +347,8 @@ function get_or_create_chat_box(type, id, name){
             $extra_chat_boxes.remove();
         }
 
+        load_chat_box($chat_box);
+
 
 
         return $chat_box;
@@ -513,10 +515,13 @@ function render_message(message_json){
     }
 
 
-    alert("rendering msg: " + JSON.stringify(message_json));
+    //alert("rendering msg: " + JSON.stringify(message_json));
 
     var $chat_box = get_or_create_chat_box(message_json['target_type'], chat_box_id, message_json['origin']['name']);
     //var $chat_box = $('.chat_box');
+    console.log($chat_box);
+
+
 
 
     var $chat_box_text = $chat_box.find('.chat_box_text');

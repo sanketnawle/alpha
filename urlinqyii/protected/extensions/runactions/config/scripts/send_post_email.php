@@ -23,7 +23,7 @@ if (ERunActions::runBackground()){
 
 
 
-        $mail = new YiiMailer('post_notification_email', array('actor'=>$actor, 'post'=>$post, 'to_user'=>$to_user, 'origin'=>$origin));
+        $mail = new YiiMailer('post_notification_email', array('actor'=>$actor, 'post'=>$post, 'to_user'=>$to_user, 'origin'=>$origin, 'origin_name'=>$origin_name));
         $mail->setFrom('team@urlinq.com', 'Urlinq');
         $mail->setSubject($subject);
         $mail->setTo($to_user->user_email);
