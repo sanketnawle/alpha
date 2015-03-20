@@ -535,6 +535,7 @@ span.time_icon {
     display: inline-block;
 
     width: 272px;
+    height: 90px;
     padding: 0 8px;
     margin-left: 12px;
     padding-left: 10px;
@@ -556,7 +557,7 @@ span.time_icon {
 
     word-break: initial;
     overflow: hidden;
-    max-height: 98px;
+    max-height: 76px;
     line-height: 19px;
     padding-top: 4px;
     min-height: 76px;
@@ -601,9 +602,11 @@ div.html5-info-bar.ytp-can-shar {
 }
 
 .post_attached_image_flier.post_attached_image {
-    width: 100%;
+    width: 552px;
 
-    height: 200px;
+    height: 210px;       
+    border-radius: 1.5px;
+};
 }
 
 .post_attached_image_container_flier.post_attached_image_container {
@@ -617,9 +620,15 @@ div.html5-info-bar.ytp-can-shar {
 }
 
 .post_attached_image_container_flier .post_attached_image_caption {
-    width: auto;
+    width: 551px;
     min-width: 160px;
+    height: 210px;
+    margin-left: -22px;
+    padding: 0px;
+    border-radius: 3px;
+    overflow: visible;
     display: none !important;
+    border: 4px solid #fff;   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px 2px rgba(0, 0, 0, 0.1);   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px 2px rgba(0, 0, 0, 0.1);
 }
 
 #embedly_video_box.embedly_box {
@@ -646,7 +655,7 @@ div.html5-info-bar.ytp-can-shar {
     height: auto;
     /* overflow: hidden; */
 
-    margin: 10px auto 4px;
+    margin: 25px auto 4px;
 
     padding: 5px 5px;
 
@@ -2297,6 +2306,7 @@ div.embedly_fake_border{
     border-right: 2px solid #c3c3c3;
     top: -6px;
     left: 191px;
+    height: 147px;
     bottom: -6px;
     width: 28px;
     border-top: 2px solid #c3c3c3;
