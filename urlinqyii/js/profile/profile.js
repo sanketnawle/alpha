@@ -1317,7 +1317,7 @@ $(document).ready(function() {
             {
                 var any_errors = false;
                 if(result.success == false){
-                    alert('invalid user');
+                  //  alert('invalid user');
                     any_errors = true;
                 }
                 if(result.year_name == "success"){
@@ -1327,7 +1327,7 @@ $(document).ready(function() {
                         $('#year_info').text($('#level_dropdown').val()+' at '+match[1]);
                     }
                 }else if(result.year_name){
-                    alert(JSON.stringiy(result.year_name));
+                 //   alert(JSON.stringiy(result.year_name));
                     any_errors = true;
                 }
                 if(result.year == "success"){
@@ -1337,17 +1337,17 @@ $(document).ready(function() {
                         $('#name_info').text(match[1] + " " + (parseInt($('#year').text()) % 100));
                     }
                 }else if(result.year){
-                    alert(JSON.stringify(result.year));
+                  //  alert(JSON.stringify(result.year));
                     any_errors = true;
                 }
                 if(result.bio == "success"){
                     $('#bio').text($('#bio_input').val());
                 }else if(result.bio){
-                    alert(JSON.stringify(result.bio));
+                   // alert(JSON.stringify(result.bio));
                     any_errors = true;
                 }
                 if(result.gender && result.gender != "success"){
-                    alert(JSON.stringify(result.gender));
+                  //  alert(JSON.stringify(result.gender));
                     any_errors = true;
                 }
                 if(result.major == "success"){
@@ -1361,7 +1361,7 @@ $(document).ready(function() {
                     }
 
                 } else if(result.major){
-                    alert(result.major);
+                   // alert(result.major);
                     any_errors = true;
                 }
                 if(result.research == "success"){
@@ -1375,7 +1375,7 @@ $(document).ready(function() {
                     }
 
                 } else if(result.research){
-                    alert(result.research);
+                   // alert(result.research);
                     any_errors = true;
                 }
                 if(result.minor == "success"){
@@ -1390,7 +1390,7 @@ $(document).ready(function() {
                     }
 
                 } else if(result.minor){
-                    alert(result.minor);
+                   // alert(result.minor);
                     any_errors = true;
 
                 }
@@ -1416,7 +1416,7 @@ $(document).ready(function() {
                     $('.members_card .user_main_info .name[data-user_id='+globals.user_id+']').text(new_name);
 
                 }else if(result.name){
-                    alert(result.name);
+                   // alert(result.name);
                     any_errors = true;
                 }
                 if(result.school == "success"){
@@ -1425,7 +1425,7 @@ $(document).ready(function() {
                     $('#school_name').attr('href',base_url+'/school/'+$('#school_dropdown').val());
                 }
                 else if(result.school){
-                    alert(result.school);
+                   // alert(result.school);
                     any_errors = true;
                 }
                 if(result.department == "success"){
@@ -1434,24 +1434,24 @@ $(document).ready(function() {
                     $('#department_name').attr('href',base_url+'/department/'+$('#department_dropdown').val());
                 }
                 else if(result.department){
-                    alert(result.department);
+                  //  alert(result.department);
                     any_errors = true;
                 }
                 if(result.email && result.email !="success"){
-                    alert(result.email);
+                    //alert(result.email);
                     any_errors = true;
                 }
                 if(result.location == "success"){
                     $('#office_location').text($('#office_input').val());
                 }else if(result.location){
-                    alert(result.location);
+                   // alert(result.location);
                     any_errors = true;
                 }
                 if(result.hours == "success"){
                     $('#office_hours').text($('#hours_input').val());
                     $('#office_hours_info').text($('#hours_input').val());
                 }else if(result.hours){
-                    alert(result.hours);
+                   // alert(result.hours);
                     any_errors = true;
                 }
                 if(!any_errors){
@@ -1461,7 +1461,7 @@ $(document).ready(function() {
             },
             error: function(jqXHR, textStatus, errorThrown)
             {
-                alert(errorThrown);
+               // alert(errorThrown);
             }
         });
 
