@@ -1,0 +1,85 @@
+.video_box{
+    width:435px;
+    height: 148px;
+    position:relative;
+    display: inline-block;
+    transition: all 0.5s ease-in-out;
+}
+.video_box_wrapper{
+    overflow: hidden;
+    position:relative;
+    white-space: nowrap;
+    padding: 15px;
+}
+
+.video_description{
+    font-size:12px;
+    white-space: normal;
+    height: 49px;
+    overflow: hidden;
+}
+
+.video_thumbnail{
+    height:140px;
+    width:200px;
+    background-size: cover;
+    display:inline-block;
+    cursor: pointer;
+}
+
+.video_left_column{
+    display:inline-block;
+    width: 180px;
+    position: relative;
+    top: -25px;
+    padding: 5px;
+}
+.embedly_video_wrapper{
+    display: inline-block;
+}
+
+.video_title{
+    font-size:15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.video_box_functions{
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.video_header{
+    margin-left: 12px;
+}
+
+.watch_video{
+    display:inline-block;
+    cursor: pointer;
+}
+.skip_video{
+    display:inline-block;
+    cursor: pointer;
+}
+.skip_video.video_open{
+    display:block;
+    cursor: pointer;
+}
+
+.video_categories *{
+    font-size: 12px;
+    display: inline-block;
+}
+
+.video_box.next{
+    opacity: .50;
+    cursor: pointer;
+}
+
+.post.video_box_post{
+    float: none!important;
+
+}
+.video_boxes{
+    transition: all 0.5s ease-in-out;
+}
