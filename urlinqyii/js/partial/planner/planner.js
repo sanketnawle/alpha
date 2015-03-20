@@ -500,7 +500,7 @@ function show_planner_creation_form(){
     $(".nav-icon-plus").addClass('hide-plus');
     $(".nav-icon").addClass('bounce-minus');
     $(this).css("display", "none");
-    $("#todo_wrap").css("height", "128px");
+    $("#todo_wrap").css("height", "150px");
     $(".entry_field").css("border-bottom", "1px solid #ddd");
     $(".planner_creation_form").fadeIn(500);
     $("input.event_title").focus();
@@ -861,6 +861,7 @@ function show_events(json_data){
             // Animation complete
 //                alert('show planner');
         });
+        $('#planner_body_holder .slimScrollDiv').css({"opacity":"0"});
     }
 
 
@@ -985,8 +986,9 @@ function show_event(event,event_div_id){
 $(window).load(function(){
 
         $('#event_list').slimScroll({
-            height: '340px',
+            height: '390px',
             railVisible: true, 
+            disableFadeOut: true,
             touchScrollStep: "20",
             size:"10px",
             allowPageScroll: true,

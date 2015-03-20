@@ -1486,28 +1486,23 @@ div.registration-sec-texts input:focus
   opacity:.4;
 }
 
-button.SignUp
-{
-  width:369px;
-  text-align:center;
-  position:relative;
-  display:block;
-  top:12px;
-  text-shadow:0 1px #fff;
-  background-clip:padding-box;
-  border-radius:6px;
-  outline:none;
-  padding-top:13px;
-  padding-bottom:13px;
-  overflow:hidden;
-  height:auto;
-  right:-9px;
-  background-color:#27D579;
-  background-image:0;
-  border:1px solid #1ECD77;
-  -moz-box-shadow:0 1px rgba(255,255,255,0.23) inset, 0 -1px rgba(0,0,0,0.07) inset;
-  box-shadow:0 1px rgba(255,255,255,0.23) inset, 0 -1px rgba(0,0,0,0.04) inset;
-  border-bottom:1px solid rgba(9,166,89,0.74);
+
+button.SignUp{
+  width: 369px;
+  text-align: center;
+  position: relative;
+  display: block;
+  top: 12px;
+  text-shadow: 0 1px #fff;
+  background-clip: padding-box;
+  border-radius: 6px;
+  outline: none;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  overflow: hidden;
+  height: auto;
+  right: -9px;
+  background-color: #27D579; background: linear-gradient(to bottom, #24EA88 0%,#08CF6C 100%); background: -o-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background: -ms-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background: -moz-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background-image: -webkit-linear-gradient(top,#24EA88,#08CF6C); border: 1px solid #1ECD77; -moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.07) inset; box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.04) inset; border-bottom: 1px solid rgba(9, 166, 89, 0.74);
 }
 
 div.fb_signin_wrap
@@ -1520,19 +1515,25 @@ div.fb_signin_wrap
 
 button.SignUp:hover
 {
-  background:0;
-  background-image:0;
-  border:1px solid rgba(3,144,74,0.24);
-  border-bottom:1px solid rgba(3,144,74,0.39);
+  background: linear-gradient(to bottom, #1BEF86 0%,#08CF6C 100%);
+  background: -o-linear-gradient(top, #1BEF86 0%,#0FDB76 100%);
+  background: -ms-linear-gradient(top, #1BEF86 0%,#0FDB76 100%);
+  background: -moz-linear-gradient(top, #1BEF86 0%,#0FDB76 100%);
+  background-image: -webkit-linear-gradient(top,#09E78A,#1CE883);
+  border: 1px solid rgba(3, 144, 74, 0.24);
+  border-bottom: 1px solid rgba(3, 144, 74, 0.39);
 }
 
 button.SignUp:active
 {
-  -webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3);
-  box-shadow:inset 0 1px 2px rgba(0,0,0,0.3);
-  background:#02DB6F;
-  border:1px solid #2FB750;
-  border-top:1px solid #1BAD3E;
+  background: #02DB6F;
+  border: 1px solid #2FB750;
+  border-top: 1px solid #1BAD3E;
+  -webkit-box-shadow: inset 0 0 0 1px #fff, inset 0 1px 2px rgba(0,0,0,0.3);
+  box-shadow: inset 0 0 0 1px #fff, inset 0 1px 2px rgba(0,0,0,0.3);
+  border: 1px solid #fff;
+  border: rgba(0, 0, 0, 0) solid 1px;
+  outline: rgba(0, 0, 0, 0) 0;
 }
 
 button.SignUp span.buttonText

@@ -92,7 +92,7 @@
                                                      </time>
                                                 </div>
                                                 <div class = 'post_msg post_lr_link_msg'>
-                                                    <span class='msg_span seemore_anchor'>
+                                                    <span class='msg_span seemore_anchor post_message_text'>
                                                                 {{{text}}}
                                                     </span>
 
@@ -1108,7 +1108,7 @@
 
                                 {{#if event.description}}
                                     <div class = "event_description_holder">
-                                        <p>{{{event.description}}}</p>
+                                        <p class = "post_message_text">{{{event.description}}}</p>
                                     </div>
                                 {{/if}}
                                 {{#each files}}
@@ -1510,7 +1510,7 @@
                                                 </div>
 
                                                 <div class = 'post_msg post_file_msg'>
-                                                    <span class='msg_span seemore_anchor'>{{{text}}}</span>
+                                                    <span class='msg_span seemore_anchor post_message_text'>{{{text}}}</span>
 
 
 

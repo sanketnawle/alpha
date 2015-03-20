@@ -442,7 +442,7 @@ form.top_search_bar_form{
     padding: 0px 0;  
     top: -6px;
     /* font-family: Avenir; */
-    font-weight: 200;
+    font-weight: 500;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
     position: relative;
     padding-left: 4px;
@@ -1197,7 +1197,7 @@ body.body_group .topbar > #topbar_responsive_holder > .left{
 }
 }
 
-@media(max-width:1090px){
+@media(max-width:1120px){
 body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
 
 }

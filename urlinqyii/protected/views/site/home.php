@@ -87,13 +87,14 @@
                             <div id = "planner_column" class = "planner_column_home intro_div intro_div_2">
                                 <div id = "right_column_specs">
                                     <div id = "fixed_element">
+<!--                                         <?php
+                                        echo $this->renderPartial('/partial/reminders',array('user'=>$user,'origin_type'=>'home','origin_id'=>''));
+                                        ?>     -->
                                         <?php
                                         echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'home','origin_id'=>''));
                                         ?> 
 
-                                        <?php
-                                        echo $this->renderPartial('/partial/reminders',array('user'=>$user,'origin_type'=>'home','origin_id'=>''));
-                                        ?>    
+
                                     </div>
                                 </div>                           
                             </div>
