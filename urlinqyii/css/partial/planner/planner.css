@@ -5,6 +5,7 @@ width:240px;
 
 .planner_container{
 width: 270px;
+min-height: 380px;
 max-height: 100%;
 font-family: 'Open Sans', sans-serif;
 background: #fff;
