@@ -873,7 +873,7 @@
                     <input type="text" name="login_email" id="login_email" autocomplete="on" placeholder="School Email">
                     <input type="password" name="login_password" id="login_password" placeholder="Password">
                     <input type="hidden" id="offset" name="offset" value="">
-                    <button name="submit" id="submit" type="submit" class="rounded Button SignIn smallBtn">
+                    <button name="submit" id="submit" type="submit" class="rounded Button SignUp smallBtn">
                       <span class="buttonText">Log In</span>
                     </button>
                   </form>
