@@ -58,7 +58,7 @@
 
 #messaging_panel #messaging_list {
     overflow-y: scroll;
-    height: 2000px;
+    height: 2500px;
     background-color: #BA2121;
 }
 
@@ -116,6 +116,36 @@
 
     margin-left: 15px;
     margin-top: 15px;
+}
+
+
+
+#extra_chat_boxes {
+    width: 80px;
+    height: 40px;
+    background-color: white;
+    cursor: pointer;
+}
+
+
+#extra_chat_boxes #extra_chat_boxes_list {
+      height: auto;
+      position: fixed;
+      bottom: 50px;
+      width: 100px;
+}
+
+.extra_chat_box {
+      height: 20px;
+  width: 100px;
+  padding: 0px;
+  margin: 0;
+}
+
+#extra_chat_boxes_count {
+  position: relative;
+  bottom: 30px;
+  left: 50px;
 }
 
 

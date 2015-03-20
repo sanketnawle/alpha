@@ -222,7 +222,7 @@
                 <div class="tab_wedge"></div>
             </div>
 
-            <div class="tab syllabus" data-panel_id="2">
+            <div class="tab syllabus" id="_syllabus_tab" data-panel_id="2">
                 <div class="tab_content">
                     <div class="tab_img"></div>
                     <div class="tab_text">Syllabus</div>
@@ -346,8 +346,8 @@
                 </div>
                 <div class = "syllabus_download_btn" style="display:none;"><a id="class_syllabus_pdf" download>Download</a></div>
                 <div class = "small_search fade_input_small events_search_syllabus_wrapper">
-                    <em class = "left_search_icon search_icon"></em>
-                    <input class="text small_search_input" type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="Search events...">
+                        <em class = "left_search_icon search_icon"></em>
+                        <input class="text small_search_input" type="text" id="txt_initial_search" data-placement="bottom" data-toggle="popover" placeholder="Search events...">
                 </div>
             </div>
 

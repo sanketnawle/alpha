@@ -175,7 +175,7 @@ $(document).ready(function(){
 
         //Set the position of the $dropdown to underneath this input
         $dropdown.css({'position': 'fixed'});
-        $dropdown.css({'top': (input_position.top + 5 + $input.height()).toString() + 'px'});
+        $dropdown.css({'top': (input_position.top + 5 + $input.height()).toString() -$(window).scrollTop() + 'px'});
         $dropdown.css({'left': input_position.left.toString() + 'px'});
         $dropdown.css({'z-index': '9999'});
 
@@ -270,6 +270,76 @@ $(document).ready(function(){
             location: class_location,
             datetime: class_datetime,
             professor_id: professor_id
+        };
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                alert(JSON.stringify(response));
+
+
+                if(response['success']){
+
+                }else{
+
+                }
+
+            },'json'
+        );
+
+
+
+
+
+    });
+
+    $(document).on('submit', '#create_video_form', function(e){
+        e.preventDefault();
+
+        var video_url = $('#create_video_url_input').val() ? $('#create_video_url_input').val() : '';
+        var department_id = $('#create_video_department_input').attr('data-id') ? $('#create_video_department_input').attr('data-id') : '';
+        var title = $('#create_video_title_input').val() ? $('#create_video_title_input').val() : '';
+        var description = $('#create_video_description_input').val() ? $('#create_video_description_input').val() : '';
+        var topic = $('#create_video_topic_input').val() ? $('#create_video_topic_input').val() : '';
+
+        if(video_url == '' || video_url == '0'){
+            alert('Input video url');
+            return;
+        }
+
+     /*   if(title == '' || title == '0'){
+            alert('Input title');
+            return;
+        }*/
+
+        if(department_id == '' || department_id == '0'){
+            alert('Input department');
+            return;
+        }
+
+/*   if(description == '' || description == '0'){
+            alert('Input description');
+            return;
+        }*/
+
+
+        if(topic == ''){
+            alert('input topic');
+            return;
+        }
+
+
+
+        var post_url = globals.base_url + '/video/addVideo';
+
+
+        var post_data = {
+            department_id:department_id,
+            video_url:video_url,
+            title:title,
+            description:description,
+            topic:topic
         };
 
         $.post(

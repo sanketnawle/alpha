@@ -21,8 +21,7 @@ $(document).ready(function(){
 
     }
 
-    events_list = load_events(file_json["file_id"]);
-    display_events(events_list);
+    file_id = file_json["file_id"];
 
   run_pdf_algo(false, globals.base_url+file_json["file_url"]);
   }
@@ -256,7 +255,7 @@ var add_event_to_ui = function(events_generated){
     }
   });
   events_list = load_events(file_id);
-    display_events(events_list);
+    display_events(events_list, 1);
 }
 
 
