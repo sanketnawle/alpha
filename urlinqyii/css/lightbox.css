@@ -72,9 +72,11 @@ body:after {
   margin-top: -36px;
   left: 50%;
   width: 80px;
-  background: rgba(18, 19, 20, 0.73);
+  display: block!important;
+  background: rgba(39, 41, 43, 0.85);
   margin-left: -43px;
   text-align: center;
+  border: 1px solid #000;
   border-radius: 7px;
   line-height: 0;
 }

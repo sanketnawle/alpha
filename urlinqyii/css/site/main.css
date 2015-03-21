@@ -179,7 +179,7 @@ body#body_home #page{
 
 #content_panel.content_panel_home{
     margin-left: 257px;
-
+    width:855px;
 }
 
 div#planner_column.planner_column_department .entry_field_placeholder
@@ -202,6 +202,7 @@ div#planner_column{
 }
 
 div#planner_column.planner_column_home{
+    width: 270px;
 
 }
 
@@ -2025,7 +2026,7 @@ width:980px!important;
     padding-right: 269px!important;
     }
     #content_panel.content_panel_home {
-    width: 830px!important;
+    width: 856px!important;
     /* overflow-x: hidden!important; */
     margin-right: auto!important;
     margin-left: auto!important;
