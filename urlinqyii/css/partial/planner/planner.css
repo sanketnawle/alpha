@@ -1,10 +1,11 @@
 
+.body_group .planner_container{
+width:240px;
+}
+
 .planner_container{
-
-
-    min-height: 380px;
-
-width: 250px;
+width: 270px;
+min-height: 380px;
 max-height: 100%;
 font-family: 'Open Sans', sans-serif;
 background: #fff;
@@ -12,6 +13,30 @@ border-radius: 5px;
 display: block;
 padding-bottom: 0px;    
 -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.planner_container .event_origin_event_tab_link{
+    border-radius: 3px;
+
+    cursor: default;
+}
+
+#planner_body_holder .slimScrollDiv{
+    opacity: 1;
+}
+
+.planner_container .event_origin_event_tab_link:hover{
+    background: #f7f7f7;
+
+}
+
+.event_data_holder.false{
+width: 94%!important;
+}
+
+.event_data_holder.true{
+    width: 97%;
+
 }
 
 .planner_container .slimScrollRail{
@@ -88,7 +113,7 @@ hr.future_events_top_line{
 .entry_field{
     height: 0px;
     height: 140px;
-    width: 215px;
+    width: 252px;
     margin-left: 10px;
     margin-right: 10px;
     /* padding-bottom: 5px; */
@@ -102,6 +127,9 @@ hr.future_events_top_line{
     margin-bottom: 27px;
 }
 
+.body_group .entry_field{
+      width: 222px;
+}
 
 
 .entry_field_placeholder{
@@ -287,7 +315,7 @@ em.pl_blue_circle{
 
 .planner_creation_form{
     display: none;
-    height: 120px;
+    height: 130px;
     background-color: rgba(250, 250, 250, 0);
     position: relative;
     top: 11px;
@@ -301,9 +329,10 @@ em.pl_blue_circle{
 
 .event_time_wrap{
     display: inline-block;
-    width: 220px;
+    width: 100%;
     height: auto;
-    font-size: 11.5px;
+    font-size: 11.9px;
+    padding: 3px;
     font-weight: 500;
     color: #575757;
     position: relative;
@@ -312,40 +341,43 @@ em.pl_blue_circle{
     left: -1px;
 }
 .event_date{
-width: 95px;
-height: 23px;
+width: 110px;
+height: 29px;
 cursor: pointer;
 background-repeat: no-repeat;
 background-image: url("../../../assets/partial/planner/calendar.png");
 margin-left: 5px;
-background-position: 82px 9px;
+background-position: 94px 12px;
 background-size: 13px auto;
 border-radius: 2px;
 outline: medium none;
 transition: all 0.2s ease 0s;
 -moz-osx-font-smoothing: grayscale;
+border-radius: 3px;
 padding: 3px 0px 2px 5px;
-font-size: 12.5px;
+font-size: 14px;
 font-weight: 400;
 border-width: 1px;
 border-style: solid;
-border-right: 1px solid #D9D9D9;
-border-color: #C0C0C0 #D9D9D9 #D9D9D9;
+border: 1px solid #d9d9d9;
+border-top: 1px solid #c0c0c0;
 -moz-border-top-colors: none;
 -moz-border-right-colors: none;
 -moz-border-bottom-colors: none;
 -moz-border-left-colors: none;
 border-image: none;
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);   -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);   box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);   -webkit-transition: border linear .2s,box-shadow linear .2s;   -moz-transition: border linear .2s,box-shadow linear .2s;   -o-transition: border linear .2s,box-shadow linear .2s;   transition: border linear .2s,box-shadow linear .2s;
+font-family: 'Open Sans', sans-serif;
 }
 
 body.body_group .event_date{
 width: 104px;
-height: 30px;
+height: 36px;
 cursor: pointer;
 background-repeat: no-repeat;
 background-image: url("../../../assets/partial/planner/calendar.png");
 margin-left: 4px;
-background-position: 85px 9px;
+background-position: 85px 12px;
 background-size: 13px auto;
 border-radius: 2px;
 outline: medium none;
@@ -375,48 +407,54 @@ border-image: none;
 
 .event_action{
     display: inline-block;
-    width: 217px;
+    width: 100%;
     height: auto;
     position: relative;
     left: -5px;
     top: 13px;
+    padding: 3px;
 }
 
 .create_form{
-    padding: 1px 13px;
+    padding: 4px 15px;
     border-style: solid;
     text-align: center;
-    opacity: .9;
+    opacity: 1;
     position: relative;
     vertical-align: middle;
     border-top: none;
     display: inline-block;
     border-radius: 4px;
     float: right;
-    margin-top: -13px;
+    margin-top: -15px;
     height: 30px;
     border-width: 1px;
 
     cursor: pointer;
     border: 1px solid;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 12.5px;                  
+    font-family: Avenir;
+    font-weight: 100;
+    font-size: 13.5px;                  
     border-radius: 3px;      
     left: 3px;           cursor:pointer;     
-    top: 10px;           height: 28px;                      
+    top: 10px;           
+    height: 36px;                      
     color: #fff;    
-    background-color: rgba(6, 155, 207, 0.8); border: 1px solid #029acf!important; box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+    background-color: #029acf; 
+    border: 1px solid #0382ae!important; box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
 }
 
 .create_form:hover{
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.14902)); background-color: #069bcf; -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.06)); 
+    background-color: #15B0E7; -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; 
+    box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
 }
 
 .create_form:active{
     background-color: #2C9DCA;
     box-shadow: inset 0 1px 1px rgba(32, 151, 173, 1),inset 0 -1px 1px rgba(42, 166, 221, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); 
     -webkit-box-shadow: inset 0 1px 1px rgba(32, 151, 173, 1),inset 0 -1px 1px rgba(42, 166, 221, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: inset 0 0 0 1px #fff;   box-shadow: inset 0 0 0 1px #fff;   border: 1px solid #fff;   border: rgba(0,0,0,0) solid 1px;   outline: rgba(0,0,0,0) 0;
 }
 
 
@@ -431,7 +469,7 @@ border-image: none;
     white-space: normal;
 
 
-    max-height: 345px;
+    max-height: 390px;
 
     padding-top: 0px;
     
@@ -457,19 +495,22 @@ border-image: none;
 /*}*/
 
 input.event_title{
-    width: 206px;
-    border-radius: 2px;
+    width: -webkit-calc(100% - 6px);
+    width: calc(100% - 6px);
+    border-radius: 3px;
     font-family: 'Open Sans', sans-serif;
     border: 1px solid #d9d9d9;
     border-top-color: #c0c0c0;
-    height: 27px;
-    font-size: 13px;
+    height: 32px;
+    margin-left: -2px;
+    font-size: 14px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);   -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);   box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);   -webkit-transition: border linear .2s,box-shadow linear .2s;   -moz-transition: border linear .2s,box-shadow linear .2s;   -o-transition: border linear .2s,box-shadow linear .2s;   transition: border linear .2s,box-shadow linear .2s;
     padding-left: 6px;
 }
 
 body.body_group input.event_title{
-    width: 215px;
-    height: 30px;
+    width: 224px;
+    height: 36px;
 }
 
 
@@ -480,8 +521,9 @@ body.body_group input.event_title{
     height: auto;
 
     margin-bottom: 2px;
-    padding-bottom: 2px;
+    padding-bottom: 5px;
     padding-top: 2px;
+    margin-right: 10px;
 }
 
 #planner_header_holder {
@@ -879,6 +921,10 @@ top: 50%;
     color:#999!important;
 }
 
+span.event_name:hover{
+    
+}
+
 .event.complete:hover div.event_origin > a{
     color:#999;
 }
@@ -891,18 +937,18 @@ div.event_origin > a:hover{
 
 
 .event_name {
-    font-size: 13.5px;
-    color: #111;
+    font-size: 14.2px;
+    color: #232323;
     text-transform: capitalize;
-    padding-bottom: 2px;
-    -moz-osx-font-smoothing: grayscale; 
-    -webkit-font-smoothing: antialiased;
+    padding-bottom: 2px; 
     font-weight: 500;
+    line-height: 21px;
     cursor: default;
     -webkit-transition: opacity 0.2s ease;
     transition: opacity 0.2s ease;
 }
-3
+
+
 .event_name:hover{
     text-decoration: underline;
     cursor: pointer;
@@ -933,14 +979,16 @@ div.event_origin > a:hover{
 }
 
 #past_events div.event span.event_name{
-    color:rgb(211, 11, 11);
-    margin-top: 4px;
+    color:#FF2727;
+    top: 6px;
+    position: relative;
 }
 
 div.event_origin{
     font-family: Avenir;
     padding-right:2px;
-    line-height: 14px;
+    font-size: 12.7px;
+    line-height: 16px;
 }
 
 div.event:hover div.event_origin > a{
@@ -986,8 +1034,8 @@ div.event.complete span.event_name, div.event.complete div.event_date_time{
 }
 
 .event_date_time{
-    font-size: 10.4px;
-    font-weight: 400;
+    font-size: 10.7px;
+    font-weight: 500;
     font-family: Avenir;
     display: inline-block;
     color: #525557;
@@ -1195,14 +1243,21 @@ div.event_origin{
 }
 
 #tp1 {
-    padding: 6px 7px;
-    width: 57px;
+    padding: 8px 7px;
+    margin-bottom: 6px;
+    width: 78px;
+    top: -1px;
+    border: 1px solid #d9d9d9;   border-top: 1px solid #c0c0c0;   
+    border-radius: 3px;
+    -moz-border-top-colors: none;   -moz-border-right-colors: none;   -moz-border-bottom-colors: none;   -moz-border-left-colors: none;   border-image: none;   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);   -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);   box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);   -webkit-transition: border linear .2s,box-shadow linear .2s;   -moz-transition: border linear .2s,box-shadow linear .2s;   -o-transition: border linear .2s,box-shadow linear .2s;   transition: border linear .2s,box-shadow linear .2s;   font-family: 'Open Sans', sans-serif;
+    position: relative;
 }
 
 body.body_group #tp1{
-padding: 6px 7px;
-width: 75px;
-margin-left: 2px;
+padding: 8px 7px;
+top: 0px;
+width: 77px;
+left: 2px;
 }
 
 div.edit_event_box{
@@ -1222,12 +1277,12 @@ span.edit_button{
     font-family: Avenir;
     color: #525557;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.67);
+    background: #f7f7f7;
     margin-top: -6px;
     position: absolute;
     line-height: 14px;
     height: 12px;
-    top: 50%;
+    bottom: 8px;
     width: 22px;
     text-align: center;
 }
@@ -1304,8 +1359,9 @@ div.edit_event_box input#submit_edit_event:active{
 div.edit_event_box input#cancel_edit_event:active{}
 
 .edit_button:hover{
-    color:#029acf;
+    color: #222;
     cursor: pointer;
+    text-decoration: underline;
 }
 
 div.edit_event_box input#cancel_edit_event{
@@ -1323,3 +1379,4 @@ div.edit_event_box input[type=button]{
     margin-left: 5px;    
     margin-bottom: 4px;
 }
+

@@ -53,7 +53,7 @@ $(document).ready(function(){
 
                 if(json_data['reminders'].length == 0 && first_request){
                     var $reminders_container = $("ul.reminder_entries");
-                    $reminders_container.html("<div class = 'no_reminders_container'><span class = 'no_reminders_graphic'></span>No upcoming</div>");
+                    // $reminders_container.html("<div class = 'no_reminders_container'><span class = 'no_reminders_graphic'></span>No upcoming</div>");
                 }else{
                     reminders = json_data['reminders'];
                     update_reminders_div();

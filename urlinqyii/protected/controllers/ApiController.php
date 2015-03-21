@@ -2089,7 +2089,7 @@ $user_email = $user->user_email;
         // 1 - all data is not set
 public function actionLogin() {
 
-            if(!isset($_POST['email']) || !isset($_POST['password'])){
+            if(!isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['device_name']) || !isset($_POST['device_version'])){
                 $data = array('success'=>false,'error'=>'email or password is not set');
                 $this->renderJSON($data);
                 return;
@@ -2127,12 +2127,12 @@ $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email
 
                     //Save token to database
 
-                    if (!$user_token) {
-                        $user_token = new UserToken;
-                    }
+                    $user_token = new UserToken;
                     $user_token->user_id = $user->user_id;
                     $user_token->token = $token;
                     $user_token->expires_at = date("Y-m-d H:i:s",strtotime("+1 week"));
+                    $user_token->device_name = $_POST['device_name'];
+                    $user_token->device_version = $_POST['device_version'];
                     $user_token->save(false);
 
 
