@@ -252,6 +252,23 @@
 			return owner;
 		};
 
+
+        this.off = function (event, fn) {
+			logger.log('Removing event listener for event: ' + event);
+			if(events[event]) {
+				delete events[event];
+                var self = this;
+                var ev = getInternalEventName(event);
+                logger.log('Compiled event name: ' + ev);
+
+                socket.removeListener(ev, fn);
+			}else{
+                console.log('Event ' + event + ' doesnt exist');
+            }
+            return owner;
+
+		};
+
 		/**
 		 *
 		 * @param event
@@ -261,6 +278,8 @@
 		owner.on = function (event, fn) {
 			self.on(event, fn);
 		};
+
+
 	}
 
 	function SystemEventHandlers() {
@@ -690,6 +709,15 @@
 			}
 			var room = rooms[id] = new Room(id);
 			return room;
+		};
+
+
+        this.room_exists = function (id) {
+			if (rooms[id]) {
+				return true;
+			}else{
+                return false;
+            }
 		};
 
 		/**
