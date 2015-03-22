@@ -515,7 +515,7 @@ body.body_group input.event_title{
 
 
 
-.event{
+.planner_container .event{
     display: block;
     position: relative;
     height: auto;

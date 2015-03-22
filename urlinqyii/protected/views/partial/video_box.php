@@ -43,69 +43,6 @@
         Read Comments
     </div>
 
-    <!--    {{#if replies}}
-
-    {{#each replies}}
-    <div class = 'comments'>
-        <div class = 'comment_main' data-user_id="{{user_info.user_id}}" data-reply_id="{{reply_id}}">
-
-
-            {{#ifCond anon '==' 1}}
-            <div class = 'comment_owner_container' style = "cursor:default; background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
-            </div>
-            {{else}}
-            <div class = 'comment_owner_container profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
-            </div>
-            {{/ifCond}}
-
-            {{#if user_id}}
-            {{#ifCond anon '==' 1}}
-                                            <span class = 'comment_owner anonymous_post_owner'>
-                                                        Anonymous
-                                                    </span>
-            {{#if cownership}}
-                                                        <span class="comment_owner comment_own_comment anonymous_post_owner">
-                                                            (me)
-                                                        </span>
-            {{/if}}
-            {{else}}
-                                            <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
-                                                {{user_info.user_name}}
-                                            </span>
-            {{/ifCond}}
-            {{else}}
-                                        <span class = 'comment_owner'>
-                                            Invalid User
-                                        </span>
-            {{/if}}
-
-            <div class = 'comment_time'>
-                <div class='ct_ts'>
-                    {{update_timestamp}}
-                </div>
-            </div>
-            <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
-                {{{reply_msg}}}
-            </div>
-
-            {{#if file_id}}
-
-            <a href="<?php //echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-            {{/if}}
-
-            {{#ifCond user_info.user_id '==' '<?php// echo $user_id; ?>'}}                                         <div class='reply_delete_button'></div>                                     {{/ifCond}}
-
-        </div>
-
-    </div>
-    {{/each}}
-    {{#if show_more}}
-    <div id='show_more' class='morecmt_bar'>
-        Read more
-    </div>
-    {{/if}}
-
-    {{/if}}-->
 </div>
 
 

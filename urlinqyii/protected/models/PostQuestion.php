@@ -48,6 +48,7 @@ class PostQuestion extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'post' => array(self::BELONGS_TO, 'Post', 'post_id'),
+            'options' => array(self::HAS_MANY, 'PostQuestionOption', 'post_id'),
 		);
 	}
 

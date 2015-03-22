@@ -156,6 +156,9 @@ class PostController extends Controller
         }
 
 
+
+
+
 Yii::import('ext.runactions.components.ERunActions');
 ERunActions::runBackground(true);
 
