@@ -1512,11 +1512,7 @@ $user_email = $user->user_email;
                 $data = array('success'=>true,'school'=>$this->model_to_array($school));
 
 
-                 $sql = "SELECT *
-                    FROM user WHERE school_id = $school_id
-                    LIMIT 10;";
-
-                $users = User::model()->findAllBySql($sql);
+                $users = $school->users;
 		$users_data = array();
 
 		foreach($users as $user) {
@@ -1538,6 +1534,7 @@ $user_email = $user->user_email;
 			array_push($admins_data, $new_user);
 
 		}
+
 
                 $data['school']['admins'] = $admins_data;
                 $data['school']['members'] = $users_data;
@@ -1671,8 +1668,18 @@ $user_email = $user->user_email;
             $school = School::model()->find("school_id=:school_id",array(":school_id"=>$school_id));
 
 
+            $departments_array = array();
+
+            foreach ($school->departments as $department) {
+                $department_new = $this->model_to_array($department);
+                $department_new['faculty_count'] = count($department->admins);
+                $department_new['student_count'] = count($department->students);
+                $department_new['course_count'] = count($department->courses);
+                array_push($departments_array, $department_new);
+            }
+
             if($school){
-                $data = array('success'=>true,'departments'=>$school->departments);
+                $data = array('success'=>true,'departments'=>$departments_array);
                 $this->renderJSON($data);
                 return;
             }else{
