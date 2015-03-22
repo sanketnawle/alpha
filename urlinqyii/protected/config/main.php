@@ -99,7 +99,7 @@ return array(
 
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
 
-
+                'onboard/ios/start'=>'api/startOnboard',
 
                 
                 'profile/<id:\d+>/feed' => 'feed/getProfilePosts',

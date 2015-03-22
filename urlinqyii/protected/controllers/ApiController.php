@@ -3,8 +3,74 @@
     class ApiController extends Controller
     {
 
+        // start iOS onboard code
 
- public function actionGetPicture() {
+    public function actionStartOnboard() {
+
+        if (!isset($_GET['user_email'])) {
+            $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'Can not check user status.');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $pattern = '/^(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){255,})(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){65,}@)(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22))(?:\\.(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-+[a-z0-9]+)*\\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-+[a-z0-9]+)*)|(?:\\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\\]))$/iD';
+        $emailaddress = $_GET['user_email'];
+
+        if (preg_match($pattern, $emailaddress) !== 1) {
+            $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'Not a valid email.');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user = User::model()->find('user_email=:email', array(':email'=>$emailaddress));
+
+        if ($user && $user->status == 'active') {
+            $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'There is already a user with this email');
+            $this->renderJSON($data);
+            return;
+        }
+
+        if ($user) {
+            $data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'This user is created but is not active.');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $universities = University::model()->findAllBySql("SELECT * FROM university");
+        foreach ($universities as $university) {
+            $university_email_suffix = $university->email_suffix;
+            $university_email_suffix_length = strlen($university_email_suffix);
+
+            $user_email_suffix = substr($emailaddress, -$university_email_suffix_length);
+
+            if (($user_email_suffix == $university_email_suffix)) {
+                
+                $data = array('success'=>true, 'university'=>$university, 'schools'=>$university->schools);
+                $this->renderJSON($data);
+                return;
+
+
+            }
+        }
+
+        $urlinq_sub = substr($emailaddress, -10);
+
+        if ($urlinq_sub == 'urlinq.com') {
+            $nyu = University::model()->find('website_url=:website_url', array(':website_url'=>'https://www.nyu.edu'));
+            $data = array('success'=>false, 'error_id'=>5, 'error_msg'=>$nyu->schools);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'Not a valid school.');
+        $this->renderJSON($data);
+        return;
+
+    }
+
+    // end iOS onboard code
+
+        public function actionGetPicture() {
             if (!isset($_GET['file_id'])) {
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'The valid data is not set.');
                 $this->renderJSON($data);
