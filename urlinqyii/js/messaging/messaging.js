@@ -36,7 +36,7 @@ socket.on('user_' + messaging_globals.user_id, function (message_data) {
 
     if(message_data['id'] != last_send_message_id){
         console.log('RENDERING MSG: ' + JSON.stringify(message_data));
-        render_message(message_data);
+        handle_render_message(message_data);
     }else{
         console.log('Not rendering this shit');
     }
@@ -51,15 +51,7 @@ socket.on('user_' + messaging_globals.user_id, function (message_data) {
 //
 //
 //
-//socket.on('custom_1', function (message_data) {
-//    alert(message_data);
-//    //alert('DATA FROM THIS USER SOCKETT');
-////    alert(JSON.stringify(message_data)); // you will see in console `This is a test message`
-//;
-//    render_message(message_data);
-//
-//
-//});
+
 //
 
 
@@ -134,6 +126,9 @@ function render_messaging_list_item(item_json){
 function init(){
 
 
+
+
+
     //Get the users and groups this user can message
     $.getJSON(messaging_globals.base_url + '/message/loadout', function(json_data){
         //Populate message panel with these users/groups
@@ -171,6 +166,7 @@ function init(){
 
 
 
+
 //    var socket = new YiiNodeSocket();
 //    // catch global event
 //    socket.on('test.event', function () {
@@ -190,17 +186,94 @@ function init(){
 
 
     //Load recent messages for the active chats
+    //alert($.cookie('chat'));
 
-    $('.chat_box').each(function(){
-        load_chat_box($(this));
-    });
+
+    var chat_data = JSON.parse($.cookie('chat'));
+
+
+    for(var x = 0; x < chat_data['chat_boxes'].length; x++){
+        var this_chat_data = chat_data['chat_boxes'][x];
+        get_or_create_chat_box(this_chat_data['type'], this_chat_data['id'], this_chat_data['name']);
+    }
+
+
+    for(var i = 0; i < chat_data['extra_chat_boxes'].length; i++){
+        var this_extra_chat_data = chat_data['extra_chat_boxes'][i];
+        get_or_create_chat_box(this_extra_chat_data['type'], this_extra_chat_data['id'], this_extra_chat_data['name']);
+    }
 
 
 }
 
 
 
+function save_chat_cookie(){
 
+
+    var chat_box_data = {
+        'chat_boxes': [
+
+        ],
+        'extra_chat_boxes': [
+
+        ]
+    };
+
+
+    //Get the current open chat_boxes
+    var $chat_boxes = $(".chat_box");
+
+    $chat_boxes.each(function(){
+        var $this_chat_box = $(this);
+
+        //Check if this chat_box is tabbed
+        var tabbed = false;
+
+        if($this_chat_box.hasClass('tabbed')){
+            tabbed = true;
+        }
+
+        var this_chat_box_data = {
+            type: $this_chat_box.attr('data-type'),
+            id: $this_chat_box.attr('data-id'),
+            name: $this_chat_box.attr('data-name'),
+            tabbed: tabbed
+        };
+
+
+        chat_box_data['chat_boxes'].push(this_chat_box_data);
+    });
+
+
+
+
+    var $extra_chat_boxes = $('.extra_chat_box');
+
+    $extra_chat_boxes.each(function(){
+        var $this_extra_chat_box = $(this);
+
+
+        var this_extra_chat_box_data = {
+            type: $this_extra_chat_box.attr('data-type'),
+            id: $this_extra_chat_box.attr('data-id'),
+            name: $this_extra_chat_box.attr('data-name')
+        };
+
+        chat_box_data['extra_chat_boxes'].push(this_extra_chat_box_data);
+
+    });
+
+
+
+    //Save this chat box data dict as a json string
+    $.cookie('chat', JSON.stringify(chat_box_data), { expires : 5 });
+
+}
+
+
+
+//Func is optional. Look at handle_render_message for structure
 function load_chat_box($chat_box, func){
     var target_id = $chat_box.attr('data-id');
     var target_type = $chat_box.attr('data-type');
@@ -210,10 +283,18 @@ function load_chat_box($chat_box, func){
     $.getJSON(messaging_globals.base_url + '/message/recentChat', {target_id: target_id, target_type: target_type}, function(json_data){
         if(json_data['success']){
             $.each(json_data['messages'], function(index, message_json){
-                render_message(message_json);
+                handle_render_message(message_json);
             });
 
             $('.chat_box_text').scrollTop(2000);
+
+
+
+            try{
+                func();
+            }catch(err){
+                //console.log(err);
+            }
 
             //poll(json_data['last_update']);
         }else{
@@ -225,15 +306,20 @@ function load_chat_box($chat_box, func){
 }
 
 
+
 //gets or creates chatbox DOM element
 function get_or_create_chat_box(type, id, name){
     var $chat_box = $(".chat_box[data-type='" + type + "'][data-id='" + id + "']");
 
     if($chat_box.length){
         //alert('returning old chat box');
-        return $chat_box;
+        return {'chat_box': $chat_box, 'existed': true};
     }else{
         var chat_box_data = {type: type, id: id, name: name};
+
+        //alert('CREATING: ' + JSON.stringify(chat_box_data));
+
+
         var source = $('#chat_box_template').html();
         var template = Handlebars.compile(source);
         var generated_html = template(chat_box_data);
@@ -241,129 +327,156 @@ function get_or_create_chat_box(type, id, name){
 
 
 
-        //Position this chatbox taking into consideration
-        //the other chatboxes
-        var $other_chat_boxes = $('.chat_box');
-        //if($other_chat_boxes.length)
-
-        var chat_box_count = $other_chat_boxes.length;
-
-
-
-
-
-        var right_position = 30 + (chat_box_count * ($other_chat_boxes.first().width() + 10));
-
-
-        $chat_box.css({'position':'fixed'});
-        $chat_box.css({'z-index':'99999999'});
-        $chat_box.css({'bottom':'0px'});
-        $chat_box.css({'right': right_position.toString() + 'px'});
-
-
-
-        //alert("appending chatbox");
-
-
+        //If there is an extra chat box of this type, remove it
+        var $extra_chat_box_check = $(".extra_chat_box[data-type='" + type + "'][data-id='" + id + "']");
+        if($extra_chat_box_check.length){
+            $extra_chat_box_check.remove();
+        }
 
         $('body').append($chat_box);
 
-        //Make sure there arent too many chat boxes open
-        var $chat_boxes = $('.chat_box');
-
-
-        var $extra_chat_boxes = $("#extra_chat_boxes");
-        if(!$extra_chat_boxes.length){
-            var extra_chat_boxes_source = $('#extra_chat_boxes_template').html();
-            var extra_chat_boxes_template = Handlebars.compile(extra_chat_boxes_source);
-            var extra_chat_boxes_generated_html = extra_chat_boxes_template({});
-            $('body').append($(extra_chat_boxes_generated_html));
-        }
-
-
-
-        if($chat_boxes.length > max_chat_boxes){
-
-            var extra_chat_boxes_right_position = 30 + (max_chat_boxes * ($other_chat_boxes.first().width() + 10));
-
-            //position extra chat boxes div
-            $extra_chat_boxes.css({'position': 'fixed'});
-            $extra_chat_boxes.css({'z-index':'99999999'});
-            $extra_chat_boxes.css({'right': extra_chat_boxes_right_position.toString() + 'px'});
-            $extra_chat_boxes.css({'bottom': '0px'});
-            //Show the extra chat boxes div
-            $extra_chat_boxes.show();
-
-
-
-
-            //Hide chatbox 6 and on
-            for(var x = max_chat_boxes; x < $chat_boxes.length; x++){
-                var $this_chat_box = $($chat_boxes[x]);
-                $this_chat_box.hide();
-
-
-                var this_chat_box_type = $this_chat_box.attr('data-type');
-                var this_chat_box_id = $this_chat_box.attr('data-id');
-                var this_chat_box_name = $this_chat_box.attr('data-name');
-
-                //Make sure this extra chat box doesnt already exist
-                var $extra_chat_box_check = $('.extra_chat_box[data-type="' + this_chat_box_type + '"][data-id="' + this_chat_box_id + '"]');
-                if($extra_chat_box_check.length){
-                    //This extra chat box already exists in the list
-                    //so skip
-                    continue;
-                }
-
-
-                var extra_chat_box_data = {type: this_chat_box_type, id: this_chat_box_id, name: this_chat_box_name};
-                //Add this to the xtra chat div
-                var extra_chat_box_source = $('#extra_chat_box_template').html();
-                var extra_chat_box_template = Handlebars.compile(extra_chat_box_source);
-                var extra_chat_box_generated_html = extra_chat_box_template(extra_chat_box_data);
-
-
-                var $extra_chat_box = $(extra_chat_box_generated_html);
-
-
-                var $extra_chat_boxes_list = $extra_chat_boxes.find('#extra_chat_boxes_list');
-
-                $extra_chat_boxes_list.append($extra_chat_box);
-
-
-                //Update the extra chat box count
-
-
-
-
-                $extra_chat_boxes.find('#extra_chat_boxes_count').text(($extra_chat_boxes_list.children('div').length).toString());
-
-                //swap_chat_box($extra_chat_box);
-            }
-
-
-        }else{
-            //Hide the extra chat boxes div
-            $extra_chat_boxes.remove();
-        }
+        position_chat_boxes();
 
         load_chat_box($chat_box);
 
 
 
-        return $chat_box;
+        if(type != 'user'){
+            //Start listening for messages on this group channel
+            //socket.on(type + '_' + id, group_chat_function);
+
+
+            //Only attach new listener if one doesnt exist already
+            if(!socket.room_exists(type + '_' + id)){
+                //alert("ATTATCHING CUSTOM SOCKET LISTENER");
+                socket.room(type + '_' + id).join(group_chat_function);
+            }
+
+
+
+
+        }
+
+
+
+        save_chat_cookie();
+
+
+
+        return {'chat_box': $chat_box, 'existed': false};
 
     }
 
+}
+
+function position_chat_boxes(){
+    //Make sure there arent too many chat boxes open
+    var $chat_boxes = $('.chat_box');
+
+
+    //Loop thru all chat boxes and position them
+    for(var i = 0; i < $chat_boxes.length; i++){
+        var $this_chat_box = $($chat_boxes.get(i));
+        //Position this chatbox taking into consideration
+        //the other chatboxes
+        var $other_chat_boxes = $('.chat_box');
+
+        var right_position = 30 + (i * ($other_chat_boxes.first().width() + 10));
+
+
+        $this_chat_box.css({'position':'fixed'});
+        $this_chat_box.css({'z-index':'99999999'});
+        $this_chat_box.css({'bottom':'0px'});
+        $this_chat_box.css({'right': right_position.toString() + 'px'});
+    }
+
+
+
+
+    var $extra_chat_boxes = $("#extra_chat_boxes");
+    if(!$extra_chat_boxes.length){
+        var extra_chat_boxes_source = $('#extra_chat_boxes_template').html();
+        var extra_chat_boxes_template = Handlebars.compile(extra_chat_boxes_source);
+        var extra_chat_boxes_generated_html = extra_chat_boxes_template({});
+        $('body').append($(extra_chat_boxes_generated_html));
+    }
+
+
+    if($chat_boxes.length > max_chat_boxes){
+
+        var extra_chat_boxes_right_position = 30 + (max_chat_boxes * ($chat_boxes.first().width() + 10));
+
+        //position extra chat boxes div
+        $extra_chat_boxes.css({'position': 'fixed'});
+        $extra_chat_boxes.css({'z-index':'99999999'});
+        $extra_chat_boxes.css({'right': extra_chat_boxes_right_position.toString() + 'px'});
+        $extra_chat_boxes.css({'bottom': '0px'});
+        //Show the extra chat boxes div
+        $extra_chat_boxes.show();
+
+
+
+
+        //remove chatbox 6 and on and create an extra_chat_box in its place
+        for(var x = max_chat_boxes; x < $chat_boxes.length; x++){
+            var $this_chat_box = $($chat_boxes[x]);
+
+
+
+            var this_chat_box_type = $this_chat_box.attr('data-type');
+            var this_chat_box_id = $this_chat_box.attr('data-id');
+            var this_chat_box_name = $this_chat_box.attr('data-name');
+
+
+
+            $this_chat_box.remove();
+
+            //Make sure this extra chat box doesnt already exist
+            var $extra_chat_box_check = $('.extra_chat_box[data-type="' + this_chat_box_type + '"][data-id="' + this_chat_box_id + '"]');
+            if($extra_chat_box_check.length){
+                //alert("CHAT BOX: type - " + this_chat_box_type + " , id - " + this_chat_box_id + " EXTRA ALRDY EXISTSSSS" );
+                //This extra chat box already exists in the list
+                //so skip
+                continue;
+            }
+
+
+            var extra_chat_box_data = {type: this_chat_box_type, id: this_chat_box_id, name: this_chat_box_name};
+            //Add this to the xtra chat div
+            var extra_chat_box_source = $('#extra_chat_box_template').html();
+            var extra_chat_box_template = Handlebars.compile(extra_chat_box_source);
+            var extra_chat_box_generated_html = extra_chat_box_template(extra_chat_box_data);
+
+
+            var $extra_chat_box = $(extra_chat_box_generated_html);
+
+
+            var $extra_chat_boxes_list = $extra_chat_boxes.find('#extra_chat_boxes_list');
+
+            $extra_chat_boxes_list.append($extra_chat_box);
+
+
+            //Update the extra chat box count
+            $extra_chat_boxes.find('#extra_chat_boxes_count').text(($extra_chat_boxes_list.children('div').length).toString());
+
+            //swap_chat_box($extra_chat_box);
+        }
+
+
+    }
+//    else{
+//        //Hide the extra chat boxes div
+//        $extra_chat_boxes.remove();
+//    }
 }
 
 
 
 
 
+$(document).on('click', '.messaging_list_item', function(e){
+    e.stopPropagation();
 
-
-$(document).on('click', '.messaging_list_item', function(){
     var $messaging_list_item = $(this);
 
     var type = $messaging_list_item.attr('data-type');
@@ -371,7 +484,6 @@ $(document).on('click', '.messaging_list_item', function(){
     var name = $messaging_list_item.attr('data-name');
 
 
-//load_chat_box($chat_box);
 
 
     //Check if this chat is already in the #extra_chat_boxes div
@@ -380,9 +492,21 @@ $(document).on('click', '.messaging_list_item', function(){
         //This chat is already in extra chat box, so
         //just swap it with the last chat visible
         swap_chat_box($extra_chat_box_check);
-    }else{
-        var $chat_box = get_or_create_chat_box(type, id, name);
+        return;
     }
+
+
+    //alert('CREATING CHAT BOX FROM LIST ITEM ');
+
+    var create_chat_box_data = get_or_create_chat_box(type, id, name);
+    var $chat_box = create_chat_box_data['chat_box'];
+
+    //Only load if the chatbox wasnt already open
+//    if(!create_chat_box_data['existed']){
+//        load_chat_box($chat_box);
+//    }
+
+
 
 
     //Add this chatbox to page
@@ -416,17 +540,32 @@ function swap_chat_box($extra_chat_box){
     var last_chat_box_id = $last_chat_box.attr('data-id');
     var last_chat_box_name = $last_chat_box.attr('data-name');
 
+    //If this is a group/custom, stop listening to socket channel
+//    if(last_chat_box_type != 'user'){
+//        socket.room(last_chat_box_type + "_" + last_chat_box_id).leave(group_chat_function);
+//    }
+
 
     //Replace these values
     $last_chat_box.attr('data-type', extra_chat_box_type);
     $last_chat_box.attr('data-id', extra_chat_box_id);
     $last_chat_box.attr('data-name', extra_chat_box_name);
+    $last_chat_box.find('.chat_box_name').text(extra_chat_box_name);
 
-    $extra_chat_box.attr('data-type', last_chat_box_type);
-    $extra_chat_box.attr('data-id', last_chat_box_id);
-    $extra_chat_box.attr('data-name', last_chat_box_name);
 
-    $extra_chat_box.text(last_chat_box_name);
+    //Make sure this extra box is not a duplicate before we create it
+    var $extra_chat_box_check = $(".extra_chat_box[data-type='" + last_chat_box_type + "'][data-id='" + last_chat_box_id + "']");
+    if(!$extra_chat_box_check.length){
+        $extra_chat_box.attr('data-type', last_chat_box_type);
+        $extra_chat_box.attr('data-id', last_chat_box_id);
+        $extra_chat_box.attr('data-name', last_chat_box_name);
+
+        $extra_chat_box.text(last_chat_box_name);
+    }
+
+
+
+
 
 
 
@@ -442,6 +581,9 @@ $(document).on('click', '.extra_chat_box', function(e){
 
     //Replace the last chat box with this extra chat box
     var $extra_chat_box = $(this);
+
+
+    $('#extra_chat_boxes_list').toggle();
 
 
     swap_chat_box($extra_chat_box);
@@ -500,12 +642,7 @@ $(document).on('click', '#extra_chat_boxes', function(){
 //
 //}
 
-
-
-
-
-function render_message(message_json){
-
+function handle_render_message(message_json){
     var chat_box_id = message_json['user_id'];
 
     //If this is an outbound message,
@@ -514,15 +651,48 @@ function render_message(message_json){
         chat_box_id = message_json['target_id'];
     }
 
+    //If this is a group/custom chat, use the target_id as chat_box_id
+    if(message_json['target_type'] != 'user'){
+        chat_box_id = message_json['target_id'];
+    }
+
 
     //alert("rendering msg: " + JSON.stringify(message_json));
 
-    var $chat_box = get_or_create_chat_box(message_json['target_type'], chat_box_id, message_json['origin']['name']);
-    //var $chat_box = $('.chat_box');
-    console.log($chat_box);
+    var create_chat_box_data = get_or_create_chat_box(message_json['target_type'], chat_box_id, message_json['origin']['name']);
+    var $chat_box = create_chat_box_data['chat_box'];
+
+    function load_render_wrap(){
+        init();
+        function init(){
+            render_message(message_json, $chat_box);
+        }
+    }
+    //If the chat box didnt exist before we just got it back from create_chat_box,
+    //be sure to load then previous messages THEN render the new message
+    if(!create_chat_box_data['existed']){
+        //alert('DIDNT EXIST');
+        load_chat_box($chat_box, load_render_wrap);
+
+    }else{
+        //The chat box is already open and loaded so just
+        //render the message
+        render_message(message_json, $chat_box);
+    }
+
+
+    $('.chat_box_text').scrollTop(2000);
+
+}
 
 
 
+
+
+function render_message(message_json, $chat_box){
+
+
+    //alert(JSON.stringify(message_json));
 
     var $chat_box_text = $chat_box.find('.chat_box_text');
     var $chat_message_wrap = $chat_box.find('.chat_message_wrap');
@@ -548,15 +718,137 @@ function render_message(message_json){
 
     $chat_message_wrap.append($(generated_html));
 
+}
+
+
+function group_chat_function(success, numberOfRoomSubscribers) {
+
+
+    if(success){
+
+        this.on('join', function (newMembersCount) {
+            // fire on client join
+        });
+
+
+        // fire when server send frame into this room with 'data' event
+        this.on('message', function (message_data) {
+//            alert('RECEIVING CUSTOM MSG ' + JSON.stringify(message_data));
+//            alert(message_data['id'] + " --- " + last_send_message_id);
+            if(message_data['id'] != last_send_message_id){
+                handle_render_message(message_data);
+            }
+        });
+    }else {
+        console.log("ERROR CONNECTING TO ROOM");
+    }
+
+
+
 
 }
 
 
+$(document).on('click', '.chat_box_close_button', function(e){
+    var $close_button = $(this);
+
+    var $chat_box = $close_button.closest('.chat_box');
+
+    var chat_box_type = $chat_box.attr('data-type');
+    var chat_box_id = $chat_box.attr('data-id');
+
+    //Close this chat box
+    $chat_box.remove();
+
+    if(chat_box_type != 'user'){
+//        socket.room(chat_box_type + "_" + chat_box_id).leave(group_chat_function);
+
+    }
+
+
+    position_chat_boxes();
+
+
+    save_chat_cookie();
+
+
+
+
+
+
+
+    //Get count of chatboxes
+    var chat_box_count = $('.chat_box').length;
+
+
+    if(chat_box_count < max_chat_boxes){
+        //alert('CHAT BOX SPACE AVAILABLE');
+        //check if there are any extra chat boxes
+        var $extra_chat_boxes = $('.extra_chat_box');
+        //If there are spot where extra chat boxes can go,
+        //fill them up
+        if($extra_chat_boxes.length){
+            //alert(max_chat_boxes.toString() + " " + chat_box_count.toString());
+
+
+            var empty_chat_box_spaces = max_chat_boxes - chat_box_count;
+
+            for(var x = 0; x < empty_chat_box_spaces; x++){
+                if(x < $extra_chat_boxes.length){
+                    var $this_extra_chat_box = $($extra_chat_boxes.get(x));
+
+
+
+                    var type = $this_extra_chat_box.attr('data-type');
+                    var id = $this_extra_chat_box.attr('data-id');
+                    var name = $this_extra_chat_box.attr('data-name');
+
+                    var create_chat_box_data = get_or_create_chat_box(type, id, name);
+                    var $new_chat_box = create_chat_box_data['chat_box'];
+
+
+
+
+                    //Remove this extra chat box
+                    $this_extra_chat_box.remove();
+
+                    save_chat_cookie();
+
+                    var current_extra_chat_box_count = $extra_chat_boxes.length - 1 - x;
+
+
+                    if(current_extra_chat_box_count <= 0){
+                        //alert('theres no more extra chat boxes ');
+                        //remove the extra chat box
+                        $('#extra_chat_boxes').remove();
+
+                        save_chat_cookie();
+                        continue;
+                    }
+
+                    //lower the extra chat box count
+                    $('#extra_chat_boxes_count').text(current_extra_chat_box_count.toString());
+                }
+            }
+        }
+    }else{
+        position_chat_boxes();
+    }
+
+
+
+
+
+});
 
 
 
 
 $(document).on('keyup', '.chat_input', function(e){
+    e.stopPropagation();
+    e.preventDefault();
+
+
     var $chat_input = $(this);
     var $chat_box = $chat_input.closest('.chat_box');
 
@@ -604,7 +896,7 @@ $(document).on('keyup', '.chat_input', function(e){
                 if(response['success']){
                     last_send_message_id = response['message']['id'];
                     console.log(response['message']);
-                    render_message(response['message']);
+                    handle_render_message(response['message']);
                     $chat_input.val('');
                 }else{
 

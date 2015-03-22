@@ -602,21 +602,30 @@ div.html5-info-bar.ytp-can-shar {
 }
 
 .post_attached_image_flier.post_attached_image {
-    width: 552px;
-
-    height: 210px;       
-    border-radius: 1.5px;
-};
+  width: 552px;
+  height: 220px;
+  border-radius: 2.5px;
 }
 
-.post_attached_image_container_flier.post_attached_image_container {
-    margin-bottom: 20px;
-
-    height: 200px;
-    margin-left: -1px;
+.post_attached_image_container.post_attached_image_container_flier {
+    /* background-color: #f5f5f5; */
+    margin: .25rem 0;
+    /*    cursor: nesw-resize;
+        cursor: -moz-zoom-in;
+        cursor: -webkit-zoom-in;*/
+    /* border: 1px solid #d8d8d8; */
+    width: 550px;
+    height: 220px;
     overflow: hidden;
-    padding-bottom: 0;
-    border-radius: 1px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 4px solid #fff;
+    padding:0px!important;
+    left: -21px;
+    position: relative;
+    margin-bottom: 10px;
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px 2px rgba(0, 0, 0, 0.1);   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
 }
 
 .post_attached_image_container_flier .post_attached_image_caption {
