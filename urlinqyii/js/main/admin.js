@@ -331,7 +331,7 @@ $(document).ready(function(){
 
 
 
-        var post_url = globals.base_url + '/user/addVideo';
+        var post_url = globals.base_url + '/video/addVideo';
 
 
         var post_data = {

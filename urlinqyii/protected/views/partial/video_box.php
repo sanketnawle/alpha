@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div class = 'post video_box_post'>
+<div class = 'post video_box_post' data-video_id=''>
 <div class="post_main">
     <div class="video_header">
         Video lessons to help you learn<span class="info_icon"></span>
@@ -22,94 +22,27 @@
         <div class = 'post_lc ' >
             <div class = 'post_comment_btn'>
                 <span class = "reply_icon icon icon-comment-discussion"></span>
-          <!--      {{#ifCond reply_count '>=' 1}} -->
-                <div class = 'reply_number'>
 
-                <!--    {{reply_count}}-->
-
-                </div>
-              <!--  {{/ifCond}}-->
             </div>
 
-            <div class = 'post_like post_like_btn'>
+            <div class = 'post_liked post_like_btn'>
+                <i class = "icon icon-plus press"></i>
+
+            </div>
+            <div class = 'post_like post_like_btn' style="display:none;">
                 <i class = "icon icon-plus"></i>
-                <span>liked</span>
-
-                <div class = 'like_number'>
-                   3
-                </div>
 
             </div>
-
 
         </div>
 </div>
 </div>
 
-<div class="master_comments" id="{{post_id}}">
-    <!--    {{#if replies}}
-
-    {{#each replies}}
-    <div class = 'comments'>
-        <div class = 'comment_main' data-user_id="{{user_info.user_id}}" data-reply_id="{{reply_id}}">
-
-
-            {{#ifCond anon '==' 1}}
-            <div class = 'comment_owner_container' style = "cursor:default; background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
-            </div>
-            {{else}}
-            <div class = 'comment_owner_container profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
-            </div>
-            {{/ifCond}}
-
-            {{#if user_id}}
-            {{#ifCond anon '==' 1}}
-                                            <span class = 'comment_owner anonymous_post_owner'>
-                                                        Anonymous
-                                                    </span>
-            {{#if cownership}}
-                                                        <span class="comment_owner comment_own_comment anonymous_post_owner">
-                                                            (me)
-                                                        </span>
-            {{/if}}
-            {{else}}
-                                            <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
-                                                {{user_info.user_name}}
-                                            </span>
-            {{/ifCond}}
-            {{else}}
-                                        <span class = 'comment_owner'>
-                                            Invalid User
-                                        </span>
-            {{/if}}
-
-            <div class = 'comment_time'>
-                <div class='ct_ts'>
-                    {{update_timestamp}}
-                </div>
-            </div>
-            <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
-                {{{reply_msg}}}
-            </div>
-
-            {{#if file_id}}
-
-            <a href="<?php //echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-            {{/if}}
-
-            {{#ifCond user_info.user_id '==' '<?php// echo $user_id; ?>'}}                                         <div class='reply_delete_button'></div>                                     {{/ifCond}}
-
-        </div>
-
-    </div>
-    {{/each}}
-    {{#if show_more}}
+<div class="master_comments video_comments">
     <div id='show_more' class='morecmt_bar'>
-        Read more
+        Read Comments
     </div>
-    {{/if}}
 
-    {{/if}}-->
 </div>
 
 
@@ -124,7 +57,7 @@
     <div class = 'commentform'>
 
 
-        <form action='/post/reply' class='reply_form' method="POST" enctype="multipart/form-data" data-post_id='{{post_id}}'>
+        <form action='/video/reply' class='reply_form video_reply_form' method="POST" enctype="multipart/form-data" data-video_id=''>
 
             <div>
                 <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
@@ -170,7 +103,7 @@
             <div class="video_thumbnail" style="background-image: url('{{thumbnail_url}}')"></div>
             <div class="video" style = "display: none;">
                 {{{html}}}
-                <div class="skip_video">skip</div>
+                <div class="skip_video video_open">next</div>
             </div>
         </div>
         <div class="video_left_column">
@@ -197,6 +130,119 @@
             </div>
         </div>
 
+
+    </div>
+</script>
+
+<script id="video_reply_template" type="text/x-handlebars-template">
+
+    {{#each replies}}
+    <div class = 'comments'>
+        <div class = 'comment_main' data-user_id="{{user_info.user_id}}" data-video_reply_id="{{video_reply_id}}">
+
+
+            {{#ifCond anon '==' 1}}
+            <div class = 'comment_owner_container' style = "cursor:default; background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
+            </div>
+            {{else}}
+            <div class = 'comment_owner_container profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+            </div>
+            {{/ifCond}}
+            {{#if user_id}}
+            {{#ifCond anon '==' 1}}
+                                                    <span class = 'comment_owner anonymous_post_owner'>
+                                                        Anonymous
+                                                    </span>
+            {{#if cownership}}
+                                                        <span class="comment_owner comment_own_comment anonymous_post_owner">
+                                                            (me)
+                                                        </span>
+            {{/if}}
+            {{else}}
+                                                    <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                                        {{user_info.user_name}}
+                                                    </span>
+            {{/ifCond}}
+            {{else}}
+                                            <span class = 'comment_owner'>
+                                                Invalid User
+                                            </span>
+            {{/if}}
+            <div class = 'comment_time'>
+                <div class='ct_ts'>
+                    {{update_timestamp}}
+                </div>
+            </div>
+
+            <div class = 'comment_msg seemore_anchor' data-video_reply_id="{{video_reply_id}}">
+                {{{reply_msg}}}
+            </div>
+
+            {{#if file_id}}
+
+            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
+            {{/if}}
+
+            {{#ifCond user_info.user_id '==' '<?php echo $user->user_id; ?>'}}
+            <div class='reply_delete_button'></div>
+            {{/ifCond}}
+        </div>
+
+    </div>
+
+    {{/each}}
+    <div id='show_less' class='lesscmt_bar'>
+        Hide Discussion
+    </div>
+</script>
+
+
+<script id='video_one_reply_template' type="text/x-handlebars-template">
+    <div class = 'comments'>
+        <div class = 'comment_main' data-user_id="{{user_info.user_id}}" data-video_reply_id="{{reply_id}}">
+
+            {{#ifCond anon '==' 1}}
+            <div class = 'comment_owner_container' style = "cursor:default; background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
+            </div>
+            {{else}}
+            <div class = 'comment_owner_container profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+            </div>
+            {{/ifCond}}
+
+
+            {{#ifCond anon '==' 1}}
+                            <span class = 'comment_owner anonymous_post_owner'>
+                                Anonymous
+                            </span>
+            {{#if cownership}}
+                                <span class="comment_owner comment_own_comment anonymous_post_owner">
+                                    (me)
+                                </span>
+            {{/if}}
+            {{else}}
+                            <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                {{user_info.user_name}}
+                            </span>
+            {{/ifCond}}
+
+            <div class = 'comment_time'>
+                <div class='ct_ts'>
+                    {{update_timestamp}}
+                </div>
+            </div>
+            <div class = 'comment_msg seemore_anchor' data-video_reply_id="{{reply_id}}">
+                {{{reply_msg}}}
+            </div>
+
+            {{#if file_id}}
+
+            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
+            {{/if}}
+
+            {{#ifCond user_info.user_id '==' '<?php echo $user->user_id; ?>'}}
+            <div class='reply_delete_button'></div>
+            {{/ifCond}}
+        </div>
 
     </div>
 </script>

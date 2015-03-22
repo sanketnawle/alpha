@@ -919,39 +919,8 @@ class UserController extends Controller
         $this->renderJSON($result);
     }
 
-    public function actionGetVideos(){
-        $user = $this->get_current_user();
-        if(!$user){
-            $data = array('success'=>false, 'error_id'=>1);
-            $this->renderJSON($data);
-            return;
-        }
-        $videos = Video::model()->findAll('department_id=:did',array(':did'=>$user->department_id));
-        foreach($videos as $i=>$video){
-            $videos[$i] = $this->get_model_associations($video,array('department'=>array()));
-        }
-        $data = array('success'=>true, 'videos'=>$videos);
-        $this->renderJSON($data);
-        return;
-    }
 
-    public function actionAddVideo(){
-        if(!isset($_POST['video_url']) || !isset($_POST['department_id']) || !isset($_POST['topic'])){
-            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'all data not set', '_post'=>$_POST);
-            $this->renderJSON($data);
-            return;
-        }
-        $video = new Video();
-        $video->department_id=$_POST['department_id'];
-        $video->video_url=$_POST['video_url'];
-        $video->subtopic=$_POST['topic'];
-        if($video->save(false)){
-            $data = array('success'=>true);
-            $this->renderJSON($data);
-            return;
-        }
 
-    }
 
 
 

@@ -1,24 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "video".
+ * This is the model class for table "video_like".
  *
- * The followings are the available columns in table 'video':
+ * The followings are the available columns in table 'video_like':
  * @property integer $video_id
- * @property integer $department_id
- * @property string $subtopic
- * @property string $video_url
- * @property string $title
- * @property string $description
+ * @property integer $user_id
  */
-class Video extends CActiveRecord
+class VideoLike extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'video';
+		return 'video_like';
 	}
 
 	/**
@@ -29,15 +25,11 @@ class Video extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('department_id, subtopic, video_url, title, description', 'required'),
-			array('department_id', 'numerical', 'integerOnly'=>true),
-			array('subtopic', 'length', 'max'=>50),
-			array('video_url', 'length', 'max'=>150),
-			array('title', 'length', 'max'=>100),
-			array('description', 'length', 'max'=>500),
+			array('video_id, user_id', 'required'),
+			array('video_id, user_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('video_id, department_id, subtopic, video_url, title, description', 'safe', 'on'=>'search'),
+			array('video_id, user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,9 +41,6 @@ class Video extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'department' => array(self::BELONGS_TO, 'Department', 'department_id'),
-            'replies' => array(self::HAS_MANY, 'VideoReply', 'video_id'),
-            'users_liked' =>array(self::HAS_MANY, 'VideoLike', 'video_id'),
 		);
 	}
 
@@ -62,11 +51,7 @@ class Video extends CActiveRecord
 	{
 		return array(
 			'video_id' => 'Video',
-			'department_id' => 'Department',
-			'subtopic' => 'Subtopic',
-			'video_url' => 'Video Url',
-			'title' => 'Title',
-			'description' => 'Description',
+			'user_id' => 'User',
 		);
 	}
 
@@ -89,11 +74,7 @@ class Video extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('video_id',$this->video_id);
-		$criteria->compare('department_id',$this->department_id);
-		$criteria->compare('subtopic',$this->subtopic,true);
-		$criteria->compare('video_url',$this->video_url,true);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('description',$this->description,true);
+		$criteria->compare('user_id',$this->user_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -104,7 +85,7 @@ class Video extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Video the static model class
+	 * @return VideoLike the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
