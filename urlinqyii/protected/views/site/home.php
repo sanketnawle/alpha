@@ -103,7 +103,9 @@
                             </div>
                             <div id = "feed_column" class = "feed_column_home">
                                 <div id = "stream_holder" class = "stream_holder_home">
-                                    <div id = "video_box_wrapper">
+
+
+                                    <div id = "video_box_wrapper" style="display: none;">
                                         <?php echo $this->renderPartial('/partial/video_box',array('user'=>$user,'origin_type'=>'user','origin_id'=>$user->user_id ,'is_admin'=>false));?>
                                     </div>
 

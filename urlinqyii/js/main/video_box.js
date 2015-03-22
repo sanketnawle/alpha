@@ -8,7 +8,13 @@ $(document).ready(function(){
         function(response){
             if(response['success']){
                 videos=response['videos'];
-                render_videos();
+                if(videos.length>0){
+                    render_videos();
+                    $('#video_box_wrapper').fadeIn(250);
+                }else{
+                    $('#video_box_wrapper').remove();
+                }
+
 
               //  set_videos_variable(videos);
             }
