@@ -319,41 +319,6 @@ function getPosition(element) {
 $(document).on("click", ".chip", function(event){
 var $chip = $(this);
 
-// var $events_template_loc = $("#events_template_loc");
-
-// var $chip_top = $chip.find(".chip-top");
-// var $chip_bottom = $chip.find(".chip-bottom");
-
-// var chip_start_position = getPosition($events_template_loc[0]);
-// var x_chip_start_position = chip_start_position.x;
-// var y_chip_start_position = chip_start_position.y;
-
-
-// var chip_top_position = getPosition($chip_top[0]);
-// var x_top = chip_top_position.x;
-// var y_top = chip_top_position.y;
-
-// var chip_bottom_position = getPosition($chip_bottom[0]);
-// var x_bottom = chip_bottom_position.x;
-// var y_bottom = chip_bottom_position.y;
-
-// var x_card_left_start = x_top - x_chip_start_position;
-// var y_card_left_start = y_top - y_chip_start_position;
-
-// var x_card_right_start = x_bottom - x_chip_start_position;
-// var y_card_right_start = y_bottom - y_chip_start_position;
-
-// var $card_left = $("#card-left");
-// var $card_right = $("#card-right");
-
-// $card_left.css({"left":x_card_left_start,"top":y_card_left_start});
-// $card_right.css({"left":x_card_right_start,"top":y_card_right_start});
-
-  
-
-
-
-
   event.preventDefault();
     index = $(this).attr("index");
     files_html = '';
@@ -362,7 +327,7 @@ var $chip = $(this);
     files_html += get_files(form_data["event_id"]);
     card_content_temp = $('<div class="card-content"></div>');
     card_html = '<div class="card-header">\
-                    <div class="card-icon" style="background:'+form_data["color"]+';"></div>\
+                    <div class="card-icon" style="background:'+form_data["color"]+';"><span class="card-close"><img src="../assets/arrow-28-512.png"></span></div>\
                     <div class="card-title"><h2>'+form_data["title"]+'</h2><h3>'+form_data["origin_type"]+'</h3></div>\
                 </div>\
                 <div class="card-description">\
@@ -372,7 +337,7 @@ var $chip = $(this);
                         <div style="width:75%;float:left;">\
                           <textarea type="text" id="txt_desc" class="input_text" value="'+form_data["description"]+'"></textarea>\
                         </div>\
-                        <div style="margin-bottom:5px;margin-top:5px; width:25%;float:right;">\
+                        <div style="width:25%;float:right;">\
                           <button class="btn_update" id="btn_update_description">Update</button>\
                         </div>\
                       </div><br>\
@@ -383,14 +348,14 @@ var $chip = $(this);
                         <div style="width:75%;float:left;">\
                           <textarea type="text" id="txt_loc" class="input_text" value="'+form_data["location"]+'"></textarea>\
                         </div>\
-                        <div style="margin-bottom:5px;margin-top:5px; width:25%;float:right;">\
+                        <div style="width:25%;float:right;">\
                           <button class="btn_update" id="btn_update_location">Update</button>\
                         </div>\
                       </div><br>\
                     </div>\
-                  <div class="people-attending">'+ get_people_attending(form_data["event_id"])+'</div>\
+                  <div class="people-attending">'+get_people_attending(form_data["event_id"])+'</div>\
                 </div>\
-                <div class="card-upload">Materials <button>Upload</button><button>Import from drive</button></div>';
+                <div class="card-upload">Materials <button id="btn_event_file_upload">Upload</button><button>Import from drive</button></div>';
     card_content = $(card_content_temp).html(card_html);
 
     if (!$($chip).hasClass('expanded')) {
@@ -438,28 +403,35 @@ var $chip = $(this);
 
 
     } else {
-        $('.chip').animate({
-          width: "24%"
-        });
-        $('.chip').children('.chip-top').animate({
-          width: "100%",
-          height: "200px"
-        });
-        $('.chip').children('.chip-bottom').css({
-          "display": "block"
-        });
-        $('.chip').find('.month, .time').fadeIn();
-        $('.chip').children('.collapse-info').css({
-          "display": "none"
-        });
-        $('.chip').children('.collapse-date').css({
-          "display": "none"
-        });
-        $($chip).children('.card-content').detach();
-        $($chip).removeClass('expanded');
+        
     }
-      
+});
 
+$(document).on("click", "span.card-close", function(event){
+  event.preventDefault();
+  $chip = $(this).parents('.chip');
+    $('.chip').animate({
+      width: "24%"
+    });
+    $('.chip').children('.chip-top').animate({
+      width: "100%",
+      height: "200px"
+    });
+    $('.chip').children('.chip-bottom').css({
+      "display": "block"
+    });
+    $('.chip').find('.month, .time').fadeIn();
+    $('.chip').children('.collapse-info').css({
+      "display": "none"
+    });
+    $('.chip').children('.collapse-date').css({
+      "display": "none"
+    });
+    $($chip).children('.card-content').detach();
+    setTimeout(function(){
+      $($chip).removeClass('expanded');
+    },400);
+    
 });
 
 $(document).on("click", "#edit_description", function(event){
