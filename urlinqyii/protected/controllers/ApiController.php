@@ -49,7 +49,6 @@
                 $this->renderJSON($data);
                 return;
 
-
             }
         }
 
@@ -57,7 +56,7 @@
 
         if ($urlinq_sub == 'urlinq.com') {
             $nyu = University::model()->find('website_url=:website_url', array(':website_url'=>'https://www.nyu.edu'));
-            $data = array('success'=>false, 'error_id'=>5, 'error_msg'=>$nyu->schools);
+            $data = array('success'=>true, 'university'=>$nyu, 'schools'=>$nyu->schools);
             $this->renderJSON($data);
             return;
         }
