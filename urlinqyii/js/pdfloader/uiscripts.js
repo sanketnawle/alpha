@@ -149,8 +149,12 @@ var load_events = function (pdf_id) {
          data: {"class_id":globals.origin_id, "file_id":pdf_id},
          success: function(response) {
           $.each(response, function(index,value){
-                var d = new Date(value["start_date"]+" "+ value["start_time"]);
-                var dt = new Date(value["end_date"]+" "+ value["end_time"]);
+                start_date_split = value["start_date"].split("-");
+                end_date_split = value["end_date"].split("-");
+                start_date_str = start_date_split[1]+"/"+start_date_split[2]+"/"+start_date_split[0];
+                end_date_str = end_date_split[1]+"/"+end_date_split[2]+"/"+end_date_split[0];
+                var d = new Date(start_date_str+" "+ value["start_time"]);
+                var dt = new Date(end_date_str+" "+ value["end_time"]);
                 if(d.getHours()!="0" && dt.getHours()!="0"){
                   time = "from "+formatAMPM(d)+" to "+formatAMPM(dt);
                 }
@@ -182,7 +186,7 @@ var load_events = function (pdf_id) {
                   month: month[d.getMonth()],
                   event_id: value["event_id"],
                   time: time,
-                  color: class_color,
+                  color: get_class_color(),
                   origin_type: value["event_type"],
                 };
                   event_array_list.push(event_value);
@@ -395,7 +399,7 @@ var $chip = $(this);
                           <textarea type="text" id="txt_desc" class="input_text" value="'+form_data["description"]+'"></textarea>\
                         </div>\
                         <div style="width:25%;float:right;">\
-                          <button class="btn_update" id="btn_update_description">Update</button>\
+                          <button class="btn_update" index="'+index+'" event_id="'+form_data["event_id"]+'" id="btn_update_description">Update</button>\
                         </div>\
                       </div><br>\
                     </div><br>\
@@ -406,13 +410,13 @@ var $chip = $(this);
                           <textarea type="text" id="txt_loc" class="input_text" value="'+form_data["location"]+'"></textarea>\
                         </div>\
                         <div style="width:25%;float:right;">\
-                          <button class="btn_update" id="btn_update_location">Update</button>\
+                          <button class="btn_update" index="'+index+'" event_id="'+form_data["event_id"]+'" id="btn_update_location">Update</button>\
                         </div>\
                       </div><br>\
                     </div>\
                   <div class="people-attending">'+get_people_attending(form_data["event_id"])+'</div>\
                 </div>\
-                <div class="card-upload">Materials <button id="btn_event_file_upload">Upload</button><button>Import from drive</button></div>';
+                <div class="card-upload">Materials <button id="btn_event_file_upload">Upload</button><input type="file" id="event_file_upload" style="display:none"/><button>Import from drive</button></div>';
     card_content = $(card_content_temp).html(card_html);
 
     if (!$($chip).hasClass('expanded')) {
@@ -507,7 +511,7 @@ $(document).on("click", "#edit_location", function(event){
 $(document).on("click", "#btn_update_description", function(event) {
               $("#event_description_input").hide();
               desc_text_value = $("#txt_desc").val();
-              desc_event_id = $("#card").attr("event_id");
+              desc_event_id = $(this).attr("event_id");
               $.ajax({
                    url: "UpdateSyllabusEvent",
                    type: "POST",
@@ -518,6 +522,9 @@ $(document).on("click", "#btn_update_description", function(event) {
                        console.log(errorMessage); // Optional
                    }
               });
+              index = $(this).attr("index");
+              $("#events_template_loc").data('data-form')[parseInt(index)]["description"] = desc_text_value;
+
               $("#edit_description").html(desc_text_value);
               $("#edit_description").show("slow");
             });
@@ -527,7 +534,7 @@ $(document).on("click", "#btn_update_description", function(event) {
 $(document).on("click", "#btn_update_location", function(event){
               $("#edit_location_input").hide();
               location_text_value = $("#txt_loc").val();
-              location_event_id = $("#card").attr("event_id");
+              location_event_id =  $(this).attr("event_id");
               $.ajax({
                    url: "UpdateSyllabusEvent",
                    type: "POST",
@@ -538,17 +545,18 @@ $(document).on("click", "#btn_update_location", function(event){
                        console.log(errorMessage); // Optional
                    }
               });
+               index = $(this).attr("index");
+              $("#events_template_loc").data('data-form')[parseInt(index)]["location"] = location_text_value;
               $("#edit_location").html(location_text_value);
               $("#edit_location").show("slow")
             });
 
 $(document).on("click",'#btn_event_file_upload', function(event){
         event.preventDefault();
-        
         $("#event_file_upload").trigger("click");
 });
 
-$(document).on("change",'#event_file_upload', function(event){
+$(document).on("change",'.event_file_upload', function(event){
         event.preventDefault();
 
         filevalue = $(this).val().split(".");
@@ -693,7 +701,7 @@ var search_events = function(){
                       month: month[d.getMonth()],
                       event_id: value["event_id"],
                       time: time,
-                      color: class_color,
+                      color: get_class_color(),
                       origin_type: value["origin_type"],
                     };
                       event_array_list.push(event_value);
@@ -715,7 +723,6 @@ var search_events = function(){
 };
 
 function get_people_attending(event_id){
-  console.log(event_id);
   var people_attending_html = "";
  var resp = $.ajax({
                url: "GetPeopleAttending",
