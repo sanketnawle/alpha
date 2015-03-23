@@ -10,7 +10,7 @@
 <body>
 
 <div class = 'post video_box_post' data-video_id=''>
-<div class="post_main">
+<div class="post_main video_post_main">
     <div class="video_header">
         Video lessons to help you learn<span class="info_icon"></span>
     </div>
@@ -118,7 +118,7 @@
                     <div class="video_topic">
                         {{topic}}
                     </div>
-                    -
+                    <em class = "topic_connector"></em>
                     <div class="video_subtopic">
                         {{subtopic}}
                     </div>
@@ -126,6 +126,7 @@
             </div>
             <div class="video_box_functions">
                 <div class="watch_video">Watch</div>
+                <em>&#xb7;</em>
                 <div class="skip_video">skip</div>
             </div>
         </div>
@@ -246,7 +247,7 @@
 
     </div>
 </script>
-
+<div class = "video_box_feed_separator"><hr><div>Welcome to the Feed</div></div>
 
 </body>
 </html>

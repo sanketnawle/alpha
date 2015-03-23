@@ -15,13 +15,16 @@
 .video_description{
     font-size:12px;
     white-space: normal;
-    height: 49px;
+    height: 72px;
     overflow: hidden;
+    color: #232323;
+    line-height: 18px;
+    margin-top: 10px;
 }
 
 .video_thumbnail{
-    height:140px;
-    width:200px;
+    height: 124px;
+    width: 220px;
     background-size: cover;
     display:inline-block;
     cursor: pointer;
@@ -39,9 +42,12 @@
 }
 
 .video_title{
-    font-size:15px;
+    font-size: 17px;
     overflow: hidden;
+    color: #232323;
     text-overflow: ellipsis;
+    font-weight: 300;
+    margin-top: 8px;
 }
 
 .video_box_functions{
@@ -51,6 +57,10 @@
 
 .video_header{
     margin-left: 12px;
+    font-size: 17px;
+    color: #777777;
+    padding-top: 12px;
+    font-weight: 100;
 }
 
 .watch_video{
@@ -80,6 +90,32 @@
     float: none!important;
 
 }
+
 .video_boxes{
     transition: all 0.5s ease-in-out;
+}
+
+em.topic_connector{
+
+}
+
+.video_box_functions > em{
+
+}
+
+div.video_post_main.post_main{
+    padding:0;
+}
+
+
+.video_box_feed_separator{
+
+}
+
+.video_box_feed_separator div{
+
+}
+
+.video_box_feed_separator hr{
+
 }
