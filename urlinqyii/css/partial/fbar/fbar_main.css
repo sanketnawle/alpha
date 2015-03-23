@@ -382,7 +382,6 @@ div.form_wrapper footer {
     border-top: 1px solid rgba(181, 181, 181, 0.3);
     border-radius: 0px 0px 6px 6px;
     padding-right:15px;
-    padding-left:0px;
 }
 
 div.form_wrapper footer div {
@@ -1235,7 +1234,7 @@ li.privacy_list > span {
 /*LOCATION AUTOCOMPLETE */
 
 .location_matches_list {
-    width: 453px;
+    width: 455px;
     display: none;
     max-height: 200px;
     position: absolute;
@@ -1246,7 +1245,7 @@ li.privacy_list > span {
     -moz-box-shadow: 0 0 4px 0 rgba(111, 111, 111, 0.05);
     box-shadow: 0 0 4px 0 rgba(111, 111, 111, 0.05);
     border-radius: 1px 1px 3px 3px;
-    left: 50px;
+    left: 52px;
     top: 32px;
     overflow: scroll;
     padding-bottom: 4px;
@@ -1352,11 +1351,14 @@ input.event_location {
     width: 455px;
     margin-top: 2px;
     position: reltive;
-    font-size: 15px;
-    margin-left: 10px;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 52px;
     padding-left: 23px;
     border: 1px solid #ddd;
     border-radius: 2px;
+    position: relative;
+    top: -14px;
 }
 
 /*#fbar_holder.events_more_options .fbar_date_time#event_location {
@@ -1507,7 +1509,9 @@ div.input_wrap.opportunity_deadline{
     color: #444;
     display: inline-block;
     margin-right: 4px;
-    padding-top: 2px;
+    float: left;
+    top: 12px;
+    position: relative;
 }
 
 .event_textarea, .opportunity_textarea {
@@ -1525,7 +1529,7 @@ div.photo_flier_upload_box {
 }
 
 .fbar_date_time.fbar_time_input {
-    width: 106px;
+    width: 104px;
 
 }
 
@@ -1580,7 +1584,7 @@ div.photo_flier_upload_box {
 
 /* Custom CSS for home page fbar */
 body#body_home input#event_title {
-    width: 497px !important;
+    width: 498px !important;
 }
 
 body#body_home input#event_location {
@@ -1589,7 +1593,6 @@ body#body_home input#event_location {
 
 body#body_home input#event_start_date,
 body#body_home input#event_end_date {
-    width: 105px;
+    width: 110px;
 }
-
 

@@ -50,6 +50,8 @@ class Video extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
             'department' => array(self::BELONGS_TO, 'Department', 'department_id'),
+            'replies' => array(self::HAS_MANY, 'VideoReply', 'video_id'),
+            'users_liked' =>array(self::HAS_MANY, 'VideoLike', 'video_id'),
 		);
 	}
 

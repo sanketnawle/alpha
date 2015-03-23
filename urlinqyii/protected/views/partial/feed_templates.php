@@ -92,7 +92,7 @@
                                                      </time>
                                                 </div>
                                                 <div class = 'post_msg post_lr_link_msg'>
-                                                    <span class='msg_span seemore_anchor'>
+                                                    <span class='msg_span seemore_anchor post_message_text'>
                                                                 {{{text}}}
                                                     </span>
 
@@ -101,8 +101,8 @@
                                                 {{#each files}}
                                                     {{#ifCond file_extension '===' 'jpg'}}
                                                     <div class = "post_attached_image_container">
-                                                        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}" data-lightbox="{{original_name}}"  class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></a>
-                                                        <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
+                                                        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}" data-lightbox="{{original_name}}"  class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"><div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div></a>
+                                                        
                                                     </div>
                                                     {{else}}
                                                         {{#ifCond download_count '==' 0}}
@@ -616,6 +616,21 @@
                                                                 {{sub_text}}
                                                     </div>
 
+
+                                                {{#each files}}
+                                                    {{#ifCond file_extension '===' 'jpg'}}
+                                                    <div class = "post_attached_image_container">
+                                                        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}" data-lightbox="{{original_name}}"  class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"><div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div></a>
+                                                    </div>
+                                                    {{else}}
+                                                        {{#ifCond download_count '==' 0}}
+                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span></div></a>
+                                                        {{else}}
+                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'><em class = "file_type_color_bar"></em><span class = "file_name">{{original_name}}</span><span class = "file_type">{{file_extension}}</span><span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                                        {{/ifCond}}
+                                                    {{/ifCond}}
+                                                {{/each}}                                                    
+
                                                     {{#ifCond post_type '!=' 'question'}}
 
                                                         <div class="mc_question">
@@ -1108,13 +1123,13 @@
 
                                 {{#if event.description}}
                                     <div class = "event_description_holder">
-                                        <p>{{{event.description}}}</p>
+                                        <p class = "post_message_text">{{{event.description}}}</p>
                                     </div>
                                 {{/if}}
                                 {{#each files}}
                                     {{#ifCond file_extension '===' 'jpg'}}
                                     <div class = "post_attached_image_container post_attached_image_container_flier">
-                                        <div class = 'post_attached_image post_attached_image_flier' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                        <div class = 'post_attached_image post_attached_image_flier' title={{original_name}} data-lightbox="{{original_name}}" style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
                                         <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
                                     </div>
                                     {{else}}
@@ -1355,8 +1370,7 @@
                                     {{#each files}}
                                         {{#ifCond file_extension '===' 'jpg'}}
                                         <div class = "post_attached_image_container">
-                                            <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
-                                            <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
+                                            <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"><div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div></div>
                                         </div>
                                         {{else}}
                                             {{#ifCond download_count '==' 0}}
@@ -1510,7 +1524,7 @@
                                                 </div>
 
                                                 <div class = 'post_msg post_file_msg'>
-                                                    <span class='msg_span seemore_anchor'>{{{text}}}</span>
+                                                    <span class='msg_span seemore_anchor post_message_text'>{{{text}}}</span>
 
 
 
@@ -1518,8 +1532,7 @@
                                                 {{#each files}}
                                                     {{#ifCond file_extension '===' 'jpg'}}
                                                     <div class = "post_attached_image_container">
-                                                        <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
-                                                        <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
+                                                        <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"><div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div></div>
                                                     </div>
                                                     {{else}}
                                                         {{#ifCond download_count '==' 0}}
@@ -1678,8 +1691,8 @@
                                     {{#each files}}
                                         {{#ifCond file_extension '===' 'jpg'}}
                                         <div class = "post_attached_image_container">
-                                            <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
-                                            <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
+                                            <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"><div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div></div>
+                                            
                                         </div>
                                         {{else}}
                                             {{#ifCond download_count '==' 0}}
@@ -1758,7 +1771,8 @@
     <div class = "embedly_box">
         <a href="{{url}}" target="_blank">
             {{#if thumbnail_url}}
-            <img class = "embedly_image post_attached_image" style = "background-image:url({{thumbnail_url}}); background-size:cover;">
+            <div class = "embedly_image post_attached_image" style = "background-image:url({{thumbnail_url}}); background-size:cover;"></div>
+            <div class = "embedly_fake_border"></div>
             {{/if}}
             <div class = "embedly_info">
                 <div class = "embedly_title">{{title}}</div>
@@ -1785,7 +1799,8 @@
     <div class = "embedly_box">
         <a href="{{url}}" target="_blank">
             {{#if thumbnail_url}}
-            <img class = "embedly_image post_attached_image" style = "background-image:url({{thumbnail_url}}); background-size:cover;">
+            <div class = "embedly_image post_attached_image" style = "background-image:url({{thumbnail_url}}); background-size:cover;"></div>
+            <div class = "embedly_fake_border"></div>
             {{/if}}
             {{#if title}}
             <div class = "embedly_info">

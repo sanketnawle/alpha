@@ -286,10 +286,12 @@ function list_events(events, img_left, img_right, page_value, result_text){
                             <span>'+events[i]["time"]+'</span>\
                           </div>\
                         </div>\
+                        <div class="collapse-date">'+events[i]["month"]+' '+events[i]["day"]+'</div>\
                         <div class="chip-bottom">\
                           <div class="chip-album-title">'+events[i]["title"]+'</div>\
                           <div class="chip-artist">'+events[i]["origin_type"]+'</div>\
                         </div>\
+                        <div class="collapse-info"><div class="collapse-info-hover"></div></div>\
                       </div>\
                     </div>';
         };
@@ -315,42 +317,7 @@ function getPosition(element) {
 
 
 $(document).on("click", ".chip", function(event){
-// var $chip = $(this);
-
-// var $events_template_loc = $("#events_template_loc");
-
-// var $chip_top = $chip.find(".chip-top");
-// var $chip_bottom = $chip.find(".chip-bottom");
-
-// var chip_start_position = getPosition($events_template_loc[0]);
-// var x_chip_start_position = chip_start_position.x;
-// var y_chip_start_position = chip_start_position.y;
-
-
-// var chip_top_position = getPosition($chip_top[0]);
-// var x_top = chip_top_position.x;
-// var y_top = chip_top_position.y;
-
-// var chip_bottom_position = getPosition($chip_bottom[0]);
-// var x_bottom = chip_bottom_position.x;
-// var y_bottom = chip_bottom_position.y;
-
-// var x_card_left_start = x_top - x_chip_start_position;
-// var y_card_left_start = y_top - y_chip_start_position;
-
-// var x_card_right_start = x_bottom - x_chip_start_position;
-// var y_card_right_start = y_bottom - y_chip_start_position;
-
-// var $card_left = $("#card-left");
-// var $card_right = $("#card-right");
-
-// $card_left.css({"left":x_card_left_start,"top":y_card_left_start});
-// $card_right.css({"left":x_card_right_start,"top":y_card_right_start});
-
-  
-
-
-
+var $chip = $(this);
 
   event.preventDefault();
     index = $(this).attr("index");
@@ -358,86 +325,113 @@ $(document).on("click", ".chip", function(event){
 
     form_data = $("#events_template_loc").data('data-form')[parseInt(index)];
     files_html += get_files(form_data["event_id"]);
-      card_html = '<div id="card" event_id="'+form_data["event_id"]+'" class="card">\
-            <div class="card-left" id="card_left" style="background:'+form_data["color"]+';">\
-                <div class="month">\
-                    <span>'+form_data["month"]+'</span>\
-                    <br>\
-                    <span>'+form_data["day"]+'</span>\
-                  </div>\
-                <div class="time_card">\
-                    <span>'+form_data["time"]+'</span>\
+    card_content_temp = $('<div class="card-content"></div>');
+    card_html = '<div class="card-header">\
+                    <div class="card-icon" style="background:'+form_data["color"]+';"><span class="card-close"><img src="../assets/arrow-28-512.png"></span></div>\
+                    <div class="card-title"><h2>'+form_data["title"]+'</h2><h3>'+form_data["origin_type"]+'</h3></div>\
                 </div>\
-                <br>\
-                <div style="margin-left: 10px;margin-right: 10px;">'+ get_people_attending(form_data["event_id"])+'\
-                </div>\
-            </div>\
-            <div class="card-right">\
-              <div>\
-                <div>\
-                  <div class="card-icon" style="background:'+form_data["color"]+';"></div>\
-                </div>\
-                <div>\
-                  <div class="card-album-title">'+form_data["title"]+'</div>\
-                  <div class="card-artist">'+form_data["origin_type"]+'</div>\
-                </div>\
-              </div>\
-              <hr style="opacity:0.8;">\
-              <div class="desc_loc_class scrollbar-container">\
-                <br>\
-                <div style="width:100%" title="Click to edit">\
-                         Description: <br> <a href="#" id="edit_description">'+form_data["description"]+'</a>\
-                        <div id="event_description_input" style="width:100%;display:none;">\
-                          <div style="width:75%;float:left;">\
-                            <textarea type="text" id="txt_desc" class="input_text" value="'+form_data["description"]+'"></textarea>\
-                          </div>\
-                          <div style="margin-bottom:5px;margin-top:5px; width:25%;float:right;">\
-                          <button class="btn_update" id="btn_update_description">Update</button>\
-                          </div>\
-                        </div><br>\
-                    </div>\
-                    <br>\
+                <div class="card-description">\
                     <div style="width:100%" title="Click to edit">\
-                        Location: <br><a href="#" id="edit_location">'+form_data["location"]+'</a>\
-                        <div id="edit_location_input" style="width:100%;display:none;">\
-                          <div style="width:75%;float:left;">\
-                            <textarea type="text" id="txt_loc" class="input_text" value="'+form_data["location"]+'"></textarea>\
-                          </div>\
-                          <div style="margin-bottom:5px;margin-top:5px; width:25%;float:right;">\
-                            <button class="btn_update" id="btn_update_location">Update</button>\
-                          </div>\
-                        </div><br>\
+                      Description: <br> <a href="#" id="edit_description">'+form_data["description"]+'</a>\
+                      <div id="event_description_input" style="width:100%;display:none;">\
+                        <div style="width:75%;float:left;">\
+                          <textarea type="text" id="txt_desc" class="input_text" value="'+form_data["description"]+'"></textarea>\
+                        </div>\
+                        <div style="width:25%;float:right;">\
+                          <button class="btn_update" id="btn_update_description">Update</button>\
+                        </div>\
+                      </div><br>\
+                    </div><br>\
+                    <div style="width:100%" title="Click to edit">\
+                      Location: <br><a href="#" id="edit_location">'+form_data["location"]+'</a>\
+                      <div id="edit_location_input" style="width:100%;display:none;">\
+                        <div style="width:75%;float:left;">\
+                          <textarea type="text" id="txt_loc" class="input_text" value="'+form_data["location"]+'"></textarea>\
+                        </div>\
+                        <div style="width:25%;float:right;">\
+                          <button class="btn_update" id="btn_update_location">Update</button>\
+                        </div>\
+                      </div><br>\
                     </div>\
-              </div>\
-              <hr style="opacity:0.6;">\
-              <div class="materials_section">\
-                <br>\
-                <div style="width:100%">\
-                    <div>\
-                       <button style="width:20%" id="btn_event_file_upload">Upload</button>\
-                       <input type="file" id="event_file_upload" style="display:none"/>\
-                       <span style="width:15%"></span>\
-                       <button style="width:65%">Import from Drive</button>\
-                    </div>\
-                  </div>\
-                  <div class="desc_loc_class scrollbar-container" id="materials_container" style="height:62px;">\
-                        '+files_html+'\
-                        <br>\
-                  </div>\
-              </div>\
-            </div>\
-          </div>';
-    $("#chip_card").html(card_html);
-    $("#chip_card").show(1000);
+                  <div class="people-attending">'+get_people_attending(form_data["event_id"])+'</div>\
+                </div>\
+                <div class="card-upload">Materials <button id="btn_event_file_upload">Upload</button><button>Import from drive</button></div>';
+    card_content = $(card_content_temp).html(card_html);
 
-    $("#events_template_loc").hide();
+    if (!$($chip).hasClass('expanded')) {
+        $($chip).addClass('expanded');
+
+        //inactive
+        $('.chip').not(this).animate({
+          width: "5%"
+        }).removeClass('expanded');
+        $('.chip').not(this).children('.chip-top').animate({
+          width: "100%",
+          height: "264px"
+        });
+        $('.chip').not(this).children('.chip-bottom').css({
+          "display": "none"
+        });
+        $('.chip').not(this).find('.month, .time').fadeOut();
+        $('.chip').not(this).children('.card-content').detach();
+        setTimeout(function(){
+          $('.chip').not($chip).children('.collapse-info').fadeIn();
+          $('.chip').not($chip).children('.collapse-date').fadeIn();
+        }, 400);
+
+        //active chip
+        $($chip).animate({
+          width: "81%"
+        });
+        $($chip).children('.chip-top').animate({
+          width: "35%",
+          height: "100%",
+        });
+        $($chip).children('.chip-bottom').css({
+          "display": "none"
+        });
+        $($chip).find('.month, .time').fadeIn();
+        setTimeout(function(){
+          $($chip).append(card_content);
+        }, 400);
+        $($chip).children('.collapse-info').css({
+          "display": "none"
+        });
+        $($chip).children('.collapse-date').css({
+          "display": "none"
+        });
+
+
+    } else {
+        
+    }
 });
 
-$(document).on("click", "#card_left", function(event){
-
-  $("#events_template_loc").show("slow");
-  $("#chip_card").hide(1000);
-
+$(document).on("click", "span.card-close", function(event){
+  event.preventDefault();
+  $chip = $(this).parents('.chip');
+    $('.chip').animate({
+      width: "24%"
+    });
+    $('.chip').children('.chip-top').animate({
+      width: "100%",
+      height: "200px"
+    });
+    $('.chip').children('.chip-bottom').css({
+      "display": "block"
+    });
+    $('.chip').find('.month, .time').fadeIn();
+    $('.chip').children('.collapse-info').css({
+      "display": "none"
+    });
+    $('.chip').children('.collapse-date').css({
+      "display": "none"
+    });
+    $($chip).children('.card-content').detach();
+    setTimeout(function(){
+      $($chip).removeClass('expanded');
+    },400);
+    
 });
 
 $(document).on("click", "#edit_description", function(event){

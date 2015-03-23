@@ -127,9 +127,10 @@
 
                     <!--    Add btn to delete event from planner                -->
                     <script id="event_template" type="text/x-handlebars-template">
-
-                        <div class='event {{complete}}' data-event_id='{{event_id}}' data-start_date="{{start_date}}" data-start_time="{{start_time}}" data-end_date="{{end_date}}" data-end_time="{{end_time}}" data-color_hex="{{color.hex}}">
-                            <div class='event_data_holder'>
+                        
+                        <div class='event {{complete}} event_origin_event_tab_link' data-event_id='{{event_id}}' data-event_start_date="{{start_date}}" data-start_date="{{start_date}}" data-start_time="{{start_time}}" data-end_date="{{end_date}}" data-end_time="{{end_time}}" data-color_hex="{{color.hex}}">
+                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}">
+                            <div class='event_data_holder {{checkable}}'>
                                 
                                 {{#ifCond origin_type '!=' 'user'}}
                                      <?php if($origin_type==="home"){?>
@@ -137,7 +138,7 @@
                                     <?php }?>
 
                                 {{/ifCond}}
-                                <span class='event_name event_link' data-event_id="{{event_id}}" data-event_start_date="{{start_date}}">{{title}}</span>
+                                <span class='event_name' data-event_id="{{event_id}}" data-event_start_date="{{start_date}}">{{title}}</span>
                                 {{#ifCond user_id '==' <?php echo $user->user_id;?>}}
                                     <span class="edit_button" style="display: none;">edit</span>
                                 {{/ifCond}}
@@ -151,7 +152,6 @@
                                 {{#ifCond event_type '==' 'NYU Event'}}
                                     <div class='event_date_time'>· <a target="_blank" href='{{url}}'>NYU Event</a></div>
                                 {{/ifCond}}
-                                </div>
                             </div>
                             {{#if checkable}}
                             <div class='event_checkbox_holder'>
@@ -195,7 +195,9 @@
                                 {{/ifCond}}
                             </div>
                             {{/if}}
+                            </a>
                         </div>
+                        
 
 
                     </script>
