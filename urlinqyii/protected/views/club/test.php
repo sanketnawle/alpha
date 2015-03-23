@@ -84,12 +84,11 @@
 <!---->
 <!---->
 <!---->
-<!--<form id='file_upload_form' action="--><?php //echo Yii::app()->getBaseUrl(true); ?><!--/api/fileUpload" method="post" enctype="multipart/form-data">-->
-<!--    <input type="text" name="origin_type" value="club">-->
-<!--    <input type="text" name="origin_id" value="1">-->
-<!--    Please choose a file: <input type="file" name="uploadFile"><br>-->
-<!--    <input type="submit" value="Upload File">-->
-<!--</form>-->
+
+
+
+
+
 <script id="this_user_message_template" type="text/x-handlebars-template">
     <div class="this_user_message" data-user_id='{{user_id}}'>
     {{text}}
