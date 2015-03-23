@@ -48,13 +48,13 @@ include 'Google/Http/Batch.php';
   http://localhost:8080/user-example.php
  ************************************************/
   //Uncomment the three lines for running on local and make sure you uncomment the live ones
- $client_id = '960881917908-rgb9ujp6v6rf3ufmbfbg8nadb41f9tdl.apps.googleusercontent.com';
+ /*$client_id = '960881917908-rgb9ujp6v6rf3ufmbfbg8nadb41f9tdl.apps.googleusercontent.com';
  $client_secret = 'W3U_-nJF1LFgLD1NWacK2a-_';
- $redirect_uri = 'http://127.0.0.1/alpha/urlinqyii/calendar';
+ $redirect_uri = 'http://127.0.0.1/alpha/urlinqyii/calendar';*/
  //uncomment three lines for running on live and make sure you uncomment the local ones
- /*$client_id = "566213768963-rbdpvbo33oe0dn4rdhmj83que4f13vuc.apps.googleusercontent.com";
+ $client_id = "566213768963-rbdpvbo33oe0dn4rdhmj83que4f13vuc.apps.googleusercontent.com";
  $client_secret = "_HFKQAsU2GNSAp7yUE4n2BVv";
- $redirect_uri = 'http://beta.urlinq.com/calendar';*/
+ $redirect_uri = 'http://beta.urlinq.com/calendar';
 /************************************************
   Make an API request on behalf of a user. In
   this case we need to have a valid OAuth 2.0
