@@ -4,6 +4,7 @@ div.about_tab_header{
      -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); 
     box-shadow: 0 1px 2px rgba(0,0,0,0.07); 
     border-radius: 5px;
+    min-height: 345px;
     padding-bottom:16px;
 }
 
@@ -13,13 +14,18 @@ margin-top: 0px;
 
 
 .about_header_sentence{ 
-    border-bottom: 1px solid #eee;
 
     border-radius: 5px 5px 0 0;
-    margin: 0 7px;
+    
+
+    margin: 0 10px;
     position: relative;
-    width: 98%;
-    height: 36px;
+    
+
+    width: 100%;
+    
+
+    height: 60px;
 }
 
 .about_header_sentence.no_underline{
@@ -56,12 +62,12 @@ display: none;
 div.group_info_divider{ margin: 1.5rem 0; 
     line-height: 1.2rem; font-size: 1rem; 
     color: #555459; font-weight: 900; text-align: center; cursor: default; 
-    width: 97%;
+   
     display: block; position: relative;
 
     height: 18px;
     padding-bottom: 9px; margin-bottom: 14px;
- margin-top: 10px; padding-top: 12px; margin: 0 auto;}
+ margin-top: 10px; padding-top: 12px; margin: 0 auto; margin-left: 10px;}
 
 hr.separator{
 
@@ -69,7 +75,7 @@ hr.separator{
 
 div.group_info_divider_label{ 
     font-weight: 400;
-    padding: 2px .45rem; 
+    padding: 2px .15rem; 
     letter-spacing: .5px;
     display: inline-block; margin: 0 auto; 
     font-size: 11.5px;
@@ -100,7 +106,7 @@ div.group_info_data{
     border-radius: 5px;  
     padding: 2px;
     margin: 0 auto;
-    width: 90%;   ;;
+    width: 97%;   ;;
     /* -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); */  
     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); 
     /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); */ 
@@ -109,15 +115,18 @@ div.group_info_data{
     /* border-left: 1px solid rgba(226, 226, 226, 0.3); */ position: relative; border-radius: 0 0 2px 2px; 
     /* border-top: 1px solid rgba(215, 215, 215, 0.29); */
     padding: 4px 3px;
-    border-radius: 501px;
 }
 
 div.group_info_divider.half_divider{
-    width: 97%;
+    width: calc(99% - 140px);
 
-    display: block;
+    display: inline-block;
     height: 11px;
     margin: 0 auto;
+    position: relative;
+    float: right;
+    right: -11px;
+    min-height: 48px;
 }
 
 
@@ -134,7 +143,7 @@ div.group_info_data.open_look{
 }
 
 div.group_info_data.half_data{
-    width: 90%;
+    width: 68%;
     
     display: block;
     font-size: 14.5px;
@@ -142,7 +151,10 @@ div.group_info_data.half_data{
     padding-top: 0;
     margin: 0 auto;
     position: relative;
-    margin-top: 15px;
+    color: #121212;   font-weight: 500;
+    float: right;
+    text-align: left;
+    margin-top: 10px;
 }
 
 .about_header_sentence > p{
@@ -154,7 +166,9 @@ div.group_info_data.half_data{
     padding-left: 10px;
     font-weight: bold;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    color: #575757;
+    position: relative;      
+    border-bottom: 1px solid #e2e2e2;   font-weight: 500;   font-size: 16.5px;   margin: 0 10px;   color: #444;   
+    padding: 14px 0px 2px;   -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;
 }
 
 
@@ -186,21 +200,25 @@ div.admin_text_data_box div.admin_name{
 
 
 .floatRight > div.join_button{
-    height: 28px; color: #fff; padding-left: 3px; 
+    height: 34px; color: #fff; 
+    padding-left: 6px; 
     margin-top: -1px;
-    line-height: 30px;
+    line-height: 36px;
     text-align: center;
     border-radius: 4px; 
-    width: 104px; 
-    font-size: 12.2px;
+    z-index: 100000000;
+    width: 110px; 
+    font-size: 11.2px;
     cursor:pointer;
-    text-transform: uppercase;
-    margin-right: 5px;
+    text-transform: capitalize;
+    margin-right: 16px;
     font-weight: bold; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    font-family: Avenir;
     padding-right: 3px;          
-    border: 1px solid #eee; border-bottom-color: #E4E4E4; background-color: #fcfcfc; background-image: -webkit-linear-gradient(#fafafa, #f8f8f8); background-image: linear-gradient(#fafafa, #f8f8f8); color: #575757!important;
+    border: 1px solid #E7E7E7; 
+    border-bottom-color: #E0E0E0; background-color: #fcfcfc; background-image: -webkit-linear-gradient(#fafafa, #f8f8f8); background-image: linear-gradient(#fafafa, #f8f8f8); 
+    color: #444!important;
     box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+    font-size: 12px;   font-weight: 600;   -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;   color: #333;
 }
 
 div.class_description_holder{
@@ -318,22 +336,34 @@ div.about_header_data{
     font-size:14.2px;
     color:#222;
     padding-top: 3px;
+    width: 70%;
 }
 
 div.about_header_data > p{
+
+    font-size: 14.5px;
+    text-align: right;
+    
+
+    color: #333;
     margin: 0;
 
-    padding-left: 7px;
-    font-size: 14.5px;
-    margin-bottom: 10px;
-    color: #222;
+    position: relative;
+    
+
+    right: 12px;
+
+    font-size: 17px;   font-weight: 500;   -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;   color: #575757;
+
+    top: 4px;
+
 }
 
 span.non_member_join_pointer{
     background-position: -30px -47px;
 
-    width: 23px;
-    height: 13px;
+    /* width: 23px; */
+    /* height: 13px; */
     position: relative;
     top: 1px;
     left: -4px;
@@ -430,26 +460,30 @@ div.cool_members_box div.members_about_section{
 .group_info_divider hr{
     position: absolute;
     border: none;
-    width: 100.4%;
+    width: 100%;
     top: 23px;  
     margin: 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #e2e2e2;
 }
 
 p#edit_club_description{
     font-weight: 400;
-    padding: 2px .45rem;
+    padding: 6px .45rem;
     letter-spacing: .5px;
     display: inline-block;
+    border-radius: 29px;
     margin: 0 auto;
-    font-size: 11.5px;
+    font-size: 12.5px;
     position: relative;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: #999;
     cursor: pointer;
-    background: #f5f5f5;
-    color: #029acf;
-    margin-top: -2px;
+    background: #fff;
+    color: #999;
+    border: 1px solid #CED0D2;
+    margin-top: -4px;
+    text-decoration: none!important;
+    line-height: 12px;
 }
 .group_textarea{
     resize: none;
@@ -465,22 +499,25 @@ p#edit_club_description{
     border-radius: 5px;
 }
 div.group_display_icon{
-    width: 78px;
+    width: 119px;
 
-    margin-left: 7px;
+    margin-left: 8px;
     display: inline-block;
     border-radius: 1.5px;
+    float: left;
     /* float: left; */
+    z-index: 5;
     position: relative;
-    margin-top: 6px;     position: relative;  ;
-    height: 78px;
-    border-radius: 105px;
+    margin-top: -1px;     
+    position: relative;  ;
+    height: 119px;
+    border-radius: 50%;
 }
 
 a#edit_club_icon{
     position: absolute; /* bottom: 10px; */ left: 0px; 
-    width: 78px; top: 0px; border: none; border-radius: 500px; 
-    height: 78px; background-color: rgba(18, 19, 20, 0.4); background-repeat: no-repeat; background-size: auto; display: block; 
+    width: 120px; top: 0px; border: none; border-radius: 500px; 
+    height: 120px; background-color: rgba(18, 19, 20, 0.4); background-repeat: no-repeat; background-size: auto; display: block; 
     background-image: url('../../assets/camera_icon.png'); 
     background-position: 30px; opacity: 0; -moz-transition: opacity .2s linear; -webkit-transition: opacity .2s linear; transition: opacity .2s linear;
 }
@@ -532,12 +569,29 @@ color: #575757;
     display: none;
 }
 
+div.design_circle_border_accent{
+    background: rgba(0, 0, 0, 0.07);
+    
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    left: 0px;
+    top: -8px;
+    border-radius: 100%;
+    z-index: 1;
+}
+
 p#edit_club_mission{
-    font-weight: 400; padding: 2px .45rem; letter-spacing: .5px; display: inline-block; margin: 0 auto; font-size: 11.5px; position: relative; text-transform: uppercase; color: #999; 
+    font-weight: 400; padding: 2px .45rem; letter-spacing: .5px; display: inline-block; 
+    text-decoration: none!important;
+    margin: 0 auto; 
+    font-size: 12.5px; position: relative; 
+    text-transform: capitalize; 
+    border-radius: 109px;
+    color: #999; 
     cursor: pointer; 
-    background: #f5f5f5;
-    color: #029acf;
     margin-top: -2px;
+    border: 1px solid #CED0D2;
 }
 
 #edit_club_description span.edit_icon{
