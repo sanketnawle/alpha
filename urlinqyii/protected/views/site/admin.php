@@ -193,10 +193,17 @@
     </div>
 
 
+
     
-    
-    
-    
+    <h1>Upload file</h1>
+    <form id='file_upload_form' action="<?php echo Yii::app()->getBaseUrl(true); ?>/fileUpload" method="post" enctype="multipart/form-data">
+        <input id="path_input" type="text" name="path" value="profile/">
+        Please choose a file: <input type="file" name="file"><br>
+        <input type="submit" value="Upload File">
+    </form>
+
+
+
     
     
     
