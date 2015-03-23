@@ -255,7 +255,7 @@ function display_events(events, is_root){
     search_text = " Total events this semester";
   }
   else{
-    search_text = " Total events found"
+    search_text = " Total events found";
   }
   list_events(events.slice(0,4), "none", right, 0, search_text);
 }
@@ -276,7 +276,7 @@ function list_events(events, img_left, img_right, page_value, result_text){
 
       for(i=0;i<events.length; i++){
                     display_text+='<div class="chip_content">\
-                      <div class="chip" index="'+(page_value*4+i)+'" hero-id="'+events[i]["event_id"]+'">\
+                      <div class="chip"  style="display:none;right:-100px;" index="'+(page_value*4+i)+'" hero-id="'+events[i]["event_id"]+'">\
                         <div class="chip-top" style="background:'+events[i]["color"]+';">\
                           <div class="month">\
                             <span class = "month_text">'+events[i]["month"]+'</span>\
@@ -296,9 +296,66 @@ function list_events(events, img_left, img_right, page_value, result_text){
                     </div>';
         };
     display_text+='</div>\
-                    <span style="display:'+img_left+'" class="img_arrows img_lt"><em></em></span>\
-                    <span style="display:'+img_right+'" class="img_arrows img_rt"><em></em></span>';
+                    <span style="display:'+img_right+'" class="img_arrows img_rt"><img src="../assets/arrow-28-512.png"></span>\
+                    <span style="display:'+img_left+'" class="img_arrows img_lt"><img src="../assets/arrow-28-51-lt.png"></span>';
     $("#events_template_loc").html(display_text);
+    $(".chip").each(function(){
+      $(this).fadeIn({
+        queue: false,
+        duration: 'slow'
+      }).animate({
+        right: "0px"
+      });
+    });
+}
+
+function list_events_left(events, img_left, img_right, page_value, result_text){
+  display_text = '\
+                  <div id="event_count">'+events_length+ result_text+'</div>\
+                    <div class = "syllabus_tab_add_event_wrapper">\
+                      <div class = "add_event_button fbar_buttonwrapper" id = "fbar_button_event" data-post_button_type="event">\
+                      </div>\
+                      <div class = "add_event_hint">\
+                          <div class = "wedge">\
+                          </div>\
+                          <div class = "box">Add New Event</div>\
+                      </div>\
+                    </div>\
+                    <div class="chip-container" id="chip_div">';
+
+      for(i=0;i<events.length; i++){
+                    display_text+='<div class="chip_content">\
+                      <div class="chip"  style="display:none;left:-100px;" index="'+(page_value*4+i)+'" hero-id="'+events[i]["event_id"]+'">\
+                        <div class="chip-top" style="background:'+events[i]["color"]+';">\
+                          <div class="month">\
+                            <span class = "month_text">'+events[i]["month"]+'</span>\
+                            <span class = "day_text">'+events[i]["day"]+'</span>\
+                          </div>\
+                          <div class="time">\
+                            <span>'+events[i]["time"]+'</span>\
+                          </div>\
+                        </div>\
+                        <div class="collapse-date">'+events[i]["month"]+' '+events[i]["day"]+'</div>\
+                        <div class="chip-bottom">\
+                          <div class="chip-album-title">'+events[i]["title"]+'</div>\
+                          <div class="chip-artist">'+events[i]["origin_type"]+'</div>\
+                        </div>\
+                        <div class="collapse-info"><div class="collapse-info-hover"></div></div>\
+                      </div>\
+                    </div>';
+        };
+    display_text+='</div>\
+                    <span style="display:'+img_right+'" class="img_arrows img_rt"><img src="../assets/arrow-28-512.png"></span>\
+                    <span style="display:'+img_left+'" class="img_arrows img_lt"><img src="../assets/arrow-28-51-lt.png"></span>';
+    $("#events_template_loc").html(display_text);
+    $(".chip").each(function(){
+      $(this).fadeIn({
+        queue: false,
+        duration: 'slow'
+      }).animate({
+        left: "0px"
+      });
+    });
 }
 
 
@@ -319,41 +376,6 @@ function getPosition(element) {
 $(document).on("click", ".chip", function(event){
 var $chip = $(this);
 
-// var $events_template_loc = $("#events_template_loc");
-
-// var $chip_top = $chip.find(".chip-top");
-// var $chip_bottom = $chip.find(".chip-bottom");
-
-// var chip_start_position = getPosition($events_template_loc[0]);
-// var x_chip_start_position = chip_start_position.x;
-// var y_chip_start_position = chip_start_position.y;
-
-
-// var chip_top_position = getPosition($chip_top[0]);
-// var x_top = chip_top_position.x;
-// var y_top = chip_top_position.y;
-
-// var chip_bottom_position = getPosition($chip_bottom[0]);
-// var x_bottom = chip_bottom_position.x;
-// var y_bottom = chip_bottom_position.y;
-
-// var x_card_left_start = x_top - x_chip_start_position;
-// var y_card_left_start = y_top - y_chip_start_position;
-
-// var x_card_right_start = x_bottom - x_chip_start_position;
-// var y_card_right_start = y_bottom - y_chip_start_position;
-
-// var $card_left = $("#card-left");
-// var $card_right = $("#card-right");
-
-// $card_left.css({"left":x_card_left_start,"top":y_card_left_start});
-// $card_right.css({"left":x_card_right_start,"top":y_card_right_start});
-
-  
-
-
-
-
   event.preventDefault();
     index = $(this).attr("index");
     files_html = '';
@@ -362,7 +384,7 @@ var $chip = $(this);
     files_html += get_files(form_data["event_id"]);
     card_content_temp = $('<div class="card-content"></div>');
     card_html = '<div class="card-header">\
-                    <div class="card-icon" style="background:'+form_data["color"]+';"></div>\
+                    <div class="card-icon" style="background:'+form_data["color"]+';"><span class="card-close"><img src="../assets/arrow-28-512.png"></span></div>\
                     <div class="card-title"><h2>'+form_data["title"]+'</h2><h3>'+form_data["origin_type"]+'</h3></div>\
                 </div>\
                 <div class="card-description">\
@@ -372,7 +394,7 @@ var $chip = $(this);
                         <div style="width:75%;float:left;">\
                           <textarea type="text" id="txt_desc" class="input_text" value="'+form_data["description"]+'"></textarea>\
                         </div>\
-                        <div style="margin-bottom:5px;margin-top:5px; width:25%;float:right;">\
+                        <div style="width:25%;float:right;">\
                           <button class="btn_update" id="btn_update_description">Update</button>\
                         </div>\
                       </div><br>\
@@ -383,14 +405,14 @@ var $chip = $(this);
                         <div style="width:75%;float:left;">\
                           <textarea type="text" id="txt_loc" class="input_text" value="'+form_data["location"]+'"></textarea>\
                         </div>\
-                        <div style="margin-bottom:5px;margin-top:5px; width:25%;float:right;">\
+                        <div style="width:25%;float:right;">\
                           <button class="btn_update" id="btn_update_location">Update</button>\
                         </div>\
                       </div><br>\
                     </div>\
-                  <div class="people-attending">'+ get_people_attending(form_data["event_id"])+'</div>\
+                  <div class="people-attending">'+get_people_attending(form_data["event_id"])+'</div>\
                 </div>\
-                <div class="card-upload">Materials <button>Upload</button><button>Import from drive</button></div>';
+                <div class="card-upload">Materials <button id="btn_event_file_upload">Upload</button><button>Import from drive</button></div>';
     card_content = $(card_content_temp).html(card_html);
 
     if (!$($chip).hasClass('expanded')) {
@@ -438,28 +460,35 @@ var $chip = $(this);
 
 
     } else {
-        $('.chip').animate({
-          width: "24%"
-        });
-        $('.chip').children('.chip-top').animate({
-          width: "100%",
-          height: "200px"
-        });
-        $('.chip').children('.chip-bottom').css({
-          "display": "block"
-        });
-        $('.chip').find('.month, .time').fadeIn();
-        $('.chip').children('.collapse-info').css({
-          "display": "none"
-        });
-        $('.chip').children('.collapse-date').css({
-          "display": "none"
-        });
-        $($chip).children('.card-content').detach();
-        $($chip).removeClass('expanded');
+        
     }
-      
+});
 
+$(document).on("click", "span.card-close", function(event){
+  event.preventDefault();
+  $chip = $(this).parents('.chip');
+    $('.chip').animate({
+      width: "24%"
+    });
+    $('.chip').children('.chip-top').animate({
+      width: "100%",
+      height: "200px"
+    });
+    $('.chip').children('.chip-bottom').css({
+      "display": "block"
+    });
+    $('.chip').find('.month, .time').fadeIn();
+    $('.chip').children('.collapse-info').css({
+      "display": "none"
+    });
+    $('.chip').children('.collapse-date').css({
+      "display": "none"
+    });
+    $($chip).children('.card-content').detach();
+    setTimeout(function(){
+      $($chip).removeClass('expanded');
+    },400);
+    
 });
 
 $(document).on("click", "#edit_description", function(event){
@@ -576,7 +605,16 @@ function get_files(event_id){
 }
 
 $(document).on("click", ".img_lt", function(event){
-              var page_value = parseInt($("#events_template_loc").attr("current_page"));
+              $(".chip").each(function(){
+                $(this).fadeOut({
+                  queue: false,
+                  duration: 'slow'
+                }).animate({
+                  right: "-100px"
+                });
+              });
+              setTimeout(function(){
+                var page_value = parseInt($("#events_template_loc").attr("current_page"));
                   $("#events_template_loc").attr("current_page", parseInt($("#events_template_loc").attr("current_page")) - 1);
                   show_left = "block";
                   if(page_value-1==0){
@@ -584,11 +622,22 @@ $(document).on("click", ".img_lt", function(event){
                   }
                   start = (page_value)*4;
                   events = $("#events_template_loc").data('data-form').slice(start-4,start);
-                  list_events(events, show_left, "block", page_value-1, " Total events this semester");
+                  list_events_left(events, show_left, "block", page_value-1, " Total events this semester");
+              },200);
+              
 });
 
 $(document).on("click", ".img_rt", function clicked_next(event){
-               var page_value = parseInt($("#events_template_loc").attr("current_page"));
+              $(".chip").each(function(){
+                $(this).fadeOut({
+                  queue: false,
+                  duration: 'slow'
+                }).animate({
+                  left: "-100px"
+                });
+              });
+              setTimeout(function(){
+                var page_value = parseInt($("#events_template_loc").attr("current_page"));
                   $("#events_template_loc").attr("current_page", parseInt($("#events_template_loc").attr("current_page")) + 1);
                   show_right = "block";
                   if(page_value+2==parseInt($("#events_template_loc").attr("pagecount"))){
@@ -597,6 +646,8 @@ $(document).on("click", ".img_rt", function clicked_next(event){
                   start = (page_value+1)*4;
                   events = $("#events_template_loc").data('data-form').slice(start,start+4);
                   list_events(events, "block", show_right, page_value+1, " Total events this semester");
+                },200);
+              
 });
 
 var search_events = function(){
