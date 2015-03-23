@@ -128,18 +128,16 @@ span.month_text
 .img_arrows
 {
   z-index:9999;
+  position:relative;
+  top:20px;
   display:inline-block;
   margin-right:10px;
-  width:42px;
-  height:86px;
+  width:30px;
+  height:30px;
   background:rgba(18,19,20,0.9);
   cursor:pointer;
-  top:152px;
-  border-radius:3px;
-  -moz-box-shadow:0 0 0 1px rgba(255,255,255,0.06) inset;
-  -webkit-box-shadow:0 0 0 1px rgba(255,255,255,0.06) inset;
-  box-shadow:0 0 0 1px rgba(255,255,255,0.06) inset;
-  border:1px solid #000;
+  border-radius:50%;
+  text-align:right;
 }
 
 .img_arrows:hover
@@ -159,39 +157,23 @@ span.month_text
 }
 
 .img_rt
-{
-  position:absolute;
-  right:-36px;
+{ 
+  float:right;
+}
+.img_rt img {
+  width:30px;
+  height:30px;
 }
 
 .img_lt
 {
-  position:absolute;
-  left:-10px;
+  float:right;
+}
+.img_lt img {
+  width:30px;
+  height:30px;
 }
 
-.img_arrows > em
-{
-  background-image:url(../../assets/small_icons.png);
-  background-size:auto;
-  display:block;
-  width:20px;
-  height:58px;
-  position:relative;
-  left:12px;
-  top:15px;
-}
-
-.img_arrows.img_rt > em
-{
-  background-position:-54px -1534px;
-}
-
-.img_arrows.img_lt > em
-{
-  background-position:-104px -1534px;
-  left:10px;
-}
 
 .chip-container
 {
@@ -378,6 +360,7 @@ span.month_text
   border-bottom:1px solid #e9e9e9;
   padding-bottom:8px;
   overflow:auto;
+  background-color:#ffffff;
 }
 .card-icon {
   float:left;
@@ -411,8 +394,12 @@ span.card-close img {
   color:#808080;
 }
 .card-description {
+  margin:5px 0px;
+  position:relative;
   padding:10px 5px;
   width:100%;
+  height:125px;
+  overflow:scroll;
   -moz-box-sizing:border-box;
   -webkit-box-sizing:border-box;
   box-sizing:border-box;
@@ -428,6 +415,7 @@ span.card-close img {
   padding:5px;
   border-top:1px solid #e9e9e9;
   width:100%;
+  background-color:#ffffff;
   width:-moz-calc(100% - 20px);
   width:-webkit-calc(100% - 20px);
   width:-o-calc(100% - 20px);
