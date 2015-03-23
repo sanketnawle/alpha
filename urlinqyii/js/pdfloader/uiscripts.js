@@ -395,7 +395,7 @@ var $chip = $(this);
                           <textarea type="text" id="txt_desc" class="input_text" value="'+form_data["description"]+'"></textarea>\
                         </div>\
                         <div style="width:25%;float:right;">\
-                          <button class="btn_update" id="btn_update_description">Update</button>\
+                          <button class="btn_update" index="'+index+'" event_id="'+form_data["event_id"]+'" id="btn_update_description">Update</button>\
                         </div>\
                       </div><br>\
                     </div><br>\
@@ -406,7 +406,7 @@ var $chip = $(this);
                           <textarea type="text" id="txt_loc" class="input_text" value="'+form_data["location"]+'"></textarea>\
                         </div>\
                         <div style="width:25%;float:right;">\
-                          <button class="btn_update" id="btn_update_location">Update</button>\
+                          <button class="btn_update" index="'+index+'" event_id="'+form_data["event_id"]+'" id="btn_update_location">Update</button>\
                         </div>\
                       </div><br>\
                     </div>\
@@ -507,7 +507,7 @@ $(document).on("click", "#edit_location", function(event){
 $(document).on("click", "#btn_update_description", function(event) {
               $("#event_description_input").hide();
               desc_text_value = $("#txt_desc").val();
-              desc_event_id = $("#card").attr("event_id");
+              desc_event_id = $(this).attr("event_id");
               $.ajax({
                    url: "UpdateSyllabusEvent",
                    type: "POST",
@@ -518,6 +518,9 @@ $(document).on("click", "#btn_update_description", function(event) {
                        console.log(errorMessage); // Optional
                    }
               });
+              index = $(this).attr("index");
+              $("#events_template_loc").data('data-form')[parseInt(index)]["description"] = desc_text_value;
+
               $("#edit_description").html(desc_text_value);
               $("#edit_description").show("slow");
             });
@@ -527,7 +530,7 @@ $(document).on("click", "#btn_update_description", function(event) {
 $(document).on("click", "#btn_update_location", function(event){
               $("#edit_location_input").hide();
               location_text_value = $("#txt_loc").val();
-              location_event_id = $("#card").attr("event_id");
+              location_event_id =  $(this).attr("event_id");
               $.ajax({
                    url: "UpdateSyllabusEvent",
                    type: "POST",
@@ -538,6 +541,8 @@ $(document).on("click", "#btn_update_location", function(event){
                        console.log(errorMessage); // Optional
                    }
               });
+               index = $(this).attr("index");
+              $("#events_template_loc").data('data-form')[parseInt(index)]["location"] = location_text_value;
               $("#edit_location").html(location_text_value);
               $("#edit_location").show("slow")
             });
