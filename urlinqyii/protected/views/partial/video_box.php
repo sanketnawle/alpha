@@ -247,7 +247,7 @@
 
     </div>
 </script>
-<div class = "video_box_feed_separator"><hr><div>Welcome to the Feed</div></div>
+<div class = "video_box_feed_separator"><hr><div>Feed</div></div>
 
 </body>
 </html>
