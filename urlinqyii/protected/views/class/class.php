@@ -166,6 +166,7 @@
                     <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
                     </div>
                 </div>
+                <div class = "blur_overlay_black"></div>
                 <div class = "group_name">
 
                     <?php if($class->professor){ ?>
