@@ -130,14 +130,11 @@ span.month_text
   z-index:9999;
   position:relative;
   top:20px;
-  display:inline-block;
-  margin-right:10px;
-  width:30px;
-  height:30px;
+  margin-right:6px;
   background:rgba(18,19,20,0.9);
   cursor:pointer;
-  border-radius:50%;
   text-align:right;
+  border-radius:3px;
 }
 
 .img_arrows:hover
@@ -159,21 +156,30 @@ span.month_text
 .img_rt
 { 
   float:right;
-}
-.img_rt img {
   width:30px;
   height:30px;
+}
+.img_rt .arrow_img {
+  background:url(../../assets/small_icons.png);
+  background-size:500%;
+  background-position:-23px 666px;
+  height:30px;
+  width:30px;
 }
 
 .img_lt
 {
   float:right;
-}
-.img_lt img {
   width:30px;
   height:30px;
 }
-
+.img_lt .arrow_img {
+  background:url(../../assets/small_icons.png);
+  background-size:500%;
+  background-position:6px 666px;
+  height:30px;
+  width:30px;
+}
 
 .chip-container
 {
@@ -212,6 +218,10 @@ span.month_text
   box-shadow:0 2px 10px 0 rgba(0,0,0,0.1);
   cursor:pointer;
   margin:4px;
+}
+.chip.expanded 
+{
+  cursor:auto;
 }
 
 .chip:hover
@@ -339,6 +349,31 @@ span.month_text
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
+.collapse-tooltip {
+  position:absolute;
+  z-index:9999;
+  background-color:#ffffff;
+  width:200px;
+  border-radius:4px;
+  -moz-box-shadow:0 2px 10px 0 rgba(0,0,0,0.1);
+  -webkit-box-shadow:0 2px 10px 0 rgba(0,0,0,0.1);
+  box-shadow:0 2px 10px 0 rgba(0,0,0,0.1);
+  padding:15px;
+}
+.collapse-tooltip h2 {
+  margin:3px 0;
+  font-size:16px;
+}
+.collapse-tooltip h3 {
+  margin:0;
+  font-size:12px;
+  color:#808080;
+}
+.collapse-tooltip .people-attending {
+  position:relative;
+  margin-top:5px;
+}
+
 #details
 {
   padding:200px 10% 0;
@@ -368,9 +403,25 @@ span.month_text
   height:50px;
   border-radius:50%;
 }
-span.card-close {
+.card-icon.attending {
+  float:left;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+}
+.card-icon.attending img {
+  border-radius:50%;
+  width:30px;
+  height:30px;
+}
+
+.card-close {
   width:50px;
   height:50px;
+  background:url(../../assets/small_icons.png);
+  background-size:610%;
+  background-position:-62px 1808px;
+  cursor:pointer;
 }
 span.card-close img {
   width:50px;
@@ -407,7 +458,11 @@ span.card-close img {
 .card-content .people-attending {
   position:absolute;
   margin-left:-54%;
-  top:200px;
+  top:215px;
+  width:48%;
+  overflow:hidden;
+  color:#ffffff;
+  font-size:12px;
 }
 .card-upload {
   position:absolute;
