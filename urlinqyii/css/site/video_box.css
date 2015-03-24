@@ -16,10 +16,15 @@
     font-size:12px;
     white-space: normal;
     height: 72px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     color: #232323;
     line-height: 18px;
     margin-top: 10px;
+    /*-webkit-line-clamp:3;
+    text-overflow: ellipsis;*/
+}
+.video_description.desc_full{
+    height: 150px;
 }
 
 .video_thumbnail{
