@@ -59,7 +59,7 @@ $(document).ready(function(){
                         $('.video_box:eq(1)').addClass('next');
                        // $('.video_description.desc_truncated').dotdotdot();
                         $('.video_description.desc_truncated').text(function(index, currentText) {
-                            return currentText.substr(0, 70);
+                            return currentText.substr(0, 100);
                         });
                         $('.video_description.desc_truncated').append('<span class="expand_video_description">...</span>');
 

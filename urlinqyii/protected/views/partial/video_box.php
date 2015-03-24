@@ -14,7 +14,7 @@
 <div class="post_main video_post_main">
     <div class="video_header">
         <div class="video_header_text">Video lessons to help you learn</div>
-        <span class="info_icon">[icon here]</span>
+        <span class="info_icon">[]</span>
         <div class="help_div">
             <div class="wedge">
             </div>
@@ -266,7 +266,7 @@
 
     </div>
 </script>
-<div class = "video_box_feed_separator"><hr><div>Welcome to the Feed</div></div>
+<div class = "video_box_feed_separator"><hr><div>Feed</div></div>
 
 </body>
 </html>
