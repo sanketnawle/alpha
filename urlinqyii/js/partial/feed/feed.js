@@ -1034,7 +1034,10 @@ function ready(globals){
 
     $("div.comments:last-of-type").css({"border-bottom":"none"});
     setInterval(function(){
+
+
         for(var i in question_data){
+
             if(!closed_questions[i]){
                 update_question_data(i);
             }
