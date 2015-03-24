@@ -41,7 +41,7 @@ $(document).ready(function(){
                         console.log(embedly_info.url+"embedly");
                         for(var j=0;j<videos.length;j++){
                             console.log(videos[j].video_url+"video");
-                            if(videos[j].video_url.substring(videos[j].video_url.indexOf(':'))
+                            if(embedly_info.url && videos[j].video_url.substring(videos[j].video_url.indexOf(':'))
                                 == embedly_info.url.substring(embedly_info.url.indexOf(':'))){
                                 embedly_info.topic = videos[j].department.department_name;
                                 embedly_info.subtopic = videos[j].subtopic;
