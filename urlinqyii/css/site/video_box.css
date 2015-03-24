@@ -1,5 +1,5 @@
 .video_box{
-    width: 490px;
+    width: 495px;
     height: 140px;
     position:relative;
     display: inline-block;
@@ -25,7 +25,7 @@
 .video_description{
     font-size: 12px;
     white-space: normal;
-    height: 53px;
+    height: 37px;
     overflow: hidden;
     color: #232323;
     line-height: 18px;
@@ -46,7 +46,7 @@
 
 .video_left_column{
     display:inline-block;
-    width: 230px;
+    width: 260px;
     position: relative;
     top: -25px;
     padding: 5px;
@@ -84,10 +84,13 @@
 .watch_video{
     display:inline-block;
     cursor: pointer;
+    color: #029acf;
 }
 .skip_video{
     display:inline-block;
     cursor: pointer;
+    text-transform: capitalize;
+    color: #777;
 }
 .skip_video.video_open{
     display:block;
@@ -95,9 +98,10 @@
 }
 
 .video_categories *{
-    font-size: 12px;
+    font-size: 10px;
     display: inline-block;
-    padding: 6px 5px;
+    padding: 5px 5px;
+    line-height: 12px;
     border-radius: 3px;
     margin-left: -10px;
     border: 1px solid #575757;
@@ -124,6 +128,7 @@
 
 .video_subtopic{
     color:#05bb15;
+    font-size: 11px;
 }
 
 em.topic_connector{
@@ -134,13 +139,16 @@ em.topic_connector{
     position: relative;
     left: -5px;
     margin: 0!important;
-    width: 20px;
-    top: -3px;
+    width: 10px;
+    top: -2px;
     background: #222;
 }
 
 .video_box_functions > em{
+    font-weight: bold;
 
+    font-size: 15px;
+    color: #777;
 }
 
 div.video_post_main.post_main{
@@ -154,7 +162,7 @@ margin-top:0px;
 }
 
 .video_categories {
-  margin-left: 10px;
+  margin-left: 9px;
   margin-top: 5px;
 }
 
