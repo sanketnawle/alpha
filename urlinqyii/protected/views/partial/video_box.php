@@ -5,6 +5,7 @@
 <head>
     <title></title>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/video_box.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.dotdotdot.js"></script>
     <link rel = "stylesheet" type = "text/css" href = "<?php echo Yii::app()->request->baseUrl; ?>/css/site/video_box.css">
 </head>
 <body>
@@ -111,7 +112,10 @@
                 <div class="video_title">
                     {{title}}
                 </div>
-                <div class="video_description">
+                <div class="video_description desc_truncated">
+                    {{description}}
+                </div>
+                <div class="video_description desc_full" style="display: none">
                     {{description}}
                 </div>
                 <div class="video_categories">

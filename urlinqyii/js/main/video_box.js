@@ -28,7 +28,6 @@ $(document).ready(function(){
         var video;
         for(var i=0;i<videos.length;i++){
             video=videos[i];
-
             $.embedly.oembed(video['video_url'], {
                 key: '94c0f53c0cbe422dbc32e78d899fa4c5',
                 query: {
@@ -39,19 +38,27 @@ $(document).ready(function(){
             }).done(function (results) {
                     if (!results.invalid) {
                         embedly_info = results[0];
-                        embedly_info.topic = video.department.department_name;
-                        embedly_info.subtopic = video.subtopic;
+                        console.log(embedly_info.url+"embedly");
+                        for(var j=0;j<videos.length;j++){
+                            console.log(videos[j].video_url+"video");
+                            if(embedly_info.url && videos[j].video_url.substring(videos[j].video_url.indexOf(':'))
+                                == embedly_info.url.substring(embedly_info.url.indexOf(':'))){
+                                embedly_info.topic = videos[j].department.department_name;
+                                embedly_info.subtopic = videos[j].subtopic;
+                            }
+                        }
                         //  embedly_info.position = "focus";
                         //append_embedly(single_post['post_id'],embedly_info,single_post['post_type']);
                         $('.video_boxes').append(template(embedly_info));
                         $('.video_box').removeClass('focus').removeClass('next');
                         $('.video_box:eq(0)').addClass('focus');
                         $('.video_box:eq(1)').addClass('next');
-
+                        $('.video_description').dotdotdot();
                     }
                 }
             );
         }
+
         //render_replies(videos[0]);
         set_comments_and_likes();
 
@@ -100,10 +107,14 @@ $(document).ready(function(){
     $(document).on('click', '.lesscmt_bar', function(){
         if($(this).parent(".master_comments").hasClass('video_comments')){
             $(".master_comments.video_comments").html("<div id='show_more' class='morecmt_bar'>"
-            +"Read Comments"+
+            +"Read Comments"
             +"</div>");
         }
     });
+    /*$(document).on('click','.video_description.desc_truncated',function(){
+        $(this).fadeOut(250);
+        $(this).parent().find('.video_description.desc_full').fadeIn(250);
+    });*/
 
     $(document).on('click', '.reply_delete_button', function(){
         if($(this).closest('.master_comments').hasClass('video_comments')){

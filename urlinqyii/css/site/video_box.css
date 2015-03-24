@@ -30,6 +30,10 @@
     color: #232323;
     line-height: 18px;
     margin-top: 4px;
+
+}
+.video_description.desc_full{
+    height: 150px;
 }
 
 .video_thumbnail{
