@@ -619,14 +619,16 @@ padding-bottom: 4px;
 .step_6_card_r2 {
     float: left;
     margin-top: 10px;
-    width: 100%;
+    width: -webkit-calc(100% - 300px);
+    width: calc(100% - 300px);
     padding-left: 22px;
 }
 
 .step_6_card_r3 {
     float: left;
     margin-top: 10px;
-    width: 100%;
+    width: -webkit-calc(100% - 300px);   width: calc(100% - 300px);
+    padding-left: 22px;
 }
 
 .step_6_card_r4 {
@@ -701,12 +703,16 @@ box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 
     font-size: 14px;
     font-weight: 600;
     margin-top: 4px;
+    float: left;   font-size: 16px;   font-weight: 600;   text-align: right;
+    margin-top: 4px;   font-family: 'Open Sans', sans-serif;   font-weight: 500;   color: #FFF;
 }
 
 .step_6_card_r3_txt {
     float: left;
     font-size: 14px;
     font-weight: 600;
+    float: left;   text-align: right;
+    font-size: 16px;   font-weight: 600;   margin-top: 4px;   font-family: 'Open Sans', sans-serif;   font-weight: 500;   color: #FFF;
     margin-top: 4px;
 }
 
@@ -732,12 +738,14 @@ box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 
     resize: none;
     height: 35px;
     line-height: 33px;
-    width: 280px;
+    width: -webkit-calc(100%);   
+    width: calc(100%);
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     font-size: 18px;
     font-weight: 400!important;
     padding-left: 6px;
-    margin-left: 14px;
+    margin-left: 1px;
+    margin-top: 3px;
     overflow-y: hidden;
     /* border-top: 1px solid #c0c0c0; */
 }
@@ -751,6 +759,7 @@ box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 
     margin-right: 12px;
     margin-top: 9px;
     padding-left: 28px;
+    margin-left:13px;
     font-family: 'Open Sans', sans-serif;
 }
 
