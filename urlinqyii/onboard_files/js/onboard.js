@@ -1034,7 +1034,8 @@ $(document).ready(function () {
                             get_course_data();
                             return;
                         }else{
-                            progress_flag += 2;
+
+                            progress_flag += 1;
                         }
 
 
