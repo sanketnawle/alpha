@@ -192,6 +192,19 @@ body {
     background-color: rgba(2, 154, 207, 0.54)!important;
 }
 
+.step_5_card.step_3_card:hover{
+    background-color: rgba(2, 154, 207, 0.54)!important;
+}
+
+.step_5_card.step_3_card:hover div.gray_join_btn em.gray_plus_icon{
+      background-position: -26px 0;
+}
+
+.step_5_card.step_3_card:hover div.gray_join_btn{
+    background: #FFF;
+    color: #111!important;
+}
+
 .card_0_info {
     height: 40px;
     width: 100%;
@@ -1168,7 +1181,7 @@ input:focus:-moz-placeholder {
 }
 
 .progress_content.c4 .scroll-wrapper .slimScrollRail, .progress_content.c5 .scroll-wrapper .slimScrollRail{
-    height:323px!important;
+    height: 363px!important;
 }
 
 .progress_content.c6{
@@ -1183,7 +1196,7 @@ input:focus:-moz-placeholder {
     visibility: hidden;
 }
 
-.progress_content.c3 .scroll-wrapper, .progress_content.c4 .scroll-wrapper, .progress_content.c5 .scroll-wrapper {
+.progress_content.c3 .scroll-wrapper{
     margin-bottom: -45px;
     padding-bottom: 40px;
 }
@@ -1359,10 +1372,10 @@ div.update_picture_text > p{
     color: #000;
 }
 
-div.gray_join_btn:active, div.follow_btn:active{
+/*div.gray_join_btn:active, div.follow_btn:active{
 background: #EEE;
 border-color: #D7D7D7;
-}
+}*/
 
 #profile_image_upload_form {
     width: 300px;

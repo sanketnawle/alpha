@@ -44,6 +44,14 @@
             $user_email_suffix = substr($emailaddress, -$university_email_suffix_length);
 
             if (($user_email_suffix == $university_email_suffix)) {
+
+               $schools = array();
+
+                foreach ($university->schools as $school) {
+                    $school_new = $this->model_to_array($school);
+                    //$school_new['member_count'] = count($school->users);
+                    array_push($schools, $school_new);
+                }
                 
                 $data = array('success'=>true, 'university'=>$university, 'schools'=>$university->schools);
                 $this->renderJSON($data);
@@ -56,7 +64,27 @@
 
         if ($urlinq_sub == 'urlinq.com') {
             $nyu = University::model()->find('website_url=:website_url', array(':website_url'=>'https://www.nyu.edu'));
-            $data = array('success'=>true, 'university'=>$nyu, 'schools'=>$nyu->schools);
+
+                $schools = array();
+
+                foreach ($nyu->schools as $school) {
+                    $school_new = $this->model_to_array($school);
+
+                    $school_id = $school->school_id;
+
+                    $sql = "SELECT COUNT(school_id) FROM user WHERE school_id=$school_id";
+
+                    $command = Yii::app()->db->createCommand($sql);
+                    $results = $command->queryAll();
+
+                    $member_count = $results[0]["COUNT(school_id)"];
+
+                    $school_new['member_count'] = $member_count;
+
+                    array_push($schools, $school_new);
+                }
+
+            $data = array('success'=>true, 'university'=>$nyu, 'schools'=>$schools);
             $this->renderJSON($data);
             return;
         }
