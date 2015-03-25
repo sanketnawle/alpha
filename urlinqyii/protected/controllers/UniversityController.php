@@ -2,6 +2,13 @@
 
 class UniversityController extends Controller
 {
+
+    public function actionGetUniversities(){
+        $universities = University::model()->findAll();
+        $data = array('success'=>true,'universities'=>$universities);
+        $this->renderJSON($data);
+        return;
+    }
 	public function actionGetSchools()
 	{
         if(!isset($_GET['university_id'])){

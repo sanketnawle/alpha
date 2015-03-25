@@ -300,8 +300,8 @@ function list_events(events, img_left, img_right, page_value, result_text){
                     </div>';
         };
     display_text+='</div>\
-                    <span style="display:'+img_right+'" class="img_arrows img_rt"><img src="../assets/arrow-28-512.png"></span>\
-                    <span style="display:'+img_left+'" class="img_arrows img_lt"><img src="../assets/arrow-28-51-lt.png"></span>';
+                    <span style="display:'+img_right+'" class="img_arrows img_rt"><div class="arrow_img"></div></span>\
+                    <span style="display:'+img_left+'" class="img_arrows img_lt"><div class="arrow_img"></div></span>';
     $("#events_template_loc").html(display_text);
     $(".chip").each(function(){
       $(this).fadeIn({
@@ -349,8 +349,8 @@ function list_events_left(events, img_left, img_right, page_value, result_text){
                     </div>';
         };
     display_text+='</div>\
-                    <span style="display:'+img_right+'" class="img_arrows img_rt"><img src="../assets/arrow-28-512.png"></span>\
-                    <span style="display:'+img_left+'" class="img_arrows img_lt"><img src="../assets/arrow-28-51-lt.png"></span>';
+                    <span style="display:'+img_right+'" class="img_arrows img_rt"><div class="arrow_img"></div></span>\
+                    <span style="display:'+img_left+'" class="img_arrows img_lt"><div class="arrow_img"></div></span>';
     $("#events_template_loc").html(display_text);
     $(".chip").each(function(){
       $(this).fadeIn({
@@ -388,7 +388,7 @@ var $chip = $(this);
     files_html += get_files(form_data["event_id"]);
     card_content_temp = $('<div class="card-content"></div>');
     card_html = '<div class="card-header">\
-                    <div class="card-icon" style="background:'+form_data["color"]+';"><span class="card-close"><img src="../assets/arrow-28-512.png"></span></div>\
+                    <div class="card-icon" style="background:'+form_data["color"]+';"><div class="card-close" title="Collapse event info"></div></div>\
                     <div class="card-title"><h2>'+form_data["title"]+'</h2><h3>'+form_data["origin_type"]+'</h3></div>\
                 </div>\
                 <div class="card-description">\
@@ -414,9 +414,12 @@ var $chip = $(this);
                         </div>\
                       </div><br>\
                     </div>\
-                  <div class="people-attending">'+get_people_attending(form_data["event_id"])+'</div>\
                 </div>\
-                <div class="card-upload">Materials <button id="btn_event_file_upld">Upload</button><button>Import from drive</button></div>\
+                <div class="people-attending">'+get_people_attending(form_data["event_id"])+'</div>\
+                <div class="card-upload">Materials \
+                  <button id="btn_event_file_upload">Upload</button>\
+                  <button>Import from drive</button>\
+                </div>\
                 <div id="materials_container"> </div>';
     card_content = $(card_content_temp).html(card_html);
 
@@ -462,14 +465,37 @@ var $chip = $(this);
         $($chip).children('.collapse-date').css({
           "display": "none"
         });
-
-
     } else {
-        
+        event.preventDefault();
     }
+
 });
 
-$(document).on("click", "span.card-close", function(event){
+$(document).on("mouseenter", ".collapse-info", function(event){
+    var $chip = $(this).parents('.chip');
+    event.preventDefault();
+    index = $($chip).attr("index");
+    form_data = $("#events_template_loc").data('data-form')[parseInt(index)];
+    tooltip_temp = $('<div class="collapse-tooltip"></div>');
+    tooltip_html = '<h2>'+form_data["title"]+'</h2>\
+                    <h3>'+form_data["origin_type"]+'</h3>\
+                    <div class="people-attending">'+get_people_attending(form_data["event_id"])+'</div>';
+    tooltip = $(tooltip_temp).html(tooltip_html);
+
+    leftPosition = event.pageX - 235;
+    topPosition = event.pageY + 5;
+
+    $(tooltip).css({
+      left: leftPosition+'px',
+      top: topPosition+'px'
+    });
+    $('body').append(tooltip);
+});
+$(document).on("mouseleave", ".collapse-info", function(event){
+    $('body').children('.collapse-tooltip').detach();
+});
+
+$(document).on("click", ".card-close", function(event){
   event.preventDefault();
   $chip = $(this).parents('.chip');
     $('.chip').animate({
@@ -492,9 +518,10 @@ $(document).on("click", "span.card-close", function(event){
     $($chip).children('.card-content').detach();
     setTimeout(function(){
       $($chip).removeClass('expanded');
-    },400);
-    
+    },400);  
 });
+
+
 
 $(document).on("click", "#edit_description", function(event){
   event.preventDefault();
@@ -552,19 +579,19 @@ $(document).on("click", "#btn_update_location", function(event){
               $("#edit_location").show("slow")
             });
 
-$(document).on("click",'#btn_event_file_upld', function(event){
+$(document).on("click",'#btn_event_file_upload', function(event){
         event.preventDefault();
-        $("#event_file_upld").trigger("click");
+        $("#event_file_upload").trigger("click");
 });
 
-$(document).on("change",'#event_file_upld', function(event){
+$(document).on("change",'#event_file_upload', function(event){
         event.preventDefault();
 
         filevalue = $(this).val().split(".");
         file_length = filevalue.length;
             fd = new FormData();
-            if ($('#event_file_upld')[0].files[0]){
-            fd.append("file", $('#event_file_upld')[0].files[0]);
+            if ($('#event_file_upload')[0].files[0]){
+            fd.append("file", $('#event_file_upload')[0].files[0]);
             fd.append("id", globals.origin_id);
             fd.append("event_id", $("#card").attr("event_id"))
             }
@@ -725,18 +752,28 @@ var search_events = function(){
 
 function get_people_attending(event_id){
   var people_attending_html = "";
- var resp = $.ajax({
+  var resp = $.ajax({
                url: "GetPeopleAttending",
                type: "POST",
                data: {"event_id":event_id},
                async: false,
                success: function(response) {
-                $.each(response, function(index, value){
-                    people_attending_html+='<div class="card-icon" title="'+value["firstname"]+" "+value["lastname"]+'" style="background-size: contain;background:url('+globals.base_url+value["file_url"]+');"></div>';
-                });
+                console.log(response[0]);
+                  var total = response.length;
+                  var total_more = total - 4;
+                  $.each(response, function(index, value){
+                    for(var i=0; i < 4 && i < total; i++) {
+                      console.log(response[i]['firstname']);
+                      people_attending_html+='<div class="card-icon attending" title="'+response[i]["firstname"]+" "+response[i]["lastname"]+'" style="margin:5px;"><img src="'+globals.base_url+response[i]["file_url"]+'"></div>';
+                    }
+                  });
+                  if (total_more > 0) {
+                    people_attending_html+= ' '+total_more+' more';
+                  } else {
+                  }
                },
                error: function(jqXHR, textStatus, errorMessage) {
-                   console.log(errorMessage); // Optional
+                  console.log(errorMessage); // Optional
                }
             });
  return people_attending_html;

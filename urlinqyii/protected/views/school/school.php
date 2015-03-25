@@ -109,6 +109,7 @@ if($school->university_id == 4){
                 <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->pictureFile->file_url ?>');">
                 </div>
             </div>
+            <div class = "blur_overlay_black"></div>
             <div class = "group_name">
                 <?php if($school->university_id == 1){ ?>
                 <div class = "center_admin univ_art"><div class = "text"></div><div class = "university_arrow"></div></div>

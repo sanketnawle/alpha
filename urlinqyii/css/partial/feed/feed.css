@@ -1221,10 +1221,10 @@ div.master_comments {
     cursor: pointer;
     left: 14px;
     float: left;
-    -webkit-transition: color .218s;
-    -moz-transition: color .218s;
-    -o-transition: color .218s;
-    transition: color .218s;
+    -webkit-transition: color .218s ease;
+    -moz-transition: color .218s ease;
+    -o-transition: color .218s ease;
+    transition: color .218s ease;
     ;
     float: left;
     text-shadow: 0 1px #fff;
@@ -1314,10 +1314,10 @@ div.comment_time {
     display: inline-block;
     float: left;
     background-size: cover;
-    -webkit-transition: opacity .15s ease-out;
-    -moz-transition: opacity .15s ease-out;
-    -o-transition: opacity .15s ease-out;
-    transition: opacity .15s ease-out;
+    -webkit-transition: opacity .2s ease;
+    -moz-transition: opacity .2s ease;
+    -o-transition: opacity .2s ease;
+    transition: opacity .2s ease;
     position: relative;
     opacity: .8;
 }
@@ -4627,12 +4627,20 @@ div.post_other_attendees_holder:active {
 .reply_delete_button {
     float: right;
     margin-top: -32px;
+    opacity: 0;
     cursor: pointer;
+    -webkit-transition:.2s ease opacity;
+    -moz-transition:.2s ease opacity;
+    transition:.2s ease opacity;
     height: 9px;
     width: 8px;
     background-image: url(../../../assets/noti_sprite.png);
     background-position: 0px -174px;
     background-size: auto;
+}
+
+.comment_main:hover .reply_delete_button{
+    opacity: 1;
 }
 
 .post_attendees {

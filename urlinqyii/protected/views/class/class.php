@@ -166,6 +166,7 @@
                     <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
                     </div>
                 </div>
+                <div class = "blur_overlay_black"></div>
                 <div class = "group_name">
 
                     <?php if($class->professor){ ?>
@@ -342,7 +343,7 @@
                       Add Syllabus
                     </button>
                     <input style="display:none;" type="file" accept=".pdf" id="syllabus_pdf_upload"/>
-                    <input style="display:none" type="file" id="event_file_upld" />
+                    <input style="display:none" type="file" id="event_file_upload" />
                 </div>
                 <div class = "syllabus_download_btn" style="display:none;"><a id="class_syllabus_pdf" download>Download</a></div>
                 <div class = "small_search fade_input_small events_search_syllabus_wrapper">

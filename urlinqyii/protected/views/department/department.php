@@ -108,6 +108,7 @@
                                 <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
                                 </div>
                             </div>
+                            <div class = "blur_overlay_black"></div>
                             <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
                                 <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
                                     <div class="upload_cover_photo_text">Change cover</div>

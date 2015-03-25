@@ -128,7 +128,8 @@
                         <div class = "blur_section_overflow_container">
                             <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url ?>');">
                             </div>
-                        </div>                            
+                        </div>
+                        <div class = "blur_overlay_black"></div>                            
                         <div class = "group_name">
                             <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $course->course_name; if($course->course_tag != ''){ echo ' (' . $course->course_tag . ')'; } ?></span></p></div>
                         </div>
