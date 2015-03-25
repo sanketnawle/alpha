@@ -416,7 +416,8 @@ var $chip = $(this);
                     </div>\
                   <div class="people-attending">'+get_people_attending(form_data["event_id"])+'</div>\
                 </div>\
-                <div class="card-upload">Materials <button id="btn_event_file_upload">Upload</button><input type="file" id="event_file_upload" style="display:none"/><button>Import from drive</button></div>';
+                <div class="card-upload">Materials <button id="btn_event_file_upld">Upload</button><button>Import from drive</button></div>\
+                <div id="materials_container"> </div>';
     card_content = $(card_content_temp).html(card_html);
 
     if (!$($chip).hasClass('expanded')) {
@@ -551,19 +552,19 @@ $(document).on("click", "#btn_update_location", function(event){
               $("#edit_location").show("slow")
             });
 
-$(document).on("click",'#btn_event_file_upload', function(event){
+$(document).on("click",'#btn_event_file_upld', function(event){
         event.preventDefault();
-        $("#event_file_upload").trigger("click");
+        $("#event_file_upld").trigger("click");
 });
 
-$(document).on("change",'.event_file_upload', function(event){
+$(document).on("change",'#event_file_upld', function(event){
         event.preventDefault();
 
         filevalue = $(this).val().split(".");
         file_length = filevalue.length;
             fd = new FormData();
-            if ($('#event_file_upload')[0].files[0]){
-            fd.append("file", $('#event_file_upload')[0].files[0]);
+            if ($('#event_file_upld')[0].files[0]){
+            fd.append("file", $('#event_file_upld')[0].files[0]);
             fd.append("id", globals.origin_id);
             fd.append("event_id", $("#card").attr("event_id"))
             }
