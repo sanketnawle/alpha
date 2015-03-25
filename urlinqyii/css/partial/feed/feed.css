@@ -50,7 +50,7 @@
 
 .post_main.welcome_post {
     min-height: 200px;
-
+    display: none;
     border-radius: 5px;
 }
 
