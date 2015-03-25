@@ -94,9 +94,11 @@
                     </div>
 
 
-                    <div id="chat_panel">
-                        <div id="chat_panel_text">
+                    <div id="chat_panel" class="chat_box">
+                        <div id="chat_panel_text" class="chat_box_text">
+                            <div class="chat_panel_wrap chat_message_wrap">
 
+                            </div>
                         </div>
 
 

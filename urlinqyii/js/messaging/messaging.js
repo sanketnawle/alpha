@@ -26,11 +26,11 @@ socket.debug(true);
 fullscreen = false;
 
 
-//Determine if user is on /messaging
-if(document.URL.indexOf('/messaging') > -1){
+//Determine if user is on /messaging\
+
+if(document.URL.indexOf("/messages") > -1){
     fullscreen = true;
 }
-
 
 
 
@@ -160,7 +160,10 @@ function init(){
                 render_messaging_list_item(user_json);
             });
 
-
+//            if(fullscreen){
+//                //Click the first messaging_list_item
+//                $('.messaging_list_item').get(0).click();
+//            }
 
 
         }else{
@@ -198,19 +201,27 @@ function init(){
     //alert($.cookie('chat'));
 
 
-    var chat_data = JSON.parse($.cookie('chat'));
+    if(fullscreen){
 
 
-    for(var x = 0; x < chat_data['chat_boxes'].length; x++){
-        var this_chat_data = chat_data['chat_boxes'][x];
-        get_or_create_chat_box(this_chat_data['type'], this_chat_data['id'], this_chat_data['name']);
+    }else{
+
+        var chat_data = JSON.parse($.cookie('chat'));
+
+
+        for(var x = 0; x < chat_data['chat_boxes'].length; x++){
+            var this_chat_data = chat_data['chat_boxes'][x];
+            get_or_create_chat_box(this_chat_data['type'], this_chat_data['id'], this_chat_data['name']);
+        }
+
+
+        for(var i = 0; i < chat_data['extra_chat_boxes'].length; i++){
+            var this_extra_chat_data = chat_data['extra_chat_boxes'][i];
+            get_or_create_chat_box(this_extra_chat_data['type'], this_extra_chat_data['id'], this_extra_chat_data['name']);
+        }
     }
 
 
-    for(var i = 0; i < chat_data['extra_chat_boxes'].length; i++){
-        var this_extra_chat_data = chat_data['extra_chat_boxes'][i];
-        get_or_create_chat_box(this_extra_chat_data['type'], this_extra_chat_data['id'], this_extra_chat_data['name']);
-    }
 
 
 }
@@ -281,6 +292,12 @@ function save_chat_cookie(){
 }
 
 
+function clear_chat_box($chat_box){
+    $chat_box.find('.chat_message_wrap').text('');
+}
+
+
+
 
 //Func is optional. Look at handle_render_message for structure
 function load_chat_box($chat_box, func){
@@ -291,9 +308,22 @@ function load_chat_box($chat_box, func){
 
     $.getJSON(messaging_globals.base_url + '/message/recentChat', {target_id: target_id, target_type: target_type}, function(json_data){
         if(json_data['success']){
-            $.each(json_data['messages'], function(index, message_json){
-                handle_render_message(message_json);
-            });
+
+
+            if(fullscreen){
+                var $chat_box_panel = $('#chat_panel');
+
+                $.each(json_data['messages'], function(index, message_json){
+                    render_message(message_json,$chat_box_panel);
+                });
+            }else{
+                $.each(json_data['messages'], function(index, message_json){
+                    handle_render_message(message_json);
+                });
+            }
+
+
+
 
             $('.chat_box_text').scrollTop(2000);
 
@@ -492,31 +522,59 @@ $(document).on('click', '.messaging_list_item', function(e){
     var id = $messaging_list_item.attr('data-id');
     var name = $messaging_list_item.attr('data-name');
 
-    //Check if this chat is already in the #extra_chat_boxes div
-    var $extra_chat_box_check = $('.extra_chat_box[data-type="' + type + '"][data-id="' + id + '"]');
-    if($extra_chat_box_check.length){
-        //This chat is already in extra chat box, so
-        //just swap it with the last chat visible
-        swap_chat_box($extra_chat_box_check);
-        return;
+
+    if(fullscreen){
+        //Load this chat in the chat_panel
+        var $chat_box_panel = $('#chat_panel');
+
+        if(!$messaging_list_item.hasClass('active')){
+            //Clear the current chat log
+            clear_chat_box($chat_box_panel);
+
+            //remove active from previous list item
+            $('.messaging_list_item.active').removeClass('active');
+
+
+            $messaging_list_item.addClass('active');
+
+            //Add this chats data to chat_panel
+            $chat_box_panel.attr('data-id', id);
+            $chat_box_panel.attr('data-type', type);
+            $chat_box_panel.attr('data-name', name);
+
+
+            load_chat_box($chat_box_panel);
+        }
+
+    }else{
+            //Check if this chat is already in the #extra_chat_boxes div
+        var $extra_chat_box_check = $('.extra_chat_box[data-type="' + type + '"][data-id="' + id + '"]');
+        if($extra_chat_box_check.length){
+            //This chat is already in extra chat box, so
+            //just swap it with the last chat visible
+            swap_chat_box($extra_chat_box_check);
+            return;
+        }
+
+
+        //alert('CREATING CHAT BOX FROM LIST ITEM ');
+
+        var create_chat_box_data = get_or_create_chat_box(type, id, name);
+        var $chat_box = create_chat_box_data['chat_box'];
+
+        //Only load if the chatbox wasnt already open
+        //    if(!create_chat_box_data['existed']){
+        //        load_chat_box($chat_box);
+        //    }
+
+
+
+
+        //Add this chatbox to page
+        //$('#LeftPanel_Holder').append($chat_box);
+
+
     }
-
-
-    //alert('CREATING CHAT BOX FROM LIST ITEM ');
-
-    var create_chat_box_data = get_or_create_chat_box(type, id, name);
-    var $chat_box = create_chat_box_data['chat_box'];
-
-    //Only load if the chatbox wasnt already open
-    //    if(!create_chat_box_data['existed']){
-    //        load_chat_box($chat_box);
-    //    }
-
-
-
-
-    //Add this chatbox to page
-    //$('#LeftPanel_Holder').append($chat_box);
 
 
 

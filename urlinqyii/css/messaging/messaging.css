@@ -187,7 +187,7 @@
 
 
 
-#chat_panel {
+.chat_box#chat_panel {
     width: 860px;
     height: 600px;
     background-color: wheat;
