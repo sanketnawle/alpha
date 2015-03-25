@@ -366,6 +366,7 @@ class ClubController extends Controller
             $user_id = $this->get_current_user_id();
         }
 
+
         $group_id = $_POST['id'];
 
         //Check if this is a private group
@@ -408,7 +409,7 @@ class ClubController extends Controller
                     $event_creator = GroupUser::model()->find('group_id=:group_id and user_id=:user_id',array(':group_id'=>$group->group_id
                         ,':user_id'=>$event->user_id));
                     //add all club events from admins (or anyone if no admis) to user's events
-                    if(($event_creator->is_admin || !$has_admin) && !$already_attending){
+                    if(($this->is_urlinq_admin($event->user)||$event_creator->is_admin || !$has_admin) && !$already_attending){
 
                         $event_user = new EventUser();
                         $event_user->user_id = $user_id;
@@ -547,9 +548,9 @@ class ClubController extends Controller
         $group_id = $_POST['group_id'];
         $group_user = GroupUser::model()->find('group_id=:id and user_id=:user_id', array(':id'=>$group_id,':user_id'=>$current_user_id));
         //Check if the current user is even in this group
-        if($group_user){
+        if($this->is_urlinq_admin($user)||$group_user){
             //Check if current user is an admin of this group
-            if($group_user->is_admin){
+            if($this->is_urlinq_admin($user)||$group_user->is_admin){
                 $group_user_to_remove = GroupUser::model()->find('user_id=:uid and group_id=:gid',array(':gid'=>$group_id,':uid'=>$user_to_remove->user_id));
                 //Check if we destroy this shit successfully
                 if($group_user_to_remove->delete()){
@@ -1078,8 +1079,8 @@ class ClubController extends Controller
         $club = Group::model()->find('group_id=:id',array(':id'=>$_POST['club_id']));
         if($club){
             $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
-            if($club_user || (strpos($user->user_email,'@urlinq.com') !== false)){
-                if((strpos($user->user_email,'@urlinq.com') !== false) || $club_user->is_admin || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"){
+            if($this->is_urlinq_admin($user)||$club_user){
+                if($this->is_urlinq_admin($user) || $club_user->is_admin || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"){
                     $club->group_desc = $_POST['description'];
                     if($club->save(false)){
                         $this->renderJSON(array('success'=>true));
@@ -1101,8 +1102,8 @@ class ClubController extends Controller
         $club = Group::model()->find('group_id=:id',array(':id'=>$_POST['club_id']));
         if($club){
             $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
-            if($club_user  || (strpos($user->user_email,'@urlinq.com') !== false)  || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"){
-                if((strpos($user->user_email,'@urlinq.com') !== false) || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"  ||  $club_user->is_admin){
+            if($this->is_urlinq_admin($user)||$club_user  || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"){
+                if($this->is_urlinq_admin($user) || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"  ||  $club_user->is_admin){
                     $club->mission_statement = $_POST['mission'];
                     if($club->save(false)){
                         $this->renderJSON(array('success'=>true));
@@ -1144,8 +1145,8 @@ class ClubController extends Controller
         $club = Group::model()->find('group_id=:id',array(':id'=>$_POST['club_id']));
         if($club){
             $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
-            if($club_user  || (strpos($user->user_email,'@urlinq.com') !== false)){
-                if($club_user->is_admin  || (strpos($user->user_email,'@urlinq.com') !== false)  || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"){
+            if($this->is_urlinq_admin($user)||$club_user){
+                if($this->is_urlinq_admin($user)||$club_user->is_admin  || $user->user_email == "rlk314@nyu.edu" || $user->user_email == "rkopelma@student.touro.edu"){
                     $extension = pathinfo($_FILES["file"]["name"])['extension'];
                     if($extension == "jpg" || $extension == "png" || $extension == "gif") {
                         $result = file_upload($_FILES, "club/");

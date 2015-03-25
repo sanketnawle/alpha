@@ -103,7 +103,7 @@ class User extends CActiveRecord
 			array('user_email', 'length', 'max'=>255),
 			array('user_type, gender', 'length', 'max'=>1),
 			array('firstname, lastname', 'length', 'max'=>100),
-			array('status', 'length', 'max'=>8),
+			array('status', 'length', 'max'=>20),
 			array('user_bio', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
