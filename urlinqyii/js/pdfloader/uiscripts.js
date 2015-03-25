@@ -149,8 +149,12 @@ var load_events = function (pdf_id) {
          data: {"class_id":globals.origin_id, "file_id":pdf_id},
          success: function(response) {
           $.each(response, function(index,value){
-                var d = new Date(value["start_date"]+" "+ value["start_time"]);
-                var dt = new Date(value["end_date"]+" "+ value["end_time"]);
+                start_date_split = value["start_date"].split("-");
+                end_date_split = value["end_date"].split("-");
+                start_date_str = start_date_split[1]+"/"+start_date_split[2]+"/"+start_date_split[0];
+                end_date_str = end_date_split[1]+"/"+end_date_split[2]+"/"+end_date_split[0];
+                var d = new Date(start_date_str+" "+ value["start_time"]);
+                var dt = new Date(end_date_str+" "+ value["end_time"]);
                 if(d.getHours()!="0" && dt.getHours()!="0"){
                   time = "from "+formatAMPM(d)+" to "+formatAMPM(dt);
                 }
@@ -182,7 +186,7 @@ var load_events = function (pdf_id) {
                   month: month[d.getMonth()],
                   event_id: value["event_id"],
                   time: time,
-                  color: class_color,
+                  color: get_class_color(),
                   origin_type: value["event_type"],
                 };
                   event_array_list.push(event_value);
@@ -255,7 +259,7 @@ function display_events(events, is_root){
     search_text = " Total events this semester";
   }
   else{
-    search_text = " Total events found"
+    search_text = " Total events found";
   }
   list_events(events.slice(0,4), "none", right, 0, search_text);
 }
@@ -276,7 +280,7 @@ function list_events(events, img_left, img_right, page_value, result_text){
 
       for(i=0;i<events.length; i++){
                     display_text+='<div class="chip_content">\
-                      <div class="chip" index="'+(page_value*4+i)+'" hero-id="'+events[i]["event_id"]+'">\
+                      <div class="chip"  style="display:none;right:-100px;" index="'+(page_value*4+i)+'" hero-id="'+events[i]["event_id"]+'">\
                         <div class="chip-top" style="background:'+events[i]["color"]+';">\
                           <div class="month">\
                             <span class = "month_text">'+events[i]["month"]+'</span>\
@@ -296,9 +300,66 @@ function list_events(events, img_left, img_right, page_value, result_text){
                     </div>';
         };
     display_text+='</div>\
-                    <span style="display:'+img_left+'" class="img_arrows img_lt"><em></em></span>\
-                    <span style="display:'+img_right+'" class="img_arrows img_rt"><em></em></span>';
+                    <span style="display:'+img_right+'" class="img_arrows img_rt"><div class="arrow_img"></div></span>\
+                    <span style="display:'+img_left+'" class="img_arrows img_lt"><div class="arrow_img"></div></span>';
     $("#events_template_loc").html(display_text);
+    $(".chip").each(function(){
+      $(this).fadeIn({
+        queue: false,
+        duration: 'slow'
+      }).animate({
+        right: "0px"
+      });
+    });
+}
+
+function list_events_left(events, img_left, img_right, page_value, result_text){
+  display_text = '\
+                  <div id="event_count">'+events_length+ result_text+'</div>\
+                    <div class = "syllabus_tab_add_event_wrapper">\
+                      <div class = "add_event_button fbar_buttonwrapper" id = "fbar_button_event" data-post_button_type="event">\
+                      </div>\
+                      <div class = "add_event_hint">\
+                          <div class = "wedge">\
+                          </div>\
+                          <div class = "box">Add New Event</div>\
+                      </div>\
+                    </div>\
+                    <div class="chip-container" id="chip_div">';
+
+      for(i=0;i<events.length; i++){
+                    display_text+='<div class="chip_content">\
+                      <div class="chip"  style="display:none;left:-100px;" index="'+(page_value*4+i)+'" hero-id="'+events[i]["event_id"]+'">\
+                        <div class="chip-top" style="background:'+events[i]["color"]+';">\
+                          <div class="month">\
+                            <span class = "month_text">'+events[i]["month"]+'</span>\
+                            <span class = "day_text">'+events[i]["day"]+'</span>\
+                          </div>\
+                          <div class="time">\
+                            <span>'+events[i]["time"]+'</span>\
+                          </div>\
+                        </div>\
+                        <div class="collapse-date">'+events[i]["month"]+' '+events[i]["day"]+'</div>\
+                        <div class="chip-bottom">\
+                          <div class="chip-album-title">'+events[i]["title"]+'</div>\
+                          <div class="chip-artist">'+events[i]["origin_type"]+'</div>\
+                        </div>\
+                        <div class="collapse-info"><div class="collapse-info-hover"></div></div>\
+                      </div>\
+                    </div>';
+        };
+    display_text+='</div>\
+                    <span style="display:'+img_right+'" class="img_arrows img_rt"><div class="arrow_img"></div></span>\
+                    <span style="display:'+img_left+'" class="img_arrows img_lt"><div class="arrow_img"></div></span>';
+    $("#events_template_loc").html(display_text);
+    $(".chip").each(function(){
+      $(this).fadeIn({
+        queue: false,
+        duration: 'slow'
+      }).animate({
+        left: "0px"
+      });
+    });
 }
 
 
@@ -327,7 +388,7 @@ var $chip = $(this);
     files_html += get_files(form_data["event_id"]);
     card_content_temp = $('<div class="card-content"></div>');
     card_html = '<div class="card-header">\
-                    <div class="card-icon" style="background:'+form_data["color"]+';"><span class="card-close"><img src="../assets/arrow-28-512.png"></span></div>\
+                    <div class="card-icon" style="background:'+form_data["color"]+';"><div class="card-close" title="Collapse event info"></div></div>\
                     <div class="card-title"><h2>'+form_data["title"]+'</h2><h3>'+form_data["origin_type"]+'</h3></div>\
                 </div>\
                 <div class="card-description">\
@@ -338,7 +399,7 @@ var $chip = $(this);
                           <textarea type="text" id="txt_desc" class="input_text" value="'+form_data["description"]+'"></textarea>\
                         </div>\
                         <div style="width:25%;float:right;">\
-                          <button class="btn_update" id="btn_update_description">Update</button>\
+                          <button class="btn_update" index="'+index+'" event_id="'+form_data["event_id"]+'" id="btn_update_description">Update</button>\
                         </div>\
                       </div><br>\
                     </div><br>\
@@ -349,13 +410,17 @@ var $chip = $(this);
                           <textarea type="text" id="txt_loc" class="input_text" value="'+form_data["location"]+'"></textarea>\
                         </div>\
                         <div style="width:25%;float:right;">\
-                          <button class="btn_update" id="btn_update_location">Update</button>\
+                          <button class="btn_update" index="'+index+'" event_id="'+form_data["event_id"]+'" id="btn_update_location">Update</button>\
                         </div>\
                       </div><br>\
                     </div>\
-                  <div class="people-attending">'+get_people_attending(form_data["event_id"])+'</div>\
                 </div>\
-                <div class="card-upload">Materials <button id="btn_event_file_upload">Upload</button><button>Import from drive</button></div>';
+                <div class="people-attending">'+get_people_attending(form_data["event_id"])+'</div>\
+                <div class="card-upload">Materials \
+                  <button id="btn_event_file_upload">Upload</button>\
+                  <button>Import from drive</button>\
+                </div>\
+                <div id="materials_container"> </div>';
     card_content = $(card_content_temp).html(card_html);
 
     if (!$($chip).hasClass('expanded')) {
@@ -400,14 +465,37 @@ var $chip = $(this);
         $($chip).children('.collapse-date').css({
           "display": "none"
         });
-
-
     } else {
-        
+        event.preventDefault();
     }
+
 });
 
-$(document).on("click", "span.card-close", function(event){
+$(document).on("mouseenter", ".collapse-info", function(event){
+    var $chip = $(this).parents('.chip');
+    event.preventDefault();
+    index = $($chip).attr("index");
+    form_data = $("#events_template_loc").data('data-form')[parseInt(index)];
+    tooltip_temp = $('<div class="collapse-tooltip"></div>');
+    tooltip_html = '<h2>'+form_data["title"]+'</h2>\
+                    <h3>'+form_data["origin_type"]+'</h3>\
+                    <div class="people-attending">'+get_people_attending(form_data["event_id"])+'</div>';
+    tooltip = $(tooltip_temp).html(tooltip_html);
+
+    leftPosition = event.pageX - 235;
+    topPosition = event.pageY + 5;
+
+    $(tooltip).css({
+      left: leftPosition+'px',
+      top: topPosition+'px'
+    });
+    $('body').append(tooltip);
+});
+$(document).on("mouseleave", ".collapse-info", function(event){
+    $('body').children('.collapse-tooltip').detach();
+});
+
+$(document).on("click", ".card-close", function(event){
   event.preventDefault();
   $chip = $(this).parents('.chip');
     $('.chip').animate({
@@ -430,9 +518,10 @@ $(document).on("click", "span.card-close", function(event){
     $($chip).children('.card-content').detach();
     setTimeout(function(){
       $($chip).removeClass('expanded');
-    },400);
-    
+    },400);  
 });
+
+
 
 $(document).on("click", "#edit_description", function(event){
   event.preventDefault();
@@ -450,7 +539,7 @@ $(document).on("click", "#edit_location", function(event){
 $(document).on("click", "#btn_update_description", function(event) {
               $("#event_description_input").hide();
               desc_text_value = $("#txt_desc").val();
-              desc_event_id = $("#card").attr("event_id");
+              desc_event_id = $(this).attr("event_id");
               $.ajax({
                    url: "UpdateSyllabusEvent",
                    type: "POST",
@@ -461,6 +550,9 @@ $(document).on("click", "#btn_update_description", function(event) {
                        console.log(errorMessage); // Optional
                    }
               });
+              index = $(this).attr("index");
+              $("#events_template_loc").data('data-form')[parseInt(index)]["description"] = desc_text_value;
+
               $("#edit_description").html(desc_text_value);
               $("#edit_description").show("slow");
             });
@@ -470,7 +562,7 @@ $(document).on("click", "#btn_update_description", function(event) {
 $(document).on("click", "#btn_update_location", function(event){
               $("#edit_location_input").hide();
               location_text_value = $("#txt_loc").val();
-              location_event_id = $("#card").attr("event_id");
+              location_event_id =  $(this).attr("event_id");
               $.ajax({
                    url: "UpdateSyllabusEvent",
                    type: "POST",
@@ -481,13 +573,14 @@ $(document).on("click", "#btn_update_location", function(event){
                        console.log(errorMessage); // Optional
                    }
               });
+               index = $(this).attr("index");
+              $("#events_template_loc").data('data-form')[parseInt(index)]["location"] = location_text_value;
               $("#edit_location").html(location_text_value);
               $("#edit_location").show("slow")
             });
 
 $(document).on("click",'#btn_event_file_upload', function(event){
         event.preventDefault();
-        
         $("#event_file_upload").trigger("click");
 });
 
@@ -548,7 +641,16 @@ function get_files(event_id){
 }
 
 $(document).on("click", ".img_lt", function(event){
-              var page_value = parseInt($("#events_template_loc").attr("current_page"));
+              $(".chip").each(function(){
+                $(this).fadeOut({
+                  queue: false,
+                  duration: 'slow'
+                }).animate({
+                  right: "-100px"
+                });
+              });
+              setTimeout(function(){
+                var page_value = parseInt($("#events_template_loc").attr("current_page"));
                   $("#events_template_loc").attr("current_page", parseInt($("#events_template_loc").attr("current_page")) - 1);
                   show_left = "block";
                   if(page_value-1==0){
@@ -556,11 +658,22 @@ $(document).on("click", ".img_lt", function(event){
                   }
                   start = (page_value)*4;
                   events = $("#events_template_loc").data('data-form').slice(start-4,start);
-                  list_events(events, show_left, "block", page_value-1, " Total events this semester");
+                  list_events_left(events, show_left, "block", page_value-1, " Total events this semester");
+              },200);
+              
 });
 
 $(document).on("click", ".img_rt", function clicked_next(event){
-               var page_value = parseInt($("#events_template_loc").attr("current_page"));
+              $(".chip").each(function(){
+                $(this).fadeOut({
+                  queue: false,
+                  duration: 'slow'
+                }).animate({
+                  left: "-100px"
+                });
+              });
+              setTimeout(function(){
+                var page_value = parseInt($("#events_template_loc").attr("current_page"));
                   $("#events_template_loc").attr("current_page", parseInt($("#events_template_loc").attr("current_page")) + 1);
                   show_right = "block";
                   if(page_value+2==parseInt($("#events_template_loc").attr("pagecount"))){
@@ -569,6 +682,8 @@ $(document).on("click", ".img_rt", function clicked_next(event){
                   start = (page_value+1)*4;
                   events = $("#events_template_loc").data('data-form').slice(start,start+4);
                   list_events(events, "block", show_right, page_value+1, " Total events this semester");
+                },200);
+              
 });
 
 var search_events = function(){
@@ -614,7 +729,7 @@ var search_events = function(){
                       month: month[d.getMonth()],
                       event_id: value["event_id"],
                       time: time,
-                      color: class_color,
+                      color: get_class_color(),
                       origin_type: value["origin_type"],
                     };
                       event_array_list.push(event_value);
@@ -636,20 +751,29 @@ var search_events = function(){
 };
 
 function get_people_attending(event_id){
-  console.log(event_id);
   var people_attending_html = "";
- var resp = $.ajax({
+  var resp = $.ajax({
                url: "GetPeopleAttending",
                type: "POST",
                data: {"event_id":event_id},
                async: false,
                success: function(response) {
-                $.each(response, function(index, value){
-                    people_attending_html+='<div class="card-icon" title="'+value["firstname"]+" "+value["lastname"]+'" style="background-size: contain;background:url('+globals.base_url+value["file_url"]+');"></div>';
-                });
+                console.log(response[0]);
+                  var total = response.length;
+                  var total_more = total - 4;
+                  $.each(response, function(index, value){
+                    for(var i=0; i < 4 && i < total; i++) {
+                      console.log(response[i]['firstname']);
+                      people_attending_html+='<div class="card-icon attending" title="'+response[i]["firstname"]+" "+response[i]["lastname"]+'" style="margin:5px;"><img src="'+globals.base_url+response[i]["file_url"]+'"></div>';
+                    }
+                  });
+                  if (total_more > 0) {
+                    people_attending_html+= ' '+total_more+' more';
+                  } else {
+                  }
                },
                error: function(jqXHR, textStatus, errorMessage) {
-                   console.log(errorMessage); // Optional
+                  console.log(errorMessage); // Optional
                }
             });
  return people_attending_html;

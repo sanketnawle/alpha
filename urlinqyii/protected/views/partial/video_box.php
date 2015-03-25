@@ -5,15 +5,26 @@
 <head>
     <title></title>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/video_box.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.dotdotdot.js"></script>
     <link rel = "stylesheet" type = "text/css" href = "<?php echo Yii::app()->request->baseUrl; ?>/css/site/video_box.css">
 </head>
 <body>
 
 <div class = 'post video_box_post' data-video_id=''>
-<div class="post_main">
+<div class="post_main video_post_main">
     <div class="video_header">
-        Video lessons to help you learn<span class="info_icon"></span>
+        <div class="video_header_text">Video lessons to help you learn</div>
+        <span class="info_icon">[]</span>
+        <div class="help_div">
+            <div class="wedge">
+            </div>
+            <div class="box">
+                This video can only be seen by students in the <?php echo $user->department->department_name?> department
+                or those who follow the <?php echo $user->department->department_name?> department.
+            </div>
+        </div>
     </div>
+
     <div class="video_box_wrapper">
         <div class="video_boxes"></div>
     </div>
@@ -111,21 +122,30 @@
                 <div class="video_title">
                     {{title}}
                 </div>
-                <div class="video_description">
+                <div class="video_description desc_truncated">
                     {{description}}
+
+                </div>
+
+                <div class="video_description desc_full" style="display: none">
+                    {{description}}
+                    <span class="close_video_description">x</span>
                 </div>
                 <div class="video_categories">
                     <div class="video_topic">
                         {{topic}}
                     </div>
-                    -
+                    {{#if subtopic}}
+                    <em class = "topic_connector"></em>
                     <div class="video_subtopic">
                         {{subtopic}}
                     </div>
+                    {{/if}}
                 </div>
             </div>
             <div class="video_box_functions">
                 <div class="watch_video">Watch</div>
+                <em>&#xb7;</em>
                 <div class="skip_video">skip</div>
             </div>
         </div>
@@ -246,7 +266,7 @@
 
     </div>
 </script>
-
+<div class = "video_box_feed_separator"><hr><div>Feed</div></div>
 
 </body>
 </html>

@@ -22,6 +22,7 @@
         <title><?php echo $club->group_name; ?></title>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery_cookie.js"></script>
 
 
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/location_input/location_input.js"></script>
@@ -106,7 +107,8 @@
                                     <div class = "blur_section_overflow_container">
                                         <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->pictureFile->file_url ?>');">
                                         </div>
-                                    </div>                                         
+                                    </div>
+                                    <div class = "blur_overlay_black"></div>                                         
                                     <div class = "group_name">
                                         <!--<div class = "center_admin"><div class = "admin_image"></div><div class = "admin_image"></div><div class = "admin_image"></div></div>-->
                                         <div class = "center_text">
@@ -738,9 +740,8 @@
                                                     </div>
                                                 <?php } ?>
                                             </div>
-                                            <h4 class = "group_name_text">
-                                                <?php echo $club->group_name; ?>
-                                            </h4>
+                                            <div class = "design_circle_border_accent"></div>
+
                                         </div>
 
 
@@ -802,7 +803,7 @@
                                                 <div class = "group_info_divider half_divider">
                                                     <hr role = "separator">
                                                     <div class = "group_info_divider_label" data-label = "mission"> 
-                                                        <p id = "edit_club_mission"><span class = "add_icon small_icon_map"></span>Edit Group Purpose</p>
+                                                        <p id = "edit_club_mission"><span class = "add_icon small_icon_map"></span>What is the purpose of this group?</p>
                                                     </div>
                                                 </div>
                                                 <div id="group_mission_holder">
@@ -855,6 +856,7 @@
                                                     </div>
                                                 <?php } ?>
                                             </div>
+                                            <div class = "design_circle_border_accent"></div>
 
 
 
@@ -880,7 +882,7 @@
                                                     <div class = "group_info_divider half_divider">
                                                         <hr role = "separator">
                                                         <div class = "group_info_divider_label" data-label = "description"> 
-                                                            <p id = "edit_club_description"><span class = "add_icon small_icon_map"></span>Add a description of this group</p>
+                                                            <p id = "edit_club_description"><span class = "add_icon small_icon_map"></span>How would you describe this group?</p>
                                                         </div>
                                                     </div>
                                                 <?php } ?>

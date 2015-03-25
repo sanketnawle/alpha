@@ -11,13 +11,13 @@ html{
     background: #FAFAFA;
     background-image: url(../../assets/noise_bg.gif);
     background-color: #FAFAF9;
-    -moz-user-select: -moz-none;
+/*    -moz-user-select: -moz-none;
   -khtml-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
   user-select: none;
   -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);*/
 }
 
 body{
@@ -153,7 +153,6 @@ body#body_home #page{
     margin-right: 0px;
 
     display: block;
-    overflow: hidden; 
     width: 830px;
     z-index: 50;
 
@@ -409,6 +408,16 @@ div#fbar_wrapper.fbar_group{
     -o-filter: blur(0px);
     -ms-filter: blur(0px);
     filter: blur(0px);
+}
+
+div.blur_overlay_black{
+    position: absolute;
+    overflow: hidden;
+    bottom:0;
+    top:0;
+    background: rgba(0, 0, 0, 0.1);
+    left:0;
+    right:0;   
 }
 
 body.body_school .blur_section{
@@ -859,6 +868,7 @@ font-size: 12.3px;
 margin-left:5.5px;
 text-align: left;
 font-weight:600;
+/* position: absolute; */
 float:right;
 margin-top: 6px;
 line-height: 14.2px;
@@ -908,12 +918,13 @@ div.center_text p#group_name span.bottom{
 p#group_name span#name_title{
     margin-left:0;
     float:left;
+    max-width: 90%;
 }
 
 div.professor_image,div.admin_image{
     display: inline-block;
-    width: 33px;
-    height: 33px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
     background-size: cover;
     border-radius: 1000px;
@@ -938,8 +949,9 @@ div.professor_name{
     cursor: pointer;
     position: relative;
     top: -10px;
+    font-weight: 100;
     left: 8px;
-    font-size: 19px;
+    font-size: 21.5px;
 }
 
 div.center_admin{
@@ -950,7 +962,7 @@ div.center_admin{
     text-transform: capitalize;
     position: absolute;
     bottom: auto;
-    margin-top: -35px;
+    margin-top: -54px;
 }
 
 span.sort_label{
@@ -1532,7 +1544,7 @@ border-bottom: 1px solid rgba(3, 144, 74, 0.39);
 /* Members Card style */
 
 .members_tab_content div.members_card_wrapper{
-    width: 24.6%;
+    width: 23.6%;
 
     display: inline-block;
     margin-bottom: 12px;
@@ -3060,6 +3072,10 @@ div#topbar_responsive_holder {}
 
 .post_bio_input{
     resize: none;
+}
+
+#welcome_post{
+    display: none;
 }
 
 #group_user_action_button.own_department{
