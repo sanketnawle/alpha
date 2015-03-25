@@ -417,9 +417,10 @@ var $chip = $(this);
                 </div>\
                 <div class="people-attending">'+get_people_attending(form_data["event_id"])+'</div>\
                 <div class="card-upload">Materials \
-                  <button id="btn_event_file_upload">Upload</button><input type="file" id="event_file_upload" style="display:none"/>\
+                  <button id="btn_event_file_upload">Upload</button>\
                   <button>Import from drive</button>\
-                </div>';
+                </div>\
+                <div id="materials_container"> </div>';
     card_content = $(card_content_temp).html(card_html);
 
     if (!$($chip).hasClass('expanded')) {
@@ -583,7 +584,7 @@ $(document).on("click",'#btn_event_file_upload', function(event){
         $("#event_file_upload").trigger("click");
 });
 
-$(document).on("change",'.event_file_upload', function(event){
+$(document).on("change",'#event_file_upload', function(event){
         event.preventDefault();
 
         filevalue = $(this).val().split(".");

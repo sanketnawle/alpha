@@ -82,6 +82,7 @@
 
 
 
+
 <script id="extra_chat_boxes_template" type="text/x-handlebars-template">
     <div id="extra_chat_boxes" style="display: none;">
         <div id="extra_chat_boxes_list" style="display: none;"></div>

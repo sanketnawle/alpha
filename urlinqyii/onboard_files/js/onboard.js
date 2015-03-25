@@ -1027,7 +1027,17 @@ $(document).ready(function () {
                         //Skip the email step
                         get_course_data();
                     }else{
-                        progress_flag++;
+
+                        if(university_id == 4){
+                            progress_flag += 2;
+
+                            get_course_data();
+                            return;
+                        }else{
+                            progress_flag += 2;
+                        }
+
+
                         start_onboarding();
 
                     }
