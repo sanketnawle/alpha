@@ -645,7 +645,7 @@ ERunActions::runBackground(true);
 
                                 $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$group->group_id));
 
-                                if($group_user && $group_user->is_admin || !$has_admin){
+                                if($this->is_urlinq_admin($user) || ($group_user && $group_user->is_admin) || !$has_admin){
                                     $email_sent = true;
                                     $is_admin = true;
                                     //foreach($group->members as $member){
@@ -687,7 +687,7 @@ ERunActions::runBackground(true);
                                 $has_admin=ClassUser::model()->exists('class_id=:group_id and is_admin=true',array(':group_id'=>$class->class_id));
 
                                 $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$class->class_id));
-                                if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id || !$has_admin){
+                                if($this->is_urlinq_admin($user) || ($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id || !$has_admin){
                                     $is_admin = true;
 
                                     $email_sent = true;
@@ -722,7 +722,7 @@ ERunActions::runBackground(true);
 
                               //  $has_admin=ClassUser::model()->exists('class_id=:group_id and is_admin=true',array(':group_id'=>$class->class_id));
 
-                                if(($user->user_type == "p" || $user->user_type == "a") && $user->department_id == $department->department_id){
+                                if($this->is_urlinq_admin($user) || (($user->user_type == "p" || $user->user_type == "a") && $user->department_id == $department->department_id)){
                                     $email_sent = true;
                                     foreach($department->followers as $follower){
                                         if($follower->user_id != $user->user_id){
@@ -1582,9 +1582,13 @@ ERunActions::runBackground(true);
                         $is_admin = true;
                     }
                 }
+
             }else{
                 $is_admin = intval($post->origin_id) === intval($this->get_current_user_id());
             }
+        /*    if($this->is_urlinq_admin($user)){
+                $is_admin = true;
+            }*/
             if($is_admin == false){
                 $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'User is not authorized to delete this post');
                 $this->renderJSON($return_data);
@@ -1592,6 +1596,7 @@ ERunActions::runBackground(true);
             }
 
         }
+
 
 
         //If all goes well, delete the post
