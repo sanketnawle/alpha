@@ -11,13 +11,13 @@ html{
     background: #FAFAFA;
     background-image: url(../../assets/noise_bg.gif);
     background-color: #FAFAF9;
-    -moz-user-select: -moz-none;
+/*    -moz-user-select: -moz-none;
   -khtml-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
   user-select: none;
   -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);*/
 }
 
 body{

@@ -11,7 +11,10 @@ class VideoController extends Controller
         $video = new Video();
         $video->department_id=$_POST['department_id'];
         $video->video_url=$_POST['video_url'];
-        $video->subtopic=$_POST['topic'];
+        if($_POST['topic']!=""){
+            $video->subtopic=$_POST['topic'];
+        }
+
         if($video->save(false)){
             $data = array('success'=>true);
             $this->renderJSON($data);
@@ -28,6 +31,8 @@ class VideoController extends Controller
             return;
         }
         $videos = Video::model()->findAll('department_id=:did',array(':did'=>$user->department_id));
+        $videos_following = Video::model()->findAllBySql('select v.* from video v, department_follow f where v.department_id = f.department_id and f.user_id = '.$user->user_id);
+        $videos = array_merge($videos,$videos_following);
         foreach($videos as $i=>$video){
             $videos[$i] = $this->get_model_associations($video,array('department'=>array()));
             $videos[$i] = $this->model_to_array($videos[$i]);

@@ -11,6 +11,18 @@ body#body_calendar .topbar_profile_link .icon_text{
     top: -3px;
 }
 
+hr.time-line::before{
+  width: 12px;
+  content: " ";
+  border-radius: 1000px;
+  background: #FF0000;
+  height: 12px;
+  position: absolute;
+  border: 1px solid #fff;
+  top: -8px;
+  left: -14px;
+}
+
 .providers_scrollable .slimScrollRail{
     background: #111111!important;
     opacity: .33!important;
