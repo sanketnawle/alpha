@@ -61,10 +61,10 @@
         <div id="messaging_list_recent_header">Recent</div>
         <div id="messaging_list_recent"></div>
 
-        <div id="messaging_list_user_header">Students</div>
+<!--        <div id="messaging_list_user_header">Students</div>-->
         <div id="messaging_list_user"></div>
 
-        <div id="messaging_list_professor_header">Professors</div>
+<!--        <div id="messaging_list_professor_header">Professors</div>-->
         <div id="messaging_list_professor"></div>
 
         <div id="messaging_list_class_header">Classes</div>
@@ -82,6 +82,7 @@
 
 
 
+
 <script id="extra_chat_boxes_template" type="text/x-handlebars-template">
     <div id="extra_chat_boxes" style="display: none;">
         <div id="extra_chat_boxes_list" style="display: none;"></div>
@@ -93,9 +94,7 @@
 
 
 <script id="extra_chat_box_template" type="text/x-handlebars-template">
-    <div class="extra_chat_box" data-type="{{type}}" data-id="{{id}}" data-name="{{name}}">
-        {{name}}
-    </div>
+    <div class="extra_chat_box" data-type="{{type}}" data-id="{{id}}" data-name="{{name}}">{{name}}</div>
 </script>
 
 
@@ -120,6 +119,15 @@
 
 
     <div class="chat_box" data-id="{{id}}" data-type="{{type}}" data-name="{{name}}">
+
+        <div class="chat_box_top">
+            <div class="chat_box_name">{{name}}</div>
+
+
+            <div class="chat_box_close_button">X</div>
+
+        </div>
+
         <div class="chat_box_text">
             <div class="chat_message_wrap">
 

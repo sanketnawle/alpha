@@ -59,9 +59,10 @@ div.tab_members .tab_content_holder{
 
 
 div.members_tab_content div.members_card_wrapper.class_admin{
-width: 73.1%;
+width: 73.1%!important;
 margin-top: 10px;
-margin-left: 9px; margin-right: 9px;
+margin-left: 9px; vertical-align: top;
+margin-right: 9px;
 }
 
 body.left_panel_hidden.left_panel_hidden_p2 .members_tab_content div.members_card_wrapper{
@@ -290,7 +291,7 @@ div.remove_state_controls{
 .tab_members .help_div.dark{
     top: 38px;
 
-    left: -54px;
+    left: 90px;
     margin-left: 0px;
 }
 

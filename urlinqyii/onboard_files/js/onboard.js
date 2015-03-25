@@ -54,7 +54,7 @@ $(document).ready(function () {
         department_header_text = "Select your Program";
     }
 
-    var hint_text = ["Select your School", department_header_text, "Verify .edu Email", "Sign up for Courses - Pick your Section", "Who inspires you on campus?", "Find your Group", "Add a Photo"];
+    var hint_text = ["Select your School", department_header_text, "Verify .edu Email", "Choose your classes", "Follow your peers", "Join your Groups", "Finish your profile"];
 
 
 
@@ -1027,7 +1027,18 @@ $(document).ready(function () {
                         //Skip the email step
                         get_course_data();
                     }else{
-                        progress_flag++;
+
+                        if(university_id == 4){
+                            progress_flag += 2;
+
+                            get_course_data();
+                            return;
+                        }else{
+
+                            progress_flag += 1;
+                        }
+
+
                         start_onboarding();
 
                     }

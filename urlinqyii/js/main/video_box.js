@@ -28,7 +28,6 @@ $(document).ready(function(){
         var video;
         for(var i=0;i<videos.length;i++){
             video=videos[i];
-
             $.embedly.oembed(video['video_url'], {
                 key: '94c0f53c0cbe422dbc32e78d899fa4c5',
                 query: {
@@ -39,19 +38,37 @@ $(document).ready(function(){
             }).done(function (results) {
                     if (!results.invalid) {
                         embedly_info = results[0];
-                        embedly_info.topic = video.department.department_name;
-                        embedly_info.subtopic = video.subtopic;
+                        console.log(embedly_info.url+"embedly");
+                        for(var j=0;j<videos.length;j++){
+                            console.log(videos[j].video_url+"video");
+                            if(embedly_info.url && videos[j].video_url.substring(videos[j].video_url.indexOf(':'))
+                                == embedly_info.url.substring(embedly_info.url.indexOf(':'))){
+                                embedly_info.topic = videos[j].department.department_name;
+                                if(videos[j].subtopic){
+                                    embedly_info.subtopic = videos[j].subtopic;
+                                }
+
+                            }
+                        }
                         //  embedly_info.position = "focus";
                         //append_embedly(single_post['post_id'],embedly_info,single_post['post_type']);
+                       // $video_box=template(embedly_info);
                         $('.video_boxes').append(template(embedly_info));
                         $('.video_box').removeClass('focus').removeClass('next');
                         $('.video_box:eq(0)').addClass('focus');
                         $('.video_box:eq(1)').addClass('next');
+                       // $('.video_description.desc_truncated').dotdotdot();
+                        $('.video_description.desc_truncated').text(function(index, currentText) {
+                            return currentText.substr(0, 100);
+                        });
+                        $('.video_description.desc_truncated').append('<span class="expand_video_description">...</span>');
+
 
                     }
                 }
             );
         }
+
         //render_replies(videos[0]);
         set_comments_and_likes();
 
@@ -100,10 +117,26 @@ $(document).ready(function(){
     $(document).on('click', '.lesscmt_bar', function(){
         if($(this).parent(".master_comments").hasClass('video_comments')){
             $(".master_comments.video_comments").html("<div id='show_more' class='morecmt_bar'>"
-            +"Read Comments"+
+            +"Read Comments"
             +"</div>");
         }
     });
+    $(document).on('click','.expand_video_description',function(){
+        $video_desc_trunc=$(this).parent('.video_description.desc_truncated');
+        $video_desc_trunc.hide();
+        $video_desc_trunc.parent().find('.video_description.desc_full').show();
+    });
+    $(document).on('click','.close_video_description',function(){
+        $video_desc_full = $(this).parent('.video_description.desc_full');
+        $video_desc_full.hide();
+        $video_desc_full.parent().find('.video_description.desc_truncated').show();
+    });
+
+    $(document).on('mouseenter','.info_icon',function(){
+
+    });
+
+
 
     $(document).on('click', '.reply_delete_button', function(){
         if($(this).closest('.master_comments').hasClass('video_comments')){
@@ -199,6 +232,10 @@ $(document).ready(function(){
 
 
     $(document).on('click','.video_box.next , .skip_video',function(){
+
+        $video_desc_full = $('.video_box.focus').find('.video_description.desc_full');
+        $video_desc_full.hide();
+        $video_desc_full.parent().find('.video_description.desc_truncated').show();
         $('.video').fadeOut(250);
         $('.video_thumbnail').fadeIn(250);
         $('.video_left_column').fadeIn(250);

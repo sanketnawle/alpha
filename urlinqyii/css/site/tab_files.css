@@ -234,7 +234,7 @@ div#files_header_bottom_line{
 
 div.files_sub_panel{
     width:100%;
-    min-height: 40px;
+    min-height: 20px;
     display:none;
 }
 
@@ -535,7 +535,7 @@ ol.files_list li.file div.views a.extra_padding{
 .files_upload_bigbox{
     margin: 0 auto;
 
-    width: 50%;
+    width: 100%;
     height: auto;
     min-height: 240px;
     background: #f9f9f9;
@@ -557,7 +557,7 @@ ol.files_list li.file div.views a.extra_padding{
 
 .files_upload_bigbox div.bigbox_bigmessage{
     background-image: url(../../assets/drop_files_normal.png);  
-    width: 75%;
+    width: 400;
     height: 77px;
     background-size: contain;
     background-position: 0px 0px;

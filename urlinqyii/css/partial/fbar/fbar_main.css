@@ -77,13 +77,14 @@ section#fbar_buttons .fbar_buttonwrapper:last-of-type {
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_icon {
-    background-image: url(../../../assets/Fbar_action_icons.png);
+    background-image: url(../../../assets/Fbar_action_icons.svg);
     background-size: auto;
     background-repeat: no-repeat;
     position: relative;
     display: inline-block;
     float: left;
     margin-top: 2px;
+    background-size: 32px 204px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text {
@@ -125,7 +126,7 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.question_button_text 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.event_button_text {}
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.notes_button_text {
-    margin-left: 0px;
+    margin-left: -5px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.opportunity_button_text {
@@ -162,34 +163,34 @@ section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon {
 }
 
 .fbar_button_icon#fbar_icon_discuss {
-    width: 24px;
-    height: 30px;
-    top: 0px;
+    width: 32px;
+    height: 25px;
+    top: 3.5px;
     left: 34px;
-    background-position: 0px -21px !important;
+    background-position: 0px -31px !important;
 }
 
 i.fbar_button_icon#fbar_icon_discuss2{
     width: 30px;
     height: 29px;
     top: 0px;
-    left: 49px;
-    background-position: 0px -22px !important;
+    left: 80px;
+    background-position: 0px -27px !important;
 }
 
 .fbar_button_icon#fbar_icon_notes {
-    width: 30px;
-    height: 35px;
-    background-position: 0px 10px;
-    top: -3px;
+    width: 35px;
+    height: 27px;
+    background-position: 0px -5px;
+    top: 4px;
     left: 30px;
 }
 
 .fbar_button_icon#fbar_icon_event {
-    width: 27px;
-    height: 27px;
+    width: 31px;
+    height: 31px;
     background-position: 0px -54px;
-    top: 3px;
+    top: 1px;
     left: 30px;
 }
 
@@ -202,17 +203,17 @@ i.fbar_button_icon#fbar_icon_discuss2{
 }
 
 .fbar_button_icon#fbar_icon_opportunity {
-    width: 27px;
-    height: 26px;
-    background-position: 0px -177px;
+    width: 32px;
+    height: 29px;
+    background-position: 0px -175px;
     top: 3px;
     left: 10px;
 }
 
 .fbar_button_icon#fbar_icon_question {
-    background-position: 2px -85px;
-    width: 28px;
-    height: 27px;
+    background-position: 2px -86px;
+    width: 32px;
+    height: 29px;
     margin-top: 5px !important;
     left: 17px;
 }

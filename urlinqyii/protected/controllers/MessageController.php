@@ -59,7 +59,7 @@ class MessageController extends Controller
                                                         WHERE (target_type = 'custom' AND EXISTS (SELECT * FROM message_group_user WHERE user_id = " . $user->user_id . " AND message_group_id = message.target_id))
                                                         OR (target_type = 'user' AND target_id = " . $user->user_id . ")
                                                         GROUP BY
-                                                            user_id, target_type, target_id
+                                                            target_type, target_id
                                                         ORDER BY
                                                                 id DESC
                                                         LIMIT 5");
@@ -300,7 +300,8 @@ class MessageController extends Controller
 
         $messages = array();
         if($target_type == 'user'){
-            $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (user_id = ' . $user->user_id . ' AND target_type = "user" AND target_id = ' . $target_id . ') OR (user_id = ' . $target_id . ' AND target_type = "user" AND target_id = ' . $user->user_id . ') ORDER BY id LIMIT 50');
+            $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (user_id = ' . $user->user_id . ' AND target_type = "user" AND target_id = ' . $target_id . ') OR (user_id = ' . $target_id . ' AND target_type = "user" AND target_id = ' . $user->user_id . ') ORDER BY id DESC LIMIT 50');
+            $messages = array_reverse($messages);
         }elseif($target_type == 'custom'){
 
             $message_group = MessageGroup::model()->find('id=:id', array(':id'=>$target_id));
@@ -321,7 +322,9 @@ class MessageController extends Controller
 
            // $messages = Message::model()->findAllBySql("SELECT * FROM `message` WHERE (target_type = 'group' AND target_id = '1') ORDER BY id LIMIT 50");
 
-            $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (target_type = "' . $target_type . '" AND target_id = ' . $target_id . ') ORDER BY id LIMIT 50');
+            //$messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (target_type = "' . $target_type . '" AND target_id = ' . $target_id . ') ORDER BY id LIMIT 50');
+            $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (target_type = "' . $target_type . '" AND target_id = ' . $target_id . ') ORDER BY id DESC LIMIT 50');
+            $messages = array_reverse($messages);
         }
 
 
@@ -462,61 +465,61 @@ class MessageController extends Controller
 
 	}
 
-    public function actionSendToAll() {
-        //Yii::app()->nodeSocket->registerClientScripts();
-        $event = Yii::app()->nodeSocket->getFrameFactory()->createEventFrame();
-        $event->setEventName('message');
-        $event->setData(array('green', 'black'));
-        $event->send();
-    }
-
-    public function actionSendToRoom() {
-            //Yii::app()->nodeSocket->registerClientScripts();
-            $event = Yii::app()->nodeSocket->getFrameFactory()->createEventFrame();
-            $event->setEventName('test.event');
-            $event->setRoom('testRoom');
-            $event->setData(array('green', 'black'));
-            $event->send();
-    }
-
-
-
-
-    public function actionSendMessage() {
-		$event = Yii::app()->nodeSocket->createEventFrame();
-		$event->setEventName('message');
-		$event['data'] = array(
-			1,
-			array(
-				'red',
-				'black',
-				'white'
-			),
-			new stdClass(),
-			'simple string'
-		);
-		$event->send();
+//    public function actionSendToAll() {
+//        //Yii::app()->nodeSocket->registerClientScripts();
+//        $event = Yii::app()->nodeSocket->getFrameFactory()->createEventFrame();
+//        $event->setEventName('message');
+//        $event->setData(array('green', 'black'));
+//        $event->send();
+//    }
+//
+//    public function actionSendToRoom() {
+//            //Yii::app()->nodeSocket->registerClientScripts();
+//            $event = Yii::app()->nodeSocket->getFrameFactory()->createEventFrame();
+//            $event->setEventName('test.event');
+//            $event->setRoom('testRoom');
+//            $event->setData(array('green', 'black'));
+//            $event->send();
+//    }
+//
 
 
-		$this->render('sendEvent');
-	}
-	public function actionSendRoomEvent() {
-		$event = Yii::app()->nodeSocket->createEventFrame();
-		$event->setRoom('example');
-		$event->setEventName('example.room.event');
-		$event['type_string'] = 'hello world';
-		$event['type_array'] = array(1, 2, 3);
-		$event['type_object'] = array('one' => 1, 'two' => 2);
-		$event['type_bool'] = true;
-		$event['type_integer'] = 11;
-		$event->send();
-		$this->render('sendRoomEvent');
-	}
-	public function actionEventListener() {
-		Yii::app()->nodeSocket->registerClientScripts();
-		$this->render('eventListener');
-	}
 
+//    public function actionSendMessage() {
+//		$event = Yii::app()->nodeSocket->createEventFrame();
+//		$event->setEventName('message');
+//		$event['data'] = array(
+//			1,
+//			array(
+//				'red',
+//				'black',
+//				'white'
+//			),
+//			new stdClass(),
+//			'simple string'
+//		);
+//		$event->send();
+//
+//
+//		$this->render('sendEvent');
+//	}
+//	public function actionSendRoomEvent() {
+//		$event = Yii::app()->nodeSocket->createEventFrame();
+//		$event->setRoom('example');
+//		$event->setEventName('example.room.event');
+//		$event['type_string'] = 'hello world';
+//		$event['type_array'] = array(1, 2, 3);
+//		$event['type_object'] = array('one' => 1, 'two' => 2);
+//		$event['type_bool'] = true;
+//		$event['type_integer'] = 11;
+//		$event->send();
+//		$this->render('sendRoomEvent');
+//	}
+//	public function actionEventListener() {
+//		Yii::app()->nodeSocket->registerClientScripts();
+//		$this->render('eventListener');
+//	}
+//
 
 
     //Emits message to nodejs/socketio in the background
@@ -554,10 +557,17 @@ class MessageController extends Controller
         if (ERunActions::runBackground()) {
 
             $event = Yii::app()->nodeSocket->getFrameFactory()->createEventFrame();
-            $event->setEventName($message->target_type . '_' . $message->target_id);
+
+            if($message->target_type == 'user'){
+                $event->setEventName($message->target_type . '_' . $message->target_id);
+            }else{
+                $event->setRoom($message->target_type . '_' . $message->target_id);
+                $event->setEventName('message');
+            }
+
             //$event->setEventName($message->target_type . '_' . $message->target_id);
 
-            $event->setData(array('origin'=>$origin,'user_id'=>$message->user_id,'target_type'=>$message->target_type,'target_id'=>$message->target_id,'text'=>$message->text));
+            $event->setData(array('id'=>$message_id,'origin'=>$origin,'user_id'=>$message->user_id,'target_type'=>$message->target_type,'target_id'=>$message->target_id,'text'=>$message->text));
             $event->send();
 
             $data = array('success'=>true,'error_id'=>'run');
@@ -686,7 +696,7 @@ class MessageController extends Controller
                 ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/message/sendFunction',$postData=array('message_id'=>$message->id),$contentType=null);
 
 
-                $return_data = array('success'=>true, 'message'=>$message, 'last_update'=>date('Y-m-d H:i:s'));
+                $return_data = array('success'=>true, 'message'=>$this->get_message_data($message), 'last_update'=>date('Y-m-d H:i:s'));
                 $this->renderJSON($return_data);
                 return;
             }else{

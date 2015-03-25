@@ -4,14 +4,39 @@ $(document).ready(function(){
 
     var $last_clicked_dropdown_input = null;
 
+    $('.university_input').click(function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        //Check if univ id has been set
 
+
+        position_dropdown($(this));
+        clear_dropdown();
+
+
+        $.getJSON(globals.base_url + '/university/getUniversities', {}, function(json_data){
+            //Create a dropdown for this
+
+            $.each(json_data['universities'], function(index, univ){
+                univ['id'] = univ['university_id'];
+                univ['name'] = univ['university_name'];
+                add_dropdown_item(univ);
+            });
+
+        });
+
+
+        $last_clicked_dropdown_input = $(this);
+    });
 
 
     $('.school_input').click(function(e){
         e.preventDefault();
         e.stopPropagation();
         //Check if univ id has been set
-        var university_id = $("#create_class_university_input").attr('data-id');
+
+        var $form = $(this).closest('form');
+        var university_id = $form.find(".university_input").attr('data-id');
 
         if(!university_id){
             alert('Please select a university');
@@ -324,10 +349,10 @@ $(document).ready(function(){
         }*/
 
 
-        if(topic == ''){
+      /*  if(topic == ''){
             alert('input topic');
             return;
-        }
+        }*/
 
 
 
@@ -452,6 +477,76 @@ $(document).ready(function(){
     $(document).on('click', function(){
         $('#input_dropdown').hide();
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $(document).on('submit', '#file_upload_form', function(e){
+
+//        e.preventDefault();
+
+
+//        var $form = $(this);
+//
+//        var post_url = $form.attr('action');
+//        var post_data = {
+//            path: $form.find('#path_input').val()
+//        };
+//
+//
+//        var formData = new FormData($form[0]);
+//        $.ajax({
+//            url: 'upload.php',  //Server script to process data
+//            type: 'POST',
+//            xhr: function() {  // Custom XMLHttpRequest
+//                var myXhr = $.ajaxSettings.xhr();
+//                if(myXhr.upload){ // Check if upload property exists
+//                    myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+//                }
+//                return myXhr;
+//            },
+//            //Ajax events
+//            beforeSend: beforeSendHandler,
+//            success: completeHandler,
+//            error: errorHandler,
+//            // Form data
+//            data: formData,
+//            //Options to tell jQuery not to process data or worry about content-type.
+//            cache: false,
+//            contentType: false,
+//            processData: false
+//        });
+
+
+
+
+
+//
+//
+//        $.post(
+//            post_url,
+//            post_data,
+//            function(response){
+//                alert(JSON.stringify(response));
+//            }, 'json'
+//        );
+
+    });
+
+
+
+
 
 
 

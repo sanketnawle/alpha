@@ -36,7 +36,7 @@
 <!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
-
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery_cookie.js"></script>
 
 
 
@@ -104,10 +104,10 @@
                             <div id = "feed_column" class = "feed_column_home">
                                 <div id = "stream_holder" class = "stream_holder_home">
 
+
                                     <div id = "video_box_wrapper" style="display: none;">
                                         <?php echo $this->renderPartial('/partial/video_box',array('user'=>$user,'origin_type'=>'user','origin_id'=>$user->user_id ,'is_admin'=>false));?>
                                     </div>
-
 
                                      
                                     <div id = "fbar_wrapper" class = "fbar_home intro_div intro_div_3">
@@ -133,62 +133,62 @@
                                     </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                     <?php if($first_time){ ?>
-                                     <div class = 'post new_fd' id = 'welcome_post'>
-                                        <div class = "welcome_post_banner"></div>
-                                        <div class="post_main welcome_post">
-                                        <div class = "post_type_marker reg_post_type">
-                                            <span class = "post_type_icon"></span>
-                                        </div>
-                                        <div class="post_head">
-                                        <div class="post_title">
-                                            <div class = 'image_container'>
-
-                                                    <div class = 'post_user_icon'  style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>/assets/professor_urlinq.png')">
-                                                    </div>
-
-
-                                            </div>
-
-
-                                                <span class = 'post_owner prof_urlinq_post_owner' >
-                                                    Professor Urlinq
-                                                </span>
-
-
-
-
-
-
-
-
-
-                                         </div>
-                                            <div class = 'post_time'> <span class = "time_icon"></span>
-                                                <time class='timeago'>
-                                                    A few seconds ago
-                                                </time>
-                                            </div>
-
-                                            <div class = 'post_msg post_lr_link_msg'>
-                                                    <span class='msg_span seemore_anchor'>
-                                                        Hi <?php echo $user->firstname ?>,
-                                                        <br>
-                                                        <br>
-                                                        I am Professor Urlinq. Welcome to your university's Academic Network. We are excited to have you join this growing community. Use Urlinq to search classes, departments, faculty, and groups on your campus. The planner to the right will help you keep track of everything happening in your busy schedule. These tools, and many others you'll soon discover, will put you on track to a more successful academic journey. 
-                                                    </span>
-
-
-
-
-
-                                             </div>
-
-                                        </div>
-
-                                       </div>
-                                    </div>
-                                  <?php } ?>
+<!--                                     --><?php //if($first_time){ ?>
+<!--                                     <div class = 'post new_fd' id = 'welcome_post'>-->
+<!--                                        <div class = "welcome_post_banner"></div>-->
+<!--                                        <div class="post_main welcome_post">-->
+<!--                                        <div class = "post_type_marker reg_post_type">-->
+<!--                                            <span class = "post_type_icon"></span>-->
+<!--                                        </div>-->
+<!--                                        <div class="post_head">-->
+<!--                                        <div class="post_title">-->
+<!--                                            <div class = 'image_container'>-->
+<!---->
+<!--                                                    <div class = 'post_user_icon'  style = "background-image:url('--><?php //echo Yii::app()->getBaseUrl(true); ?><!--/assets/professor_urlinq.png')">-->
+<!--                                                    </div>-->
+<!---->
+<!---->
+<!--                                            </div>-->
+<!---->
+<!---->
+<!--                                                <span class = 'post_owner prof_urlinq_post_owner' >-->
+<!--                                                    Professor Urlinq-->
+<!--                                                </span>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--                                         </div>-->
+<!--                                            <div class = 'post_time'> <span class = "time_icon"></span>-->
+<!--                                                <time class='timeago'>-->
+<!--                                                    A few seconds ago-->
+<!--                                                </time>-->
+<!--                                            </div>-->
+<!---->
+<!--                                            <div class = 'post_msg post_lr_link_msg'>-->
+<!--                                                    <span class='msg_span seemore_anchor'>-->
+<!--                                                        Hi --><?php //echo $user->firstname ?><!--,-->
+<!--                                                        <br>-->
+<!--                                                        <br>-->
+<!--                                                        I am Professor Urlinq. Welcome to your university's Academic Network. We are excited to have you join this growing community. Use Urlinq to search classes, departments, faculty, and groups on your campus. The planner to the right will help you keep track of everything happening in your busy schedule. These tools, and many others you'll soon discover, will put you on track to a more successful academic journey. -->
+<!--                                                    </span>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--                                             </div>-->
+<!---->
+<!--                                        </div>-->
+<!---->
+<!--                                       </div>-->
+<!--                                    </div>-->
+<!--                                  --><?php //} ?>
                                   <?php if($user->show_edit_profile_post){?>
                                     <div class = 'post new_fd' id = 'welcome_post_2'>
 

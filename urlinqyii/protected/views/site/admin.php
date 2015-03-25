@@ -36,7 +36,7 @@
         <form id="create_class_form">
             <label for="create_class_university_input">University</label>
             <br>
-            <input type="text" name="" id="create_class_university_input" placeholder="NYU" value="NYU" data-id="1">
+            <input class='university_input' type="text" name="" id="create_class_university_input" placeholder="NYU" value="NYU" data-id="1">
 
             <br>
 
@@ -97,7 +97,7 @@
         <form id="create_course_form">
             <label for="create_course_university_input">University</label>
             <br>
-            <input type="text" name="" id="create_course_university_input" placeholder="NYU" value="NYU" data-id="1">
+            <input class='university_input' type="text" name="" id="create_course_university_input" placeholder="NYU" value="NYU" data-id="1">
 
             <br>
 
@@ -140,9 +140,17 @@
     <div id="add_video">
         <h1>Add Video</h1>
         <form id="create_video_form">
+
+
             <label for="create_video_url_input">URL</label>
             <br>
             <input type="text" name="url_input" id="create_video_url_input">
+
+            <br>
+
+            <label for="create_class_university_input">University</label>
+            <br>
+            <input class='university_input' type="text" name="" id="create_video_university_input" placeholder="NYU" value="NYU" data-id="1">
 
             <br>
 
@@ -193,10 +201,17 @@
     </div>
 
 
+
     
-    
-    
-    
+    <h1>Upload file</h1>
+    <form id='file_upload_form' action="<?php echo Yii::app()->getBaseUrl(true); ?>/fileUpload" method="post" enctype="multipart/form-data">
+        <input id="path_input" type="text" name="path" value="profile/">
+        Please choose a file: <input type="file" name="file"><br>
+        <input type="submit" value="Upload File">
+    </form>
+
+    <br><br><br><br><br><br><br>
+
     
     
     

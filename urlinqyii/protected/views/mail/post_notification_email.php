@@ -561,6 +561,13 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                                 if($post_type == 'discuss'){
                                     $post_type = 'Discussion';
                                 }
+
+
+                                if($post_type == 'multiple_choice' || $post_type == 'true_false'){
+                                    $post_type = 'question';
+                                }
+
+
                             ?>
 
                             <?php if($post->origin_type == 'class'){ ?>
@@ -586,10 +593,20 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                             </p>
                         <?php } ?>
 
-						
 
-							<a class="btn group_link_btn" href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $post->origin_type . '/' . $post->origin_id; ?>" style="margin: 0 auto;padding: 10px 0;font-family: 'Open Sans', sans-serif;color: #FFF;text-decoration: none;background-color: #666;font-weight: bold;margin-right: 10px;text-align: center;cursor: pointer;display: inline-block;background: #1EC783;margin-top: 18px;max-width: 250px;width: 80%;border-radius: 4px;margin-left: 40px;font-size: 18px;border-bottom: 2px solid rgba(0, 0, 0, 0.21);margin-bottom: 6px;">Go to <?php echo ucfirst($post->origin_type); ?> Page</a>
-							<p class="reply_text" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 24px;font-weight: 200;font-size: 14px;line-height: 1.6;display: block;color: #777;margin-left: 40px;"></p>
+
+                        <?php if($post->post_type == 'question' || $post->post_type == 'multiple_choice' || $post->post_type == 'true_false'){ ?>
+                            <p class="post_target_copy" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 16px;line-height: 1.6;color: #575757;text-align: left;max-width: 700px;width: 80%;margin-top: 7px;">
+
+						    <?php foreach($post->postQuestion->options as $option){ ?>
+                                <div class="post_question_option" style="font-size: 15px;color: #575757;border: 1px solid rgba(239, 239, 239, 0.72);padding: 10px 5px 0;height: 30px;border-width: 1px;margin-top: -1px;"><?php echo $option->option_text; ?></div>
+                            <?php } ?>
+
+                            </p>
+                        <?php } ?>
+
+                        <a class="btn group_link_btn" href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $post->origin_type . '/' . $post->origin_id; ?>" style="margin: 0 auto;padding: 10px 0;font-family: 'Open Sans', sans-serif;color: #FFF;text-decoration: none;background-color: #666;font-weight: bold;margin-right: 10px;text-align: center;cursor: pointer;display: inline-block;background: #1EC783;margin-top: 18px;max-width: 250px;width: 80%;border-radius: 4px;margin-left: 40px;font-size: 18px;border-bottom: 2px solid rgba(0, 0, 0, 0.21);margin-bottom: 6px;">Go to <?php echo ucfirst($post->origin_type); ?> Page</a>
+                        <p class="reply_text" style="margin: 0;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 24px;font-weight: 200;font-size: 14px;line-height: 1.6;display: block;color: #777;margin-left: 40px;"></p>
 					
 					
 					</td>			
