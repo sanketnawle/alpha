@@ -72,6 +72,7 @@
 
     </head>
     <body>
+        <div class = "darker_overlay"></div>
         <div class="wrapper">
             <div class="progress-window">
                 <div class="progress_frame">

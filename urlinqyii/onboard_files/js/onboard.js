@@ -54,7 +54,7 @@ $(document).ready(function () {
         department_header_text = "Select your Program";
     }
 
-    var hint_text = ["Select your School", department_header_text, "Verify .edu Email", "Sign up for Courses - Pick your Section", "Who inspires you on campus?", "Find your Group", "Add a Photo"];
+    var hint_text = ["Select your School", department_header_text, "Verify .edu Email", "Choose your classes", "Follow your peers", "Join your Groups", "Finish your profile"];
 
 
 
