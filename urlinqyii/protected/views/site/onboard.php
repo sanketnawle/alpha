@@ -72,6 +72,7 @@
 
     </head>
     <body>
+        <div class = "darker_overlay"></div>
         <div class="wrapper">
             <div class="progress-window">
                 <div class="progress_frame">
@@ -101,7 +102,7 @@
                     <div class="progress_footer">
                         <div class="progress_footer_glyph_0"></div>
                         <div class="next_progress blue_btn" style="display: none;">Join your School</div>
-                        <div class="skip_progress" style="display: none;">or <span>skip this step</span></div>
+                        <div class="skip_progress" style="display: none;">skip this step</span></div>
 
                         <input type="text" placeholder="Search schools" class="onboard_textarea_t0 onboard_textarea_t1 onboard_textarea_t2">
                     </div>
