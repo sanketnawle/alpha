@@ -22,6 +22,7 @@
         <title><?php echo $club->group_name; ?></title>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery_cookie.js"></script>
 
 
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/location_input/location_input.js"></script>

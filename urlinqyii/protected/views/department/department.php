@@ -34,6 +34,7 @@
     <title><?php if($department->department_tag != ''){echo $department->department_tag . ' - '; } echo $department->department_name; ?></title>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery_cookie.js"></script>
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/location_input/location_input.js"></script>
 

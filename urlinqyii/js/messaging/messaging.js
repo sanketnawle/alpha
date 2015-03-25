@@ -23,6 +23,15 @@ socket.debug(true);
 
 
 
+fullscreen = false;
+
+
+//Determine if user is on /messaging
+if(document.URL.indexOf('/messaging') > -1){
+    fullscreen = true;
+}
+
+
 
 
 last_send_message_id = 0;
@@ -483,9 +492,6 @@ $(document).on('click', '.messaging_list_item', function(e){
     var id = $messaging_list_item.attr('data-id');
     var name = $messaging_list_item.attr('data-name');
 
-
-
-
     //Check if this chat is already in the #extra_chat_boxes div
     var $extra_chat_box_check = $('.extra_chat_box[data-type="' + type + '"][data-id="' + id + '"]');
     if($extra_chat_box_check.length){
@@ -502,15 +508,18 @@ $(document).on('click', '.messaging_list_item', function(e){
     var $chat_box = create_chat_box_data['chat_box'];
 
     //Only load if the chatbox wasnt already open
-//    if(!create_chat_box_data['existed']){
-//        load_chat_box($chat_box);
-//    }
+    //    if(!create_chat_box_data['existed']){
+    //        load_chat_box($chat_box);
+    //    }
 
 
 
 
     //Add this chatbox to page
     //$('#LeftPanel_Holder').append($chat_box);
+
+
+
 
 });
 
@@ -908,6 +917,21 @@ $(document).on('keyup', '.chat_input', function(e){
     }
 });
 
+
+
+
+    $(document).on('click', '#messaging_button', function(){
+
+        window.location.href = globals.base_url + '/messages?url=' + document.URL.replace(globals.base_url, "");
+
+    });
+
+
+    $(document).on('click', '#messaging_back_button', function(){
+
+        window.location.href = globals.base_url + globals.url;
+
+    });
 
 
 
