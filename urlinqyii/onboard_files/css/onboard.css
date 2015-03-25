@@ -120,7 +120,7 @@ body {
 
 .progress_footer {
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
     z-index: 1;
     height: 52px;
 }
@@ -128,6 +128,8 @@ body {
 .progress_goback {
     float: right;
     height: 34px;
+    -webkit-transition:.2s opacity ease;
+    transition:.2s opacity ease;
     width: 50px;
     background: url('../img/onboard_back_arrow.png');
     margin-top: 5px;
@@ -156,7 +158,7 @@ body {
     margin-bottom: 12px;
     border: 2px solid rgba(255, 255, 255, 1);
     cursor: pointer;
-    transition: transform .65s ease-out, opacity .65s ease-in-out;
+    transition: transform .65s ease-out, opacity .65s ease-in-out, background-color .05s ease;
 
 
 
@@ -170,9 +172,6 @@ body {
     opacity: 0;
 }
 
-div.step_0_card:active{
-    background-color: rgba(2, 154, 207, 0.72)!important;
-}
 
 .step_0_card.right {
     opacity: 0;
@@ -930,13 +929,23 @@ box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), in
 
 .skip_progress {
     float: left;
-    color: #777;
+    color: #fff;
     line-height: 60px;
     margin-left: 10px;
+    opacity: .6;
+    position: absolute;
+    cursor: pointer;
+    top: -425px;
     float: right;
+    right: 94px;
+    -webkit-transition:.2s opacity ease;
+    transition:.2s opacity ease;
     font-size: 12.5px;
-    display: none!important;
-    margin-right: 139px;
+    /* display: none!important; */
+}
+
+.skip_progress:hover{
+    opacity:.95;
 }
 
 .skip_progress span {
@@ -1032,7 +1041,9 @@ div.full_skip{
     text-align: center;
 
     padding: 17px 0;
+    width: 20%;
     font-family: Avenir;
+    margin: 0 auto;
     font-weight: 100;
     font-size: .75em;
     color: rgba(255, 255, 255, 0.5);
@@ -1401,7 +1412,7 @@ div.darker_overlay{
     top:0;
     bottom:0;
     left:0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.33);
     right:0;
     z-index: 1;
 }
