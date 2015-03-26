@@ -301,7 +301,7 @@
                                                         <?php if(!$user->user_bio){?>
                                                             <div class="post_bio_section">
                                                                 <div class="post_bio_add welcome_post_label">Add a Description<br><span>Tell members of the university who you are and what you're passionate about.</span></div>
-                                                                <textarea maxlength="240" type="text" class="post_bio_input" id="bio_input" cols="29" wrap="hard"></textarea>
+                                                                <textarea maxlength="240" type="text" class="post_bio_input" cols="29" rows="1" wrap="hard"></textarea>
                                                             </div>
                                                         <?php }?>
                                                             <button class="post_submit_edit_profile">Save</button>
