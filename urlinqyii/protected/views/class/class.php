@@ -684,7 +684,20 @@
 
                     <?php } ?>
 
-                    <?php foreach($class->users as $member){ ?>
+
+                    <?php
+                        function compare_user_names($a, $b){
+                            if ($a->firstname == $b->firstname) {
+                                return 0;
+                            }
+                            return ($a->firstname < $b->firstname) ? -1 : 1;
+                        }
+
+                        $class_users = $class->users;
+                        usort($class_users, "compare_user_names");
+                    ?>
+
+                    <?php foreach($class_users as $member){ ?>
                         <div class = "members_card_wrapper regular_member" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->full_name(); ?>">
                             <div class = "members_card <?php if($member->isAdmin($class)) echo 'admin';?> normal_size">
                                 <div class = "members_card_img profile_link" data-user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
