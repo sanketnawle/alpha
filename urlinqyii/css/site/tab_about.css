@@ -12,6 +12,10 @@ div.about_tab_header_content{
 margin-top: 0px;
 }
 
+body.body_class div.about_tab_header{
+      min-height: 106px;
+}
+
 
 .about_header_sentence{ 
 

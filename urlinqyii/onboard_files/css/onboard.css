@@ -542,11 +542,21 @@ padding-bottom: 4px;
 .section_detail_right {
     float: left;
     width: 231px;
-    font-size: 12px;
+    font-size: 14px;
     margin-left: 5px;
     padding-bottom: 2px;
     margin-top: -1px;
-    color: #121212;
+    color: #fff;
+}
+
+.step_6_card_r2 > span{
+    color: rgba(255, 255, 255, 0.9);
+    
+    font-size: 10.5px;
+    padding: 4px 20px;
+    top: 5px;
+    text-align: left;
+    position: relative;
 }
 
 .expanded {
@@ -597,7 +607,7 @@ padding-bottom: 4px;
 
 
 .club_adjust {
-    margin-top: 5px;
+    margin-top: 0px;
     font-size: 18px;
 }
 
