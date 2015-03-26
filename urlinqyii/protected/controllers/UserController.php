@@ -2,7 +2,7 @@
 
 class UserController extends Controller
 {
-	public function actionView()
+	public function sView()
 	{
 		$this->render('view');
 	}
@@ -202,6 +202,16 @@ class UserController extends Controller
 
 
         }
+
+
+        function compare_user_names($a, $b){
+            if ($a->firstname == $b->firstname) {
+                return 0;
+            }
+            return ($a->firstname < $b->firstname) ? -1 : 1;
+        }
+
+        usort($user_models, "compare_user_names");
 
         foreach($user_models as $i=>$user){
             $user_models[$i] = $this->get_model_associations($user,array('pictureFile'=>array()));
@@ -908,6 +918,19 @@ class UserController extends Controller
         }else{
             $this->renderJSON(array('success'=>false,'message'=>'invalid suggestion_type '.$_GET['suggestion_type']));
         }
+
+
+
+
+        function compare_user_names($a, $b){
+            if ($a->firstname == $b->firstname) {
+                return 0;
+            }
+            return ($a->firstname < $b->firstname) ? -1 : 1;
+        }
+
+        usort($suggested_users, "compare_user_names");
+
 
         $result = array();
         foreach($suggested_users as $i=>$suser){
