@@ -169,6 +169,10 @@ class UserController extends Controller
 //            array_merge($users,));
 //        }
 
+        $extra_sql = '';
+        if($user->user_type == 'p' || $user->user_type == 'a'){
+            $extra_sql = 'AND (user_type = "p" OR user_type = "a")';
+        }
 
         //$user_models = User::model()->findAllBySql('SELECT * FROM `user` WHERE user_id != ' . $user->user_id . ' and picture_file_id != 1 ORDER BY RAND() LIMIT 10');
         $user_models = array();
