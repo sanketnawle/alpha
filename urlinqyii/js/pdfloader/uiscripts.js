@@ -345,7 +345,7 @@ function list_events_left(events, img_left, img_right, page_value, result_text){
                             <span class = "day_text">'+events[i]["day"]+'</span>\
                           </div>\
                           <div class="time">\
-                            <span>'+events[i]["time"]+'</span>\
+                            <span>'+events[i]["weekday"]+' '+events[i]["time"]+'</span>\
                           </div>\
                         </div>\
                         <div class="collapse-date">'+events[i]["month"]+' '+events[i]["day"]+'</div>\
