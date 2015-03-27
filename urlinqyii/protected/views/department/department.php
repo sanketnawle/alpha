@@ -34,6 +34,7 @@
     <title><?php if($department->department_tag != ''){echo $department->department_tag . ' - '; } echo $department->department_name; ?></title>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery_cookie.js"></script>
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/location_input/location_input.js"></script>
 
@@ -387,7 +388,21 @@
                                 </div>
                             </div>
                             <div class = "members_tab_content tab_content" id="department_students_members_tab_content">
-                                <?php foreach($department->students as $member){ ?>
+
+                                <?php
+                                    function compare_user_names($a, $b){
+                                        if ($a->firstname == $b->firstname) {
+                                            return 0;
+                                        }
+                                        return ($a->firstname < $b->firstname) ? -1 : 1;
+                                    }
+
+                                    $departments_students = $department->students;
+                                    usort($departments_students, "compare_user_names");
+                                ?>
+
+
+                                <?php foreach($departments_students as $member){ ?>
                                     <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                         <div class = "members_card admin normal_size">
                                             <div class = "members_card_img profile_link" data-user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">

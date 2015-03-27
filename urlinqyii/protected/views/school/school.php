@@ -387,9 +387,25 @@ if($school->university_id == 4){
                         </div>
                         <div class = "members_tab_content tab_content">
 
+
+
                             <?php
                             $members = $school->users;
+
+
+                            function compare_user_names($a, $b){
+                                if ($a->firstname == $b->firstname) {
+                                    return 0;
+                                }
+                                return ($a->firstname < $b->firstname) ? -1 : 1;
+                            }
+
+
+                            usort($members, "compare_user_names");
+
+
                             $members_count = count($members);
+
                             if($members_count > 50){
                                 $members_count = 50;
                             }

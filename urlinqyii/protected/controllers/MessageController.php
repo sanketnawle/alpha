@@ -126,11 +126,17 @@ class MessageController extends Controller
                     $this->renderJSON($return_data);
                     return;
                 }
-
-                $class = $this->get_model_associations($class,array('pictureFile', 'coverFile'));
-                $class['type'] = 'class';
-                $class['id'] = $class['class_id'];
-                $class['name'] = $class['class_name'];
+                try{
+                    $class = $this->get_model_associations($class,array('pictureFile', 'coverFile'));
+                    $class['type'] = 'class';
+                    $class['id'] = $class['class_id'];
+                    $class['name'] = $class['class_name'];
+                }catch(Exception $e){
+                    $return_data = array('success'=>false, 'error_id'=>3, 'error_msg'=>$e->getMessage());
+                    $this->renderJSON($return_data);
+                    return;
+                }
+                
 
 
                 array_push($recents, $class);
@@ -167,11 +173,19 @@ class MessageController extends Controller
         //Get this users classes
         $classes = $user->classes;
 
+
         for($i = 0; $i < count($classes); $i++){
-            $classes[$i] = $this->get_model_associations($classes[$i],array('pictureFile', 'coverFile'));
-            $classes[$i]['name'] = $classes[$i]['class_name'];
-            $classes[$i]['type'] = 'class';
-            $classes[$i]['id'] = $classes[$i]['class_id'];
+            try{
+                $classes[$i] = $this->get_model_associations($classes[$i],array('pictureFile', 'coverFile'));
+                $classes[$i]['name'] = $classes[$i]['class_name'];
+                $classes[$i]['type'] = 'class';
+                $classes[$i]['id'] = $classes[$i]['class_id'];
+            }catch(Exception $e){
+                $return_data = array('success'=>false, 'error_id'=>3, 'error_msg'=>$e->getMessage());
+                $this->renderJSON($return_data);
+                return;
+            }
+            
         }
 
 
@@ -182,7 +196,7 @@ class MessageController extends Controller
             $groups[$i] = $this->get_model_associations($groups[$i],array('pictureFile', 'coverFile'));
             $groups[$i]['name'] = $groups[$i]['group_name'];
             $groups[$i]['type'] = 'class';
-            $groups[$i]['id'] = $groups[$i]['class_id'];
+            $groups[$i]['id'] = $groups[$i]['group_id'];
         }
 
 

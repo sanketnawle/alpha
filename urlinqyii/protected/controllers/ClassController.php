@@ -59,6 +59,7 @@ class ClassController extends Controller
             }
         }else{
             if($class->professor_id == $user->user_id){
+                $is_member = true;
                 $is_admin = true;
             }
         }
@@ -463,9 +464,16 @@ class ClassController extends Controller
         $class_id = $_POST['id'];
         $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$user_id));
 
+        $class = ClassModel::model()->find('class_id=:id', array(':id'=>$class_id));
+        if(!$class){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'class doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
         $user = User::model()->find('user_id=:id',array(':id'=>$user_id));
         //Check if this user is already a member for this class
-        if(!$class_user){
+        if(!$class_user && $class->professor_id != $user->user_id){
             $class = ClassModel::model()->find('class_id=:id',array(':id'=>$class_id));
 
             //See if this user is already in a class with the same course id
@@ -498,7 +506,7 @@ class ClassController extends Controller
                     $event_creator = ClassUser::model()->find('class_id=:class_id and user_id=:user_id',array(':class_id'=>$class->class_id
                     ,':user_id'=>$event->user_id));
                     //add all club events from admins (or anyone if no admis) to user's events
-                    if(($event_creator->is_admin || !$has_admin_or_prof)&&!$already_attending){
+                    if(($this->is_urlinq_admin($user)||$event_creator->is_admin || !$has_admin_or_prof)&&!$already_attending){
                         $event_user = new EventUser();
                         $event_user->user_id = $user_id;
                         $event_user->event_id = $event->event_id;
@@ -746,9 +754,9 @@ class ClassController extends Controller
         $class_id = $_POST['group_id'];
         $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$current_user_id));
         //Check if the current user is even in this group
-        if($class_user){
+        if($this->is_urlinq_admin($user)||$class_user){
             //Check if current user is an admin of this group
-            if($class_user->is_admin){
+            if($this->is_urlinq_admin($user)||$class_user->is_admin){
                 $class_user_to_remove = ClassUser::model()->find('user_id=:uid and class_id=:cid',array(':cid'=>$class_id,':uid'=>$user_to_remove->user_id));
                 //Check if we destroy this shit successfully
                 if($class_user_to_remove->delete()){

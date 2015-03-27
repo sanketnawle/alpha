@@ -72,6 +72,7 @@
 
     </head>
     <body>
+        <div class = "darker_overlay"></div>
         <div class="wrapper">
             <div class="progress-window">
                 <div class="progress_frame">
@@ -101,12 +102,12 @@
                     <div class="progress_footer">
                         <div class="progress_footer_glyph_0"></div>
                         <div class="next_progress blue_btn" style="display: none;">Join your School</div>
-                        <div class="skip_progress" style="display: none;">or <span>skip this step</span></div>
+                        <div class="skip_progress" style="display: none;">skip this step</span></div>
 
                         <input type="text" placeholder="Search schools" class="onboard_textarea_t0 onboard_textarea_t1 onboard_textarea_t2">
                     </div>
                 </div>
-                <div class="full_skip" style="display: none;">or <span>skip to home page</span></div>
+                <div class="full_skip" style="display: none;">or <span>jump directly to the home page</span></div>
             </div>
         </div>
     </body>
@@ -250,6 +251,7 @@
                 <div class='step_6_card_r2'>
                     <div class='step_6_card_r2_txt'>Office hours</div>
                     <input type='text' id='office_hours_input' class='ol onboard_textarea_t0' placeholder="eg: 4pm - 6pm Mon, Wed"/>
+                    <span>&#x2a; We&#x27;ll take the time and date you enter here and add a weekly office hours event to your students&#x27; planners. </span>
                 </div>
 
 

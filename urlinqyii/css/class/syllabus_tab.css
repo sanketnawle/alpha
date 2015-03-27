@@ -129,56 +129,57 @@ span.month_text
 {
   z-index:9999;
   position:relative;
-  top:20px;
+  top: 16px;
   margin-right:6px;
-  background:rgba(18,19,20,0.9);
+  background: rgba(18, 19, 20, 0.78);
   cursor:pointer;
   text-align:right;
+  -webkit-transition:.2s background ease;
+  -moz-transition:.2s background ease;
+  transition:.2s background ease;
+  border: 1px solid #000;
   border-radius:3px;
 }
 
 .img_arrows:hover
 {
-  background:rgba(18,19,20,0.77);
-  -moz-box-shadow:0 0 0 1px rgba(255,255,255,0.11) inset;
-  -webkit-box-shadow:0 0 0 1px rgba(255,255,255,0.11) inset;
-  box-shadow:0 0 0 1px rgba(255,255,255,0.11) inset;
+  background: rgba(18, 19, 20, 0.9);
 }
 
 .img_arrows:active
 {
   background:rgba(18,19,20,.96);
-  -moz-box-shadow:0 0 0 1px rgba(255,255,255,0.25) inset;
-  -webkit-box-shadow:0 0 0 1px rgba(255,255,255,0.25) inset;
-  box-shadow:0 0 0 1px rgba(255,255,255,0.25) inset;
+  -moz-box-shadow: 0 0 0 1px rgba(255, 255, 255, 1) inset;
+  -webkit-box-shadow: 0 0 0 1px rgba(255, 255, 255, 1) inset;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 1) inset;
 }
 
 .img_rt
 { 
   float:right;
-  width:30px;
-  height:30px;
+  width: 28px;
+  height: 37px;
 }
 .img_rt .arrow_img {
   background:url(../../assets/small_icons.png);
-  background-size:500%;
-  background-position:-23px 666px;
+  background-size: auto;
   height:30px;
+  background-position: -87px -390px;
   width:30px;
 }
 
 .img_lt
 {
   float:right;
-  width:30px;
-  height:30px;
+  width: 28px;
+  height: 37px;
 }
 .img_lt .arrow_img {
   background:url(../../assets/small_icons.png);
-  background-size:500%;
-  background-position:6px 666px;
+  background-size: auto;
   height:30px;
   width:30px;
+  background-position: -68px -390px;
 }
 
 .chip-container
@@ -399,10 +400,18 @@ span.month_text
 }
 .card-icon {
   float:left;
+  cursor: pointer;
   width:50px;
+  -webkit-transition:.2s opacity ease;
+  transition:.2s opacity ease;
   height:50px;
   border-radius:50%;
 }
+
+.card-icon:hover{
+  opacity:.75;
+}
+
 .card-icon.attending {
   float:left;
   width:30px;
@@ -416,12 +425,16 @@ span.month_text
 }
 
 .card-close {
-  width:50px;
-  height:50px;
+  width: 21px;
+  height: 27px;
   background:url(../../assets/small_icons.png);
   background-size:610%;
   background-position:-62px 1808px;
   cursor:pointer;
+  background-position: 0px -955px;   cursor: pointer;   background-size: auto;   
+  position: relative;
+  top: 12px;
+  left: 14px;
 }
 span.card-close img {
   width:50px;

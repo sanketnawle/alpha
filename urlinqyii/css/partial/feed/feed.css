@@ -50,7 +50,7 @@
 
 .post_main.welcome_post {
     min-height: 200px;
-
+    display: none;
     border-radius: 5px;
 }
 
@@ -153,7 +153,7 @@ em.posted_to {
     position: relative;
     height: 58px;
     margin-top: 1px;
-    border-radius: 500px;
+    border-radius: 5.5px;
     cursor: pointer;
     margin-left: 5px;
     background-size: cover !important;
@@ -260,7 +260,7 @@ em.posted_to {
     /* font-weight: bold; */
     /* -webkit-font-smoothing: antialiased; */
     -moz-osx-font-smoothing: grayscale;
-    margin-right: 2px;
+    margin-right: 0px;
     left: 4px;
     float: left;
     display: inline-block;
@@ -537,16 +537,16 @@ span.time_icon {
     width: 272px;
     height: 90px;
     padding: 0 8px;
-    margin-left: 12px;
+    margin-left: 10px;
     padding-left: 10px;
-    border-left: 2px solid #c3c3c3;
+    border-left: 1px solid #c3c3c3;
 }
 
 .embedly_title {
     font-size: 15.5px;
     text-transform: uppercase;
     line-height: 18px;
-    padding-top: 5px;
+    padding-top: 0px;
     font-family: Avenir;
     word-break: initial;
     color: #111;
@@ -1427,7 +1427,7 @@ div.commentform {
     padding: 0px 5px;
     -webkit-border-radius: 2px;
     background: #fff;
-    width: 516px;
+    width: 520px;
     /* border: 1px solid rgba(232, 232, 232, 0.79); */
     border-radius: 3px;
     display: inline-block;
@@ -2312,14 +2312,14 @@ div.post_attached_image_container:hover span.link_image_add_icon{
 div.embedly_fake_border{
     position: absolute;
     border-radius: 0 10px 10px 0;
-    border-right: 2px solid #c3c3c3;
+    border-right: 1px solid #c3c3c3;
     top: -6px;
-    left: 191px;
+    left: 196px;
     height: 147px;
     bottom: -6px;
-    width: 28px;
-    border-top: 2px solid #c3c3c3;
-    border-bottom: 2px solid #c3c3c3;
+    width: 21px;
+    border-top: 1px solid #c3c3c3;
+    border-bottom: 1px solid #c3c3c3;
 }
 
 div.post_attached_image_container:hover + div.post_attached_image_caption{
@@ -4092,11 +4092,12 @@ input.mc_question_radio_button {
 
 /*events*/
 .post_event_date_box {
-    height: 62px;
-    width: 62px;
+    height: 59px;
+    width: 59px;
     background-color: #777;
     float: left;
     margin-top: 1px;
+    margin-right: 2px;
     border-radius: 5px;
     margin-left: 17.5px;
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
@@ -4108,6 +4109,10 @@ input.mc_question_radio_button {
     color: #1b1b1b;
 }
 
+.post_main.event_post .post_group{
+    max-width:25%!important;
+}
+
 .post_main.event_post a.event_link {
   color: #333;
   -webkit-transition: color .218s;
@@ -4116,9 +4121,10 @@ input.mc_question_radio_button {
   transition: color .218s;
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 445px;
-  display: block;
+  max-width: 88%;
+  padding-left: 0px;
   white-space: nowrap;
+  display: block;
 }
 
 .post_main.event_post a.event_link:hover {
@@ -4130,7 +4136,7 @@ div.post_event_month {
     font-weight: 200;
     text-transform: capitalize;
     letter-spacing: .5px;
-    margin-top: 6px;
+    margin-top: 5px;
 }
 
 div.post_event_day {
@@ -4177,31 +4183,37 @@ div.post_event_date_box_text {
 
 div.post_event_title {
     color: #333;
-    font-size: 16.5px;
+    font-size: 15.5px;
+    max-width: 425px;
     font-weight: 500;
-    padding: 0px 78px 4px;
+    text-indent: 5px;
+    padding: 0px 0 4px;
     text-transform: capitalize;
+    color: #333;   -webkit-transition: color .218s;   -moz-transition: color .218s;   -o-transition: color .218s;   transition: color .218s;   text-overflow: ellipsis;   overflow: hidden;   
+    max-width: 95%;   padding-left: 0px;   white-space: nowrap;   display: block;
 }
+
+.post_event_title {}
 
 div.post_event_type_holder {
     display: inline-block;
     float: left;
-    /* top: -2px; */
     margin-right: 3px;
     position: relative;
-    color: #777;
+    color: #999;
 }
 
 div.post_event_type_holder div.post_event_type {
-    color: #777;
+    color: #999;
 
+    font-size: 15px;
 }
 
 div.post_event_origin_holder {
     display: inline-block;
 
-    /* top: -2px; */
     position: relative;
+    font-family: Avenir;
     float: left;
 }
 
@@ -4209,13 +4221,13 @@ div.post_event_origin_holder div.post_event_origin {
 }
 
 div.post_event_origin_holder div.post_event_origin > a {
-    color: #333;
-    -webkit-transition: color .218s;
-    -moz-transition: color .218s;
-    -o-transition: color .218s;
-    transition: color .218s;
+    color: #444;
+    -webkit-transition: color .218s ease;
+    -moz-transition: color .218s ease;
+    -o-transition: color .218s ease;
+    transition: color .218s ease;
     text-transform: capitalize;
-    max-width: 210px;
+    max-width: 340px;
     display: inline-block;
     text-overflow: ellipsis;
     vertical-align: top;
@@ -4225,7 +4237,7 @@ div.post_event_origin_holder div.post_event_origin > a {
 }
 
 .post_main.event_post:hover div.post_event_origin_holder div.post_event_origin > a {
-    color: #1b1b1b;
+    color: #029acf;
 }
 
 div.post_event_origin_holder div.post_event_origin > a:hover {
@@ -4259,12 +4271,12 @@ div.event_description_holder > p {
 div.post_event_time_holder {
     display: inline-block;
 
-    color: #777 !important;
+    color: #999 !important;
     font-weight: 500;
-    /* font-family: avenir; */
-    margin-left: 4px;
+    /* font-family: Avenir; */
+    margin-left: 3px;
     position: relative;
-    /* top: -2px; */
+    font-size: 15px;
 }
 
 div.post_event_time_holder > .post_event_start_time {
@@ -4309,10 +4321,10 @@ div.event_post_toparea {
 }
 
 .post_event_calendar_button:hover {
-    border-color: #E4E4E4;
-    -moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
-    -webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
-    box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 border-bottom-color: #DDD;
+  border-color: #ddd;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07),inset 0 1px 0 rgba(255,255,255,1),inset -1px 0 0 rgba(248,248,248,1),inset 0 -1px 0 rgba(248,248,248,.5),inset 1px 0 0 rgba(248,248,248,1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07),inset 0 1px 0 rgba(255,255,255,1),inset -1px 0 0 rgba(248,248,248,1),inset 0 -1px 0 rgba(248,248,248,.5),inset 1px 0 0 rgba(248,248,248,1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07),inset 0 1px 0 rgba(255,255,255,1),inset -1px 0 0 rgba(248,248,248,1),inset 0 -1px 0 rgba(248,248,248,.5),inset 1px 0 0 rgba(248,248,248,1);
 }
 
 .event_description_holder a {
@@ -4347,6 +4359,7 @@ div.event_post_toparea {
     background: #EEE;
     box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 123, 232, 0.5);
     cursor: default;
+    border-color:#EEE!important;
 }
 
 .post_event_calendar_button.added:active {
@@ -4367,9 +4380,10 @@ div.event_post_toparea {
 .post_event_location_holder {
     position: absolute;
 
-    top: 60px;
-    font-size: 11px;
-    left: 84px;
+    top: 46px;
+    font-size: 12px;
+    left: 426px;
+    font-weight: 100;
     color: #93999c;
     /* font-family: Avenir; */
 }
@@ -4380,12 +4394,12 @@ div.event_post_toparea {
 .post_event_location_holder .post_event_location > span {
     background-image: url(../../../assets/small_icons.png);
     background-size: auto;
-    display: inline-block;
+    display: none;
     width: 19px;
     top: 3px;
     position: relative;
-    background-position: -25px -660px;
-    height: 14px;
+    background-position: -56px -656px;
+    height: 17px;
 }
 
 span.location_icon_dark {
@@ -4395,6 +4409,7 @@ div.event_context {
     padding-left: 7px;
     font-size: 13.5px;
     overflow: hidden;
+    padding-top: 6px;
 }
 
 span.add_to_cal_icon {
@@ -4931,7 +4946,7 @@ input.post_choose_attending_button {
 input.post_choose_attending_button + label {
     display: inline-block;
     margin: -3px;
-    padding: 5px 10px;
+    padding: 6px 10px;
     margin-bottom: 0;
     font-size: 11.9px;
     line-height: 20px;
@@ -4951,6 +4966,13 @@ input.post_choose_attending_button + label {
     width: 39px;
 }
 
+input.post_choose_attending_button:hover + label{
+      border-color: #ddd;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07),inset 0 1px 0 rgba(255,255,255,1),inset -1px 0 0 rgba(248,248,248,1),inset 0 -1px 0 rgba(248,248,248,.5),inset 1px 0 0 rgba(248,248,248,1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07),inset 0 1px 0 rgba(255,255,255,1),inset -1px 0 0 rgba(248,248,248,1),inset 0 -1px 0 rgba(248,248,248,.5),inset 1px 0 0 rgba(248,248,248,1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07),inset 0 1px 0 rgba(255,255,255,1),inset -1px 0 0 rgba(248,248,248,1),inset 0 -1px 0 rgba(248,248,248,.5),inset 1px 0 0 rgba(248,248,248,1);
+}
+
 input.post_choose_attending_button:checked + label {
     background-image: none;
     outline: 0;
@@ -4967,11 +4989,15 @@ input.post_choose_attending_button:checked + label {
     background-color: #FFF;
     position: relative;
     margin-top: 15px;
-    width: 516px;
+    width: 534px;
+    padding-right: 7px;
     padding-bottom: 12px;
+    border-radius: 2.5px;
     padding-left: 0px;
-    border-bottom: 1px solid #f5f5f5;
     padding-top: 10px;
+    margin-left: -24px;
+    padding-left: 23px;
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px 2px rgba(0, 0, 0, 0.1);   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .answer_labels_box {
@@ -4981,7 +5007,7 @@ input.post_choose_attending_button:checked + label {
     top: 15px;
     position: absolute;
     display: inline-block;
-    left: 130px;
+    left: 158px;
 }
 
 .answer_cell {
@@ -5047,10 +5073,8 @@ input.post_choose_attending_button:checked + label {
 }
 
 input.post_choose_attending_button:checked + label.post_choose_yes_label {
-    background-color: #3d9400;
-    background-image: -webkit-linear-gradient(top, #3d9400, #398a00);
-    background-image: linear-gradient(top, #3d9400, #398a00);
-    border-color: #29691d;
+    background-color: #27A504;
+    border-color: #2F8E1E;
 
 }
 
@@ -5067,8 +5091,7 @@ input.post_choose_attending_button:checked + label.post_choose_maybe_label {
 
 input.post_choose_attending_button:checked + label.post_choose_no_label {
     text-shadow: none;
-    background-color: #dd4b39;
-    background-image: -webkit-linear-gradient(top, #dd4b39, #d14836);
+    background-color: #EA4935;
     border: 1px solid rgba(0, 0, 0, 0.18);
     background-image: linear-gradient(top, #dd4b39, #d14836);
 
@@ -5281,11 +5304,13 @@ input.show_hide_stats:checked + label {
     color: #FFF;
     font-weight: 900;
     margin-left: 17px;
+    width: 120px!important;
     margin-top: -5px;
 }
 
 .question_functions .help_div {
     z-index: 1;
+    left: 10px!important;
 }
 
 .question_functions .help_div .wedge {

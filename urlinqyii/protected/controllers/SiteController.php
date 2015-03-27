@@ -907,6 +907,35 @@ class SiteController extends Controller
 
 
 
+    public function actionMessages(){
+
+        $user = $this->get_current_user();
+
+
+        if(!$user){
+            $this->redirect(Yii::app()->getBaseUrl(true) . '/');
+        }
+
+
+
+        //Default to /home
+        $url = '';
+        if(isset($_GET['url'])){
+            $url = $_GET['url'];
+        }
+
+
+        //Flag to tell the javascript we are on the messaging page
+        $messaging_page = 'true';
+
+
+
+        $this->render('messages',array('user'=>$user, 'url'=>$url, 'messaging_page'=>$messaging_page));
+
+    }
+
+
+
     public function actionOnboard(){
         $user = $this->get_current_user();
 
@@ -938,6 +967,9 @@ class SiteController extends Controller
             if($school->university_id == 4){
                 if($user->user_type == 's'){
                     Yii::app()->session['onboarding_step'] = 4;
+                }else {
+                    //Send the professors to class select
+                    Yii::app()->session['onboarding_step'] = 3;
                 }
             }
         }
@@ -1304,10 +1336,29 @@ class SiteController extends Controller
             }else{
                 $graduation_date = null;
             }
+
+
+            $year_name = '';
+            if($graduation_date == '2018'){
+                $year_name = "Freshman";
+            }elseif($graduation_date == '2017'){
+                $year_name = "Sophomore";
+            }elseif($graduation_date == '2016'){
+                $year_name = "Junior";
+            }elseif($graduation_date == '2015'){
+                $year_name = "Senior";
+            }
+
+
+
+
+
             $student_attribute = StudentAttributes::model()->find('user_id=:id',array(':id'=>$user->user_id));
             if($student_attribute){
                 $student_attribute->user_id = $user->user_id;
                 $student_attribute->year = $graduation_date;
+                $student_attribute->year_name = $year_name;
+
 
                 if(!$student_attribute->save(false)){
                     $data = array('success'=>false, 'error_id'=>16, 'error_msg'=>'Error saving student data');
@@ -1318,6 +1369,7 @@ class SiteController extends Controller
                 $student_attribute = new StudentAttributes;
                 $student_attribute->user_id = $user->user_id;
                 $student_attribute->year = $graduation_date;
+                $student_attribute->year_name = $year_name;
 
 
                 if(!$student_attribute->save(false)){
@@ -1334,16 +1386,24 @@ class SiteController extends Controller
         //Finally, change the user type to active
         //indicating that the user is done with onboarding
 
-        if($user->user_type == 's'){
-            if($user->status != 'active'){
-                //Set this users status to "onboarded",
-                //which is a temporary state for students where they
-                //have not activated their email
-                $user->status = 'onboarded';
-            }
-        }else{
-            $user->status = 'active';
+        if($user->status != 'active'){
+            //Set this users status to "onboarded",
+            //which is a temporary state for students where they
+            //have not activated their email
+            $user->status = 'onboarded';
         }
+
+
+//        if($user->user_type == 's'){
+//            if($user->status != 'active'){
+//                //Set this users status to "onboarded",
+//                //which is a temporary state for students where they
+//                //have not activated their email
+//                $user->status = 'onboarded';
+//            }
+//        }else{
+//            $user->status = 'active';
+//        }
 
         if($user->save(false)){
             $data = array('success'=>true);
@@ -1439,7 +1499,6 @@ class SiteController extends Controller
                 }
             }
             $university_id = $this->get_university_id_by_email($email);
-
 
 
 
