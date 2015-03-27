@@ -154,6 +154,14 @@ var load_events = function (pdf_id) {
                 start_date_str = start_date_split[1]+"/"+start_date_split[2]+"/"+start_date_split[0];
                 end_date_str = end_date_split[1]+"/"+end_date_split[2]+"/"+end_date_split[0];
                 var d = new Date(start_date_str+" "+ value["start_time"]);
+                var weekday = new Array(7);
+                  weekday[0]= "Sunday";
+                  weekday[1]= "Monday";
+                  weekday[2]= "Tuesday";
+                  weekday[3]= "Wednesday";
+                  weekday[4]= "Thursday";
+                  weekday[5]= "Friday";
+                  weekday[6]= "Saturday";
                 var dt = new Date(end_date_str+" "+ value["end_time"]);
                 if(d.getHours()!="0" && dt.getHours()!="0"){
                   time = "from "+formatAMPM(d)+" to "+formatAMPM(dt);
@@ -184,6 +192,7 @@ var load_events = function (pdf_id) {
                   event_id: value["event_id"],
                   day: d.getDate(),
                   month: month[d.getMonth()],
+                  weekday: weekday[d.getDay()],
                   event_id: value["event_id"],
                   time: time,
                   color: get_class_color(),
@@ -287,10 +296,10 @@ function list_events(events, img_left, img_right, page_value, result_text){
                             <span class = "day_text">'+events[i]["day"]+'</span>\
                           </div>\
                           <div class="time">\
-                            <span>'+events[i]["time"]+'</span>\
+                            <span>'+events[i]["weekday"]+' '+events[i]["time"]+'</span>\
                           </div>\
                         </div>\
-                        <div class="collapse-date">'+events[i]["month"]+' '+events[i]["day"]+'</div>\
+                        <div class="collapse-date">'+events[i]["weekday"]+', '+events[i]["month"]+' '+events[i]["day"]+'</div>\
                         <div class="chip-bottom">\
                           <div class="chip-album-title">'+events[i]["title"]+'</div>\
                           <div class="chip-artist">'+events[i]["origin_type"]+'</div>\
@@ -697,6 +706,14 @@ var search_events = function(){
                success: function(response) {
                   $.each(response, function(index,value){
                     var d = new Date(value["start_date"]+" "+ value["start_time"]);
+                    var weekday = new Array(7);
+                      weekday[0]= "Sunday";
+                      weekday[1]= "Monday";
+                      weekday[2]= "Tuesday";
+                      weekday[3]= "Wednesday";
+                      weekday[4]= "Thursday";
+                      weekday[5]= "Friday";
+                      weekday[6]= "Saturday";
                     var dt = new Date(value["end_date"]+" "+ value["end_time"]);
                     if(d.getHours()!="0" && dt.getHours()!="0"){
                       time = "from "+formatAMPM(d)+" to "+formatAMPM(dt);
@@ -727,10 +744,11 @@ var search_events = function(){
                       event_id: value["event_id"],
                       day: d.getDate(),
                       month: month[d.getMonth()],
+                      weekday: weekday[d.getDay()],
                       event_id: value["event_id"],
                       time: time,
                       color: get_class_color(),
-                      origin_type: value["origin_type"],
+                      origin_type: value["event_type"],
                     };
                       event_array_list.push(event_value);
                    
@@ -758,7 +776,6 @@ function get_people_attending(event_id){
                data: {"event_id":event_id},
                async: false,
                success: function(response) {
-                console.log(response[0]);
                   var total = response.length;
                   var total_more = total - 4;
                   $.each(response, function(index, value){

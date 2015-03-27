@@ -15,7 +15,7 @@
     <div class="video_header">
         <div class="video_header_text">Video lessons to help you learn</div>
         <span class="info_icon">[]</span>
-        <div class="help_div dark">
+        <div class="help_div">
             <div class="wedge">
             </div>
             <div class="box">

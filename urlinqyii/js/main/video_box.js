@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    console.log('javascript running now');
     var post_url = globals.base_url + '/video/getVideos';
     var videos=[];
     var index=0;
@@ -282,7 +283,7 @@ $(document).ready(function(){
 
             var margin_left = parseInt($('.video_boxes').css('margin-left'));
             
-            $('.video_boxes').css('margin-left',margin_left-$video_box_next.outerWidth());
+            $('.video_boxes').css('margin-left',margin_left-$video_box_next.outerWidth()-1);
             index++;
 
             set_comments_and_likes()
