@@ -116,6 +116,45 @@ class SchoolController extends Controller
     }
 
 
+
+    public function actionLoadDepartments(){
+        if(!isset($_GET['school_id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $id = $_GET['school_id'];
+        $school = School::model()->find('school_id=:id',array(':id'=>$id));
+
+        if($school){
+
+            $extra_sql = '';
+            if(isset($_GET['last_id'])){
+                $last_department_id = $_GET['last_id'];
+                $extra_sql = ' AND department_id > ' . $last_department_id;
+            }
+
+            $sql = "SELECT * FROM department WHERE school_id = '" . $id . "'" . $extra_sql . " ORDER BY department_id LIMIT 50";
+
+            $departments = Department::model()->findAllBySql($sql);
+
+
+            $school_department_data = $this->get_models_associations($departments,array('pictureFile', 'admins', 'students', 'courses'));
+
+
+            $data = array('success'=>true,'departments'=>$school_department_data, 'data_type'=>'departments');
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
     public function actionGetDepartments(){
         if(!isset($_GET['school_id'])){
             $data = array('success'=>false,'error_id'=>1);

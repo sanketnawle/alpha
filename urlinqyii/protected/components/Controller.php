@@ -180,6 +180,15 @@ class Controller extends CController
         return $row;
     }
 
+    function get_models_associations($models, array $attributes) {
+
+        foreach($models as $i=>$model) {
+            $models[$i] = $this->walk_model($model,$this->model_to_array($model),$attributes);
+        }
+
+        return $models;
+    }
+
 
 
 
