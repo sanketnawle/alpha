@@ -85,6 +85,8 @@ jQuery(document).ready(function(){
 
         var event_id = $event_div.attr('data-id');
 
+        var event_user_id = $event_div.attr('data-user_id');
+
         console.log('inspect event: ' + event_id);
 
         //Create variables to fill with content in inspect boxes//
@@ -118,6 +120,17 @@ jQuery(document).ready(function(){
         
         jQuery($inspect_event_whentime).text(event_timewhen_data);
         jQuery($inspect_event_description).text(event_description);
+
+        var $edit_button = jQuery($inspect_event_popup).find('#inspect_event_edit_button');
+        var $delete_button = jQuery($inspect_event_popup).find('.delete_text');
+        if(event_user_id != globals.user_id){
+
+            $edit_button.hide();
+            $delete_button.text('Remove');
+        }else{
+            $edit_button.show();
+            $delete_button.text('Delete');
+        }
 
 
 

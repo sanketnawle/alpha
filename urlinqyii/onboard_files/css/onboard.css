@@ -288,10 +288,13 @@ div.card_0_text_0 span{
 .step_2_card h1 {
     padding: 0px 104px;
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.8);
+    color: #fff;
     position: relative;
     animation-timing-function: ease-in-out;
     font-size: 32px;
+    -webkit-transition:.2s color ease;
+    -moz-transition:.2s color ease;
+    transition:.2s color ease;
     font-weight: normal;
     text-align: center;
     margin-bottom: 12px;
@@ -299,12 +302,16 @@ div.card_0_text_0 span{
     font-family: 'Avenir','Helvetica Neue','Helvetica','Arial',sans-serif;
 }
 
+.step_2_card h1:hover{
+    color:rgba(255,255,255,.7);
+}
+
 .step_2_card p {
     padding: 0px 100px 24px;
     font-size: 18px;
-    line-height: 20px;
+    line-height: 21px;
     text-align: center;
-    color: #8D8D8D;
+    color: #fff;
     margin: 8px 0px 0px;
     animation-duration: 1.2s;
     position: relative;
@@ -542,11 +549,21 @@ padding-bottom: 4px;
 .section_detail_right {
     float: left;
     width: 231px;
-    font-size: 12px;
+    font-size: 14px;
     margin-left: 5px;
     padding-bottom: 2px;
     margin-top: -1px;
-    color: #121212;
+    color: #fff;
+}
+
+.step_6_card_r2 > span{
+    color: rgba(255, 255, 255, 0.9);
+    
+    font-size: 10.5px;
+    padding: 4px 20px;
+    top: 5px;
+    text-align: left;
+    position: relative;
 }
 
 .expanded {
@@ -597,7 +614,7 @@ padding-bottom: 4px;
 
 
 .club_adjust {
-    margin-top: 5px;
+    margin-top: 0px;
     font-size: 18px;
 }
 
@@ -1326,35 +1343,52 @@ margin-top: 10px!important;
     float: left;
 
     margin-left: 13px;
-    font-weight: 500;
+    font-weight: 200;
     text-decoration: none;
+    border: 2px solid #FFF;
     color: #fff;
-    background: #029acf;
-    padding: 6px 8px;
+    padding: 6px 19px;
     cursor: pointer;
     font-size: 14px;
+    text-transform: uppercase;
+    transition: .2s background ease;
     margin-top: 0px;
-    border-radius: 8px;
+    border-radius: 19px;
+}
+
+.step_2_card a.confirm_links:hover{
+    background: rgba(255, 255, 255, 0.39);
+    
 }
 
 .step_2_card a.confirm_links.next_progress{
     opacity:.7;
 }
 
+.step_2_card a.confirm_links.next_progress.inactive_btn{
+    border-color:rgba(255, 255, 255, 0.2);
+    cursor: default;
+}
+
 .step_2_card .confirm_link_wrapper{
     padding: 0px;
 
-    margin-top: 90px;
+    margin-top: 72px;
     padding-left: 24px;
 }
 
 p.confirm_link_wrapper > span{
-    font-family: Avenir;
 
-    font-weight: 100;
+    font-weight: 400;
     float: left;
-    color: #222;
-    margin-top: 6px;
+    color: #fff;
+    
+
+    margin-top: 8px;
+    
+
+    margin-left: 35px;
+
 }
 
 a.confirm_links.next_progress.hide{

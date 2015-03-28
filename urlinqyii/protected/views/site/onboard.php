@@ -107,7 +107,7 @@
                         <input type="text" placeholder="Search schools" class="onboard_textarea_t0 onboard_textarea_t1 onboard_textarea_t2">
                     </div>
                 </div>
-                <div class="full_skip" style="display: none;">or <span>skip to home page</span></div>
+                <div class="full_skip" style="display: none;">or <span>jump directly to the home page</span></div>
             </div>
         </div>
     </body>
@@ -251,6 +251,7 @@
                 <div class='step_6_card_r2'>
                     <div class='step_6_card_r2_txt'>Office hours</div>
                     <input type='text' id='office_hours_input' class='ol onboard_textarea_t0' placeholder="eg: 4pm - 6pm Mon, Wed"/>
+                    <span>&#x2a; We&#x27;ll take the time and date you enter here and add a weekly office hours event to your students&#x27; planners. </span>
                 </div>
 
 

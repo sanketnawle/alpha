@@ -1068,9 +1068,21 @@
                             </div>
                             <div class = "event_post_toparea">
                                 {{#ifCond event.attend_status '!=' "none"}}
-                                    <div class='post_event_title'><a class="event_link" data-event_start_date="{{event.start_date}}" data-event_id="{{event.event_id}}">{{event.title}}</a></div>
+                                    {{#ifCond event.origin_type '!=' 'user'}}
+                                        <span class = 'post_group'><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></span>
+                                        <em class = "posted_to"></em>
+                                        <div class='post_event_title'><a class="event_link" data-event_start_date="{{event.start_date}}" data-event_id="{{event.event_id}}">{{event.title}}</a></div>
+                                    {{else}}
+                                        <div class='post_event_title'><a class="event_link" data-event_start_date="{{event.start_date}}" data-event_id="{{event.event_id}}">{{event.title}}</a></div>
+                                    {{/ifCond}}
                                 {{else}}
-                                    <div class='post_event_title not_in_calendar'>{{event.title}}</div>
+                                    {{#ifCond event.origin_type '!=' 'user'}}
+                                        <span class = 'post_group'><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></span>
+                                        <em class = "posted_to"></em>
+                                        <div class='post_event_title not_in_calendar'>{{event.title}}</div>
+                                    {{else}}
+                                        <div class='post_event_title not_in_calendar'>{{event.title}}</div>
+                                    {{/ifCond}}
                                 {{/ifCond}}
                                 {{#if event.location}}
                                 <div class = "post_event_location_holder">
@@ -1085,14 +1097,11 @@
                                         <span class = "down_right_arrow_icon"></span>
                                         <div class='post_event_type_holder'>
                                             {{#if event.event_type}}
-                                                <div class = "post_event_type">{{event.event_type}} in </div>
+                                                <div class = "post_event_type">{{event.event_type}} &#xb7;</div>
                                             {{/if}}
                                         </div>
-                                        <div class = "post_event_origin_holder">
-                                            <div class = "post_event_origin"><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
-                                        </div>
                                         <div class='post_event_time_holder'>
-                                            from <div class='post_event_start_time'>{{event.start_time_string}}</div> to <div class='post_event_end_time'>{{event.end_time_string}}</div>
+                                            <div class='post_event_start_time'>{{event.start_time_string}}</div> {{#if event.end_time_string}}to <div class='post_event_end_time'>{{event.end_time_string}}{{/if}}</div>
                                         </div>
                                     </div>
                                 {{else}}
@@ -1101,14 +1110,11 @@
                                             <span class = "down_right_arrow_icon"></span>
                                             <div class='post_event_type_holder'>
                                                 {{#if event.event_type}}
-                                                    <div class = "post_event_type">{{event.event_type}} in </div>
+                                                    <div class = "post_event_type">{{event.event_type}} &#xb7;</div>
                                                 {{/if}}
                                             </div>
-                                            <div class = "post_event_origin_holder">
-                                                <div class = "post_event_origin"><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
-                                            </div>
                                             <div class='post_event_time_holder'>
-                                                from <div class='post_event_start_time'>{{event.start_time_string}}</div> to <div class='post_event_end_time'>{{event.end_time_string}}</div>
+                                                <div class='post_event_start_time'>{{event.start_time_string}}</div> {{#if event.end_time_string}}to <div class='post_event_end_time'>{{event.end_time_string}}{{/if}}</div>
                                             </div>                                        
                                         </div>
                                     {{/ifCond}}

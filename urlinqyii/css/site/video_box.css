@@ -2,7 +2,8 @@
     width: 495px;
     height: 140px;
     position:relative;
-    display: inline-block;
+    float: left;
+    padding-left:4px;
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
@@ -139,6 +140,9 @@
 }
 
 .video_boxes{
+    width:1000000px;
+    height:140px;
+    overflow-x:auto;
     transition: all 0.5s ease-in-out;
 }
 
@@ -214,11 +218,10 @@ span.info_icon:hover ~ div.help_div {
 }
 
 .video_header .help_div{
-    background: rgba(34, 34, 34, 0.87);
     color: #FFF;
     font-weight: 900;
-    margin-left: 344px;
-    margin-top: -28px;
+    margin-left: 230px;
+    margin-top: 2px;
 }
 
 .video_header .video_header_text{
@@ -227,5 +230,10 @@ span.info_icon:hover ~ div.help_div {
 
 .video_header .help_div .box {
     width: 369px;
+}
+
+.embedly-embed {
+    width:220px;
+    height:124px;
 }
 

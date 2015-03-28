@@ -149,7 +149,7 @@ class EventController extends Controller
 //                                                WHERE event_user.user_id = 7 OR event.user_id = 7');
 
         //Get the events that this user is an event_user of
-        $events_attending = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . "
+        $events_attending = Yii::app()->db->createCommand("SELECT event.* FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . "
             AND ((start_date = '" . $start_date . "' AND start_time >= '" . $start_time . "')
             OR (start_date = '" . $end_date . "' AND start_time <= '" . $end_time . "'))")->queryAll();
         //Get the events that this
@@ -203,13 +203,13 @@ class EventController extends Controller
 
 	                        $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$events[$i]['event_id'], ':user_id'=>$user->user_id));
 
-if ($event_user) {
-	$events[$i]['is_attending'] = true;
+    if ($event_user) {
+        $events[$i]['is_attending'] = true;
 
-} else {
-	$events[$i]['is_attending'] = false;
+    } else {
+        $events[$i]['is_attending'] = false;
 
-}
+    }
 
 	$event_m = Event::model()->find('event_id=:event_id', array(':event_id'=>$events[$i]['event_id']));
 	$events[$i]['attendance_count'] = count($event_m->attendees);
@@ -263,7 +263,7 @@ if ($event_user) {
 
         if($_GET['tz_offset']>=0){
             //Get the events that this user is an event_user of
-            $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id .'
+            $events_attending = Yii::app()->db->createCommand('SELECT event.* FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id .'
             AND (MONTH(`end_date`) = MONTH("' . $date . '") OR (end_date = "'.$end_date.'" AND end_time <= "'.$end_time.'"))
             AND NOT (end_date = "'.$start_date.'" AND end_time <= "'.$start_time.'")')->queryAll();
             //Get the events that this
@@ -272,7 +272,7 @@ if ($event_user) {
             AND NOT (end_date = "'.$start_date.'" AND end_time <= "'.$start_time.'")')->queryAll();
         }else if($_GET['tz_offset']<0){
             //Get the events that this user is an event_user of
-            $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id .'
+            $events_attending = Yii::app()->db->createCommand('SELECT event.* FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id .'
             AND (MONTH(`end_date`) = MONTH("' . $date . '") OR (event.end_date = "'.$start_date.'" AND event.end_time >= "'.$start_time.'"))
             AND NOT (event.end_date = "'.$end_date.'" AND event.end_time >= "'.$end_time.'")')->queryAll();
             //Get the events that this
@@ -341,7 +341,7 @@ if ($event_user) {
 
         //Get the events that this user is an event_user of
         if($_GET['tz_offset']>=0) {
-            $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id . '
+            $events_attending = Yii::app()->db->createCommand('SELECT event.* FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id . '
             AND (WEEK(`end_date`) = WEEK("' . $date . '") OR (end_date = "' . $end_date . '" AND end_time <= "' . $end_time . '"))
             AND NOT (end_date = "' . $start_date . '" AND end_time <= "' . $start_time . '")')->queryAll();
             //Get the events that this
@@ -349,7 +349,7 @@ if ($event_user) {
             AND (WEEK(`end_date`) = WEEK("' . $date . '") OR (end_date = "' . $end_date . '" AND end_time <= "' . $end_time . '"))
             AND NOT (end_date = "' . $start_date . '" AND end_time <= "' . $start_time . '")')->queryAll();
         }else if($_GET['tz_offset']<0) {
-            $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id . '
+            $events_attending = Yii::app()->db->createCommand('SELECT event.* FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id . '
             AND (WEEK(`end_date`) = WEEK("' . $date . '") OR (end_date = "' . $start_date . '" AND end_time >= "' . $start_time . '"))
             AND NOT (end_date = "' . $end_date . '" AND end_time >= "' . $end_time . '")')->queryAll();
             //Get the events that this
@@ -1059,6 +1059,11 @@ if ($event_user) {
         }
 
         if($event){
+            if($user->user_id != $event->user_id){
+                $data = array('success'=>false,'error_id'=>4,'error_msg'=>'you are not the event creator');
+                $this->renderJSON($data);
+                return;
+            }
             $event->title = $event_data['event_name'];
             if(isset($event_data['description']))
                 $event->description = $event_data['description'];
