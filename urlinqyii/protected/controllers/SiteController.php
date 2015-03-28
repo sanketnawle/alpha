@@ -1418,6 +1418,104 @@ class SiteController extends Controller
 
 
     }
+    //creates a record of a file from a link
+    function fileFromLink($url, $path, $user_id){
+        //example of path: 'uploads/preview/'
+        $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+
+        include "UniqueTokenGenerator.php";
+        //preg_match('/[.]([a-zA-Z]{3,4})$/',$url,$match);
+        $path_parts = pathinfo(basename($url));
+        if(isset($path_parts['extension'])){
+            $extension = $path_parts['extension'];
+        }
+        else{
+            $extension = 'jpg';
+        }
+        $question_mark_index = strpos($extension,'?');
+        if($question_mark_index != false){
+            $extension = substr($extension,0,$question_mark_index);
+        }
+
+      /*  $question_mark_index = strpos($url,'?');
+        if($question_mark_index != false){
+            $url = substr($url,0,$question_mark_index);
+        }*/
+        //$extension = $match[1];
+
+
+        //$file_type = getFileMimeType($files["uploadFile"]['tmp_name']);
+        $file_type = $extension; //temporary
+        $random_name = token($user->user_id,$user->firstname);
+
+        $arrContextOptions=array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+
+        $local_directory = 'assets/'.$path;
+        if(!is_dir($local_directory)) {
+            mkdir($local_directory);
+        }
+        $get_file = file_get_contents($url,false,stream_context_create($arrContextOptions));
+        if($get_file){
+            file_put_contents($local_directory . $random_name .'.' .  $extension, $get_file);
+        }
+        else{
+            return $url;
+        }
+
+        if($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
+            include "ImageCompress.php";
+            @image_compress($local_directory . $random_name .'.' .  $extension, $local_directory . $random_name . '.jpg', 50);
+            if($extension != 'jpg'){
+                unlink($local_directory . $random_name .'.' .  $extension);
+            }
+
+            $extension = 'jpg';
+        }
+
+
+        //Create file in file table here
+        $file = new File;
+        $file->file_name = $random_name . '.' . $extension;
+        $file->file_url = $file_url = "/" . $local_directory . $random_name . '.' . $extension;
+        $file->file_type = $file_type;
+        $file->file_extension = $extension;
+        if($file->save(false)){
+            return array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,
+                'file_url'=>$file->file_url,'extension'=>$extension);
+        }else{
+            return array('success'=>false,'error_msg'=>'error saving file');
+        }
+
+        //Use the origin and id to add files either to associative table or to a main field
+
+        //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'origin_type'=>$origin_type,'origin_id'=>$origin_id,'extension'=>$extension));
+        //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension));
+
+
+    }
+
+    public function actionSaveFacebookProfilePicture(){
+        if(!isset($_POST['url'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'url not set');
+            $this->renderJSON($data);
+            return;
+        }
+        $user = $this->get_current_user($_POST);
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+        $picture_data = $this->fileFromLink($_POST['url'],'profile/',$user->user_id);
+        $this->renderJSON($picture_data);
+        echo $picture_data;
+        return;
+    }
 
 
 
@@ -1432,7 +1530,6 @@ class SiteController extends Controller
             $event_user->color_id = get_random_color();
             $event_user->save(false);
         }
-
     }
 
     public function actionRegister(){

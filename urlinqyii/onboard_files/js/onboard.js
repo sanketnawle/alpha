@@ -675,6 +675,9 @@ $(document).ready(function () {
             });
 
         }else{
+            if($('.step_6_card_r0').is('[data-file_id]')){
+                post_data['picture_file_id'] = $('.step_6_card_r0').attr('data-file_id');
+            }
             send_finish_onboarding_post_request();
         }
 
