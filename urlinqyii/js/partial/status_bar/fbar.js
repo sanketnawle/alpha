@@ -1405,183 +1405,212 @@ function fbar_ready(origin_id) {
 
         }
 
-
+        var post_button_lock = false;
 
         $(document).on('click', '.post_btn', function(){
-            console.log(globals);
-            //alert(JSON.stringify(globals));
+
+            if(!post_button_lock){
+                //Lock this action from happening again until we
+                //say so by setting post_button_lock to false
+                post_button_lock = true;
 
 
-            var $fbar_holder = globals.$fbar.find('#fbar_holder');
-            $(".no_posts_container").fadeOut(100);
-            var dropzone;
-            if(globals.profile_open){
-                dropzone = globals.profileDropzone;
-            }else{
-                dropzone = globals.myDropzone;
-            }
-            var post_type = $fbar_holder.attr('data-post_type');
+                console.log(globals);
+                //alert(JSON.stringify(globals));
 
 
-            var $post_text_area = $fbar_holder.find('.post_text_area');
-
-
-
-
-            //Check if there are any files
-            var $file_form = globals.$fbar.find('#fbar_file_form');
-            //alert($file_form.children('div.dz-preview').length);
-            console.log(dropzone.files);
-
-
-            var post_data = get_post_data();
-
-    //        alert(JSON.stringify(post_data));
-            //Check if this data is good
-            if(post_type == 'discuss'){
-                if(post_data['text'] == ''){
-                    alert('Please input post text');
-                    return;
+                var $fbar_holder = globals.$fbar.find('#fbar_holder');
+                $(".no_posts_container").fadeOut(100);
+                var dropzone;
+                if(globals.profile_open){
+                    dropzone = globals.profileDropzone;
+                }else{
+                    dropzone = globals.myDropzone;
                 }
-            }else if(post_type == 'notes' || post_type == 'files'){
-                //Check if there is atleast one file
-                if(dropzone.files.length == 0){
-                    alert('Please upload atleast one file.');
-                    return;
-                }
-            }else if(post_type == 'question' ){
+                var post_type = $fbar_holder.attr('data-post_type');
 
-                if(post_data['text'] == ''){
-                    alert('Please input a question');
-                    return;
-                }
 
-                if(post_type == 'multiple_choice'){
-                    if(post_type['question']['options'].length < 2){
-                        alert('Please input atleast 2 options for a question');
+                var $post_text_area = $fbar_holder.find('.post_text_area');
+
+
+
+
+                //Check if there are any files
+                var $file_form = globals.$fbar.find('#fbar_file_form');
+                //alert($file_form.children('div.dz-preview').length);
+                console.log(dropzone.files);
+
+
+                var post_data = get_post_data();
+
+        //        alert(JSON.stringify(post_data));
+                //Check if this data is good
+                if(post_type == 'discuss'){
+                    if(post_data['text'] == ''){
+                        alert('Please input post text');
+                        post_button_lock = false;
                         return;
                     }
-                }
-
-            }
-
-
-            if(post_type == 'event'){
-                if(post_data['event']['title'] == ''){
-                    alert('Please input a title');
-                    return;
-                }
-
-                if(post_data['event']['start_date'] == ''){
-                    alert('Please input a start date');
-                    return;
-                }
-
-                if(post_data['event']['start_time'] == ''){
-                    alert('Please input a start time');
-                    return;
-                }
-
-                if(post_data['event']['end_date'] == ''){
-                    alert('Please input an end date');
-                    return;
-                }
-
-                if(post_data['event']['end_time'] == ''){
-                    alert('Please input an end time');
-                    return;
-                }
-
-
-
-                var start_datetime = new_datetime(post_data['event']['start_date'] + ' ' + post_data['event']['start_time']);
-                var end_datetime = new_datetime(post_data['event']['end_date'] + ' ' + post_data['event']['end_time']);
-
-
-                if(end_datetime < start_datetime){
-                    if(post_data['event']['start_date'] == post_data['event']['end_date']){
-                        alert('Invalid end time');
-                        return;
-                    }else{
-                        alert('Invalid end date');
+                }else if(post_type == 'notes' || post_type == 'files'){
+                    //Check if there is atleast one file
+                    if(dropzone.files.length == 0){
+                        alert('Please upload atleast one file.');
+                        post_button_lock = false;
                         return;
                     }
-                }
+                }else if(post_type == 'question' ){
 
+                    if(post_data['text'] == ''){
+                        alert('Please input a question');
+                        post_button_lock = false;
+                        return;
+                    }
 
-
-            }
-
-
-
-
-            if(post_type == 'opportunity'){
-                if(post_data['opportunity']['title'] == ''){
-                    alert('Please input a title');
-                    return;
-                }
-
-
-                if(post_data['opportunity']['end_date'] == ''){
-                    alert('Please input an end date');
-                    return;
-                }
-
-                if(post_data['opportunity']['end_time'] == ''){
-                    alert('Please input an end time');
-                    return;
-                }
-
-
-            }
-
-
-
-
-
-            console.log('SENDING FILES');
-
-
-            //If there are any files, submit the post request through dropzone
-            if(dropzone.files.length > 0){
-                dropzone.processQueue();
-            }else{
-                //otherwise, make a post request to post/create manually
-                //alert('MANUAL POST REQUEST');
-
-
-                var post_request_data = {'post':post_data};
-
-
-                console.log(post_request_data);
-                //alert(JSON.stringify(post_data));
-                $.post(
-                    base_url + '/post/create',
-                    post_request_data,
-                    function(response) {
-
-                        console.log(JSON.stringify(response));
-
-                        if(response['success']){
-                            response['post']['update_timestamp'] = moment(response['post']['update_timestamp'], "X").fromNow();
-                            reset_fbar();
-                            render_post(response['post'],'prepend');
-
-                            if(response['post']['event']){
-                                add_event(response['post']['event']);
-                            }
-                        }else{
-
+                    if(post_type == 'multiple_choice'){
+                        if(post_type['question']['options'].length < 2){
+                            alert('Please input atleast 2 options for a question');
+                            post_button_lock = false;
+                            return;
                         }
-                    }, 'json'
-                );
+                    }
+
+                }
+
+
+                if(post_type == 'event'){
+                    if(post_data['event']['title'] == ''){
+                        alert('Please input a title');
+                        post_button_lock = false;
+                        return;
+                    }
+
+                    if(post_data['event']['start_date'] == ''){
+                        alert('Please input a start date');
+                        post_button_lock = false;
+                        return;
+                    }
+
+                    if(post_data['event']['start_time'] == ''){
+                        alert('Please input a start time');
+                        post_button_lock = false;
+                        return;
+                    }
+
+                    if(post_data['event']['end_date'] == ''){
+                        alert('Please input an end date');
+                        post_button_lock = false;
+                        return;
+                    }
+
+                    if(post_data['event']['end_time'] == ''){
+                        alert('Please input an end time');
+                        post_button_lock = false;
+                        return;
+                    }
+
+
+
+                    var start_datetime = new_datetime(post_data['event']['start_date'] + ' ' + post_data['event']['start_time']);
+                    var end_datetime = new_datetime(post_data['event']['end_date'] + ' ' + post_data['event']['end_time']);
+
+
+                    if(end_datetime < start_datetime){
+                        if(post_data['event']['start_date'] == post_data['event']['end_date']){
+                            alert('Invalid end time');
+                            post_button_lock = false;
+                            return;
+                        }else{
+                            alert('Invalid end date');
+                            post_button_lock = false;
+                            return;
+                        }
+                    }
+
+
+
+                }
+
+
+
+
+                if(post_type == 'opportunity'){
+                    if(post_data['opportunity']['title'] == ''){
+                        alert('Please input a title');
+                        post_button_lock = false;
+                        return;
+                    }
+
+
+                    if(post_data['opportunity']['end_date'] == ''){
+                        alert('Please input an end date');
+                        post_button_lock = false;
+                        return;
+                    }
+
+                    if(post_data['opportunity']['end_time'] == ''){
+                        alert('Please input an end time');
+                        post_button_lock = false;
+                        return;
+                    }
+
+
+                }
+
+
+
+
+
+                console.log('SENDING FILES');
+
+
+                //If there are any files, submit the post request through dropzone
+                if(dropzone.files.length > 0){
+                    dropzone.processQueue();
+                }else{
+                    //otherwise, make a post request to post/create manually
+                    //alert('MANUAL POST REQUEST');
+
+
+                    var post_request_data = {'post':post_data};
+
+
+                    console.log(post_request_data);
+                    //alert(JSON.stringify(post_data));
+                    $.post(
+                        base_url + '/post/create',
+                        post_request_data,
+                        function(response) {
+                            post_button_lock = false;
+
+
+                            console.log(JSON.stringify(response));
+
+                            if(response['success']){
+                                response['post']['update_timestamp'] = moment(response['post']['update_timestamp'], "X").fromNow();
+                                reset_fbar();
+                                render_post(response['post'],'prepend');
+
+
+                                //Unlock the post action
+
+                                if(response['post']['event']){
+                                    add_event(response['post']['event']);
+                                }
+                            }else{
+
+                                console.log(response);
+                            }
+                        }, 'json'
+                    );
+                }
+
+
+
+
+                //$file_form.submit();
+
+
             }
-
-
-
-
-            //$file_form.submit();
-
 
         });
 
