@@ -1,6 +1,8 @@
 ﻿<html>
 <?php
 
+include_once "common.php";
+
 
 $department_front_end_name = 'department';
 if($school->university_id == 4){
@@ -8,6 +10,13 @@ if($school->university_id == 4){
 }
 
 ?>
+<?php
+
+    $departments = $school->departments;
+    $clubs = $school->clubs;
+
+?>
+
 
 <head>
     <script>
@@ -17,6 +26,7 @@ if($school->university_id == 4){
         globals.origin_id = '<?php echo $school->school_id; ?>';
         globals.origin_name = '<?php echo $school->school_name; ?>';
         globals.user_id = '<?php echo $user->user_id; ?>';
+
 
     </script>
     <script>
@@ -66,12 +76,7 @@ if($school->university_id == 4){
     <div id="wrapper" class="<?php echo $user->status; ?>">
     <!--        --><?php //echo Yii::app()->runController('partial/leftmenu'); ?>
 
-    <?php
 
-        $departments = $school->departments;
-        $clubs = $school->clubs;
-
-    ?>
 
 
     <div id="page">
@@ -274,30 +279,40 @@ if($school->university_id == 4){
                                 <?php echo ucfirst($department_front_end_name); ?>s at <?php echo $school->school_name; ?>
                             </div>
                         </div>
-                        <div class = "group_info_tab_content tab_content">
+                        <div class = "group_info_tab_content tab_content" data-data_type="departments" data-load_url="/school/loadDepartments?school_id=<?php echo $school->school_id; ?>">
+<!--                            --><?php
+//                            $departments_loop_count = count($departments);
+//                            if($departments_loop_count > 50){
+//                                $departments_loop_count = 50;
+//                            }
+//                            ?>
+<!--                            --><?php //for($i = 0; $i < $departments_loop_count; $i++) {
+//                                $department = $departments[$i];
+//                                ?>
 
-
-                            <?php foreach($departments as $department) { ?>
-                                <div class = "group_box group_course_box" data-name="<?php echo $department->department_name; ?>">
-                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $department_front_end_name . '/' . $department->department_id ;?>">
-                                        <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url; ?>')">
-                                            <div class = "department_alias"><?php echo $department->department_tag ;?></div>
+                                <script id="department_template" type="text/x-handlebars-template">
+                                <div class = "group_box group_course_box data_box" data-type="department" data-id="{{department_id}}" data-name="{{department_name}}">
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $department_front_end_name . '/';?>{{department_id}}">
+                                        <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{pictureFile.file_url}}')">
+                                            <div class = "department_alias">{{department_tag}}</div>
                                         </div>
                                     </a>
                                     <div class = "group_box_main_info">
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $department_front_end_name . '/' . $department->department_id ;?>" class = "group_link"><?php echo $department->department_name; ?></a>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $department_front_end_name . '/';?>{{department_id}}" class = "group_link">{{department_name}}</a>
                                         <div class = "float_Right">
                                             <span class = "group_type"><?php echo ucfirst($department_front_end_name); ?></span>
                                         </div>
                                     </div>
                                     <div class = "group_box_secondary_info_section">
-                                        <div class= "info_line indent"><span><?php echo count($department->admins);?> faculty </span><b>&#183;</b><span> <?php echo count($department->students);?> students</span></div>
-                                        <div class= "info_line indent"><?php echo count($department->courses); ?> courses</div>
+                                        <div class= "info_line indent"><span>{{admin_count}} faculty </span><b>&#183;</b><span> {{student_count}} students</span></div>
+                                        <div class= "info_line indent">{{course_count}} courses</div>
 <!--                                        <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about">--><?php //echo $department->department_description?><!--</div></div></div>-->
                                     </div>
                                 </div>
 
-                            <?php } ?>
+                                </script>
+<!---->
+<!--                            --><?php //} ?>
 
                         </div>
                     </div>
@@ -385,7 +400,7 @@ if($school->university_id == 4){
                                 Members of <?php echo $school->school_name; ?>
                             </div>
                         </div>
-                        <div class = "members_tab_content tab_content">
+                        <div class = "members_tab_content tab_content" data-data_type="members" data-load_url="/school/loadUsers?school_id=<?php echo $school->school_id; ?>">
 
 
 

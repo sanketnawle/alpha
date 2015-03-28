@@ -230,9 +230,122 @@ $(document).ready(start(globals.origin_id));
         }
 
 
-        //alert(y);
+
+
+
+        //Detect if there are any visible data_box elements on the page
+        var $data_boxes = $('.data_box:visible');
+//        console.log("CHAT BOXES");
+//        console.log($data_boxes);
+
+
+        //stores type and true or false depending if
+        //we want to block additonal requests to server to load more
+        var type_locks = {};
+
+        if($data_boxes.length > 0){
+            //Check if the last data_box is visible
+            var $last_data_box = $data_boxes.last();
+
+            if($last_data_box != undefined && isElementInViewport($last_data_box)){
+                //alert('last data box is visible');
+                //If this isnt marked as the last item, make a request for
+                //more of its type
+                if(!$last_data_box.hasClass('last_data_box')){
+                    var data_box_type = $last_data_box.attr('data-type');
+                    var $data_box_parent = $last_data_box.parent();
+                    var load_url = $data_box_parent.attr('data-load_url');
+
+                    load_url += "&last_id=" + $last_data_box.attr('data-id');
+
+                    //alert(load_url);
+                    //Only run if we havent locked this type from loading again
+                    if(!type_locks[data_box_type]){
+                        type_locks[data_box_type] = true;
+
+
+                        $.getJSON(globals.base_url + load_url, function(json_data){
+                            if(json_data['success']){
+
+                                if(json_data[json_data['data_type']].length > 0){
+                                    render_data_boxes(json_data);
+                                }else{
+                                    //There is nothing else to load, so add
+                                    //'last_data_box' class to last data box
+                                    //so we dont make any more useless requests
+                                    $last_data_box.addClass('last_data_box');
+                                }
+                            }else{
+                                console.log(json_data);
+                            }
+                        });
+                    }
+
+                }
+
+
+            }
+
+        }else{
+            //alert('There are no visible data boxes');
+        }
+
+
 
     });
+
+    init();
+
+    function init(){
+        if(globals.origin_type == 'school'){
+            //Load the initial departments/groups/members
+            var departments_url = $('.tab_content[data-data_type="departments"]').attr('data-load_url');
+            //alert('making request to ' + globals.base_url + departments_url);
+            $.getJSON(globals.base_url + departments_url, function(json_data){
+                render_data_boxes(json_data);
+            });
+        }
+    }
+
+    function render_data_box(data_type, data_json){
+        var $tab_content = null;
+        var source = '';
+
+        if(data_type == 'department'){
+            $tab_content = $('.tab_content[data-data_type="departments"]');
+            source = $("#department_template").html();
+
+
+            data_json['admin_count'] = data_json['admins'].length;
+            data_json['student_count'] = data_json['students'].length;
+            data_json['course_count'] = data_json['courses'].length;
+
+
+        }else if(data_type == 'members'){
+
+        }
+
+
+        var template = Handlebars.compile(source);
+
+        var $new_html_element = $(template(data_json));
+
+
+        //console.log($new_html_element);
+
+        $tab_content.append($new_html_element.hide().fadeIn(500));
+
+    }
+
+    function render_data_boxes(json_data){
+
+        var data_type = json_data['data_type'];
+
+        $.each(json_data[data_type],function(index, data_json){
+            render_data_box('department', data_json);
+        });
+
+    }
 
     //Admin members tab controls in class and club to remove group members
 
@@ -816,6 +929,30 @@ $(document).ready(start(globals.origin_id));
     $('#welcome_post, #welcome_post_2').hide().fadeIn(250);
 
 
+    function isElementInViewport (el) {
+        if(el === undefined){
+            return;
+        }
+
+        //special bonus for those using jQuery
+        if (typeof jQuery === "function" && el instanceof jQuery) {
+            el = el[0];
+        }
+
+        var rect = el.getBoundingClientRect();
+
+
+        console.log("BOUNDING RECT FOR LAST DATA_BOX");
+        console.log(rect);
+
+        return (
+//            rect.top >= 0
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+        );
+    }
 
 
 

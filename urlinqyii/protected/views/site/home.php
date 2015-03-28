@@ -10,7 +10,7 @@
 
 
             globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
-            globals.origin_type = '<?php echo 'user'; ?>';
+            globals.origin_type = '<?php echo "user"; ?>';
             globals.origin_id = '<?php echo $user->user_id; ?>';
             globals.user_id = '<?php echo $user->user_id; ?>';
 

@@ -113,7 +113,6 @@ span.day_text
   -moz-osx-font-smoothing:grayscale;
   line-height:56px;
 }
-
 span.month_text
 {
   font-family:"Open Sans", sans-serif;
@@ -129,56 +128,57 @@ span.month_text
 {
   z-index:9999;
   position:relative;
-  top:20px;
+  top: 16px;
   margin-right:6px;
-  background:rgba(18,19,20,0.9);
+  background: rgba(18, 19, 20, 0.78);
   cursor:pointer;
   text-align:right;
+  -webkit-transition:.2s background ease;
+  -moz-transition:.2s background ease;
+  transition:.2s background ease;
+  border: 1px solid #000;
   border-radius:3px;
 }
 
 .img_arrows:hover
 {
-  background:rgba(18,19,20,0.77);
-  -moz-box-shadow:0 0 0 1px rgba(255,255,255,0.11) inset;
-  -webkit-box-shadow:0 0 0 1px rgba(255,255,255,0.11) inset;
-  box-shadow:0 0 0 1px rgba(255,255,255,0.11) inset;
+  background: rgba(18, 19, 20, 0.9);
 }
 
 .img_arrows:active
 {
   background:rgba(18,19,20,.96);
-  -moz-box-shadow:0 0 0 1px rgba(255,255,255,0.25) inset;
-  -webkit-box-shadow:0 0 0 1px rgba(255,255,255,0.25) inset;
-  box-shadow:0 0 0 1px rgba(255,255,255,0.25) inset;
+  -moz-box-shadow: 0 0 0 1px rgba(255, 255, 255, 1) inset;
+  -webkit-box-shadow: 0 0 0 1px rgba(255, 255, 255, 1) inset;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 1) inset;
 }
 
 .img_rt
 { 
   float:right;
-  width:30px;
-  height:30px;
+  width: 28px;
+  height: 37px;
 }
 .img_rt .arrow_img {
   background:url(../../assets/small_icons.png);
-  background-size:500%;
-  background-position:-23px 666px;
+  background-size: auto;
   height:30px;
+  background-position: -87px -390px;
   width:30px;
 }
 
 .img_lt
 {
   float:right;
-  width:30px;
-  height:30px;
+  width: 28px;
+  height: 37px;
 }
 .img_lt .arrow_img {
   background:url(../../assets/small_icons.png);
-  background-size:500%;
-  background-position:6px 666px;
+  background-size: auto;
   height:30px;
   width:30px;
+  background-position: -68px -390px;
 }
 
 .chip-container
@@ -336,11 +336,11 @@ span.month_text
 .collapse-date {
   font-size:16px;
   position:absolute;
-  top:46px;
-  width:80px;
+  top:105px;
+  width:200px;
   text-align:right;
   display:none;
-  left:-20px;
+  left:-78px;
   color:#ffffff;
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);

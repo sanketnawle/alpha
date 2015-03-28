@@ -39,16 +39,23 @@ last_send_message_id = 0;
 
 
 socket.on('user_' + messaging_globals.user_id, function (message_data) {
-    //alert(JSON.stringify(message_data));
-    console.log("Received msg: ");
-    console.log(message_data);
 
-    if(message_data['id'] != last_send_message_id){
-        console.log('RENDERING MSG: ' + JSON.stringify(message_data));
-        handle_render_message(message_data);
-    }else{
-        console.log('Not rendering this shit');
+    try{
+        //alert(JSON.stringify(message_data));
+        console.log("Received msg: ");
+        console.log(message_data);
+
+        if(message_data['id'] != last_send_message_id){
+            console.log('RENDERING MSG: ' + JSON.stringify(message_data));
+            handle_render_message(message_data);
+        }else{
+            console.log('Not rendering this shit');
+        }
+    }catch(err){
+        console.log('ERROR IN USER SOCKET LISTENER');
+        console.log(err);   
     }
+    
 
 
 });
@@ -206,19 +213,27 @@ function init(){
 
     }else{
 
-        var chat_data = JSON.parse($.cookie('chat'));
+
+        $chat_cookie = $.cookie('chat');
+        
+
+        if($chat_cookie){
+            var chat_data = JSON.parse($chat_cookie);
 
 
-        for(var x = 0; x < chat_data['chat_boxes'].length; x++){
-            var this_chat_data = chat_data['chat_boxes'][x];
-            get_or_create_chat_box(this_chat_data['type'], this_chat_data['id'], this_chat_data['name']);
+            for(var x = 0; x < chat_data['chat_boxes'].length; x++){
+                var this_chat_data = chat_data['chat_boxes'][x];
+                get_or_create_chat_box(this_chat_data['type'], this_chat_data['id'], this_chat_data['name']);
+            }
+
+
+            for(var i = 0; i < chat_data['extra_chat_boxes'].length; i++){
+                var this_extra_chat_data = chat_data['extra_chat_boxes'][i];
+                get_or_create_chat_box(this_extra_chat_data['type'], this_extra_chat_data['id'], this_extra_chat_data['name']);
+            }    
         }
 
-
-        for(var i = 0; i < chat_data['extra_chat_boxes'].length; i++){
-            var this_extra_chat_data = chat_data['extra_chat_boxes'][i];
-            get_or_create_chat_box(this_extra_chat_data['type'], this_extra_chat_data['id'], this_extra_chat_data['name']);
-        }
+        
     }
 
 
@@ -522,7 +537,7 @@ $(document).on('click', '.messaging_list_item', function(e){
     var id = $messaging_list_item.attr('data-id');
     var name = $messaging_list_item.attr('data-name');
 
-
+    console.log("clicks on messaging list item");
     if(fullscreen){
         //Load this chat in the chat_panel
         var $chat_box_panel = $('#chat_panel');
@@ -547,6 +562,8 @@ $(document).on('click', '.messaging_list_item', function(e){
         }
 
     }else{
+
+        console.log("OPENINGAAACHATBOX");
             //Check if this chat is already in the #extra_chat_boxes div
         var $extra_chat_box_check = $('.extra_chat_box[data-type="' + type + '"][data-id="' + id + '"]');
         if($extra_chat_box_check.length){
