@@ -113,7 +113,6 @@ span.day_text
   -moz-osx-font-smoothing:grayscale;
   line-height:56px;
 }
-
 span.month_text
 {
   font-family:"Open Sans", sans-serif;
@@ -337,11 +336,11 @@ span.month_text
 .collapse-date {
   font-size:16px;
   position:absolute;
-  top:46px;
-  width:80px;
+  top:105px;
+  width:200px;
   text-align:right;
   display:none;
-  left:-20px;
+  left:-78px;
   color:#ffffff;
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
