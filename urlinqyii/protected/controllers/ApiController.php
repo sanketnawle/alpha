@@ -7,14 +7,14 @@
 
     public function actionStartOnboard() {
 
-        if (!isset($_GET['user_email'])) {
+        if (!isset($_POST['user_email'])) {
             $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'Can not check user status.');
             $this->renderJSON($data);
             return;
         }
 
         $pattern = '/^(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){255,})(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){65,}@)(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22))(?:\\.(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-+[a-z0-9]+)*\\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-+[a-z0-9]+)*)|(?:\\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\\]))$/iD';
-        $emailaddress = $_GET['user_email'];
+        $emailaddress = $_POST['user_email'];
 
         if (preg_match($pattern, $emailaddress) !== 1) {
             $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'Not a valid email.');
@@ -49,11 +49,40 @@
 
                 foreach ($university->schools as $school) {
                     $school_new = $this->model_to_array($school);
+
+
+                $school_id = $school->school_id;
+
+                $sql = "SELECT COUNT(school_id) FROM user WHERE school_id=$school_id";
+
+                $command = Yii::app()->db->createCommand($sql);
+                $results = $command->queryAll();
+
+                $member_count = $results[0]["COUNT(school_id)"];
+
+                $school_new['member_count'] = $member_count;
+
+
+
+                $picture_sql = "SELECT picture_file_id FROM user WHERE picture_file_id IS NOT NULL AND picture_file_id!=1 AND school_id=$school_id LIMIT 5;";
+
+                $cmd = Yii::app()->db->createCommand($picture_sql);
+                $picture_files = $cmd->queryAll();
+
+
+                $clean_picture_files = array();
+
+                foreach ($picture_files as $picture_file) {
+                    array_push($clean_picture_files, $picture_file['picture_file_id']);
+                }
+
+                $school_new['preview_users_avatars'] = $clean_picture_files;
+
                     //$school_new['member_count'] = count($school->users);
                     array_push($schools, $school_new);
                 }
                 
-                $data = array('success'=>true, 'university'=>$university, 'schools'=>$university->schools);
+                $data = array('success'=>true, 'university'=>$university, 'schools'=>$schools);
                 $this->renderJSON($data);
                 return;
 
@@ -65,24 +94,24 @@
         if ($urlinq_sub == 'urlinq.com') {
             $nyu = University::model()->find('website_url=:website_url', array(':website_url'=>'https://www.nyu.edu'));
 
-                $schools = array();
+            $schools = array();
 
-                foreach ($nyu->schools as $school) {
-                    $school_new = $this->model_to_array($school);
+            foreach ($nyu->schools as $school) {
+                $school_new = $this->model_to_array($school);
 
-                    $school_id = $school->school_id;
+                $school_id = $school->school_id;
 
-                    $sql = "SELECT COUNT(school_id) FROM user WHERE school_id=$school_id";
+                $sql = "SELECT COUNT(school_id) FROM user WHERE school_id=$school_id";
 
-                    $command = Yii::app()->db->createCommand($sql);
-                    $results = $command->queryAll();
+                $command = Yii::app()->db->createCommand($sql);
+                $results = $command->queryAll();
 
-                    $member_count = $results[0]["COUNT(school_id)"];
+                $member_count = $results[0]["COUNT(school_id)"];
 
-                    $school_new['member_count'] = $member_count;
+                $school_new['member_count'] = $member_count;
 
-                    array_push($schools, $school_new);
-                }
+                array_push($schools, $school_new);
+            }
 
             $data = array('success'=>true, 'university'=>$nyu, 'schools'=>$schools);
             $this->renderJSON($data);
