@@ -113,7 +113,7 @@
         <div class="embedly_video_wrapper" >
             <div class="video_thumbnail" style="background-image: url('{{thumbnail_url}}')"></div>
             <div class="video" style = "display: none;">
-                {{{html}}}
+                {{{video_iframe}}}
                 <div class="skip_video video_open">next</div>
             </div>
         </div>
