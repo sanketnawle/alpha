@@ -241,12 +241,12 @@ $(document).ready(function(){
             $('.embedly-embed.expandedvideoplayer').animate({
                 height: "124px",
                 width: "220px",
-            }).fadeOut(250).removeClass('expandedvideoplayer');
+            },100).fadeOut(100).removeClass('expandedvideoplayer');
             $('.video_boxes').animate({
                 height: "140px"
             });
             $('.video_left_column').animate({
-                width: "260px",
+                width: "252px",
                 marginLeft: "240px"
             });
             $('.video_categories, .video_box_functions').fadeIn(250);
@@ -276,14 +276,22 @@ $(document).ready(function(){
             },100)  
         } else { 
             $video_box_next = $('.video_box.next');
-            $('.video_box.focus').removeClass('focus');
-            $video_box_next.removeClass('next');
-            $video_box_next.addClass('focus');
-            $video_box_next.next('.video_box').addClass('next');
+                $('.video_box.focus').removeClass('focus');
+                $video_box_next.removeClass('next');
+                $video_box_next.addClass('focus');
+                $video_box_next.next('.video_box').addClass('next');
 
-            var margin_left = parseInt($('.video_boxes').css('margin-left'));
+                var margin_left = parseInt($('.video_boxes').css('margin-left'));
+                
+                $('.video_boxes').css('margin-left',margin_left-$video_box_next.outerWidth());
+                index++;
+
+                set_comments_and_likes()
+
+                $(".master_comments.video_comments").html("<div id='show_more' class='morecmt_bar'>"
+                +"Read Comments</div>");
+
             
-            $('.video_boxes').css('margin-left',margin_left-$video_box_next.outerWidth()-1);
             index++;
 
             set_comments_and_likes()
@@ -302,31 +310,32 @@ $(document).ready(function(){
         $('.video_boxes').animate({
             height: "415px"
         },100)
+        $('.video_box_wrapper').animate({
+            height: "415px"
+        },100).addClass('expandedvideo');
+        $video_box.find('.video_left_column').fadeOut(100);
         setTimeout(function(){
             $video_box.find('.video').fadeIn(250);
             $video_box.find('.embedly-embed').animate({
                 height: "281px",
                 width: "520px"
-            }).addClass('expandedvideoplayer');
+            },450).addClass('expandedvideoplayer');
+            $video_box.find('.video').animate({
+                marginTop: "100px"
+            },100);
         },100);
         setTimeout(function(){
             $video_box.find('.video_left_column').animate({
                 marginTop: "0px",
                 marginLeft: "10px",
                 width: "100%"
-            });
+            },100).fadeIn(350);
             $video_box.find('.video_categories, .video_box_functions').fadeOut(250);
             $video_desc_trunc=$video_box.find('.video_description.desc_truncated');
             $video_desc_trunc.hide();
             $video_desc_trunc.parent().find('.video_description.desc_full').show();
-            $video_box.find('.video').animate({
-                marginTop: "100px"
-            });
-        },200);
+        },300);
         $('.video_box:gt('+$video_box.index()+')').fadeOut(250);
-        $('.video_box_wrapper').animate({
-            height: "415px"
-        }).addClass('expandedvideo');
     });
 });
 

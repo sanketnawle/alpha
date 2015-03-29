@@ -63,7 +63,7 @@
 
 .video_left_column{
     display:inline-block;
-    width: 260px;
+    width: 252px;
     position: relative;
     top: -25px;
     padding: 5px;
@@ -141,7 +141,7 @@
 
 .video_boxes{
     width:1000000px;
-    height:140px;
+    height:160px;
     overflow-x:auto;
     transition: all 0.5s ease-in-out;
 }
