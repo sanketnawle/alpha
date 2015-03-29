@@ -23,52 +23,78 @@ $(document).ready(function(){
     );
 
     function render_videos(){
-        console.log(videos);
+      //  console.log(videos);
         var source = $('#video_box_template').html();
         var template = Handlebars.compile(source);
         var video;
+        var promises = [];
         for(var i=0;i<videos.length;i++){
             video=videos[i];
-            $.embedly.oembed(video['video_url'], {
-                key: '94c0f53c0cbe422dbc32e78d899fa4c5',
-                query: {
-                    maxwidth: 500,
-                    maxheight: 500,
-                    chars: 200
-                }
-            }).done(function (results) {
+            video.topic = video.department.department_name;
+            $('.video_boxes').append(template(video));
+
+            if(video.description && video.description!=""){
+                //  console.log('desc'+embedly_info.description);
+                $('.video_box:last').find('.video_description.desc_truncated').text(function(index, currentText) {
+                    return currentText.substr(0, 90);
+                });
+                $('.video_box:last').find('.video_description.desc_truncated').append('<span class="expand_video_description">...</span>');
+            }else{
+                //      console.log('yep');
+                $('.video_box:last').find('.video_description.desc_truncated').text(' ');
+            }
+        }
+        $('.video_box:eq(0)').addClass('focus');
+        $('.video_box:eq(1)').addClass('next');
+   /*     $.when.apply($,promises).done(function(){
+        //    console.log(promises);
+            var verified;
+            var skipped_i;
+            for(var i=0;i<promises.length;++i){
+            //    console.log(i+' yo');
+                verified=false;
+                promises[i].always(function (results) {
+
                     if (!results.invalid) {
                         embedly_info = results[0];
-                        console.log(embedly_info.url+"embedly");
-                        for(var j=0;j<videos.length;j++){
-                            console.log(videos[j].video_url+"video");
-                            if(embedly_info.url && videos[j].video_url.substring(videos[j].video_url.indexOf(':'))
-                                == embedly_info.url.substring(embedly_info.url.indexOf(':'))){
-                                embedly_info.topic = videos[j].department.department_name;
-                                if(videos[j].subtopic){
-                                    embedly_info.subtopic = videos[j].subtopic;
-                                }
 
-                            }
+                        verified=true;
+
+                        if(!videos[i]){
+                            i=skipped_i;
                         }
-                        //  embedly_info.position = "focus";
-                        //append_embedly(single_post['post_id'],embedly_info,single_post['post_type']);
-                       // $video_box=template(embedly_info);
-                        $('.video_boxes').append(template(embedly_info));
-                        $('.video_box').removeClass('focus').removeClass('next');
-                        $('.video_box:eq(0)').addClass('focus');
-                        $('.video_box:eq(1)').addClass('next');
-                       // $('.video_description.desc_truncated').dotdotdot();
-                        $('.video_description.desc_truncated').text(function(index, currentText) {
-                            return currentText.substr(0, 100);
-                        });
-                        $('.video_description.desc_truncated').append('<span class="expand_video_description">...</span>');
 
+                        embedly_info.topic = videos[i].department.department_name;
+                        if(videos[i].subtopic){
+                            embedly_info.subtopic = videos[i].subtopic;
+                        }
+
+
+                     //   console.log(embedly_info);
+                        $('.video_boxes').append(template(embedly_info));
+
+
+
+                        if(embedly_info.description && embedly_info.description!=""){
+                          //  console.log('desc'+embedly_info.description);
+                            $('.video_box:last').find('.video_description.desc_truncated').text(function(index, currentText) {
+                                return currentText.substr(0, 90);
+                            });
+                            $('.video_box:last').find('.video_description.desc_truncated').append('<span class="expand_video_description">...</span>');
+                        }else{
+                      //      console.log('yep');
+                            $('.video_box:last').find('.video_description.desc_truncated').text(' ');
+                        }
 
                     }
+                });
+                if(!verified){
+                    skipped_i=i;
                 }
-            );
-        }
+            }
+
+        });*/
+
 
         //render_replies(videos[0]);
         set_comments_and_likes();
@@ -77,6 +103,7 @@ $(document).ready(function(){
     }
 
     function set_comments_and_likes(){
+        //console.log('index '+index);
         var $video_post = $('.post.video_box_post');
         $('.video_reply_form').attr('data-video_id',videos[index].video_id);
         $video_post.attr('data-video_id',videos[index].video_id);
@@ -84,14 +111,27 @@ $(document).ready(function(){
         if(videos[index]['replies'].length>0){
             $video_post.find('.post_comment_btn').append('<div class = "reply_number">'+videos[index]['replies'].length+'</div>');
         }
-        if(videos[index]['liked']){
-            $video_post.find('.post_liked').show();
-            $video_post.find('.post_like').hide();
+        if(index==0){
+            if(videos[index]['liked']){
+                $video_post.find('.post_liked').show();
+                $video_post.find('.post_like').remove();
+            }else{
+                $video_post.find('.post_liked').remove();
+                $video_post.find('.post_like').show();
+            }
         }else{
-            $video_post.find('.post_liked').hide();
-            $video_post.find('.post_like').show();
+            if(videos[index]['liked']){
+                $video_post.find('.post_like_btn').removeClass('post_like');
+                $video_post.find('.post_like_btn').addClass('post_liked');
+                $video_post.find('.post_like_btn i').addClass("press");
+            }else{
+                $video_post.find('.post_like_btn').removeClass('post_liked');
+                $video_post.find('.post_like_btn').addClass('post_like');
+                $video_post.find('.post_like_btn i').removeClass("press");
+            }
         }
-        $video_post.find('.post_like_btn .like_number').remove();
+
+        $video_post.find('.like_number').remove();
         if(videos[index]['like_count']>0){
             $video_post.find('.post_like_btn').append('<div class = "like_number">'+videos[index]['like_count']+'</div>');
         }
@@ -104,7 +144,7 @@ $(document).ready(function(){
             video['replies'][i]['update_timestamp'] = moment(video['replies'][i]['update_timestamp'], "X").fromNow();
         }
         var array = {'replies' : video['replies']};
-        console.log(array);
+        //console.log(array);
         $(".master_comments.video_comments").html(template(array));
         //add_embedly_to_replies(video['replies']);
     }
@@ -198,7 +238,7 @@ $(document).ready(function(){
                     }}).done(function(results){
                         if(!results.invalid){
                             embedly_info = results[0];
-                            console.log(embedly_info);
+                        //    console.log(embedly_info);
                             append_embedly(reply['video_reply_id'],embedly_info);
                         }
                     }
@@ -233,6 +273,12 @@ $(document).ready(function(){
         $video_desc_full = $('.video_box.focus').find('.video_description.desc_full');
         $video_desc_full.hide();
         $video_desc_full.parent().find('.video_description.desc_truncated').show();
+        $video_player = $('.video_box.focus').find('.video iframe');
+
+        //var video = $video_player.attr("src");
+        $video_player.attr("src","");
+        //$video_player.stopVideo();
+        //$video_player.attr("src",video);
 
         if ($('.video_box_wrapper').hasClass('expandedvideo')) {
             $('.video').animate({
@@ -241,12 +287,12 @@ $(document).ready(function(){
             $('.embedly-embed.expandedvideoplayer').animate({
                 height: "124px",
                 width: "220px",
-            }).fadeOut(250).removeClass('expandedvideoplayer');
+            },100).fadeOut(100).removeClass('expandedvideoplayer');
             $('.video_boxes').animate({
                 height: "140px"
             });
             $('.video_left_column').animate({
-                width: "260px",
+                width: "252px",
                 marginLeft: "240px"
             });
             $('.video_categories, .video_box_functions').fadeIn(250);
@@ -264,6 +310,8 @@ $(document).ready(function(){
                 $video_box_next.addClass('focus');
                 $video_box_next.next('.video_box').addClass('next');
 
+                $
+
                 var margin_left = parseInt($('.video_boxes').css('margin-left'));
                 
                 $('.video_boxes').css('margin-left',margin_left-$video_box_next.outerWidth());
@@ -276,15 +324,23 @@ $(document).ready(function(){
             },100)  
         } else { 
             $video_box_next = $('.video_box.next');
-            $('.video_box.focus').removeClass('focus');
-            $video_box_next.removeClass('next');
-            $video_box_next.addClass('focus');
-            $video_box_next.next('.video_box').addClass('next');
+                $('.video_box.focus').removeClass('focus');
+                $video_box_next.removeClass('next');
+                $video_box_next.addClass('focus');
+                $video_box_next.next('.video_box').addClass('next');
 
-            var margin_left = parseInt($('.video_boxes').css('margin-left'));
+                var margin_left = parseInt($('.video_boxes').css('margin-left'));
+                
+                $('.video_boxes').css('margin-left',margin_left-$video_box_next.outerWidth());
+                index++;
+
+                set_comments_and_likes()
+
+                $(".master_comments.video_comments").html("<div id='show_more' class='morecmt_bar'>"
+                +"Read Comments</div>");
+
             
-            $('.video_boxes').css('margin-left',margin_left-$video_box_next.outerWidth()-1);
-            index++;
+
 
             set_comments_and_likes()
 
@@ -302,31 +358,32 @@ $(document).ready(function(){
         $('.video_boxes').animate({
             height: "415px"
         },100)
+        $('.video_box_wrapper').animate({
+            height: "415px"
+        },100).addClass('expandedvideo');
+        $video_box.find('.video_left_column').fadeOut(100);
         setTimeout(function(){
             $video_box.find('.video').fadeIn(250);
             $video_box.find('.embedly-embed').animate({
                 height: "281px",
                 width: "520px"
-            }).addClass('expandedvideoplayer');
+            },450).addClass('expandedvideoplayer');
+            $video_box.find('.video').animate({
+                marginTop: "100px"
+            },100);
         },100);
         setTimeout(function(){
             $video_box.find('.video_left_column').animate({
                 marginTop: "0px",
                 marginLeft: "10px",
                 width: "100%"
-            });
+            },100).fadeIn(350);
             $video_box.find('.video_categories, .video_box_functions').fadeOut(250);
             $video_desc_trunc=$video_box.find('.video_description.desc_truncated');
             $video_desc_trunc.hide();
             $video_desc_trunc.parent().find('.video_description.desc_full').show();
-            $video_box.find('.video').animate({
-                marginTop: "100px"
-            });
-        },200);
+        },300);
         $('.video_box:gt('+$video_box.index()+')').fadeOut(250);
-        $('.video_box_wrapper').animate({
-            height: "415px"
-        }).addClass('expandedvideo');
     });
 });
 

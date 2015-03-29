@@ -1060,13 +1060,17 @@ ERunActions::runBackground(true);
                                             $to_user_id = $school_user->user_id;
                                             $actor_id = $user->user_id;
 
-Yii::import('ext.runactions.components.ERunActions');
-ERunActions::runBackground(true);
 
-                                            ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendPostEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$model->post_id),$contentType=null);
+
+                                            //Dont send an email to everyone in a school for now
+
+//                                            Yii::import('ext.runactions.components.ERunActions');
+//                                            ERunActions::runBackground(true);
+//
+//                                            ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendPostEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$model->post_id),$contentType=null);
                                         }
 
-                                        send_notification('post',$user->user_id,$school_user->user_id,$post_data['post_id'],'post');
+                                        //send_notification('post',$user->user_id,$school_user->user_id,$post_data['post_id'],'post');
                                     }
                                 }
                             }else{

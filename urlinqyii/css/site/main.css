@@ -1553,6 +1553,8 @@ border-bottom: 1px solid rgba(3, 144, 74, 0.39);
 
     display: inline-block;
     margin-bottom: 12px;
+
+    float: left;
 }
 
 .members_tab_content div.members_card_wrapper .members_card.admin{

@@ -605,7 +605,7 @@ function ready(globals){
     });
 
     $(".post_like_btn").one( "click", function() {
-      alert();
+      //alert();
     });
 
 

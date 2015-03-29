@@ -15,7 +15,7 @@
     <div class="video_header">
         <div class="video_header_text">Video lessons to help you learn</div>
         <span class="info_icon">[]</span>
-        <div class="help_div">
+        <div class="help_div dark">
             <div class="wedge">
             </div>
             <div class="box">
@@ -113,7 +113,7 @@
         <div class="embedly_video_wrapper" >
             <div class="video_thumbnail" style="background-image: url('{{thumbnail_url}}')"></div>
             <div class="video" style = "display: none;">
-                {{{html}}}
+                {{{video_iframe}}}
                 <div class="skip_video video_open">next</div>
             </div>
         </div>
@@ -124,7 +124,6 @@
                 </div>
                 <div class="video_description desc_truncated">
                     {{description}}
-
                 </div>
 
                 <div class="video_description desc_full" style="display: none">
