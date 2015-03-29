@@ -69,9 +69,31 @@
         <!--<script src="js/progressbar.js"></script>-->
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/semantic/packaged/javascript/semantic.min.js"></script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/js/onboard.js"></script>
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/js/facebook_integration.js"></script>
 
     </head>
     <body>
+        <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function() {
+                console.log('loading facebook sdk 1');
+                FB.init({
+                    appId      : '237922879690774',
+                    xfbml      : true,
+                    version    : 'v2.3',
+                    cookie     : true
+                });
+            };
+            console.log('loading facebook sdk 2');
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+            console.log('loading facebook sdk 3');
+        </script>
         <div class = "darker_overlay"></div>
         <div class="wrapper">
             <div class="progress-window">
@@ -120,6 +142,7 @@
                     <div class="card_0_text"><div class="card_0_text_0">{{school_name}}</div><div class="card_0_text_1"></div></div>
                     <div class="green_join_btn"><em class = 'white_plus_icon'></em><span>Join</span></div>
                 </div>
+
             </div>
 
     </script>
@@ -280,6 +303,8 @@
             {{/ifCond}}
 
 
+
+            <!--<button class="facebook_login">get facebook picture</button>-->
 
 
 

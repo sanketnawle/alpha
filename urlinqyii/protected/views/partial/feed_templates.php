@@ -1024,7 +1024,7 @@
                         <div class = "post_attendees_link_arrow_border">
                         </div>
                         <div class="post_last_user_joined">
-                            <div class="post_last_user_image profile_link" data-user_id="{{event.last_joined.user_id}}" style="background-image:url("<?php echo Yii::app()->getBaseUrl(true);?>{{event.last_joined.pictureFile.file_url}}")"></div>
+                            <div class="post_last_user_image profile_link" data-user_id="{{event.last_joined.user_id}}" style='background-image:url("<?php echo Yii::app()->getBaseUrl(true);?>{{event.last_joined.pictureFile.file_url}}")'></div>
                             <div class="post_last_user_text"><a><span class="post_last_user_name profile_link" data-user_id="{{event.last_joined.user_id}}">{{event.last_joined.firstname}} {{event.last_joined.lastname}}</span></a> is attending</div>
                         </div>
 
@@ -1035,7 +1035,7 @@
                             {{#each event.other_attendees}}
                                 <div class="post_other_attendees">
 
-                                    <div class="post_user_image profile_link" data-user_id="{{user_id}}" style="background-image:url(<?php echo Yii::app()->getBaseUrl(true);?>{{pictureFile.file_url}})"></div>
+                                    <div class="post_user_image profile_link" data-user_id="{{user_id}}" style='background-image:url(<?php echo Yii::app()->getBaseUrl(true);?>{{pictureFile.file_url}})'></div>
                                     <div class="post_user_popup help_div dark">
                                         <div class = "wedge"></div>
                                         <div class = "box">{{firstname}} {{lastname}}</div>

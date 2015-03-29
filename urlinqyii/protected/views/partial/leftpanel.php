@@ -134,7 +134,12 @@ if($user->school->university_id == 4){
 		</div>
 
 
+<<<<<<< HEAD
 		<!--<?php //echo $this->renderPartial('/partial/messaging_panel',array('user'=>$user,'origin_type'=>$origin_type,'origin_id'=>$origin_id)); ?>-->
+=======
+<?php echo $this->renderPartial('/partial/messaging_panel',array('user'=>$user,'origin_type'=>$origin_type,'origin_id'=>$origin_id)); ?>
+
+>>>>>>> e5a3b362e7d5979b2a69f12169637f2b4e306dfc
 
 
 

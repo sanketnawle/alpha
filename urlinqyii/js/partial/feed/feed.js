@@ -70,7 +70,7 @@ function ready(globals){
             var last_activity = $first_post.attr('data-last_activity');
 
             if(created_at === last_created_at){
-                console.log('returning request');
+                //console.log('returning request');
                 //Dont remake the same request
                 return;
             }
@@ -605,7 +605,7 @@ function ready(globals){
     });
 
     $(".post_like_btn").one( "click", function() {
-      alert();
+      //alert();
     });
 
 
@@ -1010,8 +1010,8 @@ function ready(globals){
 
         //Get the offset of the last post on the page
         var last_post = $('#posts').find('.post').last();
-        console.log('LAST POST VISIBLE?');
-        console.log(isElementInViewport(last_post));
+        //console.log('LAST POST VISIBLE?');
+        //console.log(isElementInViewport(last_post));
 
 
         if(last_post.length){

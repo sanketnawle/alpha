@@ -3,7 +3,8 @@
 class VideoController extends Controller
 {
     public function actionAddVideo(){
-        if(!isset($_POST['video_url']) || !isset($_POST['department_id']) || !isset($_POST['topic'])){
+        if(!isset($_POST['video_url']) || !isset($_POST['department_id'])
+            ||!isset($_POST['title'])||!isset($_POST['video_iframe'])||!isset($_POST['thumbnail_url'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'all data not set', '_post'=>$_POST);
             $this->renderJSON($data);
             return;
@@ -13,6 +14,12 @@ class VideoController extends Controller
         $video->video_url=$_POST['video_url'];
         if($_POST['topic']!=""){
             $video->subtopic=$_POST['topic'];
+        }
+        $video->video_iframe=$_POST['video_iframe'];
+        $video->thumbnail_url=$_POST['thumbnail_url'];
+        $video->title=$_POST['title'];
+        if($_POST['description']!=""){
+            $video->description=$_POST['description'];
         }
 
         if($video->save(false)){

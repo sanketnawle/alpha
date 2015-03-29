@@ -319,6 +319,32 @@ $(document).ready(function(){
 
     });
 
+    $(document).on('click','.preview_video',function(){
+        var video_url = $('#create_video_url_input').val() ? $('#create_video_url_input').val() : '';
+
+        if(video_url == '' || video_url == '0'){
+            alert('Input video url');
+            return;
+        }
+        var embedly_info;
+        $.embedly.oembed(video_url, {
+            key: '94c0f53c0cbe422dbc32e78d899fa4c5',
+            query: {
+                maxwidth: 500,
+                maxheight: 500,
+                chars: 500
+            }
+        }).done(function(response){
+            if (!response.invalid) {
+                embedly_info = response[0];
+                $('#create_video_title_input').val(embedly_info.title);
+                $('#create_video_description_input').val(embedly_info.description);
+                $('.thumbnail_preview').attr('src',embedly_info.thumbnail_url);
+
+            }
+        });
+
+    });
     $(document).on('submit', '#create_video_form', function(e){
         e.preventDefault();
 
@@ -333,39 +359,55 @@ $(document).ready(function(){
             return;
         }
 
-     /*   if(title == '' || title == '0'){
-            alert('Input title');
-            return;
-        }*/
 
         if(department_id == '' || department_id == '0'){
             alert('Input department');
             return;
         }
+        var thumbnail_url;
+        var video_iframe;
+        $.embedly.oembed(video_url, {
+            key: '94c0f53c0cbe422dbc32e78d899fa4c5',
+            query: {
+                maxwidth: 500,
+                maxheight: 500,
+                chars: 500
+            }
+        }).done(function(response){
+            if (!response.invalid) {
+                embedly_info = response[0];
+                if(title==""){
+                    title=embedly_info.title;
+                }
+                if(description=="" && embedly_info.description){
+                    description = embedly_info.description;
+                }
+                var thumbnail_url = embedly_info.thumbnail_url;
+                var video_iframe = embedly_info.html;
+                var post_data = {
+                    department_id:department_id,
+                    video_url:video_url,
+                    title:title,
+                    description:description,
+                    topic:topic,
+                    thumbnail_url:thumbnail_url,
+                    video_iframe:video_iframe
+                };
+                create_video_send_post(post_data);
+            }
+        });
 
-/*   if(description == '' || description == '0'){
-            alert('Input description');
-            return;
-        }*/
-
-
-      /*  if(topic == ''){
-            alert('input topic');
-            return;
-        }*/
 
 
 
+
+
+
+
+    });
+
+    function create_video_send_post(post_data){
         var post_url = globals.base_url + '/video/addVideo';
-
-
-        var post_data = {
-            department_id:department_id,
-            video_url:video_url,
-            title:title,
-            description:description,
-            topic:topic
-        };
 
         $.post(
             post_url,
@@ -382,12 +424,7 @@ $(document).ready(function(){
 
             },'json'
         );
-
-
-
-
-
-    });
+    }
 
 
 
