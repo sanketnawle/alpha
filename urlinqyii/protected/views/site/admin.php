@@ -24,6 +24,8 @@
 
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
 
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/embedly.js"> </script>
+
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/admin.js"></script>
 </head>
     <body>
@@ -163,7 +165,7 @@
             <label for="create_video_description_input">Description</label>
             <br>
 
-            <textarea class='description_input' type="text" id="create_video_description_input" placeholder="description"></textarea>
+            <textarea class='description_input' type="text" id="create_video_description_input" placeholder="description" style="height:145px;width:400px;"></textarea>
             <br>
 
             <label for="create_video_school_input">School</label>
@@ -188,10 +190,14 @@
 
             <br>
 
+            <label for="thumbnail_preview">Thumbnail</label>
+            <br>
+            <img class="thumbnail_preview" height="145">
+
 
 
             <!--            <input type="text" id="create_course_course_tag_input" placeholder="course tag (MA-UY 1121)">-->
-
+            <button type="button" class="preview_video">Preview</button>
             <button type="submit">Add Video</button>
 
         </form>

@@ -30,16 +30,23 @@ $(document).ready(function(){
         var promises = [];
         for(var i=0;i<videos.length;i++){
             video=videos[i];
-            promises[i] = $.embedly.oembed(video['video_url'], {
-                key: '94c0f53c0cbe422dbc32e78d899fa4c5',
-                query: {
-                    maxwidth: 500,
-                    maxheight: 500,
-                    chars: 200
-                }
-            });
+            video.topic = video.department.department_name;
+            $('.video_boxes').append(template(video));
+
+            if(video.description && video.description!=""){
+                //  console.log('desc'+embedly_info.description);
+                $('.video_box:last').find('.video_description.desc_truncated').text(function(index, currentText) {
+                    return currentText.substr(0, 90);
+                });
+                $('.video_box:last').find('.video_description.desc_truncated').append('<span class="expand_video_description">...</span>');
+            }else{
+                //      console.log('yep');
+                $('.video_box:last').find('.video_description.desc_truncated').text(' ');
+            }
         }
-        $.when.apply($,promises).done(function(){
+        $('.video_box:eq(0)').addClass('focus');
+        $('.video_box:eq(1)').addClass('next');
+   /*     $.when.apply($,promises).done(function(){
         //    console.log(promises);
             var verified;
             var skipped_i;
@@ -85,9 +92,8 @@ $(document).ready(function(){
                     skipped_i=i;
                 }
             }
-            $('.video_box:eq(0)').addClass('focus');
-            $('.video_box:eq(1)').addClass('next');
-        });
+
+        });*/
 
 
         //render_replies(videos[0]);
@@ -267,6 +273,12 @@ $(document).ready(function(){
         $video_desc_full = $('.video_box.focus').find('.video_description.desc_full');
         $video_desc_full.hide();
         $video_desc_full.parent().find('.video_description.desc_truncated').show();
+        $video_player = $('.video_box.focus').find('.video iframe');
+
+        //var video = $video_player.attr("src");
+        $video_player.attr("src","");
+        //$video_player.stopVideo();
+        //$video_player.attr("src",video);
 
         if ($('.video_box_wrapper').hasClass('expandedvideo')) {
             $('.video').animate({
@@ -297,6 +309,8 @@ $(document).ready(function(){
                 $video_box_next.removeClass('next');
                 $video_box_next.addClass('focus');
                 $video_box_next.next('.video_box').addClass('next');
+
+                $
 
                 var margin_left = parseInt($('.video_boxes').css('margin-left'));
                 
