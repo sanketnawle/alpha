@@ -64,7 +64,7 @@
 
 
 
-                $picture_sql = "SELECT picture_file_id FROM user WHERE picture_file_id IS NOT NULL AND picture_file_id!=1 AND school_id=$school_id LIMIT 5;";
+                $picture_sql = "SELECT picture_file_id FROM user WHERE picture_file_id IS NOT NULL AND picture_file_id!=1 AND school_id=$school_id LIMIT 10;";
 
                 $cmd = Yii::app()->db->createCommand($picture_sql);
                 $picture_files = $cmd->queryAll();
