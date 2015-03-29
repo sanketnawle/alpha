@@ -32,6 +32,10 @@ class SchoolController extends Controller
             $is_urlinq_admin = true;
         }
 
+
+
+
+
         //var_dump($user);
         //$members=User::model()->find('school_id:=id', array(':id'=>1));
         $this->render('school',array('user'=>$user,'school'=>$school, 'departments'=>$school->departments, 'users'=>$school->users,'is_member'=>$is_member, 'is_admin'=>$is_admin, 'is_urlinq_admin'=>$is_urlinq_admin));
@@ -114,6 +118,105 @@ class SchoolController extends Controller
         }
 
     }
+
+    //Loads groups 50 at a time
+    //GET: school_id
+    //GET: (optional)last_id - last group id in the list that you received
+    public function actionLoadGroups(){
+        if(!isset($_GET['school_id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $id = $_GET['school_id'];
+        $school = School::model()->find('school_id=:id',array(':id'=>$id));
+
+        if($school){
+
+            $extra_sql = '';
+            if(isset($_GET['last_id'])){
+                $last_group_id = $_GET['last_id'];
+                $extra_sql = " AND group_id > " . $last_group_id;
+            }
+
+            $sql = "SELECT * FROM `group` WHERE school_id = '" . $id . "'" . $extra_sql . " AND privacy = 0 ORDER BY group_id LIMIT 50";
+
+            $groups = Group::model()->findAllBySql($sql);
+
+
+            $school_group_data = $this->get_models_associations($groups,array('pictureFile', 'coverFile', 'members', 'events'));
+
+
+            $data = array('success'=>true,'groups'=>$school_group_data, 'data_type'=>'groups');
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
+
+    //Loads 50 users at a time in alphabetical order
+    public function actionLoadUsers(){
+        if(!isset($_GET['school_id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $user = $this->get_current_user($_GET);
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not logged in');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $id = $_GET['school_id'];
+        $school = School::model()->find('school_id=:id',array(':id'=>$id));
+
+        if($school){
+
+            $extra_sql = '';
+            if(isset($_GET['last_id'])){
+                $last_user_id = $_GET['last_id'];
+                $extra_sql = ' AND user_id > ' . $last_user_id;
+            }
+
+            $sql = "SELECT * FROM user WHERE school_id = '" . $id . "'" . $extra_sql . " ORDER BY user_id LIMIT 50";
+
+            $users = User::model()->findAllBySql($sql);
+
+
+            $school_user_data = $this->get_models_associations($users,array('pictureFile', 'studentAttributes', 'department'));
+
+            //Go through the school data and check if current user is following these users
+            foreach($school_user_data as $i=>$other_user){
+                if($user->is_following($other_user['user_id'])){
+                    $school_user_data[$i]['is_following'] = 'true';
+                }else{
+                    $school_user_data[$i]['is_following'] = 'false';
+                }
+            }
+
+
+            $data = array('success'=>true,'users'=>$school_user_data, 'data_type'=>'users');
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
 
 
 

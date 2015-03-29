@@ -341,39 +341,42 @@ if($school->university_id == 4){
 
 
 
-                        <div class = "group_info_tab_content tab_content">
-                        <?php foreach($school->clubs as $club){?>
+                        <div class = "group_info_tab_content tab_content" data-data_type="groups" data-load_url="/school/loadGroups?school_id=<?php echo $school->school_id; ?>">
+<!--                        --><?php //foreach($school->clubs as $club){?>
 
+                                <script id="group_template" type="text/x-handlebars-template">
 
-                                <div class = "group_box group_course_box club_box" data-name="<?php echo $club->group_name; ?>">
-                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>">
-                                        <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url; ?>')">
-                                            <div class = "group_link"><?php echo $club->group_name; ?></div>
-                                            <span class = "group_type group_with_button"></span>
+                                    <div class = "group_box group_course_box club_box data_box" data-type="group" data-id="{{group_id}}" data-name="{{group_name}}">
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true) . '/club/'; ?>{{group_id}}">
+                                            <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{coverFile.file_url}}')">
+                                                <div class = "group_link">{{group_name}}</div>
+                                                <span class = "group_type group_with_button"></span>
 
+                                            </div>
+                                        </a>
+                                        <div class = "group_box_main_info">
+
+                                            <div class = "float_Right">
+    <!--                                                <div class = "group_bar_button_holder">-->
+    <!--                                                    <div class = "join_button_wrapper">-->
+    <!--                                                        <div class = "group_join_button nonmember"><em class = "dark_add_icon"></em>Join Club</div>-->
+    <!--                                                    </div>-->
+    <!--                                                </div>-->
+                                            </div>
                                         </div>
-                                    </a>
-                                    <div class = "group_box_main_info">
-
-                                        <div class = "float_Right">
-<!--                                                <div class = "group_bar_button_holder">-->
-<!--                                                    <div class = "join_button_wrapper">-->
-<!--                                                        <div class = "group_join_button nonmember"><em class = "dark_add_icon"></em>Join Club</div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
+                                        <div class = "group_box_secondary_info_section">
+                                            <div class= "info_line indent">{{member_count}} members</div>
+                                            <div class= "info_line indent info_line_events"><span></span>{{event_count}} events this month</div>
+                                            <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about">{{group_desc}}</div></div></div>
                                         </div>
                                     </div>
-                                    <div class = "group_box_secondary_info_section">
-                                        <div class= "info_line indent"><?php echo count($club->members); ?> members</div>
-                                        <div class= "info_line indent info_line_events"><span></span><?php echo count($club->events); ?> events this month</div>
-                                        <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about"><?php echo $club->group_desc;?></div></div></div>
-                                    </div>
-                                </div>
+
+                                </script>
 
 
 
 
-                        <?php } ?>
+<!--                        --><?php //} ?>
 
                         </div>
 
@@ -400,66 +403,73 @@ if($school->university_id == 4){
                                 Members of <?php echo $school->school_name; ?>
                             </div>
                         </div>
-                        <div class = "members_tab_content tab_content" data-data_type="members" data-load_url="/school/loadUsers?school_id=<?php echo $school->school_id; ?>">
+                        <div class = "members_tab_content tab_content" data-data_type="users" data-load_url="/school/loadUsers?school_id=<?php echo $school->school_id; ?>">
 
 
 
-                            <?php
-                            $members = $school->users;
+<!--                            --><?php
+//                            $members = $school->users;
+//
+//
+//                            function compare_user_names($a, $b){
+//                                if ($a->firstname == $b->firstname) {
+//                                    return 0;
+//                                }
+//                                return ($a->firstname < $b->firstname) ? -1 : 1;
+//                            }
+//
+//
+//                            usort($members, "compare_user_names");
+//
+//
+//                            $members_count = count($members);
+//
+//                            if($members_count > 50){
+//                                $members_count = 50;
+//                            }
+//                            ?>
+<!--                            --><?php //for($i = 0; $i < $members_count; $i++){?>
+<!--                                --><?php //$member = $members[$i]; ?>
 
 
-                            function compare_user_names($a, $b){
-                                if ($a->firstname == $b->firstname) {
-                                    return 0;
-                                }
-                                return ($a->firstname < $b->firstname) ? -1 : 1;
-                            }
+                            <script id="user_template" type="text/x-handlebars-template">
 
-
-                            usort($members, "compare_user_names");
-
-
-                            $members_count = count($members);
-
-                            if($members_count > 50){
-                                $members_count = 50;
-                            }
-                            ?>
-                            <?php for($i = 0; $i < $members_count; $i++){?>
-                                <?php $member = $members[$i]; ?>
-                                <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
+                                <div class = "members_card_wrapper data_box" data-type="user" data-id="{{user_id}}" data-user_id='{{user_id}}' data-name="{{firstname}} {{lastname}}">
                                     <div class = "members_card admin normal_size">
-                                        <div class = "members_card_img profile_link" data-user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
-
-                                            <?php if($member->user_type == 'p'){ ?>
+                                        <div class = "members_card_img profile_link" data-user_id='{{user_id}}' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{pictureFile.file_url}}');">
+                                            {{#ifCond user_type '==' 'p'}}
                                                 <span class = "title">Professor</span>
-                                            <?php }elseif($member->user_type == 'a'){ ?>
+                                            {{/ifCond}}
+                                            {{#ifCond user_type '==' 'a'}}
                                                 <span class = "title">Admin</span>
-                                            <?php }else{ ?>
+                                            {{/ifCond}}
+                                            {{#ifCond user_type '==' 's'}}
                                                 <span class = "title">Student</span>
-                                            <?php } ?>
+                                                <span class = "class_year">{{studentAttributes.year_name}}</span>
 
-                                            <span class = "class_year">Senior</span>
+                                            {{/ifCond}}
+
                                         </div>
                                         <div class = "user_main_info">
-                                            <a class = "name profile_link" data-user_id='<?php echo $member->user_id; ?>'><?php echo $member->full_name(); ?></a>
+                                            <a class = "name profile_link" data-user_id='{{user_id}}'>{{firstname}} {{lastname}}</a>
                                         </div>
                                         <div class = "user_more_info">
-                                            <?php if($member->department){ ?>
-                                                <a class = "department_link"><?php echo $member->department->department_name; ?></a>
-                                            <?php } ?>
-                                        </div>
-                                        <?php if($user->user_id !== $member->user_id){ ?>
-                                        <div class = "user_card_button_holder">
+                                            <a class = "department_link">{{department.department_name}}</a>
 
-                                            <?php if($user->is_following($member->user_id)){ ?>
-                                            <div class = "follow_button_wrapper following_wrapper">
-                                                <div class = "user_follow_button following">Following</div>
-                                                <?php }else{ ?>
-                                                <div class = "follow_button_wrapper following_wrapper">
-                                                    <div class = "user_follow_button">Follow</div>
-                                                    <?php } ?>
-                                                    <a href="mailto:<?php echo $member->user_email?>">
+                                        </div>
+
+                                        {{#ifCond user_id '!=' '<?php echo $user->user_id; ?>'}}
+                                            <div class = "user_card_button_holder">
+                                                {{#ifCond is_following '==' 'true'}}
+                                                    <div class = "follow_button_wrapper following_wrapper">
+                                                            <div class = "user_follow_button following">Following</div>
+                                                {{else}}
+                                                    <div class = "follow_button_wrapper following_wrapper">
+                                                        <div class = "user_follow_button">Follow</div>
+                                                {{/ifCond}}
+
+
+                                                    <a href="mailto:{{user_email}}">
                                                         <div class = "user_message_button message_active">
                                                             <em class = "white_message_icon"></em>
                                                         </div>
@@ -468,18 +478,22 @@ if($school->university_id == 4){
 
 
                                             </div>
-                                            <?php }else{?>
-                                                <div class = "user_card_button_holder">
-                                                    <div class = "follow_button_wrapper following_wrapper">
-                                                        <div class = "user_follow_button own_profile">Me</div>
-                                                    </div>
+                                        {{else}}
+                                            <div class = "user_card_button_holder">
+                                                <div class = "follow_button_wrapper following_wrapper">
+                                                    <div class = "user_follow_button own_profile">Me</div>
                                                 </div>
-                                            <?php } ?>
+                                            </div>
+                                        {{/ifCond}}
+
+
                                     </div>
                                 </div>
+<!---->
+<!--                            --><?php //} ?>
+                                </div>
+                            </script>
 
-                            <?php } ?>
-                        </div>
                     </div>
                 </div>
 
