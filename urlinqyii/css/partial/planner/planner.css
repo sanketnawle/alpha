@@ -1,6 +1,6 @@
 
 .body_group .planner_container{
-width:240px;
+width: 250px;
 }
 
 .planner_container{
@@ -128,7 +128,7 @@ hr.future_events_top_line{
 }
 
 .body_group .entry_field{
-      width: 222px;
+      width: 233px;
 }
 
 
@@ -371,7 +371,7 @@ font-family: 'Open Sans', sans-serif;
 }
 
 body.body_group .event_date{
-width: 104px;
+width: 106px;
 height: 36px;
 cursor: pointer;
 background-repeat: no-repeat;
@@ -509,7 +509,7 @@ input.event_title{
 }
 
 body.body_group input.event_title{
-    width: 224px;
+    width: 235px;
     height: 36px;
 }
 
@@ -980,7 +980,7 @@ div.event_origin > a:hover{
 
 #past_events div.event span.event_name{
     color:#FF2727;
-    top: 6px;
+    top: 1px;
     position: relative;
 }
 
@@ -1256,7 +1256,7 @@ div.event_origin{
 body.body_group #tp1{
 padding: 8px 7px;
 top: 0px;
-width: 77px;
+width: 86px;
 left: 2px;
 }
 

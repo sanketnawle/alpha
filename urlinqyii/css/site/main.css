@@ -923,7 +923,8 @@ div.center_text p#group_name span.bottom{
 p#group_name span#name_title{
     margin-left:0;
     float:left;
-    max-width: 90%;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 div.professor_image,div.admin_image{
@@ -967,7 +968,7 @@ div.center_admin{
     text-transform: capitalize;
     position: absolute;
     bottom: auto;
-    margin-top: -54px;
+    margin-top: -44px;
 }
 
 span.sort_label{
@@ -1381,17 +1382,30 @@ border-bottom: 1px solid rgba(3, 144, 74, 0.39);
 
 
 .follow_button_wrapper:hover{
-    cursor:pointer;
+  cursor: pointer;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.06));
+  background-color: #15B0E7;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+  -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+  box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
 }
 
 .follow_button_wrapper:active{
-    cursor:pointer;
+  cursor: pointer;
+  background-color: #2C9DCA;
+  box-shadow: inset 0 1px 1px rgba(32, 151, 173, 1),inset 0 -1px 1px rgba(42, 166, 221, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+  -webkit-box-shadow: inset 0 1px 1px rgba(32, 151, 173, 1),inset 0 -1px 1px rgba(42, 166, 221, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+  -webkit-box-shadow: inset 0 0 0 1px #fff;
+  box-shadow: inset 0 0 0 1px #fff;
+  border: 1px solid #fff;
+  border: rgba(0,0,0,0) solid 1px;
+  outline: rgba(0,0,0,0) 0;
 }
 
 
 .follow_button_wrapper.following_wrapper.unfollow{
     background: #e84a5a!important; 
-    border-color: #bd2f33; 
+    border-color: #bd2f33!important; 
     box-shadow: none!important; 
     cursor: default!important;
    
@@ -1403,17 +1417,16 @@ border-bottom: 1px solid rgba(3, 144, 74, 0.39);
 
 
 .follow_button_wrapper{
-    width: 130px;
-    
-    border-radius: 4px;
-    height: 36px;
-    margin: 0 auto;
-    position: relative;
-    background-color: #45a8cf; 
-    border: 1px solid rgb(29, 153, 207); 
-    -moz-box-shadow: inset 0 1px 1px rgba(59, 192, 216, 1),inset 0 -1px 1px rgba(73, 186, 236, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); 
-    box-shadow: inset 0 1px 1px rgba(59, 192, 216, 1),inset 0 -1px 1px rgba(73, 186, 236, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); 
-    -webkit-box-shadow: inset 0 1px 1px rgba(59, 192, 216, 1),inset 0 -1px 1px rgba(73, 186, 236, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+  width: 130px;
+  border-radius: 4px;
+  height: 36px;
+  margin: 0 auto;
+  position: relative;
+  background-color: #029acf;
+  border: 1px solid #0382ae!important;
+  box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+  -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
 }
 
 .follow_button_wrapper .user_follow_button{
@@ -2263,6 +2276,10 @@ div.group_info_boxes.group_desc_box .group_info_block{
     top: 60px;
     float: left;
  height: 30px;}
+
+#set_to_parents_photo{
+    display: none!important;
+}
 
 .group_info_block_new.upload_cover_container:hover{
     background: rgba(11, 11, 11, .9);
