@@ -124,7 +124,6 @@
                 </div>
                 <div class="video_description desc_truncated">
                     {{description}}
-
                 </div>
 
                 <div class="video_description desc_full" style="display: none">
