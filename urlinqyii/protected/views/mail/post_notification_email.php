@@ -599,7 +599,8 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                             <p class="post_target_copy" style="margin: 0 auto;padding: 0;font-family: 'Open Sans', sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 16px;line-height: 1.6;color: #575757;text-align: left;max-width: 700px;width: 80%;margin-top: 7px;">
 
 						    <?php foreach($post->postQuestion->options as $option){ ?>
-                                <div class="post_question_option" style="font-size: 15px;color: #575757;border: 1px solid rgba(239, 239, 239, 0.72);padding: 10px 5px 0;height: 30px;border-width: 1px;margin-top: -1px;"><?php echo $option->option_text; ?></div>
+                                <a href="<?php echo Yii::app()->getBaseUrl(true) . "/" . $post->origin_type . "/" . $post->origin_id . "?question_option_id=" . $option->option_id; ?>" class="post_question_option" style="width:600px; text-decoration: none;font-size: 15px;color: #575757;border: 1px solid rgba(239, 239, 239, 0.72);padding: 10px 5px 0;height: 30px;border-width: 1px;margin-top: -1px;"><?php echo $option->option_text; ?></a>
+                               
                             <?php } ?>
 
                             </p>

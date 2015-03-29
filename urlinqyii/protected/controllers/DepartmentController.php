@@ -23,6 +23,16 @@ class DepartmentController extends Controller
             $is_admin = true;
         }
 
+
+
+        if(isset($_GET['event_id']) && isset($_GET['option'])){
+            $this->check_event_option($user,$_GET);
+        }
+
+        if(isset($_GET['question_option_id'])){
+            $this->check_question_option($user,$_GET);
+        }
+
         $is_following = DepartmentFollow::model()->exists('user_id =:uid and department_id = :did'
             ,array(':uid'=>$this->get_current_user_id(),':did'=>$department->department_id));
 
