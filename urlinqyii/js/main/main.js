@@ -53,6 +53,35 @@ $(document).ready(start(globals.origin_id));
         });
     });
 
+
+
+    Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+        switch (operator) {
+            case '==':
+                return (v1 == v2) ? options.fn(this) : options.inverse(this);
+            case '===':
+                return (v1 === v2) ? options.fn(this) : options.inverse(this);
+            case '<':
+                return (v1 < v2) ? options.fn(this) : options.inverse(this);
+            case '<=':
+                return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+            case '>':
+                return (v1 > v2) ? options.fn(this) : options.inverse(this);
+            case '>=':
+                return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+            case '&&':
+                return (v1 && v2) ? options.fn(this) : options.inverse(this);
+            case '||':
+                return (v1 || v2) ? options.fn(this) : options.inverse(this);
+            case '!=':
+                return (v1 != v2) ? options.fn(this) : options.inverse(this);
+            default:
+                return options.inverse(this);
+        }
+    });
+
+
     $('.tab').click(function(){
         var $tab = $(this);
         var panel_id = $tab.attr('data-panel_id');
@@ -112,7 +141,9 @@ $(document).ready(start(globals.origin_id));
     });
 
 
-
+    //stores type and true or false depending if
+    //we want to block additonal requests to server to load more
+    var type_locks = {};
 
 
     $( "#page" ).scroll(function() {
@@ -230,9 +261,161 @@ $(document).ready(start(globals.origin_id));
         }
 
 
-        //alert(y);
+
+
+
+        //Detect if there are any visible data_box elements on the page
+        var $data_boxes = $('.data_box:visible');
+//        console.log("CHAT BOXES");
+//        console.log($data_boxes);
+
+
+
+
+        if($data_boxes.length > 0){
+            //Check if the last data_box is visible
+            var $last_data_box = $data_boxes.last();
+
+            //Use this for checking if visible in frame so data starts loading before user hits
+            //very bottom
+            var $10nth_from_last = $($data_boxes.get($data_boxes.length - 10));
+
+            if($last_data_box != undefined && isElementInViewport($10nth_from_last)){
+                //alert('last data box is visible');
+                //If this isnt marked as the last item, make a request for
+                //more of its type
+                if(!$last_data_box.hasClass('last_data_box')){
+                    var data_box_type = $last_data_box.attr('data-type');
+                    var $data_box_parent = $last_data_box.parent();
+                    var load_url = $data_box_parent.attr('data-load_url');
+
+                    load_url += "&last_id=" + $last_data_box.attr('data-id');
+
+                    //alert(load_url);
+                    //Only run if we havent locked this type from loading again
+                    if(!type_locks[data_box_type]){
+                        type_locks[data_box_type] = true;
+
+
+                        $.getJSON(globals.base_url + load_url, function(json_data){
+                            if(json_data['success']){
+                                var data_type = json_data['data_type'];
+                                if(json_data[data_type].length > 0){
+                                    render_data_boxes(json_data);
+
+                                    if(json_data[data_type].length < 50){
+                                        //Get the new last box
+                                        $('.data_box:visible').last().addClass('last_data_box');
+                                    }else{
+                                        //Unlock requests for this data type
+                                        type_locks[data_box_type] = false;
+                                    }
+
+                                }else{
+                                    //There is nothing else to load, so add
+                                    //'last_data_box' class to last data box
+                                    //so we dont make any more useless requests
+                                    $last_data_box.addClass('last_data_box');
+                                }
+                            }else{
+                                console.log(json_data);
+                            }
+                        });
+                    }
+
+                }
+
+
+            }
+
+        }else{
+            //alert('There are no visible data boxes');
+        }
+
+
 
     });
+
+    init();
+
+    function init(){
+        if(globals.origin_type == 'school'){
+            //Load the initial departments/groups/members
+            var departments_url = $('.tab_content[data-data_type="departments"]').attr('data-load_url');
+            //alert('making request to ' + globals.base_url + departments_url);
+            $.getJSON(globals.base_url + departments_url, function(json_data){
+                render_data_boxes(json_data);
+            });
+
+
+            var groups_url = $('.tab_content[data-data_type="groups"]').attr('data-load_url');
+            $.getJSON(globals.base_url + groups_url, function(json_data){
+                render_data_boxes(json_data);
+            });
+
+
+             var users_url = $('.tab_content[data-data_type="users"]').attr('data-load_url');
+             $.getJSON(globals.base_url + users_url, function(json_data){
+                 render_data_boxes(json_data);
+             });
+
+        }
+    }
+
+    function render_data_box(data_type, data_json){
+        var $tab_content = null;
+        var source = '';
+        console.log(data_type);
+        if(data_type == 'departments'){
+            $tab_content = $('.tab_content[data-data_type="departments"]');
+            source = $("#department_template").html();
+
+
+            data_json['admin_count'] = data_json['admins'].length;
+            data_json['student_count'] = data_json['students'].length;
+            data_json['course_count'] = data_json['courses'].length;
+
+
+        }else if(data_type == 'users'){
+            $tab_content = $('.tab_content[data-data_type="users"]');
+            source = $("#user_template").html();
+
+
+//            data_json['admin_count'] = data_json['admins'].length;
+//            data_json['student_count'] = data_json['students'].length;
+//            data_json['course_count'] = data_json['courses'].length;
+
+
+        }else if(data_type == 'groups'){
+            $tab_content = $('.tab_content[data-data_type="groups"]');
+            source = $("#group_template").html();
+
+
+            data_json['member_count'] = data_json['members'].length;
+            data_json['event_count'] = data_json['events'].length;
+        }
+
+
+        var template = Handlebars.compile(source);
+
+        var $new_html_element = $(template(data_json));
+
+
+        //console.log($new_html_element);
+
+        $tab_content.append($new_html_element.hide().fadeIn(500));
+
+    }
+
+    function render_data_boxes(json_data){
+
+        var data_type = json_data['data_type'];
+
+        $.each(json_data[data_type],function(index, data_json){
+            render_data_box(data_type, data_json);
+        });
+
+    }
 
     //Admin members tab controls in class and club to remove group members
 
@@ -816,6 +999,30 @@ $(document).ready(start(globals.origin_id));
     $('#welcome_post, #welcome_post_2').hide().fadeIn(250);
 
 
+    function isElementInViewport (el) {
+        if(el === undefined){
+            return;
+        }
+
+        //special bonus for those using jQuery
+        if (typeof jQuery === "function" && el instanceof jQuery) {
+            el = el[0];
+        }
+
+        var rect = el.getBoundingClientRect();
+
+
+        console.log("BOUNDING RECT FOR LAST DATA_BOX");
+        console.log(rect);
+
+        return (
+//            rect.top >= 0
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+        );
+    }
 
 
 
