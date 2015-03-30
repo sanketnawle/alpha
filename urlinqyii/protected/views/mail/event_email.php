@@ -580,16 +580,38 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 
 
                                 <div class="post_choose_attending" data-event_id="<?php echo $event->event_id; ?>">
+                                    <?php
 
+
+
+
+                                        $origin_url = '';
+
+
+
+                                        //Make sure that the URL defaults to /home if the event is not apart of a group page\
+
+
+                                        if($event->origin_type == 'club' || $event->origin_type == 'class' || $event->origin_type == 'group' || $event->origin_type == 'department'){
+                                            $origin_url = "/" . $event->origin_type . "/" . $event->origin_id;
+                                        }else{
+                                            $origin_url = '/home';
+                                        }
+
+
+
+                                    ?>
 
 
                                     <span class="post_attending_label" style="  display: inline-block;font-size: 11.3px;color: #777;top: 3px;position: relative;margin-right: 6px;font-weight: 500;">Are you attending?</span>
 
-                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . "/" . $event->origin_type . "/" . $event->origin_id . "?event_id=" . $event->event_id . "&event_option=attending"; ?>" class="post_choose_yes_label" for="post_choose_yes_652" style="text-decoration: none;display: inline-block;margin: -3px;padding: 6px 10px;margin-bottom: 0;font-size: 11.9px;line-height: 20px;color: #333;text-align: center;font-weight: 600;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);vertical-align: middle;cursor: pointer;border: 1px solid #eee;border-bottom-color: #E4E4E4;background-color: #fcfcfc;background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);background-image: linear-gradient(#fafafa, #f8f8f8);color: #575757 !important;margin-top: 4px;width: 39px;">Yes</a>
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . $origin_url . "?event_id=" . $event->event_id . "&event_option=attending"; ?>" class="post_choose_yes_label" for="post_choose_yes_652" style="text-decoration: none;display: inline-block;margin: -3px;padding: 6px 10px;margin-bottom: 0;font-size: 11.9px;line-height: 20px;color: #333;text-align: center;font-weight: 600;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);vertical-align: middle;cursor: pointer;border: 1px solid #eee;border-bottom-color: #E4E4E4;background-color: #fcfcfc;background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);background-image: linear-gradient(#fafafa, #f8f8f8);color: #575757 !important;margin-top: 4px;width: 39px;">Yes</a>
 
-                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . "/" . $event->origin_type . "/" . $event->origin_id . "?event_id=" . $event->event_id . "&event_option=maybe_attending"; ?>" class="post_choose_maybe_label" for="post_choose_maybe_652" style="text-decoration: none;display: inline-block;margin: -3px;padding: 6px 10px;margin-bottom: 0;font-size: 11.9px;line-height: 20px;color: #333;text-align: center;font-weight: 600;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);vertical-align: middle;cursor: pointer;border: 1px solid #eee;border-bottom-color: #E4E4E4;background-color: #fcfcfc;background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);background-image: linear-gradient(#fafafa, #f8f8f8);color: #575757 !important;margin-top: 4px;width: 39px;">Maybe</a>
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . $origin_url . "?event_id=" . $event->event_id . "&event_option=maybe_attending"; ?>" class="post_choose_maybe_label" for="post_choose_maybe_652" style="text-decoration: none;display: inline-block;margin: -3px;padding: 6px 10px;margin-bottom: 0;font-size: 11.9px;line-height: 20px;color: #333;text-align: center;font-weight: 600;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);vertical-align: middle;cursor: pointer;border: 1px solid #eee;border-bottom-color: #E4E4E4;background-color: #fcfcfc;background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);background-image: linear-gradient(#fafafa, #f8f8f8);color: #575757 !important;margin-top: 4px;width: 39px;">Maybe</a>
 
-                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . "/" . $event->origin_type . "/" . $event->origin_id . "?event_id=" . $event->event_id . "&event_option=not_attending"; ?>" class="post_choose_no_label" for="post_choose_no_652" style="text-decoration: none;display: inline-block;margin: -3px;padding: 6px 10px;margin-bottom: 0;font-size: 11.9px;line-height: 20px;color: #333;text-align: center;font-weight: 600;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);vertical-align: middle;cursor: pointer;border: 1px solid #eee;border-bottom-color: #E4E4E4;background-color: #fcfcfc;background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);background-image: linear-gradient(#fafafa, #f8f8f8);color: #575757 !important;margin-top: 4px;width: 39px;">No</a>
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . $origin_url . "?event_id=" . $event->event_id . "&event_option=not_attending"; ?>" class="post_choose_no_label" for="post_choose_no_652" style="text-decoration: none;display: inline-block;margin: -3px;padding: 6px 10px;margin-bottom: 0;font-size: 11.9px;line-height: 20px;color: #333;text-align: center;font-weight: 600;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);vertical-align: middle;cursor: pointer;border: 1px solid #eee;border-bottom-color: #E4E4E4;background-color: #fcfcfc;background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);background-image: linear-gradient(#fafafa, #f8f8f8);color: #575757 !important;margin-top: 4px;width: 39px;">No</a>
+
+
 
                                 </div>
 
