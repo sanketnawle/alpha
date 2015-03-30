@@ -90,6 +90,24 @@ class SiteController extends Controller
         }else{
             $first_time=false;
         }
+
+
+
+
+
+
+        if(isset($_GET['event_id']) && isset($_GET['event_option'])){
+            $this->check_event_option($user,$_GET);
+        }
+
+
+        if(isset($_GET['question_option_id'])){
+            $this->check_question_option($user,$_GET);
+        }
+
+
+
+
        /* if($user->show_profile_tutorial){
             $show_planner_tutorial = "show_profile_tutorial";
             //$show_tutorial_button = true;

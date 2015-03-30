@@ -7,14 +7,14 @@
 
     public function actionStartOnboard() {
 
-        if (!isset($_POST['user_email'])) {
+        if (!isset($_GET['user_email'])) {
             $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'Can not check user status.');
             $this->renderJSON($data);
             return;
         }
 
         $pattern = '/^(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){255,})(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){65,}@)(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22))(?:\\.(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-+[a-z0-9]+)*\\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-+[a-z0-9]+)*)|(?:\\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\\]))$/iD';
-        $emailaddress = $_POST['user_email'];
+        $emailaddress = $_GET['user_email'];
 
         if (preg_match($pattern, $emailaddress) !== 1) {
             $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'Not a valid email.');
@@ -62,9 +62,15 @@
 
                 $school_new['member_count'] = $member_count;
 
+                $dept_count = "SELECT COUNT(school_id) FROM department WHERE school_id=$school_id";
 
+                $deptcoutncommand = Yii::app()->db->createCommand($dept_count);
+                $r = $deptcoutncommand->queryAll();
 
-                $picture_sql = "SELECT picture_file_id FROM user WHERE picture_file_id IS NOT NULL AND picture_file_id!=1 AND school_id=$school_id LIMIT 5;";
+                $dcount = $r[0]["COUNT(school_id)"];
+                $school_new['department_count'] = $dcount;
+
+                $picture_sql = "SELECT picture_file_id FROM user WHERE picture_file_id IS NOT NULL AND picture_file_id!=1 AND school_id=$school_id LIMIT 10;";
 
                 $cmd = Yii::app()->db->createCommand($picture_sql);
                 $picture_files = $cmd->queryAll();
@@ -109,6 +115,15 @@
                 $member_count = $results[0]["COUNT(school_id)"];
 
                 $school_new['member_count'] = $member_count;
+
+                $dept_count = "SELECT COUNT(school_id) FROM department WHERE school_id=$school_id";
+
+                $deptcoutncommand = Yii::app()->db->createCommand($dept_count);
+                $r = $deptcoutncommand->queryAll();
+
+                $dcount = $r[0]["COUNT(school_id)"];
+                $school_new['department_count'] = $dcount;
+
 
                 array_push($schools, $school_new);
             }
