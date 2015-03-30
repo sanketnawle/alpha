@@ -76,6 +76,19 @@ class ClassController extends Controller
             $is_admin = true;
         }
 
+        if($is_member && isset($_GET['event_id']) && isset($_GET['event_option'])){
+            $this->check_event_option($user,$_GET);
+        }
+
+
+        if(isset($_GET['question_option_id'])){
+            $this->check_question_option($user,$_GET);
+        }
+
+
+
+
+
 
 
 
