@@ -194,9 +194,10 @@ span.month_text
   margin-bottom:14px;
   position:absolute;
   text-align:center;
-  width:100%;
   max-height:265px;
-  overflow:hidden;
+  width:auto;
+  overflow-y:hidden;
+  overflow-x:auto;
 }
 
 .chip
@@ -561,6 +562,7 @@ div.add_event_hint > div.wedge
 
 div#events_template_loc {
   height:68% !important;
+  overflow:hidden;
 }
 
 div#events_template_loc,div#chip_card

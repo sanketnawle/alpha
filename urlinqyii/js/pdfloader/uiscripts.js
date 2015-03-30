@@ -190,6 +190,7 @@ var load_events = function (pdf_id) {
                   location: event_location,
                   description: description,
                   event_id: value["event_id"],
+                  full_day: d,
                   day: d.getDate(),
                   month: month[d.getMonth()],
                   weekday: weekday[d.getDay()],
@@ -257,10 +258,25 @@ function formatAMPM(date) {
 
 function display_events(events, is_root){
   $("#events_template_loc").data('data-form', events);
-  $("#events_template_loc").attr('current_page', 0);
   $("#events_template_loc").attr('pagecount', Math.ceil(events.length/4));
+  var today = new Date();
+  var current_day = false;
+  for(i=0; i<events.length && current_day == false; i++) {
+    var comparison = events[i]["full_day"];
+    console.log(comparison);
+    if ( +today > +comparison ) {
+      current_day = false;
+    } else if ( +today <= +comparison ) {
+      current_day = true;
+    }
+  }
+  var landing_page = Math.ceil(i/4);
+  console.log(i);
+  console.log(i/4);
+  console.log(landing_page);
   events_length = events.length;
   right = "block";
+  left = "block";
   if(events_length<=4){
     right = "none";
   }
@@ -270,7 +286,16 @@ function display_events(events, is_root){
   else{
     search_text = " Total events found";
   }
-  list_events(events.slice(0,4), "none", right, 0, search_text);
+
+  if(landing_page === 1) {
+    left = "none"
+  } else if(landing_page === Math.ceil(events.length/4)) {
+    right = "none"
+  }
+
+  $("#events_template_loc").attr('current_page', landing_page);
+
+  list_events(events, left, right, landing_page, search_text);
 }
 
 function list_events(events, img_left, img_right, page_value, result_text){
@@ -286,10 +311,10 @@ function list_events(events, img_left, img_right, page_value, result_text){
                       </div>\
                     </div>\
                     <div class="chip-container" id="chip_div">';
-
+    chip_text = '';
       for(i=0;i<events.length; i++){
-                    display_text+='<div class="chip_content">\
-                      <div class="chip"  style="display:none;right:-100px;" index="'+(page_value*4+i)+'" hero-id="'+events[i]["event_id"]+'">\
+                    chip_text+='<div class="chip_content">\
+                      <div class="chip" index="'+(page_value*4+i)+'" hero-id="'+events[i]["event_id"]+'">\
                         <div class="chip-top" style="background:'+events[i]["color"]+';">\
                           <div class="month">\
                             <span class = "month_text">'+events[i]["month"]+'</span>\
@@ -312,62 +337,18 @@ function list_events(events, img_left, img_right, page_value, result_text){
                     <span style="display:'+img_right+'" class="img_arrows img_rt"><div class="arrow_img"></div></span>\
                     <span style="display:'+img_left+'" class="img_arrows img_lt"><div class="arrow_img"></div></span>';
     $("#events_template_loc").html(display_text);
+    $(".chip-container").append(chip_text);
+    var chip_width = parseInt($('#events_template_loc').css('width')) * 0.25 - 8;
+    var screen_width = parseInt($('#events_template_loc').css('width'));
+    var container_width = chip_width * events.length;
     $(".chip").each(function(){
-      $(this).fadeIn({
-        queue: false,
-        duration: 'slow'
-      }).animate({
-        right: "0px"
+      $(this).css({
+        width: chip_width
       });
     });
-}
-
-function list_events_left(events, img_left, img_right, page_value, result_text){
-  display_text = '\
-                  <div id="event_count">'+events_length+ result_text+'</div>\
-                    <div class = "syllabus_tab_add_event_wrapper">\
-                      <div class = "add_event_button fbar_buttonwrapper" id = "fbar_button_event" data-post_button_type="event">\
-                      </div>\
-                      <div class = "add_event_hint">\
-                          <div class = "wedge">\
-                          </div>\
-                          <div class = "box">Add New Event</div>\
-                      </div>\
-                    </div>\
-                    <div class="chip-container" id="chip_div">';
-
-      for(i=0;i<events.length; i++){
-                    display_text+='<div class="chip_content">\
-                      <div class="chip"  style="display:none;left:-100px;" index="'+(page_value*4+i)+'" hero-id="'+events[i]["event_id"]+'">\
-                        <div class="chip-top" style="background:'+events[i]["color"]+';">\
-                          <div class="month">\
-                            <span class = "month_text">'+events[i]["month"]+'</span>\
-                            <span class = "day_text">'+events[i]["day"]+'</span>\
-                          </div>\
-                          <div class="time">\
-                            <span>'+events[i]["weekday"]+' '+events[i]["time"]+'</span>\
-                          </div>\
-                        </div>\
-                        <div class="collapse-date">'+events[i]["month"]+' '+events[i]["day"]+'</div>\
-                        <div class="chip-bottom">\
-                          <div class="chip-album-title">'+events[i]["title"]+'</div>\
-                          <div class="chip-artist">'+events[i]["origin_type"]+'</div>\
-                        </div>\
-                        <div class="collapse-info"><div class="collapse-info-hover"></div></div>\
-                      </div>\
-                    </div>';
-        };
-    display_text+='</div>\
-                    <span style="display:'+img_right+'" class="img_arrows img_rt"><div class="arrow_img"></div></span>\
-                    <span style="display:'+img_left+'" class="img_arrows img_lt"><div class="arrow_img"></div></span>';
-    $("#events_template_loc").html(display_text);
-    $(".chip").each(function(){
-      $(this).fadeIn({
-        queue: false,
-        duration: 'slow'
-      }).animate({
-        left: "0px"
-      });
+    $(".chip-container").css({
+      width: container_width,
+      marginLeft: (page_value - 1) * screen_width * -1
     });
 }
 
@@ -649,50 +630,38 @@ function get_files(event_id){
    return files_html;
 }
 
-$(document).on("click", ".img_lt", function(event){
-              $(".chip").each(function(){
-                $(this).fadeOut({
-                  queue: false,
-                  duration: 'slow'
-                }).animate({
-                  right: "-100px"
-                });
+$(document).on("click", ".img_lt", function clicked_previous(event){
+              var margin_left = parseInt($("#events_template_loc").css('width'));
+              var current_margin = parseInt($(".chip-container").css('margin-left'));
+              $(".chip-container").animate({
+                marginLeft: current_margin+margin_left
               });
               setTimeout(function(){
                 var page_value = parseInt($("#events_template_loc").attr("current_page"));
                   $("#events_template_loc").attr("current_page", parseInt($("#events_template_loc").attr("current_page")) - 1);
-                  show_left = "block";
-                  if(page_value-1==0){
-                  show_left = "none";
+                  $(".img_lt").css({ "display": "block" });
+                  $(".img_rt").css({ "display": "block" });
+                  if(page_value - 2 == 0){
+                  $(".img_lt").css({ "display": "none" });
                   }
-                  start = (page_value)*4;
-                  events = $("#events_template_loc").data('data-form').slice(start-4,start);
-                  list_events_left(events, show_left, "block", page_value-1, " Total events this semester");
-              },200);
-              
+              },0);   
 });
 
 $(document).on("click", ".img_rt", function clicked_next(event){
-              $(".chip").each(function(){
-                $(this).fadeOut({
-                  queue: false,
-                  duration: 'slow'
-                }).animate({
-                  left: "-100px"
-                });
+              var margin_left = parseInt($("#events_template_loc").css('width'));
+              var current_margin = parseInt($(".chip-container").css('margin-left'));
+              $(".chip-container").animate({
+                marginLeft: current_margin-margin_left
               });
               setTimeout(function(){
                 var page_value = parseInt($("#events_template_loc").attr("current_page"));
                   $("#events_template_loc").attr("current_page", parseInt($("#events_template_loc").attr("current_page")) + 1);
-                  show_right = "block";
-                  if(page_value+2==parseInt($("#events_template_loc").attr("pagecount"))){
-                  show_right = "none";
+                  $(".img_rt").css({ "display": "block" });
+                  $(".img_lt").css({ "display": "block" })
+                  if(page_value + 1 == parseInt($("#events_template_loc").attr("pagecount"))){
+                  $(".img_rt").css({ "display": "none" });
                   }
-                  start = (page_value+1)*4;
-                  events = $("#events_template_loc").data('data-form').slice(start,start+4);
-                  list_events(events, "block", show_right, page_value+1, " Total events this semester");
-                },200);
-              
+                },0);
 });
 
 var search_events = function(){
