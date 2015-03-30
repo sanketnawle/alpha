@@ -339,6 +339,43 @@ class MessageController extends Controller
             //$messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (target_type = "' . $target_type . '" AND target_id = ' . $target_id . ') ORDER BY id LIMIT 50');
             $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (target_type = "' . $target_type . '" AND target_id = ' . $target_id . ') ORDER BY id DESC LIMIT 50');
             $messages = array_reverse($messages);
+        }elseif($target_type == 'group' || $target_type == 'club'){
+            $group = Group::model()->find('group_id=:id', array(':id'=>$target_id));
+
+            if(!$group){
+                $return_data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'user is not a member of this group');
+                $this->renderJSON($return_data);
+                return;
+            }
+
+            $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (target_type = "' . $target_type . '" AND target_id = ' . $target_id . ') ORDER BY id DESC LIMIT 50');
+            $messages = array_reverse($messages);
+        }elseif($target_type == 'class'){
+            $class = ClassModel::model()->find('class_id=:id', array(':id'=>$target_id));
+
+            if(!$class){
+                $return_data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'user is not a member of this class');
+                $this->renderJSON($return_data);
+                return;
+            }
+
+            $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (target_type = "' . $target_type . '" AND target_id = ' . $target_id . ') ORDER BY id DESC LIMIT 50');
+            $messages = array_reverse($messages);
+        }elseif($target_type == 'department'){
+            $department = Department::model()->find('department_id=:id', array(':id'=>$target_id));
+
+            if(!$department){
+                $return_data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'user is not a member of this department');
+                $this->renderJSON($return_data);
+                return;
+            }
+
+            $messages = Message::model()->findAllBySql('SELECT * FROM `message` WHERE (target_type = "' . $target_type . '" AND target_id = ' . $target_id . ') ORDER BY id DESC LIMIT 50');
+            $messages = array_reverse($messages);
+        }else{
+            $return_data = array('success'=>false, 'error_id'=>6, 'error_msg'=>'invalid target type', '$_POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
         }
 
 
