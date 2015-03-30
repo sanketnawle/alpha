@@ -189,6 +189,73 @@ class Controller extends CController
         return $models;
     }
 
+    function check_question_option($user, $GET){
+        $question_option_id = $GET['question_option_id'];
+
+        $option = PostQuestionOption::model()->find('option_id=:id', array(':id'=>$question_option_id));
+
+        if($option){
+            $post_id = $option->post_id;
+            //Check if this user has already voted for this question
+            $post = $option->post;
+
+            //check if post is a question
+            $question = $post->postQuestion;
+            if($question && $question->active){
+
+                $options = $post->postQuestionOptions;
+
+                foreach($options as $this_option){
+
+                    //Check if the user voted for this option
+                    $user_vote = PostQuestionOptionAnswer::model()->find('option_id=:option_id and user_id=:user_id', array(':option_id'=>$this_option->option_id, ':user_id'=>$user->user_id));
+
+                    if($user_vote){
+                        if($user_vote->option_id != $option->option_id){
+                            $user_vote->delete();
+                        }
+                    }else{
+                        if($this_option->option_id == $option->option_id){
+                            $new_user_vote = new PostQuestionOptionAnswer;
+                            $new_user_vote->option_id = $option->option_id;
+                            $new_user_vote->user_id = $user->user_id;
+                            $new_user_vote->save(false);
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+
+    }
+
+    //Allows urls to take in event_id and option as attending, maybe_attending, not_attending to set attend_status for the event_user table
+    function check_event_option($user, $GET){
+
+        $event_id = $GET['event_id'];
+        $option = $GET['event_option'];
+
+        if($option == 'attending' || $option == 'maybe_attending' || $option == 'not_attending'){
+            //Check if the event exists
+            $event = Event::model()->find('event_id=:id', array(':id'=>$event_id));
+            if($event){
+                if($user->user_id == $event->user_id){
+                    //User is default attending
+                }else{
+                    $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$event_id, ':user_id'=>$user->user_id));
+                    if($event_user){
+                        $event_user->attend_status = $option;
+
+                        $event_user->save(false);
+                    }
+                }
+
+            }
+        }
+    }
+
 
 
 

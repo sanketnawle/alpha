@@ -572,35 +572,46 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                                             <?php } ?>
                                             <p class="post_target_copy event_description" style="width: 88%;margin-top: 0px;padding: 12px 8px;margin: 0 auto;font-family: 'Open Sans', sans-serif;margin-bottom: 18px;font-weight: normal;font-size: 16px;line-height: 1.6;color: #575757;text-align: left;max-width: 700px;margin-left: 0px;">
                                             <?php echo $event->description; ?></p>
-                                        </div><a href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $event->origin_type . '/' . $event->origin_id; ?>" class="btn group_link_btn" style="display: block;margin: 0 auto;padding: 10px 0;font-family: 'Open Sans', sans-serif;color: #FFF;text-decoration: none;background-color: #666;font-weight: bold;margin-right: 10px;text-align: center;cursor: pointer;background: #029acf;max-width: 250px;width: 80%;border-radius: 4px;margin-left: 40px;font-size: 18px;border-bottom: 2px solid rgba(0, 0, 0, 0.21);margin-bottom: 26px;">See
-                                        what's next 
-                                        </a>
+                                        </div>
+<!--                                        <a href="--><?php //echo Yii::app()->getBaseUrl(true) . '/' . $event->origin_type . '/' . $event->origin_id; ?><!--" class="btn group_link_btn" style="display: block;margin: 0 auto;padding: 10px 0;font-family: 'Open Sans', sans-serif;color: #FFF;text-decoration: none;background-color: #666;font-weight: bold;margin-right: 10px;text-align: center;cursor: pointer;background: #029acf;max-width: 250px;width: 80%;border-radius: 4px;margin-left: 40px;font-size: 18px;border-bottom: 2px solid rgba(0, 0, 0, 0.21);margin-bottom: 26px;">See-->
+<!--                                        what's next -->
+<!--                                        </a>-->
 
 
 
-                                <div class="post_choose_attending" data-event_id="652">
+                                <div class="post_choose_attending" data-event_id="<?php echo $event->event_id; ?>">
+                                    <?php
 
+
+
+
+                                        $origin_url = '';
+
+
+
+                                        //Make sure that the URL defaults to /home if the event is not apart of a group page\
+
+
+                                        if($event->origin_type == 'club' || $event->origin_type == 'class' || $event->origin_type == 'group' || $event->origin_type == 'department'){
+                                            $origin_url = "/" . $event->origin_type . "/" . $event->origin_id;
+                                        }else{
+                                            $origin_url = '/home';
+                                        }
+
+
+
+                                    ?>
 
 
                                     <span class="post_attending_label" style="  display: inline-block;font-size: 11.3px;color: #777;top: 3px;position: relative;margin-right: 6px;font-weight: 500;">Are you attending?</span>
-                                    <input type="radio" id="post_choose_yes_652" class="post_choose_attending_button" name="652" value="Yes" style="vertical-align: text-top;height: 12px;margin-top: 6px;">
-                                    <label class="post_choose_yes_label" for="post_choose_yes_652" style="display: inline-block;margin: -3px;padding: 6px 10px;margin-bottom: 0;font-size: 11.9px;line-height: 20px;color: #333;text-align: center;font-weight: 600;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);vertical-align: middle;cursor: pointer;border: 1px solid #eee;border-bottom-color: #E4E4E4;background-color: #fcfcfc;background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);background-image: linear-gradient(#fafafa, #f8f8f8);color: #575757 !important;margin-top: 4px;width: 39px;">Yes</label>
-                                    <input type="radio" id="post_choose_maybe_652" class="post_choose_attending_button" name="652" value="Maybe">
-                                    <label class="post_choose_maybe_label" for="post_choose_maybe_652" style="display: inline-block;margin: -3px;padding: 6px 10px;margin-bottom: 0;font-size: 11.9px;line-height: 20px;color: #333;text-align: center;font-weight: 600;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);vertical-align: middle;cursor: pointer;border: 1px solid #eee;border-bottom-color: #E4E4E4;background-color: #fcfcfc;background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);background-image: linear-gradient(#fafafa, #f8f8f8);color: #575757 !important;margin-top: 4px;width: 39px;">Maybe</label>
-                                    <input type="radio" id="post_choose_no_652" class="post_choose_attending_button" name="652" value="No">
-                                    <label class="post_choose_no_label" for="post_choose_no_652" style="display: inline-block;margin: -3px;padding: 6px 10px;margin-bottom: 0;font-size: 11.9px;line-height: 20px;color: #333;text-align: center;
-  font-weight: 600;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  vertical-align: middle;
-  cursor: pointer;
-  border: 1px solid #eee;
-  border-bottom-color: #E4E4E4;
-  background-color: #fcfcfc;
-  background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);
-  background-image: linear-gradient(#fafafa, #f8f8f8);
-  color: #575757 !important;
-  margin-top: 4px;
-  width: 39px;">No</label>
+
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . $origin_url . "?event_id=" . $event->event_id . "&event_option=attending"; ?>" class="post_choose_yes_label" for="post_choose_yes_652" style="text-decoration: none;display: inline-block;margin: -3px;padding: 6px 10px;margin-bottom: 0;font-size: 11.9px;line-height: 20px;color: #333;text-align: center;font-weight: 600;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);vertical-align: middle;cursor: pointer;border: 1px solid #eee;border-bottom-color: #E4E4E4;background-color: #fcfcfc;background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);background-image: linear-gradient(#fafafa, #f8f8f8);color: #575757 !important;margin-top: 4px;width: 39px;">Yes</a>
+
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . $origin_url . "?event_id=" . $event->event_id . "&event_option=maybe_attending"; ?>" class="post_choose_maybe_label" for="post_choose_maybe_652" style="text-decoration: none;display: inline-block;margin: -3px;padding: 6px 10px;margin-bottom: 0;font-size: 11.9px;line-height: 20px;color: #333;text-align: center;font-weight: 600;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);vertical-align: middle;cursor: pointer;border: 1px solid #eee;border-bottom-color: #E4E4E4;background-color: #fcfcfc;background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);background-image: linear-gradient(#fafafa, #f8f8f8);color: #575757 !important;margin-top: 4px;width: 39px;">Maybe</a>
+
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . $origin_url . "?event_id=" . $event->event_id . "&event_option=not_attending"; ?>" class="post_choose_no_label" for="post_choose_no_652" style="text-decoration: none;display: inline-block;margin: -3px;padding: 6px 10px;margin-bottom: 0;font-size: 11.9px;line-height: 20px;color: #333;text-align: center;font-weight: 600;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);vertical-align: middle;cursor: pointer;border: 1px solid #eee;border-bottom-color: #E4E4E4;background-color: #fcfcfc;background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);background-image: linear-gradient(#fafafa, #f8f8f8);color: #575757 !important;margin-top: 4px;width: 39px;">No</a>
+
+
 
                                 </div>
 
