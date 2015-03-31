@@ -616,6 +616,9 @@
       $(window).resize(function() {
         var dw = $(document).width();
         $(".ur-video-playing").width(dw);
+        $("#register_error_popup").hide();
+        $("#login_error_popup").hide();
+        $("#reset_password").hide();
       });
 
     });
@@ -626,10 +629,13 @@
 
 
 <body>
+  <div class="default_bgd school_bgd"></div>
   <div class="school_bgd columbia-bgd"></div>
   <div class="school_bgd nyu-bgd"></div>
   <div class="school_bgd stern-bgd"></div>
+  <div class="school_bgd touro-bgd"></div>
   <div class="school_bgd rochester-bgd"></div>
+
   <div id="fb-root"></div>
   <script>
     (function(d, s, id) {
@@ -765,6 +771,7 @@
                 $("#login_error_popup").css({
                   "font-size": "0px"
                 });
+                $("#login_error_popup").hide();
                 $('#forgot_password').hide();
                 $('form#reset_password').show();
                 $('form#reset_password input#email').val($('input#login_email').val());
@@ -787,7 +794,8 @@
             <div id="forgot_password_div">
               <button id='forgot_password'>Forgot Password? </button>
               <form id='reset_password' style='display:none;'>
-                <input id='reset_password_email' type='text' name='email' placeholder='Enter account email...' />
+                <span>Reset your password</span>
+                <input id='reset_password_email' type='text' name='email' placeholder='Enter school email' />
                 <input class='forgot_password_submit_button' type='submit' value='submit' />
               </form>
             </div>
@@ -1190,7 +1198,7 @@
       <div class="signup-form-wrap other_panel active" id="other_panel_3">
         <div class="header-sec">
           <div class="header-sec-left">
-            <h4 class="header">Discover, Collaborate, Connect</h4>
+            <h4 class="header">Sign Up <span>Explore your university</span></h4>
           </div>
           <div class="header-sec-right">
             <div class="time-to-signup" style="font-size:20px;">your link to the university</div>

@@ -53,7 +53,13 @@
                 <div class = "menu_hider menu_shown">
                     <div class = "menu_hider_icon"></div>
                 </div>
-                <a href="<?php echo Yii::app()->getBaseUrl(true); ?>" class="urlinq"><span></span></a>
+                <a href="<?php echo Yii::app()->getBaseUrl(true); ?>" class="urlinq">
+                    <span></span>
+                    <div class = "univ_identifier">
+                        <span class = "univ_name"><?php echo $user->university->university_alias; ?></span>
+                    </div>
+                </a>
+
             </div>
             <div class="center">
                 <!--<form method="get" action="./search_beta.php">-->
