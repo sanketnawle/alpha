@@ -11,8 +11,40 @@
     cursor: default;
 }
 
+.topbar{
+    opacity: .945;
+}
+
 .verify_email_banner{
 
+}
+
+body.body_group div.univ_identifier{top:3px;}
+
+body#body_calendar div.univ_identifier, body.body_searchpage div.univ_identifier{display: none;}
+
+div.univ_identifier{
+    position: absolute;
+
+    left: 83.5px;
+    font-family: Avenir;
+    letter-spacing: 1px;
+    top: -1px;
+    padding-left: 9px;
+    padding-top: 4px;
+    cursor: pointer;
+    padding-bottom: 4px;
+    border-left: 1px solid #656466;
+}
+
+div.univ_identifier > span.univ_name{
+    font-family: Avenir;   
+    letter-spacing: 1.25px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.82);
+    font-size: 11px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #FFF;
 }
 
 .verify_email_banner > a.verify_button{
@@ -225,12 +257,12 @@ width: 980px!important;
     left: 0;
     right: 0;
     top: 0;
-    border-bottom: 2px solid #000;
+    border-bottom: 1px solid #000;
     z-index: 99999999999;
     min-width: 820px;
     -moz-box-shadow: 0px 0 3px rgba(0,0,0,0.5);
     -webkit-box-shadow: 0px 0 3px rgba(0,0,0,0.5);
-    background-color: rgba(39, 41, 43, 0.95);
+    background-color: rgba(56, 56, 58, 0.96);
     box-shadow: 0px 0 3px rgba(0,0,0,0.5);
 }
 
@@ -312,7 +344,7 @@ width: 980px!important;
 }
 
         .topbar .center form {
-            background-color: rgba(0, 0, 0, .1);
+            background-color: #FFF!important;
             position: relative;
             margin-top: 0px;
             padding: 0px 7px 0px;
@@ -323,8 +355,8 @@ width: 980px!important;
             top: 5px;
             overflow: hidden;
         
-            border: 2px solid #000;
-            max-width: 536px;
+            border: 1px solid #000;
+            max-width: 539px;
 }
 
 form.top_search_bar_form{
@@ -394,6 +426,7 @@ form.top_search_bar_form{
     height: 24px;
     border-radius: 100px;
     top: 0.5px;
+    cursor: pointer;
     opacity: .9;
     position: relative;
     display: inline-block;
@@ -438,7 +471,7 @@ form.top_search_bar_form{
 
 .topbar_profile_link .icon_text{
     display: inline-block;
-    
+    cursor: pointer;
     padding: 0px 0;  
     top: -6px;
     /* font-family: Avenir; */
@@ -452,6 +485,10 @@ form.top_search_bar_form{
 
 .notify.board.notify_board_active > div.button{
 background-color: rgba(0, 0, 0, 0.43)!important;
+color: #FFF!important;
+}
+
+.notify.board:hover > div.button{
 color: #FFF!important;
 }
 
@@ -562,9 +599,8 @@ border-radius: 4px;}
 
 }
 
-.topbar > #topbar_responsive_holder > .right .notify.board.notify_board_active > div.button .icon {
+.topbar > #topbar_responsive_holder > .right .notify.board.notify_board_active > div.button .icon, .topbar > #topbar_responsive_holder > .right .notify.board:hover > div.button .icon {
     background-position: -33.5px center;
-
 }
 
 .topbar > #topbar_responsive_holder > .right .notify.calendar:active .button .icon {
@@ -601,7 +637,7 @@ border-radius: 4px;}
         background: rgba(255, 255, 255, 0.99);   
         overflow-y: scroll;
         max-height: 418px;   
-        border: 2px solid #000;
+        border: 1px solid #000;
         border-top: none;
 }
 
@@ -821,6 +857,7 @@ body .topbar div.calendar_link > a > div.quick_cal_arrow{
 background-image: url(../../../assets/quick_cal_arrow.png);
 background-size:auto;
 width: 6px;
+cursor: pointer;
 height: 9px;
 right: 10px;
 display:inline-block;
@@ -1138,7 +1175,7 @@ body.body_group .topbar > #topbar_responsive_holder > .center{}
 }
 body .topbar div.calendar_link{}
 .topbar .center form{
-    max-width: 535px;
+    max-width: 537px;
 }
 body.body_group #topbar_responsive_holder{
     padding-right: 0px;
@@ -1242,7 +1279,7 @@ body#body_home .topbar #topbar_responsive_holder{
     width: 830px!important;
 }
 .topbar .center form{
-    max-width: 446px;
+    max-width: 450px;
 }
 body.body_group #topbar_responsive_holder{
 }
@@ -1265,6 +1302,7 @@ body.body_group .topbar > #topbar_responsive_holder > .left{
 }
 
 @media(max-width:990px){
+    div.univ_identifier{display: none;}
 
 body.body_group .topbar > #topbar_responsive_holder > .left{}
 
@@ -1273,7 +1311,7 @@ body.body_group .topbar > #topbar_responsive_holder > .right{}
 
 .topbar > #topbar_responsive_holder > .left{}
 .topbar > #topbar_responsive_holder > .right{
-    margin-left: 22px;
+    margin-left: 12px;
 }
 #body_calendar .topbar > #topbar_responsive_holder > .left{
     

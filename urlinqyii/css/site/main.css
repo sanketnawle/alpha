@@ -1770,7 +1770,7 @@ textarea:focus:-moz-placeholder {
     } 
 
     body#body_home.first_visit_two .topbar #topbar_responsive_holder .center ul{
-        width: 550px;
+        width: 553px;
     }
 
     body.body_searchpage .topbar > #topbar_responsive_holder > .right{float:right;margin-left: 0px;}
@@ -1912,7 +1912,7 @@ width:980px!important;
         display:none!important;
     }   
     body#body_home .topbar #topbar_responsive_holder .center ul{
-    width: 549px;
+    width: 551px!important;
 
     }
         body#body_calendar .topbar #topbar_responsive_holder .center ul{
@@ -1961,7 +1961,7 @@ width:980px!important;
 
     }
     body#body_home.first_visit_two .topbar #topbar_responsive_holder .center ul{
-        width: 470px;
+        width: 464px!important;
     }
 
         #body_home #LeftPanel_Holder{
@@ -2011,14 +2011,14 @@ width:980px!important;
     }
 
     body.first_visit_two .topbar > #topbar_responsive_holder > .left{
-        margin-left: 15px!important;
+        margin-left: 2px!important;
     }
 
     body.first_visit_two .topbar .center form{
         /*max-width: 456px!important;*/
     }
     body.first_visit_two .topbar > #topbar_responsive_holder > .center{
-        width:457px!important;
+        width: 450px!important;
     }
 
     body.body_group #nav_bar{
