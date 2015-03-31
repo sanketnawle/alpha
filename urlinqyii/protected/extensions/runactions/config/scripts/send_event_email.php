@@ -22,7 +22,7 @@ if (ERunActions::runBackground()){
 
         $origin_name = $params['origin_name'];
 
-        $subject = $origin_type . " Event - " . $event->title . " was added to " . $origin_name . "&#x27;s calendar";
+        $subject = ucfirst($origin_type) . " Event - " . $event->title . " was added to " . $origin_name . "&#x27;s calendar";
 
 
 

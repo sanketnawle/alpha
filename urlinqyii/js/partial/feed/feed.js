@@ -694,88 +694,100 @@ function ready(globals){
 
     });
 
+
+    var reply_form_lock = false;
+
     $(document).on('submit','.reply_form', function(event){
         event.preventDefault();
-        var $reply_form = $(this);
-        var is_video_reply = $reply_form.hasClass('video_reply_form');
-
-        var reply_text = $reply_form.find('.reply_text_textarea').val();
-
-        if(reply_text.length == 0){
-            alert('You must input something');
-            return;
-        }
+        if(!reply_form_lock){
+            reply_form_lock = true;
 
 
-        var anonymous = $reply_form.find('.check_wrap .flat7b').hasClass('flat_checked') ? 1:0;
-        var reply_user_id = globals.user_id;
-        var $reply_count = $reply_form.closest(".post").find('.reply_number');
-        var post_data;
-        var video_id;
-        var post_url;
-        var post_id;
-        if(is_video_reply){
-            video_id = $reply_form.attr('data-video_id');
-            post_data = {video_id: video_id, reply_text: reply_text, reply_user_id: reply_user_id, anonymous: anonymous};
-            post_url = globals.base_url + '/video/reply';
-        }else{
-            post_id = $reply_form.attr('data-post_id');
-            post_data = {post_id: post_id, reply_text: reply_text, reply_user_id: reply_user_id, anonymous: anonymous};
-            post_url = globals.base_url + '/post/reply';
-        }
-        if(findUrlInPost(post_data['reply_text'])) {
-            var url = findUrlInPost(post_data['reply_text']);
-            post_data['reply_text']=post_data['reply_text'].replace(url,'<a href="'+url+'" target = "_blank" >'+url+'</a>');
-        }
-        post_data['reply_text']=post_data['reply_text'].replace(/(?:\r\n|\r|\n)/g, '<br />');
+
+            var $reply_form = $(this);
+            var is_video_reply = $reply_form.hasClass('video_reply_form');
+
+            var reply_text = $reply_form.find('.reply_text_textarea').val();
+
+            if(reply_text.length == 0){
+                alert('You must input something');
+                reply_form_lock = false;
+                return;
+            }
 
 
-        console.log('SENDING POST REPLY');
-        console.log(post_data);
+            var anonymous = $reply_form.find('.check_wrap .flat7b').hasClass('flat_checked') ? 1:0;
+            var reply_user_id = globals.user_id;
+            var $reply_count = $reply_form.closest(".post").find('.reply_number');
+            var post_data;
+            var video_id;
+            var post_url;
+            var post_id;
+            if(is_video_reply){
+                video_id = $reply_form.attr('data-video_id');
+                post_data = {video_id: video_id, reply_text: reply_text, reply_user_id: reply_user_id, anonymous: anonymous};
+                post_url = globals.base_url + '/video/reply';
+            }else{
+                post_id = $reply_form.attr('data-post_id');
+                post_data = {post_id: post_id, reply_text: reply_text, reply_user_id: reply_user_id, anonymous: anonymous};
+                post_url = globals.base_url + '/post/reply';
+            }
+            if(findUrlInPost(post_data['reply_text'])) {
+                var url = findUrlInPost(post_data['reply_text']);
+                post_data['reply_text']=post_data['reply_text'].replace(url,'<a href="'+url+'" target = "_blank" >'+url+'</a>');
+            }
+            post_data['reply_text']=post_data['reply_text'].replace(/(?:\r\n|\r|\n)/g, '<br />');
 
-        $.post(
-            post_url,
-            post_data,
-            function(response) {
-                if(response['success']){
-                    var source;
-                    if(is_video_reply){
-                        source = $("#video_one_reply_template").html();
-                    }else{
-                        source = $("#one_reply_template").html();
-                    }
 
-                    var template = Handlebars.compile(source);
-                    response['reply']['update_timestamp'] = moment(response['reply']['update_timestamp'], "X").fromNow();
-                    $reply_form.closest(".post").find('.master_comments').append(template(response['reply']));
-                    $reply_form.find('.reply_text_textarea').val('');
+            console.log('SENDING POST REPLY');
+            console.log(post_data);
 
-                    if($reply_count.length){
-                        $reply_count.text(parseInt($reply_count.text())+1);
-                    }else{
-                        $reply_form.closest(".post").find('.post_comment_btn').append('<div class = "reply_number">1</div>');
-                    }
-                    if(url){
-                        $.embedly.oembed(url,{
-                            key:'94c0f53c0cbe422dbc32e78d899fa4c5',
-                            query:{
-                                maxwidth: 400,
-                                maxheight: 400,
-                                chars: 100
-                            }}).done(function(results){
-                                if(!results.invalid){
-                                    embedly_info = results[0];
-                                    append_embedly(response['reply']['reply_id'],embedly_info);
+            $.post(
+                post_url,
+                post_data,
+                function(response) {
+                    if(response['success']){
+                        reply_form_lock = false;
+                        var source;
+                        if(is_video_reply){
+                            source = $("#video_one_reply_template").html();
+                        }else{
+                            source = $("#one_reply_template").html();
+                        }
+
+                        var template = Handlebars.compile(source);
+                        response['reply']['update_timestamp'] = moment(response['reply']['update_timestamp'], "X").fromNow();
+                        $reply_form.closest(".post").find('.master_comments').append(template(response['reply']));
+                        $reply_form.find('.reply_text_textarea').val('');
+
+                        if($reply_count.length){
+                            $reply_count.text(parseInt($reply_count.text())+1);
+                        }else{
+                            $reply_form.closest(".post").find('.post_comment_btn').append('<div class = "reply_number">1</div>');
+                        }
+                        if(url){
+                            $.embedly.oembed(url,{
+                                key:'94c0f53c0cbe422dbc32e78d899fa4c5',
+                                query:{
+                                    maxwidth: 400,
+                                    maxheight: 400,
+                                    chars: 100
+                                }}).done(function(results){
+                                    if(!results.invalid){
+                                        embedly_info = results[0];
+                                        append_embedly(response['reply']['reply_id'],embedly_info);
+                                    }
                                 }
-                            }
-                        );
-                    }
+                            );
+                        }
 
-                }else{
-                    alert(JSON.stringify(response));
-                }
-            }, 'json'
-        );
+                    }else{
+                        alert(JSON.stringify(response));
+                    }
+                }, 'json'
+            );
+        }
+
     });
     function add_embedly_to_replies(replies){
         $.each(replies,function(index,reply){
