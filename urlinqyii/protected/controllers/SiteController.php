@@ -1398,7 +1398,7 @@ class SiteController extends Controller
             }
         }
 
-        if($user->picture_file_id != null || $user->picture_file_id != '1'){
+        if($user->picture_file_id == null || $user->picture_file_id == '1' || $user->picture_file_id == ''){
             $user->picture_file_id = $picture_file_id;
         }
 
