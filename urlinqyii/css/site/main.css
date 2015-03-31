@@ -998,6 +998,10 @@ top: 0px;
 padding-bottom: 1px;
 }
 
+body.left_panel_hidden_p2 div.univ_identifier{
+    display: none;
+}
+
 .order_sort_dropdown:hover{
     background: #F4F4F4;
     border: 1px solid #D8D8D8;
@@ -1759,7 +1763,7 @@ textarea:focus:-moz-placeholder {
     width: 464px;
     } 
     body.body_group .topbar #topbar_responsive_holder .center ul{
-    width: 547px;
+    width: 553px;
 
     }   
     body#body_calendar .topbar #topbar_responsive_holder .center ul{
@@ -1937,7 +1941,7 @@ width:980px!important;
 
     } 
     body.body_group .topbar #topbar_responsive_holder .center ul{
-    width: 548px;
+    width: 551px;
 
     }   
     body#body_calendar .topbar #topbar_responsive_holder .center ul{

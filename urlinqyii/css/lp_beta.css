@@ -1076,12 +1076,11 @@ button.largeBtn span.buttonText
   font-family: 'Open Sans', sans-serif;
   margin-top:0;
   text-transform: uppercase;
-  font-size:15px;
+  font-size:15.5px;
   letter-spacing: 1.1px;
-  font-weight: 100;
+  font-weight: 600;
   text-align:left;
-  /* -webkit-font-smoothing:antialiased; */
-  -moz-osx-font-smoothing:grayscale;
+
 }
 
 .top-bar-wrapper
@@ -1180,7 +1179,7 @@ div.signup-form-wrap
   border-radius:6px;
   height:380px;
   position:relative;
-  background:rgba(255,255,255,1);
+  background:rgba(255,255,255,.95);
   border-color:rgba(105,105,105,0.17);
   padding:5px;
 }
