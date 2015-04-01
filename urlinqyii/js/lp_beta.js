@@ -21,4 +21,9 @@ $(function() {
 			$(".touro-bgd").fadeOut(50);
 		}
 	});
+
+	$("input#beta_testing_email").focus(function() {
+		$(this).addClass("beta_email_focused");
+		$(this).closest("#beta_testing_signup").find(".beta_signup_submit").addClass("beta_email_focused");
+	});	
 });

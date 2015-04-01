@@ -12,8 +12,28 @@ div.mobile-background {
   filter: blur(9px);
 }
 
+.school_bgd{display: none!important}
+
 div.header{
     position: absolute;
+}
+
+div.mobile_panel_2 div.dos_panels > .left{min-height: 887px;}
+
+div.beta_testing_signup_wrapper{position: relative;}
+
+div.beta_testing_signup_wrapper_2{
+    padding-bottom: 15px;
+    background: rgba(255, 255, 255, 0.17);
+    padding-top: 12px;
+    border-top: 1px dashed rgba(255, 255, 255, 1);
+    border-bottom: 1px dashed rgba(255, 255, 255, 1);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%,rgba(255, 255, 255, .45) 100%);   
+    background: -o-linear-gradient(top,rgba(255, 255, 255, .2) 0%,rgba(255, 255, 255, 0.45) 100%);   
+    background: -ms-linear-gradient(top,rgba(255, 255, 255, .2) 0%,rgba(255, 255, 255, 0.45) 100%);   
+    background: -moz-linear-gradient(top,rgba(255, 255, 255, .2),rgba(255, 255, 255, 0.45));   
+    background-image: -webkit-linear-gradient(top,rgba(255, 255, 255, .2),rgba(255, 255, 255, 0.45));
+    margin-bottom: 10px;
 }
 
 img.mobile-bg {
@@ -128,6 +148,74 @@ button#mobile-login-btn {
   border: 1px solid #029acf;
 }
 
+button#mobile-login-btn:hover{
+  background: rgba(255, 255, 255, 0.92);
+}
+
+form#beta_testing_signup{
+    margin-bottom: 5px;
+    position: relative;
+    min-height: 77px;
+}
+
+form#beta_testing_signup > label{
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 13px;
+    font-weight: 100;
+    width: 70%;
+    letter-spacing: .4px;
+    display: block;
+    padding-top: 5px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+form#beta_testing_signup > input{
+    top: -9px;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    padding: 10px 10px;
+    position: ab;
+    right: 50px;
+    position: absolute;
+    outline: none;
+    font-weight: 500;
+    font-size: 14.5px;
+    width: 300px;
+    -webkit-transition: .25s width ease;
+    -moz-transition: .25s width ease;
+    transition: .25s width ease;
+    left: 50px;
+    top: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;
+    border-bottom-color: rgba(255, 255, 255, 0.55);
+}
+
+form#beta_testing_signup > button{}
+
+form#beta_testing_signup > input.beta_email_focused{
+    width: 60%;
+}
+
+form#beta_testing_signup > input::-webkit-input-placeholder {
+   color: #FFF;
+}
+
+form#beta_testing_signup > input:-moz-placeholder { /* Firefox 18- */
+   color: #FFF;  
+}
+
+form#beta_testing_signup > input::-moz-placeholder {  /* Firefox 19+ */
+   color: #FFF;  
+}
+
+form#beta_testing_signup > input:-ms-input-placeholder {  
+   color: #FFF;  
+}
+
 div.loginModalContent {
   padding:20px;
   -moz-box-sizing:border-box;
@@ -206,6 +294,7 @@ div#loginModal input {
   position:relative;
   width:100%;
   margin:5px;
+  box-shadow: none!important;
 }
 div#loginModal button.SignUp {
   width:-moz-calc(100% - 10px);
@@ -463,21 +552,81 @@ div.panel_2_bg_color{
 }
 
 div.feature-blurb-two > h3, div.feature-blurb-one > h3{
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 100;
     font-family: Avenir;
     padding: 0 10px;
+    text-align: left;
+    margin-bottom: 5px!important;
 }
 div.feature-blurb-two > p, div.feature-blurb-one > p{
-    font-size: 14px;
+    font-size: 13px;
     font-family: Avenir;
     font-weight: 100;
+    padding-right: 4px!important;
     padding: 0 10px;
+    line-height: 20px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 10px;
+    word-spacing: 1px;
+    padding-bottom: 10px;
+    background: rgba(255, 255, 255, 0.14);
+    margin-top: 10px!important;
+}
+
+div.feature-blurb-two > p > span{
+    color: #00BDFF;
+    font-weight: 500;
+} 
+div.feature-blurb-one > p > span{
+    color: #23EC70;
+    font-weight: 500;
+}
+
+hr.feature_sep{
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    position: absolute;
+    top: 39px;
+    left: 10px;
+    right: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 div.signup-container,video.ur-video-playing
 {
   display:none!important;
+}
+
+button.beta_signup_submit{
+    background: none;
+    border: none;
+    background-image: url(../assets/beta_signup_button.svg);
+    background-size: 100%;
+    width: 50px;
+    height: 47px;
+    position: absolute;
+    right: 50px;
+    cursor: default;
+    pointer-events: none;
+    top: 30px;
+    opacity: 0;
+    -webkit-transition: .25s opacity ease;
+    -moz-transition: .25s opacity ease;
+    transition: .25s opacity ease;
+    padding: 0;
+}
+
+button.beta_signup_submit.beta_email_focused{
+    opacity: .8;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+button.beta_signup_submit.beta_email_focused:hover,button.beta_signup_submit.beta_email_focused:active,button.beta_signup_submit.beta_email_focused:focus{
+opacity: 1;
 }
 
 input#login_email,input#login_password

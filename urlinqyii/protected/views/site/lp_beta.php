@@ -57,21 +57,21 @@
   <script>
     $(document).ready(function() {
 
-      $(window).scroll(function() {
-        var FACTOR = 0.15;
-        var $heroImage = $('.mobile-background');
+      // $(window).scroll(function() {
+      //   var FACTOR = 0.15;
+      //   var $heroImage = $('.mobile-background');
 
-        var distanceScrolled = Math.max(0, $(window).scrollTop());
-        var totalDistanceToScroll = $heroImage.height();
-        var percentComplete = Math.min(distanceScrolled / totalDistanceToScroll, 1);
+      //   var distanceScrolled = Math.max(0, $(window).scrollTop());
+      //   var totalDistanceToScroll = $heroImage.height();
+      //   var percentComplete = Math.min(distanceScrolled / totalDistanceToScroll, 1);
 
-        var translateY = (percentComplete * 100 * FACTOR);
+      //   var translateY = (percentComplete * 100 * FACTOR);
 
-        $heroImage.css({
-          'transform': 'translateY(' + translateY + '%)'
-        });
+      //   $heroImage.css({
+      //     'transform': 'translateY(' + translateY + '%)'
+      //   });
 
-      });
+      // });
 
 
 
@@ -870,12 +870,12 @@
         <div class="fb-like" data-href="https://facebook.com/urlinq" data-width="60" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
 
 
-        <video preload='auto' autoplay loop preload="auto" id="ur-video-loop" class="ur-video-playing" style='width:100%;' muted>
+<!--         <video preload='auto' autoplay loop preload="auto" id="ur-video-loop" class="ur-video-playing" style='width:100%;' muted>
 
-          <source src="<?php echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop4.mp4" type="video/mp4">
-            <source src="<?php echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop4.webm" type="video/webm">
+          <source src="<?php //echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop4.mp4" type="video/mp4">
+            <source src="<?php //echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop4.webm" type="video/webm">
 
-        </video>
+        </video> -->
 
         <!--mobile login-->
         <div class="mobile-login">
@@ -904,10 +904,18 @@
                   </h3>
             <p>for the iPhone</p>
           </div>
-          <a class="main_app_download_btn">
+<!--           <a class="main_app_download_btn">
             <div class="mobile_wrap_centered_download_button">
             </div>
-          </a>
+          </a> -->
+          <div class = "beta_testing_signup_wrapper">
+            <form name = "beta_testing_signup" id = "beta_testing_signup" method = "post">
+              <label for = "beta_testing_email" class = "beta_testing_email_label">Register for our exclusive beta</label> 
+              <input type = "text" name = "beta_testing_email" id = "beta_testing_email" placeholder = "Enter school email">
+              <button name = "submit" id = "submit_beta_email" type = "submit" class = "beta_signup_submit">
+              </button>
+            </form>
+          </div>
           <div class="mobile_wrap_centered_demo">
             <div class="iphone_skeleton">
               <div class="screen_content"></div>
@@ -987,7 +995,7 @@
             </div>
             <div class="feature-blurb-one">
                 <h3>uChat</h3>
-                <p>Placeholder text here</p>
+                <p><span>Instantly communicate</span> with your professors and peers with one-on-one and group university chats, designed perfectly for class, club, and departmental collaboration.</p>
               </div>
           </div>
           <div class="mobile_featurette featurette_2 right">
@@ -997,8 +1005,8 @@
               <div class="screen_content"></div>
             </div>
             <div class="feature-blurb-two">
-                <h3>Academic Asistant</h3>
-                <p>More placeholder text here</p>
+                <h3>Academic Network</h3>
+                <p>Connect to your school seamlessly from web and mobile. Your entire university, in the <span>palm of your hand.</span></p>
               </div>
           </div>
         </div>
@@ -1013,7 +1021,7 @@
         </div>
         <div class="dos_panels">
           <div class="left">
-            <h2>Features</h2>
+            <h2>Top Features</h2><hr class = "feature_sep">
             <h3>The University experience has been re-imagined for mobile. Education is now faster, easier to manage, and more fun than ever. Here are some of the more notable features:</h3>
             <ul>
               <li>
@@ -1037,17 +1045,29 @@
                 <div width="68" height="68" class="mobile_feature_icon mobile_feature_icon_6 img-left"></div> Search and navigate your entire University - no club or department is off limits
               </li>
             </ul>
+
           </div>
+
+
           <div class="right">
 
-            <a>
+<!--             <a>
               <div class="big_app_icon small">
               </div>
               <div class="mobile_wrap_centered_download_button">
               </div>
               <div class="made_in_ny">
               </div>
-            </a>
+            </a> -->
+            <div class = "beta_testing_signup_wrapper beta_testing_signup_wrapper_2">
+              <form name = "beta_testing_signup" id = "beta_testing_signup" method = "post">
+                <label for = "beta_testing_email" class = "beta_testing_email_label">Register for our exclusive beta</label> 
+                <input type = "text" name = "beta_testing_email" id = "beta_testing_email" placeholder = "Enter school email">
+                <button name = "submit" id = "submit_beta_email" type = "submit" class = "beta_signup_submit">
+                </button>
+              </form>
+            </div>
+
             <div class="computer_available">
               <p>
                 Urlinq is also available <span>for the web <strong id = "computer_icon"></strong>.</span>

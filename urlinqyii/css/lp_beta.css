@@ -96,7 +96,7 @@ div.mobile_wrap_primary
   display:none;
   margin-top:70px;
   position:fixed;
-  padding-top:25px;
+  padding-top: 15px;
   z-index: 1;
   height:700px;
   width:100%;
@@ -109,7 +109,7 @@ div.mobile_wrap_primary
 
 div.mobile_wrap_header_text
 {
-  margin-bottom:10px;
+  margin-bottom: 12px;
 }
 
 div.mobile_panel_4
@@ -172,7 +172,7 @@ div.iphone_skeleton
   background-size:auto;
   width:300px;
   height:400px;
-  margin:32px auto 0;
+  margin: 26px auto 0;
 }
 div.iphone_skeleton div.screen_content {
   position:absolute;
@@ -242,7 +242,7 @@ div.featurette_iphone_skeleton.skeleton_top
 }
 div.skeleton_top div.screen_content {
   position:absolute;
-  background-image:url(../assets/iphonescreen_placeholder.png);
+  background-image: url(../assets/iphonescreen_feed.png);
   background-size:100%;
   margin: 0px 34px;
   background-position: bottom;
@@ -252,13 +252,13 @@ div.skeleton_top div.screen_content {
 
 div.feature-blurb-one {
   position:absolute;
-  margin: -300px 10px 0px 208px;
+  margin: -300px 10px 0px 206px;
   text-align: left;
   color:#fff;
 }
 div.feature-blurb-two {
   position:absolute;
-  margin: -511px 180px 0px 7px;
+  margin: -511px 190px 0px 15px;
   text-align: right;
   color:#fff;
 }
@@ -297,8 +297,11 @@ div.mobile_panel_2 div.dos_panels > .left > h2
   color: rgba(255, 255, 255, 0.87);
   font-size: 14px;
   padding:.5em 1.25em;
+  position: relative;
   text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.1);
+  z-index: 10;
+  background: #36A467;
+  box-shadow: 0 0 1px 2px #36A467;
 }
 
 div.mobile_panel_2 div.dos_panels h3
@@ -356,7 +359,7 @@ div.mobile_panel_2 div.dos_panels ul > li > div.img-left
 div.mobile_panel_2 div.dos_panels ul > li > div.mobile_feature_icon{
     background-image: url(../assets/mobile_landing_product_icons.svg);
 
-    background-size: 68px;
+    background-size: 100%;
     width: 68px;
     height: 68px;
 }
@@ -367,7 +370,7 @@ div.mobile_panel_2 div.dos_panels ul > li > div.mobile_feature_icon_3{
 }
 
 div.mobile_panel_2 div.dos_panels ul > li > div.mobile_feature_icon_1{
-    background-position: 0 4px;
+    background-position: 0px 4px;
   
 }
 
@@ -414,6 +417,7 @@ div.mobile_panel_2 div.dos_panels ul > li > h4
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   padding-top: 10px;
   letter-spacing: 1px;
+  border-right: 1px solid rgba(255, 255, 255, 0.39);
   padding-bottom: 4px;
   text-transform: uppercase;
   line-height: 28px;
@@ -427,12 +431,17 @@ div.mobile_panel_2 div.dos_panels ul > li > h4
   background: -moz-linear-gradient(left,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.3));   
   background-image: -webkit-linear-gradient(left,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.3));
   border-radius: 0 0 2px 0;
+  margin-right: -12px;
 }
 
 div.mobile_panel_2 div.dos_panels ul > li.li-right > h4{
     background: linear-gradient(to right, rgba(255, 255, 255, 0.3) 0%,rgba(255, 255, 255, 0) 100%);   background: -o-linear-gradient(left,rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 0.3) 100%);   background: -ms-linear-gradient(left,rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 0.3) 100%);   background: -moz-linear-gradient(left,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.3));   
     background-image: -webkit-linear-gradient(right,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.3));
     border-radius: 0 0 0 3px;
+    border-right: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.39);
+    margin-right: 0;
+    margin-left: -12px;
 }
 
 div.computer_available
@@ -504,8 +513,8 @@ button#mobile-login-btn {
   overflow:hidden;
   height:auto!important;
   margin-top:-1px;
-  background-image: url(../assets/urlinq_bottom_border.svg);   background-repeat-x: repeat;   
-  background-repeat-y: no-repeat;   
+  background-image: url(../assets/urlinq_bottom_border.svg);  
+  background-repeat: no-repeat;   
   background-position: bottom;
 }
 
@@ -545,7 +554,7 @@ button#mobile-login-btn {
 
 .signup_after_tabs .after_tab_1.active
 {
-  background: #19AB42;
+  background: #0FD76D;
 }
 
 .signup_after_tabs .after_tab_2.active
@@ -921,7 +930,7 @@ span {}
   -o-transform:translate(295px,-10px) scale(.355,0.355);
   -moz-transform:translate(295px,-10px) scale(.355,0.355);
   transform:translate(298px,153px) scale(.355,0.355);
-  top: -72px;
+  top: -80px;
 }
 
 #reset_password{
@@ -1140,7 +1149,7 @@ button.FacebookConnect em
 {
   width:50px;
   height:42px;
-  background:url(src/facebook-icon.png) no-repeat;
+  background:url(../assets/facebook-icon.png) no-repeat;
   margin-top:-2px;
   left:11px;
   position:absolute;
@@ -1148,18 +1157,18 @@ button.FacebookConnect em
   padding:0;
 }
 
-button.SignUp em
+/*button.SignUp em
 {
   width:28px;
   height:28px;
-  background:url(src/signup-icon.png) no-repeat;
+  background:url(../assets/signup-icon.png) no-repeat;
   margin-top:-2px;
   left:11px;
   background-size:cover;
   position:absolute;
   top:9px;
   padding:0;
-}
+}*/
 
 button.largeBtn span.buttonText
 {
@@ -1355,7 +1364,7 @@ div.header-sec-left
 
 div.header-sec
 {
-  top: -90px;
+  top: -95px;
   z-index:10000;
   position: relative;
   height:40px;
@@ -1812,12 +1821,13 @@ div.registration-sec-header
   display:inline-block;
   position:relative;
   padding-left:10px;
-  padding-top:14px;
+  padding-top: 12px;
   padding-bottom:8px;
-  font-size:14.5px;
+  font-size: 15px;
   margin-top:-10px;
-  font-weight:500;
-  color:#222020;
+  font-weight: 600;
+  color: #787878;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.08);
 }
 
 div.fname-lname-sec input
@@ -2277,7 +2287,7 @@ div.bottom-container
   position:absolute;
   width:100%;
   height: 64px;
-  z-index: 50000000;
+  z-index: 500000;
   top:calc(100%-8px);
   background: rgba(0, 0, 0, 0.1);
   margin:0 auto;   
