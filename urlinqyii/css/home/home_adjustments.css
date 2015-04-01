@@ -15,7 +15,7 @@ div#content_panel div#nav_bar{
 	box-shadow: none!important;
 	margin-left: 10px;
 	border:1px solid #000!important;
-	background:#38383a;
+	background:rgba(56, 56, 58, 0.96);
 }
 
 div.SectionHeader_holder div.float_Right a{

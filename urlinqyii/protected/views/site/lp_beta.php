@@ -91,6 +91,9 @@
         e.preventDefault();
         closeModal();
       });
+
+
+
       function closeModal() {
         activeWindow.fadeOut(250, function(){ $(this).css('display','none')});
         $('#blind').fadeOut(250, function(){ $(this).remove(); });
@@ -217,6 +220,7 @@
         $(this).removeClass("error_box_log_color");
       });
       /*error handling end*/
+
 
 
       $('.after_tab').click(function() {
@@ -632,7 +636,7 @@
 
 
 
-<body>
+<body id = "scroll_body">
   <div class="default_bgd school_bgd"></div>
   <div class="school_bgd columbia-bgd"></div>
   <div class="school_bgd nyu-bgd"></div>
@@ -658,7 +662,7 @@
         <div class="top-bar-wrapper content">
           <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/square_logo.svg" class="logo">
           <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/logo.svg" class="logoText">
-          <span class = "mobile_slogan">MOBILE LEARNING</span>
+          <span class = "mobile_slogan">EASY LEARNING</span>
           <div class="forgotPassword">
             <a class="forgot" href="PasswordReset.php" style="text-decoration: none">Forgot password?</a>
           </div>
@@ -819,7 +823,7 @@
                           Forgot your password?
                         </div>-->
 
-              <!--<div class = "fb_signin_wrap">
+              <div class = "fb_signin_wrap">
                           <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
                             <em class = "fb_icon">
                             </em>
@@ -832,7 +836,7 @@
                               Sign In with Facebook
                             </div>
                           </div>
-                        </div>-->
+                        </div>
 
             </form>
             <button name="mobile-login" id="mobile-login-btn" class="rounded Button SignIn smallBtn modalLink" href="#loginModal">
@@ -902,7 +906,7 @@
             <h3>
                     Urlinq
                   </h3>
-            <p>for the iPhone</p>
+            <p>for iPhone</p>
           </div>
 <!--           <a class="main_app_download_btn">
             <div class="mobile_wrap_centered_download_button">
@@ -992,6 +996,7 @@
               <div class="iphone_screenshot_bottom">
               </div>
               <div class="screen_content"></div>
+              <div class = "skeleton_dark_fade"></div>
             </div>
             <div class="feature-blurb-one">
                 <h3>uChat</h3>
@@ -1003,6 +1008,7 @@
               <div class="iphone_screenshot_top">
               </div>
               <div class="screen_content"></div>
+              <div class = "skeleton_dark_fade skeleton_dark_fade_2"></div>
             </div>
             <div class="feature-blurb-two">
                 <h3>Academic Network</h3>
@@ -1281,25 +1287,26 @@
           </form>
         </div>
 
-        <!--<div class = "footer-sec">
-                    <div class = "leftLine">
-                    </div>
-                    <div class = "or-head">
-                      or
-                    </div>
-                    <div class = "rightLine">
-                    </div>
-                    <button type = "button" onclick="fb_login();" class = "rounded Button FacebookConnect loginButton largeBtn">
-                      <em></em>
-                      <span class = "buttonText">Continue with Facebook</span>
-                    </button>
 
-                  </div>-->
         <div class="lp_terms synced_animation_divs">
           <p class="lp_terms_p">
             By clicking Create Your Account, you agree to our <a href="https://urlinq.com/about/legal/terms" target="_blank">Terms</a> and that you have read our <a href="https://urlinq.com/about/legal/privacy" target="_blank">Privacy Policy</a>.
           </p>
         </div>
+       <div class = "footer-sec synced_animation_divs">
+                    <div class = "leftLine">
+                    </div>
+                    <div class = "or-head">
+                      or continue with
+                    </div>
+                    <div class = "rightLine">
+                    </div>
+                    <button type = "button" onclick="fb_login();" class = "rounded Button FacebookConnect loginButton largeBtn">
+                      <em></em>
+                      <span class = "buttonText">Facebook</span>
+            </button>
+
+        </div>        
       </div>
     </div>
 

@@ -170,6 +170,21 @@ form#beta_testing_signup > label{
     text-align: center;
 }
 
+div.skeleton_dark_fade{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 277px auto 0 -110px;
+    height: 104px;
+    background: linear-gradient(to bottom, rgba(63, 63, 64, 0) 0%,#3f3f40 100%);   
+    background: -o-linear-gradient(top,rgba(63,63,64,0) 0%, #3f3f40 100%);   
+    background: -ms-linear-gradient(top,rgba(63,63,64,0) 0%, #3f3f40 100%);   
+    background: -moz-linear-gradient(top, rgba(63,63,64,0),#3f3f40);   
+    background-image: -webkit-linear-gradient(top,rgba(63, 63, 64, 0),#3f3f40);
+}
+
+div.skeleton_dark_fade.skeleton_dark_fade_2{margin-top:323px;}
+
 input.noshadow {
   -webkit-box-shadow: none!important;
   -moz-box-shadow: none!important;
