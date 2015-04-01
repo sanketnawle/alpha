@@ -32,7 +32,7 @@
   </script>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
   <title>Urlinq</title>
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
   <meta name="google-site-verification" content="qv_TWutBCtliggYTCBDzJeXCNfJ3Dd3L5SkIhBSxm5Y" />
   <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta.css" />
   <link rel="stylesheet" type="text/css" media="only screen and (max-width: 480px)" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta_mobile.css" />
@@ -883,8 +883,8 @@
             <div class="loginModalContent">
               <h2>Log In</h2>
               <form name="login" id="login" method="post" action="<?php echo Yii::app()->request->baseUrl; ?>/login">
-                    <input type="text" name="login_email" id="login_email" autocomplete="on" placeholder="School Email">
-                    <input type="password" name="login_password" id="login_password" placeholder="Password">
+                    <input type="text" class = "noshadow" name="login_email" id="login_email" autocomplete="on" placeholder="School Email">
+                    <input type="password" class = "noshadow" name="login_password" id="login_password" placeholder="Password">
                     <input type="hidden" id="offset" name="offset" value="">
                     <button name="submit" id="submit" type="submit" class="rounded Button SignUp smallBtn">
                       <span class="buttonText">Continue</span>
@@ -911,7 +911,7 @@
           <div class = "beta_testing_signup_wrapper">
             <form name = "beta_testing_signup" id = "beta_testing_signup" method = "post">
               <label for = "beta_testing_email" class = "beta_testing_email_label">Register for our exclusive beta</label> 
-              <input type = "text" name = "beta_testing_email" id = "beta_testing_email" placeholder = "Enter school email">
+              <input type = "text" name = "beta_testing_email" id = "beta_testing_email" class = "noshadow" placeholder = "Enter school email">
               <button name = "submit" id = "submit_beta_email" type = "submit" class = "beta_signup_submit">
               </button>
             </form>
@@ -1062,7 +1062,7 @@
             <div class = "beta_testing_signup_wrapper beta_testing_signup_wrapper_2">
               <form name = "beta_testing_signup" id = "beta_testing_signup" method = "post">
                 <label for = "beta_testing_email" class = "beta_testing_email_label">Register for our exclusive beta</label> 
-                <input type = "text" name = "beta_testing_email" id = "beta_testing_email" placeholder = "Enter school email">
+                <input type = "text" name = "beta_testing_email" class = "noshadow" id = "beta_testing_email" placeholder = "Enter school email">
                 <button name = "submit" id = "submit_beta_email" type = "submit" class = "beta_signup_submit">
                 </button>
               </form>
