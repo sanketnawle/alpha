@@ -57,25 +57,28 @@
   <script>
     $(document).ready(function() {
 
-      $(window).scroll(function() {
-        var FACTOR = 0.3;
-        var $heroImage = $('.mobile-background');
+      // $(window).scroll(function() {
+      //   var FACTOR = 0.15;
+      //   var $heroImage = $('.mobile-background');
 
-        var distanceScrolled = Math.max(0, $(window).scrollTop());
-        var totalDistanceToScroll = $heroImage.height();
-        var percentComplete = Math.min(distanceScrolled / totalDistanceToScroll, 1);
+      //   var distanceScrolled = Math.max(0, $(window).scrollTop());
+      //   var totalDistanceToScroll = $heroImage.height();
+      //   var percentComplete = Math.min(distanceScrolled / totalDistanceToScroll, 1);
 
-        var translateY = (percentComplete * 100 * FACTOR);
+      //   var translateY = (percentComplete * 100 * FACTOR);
 
-        $heroImage.css({
-          'transform': 'translateY(' + translateY + '%)'
-        });
+      //   $heroImage.css({
+      //     'transform': 'translateY(' + translateY + '%)'
+      //   });
 
-      });
+      // });
+
+
 
       var activeWindow;
       $('button.modalLink').click(function(e) {
         e.preventDefault();
+        $(".mobile-login").show();
         var id = $(this).attr('href');
         activeWindow = $('.mobileLoginWindow' + id).css({'opacity':'0', 'top':'50%', 'left':'50%', 'display':'block'}).fadeTo(500, 1);
 
@@ -92,6 +95,7 @@
         activeWindow.fadeOut(250, function(){ $(this).css('display','none')});
         $('#blind').fadeOut(250, function(){ $(this).remove(); });
         $('body').removeClass('modal-open');
+        $(".mobile-login").hide();
       }
 
       globals.supported_email_list = ['nyu.edu', 'urlinq.com', 'student.touro.edu', 'touro.edu'];
@@ -616,6 +620,9 @@
       $(window).resize(function() {
         var dw = $(document).width();
         $(".ur-video-playing").width(dw);
+        $("#register_error_popup").hide();
+        $("#login_error_popup").hide();
+        $("#reset_password").hide();
       });
 
     });
@@ -626,10 +633,13 @@
 
 
 <body>
+  <div class="default_bgd school_bgd"></div>
   <div class="school_bgd columbia-bgd"></div>
   <div class="school_bgd nyu-bgd"></div>
   <div class="school_bgd stern-bgd"></div>
+  <div class="school_bgd touro-bgd"></div>
   <div class="school_bgd rochester-bgd"></div>
+
   <div id="fb-root"></div>
   <script>
     (function(d, s, id) {
@@ -646,8 +656,9 @@
     <div class="header">
       <div class="top-bar">
         <div class="top-bar-wrapper content">
-          <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/square_logo.png" class="logo">
-          <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/logo.png" class="logoText">
+          <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/square_logo.svg" class="logo">
+          <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/logo.svg" class="logoText">
+          <span class = "mobile_slogan">MOBILE LEARNING</span>
           <div class="forgotPassword">
             <a class="forgot" href="PasswordReset.php" style="text-decoration: none">Forgot password?</a>
           </div>
@@ -765,6 +776,7 @@
                 $("#login_error_popup").css({
                   "font-size": "0px"
                 });
+                $("#login_error_popup").hide();
                 $('#forgot_password').hide();
                 $('form#reset_password').show();
                 $('form#reset_password input#email').val($('input#login_email').val());
@@ -787,7 +799,8 @@
             <div id="forgot_password_div">
               <button id='forgot_password'>Forgot Password? </button>
               <form id='reset_password' style='display:none;'>
-                <input id='reset_password_email' type='text' name='email' placeholder='Enter account email...' />
+                <span>Reset your password</span>
+                <input id='reset_password_email' type='text' name='email' placeholder='Enter school email' />
                 <input class='forgot_password_submit_button' type='submit' value='submit' />
               </form>
             </div>
@@ -857,12 +870,12 @@
         <div class="fb-like" data-href="https://facebook.com/urlinq" data-width="60" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
 
 
-        <video preload='auto' autoplay loop preload="auto" id="ur-video-loop" class="ur-video-playing" style='width:100%;' muted>
+<!--         <video preload='auto' autoplay loop preload="auto" id="ur-video-loop" class="ur-video-playing" style='width:100%;' muted>
 
-          <source src="<?php echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop4.mp4" type="video/mp4">
-            <source src="<?php echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop4.webm" type="video/webm">
+          <source src="<?php //echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop4.mp4" type="video/mp4">
+            <source src="<?php //echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop4.webm" type="video/webm">
 
-        </video>
+        </video> -->
 
         <!--mobile login-->
         <div class="mobile-login">
@@ -874,7 +887,7 @@
                     <input type="password" name="login_password" id="login_password" placeholder="Password">
                     <input type="hidden" id="offset" name="offset" value="">
                     <button name="submit" id="submit" type="submit" class="rounded Button SignUp smallBtn">
-                      <span class="buttonText">Log In</span>
+                      <span class="buttonText">Continue</span>
                     </button>
                   </form>
               <a href="#" class="close">Close</a>
@@ -883,6 +896,7 @@
         </div>
 
         <div class="mobile-background"></div>
+        <div class = "mobile-background-color"></div>
         <div class="mobile_wrap mobile_wrap_primary">
           <div class="mobile_wrap_header_text">
             <h3>
@@ -890,10 +904,18 @@
                   </h3>
             <p>for the iPhone</p>
           </div>
-          <a class="main_app_download_btn">
+<!--           <a class="main_app_download_btn">
             <div class="mobile_wrap_centered_download_button">
             </div>
-          </a>
+          </a> -->
+          <div class = "beta_testing_signup_wrapper">
+            <form name = "beta_testing_signup" id = "beta_testing_signup" method = "post">
+              <label for = "beta_testing_email" class = "beta_testing_email_label">Register for our exclusive beta</label> 
+              <input type = "text" name = "beta_testing_email" id = "beta_testing_email" placeholder = "Enter school email">
+              <button name = "submit" id = "submit_beta_email" type = "submit" class = "beta_signup_submit">
+              </button>
+            </form>
+          </div>
           <div class="mobile_wrap_centered_demo">
             <div class="iphone_skeleton">
               <div class="screen_content"></div>
@@ -972,8 +994,8 @@
               <div class="screen_content"></div>
             </div>
             <div class="feature-blurb-one">
-                <h3>Feature title here</h3>
-                <p>Placeholder text here</p>
+                <h3>uChat</h3>
+                <p><span>Instantly communicate</span> with your professors and peers with one-on-one and group university chats, designed perfectly for class, club, and departmental collaboration.</p>
               </div>
           </div>
           <div class="mobile_featurette featurette_2 right">
@@ -983,8 +1005,8 @@
               <div class="screen_content"></div>
             </div>
             <div class="feature-blurb-two">
-                <h3>Another feature title here</h3>
-                <p>More placeholder text here</p>
+                <h3>Academic Network</h3>
+                <p>Connect to your school seamlessly from web and mobile. Your entire university, in the <span>palm of your hand.</span></p>
               </div>
           </div>
         </div>
@@ -992,50 +1014,60 @@
     </div>
 
     <div class="mobile_panel_2 mobile_only_panel">
+      <div class = "panel_2_bg"></div>
+      <div class = "panel_2_bg_color"></div>
       <div class="mobile_wrap">
         <div class="big_app_icon">
         </div>
         <div class="dos_panels">
           <div class="left">
-            <h2>Features</h2>
+            <h2>Top Features</h2><hr class = "feature_sep">
             <h3>The University experience has been re-imagined for mobile. Education is now faster, easier to manage, and more fun than ever. Here are some of the more notable features:</h3>
             <ul>
               <li>
-                <h4>Smart Planner</h4>
-                <img width="68" height="68" class="img-left" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/calendar.png"> Fast planner to help you stay on top of schoolwork
+                <h4>The Fast Planner</h4>
+                <div width="68" height="68" class="mobile_feature_icon mobile_feature_icon_1 img-left"></div> A socially integrated planner that syncs with your classes and groups
               </li>
               <li class="li-right">
                 <h4>Ask your Class</h4>
-                <img width="68" height="68" class="img-right" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/question.png"> Ask questions to people in classes and departments
+                <div width="68" height="68" class="mobile_feature_icon mobile_feature_icon_2 img-right"></div> Ask questions to people in classes and departments, and collaborate on-the-go
               </li>
               <li>
                 <h4>Follow People who Inspire You</h4>
-                <img width="68" height="68" class="img-left" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/professor_urlinq.png"> Follow professors on your campus
+                <div width="68" height="68" class="mobile_feature_icon mobile_feature_icon_3 img-left"></div> Follow professors and interesting people at your school and beyond
               </li>
               <li class="li-right">
-                <h4>Schoolwork reminders</h4>
-                <img width="68" height="68" class="img-right" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/resources.png"> A intelligent reminder system notifies you to complete homework assignments, or to study for upcoming exams
+                <h4>Smart Reminders</h4>
+                <div width="68" height="68" class="mobile_feature_icon mobile_feature_icon_4 img-right"></div> Get reminders about upcoming homeworks, meetings, and exams
               </li>
-              <li>
-                <h4>Uncover your curriculum</h4>
-                <img width="68" height="68" class="img-left" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/signup_group_icon.png"> Discover classes and groups on campus
-              </li>
-              <li class="li-right">
-                <h4>Stay up-to-date with your academic life</h4>
-                <img width="68" height="68" class="img-right" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/school_icon_blue.png"> Do better in school through the campus feed, which organizes the conversation in your classes and clubs
+              <li class="li">
+                <h4>Explore your University</h4>
+                <div width="68" height="68" class="mobile_feature_icon mobile_feature_icon_6 img-left"></div> Search and navigate your entire University - no club or department is off limits
               </li>
             </ul>
+
           </div>
+
+
           <div class="right">
 
-            <a>
+<!--             <a>
               <div class="big_app_icon small">
               </div>
               <div class="mobile_wrap_centered_download_button">
               </div>
               <div class="made_in_ny">
               </div>
-            </a>
+            </a> -->
+            <div class = "beta_testing_signup_wrapper beta_testing_signup_wrapper_2">
+              <form name = "beta_testing_signup" id = "beta_testing_signup" method = "post">
+                <label for = "beta_testing_email" class = "beta_testing_email_label">Register for our exclusive beta</label> 
+                <input type = "text" name = "beta_testing_email" id = "beta_testing_email" placeholder = "Enter school email">
+                <button name = "submit" id = "submit_beta_email" type = "submit" class = "beta_signup_submit">
+                </button>
+              </form>
+            </div>
+
             <div class="computer_available">
               <p>
                 Urlinq is also available <span>for the web <strong id = "computer_icon"></strong>.</span>
@@ -1190,7 +1222,7 @@
       <div class="signup-form-wrap other_panel active" id="other_panel_3">
         <div class="header-sec">
           <div class="header-sec-left">
-            <h4 class="header">Discover, Collaborate, Connect</h4>
+            <h4 class="header">Sign Up <span>Explore your university</span></h4>
           </div>
           <div class="header-sec-right">
             <div class="time-to-signup" style="font-size:20px;">your link to the university</div>

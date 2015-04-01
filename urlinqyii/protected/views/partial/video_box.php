@@ -13,8 +13,8 @@
 <div class = 'post video_box_post' data-video_id=''>
 <div class="post_main video_post_main">
     <div class="video_header">
-        <div class="video_header_text">Video lessons to help you learn</div>
-        <span class="info_icon">[]</span>
+        <div class="video_header_text">Knowledge Circle</div>
+        <span class="info_icon"></span>
         <div class="help_div dark">
             <div class="wedge">
             </div>

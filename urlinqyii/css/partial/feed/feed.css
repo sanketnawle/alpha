@@ -937,10 +937,11 @@ div.seen_icon {
 }
 
 .post_functions.event_functions {
-    float: right;
-    position: relative;
+    right: 10px;
+    position: absolute;
     width: 66px;
     height: 35px;
+    bottom: 15px;
 }
 
 .post_functions.event_functions .post_functions_box {

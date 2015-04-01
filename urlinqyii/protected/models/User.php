@@ -155,6 +155,7 @@ class User extends CActiveRecord
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
 			'department' => array(self::BELONGS_TO, 'Department', 'department_id'),
 			'school' => array(self::BELONGS_TO, 'School', 'school_id'),
+			'university' => array(self::BELONGS_TO, 'University', 'university_id'),
 			'userAuthProviders' => array(self::HAS_MANY, 'UserAuthProvider', 'user_id'),
 			'userConfirmation' => array(self::HAS_ONE, 'UserConfirmation', 'user_id'),
 			'userConnections' => array(self::HAS_MANY, 'UserConnection', 'to_user_id'),
@@ -225,6 +226,7 @@ class User extends CActiveRecord
 			'lastname' => 'Lastname',
 			'department_id' => 'Department',
 			'school_id' => 'School',
+			'university_id' => 'University',
 			'user_bio' => 'User Bio',
 			'picture_file_id' => 'Picture File',
 			'status' => 'Status',
@@ -258,6 +260,7 @@ class User extends CActiveRecord
 		$criteria->compare('lastname',$this->lastname,true);
 		$criteria->compare('department_id',$this->department_id);
 		$criteria->compare('school_id',$this->school_id);
+		$criteria->compare('university_id',$this->university_id);
 		$criteria->compare('user_bio',$this->user_bio,true);
 		$criteria->compare('picture_file_id',$this->picture_file_id);
 		$criteria->compare('status',$this->status,true);
