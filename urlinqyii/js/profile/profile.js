@@ -95,6 +95,11 @@ $(document).ready(function() {
             close_profile();
         }   // esc
     });
+
+    // $(document).on('click','#profile_background_overlay',function(){
+    //     close_profile();
+    // });
+
     function close_profile(){
         globals.origin_id = old_origin_id;
         globals.origin_type = old_origin_type;

@@ -178,6 +178,7 @@ a.MyBox_SO.edit_profile:hover{
 em.SectionHeader_ribbon{
     height:5px;
     width: 5px;
+    display: none;
     border-radius: 10000px;
     position: relative;
     margin-left: -10px;

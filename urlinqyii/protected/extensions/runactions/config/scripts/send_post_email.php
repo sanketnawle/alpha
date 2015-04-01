@@ -16,9 +16,9 @@ if (ERunActions::runBackground()){
 
 
         if($post->anon){
-            $subject = "[Urlinq] Notification - new post in " . $origin_name . " from Anonymous";
+            $subject = "Notification - new post in " . ucfirst($origin_name) . " from Anonymous";
         }else{
-            $subject = "[Urlinq] Notification - new post in " . $origin_name . " from " . $actor->firstname . ' ' . $actor->lastname;
+            $subject = "Notification - new post in " . ucfirst($origin_name)  . " from " . $actor->firstname . ' ' . $actor->lastname;
         }
 
 

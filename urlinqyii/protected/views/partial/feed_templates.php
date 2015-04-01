@@ -35,7 +35,7 @@
                                                                         Anonymous
                                                                     </span>
                                                         {{#if pownership}}
-                                                                    <span class="post_owner post_own_post anonymous_post_owner">
+                                                                    <span class="post_owner post_own_post anonymous_post_owner me_post_owner">
                                                                         (me)
                                                                     </span>
                                                         {{/if}}
@@ -551,8 +551,8 @@
                                                                         Anonymous
                                                                     </span>
                                                         {{#if pownership}}
-                                                            <span class="post_owner post_own_post anonymous_post_owner">
-                                                                (me)
+                                                            <span class="post_owner post_own_post anonymous_post_owner me_post_owner">
+                                                                 (me)
                                                             </span>
                                                         {{/if}}
                                                     {{else}}
@@ -1163,13 +1163,13 @@
                                 {{/ifCond}}
 
                                     <span class="post_attending_label">Are you attending?</span>
-                                    <input type="radio" id="post_choose_yes_{{event.event_id}}" class="post_choose_attending_button" name="{{event.event_id}}" value="Yes"
+                                    <input type="radio" id="post_choose_yes_{{event.event_id}}" class="post_choose_attending_button event_attending_choose_yes_input" name="{{event.event_id}}" value="Yes"
                                         {{#ifCond event.attend_status '==' "Attending"}}checked{{/ifCond}}>
                                     <label class = "post_choose_yes_label" for="post_choose_yes_{{event.event_id}}">Yes</label>
-                                    <input type="radio" id="post_choose_maybe_{{event.event_id}}" class="post_choose_attending_button" name="{{event.event_id}}" value="Maybe"
+                                    <input type="radio" id="post_choose_maybe_{{event.event_id}}" class="post_choose_attending_button event_attending_choose_maybe_input" name="{{event.event_id}}" value="Maybe"
                                         {{#ifCond event.attend_status '==' "Maybe Attending"}}checked{{/ifCond}}>
                                     <label class = "post_choose_maybe_label" for="post_choose_maybe_{{event.event_id}}">Maybe</label>
-                                    <input type="radio" id="post_choose_no_{{event.event_id}}" class="post_choose_attending_button" name="{{event.event_id}}" value="No"
+                                    <input type="radio" id="post_choose_no_{{event.event_id}}" class="post_choose_attending_button event_attending_choose_no_input" name="{{event.event_id}}" value="No"
                                         {{#ifCond event.attend_status '==' "Not Attending"}}checked{{/ifCond}}>
                                     <label class = "post_choose_no_label" for="post_choose_no_{{event.event_id}}">No</label>
                                     {{#if event.conflict}}
@@ -1245,7 +1245,7 @@
                                             Anonymous
                                         </span>
                                         {{#if pownership}}
-                                                            <span class="post_owner post_own_post anonymous_post_owner">
+                                                            <span class="post_owner post_own_post anonymous_post_owner me_post_owner">
                                                                 (me)
                                                             </span>
                                         {{/if}}
@@ -1483,7 +1483,7 @@
                                                                     Anonymous
                                                                 </span>
                                                                 {{#if pownership}}
-                                                                    <span class="post_owner post_own_post anonymous_post_owner">
+                                                                    <span class="post_owner post_own_post anonymous_post_owner me_post_owner">
                                                                         (me)
                                                                     </span>
                                                                 {{/if}}

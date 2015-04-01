@@ -90,6 +90,24 @@ class SiteController extends Controller
         }else{
             $first_time=false;
         }
+
+
+
+
+
+
+        if(isset($_GET['event_id']) && isset($_GET['event_option'])){
+            $this->check_event_option($user,$_GET);
+        }
+
+
+        if(isset($_GET['question_option_id'])){
+            $this->check_question_option($user,$_GET);
+        }
+
+
+
+
        /* if($user->show_profile_tutorial){
             $show_planner_tutorial = "show_profile_tutorial";
             //$show_tutorial_button = true;
@@ -1380,8 +1398,9 @@ class SiteController extends Controller
             }
         }
 
-
-        $user->picture_file_id = $picture_file_id;
+        if($user->picture_file_id == null || $user->picture_file_id == '1' || $user->picture_file_id == ''){
+            $user->picture_file_id = $picture_file_id;
+        }
 
         //Finally, change the user type to active
         //indicating that the user is done with onboarding
@@ -1654,9 +1673,23 @@ class SiteController extends Controller
                             return;
                         }
                     }else{
+
+                        $user_login = UserLogin::model()->find('user_id=:id', array(':id'=>$professor->user_id));
+
+                        if(!$user_login){
+                            $salt = salt();
+                            $hashed_password = hash_password($password,$salt);
+
+                            $user_login = new UserLogin;
+                            $user_login->user_id = $professor->user_id;
+                            $user_login->password = $hashed_password;
+                            $user_login->salt = $salt;
+                            $user_login->save(false);
+                        }
+
+
                         Yii::app()->session['user_id'] = $professor->user_id;
                         Yii::app()->session['user_type'] = $user_type;
-
 
 
                         if($professor->school_id && $professor->department_id){

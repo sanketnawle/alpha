@@ -255,7 +255,7 @@ var add_event_to_ui = function(events_generated){
     }
   });
   events_list = load_events(file_id);
-    display_events(events_list, 1);
+  display_events(events_list, 1);
 }
 
 

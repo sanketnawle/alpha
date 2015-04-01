@@ -655,6 +655,10 @@ div.html5-info-bar.ytp-can-shar {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px 2px rgba(0, 0, 0, 0.1);
 }
 
+.comment_msg #embedly_video_box.embedly_box{
+    margin-left: -64px!important;
+}
+
 #embedly_video_box .embedly_box:hover {
 }
 
@@ -933,10 +937,11 @@ div.seen_icon {
 }
 
 .post_functions.event_functions {
-    float: right;
-    position: relative;
+    right: 10px;
+    position: absolute;
     width: 66px;
     height: 35px;
+    bottom: 15px;
 }
 
 .post_functions.event_functions .post_functions_box {
@@ -1735,6 +1740,10 @@ transition: background-color 0.6s ease, border 0.6s ease;
     color: #333 !important;
     text-decoration: none !important;
     cursor: default !important;
+}
+
+.anonymous_post_owner.me_post_owner{
+    padding-left:4px;
 }
 
 .post_own_post {
@@ -2920,12 +2929,16 @@ time.timeago {
 }
 
 span.post_group > a {
-    color: #333;
-    font-size: 15px;
-    -webkit-transition: color .218s;
-    -moz-transition: color .218s;
-    -o-transition: color .218s;
-    transition: color .218s;
+  color: #333;
+  font-size: 15px;
+  -webkit-transition: color .218s;
+  -moz-transition: color .218s;
+  -o-transition: color .218s;
+  transition: color .218s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
 }
 
 div.post_link_msg div.link-wrapper, div.post_lr_link_msg div.link-wrapper {
@@ -4443,7 +4456,7 @@ div.post_event_title.post_opportunity_title {
     padding: 1.5px 12px 5px;
 
     font-size: 17.5px;
-    padding-left: 7px;
+    padding-left: 2.5px;
 }
 
 div.opportunity_post div.post_user_icon {
@@ -4964,6 +4977,17 @@ input.post_choose_attending_button + label {
     color: #575757 !important;
     margin-top: 4px;
     width: 39px;
+    -moz-transition: box-shadow 50ms cubic-bezier(0.4, 0, 0.2, 1), border-color 50ms cubic-bezier(0.4, 0, 0.2, 1);
+      transition: box-shadow 50ms cubic-bezier(0.4, 0, 0.2, 1), border-color 50ms cubic-bezier(0.4, 0, 0.2, 1);
+      -webkit-transition: box-shadow 50ms cubic-bezier(0.4, 0, 0.2, 1), border-color 50ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input.event_attending_choose_yes_input:hover ~ label.post_choose_maybe_label, label.post_choose_yes_label:hover ~ label.post_choose_maybe_label{
+    border-left-color:#ddd;
+}
+
+input.event_attending_choose_maybe_input:hover ~ label.post_choose_no_label, label.post_choose_maybe_label:hover ~ label.post_choose_no_label{
+    border-left-color:#ddd;
 }
 
 input.post_choose_attending_button:hover + label{

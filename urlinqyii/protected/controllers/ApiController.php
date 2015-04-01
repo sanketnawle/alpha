@@ -62,9 +62,15 @@
 
                 $school_new['member_count'] = $member_count;
 
+                $dept_count = "SELECT COUNT(school_id) FROM department WHERE school_id=$school_id";
 
+                $deptcoutncommand = Yii::app()->db->createCommand($dept_count);
+                $r = $deptcoutncommand->queryAll();
 
-                $picture_sql = "SELECT picture_file_id FROM user WHERE picture_file_id IS NOT NULL AND picture_file_id!=1 AND school_id=$school_id LIMIT 5;";
+                $dcount = $r[0]["COUNT(school_id)"];
+                $school_new['department_count'] = $dcount;
+
+                $picture_sql = "SELECT picture_file_id FROM user WHERE picture_file_id IS NOT NULL AND picture_file_id!=1 AND school_id=$school_id LIMIT 10;";
 
                 $cmd = Yii::app()->db->createCommand($picture_sql);
                 $picture_files = $cmd->queryAll();
@@ -110,6 +116,15 @@
 
                 $school_new['member_count'] = $member_count;
 
+                $dept_count = "SELECT COUNT(school_id) FROM department WHERE school_id=$school_id";
+
+                $deptcoutncommand = Yii::app()->db->createCommand($dept_count);
+                $r = $deptcoutncommand->queryAll();
+
+                $dcount = $r[0]["COUNT(school_id)"];
+                $school_new['department_count'] = $dcount;
+
+
                 array_push($schools, $school_new);
             }
 
@@ -139,8 +154,11 @@
                 $this->renderJSON($data);
                 return;
             }
-            header('Content-type: image/jpeg');
-            $file = Yii::app()->getBaseUrl(true) . $file->file_url;
+
+            $base_path = dirname(Yii::app()->request->scriptFile);
+
+            header('Content-type: image/jpg');
+            $file = $base_path . $file->file_url;
             readfile($file);
             return;
         }

@@ -17,9 +17,9 @@ if (ERunActions::runBackground()){
 
 
         if($reply->anon){
-            $subject = "[Urlinq] Reply in " . $origin_name . " from " . $actor->firstname . ' ' . " from Anonymous";
+            $subject = "Reply in " . $origin_name . " from Anonymous";
         }else{
-            $subject = "[Urlinq] Reply in " . $origin_name . " from " . $actor->firstname . ' ' . $actor->lastname . " - " . $reply->reply_msg;
+            $subject = "Reply in " . $origin_name . " from " . $actor->firstname . ' ' . $actor->lastname . " - " . $reply->reply_msg;
         }
 
 

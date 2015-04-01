@@ -1,0 +1,5 @@
+<?php
+
+$notification = $params['notification'];
+
+?>
