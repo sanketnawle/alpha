@@ -3,11 +3,17 @@ div.mobile-background {
   bottom: 0rem;
   height:60rem;
   width:100%;
-  position:fixed;
+  position: absolute;
   display:block;
   z-index:-1;
-  background:url(../assets/campus_background.jpg) no-repeat center center scroll;
+  background: url(../assets/columbia.jpg) no-repeat center center scroll;
   background-size: cover;
+  -webkit-filter: blur(40px);   -moz-filter: blur(9px);   -o-filter: blur(9px);   -ms-filter: blur(9px);   
+  filter: blur(9px);
+}
+
+div.header{
+    position: absolute;
 }
 
 img.mobile-bg {
@@ -57,7 +63,7 @@ div#forgot_password_div {
 
 img.logoText
 {
-  display:none;
+  display: none;
 }
 
 ul.color-border
@@ -67,6 +73,7 @@ ul.color-border
   position:relative;
   width:360px;
   display:inherit;
+  border-radius: 0px;
   margin:-4px auto 0;
   padding:0 0 0 4px;
 }
@@ -79,13 +86,13 @@ div.main-market-area div.announcement_board
 }
 
 div.mobile-login {
-	display:block;
-	position:fixed;
-	width:100%;
-	height:100%;
-	top:0;
-	left:0;
-	z-index:10000000;
+  display: none;
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index: 100000;
 }
 
 .announcement_board_writtable h4
@@ -97,12 +104,17 @@ div.mobile-login {
 .top-bar
 {
   height:64px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
 }
 
 img.logo
 {
-  height:46px;
+  height: 42px;
   margin-top:-3px;
+  display: block;
+  opacity: .955;
 }
 
 div.header form#login {
@@ -111,6 +123,9 @@ div.header form#login {
 
 button#mobile-login-btn {
   display:block;
+  background: rgba(255, 255, 255, 0.81);
+  color: #029acf!important;
+  border: 1px solid #029acf;
 }
 
 div.loginModalContent {
@@ -139,7 +154,7 @@ div#loginModal.mobileLoginWindow {
   margin-top:-140px;
   margin-left:-150px;
   display:none;
-  background-color:#fff;
+  background-color: rgba(255, 255, 255, 0.91);
   text-align:center;
   border-radius:5px;
   -moz-box-sizing:border-box;
@@ -149,15 +164,26 @@ div#loginModal.mobileLoginWindow {
 
 div#loginModal.mobileLoginWindow h2 {
   margin-top:8px;
+  font-family: Avenir;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #4D4D4D;
 }
 
 div#loginModal.mobileLoginWindow a {
   text-decoration:none;
-  font-size:11px;
-  color:#016283;
+  font-size: 11.5px;
+  color: rgba(2, 154, 207, 0.61);
   position:relative;
+  width: 77px;
+  padding: 4px 0;
+  border-radius: 2px;
+  border: 1px solid rgba(2, 154, 207, 0.17);
   display:block;
-  margin-top:25px;
+  margin: 0 auto;
+  background: rgba(2, 154, 207, 0.11);
+  text-transform: lowercase;
+  margin-top: 39px;
 }
 
 a.close {
@@ -165,7 +191,8 @@ a.close {
 }
 
 div#loginModal.mobileLoginWindow a:hover {
-  text-decoration:underline;
+  background: #029acf;
+  color: #FFF;
 }
 
 div#loginModal form#login {
@@ -197,9 +224,9 @@ div#loginModal button.SignUp {
 }
 
 body.modal-open {
-	overflow:hidden;
-	position:fixed;
-	height:100%;
+  overflow:hidden;
+  position:fixed;
+  height:100%;
 }
 
 .announcement_board_writtable h4 span
@@ -250,6 +277,19 @@ ul.color-border li p
   font-size:12px;
   color:rgba(255,255,255,1);
   margin:7px 5px;
+}
+
+span.mobile_slogan{
+    display: block;
+    border-left: 1px solid #FFFFFF;   font-family: Avenir;   letter-spacing: 1px;
+    position: relative;
+    color: #FFF;
+    left: 7px;
+    font-size: 13px;
+    position: relative;
+    top: 25px;
+    padding-left: 5px;
+    float: left;
 }
 
 .color-border li a
@@ -382,6 +422,14 @@ ul.color-border li:nth-child(5)
   color:#de445d;
 }
 
+.mobile-background-color{
+    background: rgba(2, 154, 207, 0.41);
+  
+    z-index: 1;
+    height: 60rem;   width: 100%;
+    position: absolute;
+}
+
 ul.color-border li:nth-child(5):hover
 {
   background-color:#de445d;
@@ -390,6 +438,41 @@ ul.color-border li:nth-child(5):hover
 div.mobile_wrap,div.mobile_only_panel
 {
   display:block;
+}
+
+div.panel_2_bg{
+    background: url(../assets/neuroscience.jpg) center center no-repeat fixed;   
+    -webkit-filter: blur(65px);   -moz-filter: blur(90px);   -o-filter: blur(90px);   -ms-filter: blur(90px);   
+    position: absolute;
+    filter: blur(90px);
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: scale(1);
+    bottom: 0;
+}
+div.panel_2_bg_color{
+    background: rgba(19, 163, 81, 0.89);
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    top: 0px;
+    left: 0;
+    right: 0;
+}
+
+div.feature-blurb-two > h3, div.feature-blurb-one > h3{
+    font-size: 20px;
+    font-weight: 100;
+    font-family: Avenir;
+    padding: 0 10px;
+}
+div.feature-blurb-two > p, div.feature-blurb-one > p{
+    font-size: 14px;
+    font-family: Avenir;
+    font-weight: 100;
+    padding: 0 10px;
 }
 
 div.signup-container,video.ur-video-playing

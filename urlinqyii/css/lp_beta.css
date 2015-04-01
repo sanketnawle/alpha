@@ -97,14 +97,14 @@ div.mobile_wrap_primary
   margin-top:70px;
   position:fixed;
   padding-top:25px;
-  z-index:-1;
+  z-index: 1;
   height:700px;
   width:100%;
 }
 
-div.mobile-login {
-  display:none;
-}
+/*div.mobile-login {
+  display: none!important;
+}*/
 
 
 div.mobile_wrap_header_text
@@ -125,32 +125,33 @@ div.mobile_panel_4 > div.mobile_wrap > p
 {
   color:#FFF;
   font-family:Avenir;
-  font-weight:200;
-  font-size:18px;
+  -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
 }
 
 div.mobile_wrap_header_text > h3
 {
-  font-size:67px;
+  font-size: 5.5rem;
   font-family:Avenir;
   font-weight:900;
-  text-shadow:0 1px 5px rgba(0,0,0,0.5);
   color:#fff;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   margin:0;
+  letter-spacing: -2px;
 }
 
 div.mobile_wrap_header_text > p
 {
   font-family:Avenir;
   font-size:24px;
-  text-shadow:0 1px 5px rgba(0,0,0,0.5);
-  color:#1EC5FF;
+  color: #fff;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   font-weight:900;
   margin:-10px 0 0;
+  font-size: 30px;   font-weight: 100;   padding-left: 10px;   border-left: 1px solid rgba(255, 255, 255, 0.37);
 }
 
 div.mobile_wrap_header_text > h6
@@ -212,49 +213,52 @@ div.mobile_featurette
 div.featurette_iphone_skeleton.skeleton_bottom
 {
   background-image:url(../assets/gold_iphone_6.png);
-  background-size:contain;
-  height:615px;
-  width:268px;
+  background-size: auto;
+  height: 360px;
+  width: 322px;
   background-repeat:no-repeat;
-  margin:87px auto 0 -105px;
+  margin: 87px auto 0 -110px;
 }
 div.skeleton_bottom div.screen_content {
   position:absolute;
-  background-image:url(../assets/iphonescreen_placeholder.png);
+  background-image: url(../assets/iphonescreen_messaging.png);
   background-size:100%;
-  margin:60px 6px;
-  width:252px;
-  height:424px;
+  margin: 77px 6px;
+  width: 273px;
+  height: 281px;
 }
 
 div.featurette_iphone_skeleton.skeleton_top
 {
   text-align:right;
   background-image:url(../assets/blue_iphone_5.png);
-  background-size:contain;
-  height:671px;
+  background-size: auto;
+  height: 420px;
   background-repeat:no-repeat;
-  width:260px;
-  margin:50px -100px 24px auto;
+  width: 330px;
+  margin: 50px -147px 24px auto;
+  margin-bottom: 80px;
+  background-position: bottom;
 }
 div.skeleton_top div.screen_content {
   position:absolute;
   background-image:url(../assets/iphonescreen_placeholder.png);
   background-size:100%;
-  margin:74px 14px;
+  margin: 0px 34px;
+  background-position: bottom;
   width:234px;
-  height:394px;
+  height: 323px;
 }
 
 div.feature-blurb-one {
   position:absolute;
-  margin:-581px 10px 0px 180px;
+  margin: -300px 10px 0px 208px;
   text-align: left;
   color:#fff;
 }
 div.feature-blurb-two {
   position:absolute;
-  margin:-651px 180px 0px 10px;
+  margin: -511px 180px 0px 7px;
   text-align: right;
   color:#fff;
 }
@@ -284,24 +288,33 @@ div.desk_background{
 div.mobile_panel_2 div.dos_panels > .left > h2
 {
   font-family:Avenir;
-  font-weight:100;
-  border:2px solid #121212;
-  border-radius:6px;
+  font-weight: 100;
+  border: 1px solid rgba(255, 255, 255, 0.37);
+  border-radius: 3px;
   display:inline-block;
+  letter-spacing: .25px;
   margin-top:31px;
-  font-size:1.5em;
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 14px;
   padding:.5em 1.25em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 div.mobile_panel_2 div.dos_panels h3
 {
   font-family:Avenir;
   font-weight:100;
-  font-size:19.5px;
-  text-align:justify;
+  font-size: 17.5px;
+  line-height: 30px;
+  text-align: left;
+  color: #FFF;
+  text-indent: 33px;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+  word-wrap: normal;
   margin:5px 20px 20px;
+  white-space: normal;
 }
 
 div.mobile_panel_2 div.dos_panels ul
@@ -314,35 +327,79 @@ div.mobile_panel_2 div.dos_panels ul
   float:left;
   margin:0 0 40px;
   padding:0;
+  margin-bottom: 10px;
 }
 
 div.mobile_panel_2 div.dos_panels ul > li
 {
   list-style:none;
   margin:2em 0;
-  font-weight:400;
+  font-weight: 400;
   position:relative;
-  color:#777;
-  font-family:Avenir;
-  font-size:16px;
+  color: #FFF;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
   text-align:right;
-  padding:0 30px 0 115px;
+  -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;
+  padding: 0 20px 0 115px;
+  margin-left: 7px;
+  margin-right: 7px;
 }
 
-div.mobile_panel_2 div.dos_panels ul > li > img.img-left
+div.mobile_panel_2 div.dos_panels ul > li > div.img-left
 {
   position:absolute;
   left:30px;
   top:8px;
 }
 
-div.mobile_panel_2 div.dos_panels ul > li.li-right
-{
-  text-align:justify;
-  padding:0 115px 0 30px;
+div.mobile_panel_2 div.dos_panels ul > li > div.mobile_feature_icon{
+    background-image: url(../assets/mobile_landing_product_icons.svg);
+
+    background-size: 68px;
+    width: 68px;
+    height: 68px;
 }
 
-div.mobile_panel_2 div.dos_panels ul > li > img.img-right
+div.mobile_panel_2 div.dos_panels ul > li > div.mobile_feature_icon_3{
+    background-position: 0 -350px;
+  
+}
+
+div.mobile_panel_2 div.dos_panels ul > li > div.mobile_feature_icon_1{
+    background-position: 0 4px;
+  
+}
+
+div.mobile_panel_2 div.dos_panels ul > li > div.mobile_feature_icon_2{
+    background-position: 0 -75px;
+  
+}
+
+div.mobile_panel_2 div.dos_panels ul > li > div.mobile_feature_icon_4{
+    background-position: 0 -260px;
+  
+    top: 12px!important;
+}
+
+div.mobile_panel_2 div.dos_panels ul > li > div.mobile_feature_icon_5{
+    background-position: 0 -451px;
+  
+    background-repeat: no-repeat;
+}
+div.mobile_panel_2 div.dos_panels ul > li > div.mobile_feature_icon_6{
+    background-position: 0 -160px;
+  
+    top: 22px!important;
+}
+
+div.mobile_panel_2 div.dos_panels ul > li.li-right
+{
+  text-align: left;
+  padding: 0 115px 0 20px;
+}
+
+div.mobile_panel_2 div.dos_panels ul > li > div.img-right
 {
   position:absolute;
   right:30px;
@@ -351,23 +408,53 @@ div.mobile_panel_2 div.dos_panels ul > li > img.img-right
 
 div.mobile_panel_2 div.dos_panels ul > li > h4
 {
-  font-family:Avenir;
-  font-size:20px;
-  font-weight:100;
-  color:#121212;
-  padding-top:5px;
-  padding-bottom:5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 10px;
+  letter-spacing: 1px;
+  padding-bottom: 4px;
+  text-transform: uppercase;
+  line-height: 28px;
   margin:0;
+  padding: 4px 10px;
+  margin-bottom: 9px;
+  background: rgba(255, 255, 255, 0.14);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.3) 0%,rgba(255, 255, 255, 0) 100%);   
+  background: -o-linear-gradient(left,rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 0.3) 100%);   
+  background: -ms-linear-gradient(left,rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 0.3) 100%);   
+  background: -moz-linear-gradient(left,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.3));   
+  background-image: -webkit-linear-gradient(left,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.3));
+  border-radius: 0 0 2px 0;
+}
+
+div.mobile_panel_2 div.dos_panels ul > li.li-right > h4{
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.3) 0%,rgba(255, 255, 255, 0) 100%);   background: -o-linear-gradient(left,rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 0.3) 100%);   background: -ms-linear-gradient(left,rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 0.3) 100%);   background: -moz-linear-gradient(left,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.3));   
+    background-image: -webkit-linear-gradient(right,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.3));
+    border-radius: 0 0 0 3px;
 }
 
 div.computer_available
 {
   display:inline-block;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 11px;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.12);
+  margin-bottom: 12px;
+  border-radius: 37px;
+  padding: 0 10px;
+  margin-top: 18px;
 }
 
 div.mobile_panel_2 div.dos_panels > .right > a > div.mobile_wrap_centered_download_button
 {
-  background-image:url(../assets/app_download_btn.png);
+  background-image: url(../assets/app_store_badge.png);
+}
+
+div.mobile-login{
+  display: none;
 }
 
 button#mobile-login-btn {
@@ -409,29 +496,33 @@ button#mobile-login-btn {
 
 .mobile_panel_1
 {
-  background:#3d3d3d;
+  background: #3f3f40;
   z-index:2000;
-  -moz-box-shadow:0 2px 2px -2px rgba(0,0,0,.52),0 -2px 2px -2px rgba(0,0,0,.52);
-  -webkit-box-shadow:0 2px 2px -2px rgba(0,0,0,.52),0 -2px 2px -2px rgba(0,0,0,.52);
-  box-shadow:0 2px 2px -2px rgba(0,0,0,.52),0 -2px 2px -2px rgba(0,0,0,.52);
-  border-bottom:2px solid #000;
-  border-top:2px solid #000;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
   width:100%;
   overflow:hidden;
   height:auto!important;
   margin-top:-1px;
+  background-image: url(../assets/urlinq_bottom_border.svg);   background-repeat-x: repeat;   
+  background-repeat-y: no-repeat;   
+  background-position: bottom;
 }
 
 .mobile_panel_2
 {
-  border-radius:5px;
-  background:rgba(255,255,255,0.98);
+  border-radius: 0p;
+  background: rgba(255, 255, 255, 0.85);
   color:#121212;
-  border:1px solid #000;
+  border: 1px solid #rgba(9, 255, 152, 0.39);
   height:auto!important;
   border-color:rgba(105,105,105,0.17);
-  margin:8px 6px;
+  margin: 0;               
+  overflow: hidden;
+  border-top-color: #FFF;
 }
+
+.panel_2_bg_color {}
 
 .mobile_panel_3
 {
@@ -442,6 +533,7 @@ button#mobile-login-btn {
 {
   display:none;
   height:100%;
+  z-index: 10000000;
   position:relative;
 }
 
@@ -933,6 +1025,8 @@ div.lp_terms p.lp_terms_p
   margin:0;
 }
 
+div.mobile_slogan{}
+
 div.lp_terms p.lp_terms_p a:hover
 {
   text-decoration:underline!important;
@@ -1097,7 +1191,7 @@ div.header
 {
   position:fixed;
   height:72px;
-  z-index: 10000000;
+  z-index: 20000000000000;
   width:100%;
   top:0;
 }
@@ -1108,18 +1202,18 @@ img.logo
   border:0;
   position:relative;
   top:12.5px;
-  display:inline-block;
+  display: none;
   float:left;
-  margin-left:10px;
+  margin-left: 17px;
   height:46px;
 }
 
 img.logoText
 {
-  height:29px;
+  height: 38px;
   position:relative;
   left:16px;
-  top:21px;
+  top: 16px;
 }
 
 div.main-market-area
@@ -1141,6 +1235,10 @@ div.main-market-area
   position:relative;
   min-height:480px;
   width:100%;
+}
+
+span.mobile_slogan{
+    display: none;
 }
 
 .main-content-wrap
@@ -1612,6 +1710,8 @@ button.SignUp span.buttonText
 {
   margin-left:0;
   font-size: 13px;
+  letter-spacing: .7px;
+  text-transform: uppercase;
 }
 
 ul.account-types li.student
@@ -1878,7 +1978,7 @@ input#login_email
   transition:border-color .15s ease;
   width:38.5%;
   font-weight:100;
-  border:1px solid #000;
+  border: 1px solid #D3D3D3;
   -webkit-transition:border-color .15s ease;
   padding:8px 10px;
 }
@@ -1902,7 +2002,7 @@ input#login_password
   margin-left:5px;
   font-family:Avenir;
   transition:border-color .15s ease;
-  border:1px solid #000;
+  border: 1px solid #D3D3D3;
   padding:8px 10px;
 }
 
@@ -2177,7 +2277,7 @@ div.bottom-container
   position:absolute;
   width:100%;
   height: 64px;
-  z-index:5000;
+  z-index: 50000000;
   top:calc(100%-8px);
   background: rgba(0, 0, 0, 0.1);
   margin:0 auto;   
