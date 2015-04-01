@@ -1008,7 +1008,20 @@ $(document).on('keyup', '.chat_input', function(e){
 
     });
 
+$(document).on('click', '.textarea_menubutton', function(e) {
+    console.log('click');
+    var $menu_button = $(this);
+    var $textarea = $menu_button.parents('.chat_input_box');
+    var $menu = $textarea.children('.chatbox_menu');
 
+    if ($($menu_button).hasClass('closed')) {
+        $menu.fadeIn(100).animate({ marginBottom: "-5px" }, { duration: 250, queue: false } );
+        $menu_button.removeClass('closed');
+    } else {
+        $menu.fadeOut().animate({ marginBottom: "0px" }, { duration: 250, queue: false } );
+        $menu_button.addClass('closed');
+    }
+});
 
 
 });
