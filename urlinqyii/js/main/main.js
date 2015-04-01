@@ -724,12 +724,18 @@ $(document).ready(start(globals.origin_id));
             }
         }
 
+
         var post_url = globals.base_url + '/' + globals.origin_type + '/' + globals.origin_id + '/' + verb;
 
 
 
 
         var post_data = {id: globals.origin_id};
+
+        if(globals.origin_type == 'class'){
+            post_data['tz_offset'] = (new Date().getTimezoneOffset());
+        }
+
 
         $.post(
             post_url,

@@ -532,7 +532,7 @@ class ClassController extends Controller
                 $class_datetime = $class->class_datetime;
                 
 
-                if($class_datetime){
+                /*if($class_datetime){
                     
                     $year = date("Y");
                     $date_array = array("spring" => array("start" => "01", "end" => "05", "start_day" => "20", "end_day" => "20"), "fall" => array("start" => "09", "start_day" => "01", "end" => "12", "end_day" => "20"));
@@ -563,7 +563,60 @@ class ClassController extends Controller
                         }
                     }
 
+                }*/
+                $professor = $class->professor;
+                if($professor && $professor->professorAttribute){
+                    $professor_attribute =$professor->professorAttribute;
+                    $professor_office_hours = $professor_attribute->office_hours;
                 }
+                if($professor_office_hours && $professor_office_hours!=""){
+                    $office_hours_array = explode(", ",$professor_office_hours);
+                    foreach($office_hours_array as $office_hours){
+                        $year = date("Y");
+                        $date_array = array("spring" => array("start" => "01", "end" => "05", "start_day" => "20", "end_day" => "20"), "fall" => array("start" => "09", "start_day" => "01", "end" => "12", "end_day" => "20"));
+                        $start_end = explode("-", substr($office_hours, 4));
+                        $start_day = $date_array[$class->semester]["start"];
+                        $end_day = $date_array[$class->semester]["end"];
+                        $week_day = substr($office_hours, 0, 3);
+                        $date_range = new DatePeriod(
+                            new DateTime("first $week_day of $year-$start_day"),
+                            DateInterval::createFromDateString("next $week_day"),
+                            new DateTime("$end_day month $year-01")
+                        );
+                        foreach ($date_range as $Day) {
+                            if($Day){
+                                $start_time = (new DateTime($start_end[0]))->format("H:i:s");
+                                $end_time = (new DateTime($start_end[1]))->format("H:i:s");
+                                if(isset($_POST['tz_offset'])){
+                                    $start_time = date("H:i:s",strtotime($start_time)+(60*$_POST['tz_offset']));
+                                    $end_time = date("H:i:s",strtotime($end_time)+(60*$_POST['tz_offset']));
+                                }
+
+
+                                $event_entry = new Event;
+                                $event_entry->event_type = "office hours";
+                                $event_entry->origin_type = "class";
+                                $event_entry->origin_id = $class_id;
+                                $event_entry->user_id = $user_id;
+                                $event_entry->title = $professor->full_name()."'s office hours";
+                                $event_entry->start_time = $start_time;
+                                $event_entry->end_time = $end_time;
+                                $event_entry->start_date = $Day->format("Y-m-d");
+                                $event_entry->end_date = $Day->format("Y-m-d");
+                                $event_entry->location = $professor_attribute->office_location;
+
+                                if(!$event_entry->save(false)){
+                                    $data = array('success'=>false,'error_id'=>3, 'error_msg'=>$event_entry->getErrors());
+                                    $this->renderJSON($data);
+                                    return;
+                                }
+
+                            }
+                        }
+                    }
+
+                }
+
                 $data = array('success'=>true);
                 $this->renderJSON($data);
                 return;

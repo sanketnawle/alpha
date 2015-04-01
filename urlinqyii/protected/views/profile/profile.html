@@ -272,7 +272,24 @@
                             Office Hours:
                         </div>
                         <div class="info_name" id="office_hours">{{office_hours}}</div>
-                        <input type="text" class="edit_field" id="hours_input">
+                        <button class="add_field_button" id="add_hours_button" style="display: none;"></button>
+                        <div class="office_hours_input_group">
+                            <select class = "edit_field day_of_week">
+                                <option value="Mon">Monday</option>
+                                <option value="Tue">Tuesday</option>
+                                <option value="Wed">Wednesday</option>
+                                <option value="Thu">Thursday</option>
+                                <option value="Fri">Friday</option>
+                                <option value="Sat">Saturday</option>
+                                <option value="Sun">Sunday</option>
+                            </select>
+                            <input placeholder="Start time" class = "edit_field start_time time_input">
+                            <em class="event_time_to_arrow" style="display: none;"></em>
+                            <input placeholder="End time" class = "edit_field end_time time_input">
+
+                        </div>
+
+
                     </div>
                 {{else}}
                     <div class="info_section" id = "major_section">

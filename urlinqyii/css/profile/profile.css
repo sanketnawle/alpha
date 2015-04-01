@@ -587,6 +587,9 @@ span.follow_icon_profile_page{
     margin-left: -2px;
     font-family: Avenir;
 }
+.edit_field.time_input{
+    width: 30%;
+}
 .edit_field.gender{
     width:10%;
 }
