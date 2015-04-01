@@ -980,11 +980,16 @@ $(document).ready(function() {
         }else if($section.attr('id')=="research_section"){
             $section.append('<input type="text" class="edit_field research additional" style="display:inline-block">'+
             '<button class="delete_field_button delete_research_button"></button>');
+        }else if($section.attr('id')=="hours_section"){
+            $new_office_hours_input_group = $section.find('.office_hours_input_group');
+            $section.append($new_office_hours_input_group.clone().addClass('additional'));
+            $section.append('<button class="delete_field_button delete_hours_button"></button>');
         }
     });
     $(document).on('click','.delete_field_button',function(){
         $(this).prev('span.ui-helper-hidden-accessible').remove();
         $(this).prev('input.edit_field').remove();
+        $(this).prev('div.office_hours_input_group').remove();
         if($(this).closest('.info_section').attr('id') == "major_section"){
             major_changed = true;
         }else if($(this).closest('.info_section').attr('id') == "minor_section"){
@@ -1132,6 +1137,7 @@ $(document).ready(function() {
         $('.info_name').hide();
         $('.headers').show();
         $('.edit_field').show();
+        $('.event_time_to_arrow').show();
         $(".edit_field.additional").remove();
         $(".delete_field_button").remove();
         $('.add_field_button').show();
@@ -1215,7 +1221,8 @@ $(document).ready(function() {
 
         //office hours and location
         $('#office_input').val($('#office_location').text());
-        $('#hours_input').val($('#office_hours').text());
+        add_office_hours_to_input();
+        //$('#hours_input').val($('#office_hours').text());
         //buttons
         $('#edit_profile_button').css('margin-left','0');
         $('#edit_profile_button').text('Done Editing');
@@ -1234,6 +1241,7 @@ $(document).ready(function() {
     var any_year_name;
     var any_year;
     var any_research=false;
+    var any_office_hours;
     var match;
     $(document).on('click','#edit_profile_button.editing',function(){  //submit changes
         //alert('done');
@@ -1276,6 +1284,33 @@ $(document).ready(function() {
             data.append('research[0]', "none");
         }
 
+        any_office_hours = false;
+        var office_hours_string = "";
+
+        $('.office_hours_input_group').each(function(index){
+            $start_time_div = $(this).find('.start_time');
+            $end_time_div = $(this).find('.end_time');
+            $weekday_div = $(this).find('.day_of_week');
+
+            //console.log($start_time_div.text());
+
+            if(index>0) {
+                office_hours_string += ", ";
+            }
+            if($weekday_div.val() && $start_time_div.val() && $end_time_div.val()){
+                any_office_hours = true;
+                var start_time_string = $start_time_div.val()
+                start_time_string = start_time_string.replace(':','.');
+                var end_time_string = $end_time_div.val()
+                end_time_string = end_time_string.replace(':','.');
+
+                office_hours_string += $weekday_div.val() + ' ' + start_time_string + ' - ' + end_time_string;
+            }
+        });
+        if(any_office_hours){
+            data.append('hours', office_hours_string);
+        }
+
         if(major_changed){
             any_major=false;
             $('.edit_field.major').each(function(index){
@@ -1304,6 +1339,7 @@ $(document).ready(function() {
         any_year_name = $.trim($('#level_dropdown').val()) != "";
         any_year = $.trim($('#year_dropdown').val()) != "";
 
+
         $('#major_section > .info_name.undeclared').hide();
         $.ajax({
             url: base_url+'/profile/editProfile',
@@ -1330,6 +1366,7 @@ $(document).ready(function() {
                  //   alert(JSON.stringiy(result.year_name));
                     any_errors = true;
                 }
+
                 if(result.year == "success"){
                     $('#year').text($('#year_dropdown').val());
                     match =(new RegExp("([^0-9]+) ")).exec($('#name_info').text());
@@ -1448,8 +1485,10 @@ $(document).ready(function() {
                     any_errors = true;
                 }
                 if(result.hours == "success"){
-                    $('#office_hours').text($('#hours_input').val());
-                    $('#office_hours_info').text($('#hours_input').val());
+                    if(any_office_hours){
+                        $('#office_hours').text(office_hours_string);
+                    }
+                    //$('#office_hours_info').text($('#hours_input').val());
                 }else if(result.hours){
                    // alert(result.hours);
                     any_errors = true;
@@ -1511,6 +1550,7 @@ $(document).ready(function() {
         $('.info_section.account').hide();
         $('.info_name').not('.undeclared').show();
         $('.edit_field').hide();
+        $('.event_time_to_arrow').hide();
         $('.add_field_button').hide();
         $('.delete_field_button').remove();
         //$('#edit_profile_button').css('margin-left','15px');
@@ -1520,6 +1560,32 @@ $(document).ready(function() {
         //$('#profile_picture_wrapper').css('z-index','');
         $('#edit_profile_button').removeClass('editing');
         $('#edit_profile_button').addClass('not_editing');
+    }
+
+    function add_office_hours_to_input(){
+        var office_hours_string = $('#office_hours').text();
+        var office_hours = office_hours_string.split(', ');
+        var weekday;
+        var start_end;
+        var start_time;
+        var end_time;
+        var office_hours_input_group;
+        for(var i = 0;i<office_hours.length;i++){
+            office_hours_input_group = $('.office_hours_input_group:eq('+i+')');
+            if(office_hours_input_group.length == 0){
+                $('#hours_section').append($('.office_hours_input_group').clone().addClass('additional'));
+                $('#hours_section').append('<button class="delete_field_button delete_hours_button"></button>');
+                office_hours_input_group = $('.office_hours_input_group:eq('+i+')');
+            }
+
+            weekday = office_hours[i].substring(0,3);
+            start_end = office_hours[i].substring(4).split('-');
+            start_time = $.trim(start_end[0].replace(".",":"));
+            end_time = $.trim(start_end[1].replace(".",":"));
+            office_hours_input_group.find('.start_time').val(start_time);
+            office_hours_input_group.find('.end_time').val(end_time);
+            office_hours_input_group.find('.day_of_week').val(weekday);
+        }
     }
 
     //autocomplete majors

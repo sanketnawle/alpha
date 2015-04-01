@@ -212,7 +212,7 @@ jQuery(document).ready(function(){
         $time_selector.css({'position': 'fixed'});
         $time_selector.css({'top': (input_position.top - $(window).scrollTop() + $time_input.outerHeight()-14).toString() + 'px'});
         $time_selector.css({'left': input_position.left.toString() + 'px'});
-        $time_selector.css({'z-index': '9999'});
+        $time_selector.css({'z-index': '9999999999'});
         //Set the time_selector to active
         $time_selector.addClass('active');
 
