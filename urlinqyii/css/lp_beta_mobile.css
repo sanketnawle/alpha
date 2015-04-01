@@ -170,6 +170,12 @@ form#beta_testing_signup > label{
     text-align: center;
 }
 
+input.noshadow {
+  -webkit-box-shadow: none!important;
+  -moz-box-shadow: none!important;
+  box-shadow: none!important;
+  }
+
 form#beta_testing_signup > input{
     top: -9px;
     -webkit-box-shadow: none!important;
@@ -189,6 +195,7 @@ form#beta_testing_signup > input{
     transition: .25s width ease;
     left: 50px;
     top: 36px;
+    color:#FFF;
     border: 1px solid rgba(255, 255, 255, 0.32);
     -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;
     border-bottom-color: rgba(255, 255, 255, 0.55);
@@ -617,6 +624,14 @@ button.beta_signup_submit{
     -moz-transition: .25s opacity ease;
     transition: .25s opacity ease;
     padding: 0;
+}
+
+form#beta_testing_signup > input:focus{ width: 60%;}
+
+form#beta_testing_signup > input:focus + button.beta_signup_submit{
+    opacity: .8;
+    pointer-events: auto;
+    cursor: pointer;  
 }
 
 button.beta_signup_submit.beta_email_focused{
