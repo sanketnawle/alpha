@@ -22,6 +22,14 @@ $(function() {
 		}
 	});
 
+
+
+    $(window).scroll(function() {
+        var y=$(this).scrollTop()*0.002;
+        var opacityShift = y*1;
+        $("div.mobile_wrap_primary").css({"opacity":1-opacityShift});
+    });
+
 	$("input#beta_testing_email").focus(function() {
 		$(this).addClass("beta_email_focused");
 		$(this).closest("#beta_testing_signup").find(".beta_signup_submit").addClass("beta_email_focused");

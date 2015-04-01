@@ -4126,6 +4126,10 @@ input.mc_question_radio_button {
     max-width:25%!important;
 }
 
+body.body_group .post_main.event_post .post_group{display: none!important}
+body.body_group .post_main.event_post em.posted_to{display: none!important}
+
+
 .post_main.event_post a.event_link {
   color: #333;
   -webkit-transition: color .218s;

@@ -83,12 +83,12 @@ body
   position:absolute;
   border:1px solid #000;
   top:-9px;
-  height:418px;
+  height: 421px;
   right:-11px;
   width:35px;
-  border-top-right-radius:12px;
+  border-top-right-radius: 10px;
   border-left:none;
-  border-bottom-right-radius:12px;
+  border-bottom-right-radius: 10px;
 }
 
 div.mobile_wrap_primary
@@ -683,7 +683,7 @@ button#mobile-login-btn {
 
 .other_panel
 {
-  height:390px;
+  height: 394px;
   border-radius:6px;
   border:1px solid transparent;
   background:transparent;
@@ -721,7 +721,7 @@ button#mobile-login-btn {
   opacity:0;
   position:relative;
   top:-50px;
-  height:380px;
+  height: 380px;
 }
 
 .action_sub_panel_graphic .actions_list
@@ -1021,15 +1021,16 @@ span {}
 div.lp_terms
 {
   position:absolute;
-  left:16px;
-  bottom:10px;
-  width:320px;
+  left: 0;
+  bottom: -113px;
+  width: 408px;
+  line-height: 19px;
 }
 
 div.lp_terms p.lp_terms_p
 {
-  font-size:10.8px;
-  color:#787878;
+  font-size: 10.2px;
+  color: rgba(255, 255, 255, 0.49);
   text-shadow:none;
   margin:0;
 }
@@ -1084,29 +1085,33 @@ div.lp-main
 
 div.footer-sec button.FacebookConnect
 {
-  width:310px;
+  width: 40%;
   text-align:left;
   position:relative;
   display:block;
-  top:18px;
+  top: 0px;
   float:none;
   text-shadow:0 1px #fff;
-  background:linear-gradient(#2953ad,#234ca2);
+  background: rgba(54, 100, 162, 0.85);
   background-clip:padding-box;
-  border-radius:6px;
+  border-radius: 3px;
   outline:none;
-  padding-top:13px;
-  border:1px solid #0E378C;
-  padding-bottom:13px;
+  padding-top: 14px;
+  padding-bottom: 11px;
+  border: 1px solid rgba(29, 79, 147, 0.93);
   overflow:hidden;
   height:auto;
-  left:14px;
-  border-bottom:1px solid #001F5F;
+  left: 152px;
 }
 
-div.footer-sec button.FacebookConnect:active
+div.footer-sec button.FacebookConnect:hover{
+  background: rgba(54, 100, 162, 1);
+}
+
+div.footer-sec button.FacebookConnect:active,div.footer-sec button.FacebookConnect:focus
 {
-  box-shadow:inset 0 2px 3px rgba(0,0,0,0.2);
+  -webkit-box-shadow: inset 0 0 0 1px #fff, inset 0 1px 2px rgba(0,0,0,0.3), inset 0 2px 3px rgba(0,0,0,0.2);   
+  box-shadow: inset 0 0 0 1px #fff, inset 0 1px 2px rgba(0,0,0,0.3), inset 0 2px 3px rgba(0,0,0,0.2);         outline: rgba(0, 0, 0, 0) 0;
 }
 
 button.largeBtn
@@ -1132,9 +1137,11 @@ button.Button
   border:1px solid #d7d7d7;
   border-radius:3px;
   height:43px;
+  font-family: 'Open Sans', sans-serif;
   color:#292f33;
   font-size:16px;
   width:368px;
+  font-weight: 400;
   -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
   -moz-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
   box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
@@ -1147,13 +1154,13 @@ button.Button
 
 button.FacebookConnect em
 {
-  width:50px;
-  height:42px;
-  background:url(../assets/facebook-icon.png) no-repeat;
+  width: 34px;
+  height: 35px;
+  background: url(../assets/social_signin_assets.png) no-repeat;
   margin-top:-2px;
-  left:11px;
+  left: 17px;
   position:absolute;
-  top:9px;
+  top: 7px;
   padding:0;
 }
 
@@ -1176,14 +1183,15 @@ button.largeBtn span.buttonText
   color:#fff;
   display:inline-block;
   margin-left:42px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: Avenir;
   margin-top:0;
   text-transform: uppercase;
-  font-size:15.5px;
+  font-size: 13.5px;
   letter-spacing: 1.1px;
   font-weight: 600;
   text-align:left;
 
+  font-size: 13px;   letter-spacing: .7px;
 }
 
 .top-bar-wrapper
@@ -1198,7 +1206,7 @@ button.largeBtn span.buttonText
 
 div.header
 {
-  position:fixed;
+  position: relative;
   height:72px;
   z-index: 20000000000000;
   width:100%;
@@ -1271,24 +1279,27 @@ span.mobile_slogan{
 div.signup-container
 {
   display:block;
-  position:fixed;
+  position: absolute;
   width:400px;
-  top:204px;
+  top: 31%;
   border-radius:8px;
-  left:50%;
+  left: 50%;
   z-index: 1000000;
-  margin-left:-200px;
+  margin-left: -160px;
   padding:4px;
 }
 
 div.signup-form-wrap
 {
   border-radius:6px;
-  height:380px;
+  height: 311px;
   position:relative;
   background:rgba(255,255,255,.95);
   border-color:rgba(105,105,105,0.17);
   padding:5px;
+  top: 24px;
+  padding-top: 8px;
+  left: -61px;
 }
 
 div.grabber
@@ -1331,8 +1342,8 @@ p.p-header
 div.signup-form-wrap div.footer-sec
 {
   position:absolute;
-  left:0;
-  bottom:67px;
+  left: 28px;
+  bottom: -55px;
   width:100%;
 }
 
@@ -1364,7 +1375,7 @@ div.header-sec-left
 
 div.header-sec
 {
-  top: -95px;
+  top: -131px;
   z-index:10000;
   position: relative;
   height:40px;
@@ -1581,7 +1592,7 @@ div.registration-form
 div.registration-sec
 {
   position:relative;
-  height:99px;
+  height: 69px;
   margin:0;
   padding:0;
 }
@@ -1688,8 +1699,8 @@ div.fb_signin_wrap
 {
   position:absolute;
   display:inline-block;
-  margin-left:24px;
-  margin-top:-1px;
+  right: -53px;
+  top: -8px;
 }
 
 button.SignUp:hover
@@ -1823,10 +1834,12 @@ div.registration-sec-header
   padding-left:10px;
   padding-top: 12px;
   padding-bottom:8px;
-  font-size: 15px;
-  margin-top:-10px;
-  font-weight: 600;
-  color: #787878;
+  font-size: 17px;
+  font-family: Avenir;
+  margin-top: -59px;
+  font-weight: 900;
+  -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;
+  color: #FFF;
   text-shadow: 0 -1px rgba(0, 0, 0, 0.08);
 }
 
@@ -1868,7 +1881,7 @@ div.forgotPassword
 div#forgot_password_div {
   position:absolute;
   right: -8px;
-  top: 12px;
+  top: 30px;
   width:auto;
 }
 
@@ -1930,12 +1943,12 @@ button#forgot_password
   color:#FFF;
   font-family:Avenir;
   position:absolute;
-  font-weight:600;
+  font-weight: 400;
   outline:none;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   cursor:pointer;
-  opacity:.8;
+  opacity: .65;
   font-size:13px;
   border-bottom:1px solid transparent;
   padding:0;
@@ -1944,7 +1957,6 @@ button#forgot_password
 button#forgot_password:hover
 {
   opacity:1;
-  border-bottom:1px solid #fff;
 }
 
 div.forgotPassword a
@@ -2028,7 +2040,7 @@ button.SignIn
   background-clip:padding-box;
   outline:none;
   padding-top:9px;
-  padding-bottom:9px;
+  padding-bottom:10px;
   opacity: .95;
   overflow:hidden;
   height:auto;
@@ -2080,6 +2092,7 @@ div.leftLine
   position:absolute;
   width:45%;
   left:0;
+  display: none;
   border-bottom:1px solid rgba(158,158,158,0.25);
   -webkit-box-shadow:rgba(148,143,143,0.29) 0 1px 0 0 rgba(126,126,126,0) 0 1px 0 1px;
   -moz-box-shadow:rgba(148,143,143,0.29) 0 1px 0 0 rgba(126,126,126,0) 0 1px 0 1px;
@@ -2092,6 +2105,7 @@ div.rightLine
   width:45%;
   right:0;
   border-bottom:1px solid rgba(158,158,158,0.25);
+  display: none;
   -webkit-box-shadow:rgba(148,143,143,0.29) 0 1px 0 0 rgba(126,126,126,0) 0 1px 0 1px;
   -moz-box-shadow:rgba(148,143,143,0.29) 0 1px 0 0 rgba(126,126,126,0) 0 1px 0 1px;
   box-shadow:rgba(148,143,143,0.29) 0 1px 0 0 rgba(126,126,126,0) 0 1px 0 1px;
@@ -2100,14 +2114,14 @@ div.rightLine
 div.or-head
 {
   position:absolute;
-  left:161px;
+  left: 16px;
   display:inline-block;
-  text-transform:uppercase;
-  top:-6px;
+  text-transform: uppercase;
+  top: 16px;
   font-size:12px;
+  font-weight: 400;
   font-family:Avenir;
-  font-weight:700;
-  color:rgba(107,107,107,0.2);
+  color: #FFF;
 }
 
 div.heighten-on-scroll
@@ -2548,17 +2562,18 @@ div.grabber div.grabber-container
 button#fb_signin
 {
   text-shadow:0 1px #fff;
-  border:1px solid rgba(9,39,101,0.5)!important;
+  border: 1px solid rgba(0, 0, 0, 0.73)!important;
   background:linear-gradient(#2953ad,#234ca2);
-  border-radius:4px;
+  border-radius: 3px;
   position:relative;
   padding-top:13px;
   padding-bottom:13px;
   width:38px;
-  -moz-box-shadow:inset 0 1px 1px rgba(144,188,236,0.46),inset 0 -1px 1px rgba(126,186,226,0.46);
-  box-shadow:inset 0 1px 1px rgba(144,188,236,0.46),inset 0 -1px 1px rgba(126,186,226,0.46);
-  -webkit-box-shadow:inset 0 1px 1px rgba(144,188,236,0.46),inset 0 -1px 1px rgba(126,186,226,0.46);
-  height:30px;
+  outline: none;
+  -moz-box-shadow: 0 1px 0 rgba(255,255,255,.06),1px 1px 0 rgba(255,255,255,.03),-1px -1px 0 rgba(0,0,0,.02),inset 1px 1px 0 rgba(255,255,255,.05);
+  box-shadow: 0 1px 0 rgba(255,255,255,.06),1px 1px 0 rgba(255,255,255,.03),-1px -1px 0 rgba(0,0,0,.02),inset 1px 1px 0 rgba(255,255,255,.05);
+  -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.06),1px 1px 0 rgba(255,255,255,.03),-1px -1px 0 rgba(0,0,0,.02),inset 1px 1px 0 rgba(255,255,255,.05);
+  height: 32px;
   -moz-transition:all .1s ease;
   -webkit-transition:all .1s ease;
   transition:all .1s ease;
@@ -2593,8 +2608,8 @@ div.help-div
   opacity:0;
   pointer-events:none;
   z-index:-1;
-  top:36px;
-  right:-10px;
+  top: 34px;
+  right: -56px;
 }
 
 button.fb_signin:hover ~ div.help-div
@@ -2610,15 +2625,15 @@ div.help-div .help-wedge
   height:0;
   width:0;
   position:relative;
-  left:160px;
-  border-color:transparent transparent #fff;
+  left: 68px;
+  border-color: transparent transparent #000;
   border-style:dashed dashed solid;
   border-width:0 6.5px 6.5px;
 }
 
 div.help-div div.help-box
 {
-  width:180px;
+  width: 134px;
   font-size:11px;
   line-height:14px;
   text-align:center;
@@ -2628,8 +2643,8 @@ div.help-div div.help-box
   font-family:'Helvetica Neue', Helvetica, arial, sans-serif;
   font-weight:800;
   border-radius:4px;
-  color:#3C3C3C;
-  background-color:#fff;
+  color: #FFFFFF;
+  background-color: #000;
   padding:7px;
 }
 
@@ -2849,7 +2864,7 @@ div.mobile_featurette.featurette_2,input#lname
 
 div.lp_terms p.lp_terms_p a,div.lp_terms p.lp_terms_p a:visited
 {
-  color:#016283;
+  color: #029acf;
   text-decoration:none!important;
 }
 
