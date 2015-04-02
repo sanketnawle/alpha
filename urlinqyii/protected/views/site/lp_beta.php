@@ -1314,7 +1314,7 @@
             By clicking Create Your Account, you agree to our <a href="https://urlinq.com/about/legal/terms" target="_blank">Terms</a> and that you have read our <a href="https://urlinq.com/about/legal/privacy" target="_blank">Privacy Policy</a>.
           </p>
         </div>
-       <div class = "footer-sec synced_animation_divs">
+       <!--<div class = "footer-sec synced_animation_divs">
                     <div class = "leftLine">
                     </div>
                     <div class = "or-head">
@@ -1327,7 +1327,7 @@
                       <span class = "buttonText">Facebook</span>
             </button>
 
-        </div>        
+        </div> -->
       </div>
     </div>
 
