@@ -2005,6 +2005,97 @@ public function actionSendReset(){
         }
 
     }
+    public function actionFacebookSignup(){
+        if(!isset($_POST['fb_email'])||!isset($_POST['first_name'])||!isset($_POST['last_name'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'Invalid Token');
+            $this->renderJSON($data);
+            return;
+        }
+        $email = $_POST['fb_email'];
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+
+
+        $university_id = $this->get_university_id_by_email($email);
+
+        $user = new User;
+        $user->firstname = $first_name;
+        $user->lastname = $last_name;
+
+        if($university_id){
+            $user->university_id = $university_id;
+        }
+        $user->school_id = null;
+        $user->department_id = null;
+        $user->status = 'onboarding';
+        $user->save(false);
+
+
+        $this->add_default_user_events($user);
+
+        $user_auth_provider = new UserAuthProvider();
+        $user_auth_provider->user_id = $user->user_id;
+        $user_auth_provider->fb_email = $email;
+        $user_auth_provider->save(false);
+/*
+
+        $salt = salt();
+        $hashed_password = hash_password($password,$salt);
+
+        $user_login = new UserLogin;
+        $user_login->user_id = $user->user_id;
+        $user_login->password = $hashed_password;
+        $user_login->salt = $salt;
+        $user_login->save(false);  */
+
+        Yii::app()->session['user_id'] = $user->user_id;
+        Yii::app()->session['signin_type'] = 'facebook';
+        Yii::app()->session['onboarding_step'] = 0;
+
+
+
+        //Redirect to home page for now
+
+        $data = array('success'=>true, 'msg'=>'new user was created');
+        $this->renderJSON($data);
+        return;
+    }
+
+    public function actionFacebookLogin(){
+        if(!isset($_POST['fb_email'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'Invalid Token');
+            $this->renderJSON($data);
+            return;
+        }
+        $fb_email=$_POST['fb_email'];
+        $user_auth_provider = UserAuthProvider::model()->find('fb_email=:email',array(':email'=>$fb_email));
+        if($user_auth_provider){
+            $user = User::model()->find('user_id=:uid',array(':uid'=>$user_auth_provider->user_id));
+            //user has successfully logged in
+            Yii::app()->session['user_id'] = $user->user_id;
+
+            if($user->status == 'onboarding'){
+                //Send user to onboarding
+
+                Yii::app()->session['signin_type'] = 'facebook';
+                $data = array('success'=>false, 'error_id'=>6, 'error_msg'=>'user has not completed onboarding');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
+
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }else{
+            //user login failed
+            $data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'Invalid login');
+            $this->renderJSON($data);
+            return;
+        }
+    }
 
     public function actionDoReset(){
         include "password_encryption.php";
