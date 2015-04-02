@@ -1094,15 +1094,17 @@
       <div class="signup_border_fake">
       </div>
       <div class="signup_after_tabs">
-        <div class="after_tab after_tab_1" data-tab_id="1">
-          <h4>About</h4>
-        </div>
-        <div class="after_tab after_tab_2" data-tab_id="2">
-          <h4>Why Join?</h4>
-        </div>
         <div class="after_tab active after_tab_3" data-tab_id="3">
           <h4>Sign Up</h4>
+        </div>        
+        <div class="after_tab after_tab_2" data-tab_id="2">
+          <h4>Why Join?</h4>
+        </div>        
+        <div class="after_tab after_tab_1" data-tab_id="1">
+          <h4>About </h4>
         </div>
+
+
       </div>
       <div class="other_panel" id="other_panel_1">
         <div class="header-sec">
@@ -1228,7 +1230,7 @@
       <div class="signup-form-wrap other_panel active" id="other_panel_3">
         <div class="header-sec">
           <div class="header-sec-left">
-            <h4 class="header">Sign Up <span>Explore your university</span></h4>
+            <h4 class="header">Sign Up <span><span>Really,</span> do better in school</span></h4>
           </div>
           <div class="header-sec-right">
             <div class="time-to-signup" style="font-size:20px;">your link to the university</div>
