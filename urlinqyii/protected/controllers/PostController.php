@@ -1926,10 +1926,10 @@ ERunActions::runBackground(true);
                         $to_user_id = $post->user_id;
                         $actor_id = $user->user_id;
 
-Yii::import('ext.runactions.components.ERunActions');
-ERunActions::runBackground(true);
+//Yii::import('ext.runactions.components.ERunActions');
+//ERunActions::runBackground(true);
 
-                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendReplyEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$post->post_id, 'reply_id'=>$reply->reply_id),$contentType=null);
+  //                      ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendReplyEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$post->post_id, 'reply_id'=>$reply->reply_id),$contentType=null);
                     }
 //                    //Send notification to the creator of this post
 //                    if ($user->user_id != $post->user_id) {
