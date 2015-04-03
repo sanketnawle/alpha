@@ -45,20 +45,22 @@ body.left_panel_hidden_p2 #LeftPanel_Holder, body.left_panel_hidden_p2 #left_pan
 }
 
 #LeftPanel_Holder{
-    width: 230px;
+    bottom:0;
+    width: 260px;
     -webkit-transition: .3s cubic-bezier(0.23,1,0.32,1) left, .3s ease opacity;
     -moz-transition: .3s cubic-bezier(0.23,1,0.32,1) left, .3s ease opacity;
     -o-transition: .3s cubic-bezier(0.23,1,0.32,1) left, .3s ease opacity;
     transition: .3s cubic-bezier(0.23,1,0.32,1) left, .3s ease opacity;
-    left:0px;
-    padding-top: 15px;
-    padding-right: 14px;
-    position: relative;
+    margin-left:0px;
+    overflow:hidden;
+    height:-moz-calc(100% - 50px);
+    height:-webkit-calc(100% - 50px);
+    height:-o-calc(100% - 50px);
+    height: calc(100% - 50px);
 }
 
 .LeftPanel_icons{
     background-image: url(../../../assets/LeftMenuAssets.png);
-
     background-repeat: no-repeat;
     display: inline-block;
     background-size: auto;
@@ -67,7 +69,6 @@ body.left_panel_hidden_p2 #LeftPanel_Holder, body.left_panel_hidden_p2 #left_pan
 
 .LeftPanel_icons.LeftPanel_menuicon{
     margin-left: -16px;
-    
     position: relative;
     background-position: 0px -108px;
     width: 16px;
@@ -96,14 +97,20 @@ a.MyBox_SO.edit_profile:hover{
 
 .LeftPanel_Content{
     width: 220px;
-
     margin-left: 0px;
     padding: 10px;  
     border-radius: 5px;
     padding-right: 16px;
     padding-left: 22px;
-    padding-top: 0px;
+    padding-top: 10px;
     margin-top: -12px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    position:fixed;
+    height:-moz-calc(100% - 50px);
+    height:-webkit-calc(100% - 50px);
+    height:-o-calc(100% - 50px);
+    height: calc(100% - 50px);
 }
 
 .LeftPanel_Section{
@@ -130,21 +137,11 @@ a.MyBox_SO.edit_profile:hover{
 }
 
 .SectionHeader_holder{
-
     height: 26px; 
-    
-    
-    
-     
-
     position: relative;
-
     width: 225px;
-
     padding-right: -2px;   
-
     border-bottom: 1px solid #C3C3C3;
-
 }
 
 .SectionHeader_holder div h4{
@@ -178,6 +175,7 @@ a.MyBox_SO.edit_profile:hover{
 em.SectionHeader_ribbon{
     height:5px;
     width: 5px;
+    display: none;
     border-radius: 10000px;
     position: relative;
     margin-left: -10px;
@@ -243,23 +241,54 @@ a.MyBox_PictureLink div.MyBox_Picture{
     height: 48px!important;
     background-size:cover;
     width: 48px!important;
-    border-radius: 500px;
+    border-radius: 10px;
 }
 
 div.MyBox_text{
     overflow: hidden;
-
 }
 
+.MyBox_text .MyBox_school {
+    border-bottom:1px solid #c3c3c3;
+    font-weight:100;
+    color:#333;
+    font-size:13px;
+    margin-left:10px;
+    padding-bottom:6px;
+    width:100%;
+}
+.MyBox_text .MyBox_departments {
+    font-weight:100;
+    color:#333;
+    font-size:13px;
+    margin-left:10px;
+    margin-top:6px;
+    width:100%;
+}
+button#departments {
+    border:2px solid #777777;
+    border-radius:3px;
+    height:15px;
+    width:15px;
+    display:inline-block;
+    margin-left:5px;
+    margin-top:-5px;
+    background:url(../../../assets/messageicons.png);
+    background-position:-17px -21px;
+    background-size:71px 71px;
+}
+
+
 div.MyBox_text div.MyBox_textcontent{
-    display: inline-block; padding-right: 5px;
-    
+    display: inline-block; 
+    padding-right: 5px;
     float: left;
+    width:100%;
 }
 
 div.MyBox_textcontent div.MyBox_NameSO{
-padding-left: 7px;
-padding-top: 3px;
+    padding-left: 7px;  
+    padding-top: 3px;
 }
 
 a.MyBox_ProfileLink{
@@ -296,10 +325,11 @@ a.MyBox_SO:hover{
 
 div.LeftPanel_DeptSchoolHolder{
     margin-bottom: 2px;
-
     margin-top: 12px;
     position: relative;
     margin-left: -6px;
+    height:0px;
+    overflow:hidden;
 }
 
 .LeftPanel_DSContentBox{

@@ -3,11 +3,37 @@ div.mobile-background {
   bottom: 0rem;
   height:60rem;
   width:100%;
-  position:fixed;
+  position: absolute;
   display:block;
   z-index:-1;
-  background:url(../assets/campus_background.jpg) no-repeat center center scroll;
+  background: url(../assets/columbia.jpg) no-repeat center center scroll;
   background-size: cover;
+  -webkit-filter: blur(40px);   -moz-filter: blur(9px);   -o-filter: blur(9px);   -ms-filter: blur(9px);   
+  filter: blur(9px);
+}
+
+.school_bgd{display: none!important}
+
+div.header{
+    position: absolute;
+}
+
+div.mobile_panel_2 div.dos_panels > .left{min-height: 887px;}
+
+div.beta_testing_signup_wrapper{position: relative;}
+
+div.beta_testing_signup_wrapper_2{
+    padding-bottom: 15px;
+    background: rgba(255, 255, 255, 0.17);
+    padding-top: 12px;
+    border-top: 1px dashed rgba(255, 255, 255, 1);
+    border-bottom: 1px dashed rgba(255, 255, 255, 1);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%,rgba(255, 255, 255, .45) 100%);   
+    background: -o-linear-gradient(top,rgba(255, 255, 255, .2) 0%,rgba(255, 255, 255, 0.45) 100%);   
+    background: -ms-linear-gradient(top,rgba(255, 255, 255, .2) 0%,rgba(255, 255, 255, 0.45) 100%);   
+    background: -moz-linear-gradient(top,rgba(255, 255, 255, .2),rgba(255, 255, 255, 0.45));   
+    background-image: -webkit-linear-gradient(top,rgba(255, 255, 255, .2),rgba(255, 255, 255, 0.45));
+    margin-bottom: 10px;
 }
 
 img.mobile-bg {
@@ -57,7 +83,7 @@ div#forgot_password_div {
 
 img.logoText
 {
-  display:none;
+  display: none;
 }
 
 ul.color-border
@@ -67,6 +93,7 @@ ul.color-border
   position:relative;
   width:360px;
   display:inherit;
+  border-radius: 0px;
   margin:-4px auto 0;
   padding:0 0 0 4px;
 }
@@ -79,13 +106,13 @@ div.main-market-area div.announcement_board
 }
 
 div.mobile-login {
-	display:block;
-	position:fixed;
-	width:100%;
-	height:100%;
-	top:0;
-	left:0;
-	z-index:10000000;
+  display: none;
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index: 100000;
 }
 
 .announcement_board_writtable h4
@@ -97,12 +124,17 @@ div.mobile-login {
 .top-bar
 {
   height:64px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
 }
 
 img.logo
 {
-  height:46px;
+  height: 42px;
   margin-top:-3px;
+  display: block;
+  opacity: .955;
 }
 
 div.header form#login {
@@ -111,6 +143,99 @@ div.header form#login {
 
 button#mobile-login-btn {
   display:block;
+  background: rgba(255, 255, 255, 0.81);
+  color: #029acf!important;
+  border: 1px solid #029acf;
+}
+
+button#mobile-login-btn:hover{
+  background: rgba(255, 255, 255, 0.92);
+}
+
+form#beta_testing_signup{
+    margin-bottom: 5px;
+    position: relative;
+    min-height: 77px;
+}
+
+form#beta_testing_signup > label{
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 13px;
+    font-weight: 100;
+    width: 70%;
+    letter-spacing: .4px;
+    display: block;
+    padding-top: 5px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+div.skeleton_dark_fade{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 277px auto 0 -110px;
+    height: 104px;
+    background: linear-gradient(to bottom, rgba(63, 63, 64, 0) 0%,#3f3f40 100%);   
+    background: -o-linear-gradient(top,rgba(63,63,64,0) 0%, #3f3f40 100%);   
+    background: -ms-linear-gradient(top,rgba(63,63,64,0) 0%, #3f3f40 100%);   
+    background: -moz-linear-gradient(top, rgba(63,63,64,0),#3f3f40);   
+    background-image: -webkit-linear-gradient(top,rgba(63, 63, 64, 0),#3f3f40);
+}
+
+div.skeleton_dark_fade.skeleton_dark_fade_2{margin-top:323px;}
+
+input.noshadow {
+  -webkit-box-shadow: none!important;
+  -moz-box-shadow: none!important;
+  box-shadow: none!important;
+  }
+
+form#beta_testing_signup > input{
+    top: -9px;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    padding: 10px 10px;
+    position: ab;
+    right: 50px;
+    position: absolute;
+    outline: none;
+    font-weight: 500;
+    font-size: 14.5px;
+    width: 300px;
+    -webkit-transition: .25s width ease;
+    -moz-transition: .25s width ease;
+    transition: .25s width ease;
+    left: 50px;
+    top: 36px;
+    color:#FFF;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;
+    border-bottom-color: rgba(255, 255, 255, 0.55);
+}
+
+form#beta_testing_signup > button{}
+
+form#beta_testing_signup > input.beta_email_focused{
+    width: 60%;
+}
+
+form#beta_testing_signup > input::-webkit-input-placeholder {
+   color: #FFF;
+}
+
+form#beta_testing_signup > input:-moz-placeholder { /* Firefox 18- */
+   color: #FFF;  
+}
+
+form#beta_testing_signup > input::-moz-placeholder {  /* Firefox 19+ */
+   color: #FFF;  
+}
+
+form#beta_testing_signup > input:-ms-input-placeholder {  
+   color: #FFF;  
 }
 
 div.loginModalContent {
@@ -139,7 +264,7 @@ div#loginModal.mobileLoginWindow {
   margin-top:-140px;
   margin-left:-150px;
   display:none;
-  background-color:#fff;
+  background-color: rgba(255, 255, 255, 0.91);
   text-align:center;
   border-radius:5px;
   -moz-box-sizing:border-box;
@@ -149,15 +274,26 @@ div#loginModal.mobileLoginWindow {
 
 div#loginModal.mobileLoginWindow h2 {
   margin-top:8px;
+  font-family: Avenir;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #4D4D4D;
 }
 
 div#loginModal.mobileLoginWindow a {
   text-decoration:none;
-  font-size:11px;
-  color:#016283;
+  font-size: 11.5px;
+  color: rgba(2, 154, 207, 0.61);
   position:relative;
+  width: 77px;
+  padding: 4px 0;
+  border-radius: 2px;
+  border: 1px solid rgba(2, 154, 207, 0.17);
   display:block;
-  margin-top:25px;
+  margin: 0 auto;
+  background: rgba(2, 154, 207, 0.11);
+  text-transform: lowercase;
+  margin-top: 39px;
 }
 
 a.close {
@@ -165,7 +301,8 @@ a.close {
 }
 
 div#loginModal.mobileLoginWindow a:hover {
-  text-decoration:underline;
+  background: #029acf;
+  color: #FFF;
 }
 
 div#loginModal form#login {
@@ -179,6 +316,7 @@ div#loginModal input {
   position:relative;
   width:100%;
   margin:5px;
+  box-shadow: none!important;
 }
 div#loginModal button.SignUp {
   width:-moz-calc(100% - 10px);
@@ -197,9 +335,9 @@ div#loginModal button.SignUp {
 }
 
 body.modal-open {
-	overflow:hidden;
-	position:fixed;
-	height:100%;
+  overflow:hidden;
+  position:fixed;
+  height:100%;
 }
 
 .announcement_board_writtable h4 span
@@ -250,6 +388,19 @@ ul.color-border li p
   font-size:12px;
   color:rgba(255,255,255,1);
   margin:7px 5px;
+}
+
+span.mobile_slogan{
+    display: block;
+    border-left: 1px solid #FFFFFF;   font-family: Avenir;   letter-spacing: 1px;
+    position: relative;
+    color: #FFF;
+    left: 7px;
+    font-size: 13px;
+    position: relative;
+    top: 25px;
+    padding-left: 5px;
+    float: left;
 }
 
 .color-border li a
@@ -382,6 +533,14 @@ ul.color-border li:nth-child(5)
   color:#de445d;
 }
 
+.mobile-background-color{
+    background: rgba(2, 154, 207, 0.41);
+  
+    z-index: 1;
+    height: 60rem;   width: 100%;
+    position: absolute;
+}
+
 ul.color-border li:nth-child(5):hover
 {
   background-color:#de445d;
@@ -392,9 +551,112 @@ div.mobile_wrap,div.mobile_only_panel
   display:block;
 }
 
+div.panel_2_bg{
+    background: url(../assets/neuroscience.jpg) center center no-repeat fixed;   
+    -webkit-filter: blur(65px);   -moz-filter: blur(90px);   -o-filter: blur(90px);   -ms-filter: blur(90px);   
+    position: absolute;
+    filter: blur(90px);
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: scale(1);
+    bottom: 0;
+}
+div.panel_2_bg_color{
+    background: rgba(19, 163, 81, 0.89);
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    top: 0px;
+    left: 0;
+    right: 0;
+}
+
+div.feature-blurb-two > h3, div.feature-blurb-one > h3{
+    font-size: 25px;
+    font-weight: 100;
+    font-family: Avenir;
+    padding: 0 10px;
+    text-align: left;
+    margin-bottom: 5px!important;
+}
+div.feature-blurb-two > p, div.feature-blurb-one > p{
+    font-size: 13px;
+    font-family: Avenir;
+    font-weight: 100;
+    padding-right: 4px!important;
+    padding: 0 10px;
+    line-height: 20px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 10px;
+    word-spacing: 1px;
+    padding-bottom: 10px;
+    background: rgba(255, 255, 255, 0.14);
+    margin-top: 10px!important;
+}
+
+div.feature-blurb-two > p > span{
+    color: #00BDFF;
+    font-weight: 500;
+} 
+div.feature-blurb-one > p > span{
+    color: #23EC70;
+    font-weight: 500;
+}
+
+hr.feature_sep{
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    position: absolute;
+    top: 39px;
+    left: 10px;
+    right: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+}
+
 div.signup-container,video.ur-video-playing
 {
   display:none!important;
+}
+
+button.beta_signup_submit{
+    background: none;
+    border: none;
+    background-image: url(../assets/beta_signup_button.svg);
+    background-size: 100%;
+    width: 50px;
+    height: 47px;
+    position: absolute;
+    right: 50px;
+    cursor: default;
+    pointer-events: none;
+    top: 30px;
+    opacity: 0;
+    -webkit-transition: .25s opacity ease;
+    -moz-transition: .25s opacity ease;
+    transition: .25s opacity ease;
+    padding: 0;
+}
+
+form#beta_testing_signup > input:focus{ width: 60%;}
+
+form#beta_testing_signup > input:focus + button.beta_signup_submit{
+    opacity: .8;
+    pointer-events: auto;
+    cursor: pointer;  
+}
+
+button.beta_signup_submit.beta_email_focused{
+    opacity: .8;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+button.beta_signup_submit.beta_email_focused:hover,button.beta_signup_submit.beta_email_focused:active,button.beta_signup_submit.beta_email_focused:focus{
+opacity: 1;
 }
 
 input#login_email,input#login_password

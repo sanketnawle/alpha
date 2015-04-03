@@ -650,7 +650,9 @@ class EventController extends Controller
 
 
     public function actionDelete(){
-        if(!$this->authenticated()){
+
+        $user = $this->get_current_user($_POST);
+        if(!$user){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'Not authenticated');
             $this->renderJSON($data);
             return;
