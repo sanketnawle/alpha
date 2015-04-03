@@ -46,13 +46,13 @@
 
 <div id="messaging_panel">
     <div id="header">
-        <button id="compose"></button>
+        <button id="compose"><div class="composeicon"></div></button>
         <div id="messaging_pic" style="
             background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url;?>');">
         </div>
 
         <div id="messaging_button" style="">
-            <div id="messaging_button_text">MESSAGES</div>
+            <span id="newmessages">1</span><div id="messaging_button_text">MESSAGES</div>
         </div>
         
         <div id="onlinecounter">online (00)</div>
@@ -80,6 +80,10 @@
         <div id="messaging_list_custom"></div>
     </div>
 
+    <div id="footer">
+        <div id="searchbuttonfooter"><div id="searchicon"></div>Search</div><div id="composebuttonfooter"><div id="composeicon"></div>COMPOSE</div>
+    </div>
+
 </div>
 
 
@@ -104,14 +108,19 @@
 
 <script id="this_user_message_template" type="text/x-handlebars-template">
     <div class="this_user_message" data-user_id='{{user_id}}'>
-    {{text}}
+    <span class="message_sent_time">time </span><span class="user_name">Name</span>
+    <div class="message_content">
+        {{text}}
+    </div>
     </div>
 </script>
 
 <script id="other_user_message_template" type="text/x-handlebars-template">
     <div class="other_user_message" data-user_id='{{user_id}}' data-name='{{name}}' data-id="{{id}}">
-    {{name}}{{time}}
-    {{text}}
+    <span class="user_name">Name </span><span class="message_sent_time">time</span>
+    <div class="message_content">
+        {{text}}
+    </div>
     </div>
 </script>
 
@@ -131,9 +140,9 @@
                 <div class="chat_box_add_button"></div>
                 <div class="chat_box_close_button"></div>
             </div>
-            
-
         </div>
+
+        <div class="chat_box_date">Test Date</div>
 
         <div class="chat_box_text">
             <div class="chat_message_wrap">

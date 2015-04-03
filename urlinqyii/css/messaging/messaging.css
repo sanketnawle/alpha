@@ -17,8 +17,9 @@
 .chat_box_text {
     overflow-y: scroll;
     width: 100%;
-    height: 190px;
+    height: 180px;
     padding:8px;
+    padding-top:12px;
     font-size:12px;
     -moz-box-sizing:border-box;
     -webkit-box-sizing:border-box;
@@ -33,10 +34,29 @@
     margin: 0 5px;
     padding: 5px;
     font-size:14px;
-    border-bottom:1px solid #d7d7d7;;
+    border-bottom:1px solid #d7d7d7;
+    padding-bottom:15px;
     -moz-box-sizing:border-box;
     -webkit-box-sizing:border-box;
     box-sizing:border-box;
+}
+
+.chat_box_date {
+    border:1px solid #d7d7d7;
+    border-radius:2px;
+    background-color:#ffffff;
+    color:#d7d7d7;
+    font-size:10px;
+    position:absolute;
+    margin-top:-10px;
+    margin-right:auto;
+    margin-left:auto;
+    right:0;
+    left:0;
+    color:#777777;
+    padding:2px;
+    width:100px;
+    text-align:center;
 }
 
 .chat_box_buttons {
@@ -73,11 +93,31 @@
 }
 
 .this_user_message {
+    padding:5px 0px;
     text-align:right;
 }
 
-.other_user_message {
+span.user_name {
+    display:inline-block;
+    font-weight:bold;
+    font-size:12px;
+}
+span.message_sent_time {
+    display:inline-block;
+    font-weight:100;
+    color:#d7d7d7;
+    font-size:12px;
+}
 
+.user_image {
+
+}
+.message_content {
+
+}
+
+.other_user_message {
+    text-align:left;
 }
 
 .textarea_wrap {
@@ -113,6 +153,7 @@ textarea.chat_input {
     width:15%;
     float:left;
     height:100%;
+    margin-top:0px;
     background-color: #fcfcfc;
     background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);
     background-image: linear-gradient(#fafafa, #f8f8f8);
@@ -134,6 +175,16 @@ textarea.chat_input {
     font-size:12px;
     padding:5px;
     display:none;
+}
+.chatbox_menu .chatbox_fileupload, .chatbox_math, .chatbox_code, .chatbox_event {
+    cursor:pointer;
+}
+.chatbox_menu .chatbox_fileupload:hover, .chatbox_math:hover, .chatbox_code:hover, .chatbox_event:hover {
+    margin-left:5px;
+    -webkit-transition: ease-out .1s;
+    -moz-transition: ease-out .1s;
+    -o-transition: ease-out .1s;
+    transition: ease-out .1s;
 }
 
 .textarea_menubutton:hover {
@@ -171,7 +222,7 @@ textarea.chat_input {
 #messaging_button {
     margin-top:18px;
     float:  right;
-    width: 100px;
+    width: 115px;
     height: 40px;
     cursor: pointer;
 }
@@ -202,6 +253,12 @@ button#compose:hover {
     background-image: -webkit-linear-gradient(#ededed, #fafafa);
     background-image: linear-gradient(#ededed, #fafafa);
 }
+button#compose .composeicon {
+    background:url(../../assets/messageicons.png);
+    height:100%;
+    width:100%;
+    background-position:-30px -2px;
+}
 
 #onlinecounter {
     position:absolute;
@@ -220,20 +277,90 @@ button#compose:hover {
     text-align:center;
 }
 
+span#newmessages {
+    color:#ffffff;
+    background-color:#ff0000;
+    width:20px;
+    margin-top:-8px;
+    font-size:11px;
+    border-radius:8px;
+    display:inline-block;
+    text-align:center;
+}
+
 #messaging_panel #messaging_pic {
     background-repeat: no-repeat;
 }
 
 #messaging_panel #header #messaging_button_text {
     color:#303030;
+    display:inline-block;
+    margin-left:5px;
 }
 
 
 #messaging_panel #messaging_list {
     overflow-y: scroll;
-    height: auto;
+    height:-moz-calc(100% - 145px);
+    height:-webkit-calc(100% - 145px);
+    height:-o-calc(100% - 145px);
+    height: calc(100% - 145px);
 }
 
+#messaging_panel #footer {
+    height:50px;
+    padding-top:5px;
+    border-top:1px solid #d7d7d7;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+#searchbuttonfooter, #composebuttonfooter {
+    float:left;
+    font-size:13px;
+    height:100%;
+    padding-top:15px;
+    cursor:pointer;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+#searchbuttonfooter {
+    width:55%;
+    color:#777777;
+}
+#composebuttonfooter {
+    width:-moz-calc(45% - 1px);
+    width:-webkit-calc(45% - 1px);
+    width:-o-calc(45% - 1px);
+    width: calc(45% - 1px);
+    border-left:1px solid #d7d7d7;
+    color: #4fb7dd;
+    font-weight:100;
+}
+
+#searchicon {
+    background:url(../../assets/messageicons.png);
+    height:15px;
+    width:15px;
+    display:inline-block;
+    background-position:-9px -25px;
+    margin-right:8px;
+}
+
+#composeicon {
+    background:url(../../assets/messageicons.png);
+    height:15px;
+    width:15px;
+    display:inline-block;
+    background-position:-9px -6px;
+    margin-left:6px;
+    margin-right:6px;
+}
 
 #messaging_panel .messaging_list_item_pic {
     width: 30px;

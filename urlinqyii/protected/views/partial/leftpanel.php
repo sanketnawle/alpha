@@ -32,22 +32,11 @@ if($user->school->university_id == 4){
 					<div class = "clearfix MyBox">
 						<a class = "MyBox_PictureLink";>
 							<div class = "MyBox_Picture profile_link" data-user_id="<?php echo $user->user_id?>" style="background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>')"></div>
-                            <button type="button" id="left_panel_change_picture_button"></button>
-                            <div style="height: 0px;width:0px; overflow:hidden;">
-                                <input id="left_panel_picture_upfile" type="file" value="upload"/>
-                            </div>
                         </a>
 						<div class = "MyBox_text">
 							<div class = "MyBox_textcontent">
-								<div class = "MyBox_NameSO">
-									<a class = "MyBox_ProfileLink profile_link" data-user_id="<?php echo $user->user_id?>">
-										<?php echo $user->firstname . " " . $user->lastname?>
-									</a>
-									<a class = "MyBox_SO edit_profile profile_link" data-user_id="<?php echo $user->user_id?>">Edit profile</a>
-									<p class = "middot_leftpanel">&#xb7;</p>
-									<a class = "MyBox_SO" href="<?php echo Yii::app()->getBaseUrl(true); ?>/logout">Sign out</a>
-									
-								</div>
+								<div class="MyBox_school">My School</div>
+								<div class="MyBox_departments">Departments <button id="departments"></button></div>
 							</div>
 						</div>
 					</div>
@@ -134,7 +123,7 @@ if($user->school->university_id == 4){
 		</div>
 
 
-<!--		--><?php //echo $this->renderPartial('/partial/messaging_panel',array('user'=>$user,'origin_type'=>$origin_type,'origin_id'=>$origin_id)); //?>
+		<!--<?php //echo $this->renderPartial('/partial/messaging_panel',array('user'=>$user,'origin_type'=>$origin_type,'origin_id'=>$origin_id)); //?>-->
 
 
 
