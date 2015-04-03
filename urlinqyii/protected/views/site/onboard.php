@@ -289,7 +289,7 @@
 
                 <div class='step_6_card_r2'>
                     <div class='step_6_card_r2_txt'>Office hours</div>
-                    <input type='text' id='office_hours_input' class='ol onboard_textarea_t0' placeholder="eg: Mon 4pm - 6pm, Wed 3pm - 5pm"/>
+                    <input type='text' id='office_hours_input' class='ol on9board_textarea_t0' placeholder="eg: Mon 4pm - 6pm, Wed 3pm - 5pm"/>
                     <span>&#x2a; We&#x27;ll take the time and date you enter here and add a weekly office hours event to your students&#x27; planners. </span>
                 </div>
 
