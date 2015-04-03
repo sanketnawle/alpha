@@ -271,9 +271,6 @@ function display_events(events, is_root){
     }
   }
   var landing_page = Math.ceil(i/4);
-  console.log(i);
-  console.log(i/4);
-  console.log(landing_page);
   events_length = events.length;
   right = "block";
   left = "block";
@@ -287,9 +284,9 @@ function display_events(events, is_root){
     search_text = " Total events found";
   }
 
-  if(landing_page === 1) {
+  if(landing_page === 0) {
     left = "none"
-  } else if(landing_page === Math.ceil(events.length/4)) {
+  } else if(landing_page === Math.ceil(events.length/4 - 1)) {
     right = "none"
   }
 
@@ -314,7 +311,7 @@ function list_events(events, img_left, img_right, page_value, result_text){
     chip_text = '';
       for(i=0;i<events.length; i++){
                     chip_text+='<div class="chip_content">\
-                      <div class="chip" index="'+(page_value*4+i)+'" hero-id="'+events[i]["event_id"]+'">\
+                      <div class="chip '+Math.ceil((i+1)/4)+'" index="'+(i)+'" hero-id="'+events[i]["event_id"]+'">\
                         <div class="chip-top" style="background:'+events[i]["color"]+';">\
                           <div class="month">\
                             <span class = "month_text">'+events[i]["month"]+'</span>\
@@ -372,6 +369,9 @@ var $chip = $(this);
 
   event.preventDefault();
     index = $(this).attr("index");
+    indexCalc = parseInt(index);
+    onPage = Math.ceil((indexCalc + 1) / 4);
+    onPageClass = onPage.toString();
     files_html = '';
 
     form_data = $("#events_template_loc").data('data-form')[parseInt(index)];
@@ -412,31 +412,32 @@ var $chip = $(this);
                 </div>\
                 <div id="materials_container"> </div>';
     card_content = $(card_content_temp).html(card_html);
+    var screen_width = parseInt($('#events_template_loc').css('width'));
 
     if (!$($chip).hasClass('expanded')) {
         $($chip).addClass('expanded');
 
         //inactive
-        $('.chip').not(this).animate({
-          width: "5%"
+        $('.chip.'+onPageClass).not(this).animate({
+          width: 0.05 * screen_width
         }).removeClass('expanded');
-        $('.chip').not(this).children('.chip-top').animate({
-          width: "100%",
+        $('.chip.'+onPageClass).not(this).children('.chip-top').animate({
+          width: screen_width,
           height: "264px"
         });
-        $('.chip').not(this).children('.chip-bottom').css({
+        $('.chip.'+onPageClass).not(this).children('.chip-bottom').css({
           "display": "none"
         });
-        $('.chip').not(this).find('.month, .time').fadeOut();
-        $('.chip').not(this).children('.card-content').detach();
+        $('.chip.'+onPageClass).not(this).find('.month, .time').fadeOut();
+        $('.chip.'+onPageClass).not(this).children('.card-content').detach();
         setTimeout(function(){
-          $('.chip').not($chip).children('.collapse-info').fadeIn();
-          $('.chip').not($chip).children('.collapse-date').fadeIn();
+          $('.chip.'+onPageClass).not($chip).children('.collapse-info').fadeIn();
+          $('.chip.'+onPageClass).not($chip).children('.collapse-date').fadeIn();
         }, 400);
 
         //active chip
         $($chip).animate({
-          width: "81%"
+          width: 0.81 * screen_width
         });
         $($chip).children('.chip-top').animate({
           width: "35%",
@@ -487,25 +488,26 @@ $(document).on("mouseleave", ".collapse-info", function(event){
 
 $(document).on("click", ".card-close", function(event){
   event.preventDefault();
+  var screen_width = parseInt($('#events_template_loc').css('width'));
   $chip = $(this).parents('.chip');
     $('.chip').animate({
-      width: "24%"
+      width: 0.25 * screen_width - 8
     });
-    $('.chip').children('.chip-top').animate({
+    $('.chip-top').animate({
       width: "100%",
       height: "200px"
     });
-    $('.chip').children('.chip-bottom').css({
+    $('.chip-bottom').css({
       "display": "block"
     });
-    $('.chip').find('.month, .time').fadeIn();
-    $('.chip').children('.collapse-info').css({
+    $('.month, .time').fadeIn();
+    $('.collapse-info').css({
       "display": "none"
     });
-    $('.chip').children('.collapse-date').css({
+    $('.collapse-date').css({
       "display": "none"
     });
-    $($chip).children('.card-content').detach();
+    $('.card-content').detach();
     setTimeout(function(){
       $($chip).removeClass('expanded');
     },400);  
@@ -644,7 +646,7 @@ $(document).on("click", ".img_lt", function clicked_previous(event){
                   if(page_value - 2 == 0){
                   $(".img_lt").css({ "display": "none" });
                   }
-              },0);   
+              },100);   
 });
 
 $(document).on("click", ".img_rt", function clicked_next(event){
@@ -658,10 +660,10 @@ $(document).on("click", ".img_rt", function clicked_next(event){
                   $("#events_template_loc").attr("current_page", parseInt($("#events_template_loc").attr("current_page")) + 1);
                   $(".img_rt").css({ "display": "block" });
                   $(".img_lt").css({ "display": "block" })
-                  if(page_value + 1 == parseInt($("#events_template_loc").attr("pagecount"))){
+                  if(page_value + 2 == parseInt($("#events_template_loc").attr("pagecount"))){
                   $(".img_rt").css({ "display": "none" });
                   }
-                },0);
+                },100);
 });
 
 var search_events = function(){
