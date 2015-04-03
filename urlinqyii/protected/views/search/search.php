@@ -140,7 +140,7 @@
                                         <div class = "wedge">
                                         </div>
                                         <div class = "box">
-                                            Results from the NYU academic network
+                                            Results are from your university's academic network
                                         </div>
                                     </div>
                                 </div>

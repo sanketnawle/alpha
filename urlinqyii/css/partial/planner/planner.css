@@ -21,14 +21,16 @@ padding-bottom: 0px;
     cursor: default;
 }
 
+div#past_events div.event span.planner_edit_wrapper{position:absolute;top: 11px;right: 30px;}
+
+div.planner_container div.event:hover span.planner_edit_wrapper{
+    opacity:1;
+}
+
 #planner_body_holder .slimScrollDiv{
     opacity: 1;
 }
 
-.planner_container .event_origin_event_tab_link:hover{
-    background: #f7f7f7;
-
-}
 
 .event_data_holder.false{
 width: 94%!important;
@@ -51,6 +53,35 @@ width: 94%!important;
     opacity: .45!important;
 }
 
+
+.event_data_holder.false{
+width: 94%!important;
+}
+
+.event_data_holder.true{
+    width: 97%;
+
+}
+
+.planner_container .slimScrollRail, .planner_container .slimScrollBar{
+    opacity: 0!important;
+}
+
+.planner_container .slimScrollRail{
+    background: rgba(139, 139, 139, 0.6)!important;
+}
+
+.planner_container .slimScrollBar{
+    background: #222!important;
+}
+
+.planner_container:hover .slimScrollBar{
+    opacity:.45!important;
+}
+
+.planner_container:hover .slimScrollRail{
+    opacity: .33!important;
+}
 
 body#body_group #time_selector, body#body_home #time_selector{
     width: 71px;
@@ -166,23 +197,19 @@ body#body_home .entry_field_placeholder{
 }
 
 em.pl_red_circle{
-width: 12px;
-height: 12px;
-background-position: 0px -14px;
-top: 2px;
-position: relative;
-left: -1px;
+width: 6px;   height: 6px;   border-radius: 1000px;   
+background: #ff0000;   display: inline-block;   position: relative;   top: -1px;   right: 0px;
 }
 
 em.pl_blue_circle{
     width: 6px;
     height: 6px;
     border-radius:1000px;
-    background:#029acf;
+    background: #029acf;
     display:inline-block;
     position:relative;
     top: -1px;
-    right: 2px;
+    right: 0px;
 }
 
 .entry_field_placeholder:hover{
@@ -457,6 +484,9 @@ border-image: none;
     -webkit-box-shadow: inset 0 0 0 1px #fff;   box-shadow: inset 0 0 0 1px #fff;   border: 1px solid #fff;   border: rgba(0,0,0,0) solid 1px;   outline: rgba(0,0,0,0) 0;
 }
 
+div.planner_container:hover #event_list{
+    padding-right:16px;
+}
 
 #event_list{
 
@@ -467,27 +497,16 @@ border-image: none;
     font-family: 'Open Sans', sans-serif;
     color: #575757;
     white-space: normal;
-
-
     max-height: 390px;
-
     padding-top: 0px;
-    
-
-
-    
-    
-
     top: 0px;
-
     position: relative;
-
     padding-left: 6px;
-
+    -moz-transition:padding-right .200s cubic-bezier(0.550,0.085,0.680,0.530);
+    -webkit-transition:padding-right .200s cubic-bezier(0.550,0.085,0.680,0.530);
+    transition:padding-right .200s cubic-bezier(0.550,0.085,0.680,0.530);
     overflow: hidden;
-
     padding-right: 6px;
-
 }
 
 /*#calLayer{*/
@@ -523,7 +542,6 @@ body.body_group input.event_title{
     margin-bottom: 2px;
     padding-bottom: 5px;
     padding-top: 2px;
-    margin-right: 10px;
 }
 
 #planner_header_holder {
@@ -721,6 +739,7 @@ body.body_group input.event_title{
     color: #444; font-weight: 600; 
     font-size: 11px; color: #999; 
     margin-left: 0px; font-family: Avenir; font-weight: 100;
+    text-transform: uppercase;
 }
 
 .planner_event_header_date {
@@ -960,7 +979,7 @@ div.event_origin > a:hover{
     text-shadow: 0 1px 1px rgba(123, 123, 123, 0.05);
     height: auto;
     background: rgba(255, 243, 184, 0.5);
-    padding-bottom: 5px;
+    padding-bottom: 0;
 }
 
 #past_events div.event span.edit_button{
@@ -979,15 +998,20 @@ div.event_origin > a:hover{
 }
 
 #past_events div.event span.event_name{
-    color:#FF2727;
-    top: 1px;
+    color: #ff0000;
+    top: 3px;
+    white-space: nowrap;
     position: relative;
+    width: 188px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 div.event_origin{
     font-family: Avenir;
     padding-right:2px;
-    font-size: 12.7px;
+    font-size: 13.5px;
     line-height: 16px;
 }
 
@@ -1270,22 +1294,32 @@ div.edit_event_box{
     margin-top: -8px;
 }
 span.edit_button{
-    display: inline-block;
-    right: 28px;
-    font-size: 10.4px;
+    display: inline-block!important;
+    font-size: 10.2px;
     font-weight: 400;
     font-family: Avenir;
-    color: #525557;
+    letter-spacing: .4px;
+    color: #777;
+    text-transform: uppercase;
     cursor: pointer;
-    background: #f7f7f7;
-    margin-top: -6px;
-    position: absolute;
-    line-height: 14px;
+    background: transparent;
     height: 12px;
-    bottom: 8px;
-    width: 22px;
+    width: 26px;
     text-align: center;
 }
+
+span.edit_middot{
+    font-size: 14px;
+
+    color: #777;
+    position: relative;
+    top: 1px;
+}
+
+div#past_events span.edit_middot{
+    display: none;
+}
+
 div.edit_event_box input[type=text]{
     padding:3px;
     border: none;
@@ -1364,6 +1398,10 @@ div.edit_event_box input#cancel_edit_event:active{}
     text-decoration: underline;
 }
 
+span.planner_edit_wrapper{
+    opacity:0;
+}
+
 div.edit_event_box input#cancel_edit_event{
     background: transparent;
 
@@ -1379,4 +1417,6 @@ div.edit_event_box input[type=button]{
     margin-left: 5px;    
     margin-bottom: 4px;
 }
+
+
 

@@ -90,9 +90,10 @@ textarea:focus:-moz-placeholder {
 border-radius: 1px;
 width:365px;
 height: 222px;
-background: rgba(255, 255, 255, 0.96);
+background: rgba(255, 255, 255, 0.985);
 border: 1px solid #ddd;
 border-radius: 4px;
+z-index:90000000000000000000000000;
 -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 box-shadow: 0 1px 2px rgba(0,0,0,0.07);
@@ -803,7 +804,7 @@ div#create_month_day_event_text, div#create_day_event_text, div#create_week_day_
 
 div.event_name{
     display: inline-block;
-    line-height: 23px;
+    line-height: 15px;
     float: left;
     font-family: 'Helvetica neue', Helvetica, Arial, sans-serif; font-size: 13px;
     color: #222;
