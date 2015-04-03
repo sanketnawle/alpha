@@ -134,9 +134,9 @@ function store_facebook_info(){
                 if(response['success']){
                     window.location.href = base_url + '/onboard';
                 }else{
-                   /* if(response['error_id'] == 3){
-
-                    }*/
+                    if(response['error_id'] == 3){
+                        window.location.href = base_url + '/home';
+                    }
                 }
             }
         )

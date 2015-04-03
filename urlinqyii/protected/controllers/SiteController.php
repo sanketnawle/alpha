@@ -2047,7 +2047,7 @@ public function actionSendReset(){
     }
     public function actionFacebookSignup(){
         if(!isset($_POST['fb_email'])||!isset($_POST['first_name'])||!isset($_POST['last_name'])){
-            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'Invalid Token');
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'not all data set');
             $this->renderJSON($data);
             return;
         }
@@ -2058,6 +2058,31 @@ public function actionSendReset(){
 
 
         $university_id = $this->get_university_id_by_email($fb_email);
+
+        $user_auth_provider = UserAuthProvider::model()->find('fb_email = :fb_email',array(':fb_email'=>$fb_email));
+        if($user_auth_provider){
+            $user = $user_auth_provider->user;
+            if($user->status == "active" || $user->status == "onboarded"){
+
+                Yii::app()->session['user_id'] = $user->user_id;
+
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=> 'account already exists', 'user_id'=>$user->user_id);
+                $this->renderJSON($data);
+                return;
+            }else if($user->status == "onboarding"){
+
+                Yii::app()->session['user_id'] = $user->user_id;
+                Yii::app()->session['signin_type'] = 'facebook';
+                Yii::app()->session['email'] = $fb_email;
+                Yii::app()->session['ask_for_email'] = !isset($_POST['email']) && (strpos(".edu",$fb_email) > -1);
+                Yii::app()->session['onboarding_step'] = 0;
+
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }
+
+        }
 
         $user = new User;
         $user->firstname = $first_name;

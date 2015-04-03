@@ -1109,7 +1109,7 @@ $(document).ready(function () {
                 setTimeout(function () {
                     $self.addClass("right");
 
-                    if(user_type == 's' || !user_type){
+                    if(user_type == 's' || !user_type || onboard_type == "facebook"){
 
 
                         if(university_id == 4){
@@ -1126,7 +1126,7 @@ $(document).ready(function () {
                         //alert("USER TPY S");
                         //Skip the email step
                         get_course_data();
-                    }else{
+                    }else {
 
                         if(university_id == 4){
                             progress_flag += 2;
