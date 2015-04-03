@@ -54,11 +54,18 @@ class ReplyController extends Controller
 	 * @param integer $id the ID of the model to be deleted
 	 */
 	public function actionDelete()
-	{
+
         if(!isset($_POST['id'])){
-            $data = array('success'=>false,'error_id'=>1, 'post'=>$_POST);
+            $data = array('success'=>false,'error_id'=>1, 'post'=>$_POST, 'error_msg'=>'required data not specified.');
             $this->renderJSON($data);
             return;
+        }
+
+        $user = $this->get_current_user($_POST);
+        if (!$user) {
+            $data = array('success'=>false,'error_id'=>2, 'post'=>$_POST, 'error_msg'=>'user not authenticated.');
+            $this->renderJSON($data);
+            return;           
         }
 
         $id = $_POST['id'];
@@ -66,7 +73,7 @@ class ReplyController extends Controller
 
         $reply = Reply::model()->find('reply_id=:reply_id', array(':reply_id'=>$id));
         if(!$reply){
-            $data = array('success'=>false,'error_id'=>2, 'post'=>$_POST);
+            $data = array('success'=>false,'error_id'=>3, 'post'=>$_POST, 'error_msg'=>'not a valid reply.');
             $this->renderJSON($data);
             return;
         }
@@ -78,7 +85,7 @@ class ReplyController extends Controller
             $this->renderJSON($data);
             return;
         }else{
-            $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error deleting reply' , 'post'=>$_POST);
+            $data = array('success'=>false,'error_id'=>4, 'error_msg'=>'error deleting reply' , 'post'=>$_POST, 'error_msg'=>'could not delete comment.');
             $this->renderJSON($data);
             return;
         }
