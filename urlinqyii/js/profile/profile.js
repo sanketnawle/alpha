@@ -1225,8 +1225,12 @@ $(document).ready(function() {
         $('.info_section.account').show();
 
         //office hours and location
-        $('#office_input').val($('#office_location').text());
-        add_office_hours_to_input();
+        if($('#office_section').length){
+            $('#office_input').val($('#office_location').text());
+            add_office_hours_to_input();
+        }
+
+
         //$('#hours_input').val($('#office_hours').text());
         //buttons
         $('#edit_profile_button').css('margin-left','0');

@@ -345,13 +345,20 @@
 
         //Check if the user seleted a user type
         var $account_type_chosen = $('.account-type-chosen');
+<<<<<<< HEAD
         if ($account_type_chosen.length) {
 
           if ($account_type_chosen.hasClass('student')) {
             account_types = 's';
           } else {
+=======
+          if ($account_type_chosen.hasClass('faculty')) {
+>>>>>>> 266da196a3fd10edf5ea5bb236e8a0af4ce2c676
             account_types = 'p';
+          } else {
+            account_types = 's';
           }
+<<<<<<< HEAD
         } else {
           //alert('Please select if you are a student or professor.');
           $error_div.text('Please pick one.');
@@ -364,6 +371,9 @@
           $('body').append($error_div).hide().show();
           return;
         }
+=======
+
+>>>>>>> 266da196a3fd10edf5ea5bb236e8a0af4ce2c676
 
         if (firstname.length == 0) {
           //alert('Please input a first name');
@@ -824,7 +834,11 @@
                           Forgot your password?
                         </div>-->
 
+<<<<<<< HEAD
               <div class = "fb_signin_wrap">
+=======
+             <!-- <div class = "fb_signin_wrap">
+>>>>>>> 266da196a3fd10edf5ea5bb236e8a0af4ce2c676
                           <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
                             <em class = "fb_icon">
                             </em>
@@ -1312,19 +1326,21 @@
           </p>
         </div>
        <div class = "footer-sec synced_animation_divs">
-                    <div class = "leftLine">
-                    </div>
-                    <div class = "or-head">
-                      or continue with
-                    </div>
-                    <div class = "rightLine">
-                    </div>
-                    <button type = "button" onclick="fb_login();" class = "rounded Button FacebookConnect loginButton largeBtn">
-                      <em></em>
-                      <span class = "buttonText">Facebook</span>
-            </button>
+          <div class = "footer-sec synced_animation_divs">
+              <div class = "leftLine">
+              </div>
+              <div class = "or-head">
+                or continue with
+              </div>
+              <div class = "rightLine">
+              </div>
+              <button type = "button" onclick="fb_login();" class = "rounded Button FacebookConnect loginButton largeBtn">
+                <em></em>
+                <span class = "buttonText">Facebook</span>
+              </button>
 
-        </div>        
+          </div>        
+        </div>
       </div>
     </div>
 

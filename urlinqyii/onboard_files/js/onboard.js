@@ -48,7 +48,6 @@ $(document).ready(function () {
 
 
 
-
     var department_header_text = "Select your Major/Department";
     if(university_id == 4){
         department_header_text = "Select your Program";
@@ -72,6 +71,17 @@ $(document).ready(function () {
     }
 
     var searchbar_hint = ["Search schools", department_search_text, "", "Search all classes", "Search people", "Search clubs", ""];
+
+
+    if(onboard_type=="facebook"){
+        progress_bar = ["12%", "25%", "37%", "50%", "62%", "75%", "87%","100%"];
+        btn_text = ["Select your University", "Select your School", "Select your major/department","", "Continue", "Continue", "Continue", "Let's Get Started"];
+        hint_text = ["Select your University","Select your School", department_header_text, "Verify .edu Email", "Choose your classes", "Follow your peers", "Join your Groups", "Finish your profile"];
+        canvas_hint = ["", "", "", "", "Here are some of the most popular classes in your department.", "Share your notes, take part in discussions, and see what they are up to.", "These are some of the most active clubs at your school.", ""];
+        searchbar_hint = ["Search universities","Search schools", department_search_text, "", "Search all classes", "Search people", "Search clubs", ""];
+        progress_bar_color = ["rgb(186, 81, 228)", "rgb(186, 81, 228)", "#009ed3", "rgb(110, 56, 169)", "rgb(0, 173, 61)", "rgb(242, 110, 0)", "#ec3856", "rgb(39, 178, 78)"];
+
+    }
 
     /*the following lists should be retreived from php*/
     var school_list = [];
@@ -117,7 +127,6 @@ $(document).ready(function () {
 
         if(progress_flag == 3){
 
-
 //            var $canvas = $('.progress_content');
 
 
@@ -138,6 +147,17 @@ $(document).ready(function () {
         }
         else if(progress_flag == 4){
             follow_panel();
+        }
+        else if(onboard_type == "facebook"){
+            //Get the schools at this university then start onboarding
+            $.getJSON(base_url + '/university/getUniversities',function(json_data){
+                if(json_data['success']){
+                    university_list = json_data['universities'];
+                    start_onboarding();
+                }else{
+                    alert('Error getting university data');
+                }
+            });
         }
         else{
             //Get university id based on email function call will be here in the future
@@ -175,29 +195,37 @@ $(document).ready(function () {
         $(".next_progress").text(btn_text[curr]);
 
 
-        if ((progress_flag == 0) || (progress_flag == 1) || (progress_flag == 2) || (progress_flag == 6)) {
-            $(".next_progress").removeClass("inactive_btn");
-        } else {
-            $(".next_progress").addClass("inactive_btn");
-        }
+
 
 
 
         $(".onboard_textarea_t1").prop("placeholder", searchbar_hint[curr]);
         $(".onboard_textarea_t1").show();
         $(".progress_footer_glyph_0").show();
+        var temp_curr;
+        if(onboard_type == "facebook"){
+            temp_curr = curr-1;
+        }else{
+            temp_curr = curr;
+        }
 
-        if (curr == 6) {
+        if ((temp_curr == 0) || (temp_curr == 1) || (temp_curr == 2) || (temp_curr == 6)) {
+            $(".next_progress").removeClass("inactive_btn");
+        } else {
+            $(".next_progress").addClass("inactive_btn");
+        }
+
+        if (temp_curr == 6) {
             $(".next_progress").append("<div class='btn_glyph_0'></div>");
             $(".onboard_textarea_t1").hide();
             $(".progress_footer_glyph_0").hide();
         }
 
-        if (curr <= 2) {
+        if (temp_curr <= 2) {
             $(".skip_progress").hide();
             $(".full_skip").hide();
         } else {
-            if (curr != 6) {
+            if (temp_curr != 6) {
                 $(".skip_progress").show();
                 $(".full_skip").show();
             } else {
@@ -206,19 +234,19 @@ $(document).ready(function () {
             }
         }
 
-        if (curr == 2) {
+        if (temp_curr == 2) {
             $(".onboard_textarea_t1").hide();
             $(".progress_footer_glyph_0").hide();
             $(".next_progress").addClass("hide");
         }
 
-        if (curr == 3) {
+        if (temp_curr == 3) {
             $(".next_progress").addClass("step_3_adjust");
         } else{
             $(".next_progress").removeClass("step_3_adjust");
         }
 
-        if (curr < 2) {
+        if (temp_curr < 2) {
             $(".next_progress").hide();
             $(".onboard_textarea_t1").addClass("onboard_textarea_t2");
             $(".progress_footer_glyph_0").addClass("progress_footer_glyph_1");
@@ -230,20 +258,20 @@ $(document).ready(function () {
 
 
         $(".progress_hint_0").text(hint_text[curr]);
-        var curr_act = parseInt(curr) + 1;
-        if(curr == 3 || curr == 4 || curr == 5){
+        var curr_act = parseInt(temp_curr) + 1;
+        if(temp_curr == 3 || temp_curr == 4 || temp_curr == 5){
             $(".progress_hint_1").show();
             $(".progress_hint_1").html("Step <span class='curr_step'>" + curr_act + "</span> of <span>7</span>");
         }
-        if (curr == 6) { $(".progress_hint_1").html("Last Step"); };
+        if (temp_curr == 6) { $(".progress_hint_1").html("Last Step"); };
 
-        if (curr == 6) {
+        if (temp_curr == 6) {
             $(".next_progress").addClass("last_step_btn");
         } else {
             $(".next_progress").removeClass("last_step_btn");
         }
 
-        if ((curr != 0) && (curr != 3) && (curr != 2)) { $(".progress_goback").show(); } else { $(".progress_goback").hide(); }
+        if ((temp_curr != 0) && (temp_curr != 3) && (temp_curr != 2)) { $(".progress_goback").show(); } else { $(".progress_goback").hide(); }
 
         //if ((curr!=0)&&(curr!=3))
     }
@@ -278,7 +306,25 @@ $(document).ready(function () {
 
         console.log("CURR " + curr.toString());
 
-        if (curr == 0) {
+
+        if(curr == 0 && onboard_type == "facebook"){
+            for(i = 0; i < university_list.length; i++){
+
+                university_list[i]['base_url'] = base_url;
+
+                var source   = $("#university_template").html();
+                var template = Handlebars.compile(source);
+                var generated_html = template(university_list[i]);
+
+                var $stepCard = $(generated_html);
+
+                $canvas.append($stepCard).hide().fadeIn();
+            }
+
+            $('.skip_progress').hide();
+            $(".full_skip").hide();
+        }
+        else if (curr == 0 || (onboard_type == "facebook" && curr == 1)) {
             console.log('inside curr = 0');
 
 
@@ -300,7 +346,7 @@ $(document).ready(function () {
             $(".full_skip").hide();
 
 
-        }else if (curr == 1) {
+        }else if (curr == 1  || (onboard_type == "facebook" && curr == 2)) {
             console.log('inside curr = 1');
 
 
@@ -321,7 +367,7 @@ $(document).ready(function () {
             $(".full_skip").hide();
 
 
-        } else if (curr == 2) {
+        } else if (curr == 2  || (onboard_type == "facebook" && curr == 3)) {
             var mail_link = 'http://mail.google.com/a/nyu.edu';
 
             if(university_id == 4){
@@ -332,7 +378,7 @@ $(document).ready(function () {
             $canvas.append("<div class='step_2_card'><a href = 'http://mail.google.com/a/nyu.edu'><h1>Check your email</h1></a><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'><p class = 'confirm_link_wrapper'><span>Please confirm your email address</span><a href = '" + mail_link + "' class = 'confirm_links'>Check your inbox</a><a class = 'next_progress confirm_links'>Resend email</a></p></div>");
             $('.skip_progress').hide();
             $(".full_skip").hide();
-        } else if (curr == 3) {
+        } else if (curr == 3  || (onboard_type == "facebook" && curr == 4)) {
             $canvas.show();
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
@@ -385,7 +431,7 @@ $(document).ready(function () {
 
             render_courses();
 
-        }else if (curr == 4) {
+        }else if (curr == 4  || (onboard_type == "facebook" && curr == 5)) {
             $('.skip_progress').show();
             $(".full_skip").show();
 
@@ -421,7 +467,7 @@ $(document).ready(function () {
 
             }
 
-        }else if (curr == 5) {
+        }else if (curr == 5  || (onboard_type == "facebook" && curr == 6)) {
 
 
 
@@ -460,11 +506,14 @@ $(document).ready(function () {
                 $('.next_progress').removeClass('inactive_btn');
             }
 
-        }else if (curr == 6) {
+        }else if (curr == 6  || (onboard_type == "facebook" && curr == 7)) {
             $('.skip_progress').hide();
             $(".full_skip").hide();
 
             var data = {base_url: base_url, user_type: user_type};
+            if(ask_for_email){
+                data['show_email'] = true;
+            }
 
 
             var source   = $("#last_panel_template").html();
@@ -482,6 +531,9 @@ $(document).ready(function () {
 //            }
 
             $canvas.find(".ui.dropdown").dropdown();
+            if(onboard_type == "facebook"){
+                facebook_login_and_get_picture();
+            }
         }
 
     }
@@ -634,12 +686,16 @@ $(document).ready(function () {
 
             selected_data['office_location'] = $('#office_location_input').val();
             selected_data['research_interests'] = $('#research_interests_input').val();
-        }else{
+        }else if(user_type == 's'){
             //Get graduation date
             selected_data['graduation_date'] = $('#graduation_date_menu').attr('data-value')
 
 
+        }else{
+            selected_data['user_type'] = $('input[name=user_type]:checked').val();
+            selected_data['school_email'] = $('#school_email_input').val();
         }
+
 
         var picture_file_id = '1';
 
@@ -832,7 +888,7 @@ $(document).ready(function () {
         var $this_button = $(this);
 
         if (is_active_btn($(this))) {
-            if(progress_flag == 2){
+            if(progress_flag == 2 || (onboard_type == "facebook" && progress_flag == 3)){
                 if(!$this_button.hasClass('inactive_btn')){
                     $this_button.addClass('inactive_btn');
                     send_verification_email();
@@ -846,14 +902,14 @@ $(document).ready(function () {
                     console.log('cannot send another email yet');
                 }
             }
-            else if(progress_flag == 3){
+            else if(progress_flag == 3 || (onboard_type == "facebook" && progress_flag == 4)){
                 change_to_user_follow_panel();
-            }else if(progress_flag == 4){
+            }else if(progress_flag == 4 || (onboard_type == "facebook" && progress_flag == 5)){
 
                 change_to_club_panel();
 
 
-            }else if(progress_flag == 5){
+            }else if(progress_flag == 5 || (onboard_type == "facebook" && progress_flag == 6)){
                 change_to_last_panel();
             }
 //            else if (progress_flag < 6) {
@@ -868,14 +924,14 @@ $(document).ready(function () {
     $(document).delegate(".skip_progress", "click", function () {
 
 
-        if(progress_flag == 3){
+        if(progress_flag == 3 || (onboard_type == "facebook" && progress_flag == 4)){
             change_to_user_follow_panel();
-        }else if(progress_flag == 4){
+        }else if(progress_flag == 4 || (onboard_type == "facebook" && progress_flag == 5)){
             change_to_club_panel();
-        }else if(progress_flag == 5){
+        }else if(progress_flag == 5 || (onboard_type == "facebook" && progress_flag == 6)){
             change_to_last_panel();
         }
-        else if (progress_flag < 6) {
+        else if (progress_flag < 6 || (onboard_type == "facebook" && progress_flag < 7)) {
             progress_flag++;
             progress_check(progress_flag);
             content_paint(progress_flag);
@@ -957,11 +1013,52 @@ $(document).ready(function () {
 
     });
 
+    var university_click_count = 0;
+
+    $(document).delegate(".university", "click", function (e) {
+
+        //Prevent this from being clicked again
+        if(university_click_count == 0){
+            university_click_count++;
+            //e.stopPropagation();
+            //        e.preventDefault();
+            var $self = $(this);
+
+            university_id = $self.attr('data-university_id');
+            //Get the schools at this university
+            $.getJSON(base_url + '/university/getSchools?university_id=' + university_id,function(json_data){
+                if(json_data['success']){
+                    school_list = json_data['schools'];
+                    selected_data['university_id'] = university_id;
+
+                    //$(".step_0_card").addClass("left");
+                    //$self.removeClass("left");
+                    setTimeout(function () {
+                        $self.addClass("right");
+                        progress_flag++;
+                        progress_check(progress_flag);
+                        content_paint(progress_flag);
+                        return;
+                    }, 250);
+                }else{
+                    alert('Error getting school data');
+                }
+            });
+
+        }
+
+
+
+    });
+
 
 
     function send_verification_email(payload_function){
         var post_url = base_url + '/sendVerificationEmail';
         var post_data = {school_id: selected_data['school_id'], department_id: selected_data['department_id']};
+        if(selected_data['university_id']){
+            post_data['university_id'] = selected_data['university_id'];
+        }
 
 
         department_id = selected_data['department_id'];
@@ -1012,7 +1109,7 @@ $(document).ready(function () {
                 setTimeout(function () {
                     $self.addClass("right");
 
-                    if(user_type == 's'){
+                    if(user_type == 's' || !user_type){
 
 
                         if(university_id == 4){

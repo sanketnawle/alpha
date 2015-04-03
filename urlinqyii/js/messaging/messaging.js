@@ -1008,7 +1008,55 @@ $(document).on('keyup', '.chat_input', function(e){
 
     });
 
+$(document).on('click', '.textarea_menubutton', function(e) {
+    console.log('click');
+    var $menu_button = $(this);
+    var $textarea = $menu_button.parents('.chat_input_box');
+    var $menu = $textarea.children('.chatbox_menu');
 
+    if ($($menu_button).hasClass('closed')) {
+        $menu.fadeIn(100).animate({ marginBottom: "-5px" }, { duration: 250, queue: false } );
+        $menu_button.removeClass('closed');
+    } else {
+        $menu.fadeOut().animate({ marginBottom: "0px" }, { duration: 250, queue: false } );
+        $menu_button.addClass('closed');
+    }
+});
+
+$(document).on('mouseenter', '#LeftPanel_Holder', function(e) {
+    var isHovered = $('#messaging_panel').is(":hover");
+    if (isHovered == false) {
+        var messaging_height = parseInt($('#messaging_panel').css('height'));
+        var animation_height = (messaging_height - 60) * -1;
+        console.log(animation_height);
+        $('#messaging_panel').animate({ bottom: animation_height });
+        if (!$('#messaging_panel').hasClass('messaginghover')) {
+            $('#messaging_panel').addClass('messaginghover')
+        }
+    } 
+});
+$(document).on('mouseleave', '#LeftPanel_Holder', function(e) {
+    if ($('#messaging_panel').hasClass('messaginghover')) {
+        $('#messaging_panel').animate({ bottom: "0px" }).removeClass('messaginghover');
+    } else {
+    }
+});
+$(document).on('mouseenter', '#messaging_panel', function(e) {
+    $('#messaging_panel').animate({ bottom: "0px" }).removeClass('messaginghover');
+});
+$(document).on('mouseleave', '#messaging_panel', function(e) {
+    var isHovered = $('#LeftPanel_Holder').is(":hover");
+    var messaging_height = parseInt($('#messaging_panel').css('height'));
+    var animation_height = (messaging_height - 60) * -1;
+    console.log('leaving');
+    console.log(isHovered);
+    if (isHovered == true) {
+        $('#messaging_panel').animate({ bottom: animation_height });
+        if (!$('#messaging_panel').hasClass('messaginghover')) {
+            $('#messaging_panel').addClass('messaginghover')
+        }
+    }
+});
 
 
 });

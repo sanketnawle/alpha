@@ -558,6 +558,17 @@ class SiteController extends Controller
             return;
         }
 
+        if(isset($_POST['university_id'])){
+            $university = University::model()->find('university_id=:id',array(':id'=>$_POST['university_id']));
+            if(!$university){
+                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'university doesnt exist');
+                $this->renderJSON($data);
+                return;
+            }
+        }
+
+
+
         if($department->school_id != $school->school_id){
             $data = array('success'=>false,'error_id'=>3,'error_msg'=>'department is not in school');
             $this->renderJSON($data);
@@ -593,6 +604,9 @@ class SiteController extends Controller
             if($send){
                 $user->school_id = $school_id;
                 $user->department_id = $department_id;
+                if(!$user->university_id){
+                    $user->university_id = $university->university_id;
+                }
 
                 if($user->save(false)){
 
@@ -971,7 +985,7 @@ class SiteController extends Controller
         Yii::app()->session['onboarding_step'] = 0;
 
         //Take user directly to step 4
-        if($user->user_type == 'p' || $user->user_type == 'a'){
+        if(($user->user_type == 'p' || $user->user_type == 'a') && Yii::app()->session['signin_type'] != "facebook" ){
             if($user->status == 'onboarding'){
                 Yii::app()->session['onboarding_step'] = 3;
             }
@@ -1052,6 +1066,32 @@ class SiteController extends Controller
         $clubs = $_POST['clubs'];
         $gender = $_POST['gender'];
         $picture_file_id = $_POST['picture_file_id'];
+
+        if(isset($_POST['user_type'])){
+            $user_type = $_POST['user_type'];
+            $user->user_type = $user_type;
+            if($user_type == "s"){
+                $student_attribute = new StudentAttributes();
+                $student_attribute->user_id = $user->user_id;
+                $student_attribute->save(false);
+            }else if($user_type == "p"){
+                $professor_attribute = new ProfessorAttribute();
+                $professor_attribute->designation = 'professor';
+                $professor_attribute->user_id = $user->user_id;
+                $professor_attribute->save(false);
+            }
+        }
+        $user_auth_provider = UserAuthProvider::model()->find('user_id=:id',array(':id'=>$user->user_id));
+        if($user_auth_provider){
+            if(strpos(".edu",$user_auth_provider->fb_email) > 0){
+                $user->user_email = $user_auth_provider->fb_email;
+            }
+        }
+        if(isset($_POST['school_email'])){
+            $email = $_POST['school_email'];
+            $user->user_email = $email;
+        }
+
 
 
         if($gender != 'M' && $gender != 'F' && $gender != null){
@@ -2011,12 +2051,13 @@ public function actionSendReset(){
             $this->renderJSON($data);
             return;
         }
-        $email = $_POST['fb_email'];
+        $fb_email = $_POST['fb_email'];
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
 
 
-        $university_id = $this->get_university_id_by_email($email);
+
+        $university_id = $this->get_university_id_by_email($fb_email);
 
         $user = new User;
         $user->firstname = $first_name;
@@ -2028,6 +2069,13 @@ public function actionSendReset(){
         $user->school_id = null;
         $user->department_id = null;
         $user->status = 'onboarding';
+
+        if(isset($_POST['email'])){
+            $user->user_email = $_POST['email'];
+        }
+        if(isset($_POST['account_type'])){
+            $user->user_type = $_POST['account_type'];
+        }
         $user->save(false);
 
 
@@ -2035,7 +2083,7 @@ public function actionSendReset(){
 
         $user_auth_provider = new UserAuthProvider();
         $user_auth_provider->user_id = $user->user_id;
-        $user_auth_provider->fb_email = $email;
+        $user_auth_provider->fb_email = $fb_email;
         $user_auth_provider->save(false);
 /*
 
@@ -2050,6 +2098,8 @@ public function actionSendReset(){
 
         Yii::app()->session['user_id'] = $user->user_id;
         Yii::app()->session['signin_type'] = 'facebook';
+        Yii::app()->session['email'] = $fb_email;
+        Yii::app()->session['ask_for_email'] = !isset($_POST['email']) && (strpos(".edu",$fb_email) > -1);
         Yii::app()->session['onboarding_step'] = 0;
 
 

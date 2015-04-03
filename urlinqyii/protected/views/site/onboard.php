@@ -9,6 +9,9 @@
             last_name = '<?php echo Yii::app()->session['last_name']; ?>';
             user_type = '<?php echo Yii::app()->session['user_type']; ?>';
             university_id = '<?php echo Yii::app()->session['university_id']; ?>';
+            onboard_type = '<?php echo Yii::app()->session['signin_type']; ?>';
+
+            ask_for_email = '<?php echo Yii::app()->session['ask_for_email']; ?>';
 
 
             onboarding_step = -1;
@@ -147,6 +150,19 @@
 
     </script>
 
+    <script id="university_template" type="text/x-handlebars-template">
+
+        <div class="step_0_card university" data-university_id='{{university_id}}' data-school_name='{{university_name}}' style='background: url("{{base_url}}{{pictureFile.file_url}}") center center;'>
+            <div class="card_0_info">
+                <img class="card_0_glyph" src='{{base_url}}{{pictureFile.file_url}}'>
+                <div class="card_0_text"><div class="card_0_text_0">{{university_name}}</div><div class="card_0_text_1"></div></div>
+                <div class="green_join_btn"><em class = 'white_plus_icon'></em><span>Join</span></div>
+            </div>
+
+        </div>
+
+    </script>
+
 
     <script id="school_template2" type="text/x-handlebars-template">
 
@@ -273,7 +289,7 @@
 
                 <div class='step_6_card_r2'>
                     <div class='step_6_card_r2_txt'>Office hours</div>
-                    <input type='text' id='office_hours_input' class='ol onboard_textarea_t0' placeholder="eg: 4pm - 6pm Mon, Wed"/>
+                    <input type='text' id='office_hours_input' class='ol on9board_textarea_t0' placeholder="eg: Mon 4pm - 6pm, Wed 3pm - 5pm"/>
                     <span>&#x2a; We&#x27;ll take the time and date you enter here and add a weekly office hours event to your students&#x27; planners. </span>
                 </div>
 
@@ -301,6 +317,21 @@
                     </div>
                 </div>
             {{/ifCond}}
+
+            {{#ifCond user_type '==' ""}}
+                <div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Account Type</div>
+                    <input class='step_6_card_r1_input' type='radio' name='user_type' value='s'><span>Student</span>
+                    <input class='step_6_card_r1_input' type='radio' name='user_type' value='p'><span>Professor</span>
+                </div>
+
+            {{/ifCond}}
+            {{#if show_email}}
+                <div class='step_6_card_r2'>
+                    <div class='step_6_card_r2_txt'>School Email</div>
+                    <input type='text' id='school_email_input' class='ol onboard_textarea_t0'/>
+                </div>
+
+            {{/if}}
 
 
 
