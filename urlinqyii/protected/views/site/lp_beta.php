@@ -346,24 +346,12 @@
 
         //Check if the user seleted a user type
         var $account_type_chosen = $('.account-type-chosen');
-        if ($account_type_chosen.length) {
-          if ($account_type_chosen.hasClass('student')) {
-            account_types = 's';
-          } else {
+          if ($account_type_chosen.hasClass('faculty')) {
             account_types = 'p';
+          } else {
+            account_types = 's';
           }
-        } else {
-          //alert('Please select if you are a student or professor.');
-          $error_div.text('Please select if you are a student or professor.');
-          $error_div.css({
-            'top': account_types_position.top
-          });
-          $error_div.css({
-            'left': account_types_position.left - 400
-          });
-          $('body').append($error_div).hide().fadeIn(250);
-          return;
-        }
+
 
         if (firstname.length == 0) {
           //alert('Please input a first name');
@@ -844,7 +832,7 @@
                           Forgot your password?
                         </div>-->
 
-              <!--<div class = "fb_signin_wrap">
+             <!-- <div class = "fb_signin_wrap">
                           <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
                             <em class = "fb_icon">
                             </em>
@@ -1316,7 +1304,7 @@
             By clicking Create Your Account, you agree to our <a href="https://urlinq.com/about/legal/terms" target="_blank">Terms</a> and that you have read our <a href="https://urlinq.com/about/legal/privacy" target="_blank">Privacy Policy</a>.
           </p>
         </div>
-       <!--<div class = "footer-sec synced_animation_divs">
+      <!-- <div class = "footer-sec synced_animation_divs">
                     <div class = "leftLine">
                     </div>
                     <div class = "or-head">
@@ -1329,7 +1317,7 @@
                       <span class = "buttonText">Facebook</span>
             </button>
 
-        </div> -->
+        </div>-->
       </div>
     </div>
 

@@ -5,6 +5,10 @@ $(document).on('click','.facebook_login',function(){
         checkLoginState();
     });
 })
+
+function facebook_login_and_get_picture(){
+    checkLoginState();
+}
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
         statusChangeCallback(response);
@@ -99,15 +103,40 @@ function store_facebook_info(){
         var fb_email = response.email;
         var first_name = response.first_name;
         var last_name = response.last_name;
+        var account_type = null;
+        var $account_type_chosen = $('.account-type-chosen');
+        if ($account_type_chosen.hasClass('faculty')) {
+            account_type = 'p';
+        } else if($account_type_chosen.hasClass('student')) {
+            account_type = 's';
+        }
+
+        var email = $('#email').val();
+
+
+
         //var access_token =
         var post_url = globals.base_url+"/facebookSignup";
         var post_data = {fb_email:fb_email, first_name: first_name, last_name:last_name};
+
+        if(account_type){
+            post_data['account_type'] = account_type;
+        }
+
+        if(email.indexOf('.edu') > -1){
+            post_data['email'] = email;
+        }
+
         $.post(
             post_url,
             post_data,
             function(response){
                 if(response['success']){
                     window.location.href = base_url + '/onboard';
+                }else{
+                   /* if(response['error_id'] == 3){
+
+                    }*/
                 }
             }
         )
