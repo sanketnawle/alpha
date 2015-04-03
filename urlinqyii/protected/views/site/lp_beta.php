@@ -4,6 +4,7 @@
 
   <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
   <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
+  <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/js/facebook_integration.js"></script>
   <script>
     base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
 
@@ -637,6 +638,26 @@
 
 
 <body id = "scroll_body">
+<script>
+    window.fbAsyncInit = function() {
+        console.log('loading facebook sdk 1');
+        FB.init({
+            appId      : '237922879690774',
+            xfbml      : true,
+            version    : 'v2.3',
+            cookie     : true
+        });
+    };
+    console.log('loading facebook sdk 2');
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    console.log('loading facebook sdk 3');
+</script>
   <div class="default_bgd school_bgd"></div>
   <div class="school_bgd columbia-bgd"></div>
   <div class="school_bgd nyu-bgd"></div>
@@ -823,7 +844,7 @@
                           Forgot your password?
                         </div>-->
 
-              <div class = "fb_signin_wrap">
+              <!--<div class = "fb_signin_wrap">
                           <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
                             <em class = "fb_icon">
                             </em>
@@ -836,7 +857,7 @@
                               Sign In with Facebook
                             </div>
                           </div>
-                        </div>
+                        </div>-->
 
             </form>
             <button name="mobile-login" id="mobile-login-btn" class="rounded Button SignIn smallBtn modalLink" href="#loginModal">
@@ -1094,15 +1115,17 @@
       <div class="signup_border_fake">
       </div>
       <div class="signup_after_tabs">
-        <div class="after_tab after_tab_1" data-tab_id="1">
-          <h4>About</h4>
-        </div>
-        <div class="after_tab after_tab_2" data-tab_id="2">
-          <h4>Why Join?</h4>
-        </div>
         <div class="after_tab active after_tab_3" data-tab_id="3">
           <h4>Sign Up</h4>
+        </div>        
+        <div class="after_tab after_tab_2" data-tab_id="2">
+          <h4>Why Join?</h4>
+        </div>        
+        <div class="after_tab after_tab_1" data-tab_id="1">
+          <h4>About </h4>
         </div>
+
+
       </div>
       <div class="other_panel" id="other_panel_1">
         <div class="header-sec">
@@ -1228,7 +1251,7 @@
       <div class="signup-form-wrap other_panel active" id="other_panel_3">
         <div class="header-sec">
           <div class="header-sec-left">
-            <h4 class="header">Sign Up <span>Explore your university</span></h4>
+            <h4 class="header">Sign Up <span><span>Really,</span> do better in school</span></h4>
           </div>
           <div class="header-sec-right">
             <div class="time-to-signup" style="font-size:20px;">your link to the university</div>
@@ -1293,7 +1316,7 @@
             By clicking Create Your Account, you agree to our <a href="https://urlinq.com/about/legal/terms" target="_blank">Terms</a> and that you have read our <a href="https://urlinq.com/about/legal/privacy" target="_blank">Privacy Policy</a>.
           </p>
         </div>
-       <div class = "footer-sec synced_animation_divs">
+       <!--<div class = "footer-sec synced_animation_divs">
                     <div class = "leftLine">
                     </div>
                     <div class = "or-head">
@@ -1301,12 +1324,12 @@
                     </div>
                     <div class = "rightLine">
                     </div>
-                    <button type = "button" onclick="fb_login();" class = "rounded Button FacebookConnect loginButton largeBtn">
+                    <button type = "button" onclick="fb_signup();" class = "rounded Button FacebookConnect loginButton largeBtn">
                       <em></em>
                       <span class = "buttonText">Facebook</span>
             </button>
 
-        </div>        
+        </div> -->
       </div>
     </div>
 
