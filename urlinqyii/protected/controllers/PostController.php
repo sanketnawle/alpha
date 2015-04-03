@@ -1,14 +1,11 @@
 <?php
 
-Yii::import('ext.runactions.components.ERunActions');
-ERunActions::runBackground(true);
-
 if(isset($_FILES))
     include_once "file_upload.php";
 
 class PostController extends Controller
 {
-	/**
+    /**
      * Made some changes in Post Model @rules
      *
      * Usage:
@@ -17,13 +14,13 @@ class PostController extends Controller
         * post/[:id]/update
         * post/[:id]/delete
      *
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
+     * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+     * using two-column layout. See 'protected/views/layouts/column2.php'.
+     */
 
     private static $cur_user_id;
 
-	public $layout='//layouts/column2';
+    public $layout='//layouts/column2';
 
     // public function __construct()
     // {
@@ -37,10 +34,10 @@ class PostController extends Controller
     // }
 
 
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
+    /**
+     * Creates a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
 
 
 
@@ -162,6 +159,8 @@ class PostController extends Controller
 
 
 
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
 
         if (ERunActions::runBackground()) {
             ERunActions::runScript('send_post_email',$params=array('origin'=>$origin, 'origin_name'=>$origin_name, 'to_user'=>$to_user,  'post'=>$post, 'subject'=>$subject, 'actor'=>$actor),$scriptPath=null);
@@ -304,6 +303,9 @@ class PostController extends Controller
                 return;
             }
 
+            Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
             if (ERunActions::runBackground()) {
                 ERunActions::runScript('send_reply_email',$params=array('origin'=>$origin,'origin_name'=>$origin_name,'to_user'=>$to_user,  'post'=>$post, 'subject'=>$subject, 'actor'=>$actor, 'reply'=>$reply),$scriptPath=null);
 
@@ -417,7 +419,8 @@ class PostController extends Controller
             return;
         }
 
-
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
         if (ERunActions::runBackground()) {
             ERunActions::runScript('send_event_email',$params=array('origin_name'=>$origin_name, 'to_user'=>$to_user, 'to_email'=>$to_email, 'from_email'=>$from_email, 'event'=>$event, 'subject'=>$subject, 'user'=>$user),$scriptPath=null);
 
@@ -438,8 +441,8 @@ class PostController extends Controller
 
 
 
-	public function actionCreate()
-	{
+    public function actionCreate()
+    {
 
 //{"text":"asdasd","post_type":"discuss","origin_id":"","origin_type":"class","sub_text":"","privacy":"","anon":0,"like_count":0}
 
@@ -663,11 +666,11 @@ class PostController extends Controller
                                             $user_id = $event_user->user_id;
                                             $to_email = $event_user->user->user_email;
                                             $actor_id = $user->user_id;
-
-if (ERunActions::runBackground()) {
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
 
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'actor_id'=>$actor_id,'to_user_id'=>$user_id,'subject'=>$subject),$contentType=null);
-}
+
                                             //ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
                                         }
@@ -702,10 +705,10 @@ if (ERunActions::runBackground()) {
                                             $user_id = $event_user->user_id;
                                             $to_email = $event_user->user->user_email;
                                             $actor_id = $user->user_id;
-if (ERunActions::runBackground()) {
-
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'actor_id'=>$actor_id,'to_user_id'=>$user_id,'subject'=>$subject),$contentType=null);
-}
+
                                             //ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
 
@@ -735,10 +738,10 @@ if (ERunActions::runBackground()) {
                                             $user_id = $event_user->user_id;
                                             $to_email = $event_user->user->user_email;
                                             $actor_id = $user->user_id;
-if (ERunActions::runBackground()) {
-
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'actor_id'=>$actor_id,'to_user_id'=>$user_id,'subject'=>$subject),$contentType=null);
-}
+
                                             //ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
 
@@ -758,10 +761,10 @@ if (ERunActions::runBackground()) {
                                             $user_id = $event_user->user_id;
                                             $to_email = $event_user->user->user_email;
                                             $actor_id = $user->user_id;
-if (ERunActions::runBackground()) {
-
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'actor_id'=>$actor_id,'to_user_id'=>$user_id,'subject'=>$subject),$contentType=null);
-}
+
                                             //ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendGroupEventEmailFunction',$postData=array('to_email'=>$to_email, 'event_id'=>$event_id, 'user_id'=>$user_id,'subject'=>$subject),$contentType=null);
 
 
@@ -968,10 +971,11 @@ if (ERunActions::runBackground()) {
                                             $subject = 'Urlinq announcement';
                                             $to_user_id = $class_user->user_id;
                                             $actor_id = $user->user_id;
-if (ERunActions::runBackground()) {
 
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+                                            
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendPostEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$model->post_id),$contentType=null);
-                                        }
                                         }
 
                                         send_notification('post',$user->user_id,$class_user->user_id,$post_data['post_id'],'post');
@@ -1006,11 +1010,10 @@ if (ERunActions::runBackground()) {
                                             $to_user_id = $department_user->user_id;
                                             $actor_id = $user->user_id;
 
-if (ERunActions::runBackground()) {
-
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
 
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendPostEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$model->post_id),$contentType=null);
-                                        }
                                         }
 
                                         send_notification('post',$user->user_id,$department_user->user_id,$post_data['post_id'],'post');
@@ -1108,12 +1111,12 @@ if (ERunActions::runBackground()) {
                                             $to_user_id = $group_user->user_id;
                                             $actor_id = $user->user_id;
 
-if (ERunActions::runBackground()) {
-
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
 
                                             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendPostEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$model->post_id),$contentType=null);
                                         }
-}
+
                                         send_notification('post',$user->user_id,$group_user->user_id,$post_data['post_id'],'post');
                                     }
                                 }
@@ -1223,31 +1226,31 @@ if (ERunActions::runBackground()) {
                 return;
             }
 
-    //		$this->render('create',array(
-    //			'model'=>$model,
-    //		));
+    //      $this->render('create',array(
+    //          'model'=>$model,
+    //      ));
 
         }catch(Exception $e){
             $return_data = array('success'=>false,'error_id'=>3,'dd'=>'Inside exception' ,'error_msg'=>$e->getMessage());
             $this->renderJSON($return_data);
             return;
         }
-	}
+    }
 
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate()
-	{
-		$model=$this->loadModel($_GET['id']);
+    /**
+     * Updates a particular model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id the ID of the model to be updated
+     */
+    public function actionUpdate()
+    {
+        $model=$this->loadModel($_GET['id']);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
 
-		if(isset($_POST['Post']))
-		{
+        if(isset($_POST['Post']))
+        {
             if($model->user_id == self::$cur_user_id) {
                 $model->attributes = $_POST['Post'];
 
@@ -1285,12 +1288,12 @@ if (ERunActions::runBackground()) {
             }
             else
                 echo "Access Denied";
-		}
+        }
 
-//		$this->render('update',array(
-//			'model'=>$model,
-//		));
-	}
+//      $this->render('update',array(
+//          'model'=>$model,
+//      ));
+    }
 
     public function actionClearQuestion(){
         if(!isset($_POST['post_id'])){
@@ -1528,12 +1531,12 @@ if (ERunActions::runBackground()) {
     }
 
 
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete(){
+    /**
+     * Deletes a particular model.
+     * If deletion is successful, the browser will be redirected to the 'admin' page.
+     * @param integer $id the ID of the model to be deleted
+     */
+    public function actionDelete(){
 
         if(!isset($_POST['post_id'])){
             $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
@@ -1628,7 +1631,7 @@ if (ERunActions::runBackground()) {
             return;
         }
 
-	}
+    }
     // param post_id
     public function actionHide(){
         if(!isset($_POST['post_id'])){
@@ -1868,8 +1871,8 @@ if (ERunActions::runBackground()) {
 
 
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-//		if(!isset($_GET['ajax']))
-//			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+//      if(!isset($_GET['ajax']))
+//          $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
     }
 
 
@@ -1923,10 +1926,10 @@ if (ERunActions::runBackground()) {
                         $to_user_id = $post->user_id;
                         $actor_id = $user->user_id;
 
-if (ERunActions::runBackground()) {
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
 
                         ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/post/sendReplyEmailFunction',$postData=array('to_user_id'=>$to_user_id, 'subject'=>$subject, 'actor_id'=>$actor_id, 'post_id'=>$post->post_id, 'reply_id'=>$reply->reply_id),$contentType=null);
-                }
                     }
 //                    //Send notification to the creator of this post
 //                    if ($user->user_id != $post->user_id) {
@@ -2213,58 +2216,57 @@ if (ERunActions::runBackground()) {
 
     }
 
-	/**
-	 * Lists all models.
-	 */
-//	public function actionIndex()
-//	{
-//		$dataProvider=new CActiveDataProvider('Post');
-//		$this->render('index',array(
-//			'dataProvider'=>$dataProvider,
-//		));
-//	}
+    /**
+     * Lists all models.
+     */
+//  public function actionIndex()
+//  {
+//      $dataProvider=new CActiveDataProvider('Post');
+//      $this->render('index',array(
+//          'dataProvider'=>$dataProvider,
+//      ));
+//  }
 
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Post('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Post']))
-			$model->attributes=$_GET['Post'];
+    /**
+     * Manages all models.
+     */
+    public function actionAdmin()
+    {
+        $model=new Post('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['Post']))
+            $model->attributes=$_GET['Post'];
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
+        $this->render('admin',array(
+            'model'=>$model,
+        ));
+    }
     
 
-	/*
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer $id the ID of the model to be loaded
-	 * @return Post the loaded model
-	 * @throws CHttpException
-	 */
-	public function loadModel($id)
-	{
-		$model=Post::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
-	}
+    /*
+     * Returns the data model based on the primary key given in the GET variable.
+     * If the data model is not found, an HTTP exception will be raised.
+     * @param integer $id the ID of the model to be loaded
+     * @return Post the loaded model
+     * @throws CHttpException
+     */
+    public function loadModel($id)
+    {
+        $model=Post::model()->findByPk($id);
+        if($model===null)
+            throw new CHttpException(404,'The requested page does not exist.');
+        return $model;
+    }
 
-	/**
-	 * Performs the AJAX validation.
-	 * @param Post $model the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='post-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
-}
+    /**
+     * Performs the AJAX validation.
+     * @param Post $model the model to be validated
+     */
+    protected function performAjaxValidation($model)
+    {
+        if(isset($_POST['ajax']) && $_POST['ajax']==='post-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }
