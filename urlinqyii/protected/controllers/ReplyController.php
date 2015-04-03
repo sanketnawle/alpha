@@ -78,6 +78,11 @@ class ReplyController extends Controller
             return;
         }
 
+        if ($reply->user_id != $user->user_id) {
+            $data = array('success'=>false,'error_id'=>4, 'post'=>$_POST, 'error_msg'=>'user did not make this reply');
+            $this->renderJSON($data);
+            return;
+        }
 
 
         if($reply->delete()){
@@ -85,7 +90,7 @@ class ReplyController extends Controller
             $this->renderJSON($data);
             return;
         }else{
-            $data = array('success'=>false,'error_id'=>4, 'error_msg'=>'error deleting reply' , 'post'=>$_POST, 'error_msg'=>'could not delete comment.');
+            $data = array('success'=>false,'error_id'=>5, 'error_msg'=>'error deleting reply' , 'post'=>$_POST, 'error_msg'=>'could not delete comment.');
             $this->renderJSON($data);
             return;
         }
