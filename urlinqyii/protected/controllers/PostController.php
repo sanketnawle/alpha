@@ -2050,7 +2050,7 @@ if (ERunActions::runBackground()) {
             $this->renderJSON($data);
             return;
         }
-        
+
         $user = $this->get_current_user($_GET);
         if (!$user) {
             $data = array('success'=>false,'error_id'=>2,'error_msg'=>'not a valid user.');
@@ -2238,7 +2238,7 @@ if (ERunActions::runBackground()) {
 			'model'=>$model,
 		));
 	}
-    
+
 
 	/*
 	 * Returns the data model based on the primary key given in the GET variable.
