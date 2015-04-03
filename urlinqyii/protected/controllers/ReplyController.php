@@ -53,7 +53,7 @@ class ReplyController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete()
+	public function actionDelete() {
 
         if(!isset($_POST['id'])){
             $data = array('success'=>false,'error_id'=>1, 'post'=>$_POST, 'error_msg'=>'required data not specified.');
