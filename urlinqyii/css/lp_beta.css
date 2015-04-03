@@ -18,6 +18,8 @@ body
   margin:0;
 }
 
+div.header-sec div.slogan{}
+
 .school_bgd
 {
   position:fixed;
@@ -40,8 +42,9 @@ body
 
 .school_bgd.default_bgd{
   display: block;
-  background:url(../assets/nyu_cover.jpg) center center no-repeat fixed;
-    -webkit-filter: blur(90px);   -moz-filter: blur(90px);   -o-filter: blur(90px);   -ms-filter: blur(90px);   filter: blur(90px);
+  background: url(../assets/columbia2.jpg) center center no-repeat fixed;
+    
+  -webkit-filter: blur(20px);   -moz-filter: blur(50px);   -o-filter: blur(50px);   -ms-filter: blur(50px);   filter: blur(50px);
 
 
 }
@@ -498,6 +501,26 @@ button#mobile-login-btn {
   border-radius: 0 120px 120px 0;
 }
 
+.after_tab.jump_tab{
+    width: 162px;
+
+}
+
+.after_tab.jump_tab > em{
+    background-image: url(../assets/down_arrow.svg);
+  
+    display: inline-block;
+    width: 19px;
+    height: 20px;
+    background-repeat: no-repeat;
+    font-family: Avenir;   font-weight: 200;   font-size: 19px;   text-align: left;   
+    position: relative;   
+    left: -11px;
+    top: 6px;
+    float: right;
+    padding: 6px 9px;
+}
+
 .signup_after_tabs .after_tab:hover
 {
   background:rgba(18,19,20,0.84);
@@ -575,6 +598,7 @@ button#mobile-login-btn {
   text-align:left;
   margin:5px 0;
   padding:6px 13px;
+  display: inline-block;
 }
 
 .bottom_tab
@@ -1273,6 +1297,39 @@ span.mobile_slogan{
   background:transparent;
 }
 
+  div.desktop_only_panel{
+    height:500px;
+    position:relative;
+    display: none;
+    background: rgba(0, 0, 0, 0.1);
+    top: 64px;
+    z-index: 1000000000000;
+}
+
+  div.angled_background{
+      background: rgba(39, 41, 43, 0.31);
+      position: absolute;
+      top: 19px;
+      left: -50%;
+      width: 200%;
+      height: 350px;
+      transform: rotate(4.2deg);
+      -webkit-transform: rotate(6.9deg);
+      z-index: 5;
+  }
+
+  div.angled_background.angled_background_2{
+    background: rgba(39,41,43,0.92);
+
+  
+    border: 1px solid rgba(0, 0, 0, 0.67);
+    height: 348px;
+}
+
+  div.angled_background.angled_background_2 > div.blur_bg_angled{}
+  div.angled_background.angled_background_2 > div.blur_bg_color_angled{}
+
+
 div.signup-container
 {
   display:block;
@@ -1710,7 +1767,7 @@ button.SignUp:hover
   border-bottom: 1px solid rgba(3, 144, 74, 0.39);
 }
 
-button.SignUp:active
+button.SignUp:active,button.SignUp:focus
 {
   background: #02DB6F;
   border: 1px solid #2FB750;
@@ -2339,16 +2396,22 @@ div.color-changing-div
 
 ul.color-border
 {
-  list-style:none;
-  font-size:12px;
-  position:relative;
-  width:360px;
-  display:block;
+  list-style: none;
+  font-size: 12px;
+  position: relative;
+  width: 360px;
+  display: block;
+  background-image: url(../assets/urlinq_bottom_border.svg);
+  background-repeat: no-repeat;
+  background-size: 93%;
   border-radius: 4px;
-  float:left;
-  margin: 14px 14px 0;
-  padding:0 0 0 4px;
-  border: 1px solid #000;   background-color: rgba(39,41,43,0.92);
+  float: right;
+  margin: 6px 14px 0;
+  padding: 3px 0 0 6px;
+  border: 1px solid #000;
+  background-color: rgba(39,41,43,0.92);
+  padding-bottom: 5px;
+  background-position: 20px bottom;
 }
 
 ul.color-border li
@@ -2861,7 +2924,7 @@ div.mobile_featurette.featurette_2,input#lname
 
 div.lp_terms p.lp_terms_p a,div.lp_terms p.lp_terms_p a:visited
 {
-  color: #029acf;
+  color: #fff;
   text-decoration:none!important;
 }
 
@@ -3262,3 +3325,4 @@ ul.color-border li:nth-child(1),a.cb-link1:visited
   {
     font-size:25px;
   }
+

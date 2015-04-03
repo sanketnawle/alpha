@@ -96,23 +96,25 @@ body.body_group .topbar > #topbar_responsive_holder > .left{
     color: #FFF;
     -webkit-border-radius: 2px; 
     top: -5px!important;
-    color: #222; 
+    color: #fff; 
     max-height: 11px; 
-    text-shadow: 0 -1px 0 rgba(255, 255, 255, 1)!important;
+    /* text-shadow: 0 -1px 0 rgba(255, 255, 255, 1)!important; */
     padding: 2px 3px;     
       
 }
 
 #new_notification_count.something_new{
-    background: rgba(255, 255, 255, 1);  
-    border: 2px solid #000;
-    font-weight: 500!important;
+    background: rgba(242, 39, 54, 1);  
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    font-weight: 100!important;
     height: 16px;
-    top: -1px!important;
+    top: 0px!important;
+    font-size: 17.5px!important;
+    text-shadow: 0 1px 1px rgba(100, 0, 0, 0.82)!important;
     left: -28px!important;
-    line-height: 17px;
+    line-height: 18px;
     max-height: 15px;
-    width: 13px!important;
+    width: 15px!important;
 }
 
 .search_result_icon.non_profile_icon{
@@ -428,6 +430,9 @@ form.top_search_bar_form{
     top: 0.5px;
     cursor: pointer;
     opacity: .9;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.25);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.25);
+    box-shadow: 0 1px 2px rgba(0,0,0,.25);
     position: relative;
     display: inline-block;
 }
@@ -552,6 +557,7 @@ border-radius: 4px;}
                 cursor: pointer;
                 position: relative;
                 top: -7px;
+                text-shadow: 0 1px 1px rgba(0, 0, 0, 0.82);
 }
 
                 .topbar > #topbar_responsive_holder > .right .notify.calendar .button div,.topbar > #topbar_responsive_holder > .right .notify.board .button div {

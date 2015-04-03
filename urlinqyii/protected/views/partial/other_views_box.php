@@ -17,7 +17,7 @@
     		<span class = "title_description">View this group's description and other details.</span>
     	</div>
     </a>
-    <a id = "calendar_link" class="other_views_tab" href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">
+    <a id = "calendar_link" class="" href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">
     	<div class = "title_body">
     		<span class ="title"><em></em>Calendar</span>
     		<span class = "title_description">View this group's monthly, weekly, and daily calendars.</span>

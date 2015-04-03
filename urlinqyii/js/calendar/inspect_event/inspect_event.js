@@ -62,7 +62,18 @@ jQuery(document).ready(function(){
         hide_inspect();
         var $event_div = jQuery(this);
         var $event_div_color_block = jQuery($event_div).find(".white_bg_line_blocker");
+
         var event_div_hex = $event_div.attr("data-hex");
+        var event_div_height = $event_div.height();
+
+
+        var event_div_top = $event_div.offset().top;
+        var inspect_div_top_position = event_div_top - 15;
+
+        var event_div_bottom = event_div_top + event_div_height;
+        var inspect_div_bottom_position = event_div_bottom + 15;
+
+
         var event_title = $event_div.attr("data-name");
         var event_description = $event_div.attr("data-description");
         var event_type = $event_div.attr('data-event_type');
@@ -174,8 +185,8 @@ jQuery(document).ready(function(){
 
 
         if(!$inspect_event_popup.is(":visible")){
-            if(event.pageY <= 300){
-                $inspect_event_popup.css('top', event.pageY + 15);
+            if(event_div_top <= 240){
+                $inspect_event_popup.css('top', inspect_div_bottom_position);
                 jQuery($inspect_event_popup).addClass("top_position");
                 if(click_x_difference <= 187){
                     $inspect_event_popup.css('right', event.pageX - 328.5);
@@ -187,7 +198,7 @@ jQuery(document).ready(function(){
                     jQuery($inspect_event_popup).removeClass("right_position");
                 }
             }else{
-                $inspect_event_popup.css('top', event.pageY - 230);
+                $inspect_event_popup.css('top', inspect_div_top_position - 220);
                 jQuery($inspect_event_popup).removeClass("top_position");
                 if(click_x_difference <= 187){
                     $inspect_event_popup.css('right', event.pageX - 328.5);
@@ -218,8 +229,8 @@ jQuery(document).ready(function(){
             if($event_div.attr('data-id') != last_clicked_event_id){
                 //We clicked a different event than the event we were already looking at
                 //switch the inspect_event_popup_week to this event
-                if(event.pageY <= 300){
-                    $inspect_event_popup.css('top', event.pageY + 15);
+                if(event_div_top <= 240){
+                    $inspect_event_popup.css('top', inspect_div_bottom_position);
                     jQuery($inspect_event_popup).addClass("top_position");
                     if(click_x_difference <= 187){
                         $inspect_event_popup.css('right', event.pageX - 328.5);
@@ -231,7 +242,7 @@ jQuery(document).ready(function(){
                         jQuery($inspect_event_popup).removeClass("right_position");
                     }
                 }else{
-                    $inspect_event_popup.css('top', event.pageY - 230);
+                    $inspect_event_popup.css('top', inspect_div_top_position - 220);
                     jQuery($inspect_event_popup).removeClass("top_position");
                     if(click_x_difference <= 187){
                         $inspect_event_popup.css('right', event.pageX - 328.5);

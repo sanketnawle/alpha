@@ -335,12 +335,6 @@ $(document).ready(function(){
         );
     });
 
-    $(document).on('mouseenter','.event',function(){
-        $(this).find('.edit_button').fadeIn(50);
-    });
-    $(document).on('mouseleave','.event',function(){
-        $(this).find('.edit_button').fadeOut(50);
-    });
 
 
     function handle_planner_events(){
@@ -987,8 +981,9 @@ $(window).load(function(){
 
         $('#event_list').slimScroll({
             height: '390px',
-            railVisible: true, 
-            disableFadeOut: true,
+            alwaysVisible: true,
+            railVisible:true,
+            disableFadeOut:true,
             touchScrollStep: "20",
             size:"10px",
             allowPageScroll: true,

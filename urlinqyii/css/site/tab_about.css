@@ -388,7 +388,7 @@ div.about_tab_middle > div{
 }
 
 div.about_tab_middle div.classic_about_box{
-    width: 33%;
+    width: 100%;
     float: right;
     max-height: 450px;
 }
@@ -515,7 +515,7 @@ div.group_display_icon{
     /* float: left; */
     z-index: 5;
     position: relative;
-    margin-top: -1px;     
+    margin-top: 35px;     
     position: relative;  ;
     height: 119px;
     border-radius: 50%;
@@ -584,7 +584,7 @@ div.design_circle_border_accent{
     height: 140px;
     position: absolute;
     left: 0px;
-    top: -8px;
+    top: 28px;
     border-radius: 100%;
     z-index: 1;
 }

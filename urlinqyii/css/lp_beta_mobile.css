@@ -12,6 +12,10 @@ div.mobile-background {
   filter: blur(9px);
 }
 
+div.desktop_only_panel{
+  display: none!important;
+}
+
 .school_bgd{display: none!important}
 
 div.header{
@@ -621,6 +625,7 @@ div.signup-container,video.ur-video-playing
 {
   display:none!important;
 }
+
 
 button.beta_signup_submit{
     background: none;
