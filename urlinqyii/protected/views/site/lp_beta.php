@@ -4,7 +4,6 @@
 
   <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
   <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
-  <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/js/facebook_integration.js"></script>
   <script>
     base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
 
@@ -121,7 +120,7 @@
 
 
       function is_supported_email(email) {
-        var emails = ['nyu.edu', 'urlinq.com', 'student.touro.edu', 'touro.edu'];
+        var emails = ['nyu.edu', 'urlinq.com', 'student.touro.edu', 'touro.edu', 'stern.nyu.edu', 'stern.nyu.edu'];
         for (var i = 0; i < emails.length; i++) {
           //alert(email.indexOf(emails[i]));
           if (email.indexOf(emails[i]) > -1) {
@@ -224,38 +223,38 @@
 
 
 
-      $('.after_tab').click(function() {
-        var $tab = $(this);
-        var panel_id = $tab.attr('data-tab_id');
-        $('.after_tab.active').removeClass('active');
-        $tab.addClass('active');
-        $('.other_panel.active .synced_animation_divs').css({
-          'transition': 'opacity .05s linear',
-          '-webkit-transition': 'opacity .05s linear',
-          '-moz-transition': 'opacity .05s linear',
-          '-ms-transition': 'opacity .05s linear',
-          'opacity': '0'
-        });
-        $('.other_panel.active').css({
-          'background': 'transparent',
-          "border-color": "transparent"
-        });
-        $('.other_panel.active').removeClass('active');
+      // $('.after_tab').click(function() {
+      //   var $tab = $(this);
+      //   var panel_id = $tab.attr('data-tab_id');
+      //   $('.after_tab.active').removeClass('active');
+      //   $tab.addClass('active');
+      //   $('.other_panel.active .synced_animation_divs').css({
+      //     'transition': 'opacity .05s linear',
+      //     '-webkit-transition': 'opacity .05s linear',
+      //     '-moz-transition': 'opacity .05s linear',
+      //     '-ms-transition': 'opacity .05s linear',
+      //     'opacity': '0'
+      //   });
+      //   $('.other_panel.active').css({
+      //     'background': 'transparent',
+      //     "border-color": "transparent"
+      //   });
+      //   $('.other_panel.active').removeClass('active');
 
-        $('#other_panel_' + panel_id).addClass('active');
+      //   $('#other_panel_' + panel_id).addClass('active');
 
 
-        $('#other_panel_' + panel_id).delay(550).queue(function(next) {
-          $(this).css({
-            'background': 'rgba(255, 255, 255, 0.95)',
-            'border-color': 'rgba(105, 105, 105, 0.17)'
-          });
-          $('#other_panel_' + panel_id + ' .synced_animation_divs').css({
-            'opacity': '1'
-          });
-          next();
-        });
-      });
+      //   $('#other_panel_' + panel_id).delay(550).queue(function(next) {
+      //     $(this).css({
+      //       'background': 'rgba(255, 255, 255, 0.24)',
+      //       'border-color': 'rgba(255, 255, 255, 0.88)'
+      //     });
+      //     $('#other_panel_' + panel_id + ' .synced_animation_divs').css({
+      //       'opacity': '1'
+      //     });
+      //     next();
+      //   });
+      // });
 
       $('.bottom_tab_button').click(function() {
         var $bottom_tab = $(this);
@@ -346,12 +345,12 @@
 
         //Check if the user seleted a user type
         var $account_type_chosen = $('.account-type-chosen');
+
           if ($account_type_chosen.hasClass('faculty')) {
             account_types = 'p';
           } else {
             account_types = 's';
           }
-
 
         if (firstname.length == 0) {
           //alert('Please input a first name');
@@ -362,7 +361,7 @@
           $error_div.css({
             'left': names_position.left - 230
           });
-          $('body').append($error_div).hide().fadeIn(250);
+          $('body').append($error_div).hide().show();
           return;
         }
 
@@ -375,14 +374,13 @@
           $error_div.css({
             'left': names_position.left - 230
           });
-          $('body').append($error_div).hide().fadeIn(250);
+          $('body').append($error_div).hide().show();
           return;
         }
 
 
 
         if (!is_supported_email(email)) {
-          alert("invalid email");
           //alert('An NYU email address is required.');
           $error_div.text('Email address not supported');
           $error_div.css({
@@ -391,7 +389,7 @@
           $error_div.css({
             'top': email_position.top
           });
-          $('body').append($error_div).hide().fadeIn(250);
+          $('body').append($error_div).hide().show();
           return;
         }
 
@@ -404,7 +402,7 @@
           $error_div.css({
             'left': password_position.left - 330
           });
-          $('body').append($error_div).hide().fadeIn(250);
+          $('body').append($error_div).hide().show();
           return;
         }
 
@@ -539,6 +537,7 @@
           $(this).addClass("account-type-chosen");
           $("#student").prop("checked", true);
           $("#faculty").prop("checked", false);
+
           //$(this).val('s');
         }
         if ($(this).hasClass("faculty")) {
@@ -626,26 +625,6 @@
 
 
 <body id = "scroll_body">
-<script>
-    window.fbAsyncInit = function() {
-        console.log('loading facebook sdk 1');
-        FB.init({
-            appId      : '237922879690774',
-            xfbml      : true,
-            version    : 'v2.3',
-            cookie     : true
-        });
-    };
-    console.log('loading facebook sdk 2');
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    console.log('loading facebook sdk 3');
-</script>
   <div class="default_bgd school_bgd"></div>
   <div class="school_bgd columbia-bgd"></div>
   <div class="school_bgd nyu-bgd"></div>
@@ -832,6 +811,7 @@
                           Forgot your password?
                         </div>-->
 
+
              <!-- <div class = "fb_signin_wrap">
                           <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
                             <em class = "fb_icon">
@@ -845,7 +825,7 @@
                               Sign In with Facebook
                             </div>
                           </div>
-                        </div>-->
+                        </div>
 
             </form>
             <button name="mobile-login" id="mobile-login-btn" class="rounded Button SignIn smallBtn modalLink" href="#loginModal">
@@ -994,7 +974,13 @@
       </ul>
 
     </div>
-
+    <div class = "desktop_only_panel">
+      <div class = "angled_background"></div>
+      <div class = "angled_background angled_background_2">
+        <div class = "blur_bg_angled"></div>
+        <div class = "blur_bg_color_angled"></div>
+      </div>
+    </div>
 
     <div class="mobile_panel_5 big_pic"></div>
     <div class="mobile_panel_1 mobile_only_panel">
@@ -1094,7 +1080,7 @@
     </div>
     <div class="mobile_panel_4 mobile_only_panel footer">
       <div class="mobile_wrap">
-        <p>&#169; 2015 Urlinq, Inc. All Rights Reserved.</p>
+        <p>&#169; 2015 Urlinq, LLC. All Rights Reserved.</p>
       </div>
     </div>
 
@@ -1104,14 +1090,23 @@
       </div>
       <div class="signup_after_tabs">
         <div class="after_tab active after_tab_3" data-tab_id="3">
-          <h4>Sign Up</h4>
-        </div>        
-        <div class="after_tab after_tab_2" data-tab_id="2">
+          <h4>Join now</h4>
+        </div>  
+<!--         <div class="after_tab jump_tab">
+          <h4>Learn more</h4><em></em>
+        </div>
+        <div class = "jump_tab_drop">
+          <div class = "after_tab">
+          </div>
+        </div>
+ -->
+
+<!--         <div class="after_tab after_tab_2" data-tab_id="2">
           <h4>Why Join?</h4>
         </div>        
         <div class="after_tab after_tab_1" data-tab_id="1">
-          <h4>About </h4>
-        </div>
+          <h4>About</h4>
+        </div> -->
 
 
       </div>
@@ -1239,7 +1234,7 @@
       <div class="signup-form-wrap other_panel active" id="other_panel_3">
         <div class="header-sec">
           <div class="header-sec-left">
-            <h4 class="header">Sign Up <span><span>Really,</span> do better in school</span></h4>
+            <h4 class="header">Sign Up <span><span>Your Link to the University</span></h4>
           </div>
           <div class="header-sec-right">
             <div class="time-to-signup" style="font-size:20px;">your link to the university</div>
@@ -1304,19 +1299,23 @@
             By clicking Create Your Account, you agree to our <a href="https://urlinq.com/about/legal/terms" target="_blank">Terms</a> and that you have read our <a href="https://urlinq.com/about/legal/privacy" target="_blank">Privacy Policy</a>.
           </p>
         </div>
-       <!--<div class = "footer-sec synced_animation_divs">
-                    <div class = "leftLine">
-                    </div>
-                    <div class = "or-head">
-                      or continue with
-                    </div>
-                    <div class = "rightLine">
-                    </div>
-                    <button type = "button" onclick="fb_signup();" class = "rounded Button FacebookConnect loginButton largeBtn">
-                      <em></em>
-                      <span class = "buttonText">Facebook</span>
-            </button>
 
+      <!-- <div class = "footer-sec synced_animation_divs">
+          <div class = "footer-sec synced_animation_divs">
+              <div class = "leftLine">
+              </div>
+              <div class = "or-head">
+                or continue with
+              </div>
+              <div class = "rightLine">
+              </div>
+              <button type = "button" onclick="fb_login();" class = "rounded Button FacebookConnect loginButton largeBtn">
+                <em></em>
+                <span class = "buttonText">Facebook</span>
+              </button>
+
+
+          </div>        
         </div>-->
       </div>
     </div>
