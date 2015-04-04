@@ -725,7 +725,7 @@ function add_event(event_json){
 
 
 
-    if(event_datetime.getDate() == todays_date.getDate()){
+    if(date_to_string(event_datetime) === date_to_string(todays_date)){
         if(!$("#todays_events_header").is(":visible")){
             show_todays_label();
         }
@@ -741,7 +741,7 @@ function add_event(event_json){
     //Check if the event is tomorrow
     var tomorrows_date = new Date();
     tomorrows_date.setDate(todays_date.getDate() + 1);
-    if(event_datetime.getDate() == tomorrows_date.getDate()){
+    if(date_to_string(event_datetime) === date_to_string(tomorrows_date)){
         if(!$("#tomorrows_events_header").is(":visible")){
             show_tomorrows_label();
         }
