@@ -564,7 +564,7 @@ ERunActions::runBackground(true);
 
                         foreach ($file_ary as $file) {
 
-                            $file_data = file_upload2($file, 'post_files/', $user);
+                            $file_data = file_upload2($file, 'post_files/');
 
 
                             $post_file = new PostFile;
