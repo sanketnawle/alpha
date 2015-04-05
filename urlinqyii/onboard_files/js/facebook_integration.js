@@ -1,3 +1,21 @@
+window.fbAsyncInit = function() {
+    console.log('loading facebook sdk 1');
+    FB.init({
+        appId      : '237922879690774',
+        xfbml      : true,
+        version    : 'v2.3',
+        cookie     : true
+    });
+};
+console.log('loading facebook sdk 2');
+(function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+console.log('loading facebook sdk 3');
 
 $(document).on('click','.facebook_login',function(){
     console.log('Faceboook');
@@ -136,6 +154,18 @@ function store_facebook_info(){
                 }else{
                     if(response['error_id'] == 3){
                         window.location.href = base_url + '/home';
+                    }
+                    if(response['error_id'] == 5){
+                        var email_position = $('#email').offset();
+                        var $error_div = $("<div id='register_error_popup'></div>");
+                        $error_div.text('Account already exists for this email');
+                        $error_div.css({
+                            'top': email_position.top
+                        });
+                        $error_div.css({
+                            'left': email_position.left - 330
+                        });
+                        $('body').append($error_div).hide().fadeIn(250);
                     }
                 }
             }

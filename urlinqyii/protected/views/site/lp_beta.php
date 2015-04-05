@@ -53,6 +53,7 @@
 
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/getURLPara.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/preload_img.js"></script>
+  <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/js/facebook_integration.js"></script>
 
   <script>
     $(document).ready(function() {
@@ -346,11 +347,16 @@
         //Check if the user seleted a user type
         var $account_type_chosen = $('.account-type-chosen');
 
+        if ($account_type_chosen.length) {
+
           if ($account_type_chosen.hasClass('faculty')) {
             account_types = 'p';
           } else {
+
             account_types = 's';
           }
+
+        }
 
         if (firstname.length == 0) {
           //alert('Please input a first name');
@@ -811,8 +817,8 @@
                           Forgot your password?
                         </div>-->
 
+              <div class = "fb_signin_wrap">
 
-             <!-- <div class = "fb_signin_wrap">
                           <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
                             <em class = "fb_icon">
                             </em>
@@ -1300,23 +1306,22 @@
           </p>
         </div>
 
-      <!-- <div class = "footer-sec synced_animation_divs">
-          <div class = "footer-sec synced_animation_divs">
-              <div class = "leftLine">
-              </div>
-              <div class = "or-head">
-                or continue with
-              </div>
-              <div class = "rightLine">
-              </div>
-              <button type = "button" onclick="fb_login();" class = "rounded Button FacebookConnect loginButton largeBtn">
-                <em></em>
-                <span class = "buttonText">Facebook</span>
-              </button>
+       <div class = "footer-sec synced_animation_divs">
+                    <div class = "leftLine">
+                    </div>
+                    <div class = "or-head">
+                      or continue with
+                    </div>
+                    <div class = "rightLine">
+                    </div>
+                    <button type = "button" onclick="fb_signup();" class = "rounded Button FacebookConnect loginButton largeBtn">
+                      <em></em>
+                      <span class = "buttonText">Facebook</span>
+            </button>
 
 
-          </div>        
-        </div>-->
+          </div>
+        </div>
       </div>
     </div>
 

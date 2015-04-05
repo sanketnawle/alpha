@@ -661,14 +661,14 @@ $(document).ready(function () {
         */
 
 
-        if(selected_data['classes'].length == 0){
+        if(selected_data['classes'] && selected_data['classes'].length == 0){
             selected_data['classes'] = null;
         }
-        if(selected_data['clubs'].length == 0){
+        if(selected_data['clubs'] &&selected_data['clubs'].length == 0){
             selected_data['clubs'] = null;
         }
 
-        if(selected_data['follow_users'].length == 0){
+        if(selected_data['follow_users'] && selected_data['follow_users'].length == 0){
             selected_data['follow_users'] = null;
         }
 
@@ -693,8 +693,13 @@ $(document).ready(function () {
 
         }else{
             selected_data['user_type'] = $('input[name=user_type]:checked').val();
+
+        }
+        if($('#school_email_input').length && $('#school_email_input').val()){
+
             selected_data['school_email'] = $('#school_email_input').val();
         }
+
 
 
         var picture_file_id = '1';
@@ -755,7 +760,10 @@ $(document).ready(function () {
                         window.location.href = base_url + '/home';
                     }else{
                         $this_btn.removeClass('inactive_btn');
-                        alert(JSON.stringify(response));
+                       // alert(JSON.stringify(response));
+                        if(response['error_id'] == 5){
+                            alert("email already exists");
+                        }
                     }
                 }, 'json'
             );
