@@ -106,6 +106,7 @@ function fb_login(){
 }
 
 function fb_signup(){
+
     FB.login(function(r){
         FB.getLoginStatus(function(response) {
             if (response.status === 'connected') {
@@ -153,6 +154,20 @@ function store_facebook_info(){
                 if(response['success']){
                     window.location.href = base_url + '/onboard';
                 }else{
+                    if(response['error_id'] == 6){
+                        //this is weird but it was creating duplicate entries in user table,
+                        // and this was the only fix that worked
+                        post_data['wait_until_saved'] = true;
+                        $.post(
+                            post_url,
+                            post_data,
+                            function(response) {
+                                if (response['success']) {
+                                    window.location.href = base_url + '/onboard';
+                                }
+                            }
+                        );
+                    }
                     if(response['error_id'] == 3){
                         window.location.href = base_url + '/home';
                     }
