@@ -181,6 +181,7 @@ body:after {
 
 .lb-data .lb-caption {
   font-size: 13px;
+  display: none!important;
   font-weight: bold;
   line-height: 1em;
 }

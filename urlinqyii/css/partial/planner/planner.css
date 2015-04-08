@@ -21,7 +21,7 @@ padding-bottom: 0px;
     cursor: default;
 }
 
-div#past_events div.event span.planner_edit_wrapper{position:absolute;top: 11px;right: 30px;}
+div#past_events div.event span.planner_edit_wrapper{position:absolute;top: 14px;padding-left: 4px;right: 30px;background: rgba(255, 249, 219, 1);}
 
 div.planner_container div.event:hover span.planner_edit_wrapper{
     opacity:1;
@@ -540,7 +540,7 @@ body.body_group input.event_title{
     height: auto;
 
     margin-bottom: 2px;
-    padding-bottom: 5px;
+    padding-bottom: 4px;
     padding-top: 2px;
 }
 
@@ -707,7 +707,7 @@ body.body_group input.event_title{
     display: inline-block;
     float: right;
     width: 12.9%;
-    padding-top: 10px;
+    /* padding-top: 10px; */
 }
 
 
@@ -961,6 +961,7 @@ div.event_origin > a:hover{
     text-transform: capitalize;
     padding-bottom: 2px; 
     font-weight: 500;
+    text-shadow: 0 1px 1px rgba(123, 123, 123, 0.05);
     line-height: 21px;
     cursor: default;
     -webkit-transition: opacity 0.2s ease;
@@ -979,7 +980,7 @@ div.event_origin > a:hover{
     text-shadow: 0 1px 1px rgba(123, 123, 123, 0.05);
     height: auto;
     background: rgba(255, 243, 184, 0.5);
-    padding-bottom: 0;
+    padding-bottom: 0;            
 }
 
 #past_events div.event span.edit_button{
@@ -1002,6 +1003,7 @@ div.event_origin > a:hover{
     top: 3px;
     white-space: nowrap;
     position: relative;
+    padding-bottom: 10px;
     width: 188px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1040,8 +1042,8 @@ div.event.complete{
 }
 
 div.event.complete span.edit_button{
-    display: none!important
-}
+    /* display: none!important
+ */}
 
 div.event.complete span.event_name, div.event.complete div.event_date_time{
     color:#999!important;
@@ -1049,8 +1051,8 @@ div.event.complete span.event_name, div.event.complete div.event_date_time{
 
 
 #todays_events div.event{
-    /*background-color: rgba(2, 154, 207, 0.13);
-    background-image: -owg-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -webkit-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -moz-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -o-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-size: 20px 20px;*/
+    background-color: rgba(2, 154, 207, 0.13);
+    background-image: -owg-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -webkit-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -moz-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -o-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-size: 20px 20px;
 }
 
 #tomorrows_events div.event{

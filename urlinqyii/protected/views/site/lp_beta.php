@@ -830,28 +830,21 @@
                             Log In
                           </span>
               </button>
-              <!--<div class = "forgot_password_2">
-                          Forgot your password?
-                        </div>-->
 
-<<<<<<< HEAD
               <div class = "fb_signin_wrap">
-=======
-             <!-- <div class = "fb_signin_wrap">
->>>>>>> 266da196a3fd10edf5ea5bb236e8a0af4ce2c676
-                          <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
-                            <em class = "fb_icon">
-                            </em>
-                          </button>
-                          <div class = "help-div" id ="help-1">
-                            <div class ="help-wedge">
+                  <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
+                    <em class = "fb_icon">
+                    </em>
+                  </button>
+                  <div class = "help-div" id ="help-1">
+                    <div class ="help-wedge">
 
-                            </div>
-                            <div class = "help-box">
-                              Sign In with Facebook
-                            </div>
-                          </div>
-                        </div>
+                    </div>
+                    <div class = "help-box">
+                      Sign In with Facebook
+                    </div>
+                  </div>
+              </div>
 
             </form>
             <button name="mobile-login" id="mobile-login-btn" class="rounded Button SignIn smallBtn modalLink" href="#loginModal">

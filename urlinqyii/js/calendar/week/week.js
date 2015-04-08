@@ -229,7 +229,6 @@ jQuery(document).ready(function(){
             }
         };
 
-        console.log(post_data);
 
         $.post(
             post_url,
