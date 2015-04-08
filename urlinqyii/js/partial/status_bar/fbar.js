@@ -523,6 +523,53 @@ function fbar_ready(origin_id) {
 
             if(globals.$fbar.find("#fbar_holder").hasClass("event")){
                 globals.$fbar.find("#post_btn").text("Create Event");
+                //init();
+                $('#event_title').val('');
+
+                var datetime = new Date();
+
+                var end_datetime_object = datetime;
+
+
+
+                var $start_date_input = $('#event_start_date');
+                $start_date_input.attr('data-date', date_to_string(datetime));
+                $start_date_input.val(date_to_day_of_week_string(datetime));
+
+                var end_time_hours = datetime.getHours() + 1;
+
+                if(parseInt(end_time_hours) >= 24){
+                    end_time_hours -= 24;
+                    end_datetime_object.setDate(datetime.getDate() + 1);
+                }
+
+
+
+                var $end_date_input = $('#event_end_date');
+                $end_date_input.attr('data-date', date_to_string(end_datetime_object));
+                $end_date_input.val(date_to_day_of_week_string(end_datetime_object));
+
+
+                //sql formatted timestring
+                var start_time_string = ints_to_time(datetime.getHours(),datetime.getMinutes(),datetime.getSeconds());
+
+                //Set the default time for the time_inputs
+                var $start_time_input = $('#event_start_time');
+                $start_time_input.attr('data-time',start_time_string);
+                $start_time_input.val(time_string_to_am_pm_string(start_time_string));
+
+
+
+
+
+
+                var end_time_string = ints_to_time(end_time_hours,datetime.getMinutes(),datetime.getSeconds());
+
+                //Set the default time for the time_inputs
+                var $end_time_input = $('#event_end_time');
+
+                $end_time_input.attr('data-time',end_time_string);
+                $end_time_input.val(time_string_to_am_pm_string(end_time_string));
             }
 
             if(globals.$fbar.find("#fbar_holder").hasClass("discuss")){

@@ -1573,6 +1573,9 @@ $(document).ready(function() {
 
     function add_office_hours_to_input(){
         var office_hours_string = $('#office_hours').text();
+        if(!office_hours_string){
+            return;
+        }
         var office_hours = office_hours_string.split(', ');
         var weekday;
         var start_end;

@@ -53,6 +53,7 @@
 
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/getURLPara.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/preload_img.js"></script>
+  <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/js/facebook_integration.js"></script>
 
   <script>
     $(document).ready(function() {
@@ -345,35 +346,17 @@
 
         //Check if the user seleted a user type
         var $account_type_chosen = $('.account-type-chosen');
-<<<<<<< HEAD
+
         if ($account_type_chosen.length) {
 
-          if ($account_type_chosen.hasClass('student')) {
-            account_types = 's';
-          } else {
-=======
           if ($account_type_chosen.hasClass('faculty')) {
->>>>>>> 266da196a3fd10edf5ea5bb236e8a0af4ce2c676
             account_types = 'p';
           } else {
+
             account_types = 's';
           }
-<<<<<<< HEAD
-        } else {
-          //alert('Please select if you are a student or professor.');
-          $error_div.text('Please pick one.');
-          $error_div.css({
-            'top': account_types_position.top
-          });
-          $error_div.css({
-            'left': account_types_position.left - 400
-          });
-          $('body').append($error_div).hide().show();
-          return;
-        }
-=======
 
->>>>>>> 266da196a3fd10edf5ea5bb236e8a0af4ce2c676
+        }
 
         if (firstname.length == 0) {
           //alert('Please input a first name');
@@ -832,6 +815,7 @@
               </button>
 
               <div class = "fb_signin_wrap">
+<<<<<<< HEAD
                   <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
                     <em class = "fb_icon">
                     </em>
@@ -845,6 +829,22 @@
                     </div>
                   </div>
               </div>
+=======
+
+                          <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
+                            <em class = "fb_icon">
+                            </em>
+                          </button>
+                          <div class = "help-div" id ="help-1">
+                            <div class ="help-wedge">
+
+                            </div>
+                            <div class = "help-box">
+                              Sign In with Facebook
+                            </div>
+                          </div>
+                        </div>
+>>>>>>> 86531a28bb9fd0eb5a37ebcbdea4d3c05559a41f
 
             </form>
             <button name="mobile-login" id="mobile-login-btn" class="rounded Button SignIn smallBtn modalLink" href="#loginModal">
@@ -1318,21 +1318,22 @@
             By clicking Create Your Account, you agree to our <a href="https://urlinq.com/about/legal/terms" target="_blank">Terms</a> and that you have read our <a href="https://urlinq.com/about/legal/privacy" target="_blank">Privacy Policy</a>.
           </p>
         </div>
-       <div class = "footer-sec synced_animation_divs">
-          <div class = "footer-sec synced_animation_divs">
-              <div class = "leftLine">
-              </div>
-              <div class = "or-head">
-                or continue with
-              </div>
-              <div class = "rightLine">
-              </div>
-              <button type = "button" onclick="fb_login();" class = "rounded Button FacebookConnect loginButton largeBtn">
-                <em></em>
-                <span class = "buttonText">Facebook</span>
-              </button>
 
-          </div>        
+       <div id = "facebook_signup" class = "footer-sec synced_animation_divs">
+                    <div class = "leftLine">
+                    </div>
+                    <div class = "or-head">
+                      or continue with
+                    </div>
+                    <div class = "rightLine">
+                    </div>
+                    <button type = "button" onclick="fb_signup();" class = "rounded Button FacebookConnect loginButton largeBtn">
+                      <em></em>
+                      <span class = "buttonText">Facebook</span>
+            </button>
+
+
+          </div>
         </div>
       </div>
     </div>

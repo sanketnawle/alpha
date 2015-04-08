@@ -35,17 +35,43 @@ class ReplyController extends Controller
 	 */
 	public function actionUpdate()
 	{
-		$model=$this->loadModel($_GET['id']);
+		if (!isset($_POST['reply_id']) || !isset($_POST['reply_msg'])) {
+            $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+        $reply = Reply::model()->find('reply_id=:reply_id', array(':reply_id'=>$_POST['reply_id']));
+        if ($reply) {
+            $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid reply');
+            $this->renderJSON($data);
+            return;
+        }
 
-		if(isset($_POST['Reply']))
-		{
-			$model->attributes=$_POST['Reply'];
-			if($model->save())
-				echo "Reply updated";
-		}
+        $user = $this->get_current_user($_POST);
+        if (!$user) {
+            $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'not a valid user');
+            $this->renderJSON($data);
+            return;           
+        }
+
+        if ($user->user_id != $reply->user_id) {
+            $data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'user does not have permission to edit post');
+            $this->renderJSON($data);
+            return;              
+        }
+
+        $reply->reply_msg = $_POST['reply_msg'];
+        if ($reply->save(false)) {
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;                
+        } else {
+            $data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'could not save reply edit');
+            $this->renderJSON($data);
+            return;    
+        }
+
 	}
 
 	/**

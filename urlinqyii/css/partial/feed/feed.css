@@ -4892,6 +4892,19 @@ div.post_other_attendees_count {
     margin-right: 4px;
 }
 
+.post_conflict_icon.orange {
+    width: 8px;
+    height: 8px;
+    border-radius: 5px;
+    background-color: rgb(255, 168, 25);
+    display: block;
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgb(245, 172, 34);
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgb(255, 168, 25);
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgb(255, 168, 25);
+    margin-left: 10px;
+    margin-right: 4px;
+}
+
 .post_conflict_icon.green {
     width: 10px;
     height: 10px;

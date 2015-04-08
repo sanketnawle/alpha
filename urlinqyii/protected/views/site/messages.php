@@ -82,11 +82,11 @@
 
 
                 <div id="messaging_content">
-                    <div id="messaging_left_panel">
+                    <div id="messaging_left_panel" class="messaging_view">
 
                         <?php if($url != ''){ ?>
                             <div id="messaging_back_button">
-                                < Back to network
+                                <div class="back_icon"></div> Back to network
                             </div>
                         <?php } ?>
 
@@ -95,6 +95,23 @@
 
 
                     <div id="chat_panel" class="chat_box">
+                        <div class="chat_header">
+                            <span class="chat_user_name">Placeholder Text</span>
+                            <div class='online_indicator self closed'>
+                                <div class="online_menu">
+                                    <div class="online_option">Preferences</div>
+                                    <div class="online_option">Your Account</div>
+                                    <div class="online_option">Set status to "away"</div>
+                                    <div class="online_option">Sign Out</div>
+                                </div>
+                            </div>
+                            <div class="add_button"></div>
+                            <div class="dotdotdot_button"></div>
+                            <div id="chat_search_wrap">
+                                <div class="chat_search_icon"></div>
+                                <input class="chat_search" placeholder="Search" type="text"></input>
+                            </div>
+                        </div>
                         <div id="chat_panel_text" class="chat_box_text">
                             <div class="chat_panel_wrap chat_message_wrap">
 
@@ -103,8 +120,16 @@
 
 
 
-                        <div id="chat_panel_input">
-                             <textarea class="chat_input autogrow"></textarea>
+                        <div class="chat_input_box">
+                            <div class="textarea_wrap">
+                                <div class="textarea_menubutton closed"><div class="menuicon"></div></div><textarea class="chat_input autogrow"></textarea>
+                            </div>
+                            <div class="chatbox_menu">
+                                <div class="chatbox_fileupload"><div class="chatbox_menu_icon"></div> Upload a file</div>
+                                <!--<div class="chatbox_math"><div class="chatbox_menu_icon"></div> Math equation</div>
+                                <div class="chatbox_code"><div class="chatbox_menu_icon"></div> Snippet of Code</div>
+                                <div class="chatbox_event"><div class="chatbox_menu_icon"></div> Share an event</div>-->
+                            </div>
                         </div>
                     </div>
 

@@ -56,7 +56,6 @@ class PostController extends Controller
         return $file_ary;
     }
 
-
     function actionSendPostEmailFunction(){
 
         if(!isset($_POST['post_id']) || !isset($_POST['actor_id']) || !isset($_POST['to_user_id']) || !isset($_POST['subject'])){

@@ -96,12 +96,9 @@ a.MyBox_SO.edit_profile:hover{
 
 
 .LeftPanel_Content{
-    width: 220px;
-    margin-left: 0px;
-    padding: 10px;  
+    width: 235px;
+    margin-left: 20px;
     border-radius: 5px;
-    padding-right: 16px;
-    padding-left: 22px;
     padding-top: 10px;
     margin-top: -12px;
     overflow-y:auto;
@@ -231,10 +228,17 @@ em.SectionHeader_ribbon.LeftPanel_icons {}
 .MyBox a.MyBox_PictureLink{
     float: left;
     height: 48px!important;
-
     width: 48px!important;
     cursor: pointer;
     position: relative;
+}
+
+.MyBox a.school_PictureLink {
+    float: left;
+      height: 48px!important;
+      width: 48px!important;
+      cursor: pointer;
+      position: relative;
 }
 
 a.MyBox_PictureLink div.MyBox_Picture{
@@ -250,13 +254,16 @@ div.MyBox_text{
 
 .MyBox_text .MyBox_school {
     border-bottom:1px solid #c3c3c3;
-    font-weight:100;
-    color:#333;
-    font-size:13px;
     margin-left:10px;
     padding-bottom:6px;
     width:100%;
 }
+.MyBox_text .MyBox_school a {
+    font-weight:100;
+    color:#333;
+    font-size:13px;
+}
+
 .MyBox_text .MyBox_departments {
     font-weight:100;
     color:#333;
@@ -266,18 +273,16 @@ div.MyBox_text{
     width:100%;
 }
 button#departments {
-    border:2px solid #777777;
-    border-radius:3px;
+    border:none;
     height:15px;
-    width:15px;
+    width:12px;
     display:inline-block;
     margin-left:5px;
     margin-top:-5px;
     background:url(../../../assets/messageicons.png);
-    background-position:-17px -21px;
-    background-size:71px 71px;
+    background-position:-34px -22px;
+    background-size:81px 81px;
 }
-
 
 div.MyBox_text div.MyBox_textcontent{
     display: inline-block; 
@@ -353,7 +358,6 @@ div.LeftPanel_DeptSchoolHolder{
 
 a.LeftPanel_DSContentBoxName{
     width: 236px;
-
     display: block;
     cursor: pointer;
     height: 20px;
