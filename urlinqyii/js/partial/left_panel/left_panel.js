@@ -57,17 +57,22 @@ $(document).on('change', '#left_panel_picture_upfile', function (event)
 });
 
 $(document).on('click', 'button#departments', function(e) {
+    var departments_height = parseInt($('.LeftPanel_DSContentBox').css('height'));
     if ($('#departments').hasClass('departmentsopen')) {
         $('.LeftPanel_DeptSchoolHolder').animate({ height: "0px" });
         $('#departments').removeClass('departmentsopen');
         $('#departments').css({
-            "background-position": "-17px -21px"
-        });
+            "background-position": "-34px -22px"
+        }); 
     } else {
-        $('.LeftPanel_DeptSchoolHolder').animate({ height: "100px" });
+        $('.LeftPanel_DeptSchoolHolder').animate({ height: departments_height });
         $('#departments').addClass('departmentsopen');
         $('#departments').css({
-            "background-position": "-3px -22px"
+            "background-position": "-63px -22px"
         });
     }
 });
+
+
+
+ 

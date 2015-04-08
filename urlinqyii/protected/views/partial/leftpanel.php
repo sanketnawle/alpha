@@ -31,11 +31,11 @@ if($user->school->university_id == 4){
 				<div class = "LeftPanel_MyBox">
 					<div class = "clearfix MyBox">
 						<a class = "MyBox_PictureLink";>
-							<div class = "MyBox_Picture profile_link" data-user_id="<?php echo $user->user_id?>" style="background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>')"></div>
+							<div class = "MyBox_Picture profile_link" data-user_id="<?php echo $user->user_id?>" style="background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $user->school->coverFile->file_url; ?>')"></div>
                         </a>
 						<div class = "MyBox_text">
 							<div class = "MyBox_textcontent">
-								<div class="MyBox_school">My School</div>
+								<div class="MyBox_school"><a href="<?php echo Yii::app()->getBaseUrl(true); ?>/school/<?php echo $user->school->school_id; ?>"><?php echo $user->school->school_name; ?></a></div>
 								<div class="MyBox_departments">Departments <button id="departments"></button></div>
 							</div>
 						</div>
@@ -49,15 +49,7 @@ if($user->school->university_id == 4){
 						<a class = "LeftPanel_DSContentBoxName" href="<?php echo Yii::app()->getBaseUrl(true) . '/' . $department_front_end_name; ?>/<?php echo $user->department->department_id; ?>">
 							<h5><?php echo $user->department->department_name; ?></h5>
 						</a>						
-					</div>
-					<div class = "LeftPanel_DSContentBox">
-						<div class = "LeftPanel_DSContentBoxHeader">
-							<b>School</b>
-						</div>
-						<a class = "LeftPanel_DSContentBoxName" href="<?php echo Yii::app()->getBaseUrl(true); ?>/school/<?php echo $user->school->school_id; ?>">
-							<h5><?php echo $user->school->school_name; ?></h5>
-						</a>						
-					</div>					
+					</div>				
 				</div>
 			</div>
 		</div>
@@ -123,7 +115,7 @@ if($user->school->university_id == 4){
 		</div>
 
 
-		<!--<?php //echo $this->renderPartial('/partial/messaging_panel',array('user'=>$user,'origin_type'=>$origin_type,'origin_id'=>$origin_id)); //?>-->
+		<?php echo $this->renderPartial('/partial/messaging_panel',array('user'=>$user,'origin_type'=>$origin_type,'origin_id'=>$origin_id)); ?>
 
 
 

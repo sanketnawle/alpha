@@ -122,7 +122,6 @@ function render_messaging_list_item(item_json){
 
     var source = $('#messaging_list_item_template').html();
 
-
     var template = Handlebars.compile(source);
     var generated_html = template(item_json);
 
@@ -770,12 +769,41 @@ function handle_render_message(message_json){
 }
 
 
+function formatAMPM(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return strTime;
+}
 
+var month = new Array();
+    month[0] = "Jan";
+    month[1] = "Feb";
+    month[2] = "Mar";
+    month[3] = "Apr";
+    month[4] = "May";
+    month[5] = "Jun";
+    month[6] = "Jul";
+    month[7] = "Aug";
+    month[8] = "Sep";
+    month[9] = "Oct";
+    month[10] = "Nov";
+    month[11] = "Dec";
 
+var weekday = new Array(7);
+    weekday[0]= "Sunday";
+    weekday[1]= "Monday";
+    weekday[2]= "Tuesday";
+    weekday[3]= "Wednesday";
+    weekday[4]= "Thursday";
+    weekday[5]= "Friday";
+    weekday[6]= "Saturday";
 
 function render_message(message_json, $chat_box){
-
-
     //alert(JSON.stringify(message_json));
 
     var $chat_box_text = $chat_box.find('.chat_box_text');
@@ -791,16 +819,27 @@ function render_message(message_json, $chat_box){
         source = $('#other_user_message_template').html();
     }
 
+    var sent_datetime = new_datetime(message_json['sent_at']);
+    var sent_formatted = weekday[sent_datetime.getDay()] + ', ' + month[sent_datetime.getMonth()] + ' ' + sent_datetime.getDate();
+    var sent_time = formatAMPM(sent_datetime);
+    var sent_date = sent_datetime.getDate() + sent_datetime.getMonth() + sent_datetime.getFullYear();
+    var prev_date = $('.message').last().data("prev_sent");
+
+    message_json['sent_at'] = sent_time;
 
     var template = Handlebars.compile(source);
     var generated_html = template(message_json);
 
 
-
-
     //alert('RENDERING MESSAGE: ' + JSON.stringify(message_json));
 
+    if (sent_date !== prev_date) {
+        chat_date_box = '<div class="chat_box_date_separator"><div class="chat_box_date">'+sent_formatted+'</div></div>';
+        $chat_message_wrap.append(chat_date_box);
+    }
+
     $chat_message_wrap.append($(generated_html));
+    $chat_message_wrap.find('.message').last().data("prev_sent", sent_date );
 
 }
 
@@ -918,11 +957,6 @@ $(document).on('click', '.chat_box_close_button', function(e){
     }else{
         position_chat_boxes();
     }
-
-
-
-
-
 });
 
 
@@ -957,7 +991,6 @@ $(document).on('keyup', '.chat_input', function(e){
 
 
         $chat_input.val('');
-
 
 //        socket.emit('message', {
 //            message : {
@@ -1015,10 +1048,10 @@ $(document).on('click', '.textarea_menubutton', function(e) {
     var $menu = $textarea.children('.chatbox_menu');
 
     if ($($menu_button).hasClass('closed')) {
-        $menu.fadeIn(100).animate({ marginBottom: "-5px" }, { duration: 250, queue: false } );
+        $menu.fadeIn(100);
         $menu_button.removeClass('closed');
     } else {
-        $menu.fadeOut().animate({ marginBottom: "0px" }, { duration: 250, queue: false } );
+        $menu.fadeOut(100);
         $menu_button.addClass('closed');
     }
 });
@@ -1026,37 +1059,86 @@ $(document).on('click', '.textarea_menubutton', function(e) {
 $(document).on('mouseenter', '#LeftPanel_Holder', function(e) {
     var isHovered = $('#messaging_panel').is(":hover");
     if (isHovered == false) {
-        var messaging_height = parseInt($('#messaging_panel').css('height'));
-        var animation_height = (messaging_height - 60) * -1;
-        console.log(animation_height);
-        $('#messaging_panel').animate({ bottom: animation_height });
-        if (!$('#messaging_panel').hasClass('messaginghover')) {
-            $('#messaging_panel').addClass('messaginghover')
-        }
+        setTimeout(function(){
+            var messaging_height = parseInt($('#messaging_panel').css('height'));
+            var animation_height = (messaging_height - 60) * -1;
+            $('#messaging_panel').animate({ bottom: animation_height });
+            if (!$('#messaging_panel').hasClass('messaginghover')) {
+                $('#messaging_panel').addClass('messaginghover')
+            }
+        },400);
     } 
 });
 $(document).on('mouseleave', '#LeftPanel_Holder', function(e) {
-    if ($('#messaging_panel').hasClass('messaginghover')) {
-        $('#messaging_panel').animate({ bottom: "0px" }).removeClass('messaginghover');
-    } else {
-    }
+    setTimeout(function(){
+        if ($('#messaging_panel').hasClass('messaginghover')) {
+            $('#messaging_panel').animate({ bottom: "0px" }).removeClass('messaginghover');
+        }
+    },400);
 });
 $(document).on('mouseenter', '#messaging_panel', function(e) {
-    $('#messaging_panel').animate({ bottom: "0px" }).removeClass('messaginghover');
+    setTimeout(function(){
+        $('#messaging_panel').animate({ bottom: "0px" }).removeClass('messaginghover');
+    },400);  
 });
 $(document).on('mouseleave', '#messaging_panel', function(e) {
     var isHovered = $('#LeftPanel_Holder').is(":hover");
     var messaging_height = parseInt($('#messaging_panel').css('height'));
     var animation_height = (messaging_height - 60) * -1;
-    console.log('leaving');
-    console.log(isHovered);
-    if (isHovered == true) {
-        $('#messaging_panel').animate({ bottom: animation_height });
-        if (!$('#messaging_panel').hasClass('messaginghover')) {
-            $('#messaging_panel').addClass('messaginghover')
+    setTimeout(function(){
+        if (isHovered == true) {
+            $('#messaging_panel').animate({ bottom: animation_height });
+            if (!$('#messaging_panel').hasClass('messaginghover')) {
+                $('#messaging_panel').addClass('messaginghover')
+            }
         }
+    },400);
+});
+
+$(document).on('click', '.online_indicator.self', function(e) {
+    var $online_button = $(this);
+    var $menu = $online_button.children('.online_menu');
+
+    if ($($online_button).hasClass('closed')) {
+        $menu.fadeIn(100);
+        $online_button.removeClass('closed');
+    } else {
+        $menu.fadeOut(100);
+        $online_button.addClass('closed');
     }
 });
 
+
+$(window).load(function(){
+    var slimScroll_height = parseInt($('#messaging_panel').css('height')) - 145;
+    $('#messaging_list').slimScroll({
+        height: slimScroll_height,
+        railVisible:true,
+        disableFadeOut:false,
+        touchScrollStep: "20",
+        size:"10px",
+        allowPageScroll: true,
+        distance: "3px"
+    });
+    $('.chat_box_text:not(#chat_panel_text)').slimScroll({
+        height: "208px",
+        railVisible:true,
+        disableFadeOut:false,
+        touchScrollStep: "20",
+        size:"2px",
+        allowPageScroll: true,
+        distance: "3px",
+        start: 'bottom'
+    });
+
+    var panel_height = $(window).height() - 70,
+        chat_header_height = parseInt($('.chat_header').css('height')),
+        chat_input_height = parseInt($('.chat_input_box').css('height')),
+        chat_text_height = panel_height - chat_header_height - chat_input_height - 31;
+
+    $('#chat_panel').css({ height: panel_height });
+    $('#chat_panel_text').css({ height: chat_text_height });
+
+});
 
 });
