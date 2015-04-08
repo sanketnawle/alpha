@@ -40,11 +40,6 @@ body.body_searchpage .topbar > #topbar_responsive_holder > .left{
     margin-left: 324px!important;
 }
 
-
-body.body_searchpage #wrapper{
-    padding-top:26px;
-}
-
 body.profile_stop_scroll{
     overflow: hidden!important;
 }
@@ -1645,6 +1640,8 @@ div.admin div.members_card_img span.class_year{
 div.non_admin div.members_card_img span.title{
     display:none;
 }
+
+body.body_searchpage div.user_more_info{display: none;}
 
 div.user_more_info{
     padding: 2px 7px;

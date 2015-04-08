@@ -335,12 +335,6 @@ $(document).ready(function(){
         );
     });
 
-    $(document).on('mouseenter','.event',function(){
-        $(this).find('.edit_button').fadeIn(50);
-    });
-    $(document).on('mouseleave','.event',function(){
-        $(this).find('.edit_button').fadeOut(50);
-    });
 
 
     function handle_planner_events(){
@@ -492,6 +486,15 @@ $(document).on('click','.cancel_form',function(event){
 });
 
 function show_planner_creation_form(){
+    $('#event_name').val('');
+
+    $('.event_date').val(dueOn);
+    $( ".event_date" ).attr('data-date', d.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
+
+
+    $('#tp1').attr('data-time', ints_to_time(d.getHours(), d.getMinutes(), d.getSeconds()));
+    $('#tp1').val(date_to_am_pm_string(d));
+
     $("#planner_body_holder").hide();
     $(".create_event_body").fadeIn(500);
     $("#add_todo_text").text("Discard");
@@ -731,7 +734,7 @@ function add_event(event_json){
 
 
 
-    if(event_datetime.getDate() == todays_date.getDate()){
+    if(date_to_string(event_datetime) === date_to_string(todays_date)){
         if(!$("#todays_events_header").is(":visible")){
             show_todays_label();
         }
@@ -747,7 +750,7 @@ function add_event(event_json){
     //Check if the event is tomorrow
     var tomorrows_date = new Date();
     tomorrows_date.setDate(todays_date.getDate() + 1);
-    if(event_datetime.getDate() == tomorrows_date.getDate()){
+    if(date_to_string(event_datetime) === date_to_string(tomorrows_date)){
         if(!$("#tomorrows_events_header").is(":visible")){
             show_tomorrows_label();
         }
@@ -987,8 +990,9 @@ $(window).load(function(){
 
         $('#event_list').slimScroll({
             height: '390px',
-            railVisible: true, 
-            disableFadeOut: true,
+            alwaysVisible: true,
+            railVisible:true,
+            disableFadeOut:true,
             touchScrollStep: "20",
             size:"10px",
             allowPageScroll: true,

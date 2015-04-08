@@ -8,7 +8,11 @@ body{
 }
 
 body#body_calendar .topbar_profile_link .icon_text{
-    top: -3px;
+    top: -6px;
+}
+
+.body div.popup{
+    z-index: 9000000000000000;
 }
 
 hr.time-line::before{
@@ -649,7 +653,9 @@ margin-left: -3px;
 div.week_event_holder div.event_name{
 position: absolute;
 left: 12px;
+line-height: 16px;
 top: 4px;
+word-break: break-word;
 }
 
 div.week_event_holder.colorfied div.event_name{
@@ -658,8 +664,8 @@ color:#fff!important;
 
 div.week_event_holder div.event_start_time{
 position: absolute;
-left: 15px;
-bottom: 7px;
+left: 14px;
+bottom: 1px;
 color: #333;
 }
 

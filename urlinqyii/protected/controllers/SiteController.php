@@ -1070,26 +1070,37 @@ class SiteController extends Controller
         if(isset($_POST['user_type'])){
             $user_type = $_POST['user_type'];
             $user->user_type = $user_type;
-            if($user_type == "s"){
+            if($user_type == "s" && !$user->studentAttributes){
                 $student_attribute = new StudentAttributes();
                 $student_attribute->user_id = $user->user_id;
                 $student_attribute->save(false);
-            }else if($user_type == "p"){
+            }else if($user_type == "p" && !$user->professorAttribute){
                 $professor_attribute = new ProfessorAttribute();
+                $professor_attribute->professor_id = $user->user_id;
                 $professor_attribute->designation = 'professor';
-                $professor_attribute->user_id = $user->user_id;
                 $professor_attribute->save(false);
             }
         }
         $user_auth_provider = UserAuthProvider::model()->find('user_id=:id',array(':id'=>$user->user_id));
-        if($user_auth_provider){
-            if(strpos(".edu",$user_auth_provider->fb_email) > 0){
-                $user->user_email = $user_auth_provider->fb_email;
-            }
-        }
+
         if(isset($_POST['school_email'])){
             $email = $_POST['school_email'];
-            $user->user_email = $email;
+            if(strpos($_POST['school_email'],".edu") == false){
+                $data = array('success'=>false, 'error_id'=>6, 'error_msg'=>'not a school email');
+                $this->renderJSON($data);
+                return;
+            }
+            $prev_user = User::model()->find('user_email = :email',array(':email'=>$email));
+            if(!$prev_user){
+                $user->user_email = $email;
+            }else{
+                $data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'email already exists');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }else if($user_auth_provider){
+            $user->user_email = $user_auth_provider->fb_email;
         }
 
 
@@ -1452,6 +1463,11 @@ class SiteController extends Controller
             $user->status = 'onboarded';
         }
 
+        //autoverify if signed up with facebook, and the email is already in our database (faculty)
+        if(isset(Yii::app()->session['auto_verify']) && Yii::app()->session['auto_verify'] == true){
+            $user->status = 'active';
+        }
+
 
 //        if($user->user_type == 's'){
 //            if($user->status != 'active'){
@@ -1665,6 +1681,8 @@ class SiteController extends Controller
 //
 
             Yii::app()->session['onboarding_step'] = -1;
+            Yii::app()->session['signin_type'] = "normal";
+            Yii::app()->session['ask_for_email'] = false;
             //Yii::app()->session->destroy();
 
             Yii::app()->session['university_id'] = $university_id;
@@ -1689,7 +1707,7 @@ class SiteController extends Controller
                         $professor->lastname = $lastname;
                     }
 
-                    if($professor->status == 'active'){
+                    if($professor->status == 'active' || $professor->status == 'onboarded'){
                         $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$professor->user_id));
 
 
@@ -1819,7 +1837,7 @@ class SiteController extends Controller
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
-                    }else if($user->status==='active'){
+                    }else if($user->status==='active'|| $user->status==='onboarded'){
                         $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user->user_id));
 
                         $salt = $user_login->salt;
@@ -2047,10 +2065,15 @@ public function actionSendReset(){
     }
     public function actionFacebookSignup(){
         if(!isset($_POST['fb_email'])||!isset($_POST['first_name'])||!isset($_POST['last_name'])){
-            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'Invalid Token');
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'not all data set');
             $this->renderJSON($data);
             return;
         }
+     /*   if(Yii::app()->session['user_saved']){
+            $data = array('success'=>true,'msg'=>'herp');
+            $this->renderJSON($data);
+            return;
+        }*/
         $fb_email = $_POST['fb_email'];
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
@@ -2058,6 +2081,99 @@ public function actionSendReset(){
 
 
         $university_id = $this->get_university_id_by_email($fb_email);
+
+        $user_auth_provider = UserAuthProvider::model()->find('fb_email = :fb_email',array(':fb_email'=>$fb_email));
+        if(isset($_POST['wait_until_saved'])){
+            //really hacky fix to unexplained duplication bug
+            while(!$user_auth_provider){
+                $user_auth_provider = UserAuthProvider::model()->find('fb_email = :fb_email',array(':fb_email'=>$fb_email));
+            }
+        }
+        if($user_auth_provider){
+            $user = $user_auth_provider->user;
+            if($user->status == "active" || $user->status == "onboarded"){
+
+                Yii::app()->session['user_id'] = $user->user_id;
+
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=> 'account already exists', 'user_id'=>$user->user_id);
+                $this->renderJSON($data);
+                return;
+            }else if($user->status == "onboarding"){
+
+                Yii::app()->session['user_id'] = $user->user_id;
+                Yii::app()->session['signin_type'] = 'facebook';
+                Yii::app()->session['email'] = $fb_email;
+                Yii::app()->session['ask_for_email'] = ($user->user_email == null);
+                Yii::app()->session['onboarding_step'] = 0;
+
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }
+        }
+
+        if(strpos($fb_email,".edu") != false){
+            $edu_email = $fb_email;
+            $previous_user_with_email = User::model()->find('user_email = :edu_email',array(':edu_email'=>$edu_email));
+            if($previous_user_with_email){
+                $user = $previous_user_with_email;
+                if(($previous_user_with_email->user_type == 'p' || $previous_user_with_email->user_type == 'a')
+                    && $previous_user_with_email->status == "unverified"){
+
+                    $user_auth_provider = new UserAuthProvider();
+                    $user_auth_provider->user_id = $user->user_id;
+                    $user_auth_provider->fb_email = $fb_email;
+                    $user_auth_provider->save(false);
+
+                    Yii::app()->session['auto_verify'] = true;
+                    Yii::app()->session['user_id'] = $user->user_id;
+                    Yii::app()->session['signin_type'] = 'facebook';
+                    Yii::app()->session['email'] = $fb_email;
+                    Yii::app()->session['ask_for_email'] = false;
+                    Yii::app()->session['onboarding_step'] = 0;
+
+
+                    $data = array('success'=>true, 'msg'=>'email matches faculty in database');
+                    $this->renderJSON($data);
+                    return;
+                } else{
+                    $data = array('success'=>false,'error_id'=>4,  'msg'=>'user already in database');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }
+        }
+        if(isset($_POST['email'])){
+            $previous_user_with_email = User::model()->find('user_email = :edu_email',array(':edu_email'=>$_POST['email']));
+            if($previous_user_with_email){
+                $user = $previous_user_with_email;
+                if(($previous_user_with_email->user_type == 'p' || $previous_user_with_email->user_type == 'a')
+                    && $previous_user_with_email->status == "unverified"){
+
+                    $user_auth_provider = new UserAuthProvider();
+                    $user_auth_provider->user_id = $user->user_id;
+                    $user_auth_provider->fb_email = $fb_email;
+                    $user_auth_provider->save(false);
+
+                    //Yii::app()->session['auto_verify'] = true;
+                    Yii::app()->session['user_id'] = $user->user_id;
+                    Yii::app()->session['signin_type'] = 'facebook';
+                    Yii::app()->session['email'] = $fb_email;
+                    Yii::app()->session['ask_for_email'] = false;
+                    Yii::app()->session['onboarding_step'] = 0;
+
+
+                    $data = array('success'=>true, 'msg'=>'email matches faculty in database');
+                    $this->renderJSON($data);
+                    return;
+                } else{
+                    $data = array('success'=>false,'error_id'=>5,  'msg'=>'entered email already in database');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }
+        }
+
 
         $user = new User;
         $user->firstname = $first_name;
@@ -2070,45 +2186,67 @@ public function actionSendReset(){
         $user->department_id = null;
         $user->status = 'onboarding';
 
-        if(isset($_POST['email'])){
+        if(isset($edu_email)){
+            Yii::app()->session['auto_verify'] = true;
+            $user->user_email = $edu_email;
+        }else if(isset($_POST['email'])){
             $user->user_email = $_POST['email'];
-        }
+        }else
+        $user_type = "";
         if(isset($_POST['account_type'])){
-            $user->user_type = $_POST['account_type'];
+            $user_type = $_POST['account_type'];
+            $user->user_type = $user_type;
         }
-        $user->save(false);
+        if(!Yii::app()->session['user_saved']){
+            $user->save(false);
+            //Yii::app()->session['user_id'] = $user->user_id;
+            Yii::app()->session['user_saved'] = true;
+            if($user_type == "s"){
+                $student_attribute = new StudentAttributes();
+                $student_attribute->user_id = $user->user_id;
+                $student_attribute->save(false);
+            }else if($user_type == "p"){
+                $professor_attribute = new ProfessorAttribute();
+                $professor_attribute->professor_id = $user->user_id;
+                $professor_attribute->designation = 'professor';
+                $professor_attribute->save(false);
+            }
+            $this->add_default_user_events($user);
+            $user_auth_provider = new UserAuthProvider();
+            $user_auth_provider->user_id = $user->user_id;
+            $user_auth_provider->fb_email = $fb_email;
+            $user_auth_provider->save(false);
+            /*
+
+                    $salt = salt();
+                    $hashed_password = hash_password($password,$salt);
+
+                    $user_login = new UserLogin;
+                    $user_login->user_id = $user->user_id;
+                    $user_login->password = $hashed_password;
+                    $user_login->salt = $salt;
+                    $user_login->save(false);  */
+
+            Yii::app()->session['user_id'] = $user->user_id;
+            Yii::app()->session['signin_type'] = 'facebook';
+            Yii::app()->session['email'] = $fb_email;
+            Yii::app()->session['ask_for_email'] = !isset($_POST['email']) && !isset($edu_email) ;
+            //Yii::app()->session['ask_for_email'] = !isset($edu_email);
+            Yii::app()->session['onboarding_step'] = 0;
+
+            $data = array('success'=>true, 'msg'=>'new user was created');
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>6, 'msg'=>'already added to database');
+            $this->renderJSON($data);
+            return;
+        }
 
 
-        $this->add_default_user_events($user);
-
-        $user_auth_provider = new UserAuthProvider();
-        $user_auth_provider->user_id = $user->user_id;
-        $user_auth_provider->fb_email = $fb_email;
-        $user_auth_provider->save(false);
-/*
-
-        $salt = salt();
-        $hashed_password = hash_password($password,$salt);
-
-        $user_login = new UserLogin;
-        $user_login->user_id = $user->user_id;
-        $user_login->password = $hashed_password;
-        $user_login->salt = $salt;
-        $user_login->save(false);  */
-
-        Yii::app()->session['user_id'] = $user->user_id;
-        Yii::app()->session['signin_type'] = 'facebook';
-        Yii::app()->session['email'] = $fb_email;
-        Yii::app()->session['ask_for_email'] = !isset($_POST['email']) && (strpos(".edu",$fb_email) > -1);
-        Yii::app()->session['onboarding_step'] = 0;
 
 
 
-        //Redirect to home page for now
-
-        $data = array('success'=>true, 'msg'=>'new user was created');
-        $this->renderJSON($data);
-        return;
     }
 
     public function actionFacebookLogin(){

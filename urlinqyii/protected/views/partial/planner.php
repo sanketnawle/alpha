@@ -139,9 +139,6 @@
 
                                 {{/ifCond}}
                                 <span class='event_name' data-event_id="{{event_id}}" data-event_start_date="{{start_date}}">{{title}}</span>
-                                {{#ifCond user_id '==' <?php echo $user->user_id;?>}}
-                                    <span class="edit_button" style="display: none;">edit</span>
-                                {{/ifCond}}
                                 <div class = "planner_event_date">
                                 {{#if future}}
                                     <div class="event_date_time date">{{formatted_date_time}}</div>
@@ -149,6 +146,9 @@
                                 {{#if start_time}}
                                     <div class='event_date_time'>at {{formatted_start_time}}</div>
                                 {{/if}}
+                                {{#ifCond user_id '==' <?php echo $user->user_id;?>}}
+                                   <span class = "planner_edit_wrapper"><span class = "edit_middot">·</span> <span class="edit_button" style="display: none;">edit</span></span>
+                                {{/ifCond}}                                
                                 {{#ifCond event_type '==' 'NYU Event'}}
                                     <div class='event_date_time'>· <a target="_blank" href='{{url}}'>NYU Event</a></div>
                                 {{/ifCond}}
