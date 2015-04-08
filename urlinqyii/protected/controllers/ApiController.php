@@ -3,6 +3,22 @@
     class ApiController extends Controller
     {
 
+    function actionSendPushNotification(){
+
+        if (!isset($_POST['notification_id'])) {
+            $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'valid data is not set.');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $notification = Notification::model()->find('notification_id=:notification_id', array(':notification_id'=>$_POST['notification_id']));
+
+        Yii::import('ext.runactions.components.ERunActions');
+        ERunActions::runBackground(true);
+        ERunActions::runScript('ios_push_notify',$params=array('notification'=>$notification),$scriptPath=null);
+
+    }
+
         // start iOS onboard code
 
     public function actionStartOnboard() {

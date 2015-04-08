@@ -1175,8 +1175,21 @@
                                     {{#if event.conflict}}
                                     <div class="post_conflict_indicator"><span class="post_conflict_icon red"></span></div>
                                     <div class="conflicting_event_popup">Time conflict with: <span class = "conflict_event_name">{{event.conflict.title}}</span></div>
-                                    {{else}}
 
+
+                                    {{else}}
+                                            {{#if event.just_ending}}
+                                            <div class="post_conflict_indicator"><span class="post_conflict_icon orange"></span></div>
+                                            <div class="conflicting_event_popup">Starts immediately after: <span class = "conflict_event_name">{{event.just_ending.title}}</span></div>
+
+
+                                            {{else}}
+                                                {{#if event.just_starting}}
+                                                <div class="post_conflict_indicator"><span class="post_conflict_icon orange"></span></div>
+                                                <div class="conflicting_event_popup">Ends immediately before: <span class = "conflict_event_name">{{event.just_starting.title}}</span></div>
+
+                                                {{/if}}
+                                            {{/if}}
                                     {{/if}}
                                 </div>
 

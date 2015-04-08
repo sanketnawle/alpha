@@ -106,6 +106,7 @@ function fb_login(){
 }
 
 function fb_signup(){
+
     FB.login(function(r){
         FB.getLoginStatus(function(response) {
             if (response.status === 'connected') {
@@ -119,6 +120,7 @@ function fb_signup(){
 function store_facebook_info(){
     FB.api('/me', function(response) {
         var fb_email = response.email;
+        //var fb_email = "shc407@nyu.edu";
         var first_name = response.first_name;
         var last_name = response.last_name;
         var account_type = null;
@@ -152,6 +154,20 @@ function store_facebook_info(){
                 if(response['success']){
                     window.location.href = base_url + '/onboard';
                 }else{
+                    if(response['error_id'] == 6){
+                        //this is weird but it was creating duplicate entries in user table,
+                        // and this was the only fix that worked
+                        post_data['wait_until_saved'] = true;
+                        $.post(
+                            post_url,
+                            post_data,
+                            function(response) {
+                                if (response['success']) {
+                                    window.location.href = base_url + '/onboard';
+                                }
+                            }
+                        );
+                    }
                     if(response['error_id'] == 3){
                         window.location.href = base_url + '/home';
                     }
@@ -164,6 +180,17 @@ function store_facebook_info(){
                         });
                         $error_div.css({
                             'left': email_position.left - 330
+                        });
+                        $('body').append($error_div).hide().fadeIn(250);
+                    }else if(response['error_id'] == 4){
+                        var email_position = $('#facebook_signup').offset();
+                        var $error_div = $("<div id='register_error_popup'></div>");
+                        $error_div.text('Account already exists for your facebook email');
+                        $error_div.css({
+                            'top': email_position.top
+                        });
+                        $error_div.css({
+                            'left': email_position.left - 350
                         });
                         $('body').append($error_div).hide().fadeIn(250);
                     }

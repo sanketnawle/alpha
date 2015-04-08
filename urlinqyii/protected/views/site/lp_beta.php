@@ -1306,7 +1306,7 @@
           </p>
         </div>
 
-       <div class = "footer-sec synced_animation_divs">
+       <div id = "facebook_signup" class = "footer-sec synced_animation_divs">
                     <div class = "leftLine">
                     </div>
                     <div class = "or-head">

@@ -763,6 +763,8 @@ $(document).ready(function () {
                        // alert(JSON.stringify(response));
                         if(response['error_id'] == 5){
                             alert("email already exists");
+                        }else if(response['error_id'] == 6){
+                            alert("not an .edu email");
                         }
                     }
                 }, 'json'

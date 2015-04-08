@@ -16,8 +16,11 @@
             $passphrase = 'URPNCC@MondayCertificate';
             $message = $message;
 
+            $base_path = dirname(Yii::app()->request->scriptFile);
+            $certificate_url = $base_path . '/protected/components/notification/ck.pem';
+
             $ctx = stream_context_create();
-            stream_context_set_option($ctx, 'ssl', 'local_cert', '/Applications/MAMP/htdocs/alpha/urlinqyii/protected/components/notification/7ed48ded2e412732011227722ff356e9ca5bca05ck.pem');
+            stream_context_set_option($ctx, 'ssl', 'local_cert', $certificate_url);
             stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
 
             $fp = stream_socket_client(

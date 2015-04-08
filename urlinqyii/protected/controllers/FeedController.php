@@ -535,12 +535,21 @@ class FeedController extends Controller
                         }
 
                         $conflicting_event = Yii::app()->db->createCommand('select * from event e where e.event_id!="'.$event['event_id'].'" and (e.user_id="'.$user->user_id.'" or exists (select * from event_user where event_id = e.event_id and user_id = "'.$user->user_id.'"))
-                            and e.start_date = "'.$event['start_date'].'" and not(e.end_time < "'.$event['start_time'].'" or e.start_time > "'.$event['end_time'].'")')->queryAll();
+                            and e.start_date = "'.$event['start_date'].'" and not(e.end_time <= "'.$event['start_time'].'" or e.start_time >= "'.$event['end_time'].'")')->queryAll();
 
                         if(sizeof($conflicting_event)>0){
                             $posts[$i]['event']['conflict'] = $conflicting_event[0];
                         }
-
+                        $just_ending_event = Yii::app()->db->createCommand('select * from event e where e.event_id!="'.$event['event_id'].'" and (e.user_id="'.$user->user_id.'" or exists (select * from event_user where event_id = e.event_id and user_id = "'.$user->user_id.'"))
+                            and e.start_date = "'.$event['start_date'].'" and e.end_time = "'.$event['start_time'].'"')->queryAll();
+                        if(sizeof($just_ending_event)>0){
+                            $posts[$i]['event']['just_ending'] = $just_ending_event[0];
+                        }
+                        $just_starting_event = Yii::app()->db->createCommand('select * from event e where e.event_id!="'.$event['event_id'].'" and (e.user_id="'.$user->user_id.'" or exists (select * from event_user where event_id = e.event_id and user_id = "'.$user->user_id.'"))
+                            and e.start_date = "'.$event['start_date'].'" and e.start_time = "'.$event['end_time'].'"')->queryAll();
+                        if(sizeof($just_starting_event)>0){
+                            $posts[$i]['event']['just_starting'] = $just_starting_event[0];
+                        }
                         if($post_model->origin_type == 'class'){
                             $class_user = ClassUser::model()->find('class_id=:class_id and user_id=:user_id', array(':class_id'=>$post_model->origin_id, ':user_id'=>$user->user_id));
                             if($class_user){

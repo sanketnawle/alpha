@@ -486,6 +486,15 @@ $(document).on('click','.cancel_form',function(event){
 });
 
 function show_planner_creation_form(){
+    $('#event_name').val('');
+
+    $('.event_date').val(dueOn);
+    $( ".event_date" ).attr('data-date', d.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
+
+
+    $('#tp1').attr('data-time', ints_to_time(d.getHours(), d.getMinutes(), d.getSeconds()));
+    $('#tp1').val(date_to_am_pm_string(d));
+
     $("#planner_body_holder").hide();
     $(".create_event_body").fadeIn(500);
     $("#add_todo_text").text("Discard");
