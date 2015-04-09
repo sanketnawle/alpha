@@ -815,7 +815,6 @@
               </button>
 
               <div class = "fb_signin_wrap">
-<<<<<<< HEAD
                   <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
                     <em class = "fb_icon">
                     </em>
@@ -829,22 +828,6 @@
                     </div>
                   </div>
               </div>
-=======
-
-                          <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
-                            <em class = "fb_icon">
-                            </em>
-                          </button>
-                          <div class = "help-div" id ="help-1">
-                            <div class ="help-wedge">
-
-                            </div>
-                            <div class = "help-box">
-                              Sign In with Facebook
-                            </div>
-                          </div>
-                        </div>
->>>>>>> 86531a28bb9fd0eb5a37ebcbdea4d3c05559a41f
 
             </form>
             <button name="mobile-login" id="mobile-login-btn" class="rounded Button SignIn smallBtn modalLink" href="#loginModal">
