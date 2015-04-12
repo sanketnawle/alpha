@@ -1,0 +1,169 @@
+<html>
+
+
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+  <title>Your University - On Urlinq</title>
+    <link href="lp_beta.css" rel='stylesheet' type='text/css'>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="jquery-ui-1.11.0/jquery-ui.min.js"></script>
+  <script src="lp_beta.js"></script> 
+  
+
+</head>
+
+
+
+  <body>
+      <div class = "lp-main">
+
+          <div class = "header">
+            <div class = "top-bar">
+              <div class = "top-bar-wrapper content">
+                  <img src = "src/logo.png" class = "logo">
+                  <div class = "signin-wrap">
+                    <form name = "login" id = "login" method = "post" action = "afterlogin.php">
+                      <input type = "text" name = "login_email" id = "login_email" autocomplete = "on" placeholder = "School Email">
+                      <input type = "password" name = "login_password" id = "login_password"placeholder = "Password">
+                       <button name = "submit" id = "submit"type = "button" class = "rounded Button SignIn smallBtn">
+                          <span class = "buttonText">
+                            Log In
+                          </span>
+                        </button>
+                        <div class = "fb_signin_wrap">
+                          <button name = "fb_signin" id = "fb_signin" type = "button" class = "rounded Button fb_signin smallBtn">
+                            <em class = "fb_icon">
+                            </em>
+                          </button>
+                          <div class = "help-div" id ="help-1">
+                            <div class ="help-wedge">
+
+                            </div>
+                            <div class = "help-box">
+                              Sign In with Facebook
+                            </div>
+                          </div>
+                        </div>
+                    </form>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class = "main-content-wrap">
+            <div class = "main-market-area">
+             
+
+            </div>
+            <div class  = "welcome-message">
+                The Future of Education Technology is Here
+            </div>
+
+            
+          </div>
+          <div class = "bottom-container">
+            <div class = "grabber">
+            <div class = "grabber-container">
+              <div class = "slider-items-wrapper">
+                <div class = "text-switcher state0 text-grabber-active">
+                  <div class = "feature-description">
+                    <h1>Your University</h1>
+                    <p>Urlinq organizes your University's information to help you navigate and discover all that it has to offer</p>
+                  </div>
+                </div>
+                <div class = "text-switcher state1 text-grabber-inactive">
+                  <div class = "feature-description">
+                    <h1>Your Courses</h1>
+                    <p>Urlinq organizes your University's information to help you navigate and discover all that it has to offer</p>
+                  </div>
+                </div>
+                <div class = "text-switcher state2 text-grabber-inactive">
+                  <div class = "feature-description">
+                    <h1>Your Calendar</h1>
+                    <p>Urlinq organizes your University's information to help you navigate and discover all that it has to offer</p>
+                  </div>
+                </div>
+              </div>
+              <div class = "feature-description-pagination">
+                <span class = "pagination-item flag-active" id='lgnavi_0'>
+                </span>
+                <span class = "pagination-item flag-inactive" id='lgnavi_1'>
+                </span>
+                <span class = "pagination-item flag-inactive" id='lgnavi_2'>
+                </span>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class = "signup-container">
+              <div class = "signup-form-wrap">
+                  <div class = "header-sec">
+                    <div class = "header-sec-left">
+                      <h4 class = "header">Sign Up
+                    </div>
+                    <div class = "header-sec-right">
+                      <div class = "time-to-signup">45</div>
+                      <div class = "signup-slog">seconds to get started</div>
+                    </div>
+                  </div>
+                  <div class = "registration-form">
+                    <form name = "register" id = "register" class = "register" method = "post" action = "afterregister.php" autocomplete="on">
+                      <div class = "registration-sec">
+                        <div class = "registration-sec-header">
+                          Choose Your Account Type
+                        </div>
+                        <ul class = "account-types">
+                          <li class = "account-type student">
+                            <input name = "account-types" type = "radio" id = "student" class = "typecheck">
+                            <label for = "student">Student</label>
+                            <div id = "account-type-label">Student</div>
+                          </li>
+                          <li class = "account-type faculty">
+                            <input name = "account-types" type = "radio" id = "faculty" class = "typecheck">
+                            <label for = "faculty">Faculty</label>
+                            <div id = "account-type-label">Faculty</div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class = "fname-lname-sec registration-sec-texts">
+                        <input type = "text" name ="fname" id = "fname" autocomplete = "on" placeholder = "First Name">
+                        <input type = "text" name ="lname" class = "lname" id = "lname" autocomplete = "on" placeholder = "Last Name">
+                      </div>
+                      <div class = "registration-sec-texts">
+                        <input type = "email" name = "email" autocomplete = "off" placeholder = "Your School Email">
+                      </div>
+                      <div class = "registration-sec-texts">
+                        <input type = "password" name = "password" id = "password" placeholder = "Password">
+                      </div>
+                      <button type = "button" class = "rounded Button SignUp largeBtn">
+                        <em></em>
+                        <span class = "buttonText">
+                          Create Your Account
+                        </span>
+                      </button>
+                    </form>
+                  </div>
+                  <div class = "footer-sec">
+                    <div class = "leftLine">
+                    </div>
+                    <div class = "or-head">
+                      or
+                    </div>
+                    <div class = "rightLine">
+                    </div>
+                    <button type = "button" class = "rounded Button FacebookConnect loginButton largeBtn">
+                      <em></em>
+                      <span class = "buttonText">Continue with Facebook</span>
+                    </button>
+                  </div>
+              </div>
+          </div>
+          
+
+          
+    </div>
+
+
+  </body>
+
+</html>

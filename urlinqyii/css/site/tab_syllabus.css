@@ -1,0 +1,647 @@
+.class_events_holder
+{
+  left:68%;
+  display:inline-block;
+  position:absolute;
+  top:6px;
+  padding-bottom:60px;
+  width:32%;
+  background:#fff;
+  -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+  -moz-box-shadow:0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+  box-shadow:0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+  padding-top:2px;
+  border-radius:5px;
+}
+
+li#syllabus_event_order_kind
+{
+  border-bottom:1px solid #dcdcdc;
+}
+
+div.panel.tab_syllabus
+{
+  margin-top:-25px;
+  margin-left:4px;
+}
+
+header.class_tasks
+{
+  margin-right:10px;
+  padding-bottom:6px;
+  margin-top:20px;
+  margin-left:10px;
+  border-bottom:1px solid #ddd;
+}
+
+header.class_tasks h5
+{
+  text-shadow:0 -1px rgba(255,255,255,1);
+  top:3px;
+  display:inline-block;
+  font-family:Avenir;
+  left:0;
+  font-weight:500;
+  font-size:14.5px;
+  color:#444;
+  text-transform:uppercase;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  position:relative;
+  margin:0;
+}
+
+header.class_tasks label
+{
+  font-weight:600;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  color:#999;
+  font-family:Avenir;
+  font-size:10px;
+  top:-18px;
+  float:right;
+  display:none;
+  left:-36px;
+  position:relative;
+}
+
+header.class_tasks div.order_sort_dropdown
+{
+  width:66px;
+  height:19px;
+  line-height:13px;
+}
+
+div.order_dropdown_box
+{
+  background:#fff;
+  width:48px;
+  font-size:12px;
+  border-radius:1px;
+  padding-left:0;
+  border:1px solid #d6d6d6;
+  -webkit-box-shadow:0 0 7px 0 rgba(111,111,111,0.13);
+  -moz-box-shadow:0 0 7px 0 rgba(111,111,111,0.13);
+  box-shadow:0 0 7px 0 rgba(111,111,111,0.13);
+}
+
+div.day_month_box
+{
+  float:left;
+  height:44px;
+  margin-left:0;
+  border-radius:0;
+  margin-top:0;
+  width:44px;
+  background-color:#83B233;
+}
+
+div.calendar_top_border
+{
+  background:rgba(0,0,0,0.13);
+  width:100%;
+  height:7px;
+}
+
+div.calendar_bottom_section span
+{
+  color:#fff;
+  width:100%;
+  display:block;
+  font-family:Avenir;
+  text-align:center;
+}
+
+div.calendar_bottom_section span.day
+{
+  font-size:12px;
+  font-weight:600;
+  line-height:11px;
+  margin-top:8px;
+}
+
+div.calendar_bottom_section span.month
+{
+  font-size:11px;
+  font-weight:600;
+  text-transform:capitalize;
+  letter-spacing:.5px;
+}
+
+div.events_ordered_list
+{
+  display:none;
+  margin:0 10px;
+}
+
+div.events_ordered_list div.kind_section > h5
+{
+  color:#999;
+  font-family:Avenir;
+  font-size:13.5px;
+  text-align:left;
+  padding-left:0;
+  padding-bottom:1px;
+}
+
+div.events_ordered_list > div > h5
+{
+  color:#999;
+  font-family:Avenir;
+  text-align:left;
+  font-size:13.5px;
+  padding-left:0;
+  padding-bottom:1px;
+  margin:15px 0 6px;
+}
+
+div.syllabus_like_btn
+{
+  font-family:'Open Sans', sans-serif;
+  display:inline-block;
+  top:-6px;
+  color:#029acf;
+  position:relative;
+  font-size:12.5px;
+  font-weight:700;
+  float:right;
+}
+
+div.syllabus_download_btn
+{
+  font-size:12.5px;
+  font-weight:700;
+  display:inline-block;
+  color:#029acf;
+  position:relative;
+  top:-6px;
+  float:right;
+  font-family:'Open Sans', sans-serif;
+  left:-2px;
+}
+
+span.download_icon
+{
+  background-image:url(../../assets/small_icons.png);
+  background-size:auto;
+  background-position:0 -521px;
+  border:none;
+  display:inline-block;
+  width:25px;
+  top:8px;
+  margin-right:3px;
+  box-shadow:none;
+  height:23px;
+  -moz-transform:scale(.74);
+  position:relative;
+  -webkit-transform:scale(.74);
+  left:5px;
+  transform:scale(.74);
+}
+
+div.syllabus_liked_btn span.post_like_icon
+{
+  background-size:auto;
+  display:inline-block;
+  margin-left:15px;
+  -moz-transform:scale(.67);
+  -webkit-transform:scale(.67);
+  transform:scale(.67);
+  width:25px;
+  box-shadow:none;
+  margin-top:1px;
+  height:23px;
+  background-position:0 -248px;
+}
+
+div.syllabus_event.editable input.syla_tab_event_editor
+{
+  display:block;
+  border:none;
+  border-bottom:1px solid #eee;
+  font-size:13.7px;
+  position:relative;
+  left:5px;
+  width:76%;
+  -webkit-transition:border-color .15s;
+  -moz-transition:border-color .15s;
+  transition:border-color .15s;
+  margin:13px 12px;
+}
+
+div.syllabus_event.editable input.syla_tab_event_editor:focus
+{
+  border-bottom:1px solid #CDCDCD;
+}
+
+div.syllabus_event
+{
+  background:#fff;
+  height:44px;
+  position:relative;
+  border:4px solid rgba(213,214,215,0.5);
+  border-width:4px;
+  margin:-4px 0 0;
+}
+
+div.full_syllabus_box div.title
+{
+  border-bottom:1px solid #ccc;
+  margin-right:15px;
+  font-family:Avenir;
+  font-size:16px;
+  color:#333;
+  padding-bottom:6px;
+  font-weight:500;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  margin-bottom:14px;
+}
+
+.class_syllabus_tab
+{
+  position:relative;
+  top:13px;
+  width:100%;
+  min-height:100%;
+}
+
+button.scan_syllabus
+{
+  font-family:"Open Sans", Arial, sans-serif;
+  cursor:pointer;
+  display:block;
+  position:relative;
+  width:100%;
+  text-indent:7px;
+  border-radius:4px;
+  color:#575757!important;
+  font-weight:600;
+  border:1px solid;
+  background-color:#f2f2f2;
+  text-shadow:0 1px 1px rgba(255,255,255,0.75);
+  background-repeat:repeat-x;
+  font-size:14px;
+  -moz-transition:all .1s ease;
+  -webkit-transition:all .1s ease;
+  transition:all .1s ease;
+  box-shadow:0 -1px #fff inset;
+  border-color:#Ddd;
+  margin:15px auto 0;
+  padding:6px 0;
+}
+
+button.scan_syllabus:hover
+{
+  color:#333;
+  outline:0;
+  background-color:#F5F5F5;
+  -webkit-box-shadow:0 1px 1px rgba(179,179,179,0.1), 0 -1px #fff inset;
+  -moz-box-shadow:0 1px 1px rgba(179,179,179,0.1), 0 -1px #fff inset;
+  box-shadow:0 1px 1px rgba(179,179,179,0.1), 0 -1px #fff inset;
+  border-color:#e7e5e5 #d0cdcd rgba(184,178,178,0.5);
+}
+
+button.scan_syllabus em.syla_plus
+{
+  background-image:url(../../assets/small_icons.png);
+  background-size:auto;
+  background-position:0 -552px;
+  display:inline-block;
+  width:18px;
+  height:15px;
+  left:-4px;
+  top:2px;
+  -moz-transform:scale(.7);
+  position:relative;
+  -webkit-transform:scale(.7);
+  transform:scale(.7);
+}
+
+button.scan_syllabus:active
+{
+  text-shadow:none;
+  background-image:none;
+  border:1px solid #CFCFCF;
+  background:#E5E5E5;
+  box-shadow:1px 0 0 rgba(231,231,231,0.78) inset, -1px 0 0 rgba(234,234,234,0.4) inset, 0 1px 0 rgba(226,226,226,0.4) inset, 0 -1px 0 rgba(216,216,216,0.4) inset;
+  border-color:#b5b5b5;
+}
+
+div.rendered_syllabus_page_holder
+{
+  position:relative;
+  margin-right:15px;
+  background-color:#eaeaea;
+  height:700px;
+  padding-top:1px;
+  border-radius:1px;
+  padding-bottom:5px;
+}
+
+div.order_sort_dropdown em
+{
+  top:0;
+  left:4px;
+}
+
+div.paper_shadowonblack
+{
+  background-color:#fff;
+  height:100%;
+  background-image:url(../../assets/syllabus_page.png);
+  border-radius:1px;
+  background-size:contain;
+  margin:2px 3px;
+}
+
+div.complete_incomplete_button
+{
+  display:none;
+  width:33px;
+  height:44px;
+  right:0;
+  position:absolute;
+}
+
+div.black_explainer
+{
+  margin-top:15px;
+  text-align:left;
+  width:90%;
+}
+
+div.complete_incomplete_button span
+{
+  background-position:-32px -579px;
+  background-size:auto;
+  background-repeat:no-repeat;
+  width:30px;
+  height:26px;
+  -moz-transform:scale(.85);
+  position:relative;
+  -webkit-transform:scale(.85);
+  transform:scale(.85);
+  cursor:pointer;
+  top:9px;
+  background-image:url(../../assets/small_icons.png);
+  display:block;
+  opacity:1;
+}
+
+ul.menu
+{
+  display:inline-block;
+  float:right;
+  margin-top:-4px;
+}
+
+div.complete_incomplete_button.incomplete span
+{
+  background-position:-1px -579px;
+}
+
+div.help-div
+{
+  position:absolute;
+  -moz-transition:all .3s ease-in-out;
+  -webkit-transition:all .3s ease-in-out;
+  transition:all .3s ease-in-out;
+  display:block;
+  opacity:0;
+  pointer-events:none;
+  z-index:100000;
+  top:36px;
+  right:-10px;
+}
+
+div.tab_syllabus div.help-div .help-wedge
+{
+  display:block;
+  z-index:1;
+  height:0;
+  width:0;
+  position:relative;
+  left:114px;
+  border-color:transparent transparent rgba(51,51,51,0.87);
+  border-style:dashed dashed solid;
+  border-width:0 6.5px 6.5px;
+}
+
+div.tab_syllabus div.help-div div.help-box
+{
+  width:136px;
+  font-size:12px;
+  line-height:14px;
+  text-align:center;
+  text-shadow:none;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-weight:600;
+  border-radius:2px;
+  color:#fff;
+  background-color:rgba(51,51,51,0.87);
+  padding:7px;
+}
+
+span.todo_checkbox:hover ~ div.help-div
+{
+  z-index:1;
+  opacity:1;
+}
+
+div.done_editing_button
+{
+  display:none;
+  position:absolute;
+  line-height:23px;
+  right:-4px;
+  z-index:1000;
+  text-align:center;
+  padding-right:7px;
+  width:41px;
+  top:100%;
+  padding-left:7px;
+  cursor:pointer;
+  margin-top:4px;
+  opacity:0;
+  color:#777;
+  -moz-transition:opacity .3s ease-in-out;
+  -webkit-transition:opacity .3s ease-in-out;
+  transition:opacity .3s ease-in-out;
+  border-radius:0 0 3px 3px;
+  font-size:12.5px;
+  font-weight:700;
+  background-color:rgba(213,214,215,0.5);
+}
+
+div.done_editing_button:hover
+{
+  color:#575757;
+  text-decoration:underline;
+}
+
+div.done_editing_button:active
+{
+  color:#575757;
+  background-color:rgba(213,214,215,0.75);
+}
+
+div.syllabus_event.editable input.syla_tab_event_editor:focus ~ div.done_editing_button
+{
+  opacity:1;
+}
+
+.order_dropdown_box li
+{
+  cursor:pointer;
+  color:#444;
+  font-size:12.7px;
+  padding:6px;
+}
+
+.order_dropdown_box li:hover
+{
+  background:#f2f2f2;
+}
+
+.order_dropdown_box li:hover > a
+{
+  color:#222;
+}
+
+.order_dropdown_box li a
+{
+  color:#575757;
+  font-weight:100;
+}
+
+div.full_syllabus_box
+{
+  right:32%;
+  display:inline-block;
+  left:0;
+  position:absolute;
+  top:0;
+}
+
+span.event_name_text
+{
+  font-size:13.7px;
+  font-weight:500;
+  position:absolute;
+  top:11px;
+  padding:2px 2px 2px 7px;
+}
+
+#btn_add_syllabus
+{
+  margin-left:4px;
+  font-family:'Open Sans', sans-serif;
+  border:1px solid silver;
+  background-color:#fcfcfc;
+  background-image:linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60% rgba(225,225,225,.6));
+  -moz-box-shadow:inset 0 0 0 #000, 0 1px 2px rgba(0,0,0,.02), inset 0 1px 0 rgba(255,255,255,1), inset -1px 0 0 rgba(255,255,255,1), inset 0 -1px 0 rgba(255,255,255,.5), inset 1px 0 0 rgba(255,255,255,1);
+  -webkit-box-shadow:inset 0 0 0 #000, 0 1px 2px rgba(0,0,0,.02), inset 0 1px 0 rgba(255,255,255,1), inset -1px 0 0 rgba(255,255,255,1), inset 0 -1px 0 rgba(255,255,255,.5), inset 1px 0 0 rgba(255,255,255,1);
+  box-shadow:inset 0 0 0 #000, 0 1px 2px rgba(0,0,0,.02), inset 0 1px 0 rgba(255,255,255,1), inset -1px 0 0 rgba(255,255,255,1), inset 0 -1px 0 rgba(255,255,255,.5), inset 1px 0 0 rgba(255,255,255,1);
+  color:#575757!important;
+  border-radius:3px;
+  font-size:14px;
+  -moz-transition:all .1s ease;
+  margin-right:4px;
+  -webkit-transition:all .1s ease;
+  transition:all .1s ease;
+  font-weight:600;
+  padding:7px 16px;
+}
+
+div.events_search_syllabus_wrapper
+{
+  display:inline-block;
+  position:absolute;
+  right:10px;
+  top:-4px;
+}
+
+#btn_add_syllabus:hover
+{
+  color:#333!important;
+  outline:0;
+  background-color:#f9f9f9;
+  border-color:#B8B8B8 #969696 #7E7E7E;
+}
+
+div.pdf_separator
+{
+  width:100%;
+}
+
+div.pdf_sep_line
+{
+  border-bottom:2px solid #c3c3c3;
+  width:100%;
+}
+
+div.pdf_title
+{
+  display:block;
+  text-align:center;
+  width:80px;
+  font-family:Avenir;
+  font-size:17px;
+  text-transform:uppercase;
+  color:#777;
+  border:2px solid #c3c3c3;
+  position:relative;
+  border-radius:2px;
+  font-weight:100;
+  box-shadow:0 0 0 1px #f7f7f7;
+  top:-24px;
+  background-size:auto;
+  background-image:url(../../assets/noise_bg.gif);
+  margin:0 auto;
+  padding:10px 12px;
+}
+
+div.events_search_syllabus_wrapper input
+{
+  height:35px!important;
+}
+
+div.events_search_syllabus_wrapper em
+{
+  top:5px;
+}
+
+div.syllabus_tab_header
+{
+  position:relative;
+  padding-bottom:7px;
+  border-bottom:1px solid #c3c3c3;
+}
+
+#btn_add_syllabus:active
+{
+  text-shadow:none;
+  background-color:#eee;
+  -moz-box-shadow:inset 0 0 0 #000, 0 1px 3px rgba(0,0,0,.0), inset 0 2px 2px rgba(0,0,0,0.05), inset 0 1px 1px rgba(0,0,0,0.08), inset -2px 0 2px rgba(0,0,0,0.03), inset 0 -1px 0 rgba(0,0,0,.02), inset 2px 0 2px rgba(0,0,0,.03);
+  -webkit-box-shadow:inset 0 0 0 #000, 0 1px 3px rgba(0,0,0,.0), inset 0 2px 2px rgba(0,0,0,0.05), inset 0 1px 1px rgba(0,0,0,0.08), inset -2px 0 2px rgba(0,0,0,0.03), inset 0 -1px 0 rgba(0,0,0,.02), inset 2px 0 2px rgba(0,0,0,.03);
+  box-shadow:inset 0 0 0 #000, 0 1px 3px rgba(0,0,0,.0), inset 0 2px 2px rgba(0,0,0,0.05), inset 0 1px 1px rgba(0,0,0,0.08), inset -2px 0 2px rgba(0,0,0,0.03), inset 0 -1px 0 rgba(0,0,0,.02), inset 2px 0 2px rgba(0,0,0,.03);
+  border-color:#B8B8B8 #969696 #7E7E7E;
+}
+
+div.syllabus_event.editable div.syllabus_event_button,div.syllabus_event.editable span.event_name_text,input.syla_tab_event_editor
+{
+  display:none;
+}
+
+.class_events_holder.order_date div.events_by_date,.class_events_holder.order_kind div.events_by_kind,div.editable > div.event_name_buttons > div.done_editing_button
+{
+  display:block;
+}
+
+div.complete_incomplete_button.active,div#add_syllabus_wrap
+{
+  display:inline-block;
+}

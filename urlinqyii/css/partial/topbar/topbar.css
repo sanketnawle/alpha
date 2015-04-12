@@ -1,0 +1,1392 @@
+.topbar * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    outline: none;
+    color: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    list-style: none;
+    cursor: default;
+}
+
+.topbar{
+    opacity: .945;
+}
+
+.verify_email_banner{
+
+}
+
+body.body_group div.univ_identifier{top:3px;}
+
+body#body_calendar div.univ_identifier, body.body_searchpage div.univ_identifier{display: none;}
+
+div.univ_identifier{
+    position: absolute;
+
+    left: 83.5px;
+    font-family: Avenir;
+    letter-spacing: 1px;
+    top: -1px;
+    padding-left: 9px;
+    padding-top: 4px;
+    cursor: pointer;
+    padding-bottom: 4px;
+    border-left: 1px solid #656466;
+}
+
+div.univ_identifier > span.univ_name{
+    font-family: Avenir;   
+    letter-spacing: 1.25px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.82);
+    font-size: 11px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #FFF;
+}
+
+.verify_email_banner > a.verify_button{
+
+}
+
+body#body_home .menu_hider, body#body_calendar .menu_hider, body.body_searchpage .menu_hider{
+display:none;
+}
+
+body.body_group #topbar_responsive_holder{
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+    float: none;
+    margin-left: 108px;
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+    margin-left: 155px;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{
+    margin-left: 26px;
+
+}
+
+.search_result_icon{
+    cursor: pointer;
+
+}
+
+.icon.dpt{
+
+}
+
+#new_notification_count_holder{
+
+}
+
+#new_notification_count{
+    position: absolute!important;
+    left: -12px;
+    font-size: 12.5px;
+    font-family: Avenir;
+    line-height: 11px;
+    font-weight: 500;
+    color: #FFF;
+    -webkit-border-radius: 2px; 
+    top: -5px!important;
+    color: #fff; 
+    max-height: 11px; 
+    /* text-shadow: 0 -1px 0 rgba(255, 255, 255, 1)!important; */
+    padding: 2px 3px;     
+      
+}
+
+#new_notification_count.something_new{
+    background: rgba(242, 39, 54, 1);  
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    font-weight: 100!important;
+    height: 16px;
+    top: 0px!important;
+    font-size: 17.5px!important;
+    text-shadow: 0 1px 1px rgba(100, 0, 0, 0.82)!important;
+    left: -28px!important;
+    line-height: 18px;
+    max-height: 15px;
+    width: 15px!important;
+}
+
+.search_result_icon.non_profile_icon{
+    border-radius: 2.5px;
+    float: right; 
+    background-image: url(../../../assets/search_result_categories.png);
+    width: 33px; display: inline-block; 
+    border-radius: 1.5px; height: 33px; margin-right: 6px;
+}
+
+.search_result_icon.non_profile_icon.club{
+    background-position: 0px 0px;
+}
+
+.search_result_icon.non_profile_icon.course{
+    background-position: 0px 0px;
+}
+
+.search_result_icon.non_profile_icon.class{
+    background-position: 0px -39px;
+}
+
+.search_result_icon.non_profile_icon.department{
+    background-position: 0px 0px;
+}
+
+.search_result_icon.non_profile_icon.school{
+    background-position: 0px -79px;
+}
+
+/*.search_result_icon.non_profile_icon.class{
+    background-color: #E8514F; 
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px; 
+    background: -webkit-linear-gradient(45deg,#f16b6a,#E8514F);  
+     background: linear-gradient(45deg,#f16b6a,#E8514F); 
+    border: 1px solid #DB605F; 
+    
+}
+
+.search_result_icon.non_profile_icon.department{
+background-color: rgb(253, 167, 119);
+border-bottom-right-radius: 2px;
+background: -webkit-linear-gradient(45deg,#F89B69,#EE773C);
+background: linear-gradient(45deg,#F89B69,#EE773C);
+border: 1px solid rgb(255, 112, 0);    
+}
+
+.search_result_icon.non_profile_icon.school{
+    background-color: #5ed760; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; background: -webkit-linear-gradient(45deg,#4ce88b,#5ed760); background: linear-gradient(45deg,#4ce88b,#5ed760); border: 1px solid rgb(10, 199, 123);
+    
+}
+
+.search_result_icon.non_profile_icon.user{
+    
+}
+
+*/
+
+.menu_hider{
+display:inline-block;
+width: 15px;
+height: 27px;
+position: absolute;
+top: 10px;
+left: 4px;
+border-radius: 2px;
+}
+
+body.left_panel_hidden_p2 div#content_panel{
+    margin-left:auto;
+    margin-right:auto;
+    width: 980px;
+}
+
+body.left_panel_hidden_p2 #nav_bar{
+margin-left: auto;
+margin-right: auto;
+position: relative;
+top: 9px;
+width: 980px;
+}
+
+body.left_panel_hidden_p2 #fixed_element{
+    position:relative;
+}
+
+body.left_panel_hidden.left_panel_hidden_p2 #fixed_element{
+    position:relative;
+}
+
+body.left_panel_hidden.left_panel_hidden_p2 #nav_bar{
+margin-left: auto;
+margin-right: auto;
+position: fixed;
+top: 56px;
+width: 980px;
+}
+
+body.left_panel_hidden #right_panel{
+
+
+}
+
+body.left_panel_hidden.left_panel_hidden_p2 #right_panel{
+
+
+}
+
+
+body.left_panel_hidden.left_panel_hidden_p2 .panel_feed div#feed_column.feed_column_group, body.left_panel_hidden_p2 .panel_feed div#feed_column.feed_column_group{
+margin-left: 77px;
+}
+
+body.left_panel_hidden.left_panel_hidden_p2 #tab_bar, body.left_panel_hidden_p2 #tab_bar{
+margin-right: 0px;
+width: 980px!important;
+}
+
+.menu_hider_icon{
+    background-image: url(../../../assets/small_icons.png);
+    
+    width: 12px;
+    height: 20px;
+    background-position: -105px -996px;
+    position: relative;
+    top: 3px;
+    left: -1px;
+}
+
+.menu_hider:hover{
+    background-color:rgba(18, 19, 20, 0.333);
+}
+
+/*.menu_hidden .menu_hider_icon{
+    background-position: -75px -996px;
+}*/
+
+.topbar {
+    height: 48px;
+    position: fixed!important;
+    left: 0;
+    right: 0;
+    top: 0;
+    border-bottom: 1px solid #000;
+    z-index: 99999999999;
+    min-width: 820px;
+    -moz-box-shadow: 0px 0 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 0 3px rgba(0,0,0,0.5);
+    background-color: rgba(56, 56, 58, 0.96);
+    box-shadow: 0px 0 3px rgba(0,0,0,0.5);
+}
+
+#topbar_responsive_holder{
+    max-width: 1145px;
+    margin: 0px auto; 
+    /* padding-right: 220px; */
+    height: 48px;
+    position: relative;
+}
+
+    .topbar > #topbar_responsive_holder > .left {
+        overflow: visible;
+        margin-left: 26px;
+        height: 48px;
+        margin-right: 0px;
+    
+        display: inline-block;
+        margin-right: 5px;
+}
+
+        .topbar > #topbar_responsive_holder > .left a {
+            height: 48px;
+        }
+
+            .topbar > #topbar_responsive_holder > .left a:hover {
+            }
+
+            .topbar > #topbar_responsive_holder > .left a.urlinq {
+                width: 75px;
+                display: block;
+                background-image: url(../../../assets/logo.svg);
+                background-size: contain;
+                background-repeat: no-repeat;
+                display:inline-block;
+            
+                position: relative;
+                cursor: pointer;
+                top: 13px;
+                left: -4px;
+}
+
+            .topbar > #topbar_responsive_holder > .left a.menu {
+                background-image: url(../../../assets/menu-toggle.png);
+                margin: 13px 0;
+                border-radius: 4px;
+                margin-left: 10px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: 24px;
+                width: 24px;
+                height: 24px;
+                display: none;
+                opacity: 0.6;
+            }
+
+                .topbar > #topbar_responsive_holder > .left a.menu:hover {
+                    opacity: 1;
+                }
+
+    .topbar:hover > #topbar_responsive_holder > .left a.menu.active {
+        cursor: pointer;
+    }
+
+    .topbar:hover > .left a.menu {
+        background-position: center center;
+    }
+
+    .topbar .center {
+        width: 554px;
+        margin: auto;
+    
+        display: inline-block;
+        margin-left: 157px;
+        height: 46px;
+        float: center;
+        margin-top: 0px;
+        position: relative;
+}
+
+        .topbar .center form {
+            background-color: #FFF!important;
+            position: relative;
+            margin-top: 0px;
+            padding: 0px 7px 0px;
+            width: 100%;
+            border-radius: 4px;
+            position: absolute;
+            cursor: text;
+            top: 5px;
+            overflow: hidden;
+        
+            border: 1px solid #000;
+            max-width: 539px;
+}
+
+form.top_search_bar_form{
+    -moz-transition:background-color .1s ease;
+    -webkit-transition:background-color .1s ease;
+    transition:background-color .1s ease;
+}
+
+            .topbar .center form .text {
+                width: 100%;
+                float: left;
+                padding-right: 25px;
+                background: transparent;
+                font-size: 15px;
+ 
+                text-rendering: optimizelegibility;
+                border: none;
+                font-weight: 200;
+                font-size: 15.5px;
+                padding-left: 8px;
+                cursor: text;
+                position: relative;
+                width: 102%;
+                left: -7px;
+                height: 32px;
+            
+                display: block;
+                /* font-family: Avenir; */
+}
+
+            .topbar #topbar_responsive_holder .center form .submit {
+                width: 19px;
+                position: absolute;
+                height: 19px;
+                top: 8px;
+                right: 8px;
+                border: none;
+                background-image: url(../../../assets/smallSearchIco2.svg);
+                background-repeat: no-repeat;
+                background-size: auto;
+                background-position: center center;
+                background-color:transparent;
+}
+
+    .topbar > #topbar_responsive_holder > .right {
+/*         width: 270px; */
+        height: 48px;
+        
+        display: inline-block;
+}
+
+        .topbar > #topbar_responsive_holder > .right .notify {
+            float: left;
+            position: relative;
+            height: 22px;
+            border-right: none;
+            margin-top: 14px;
+            padding-right: 8px;
+            border-radius: 0px;
+            padding-left: 8px;
+}
+
+.topbar_profile_picture{
+    background-repeat: no-repeat; 
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+    border-radius: 100px;
+    top: 0.5px;
+    cursor: pointer;
+    opacity: .9;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.25);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.25);
+    box-shadow: 0 1px 2px rgba(0,0,0,.25);
+    position: relative;
+    display: inline-block;
+}
+
+.topbar_profile_link{
+    float: left;
+
+    padding-left: 8px;
+    padding-top: 5px;
+    padding-right: 8px;
+    width: 56px;
+    color: #a8acaf;
+    position: relative; 
+    padding-bottom: 3px;
+    top: -7px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 14px;
+    margin-left: 4px;
+}
+
+.topbar_profile_link:hover{
+    background: rgba(18,19,20,.333);
+
+    color: #FFF;
+}
+
+.topbar_profile_link:active{
+
+}
+
+.topbar_profile_link:hover .topbar_profile_picture{
+    border-color: #fff;
+
+    opacity: 1;
+}
+
+.topbar_profile_link:hover .icon_text{
+
+}
+
+.topbar_profile_link .icon_text{
+    display: inline-block;
+    cursor: pointer;
+    padding: 0px 0;  
+    top: -6px;
+    /* font-family: Avenir; */
+    font-weight: 500;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
+    position: relative;
+    padding-left: 4px;
+    font-size: 14.5px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.82);
+}
+
+.notify.board.notify_board_active > div.button{
+background-color: rgba(0, 0, 0, 0.43)!important;
+color: #FFF!important;
+}
+
+.notify.board:hover > div.button{
+color: #FFF!important;
+}
+
+.notify.board .icon_text{
+    top:-11px!important;
+}
+
+.notify.board.notify_board_active:hover > div.button{
+    color:#FFF!important;
+}
+
+.notify.board.notify_board_active:active > div.button{
+    color:#FFF!important;
+}
+
+.topbar > #topbar_responsive_holder > .right .notify.calendar{
+    padding-left:5px;
+    border-radius:2px 0px 0px 2px;
+    display:none!important;
+}
+
+.topbar > #topbar_responsive_holder > .right .notify.board{
+    border-right:none;
+    border-radius:0px 2px 2px 0px;
+    padding-left: 0px;
+}
+
+.topbar > #topbar_responsive_holder > .right , .topbar > #topbar_responsive_holder > .center{
+
+}
+
+.notify.board > .button{
+border-radius: 4px;}
+
+.notify.calendar > .button{
+    border-radius:3px 0px 0px 3px;
+    display: none;
+}
+
+
+        .topbar > #topbar_responsive_holder > .right .notify:hover > .button,.topbar > #topbar_responsive_holder > .right .notify.active > .button {
+            background: rgba(18, 19, 20, 0.333); 
+
+        }
+
+            .topbar > #topbar_responsive_holder > .right .notify .button {
+                height: 80%;
+                width: 100%;
+                margin-left: 1px;
+}
+
+            .topbar > #topbar_responsive_holder > .right .notify.calendar .button,.topbar > #topbar_responsive_holder > .right .notify.board .button {
+                padding-top: 6px;
+                padding-left: 10px;
+                padding-right: 0px;
+                cursor: pointer;
+                color: #a8acaf;
+                padding-bottom: 3px;
+                height: 27px;
+                font-family: Avenir;
+                cursor: pointer;
+                position: relative;
+                top: -7px;
+                text-shadow: 0 1px 1px rgba(0, 0, 0, 0.82);
+}
+
+                .topbar > #topbar_responsive_holder > .right .notify.calendar .button div,.topbar > #topbar_responsive_holder > .right .notify.board .button div {
+                    text-align: center;
+                    display: inline-block;
+                    /* font-family: Avenir; */
+                    bottom: 8px;
+                    position: relative;
+                    font-size: 14.5px;
+                    cursor: pointer;
+                    font-weight: 500;
+                    top: -5px;
+                    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.82);
+}
+
+.topbar > #topbar_responsive_holder > .right .notify.board .button div{
+    top: -10px;
+}
+
+            .topbar > #topbar_responsive_holder > .right .notify.calendar:hover .button div, .topbar > #topbar_responsive_holder > .right .notify.calendar.active .button div {
+                color: #fff;
+            }
+
+            .topbar > #topbar_responsive_holder > .right .notify.board {
+                border-left: none;
+            }
+
+                .topbar > #topbar_responsive_holder > .right .notify.board .button .icon,.topbar > #topbar_responsive_holder > .right .notify.calendar .button .icon {
+                    background-image: url(../../../assets/TopBarMenuIcons.png);
+                    background-repeat: no-repeat;
+                    background-position: left center;
+                    width: 20px;
+                    margin: auto;
+                    display: inline-block;
+                    height: 28px;
+                    cursor: pointer;
+                    background-size: auto;
+                    top: -2px;
+                    padding-right: 4px;
+                    left: 1px;
+                    position: relative;
+}
+
+,.topbar > #topbar_responsive_holder > .right .notify.board:hover .button .icon {
+
+}
+
+.topbar > #topbar_responsive_holder > .right .notify.board.notify_board_active > div.button .icon, .topbar > #topbar_responsive_holder > .right .notify.board:hover > div.button .icon {
+    background-position: -33.5px center;
+}
+
+.topbar > #topbar_responsive_holder > .right .notify.calendar:active .button .icon {
+
+}
+
+
+
+                .topbar > #topbar_responsive_holder > .right .notify.calendar .button .icon {
+                    background-repeat: no-repeat;
+                    background-position: -25px 0px;
+                    width: 25px;
+                    margin: auto;
+                    display: inline-block;
+                    height: 23px;
+                    position: relative;
+                    top: 0px;
+                    }
+
+                .topbar > #topbar_responsive_holder > .right .notify.board:hover .button .icon, .topbar > #topbar_responsive_holder > .right .notify.board.active .button .icon {
+                }
+
+    .topbar #topbar_responsive_holder .center ul.prelist, .topbar .center ul.postlist {
+        display: none; 
+    }
+
+    .topbar #topbar_responsive_holder .center ul {
+        background-color: rgba(255, 255, 255, 0.99);
+        position: absolute;
+        top: 38px;
+        width: 524px;
+        border-radius: 0px 0px 4px 4px;
+        padding: 4px 0px 0px;  
+        background: rgba(255, 255, 255, 0.99);   
+        overflow-y: scroll;
+        max-height: 418px;   
+        border: 1px solid #000;
+        border-top: none;
+}
+
+        .topbar #topbar_responsive_holder .center ul li a {
+            display: block;
+            overflow: auto;
+            padding: 7px 5px 7px;
+            border-left: 2px solid transparent;
+            cursor: pointer;
+            color: #333;
+        }
+
+            .topbar #topbar_responsive_holder .center ul li a:hover {
+                background-color: #eee;
+            }
+
+            .topbar #topbar_responsive_holder .center ul li a .icon {
+                background-image: url(../img/search-icons.png);
+                background-size: cover;
+                float: right;
+                width: 33px;
+                display: inline-block;
+                border-radius: 1.5px;
+                height: 33px;
+                margin-right: 6px;
+            }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.src, .topbar .center ul li a .icon.pro {
+                    background-position-y: 100%;
+                }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.sch {
+                    background-position-y: 38.3%;
+                }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.prof {
+                    background-position-y: 64.2%;
+                }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.dpt {
+                    background-position-y: 13%;
+                }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.cls {
+                    background-position-y: 0%;
+                }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.crs {
+                    background-position-y: 77.2%;
+                }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.srch {
+                    background-position-y: 77.2%;
+                }
+
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.clb {
+                    background-position-y: 25.3%;
+                }
+
+            .topbar #topbar_responsive_holder .center ul li a span {
+                height: 31px;
+                vertical-align: middle;
+            
+                cursor: pointer;
+                float: left;
+                font-weight: 500;
+                line-height: 31px;
+                max-width: 430px;
+                color: #222;
+                display: block;
+                font-size: 14.5px;
+                -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+                overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+                .topbar #topbar_responsive_holder .center ul li a span b {
+                    color: #000;
+                    font-weight: 400;
+                }
+
+        .topbar #topbar_responsive_holder .center ul.postlist li:last-child a {
+            border-top: 1px solid #DDD;
+            text-align: center;
+            padding: 9px;
+        }
+
+            .topbar #topbar_responsive_holder .center ul.postlist li:last-child a:hover {
+                background-color: #DDD;
+            }
+
+    .topbar #topbar_responsive_holder div.day {
+        font-size: 10px;
+        line-height: 12px;
+        font-family: 'san_francisco';
+    }
+
+    .topbar div.date {
+        font-size: 16px;
+        line-height: 14px;
+        font-family: 'san_francisco';
+    }
+
+.mainsearch::-webkit-input-placeholder {
+    color: #999;
+    font-weight: 500;
+}
+
+.mainsearch::-moz-placeholder {
+    color: #474747;
+    font-weight: 500;
+}
+/* firefox 19+ */
+.mainsearch:-ms-input-placeholder {
+    color: #474747;
+    font-weight: 500;
+}
+/* ie */
+.mainsearch:-moz-placeholder {
+    color: #474747;
+    font-weight: 500;
+}
+
+.mainsearch:focus::-webkit-input-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+
+.mainsearch:focus::-moz-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+/* firefox 19+ */
+.mainsearch:focus:-ms-input-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+/* ie */
+.mainsearch:focus:-moz-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+
+}
+
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    margin-left: 23px;
+
+}
+
+#body_calendar .topbar > #topbar_responsive_holder > .center{
+    margin-left:0px!important;
+}
+#body_calendar .topbar > #topbar_responsive_holder > .right{
+    position:absolute;
+    right:193px;
+}
+
+#body_calendar .topbar .topbar_responsive_holder{
+
+}
+
+body .topbar div.calendar_link{
+    position: absolute;
+
+    right: 5px;
+    top: 7px;
+    right: 9px;
+    height: 36px;
+    margin-right: 9px;
+    width: 84px;
+    /* background-color: black; */
+}
+body .topbar div.calendar_link > a{
+    cursor: pointer;
+    /* position: relative; */
+    display: block;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    padding-left: 10px;
+    position: absolute;
+    padding-right: -7px;
+    border-radius: 4px;
+    top: 0;
+}
+
+body .topbar div.calendar_link > a > div.calendar_icon{
+    background-image: url(../../../assets/quick_calendar_icon.png);
+    
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin: 8px;
+    background-size: cover;
+    left: -6px;
+    position: relative;
+}
+
+body .topbar div.calendar_link > a > div.quick_cal_arrow{
+background-image: url(../../../assets/quick_cal_arrow.png);
+background-size:auto;
+width: 6px;
+cursor: pointer;
+height: 9px;
+right: 10px;
+display:inline-block;
+line-height: 1;
+background-repeat: no-repeat;
+position: absolute;
+top: 13px;
+transition: left 190ms ease-out;
+}
+
+    body .topbar div.calendar_link > a:hover > div.calendar_icon{
+    cursor: pointer;
+    
+    }
+        body .topbar div.calendar_link > a:active > div.calendar_icon{
+    cursor: pointer;
+    
+    }
+
+
+body#body_calendar .topbar div.calendar_link{
+    display:none;
+    }
+
+body.body_group .topbar > #topbar_responsive_holder > .left{}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{}
+body.body_group .topbar > #topbar_responsive_holder > .right{
+}
+
+.topbar > #topbar_responsive_holder > .left{}
+.topbar > #topbar_responsive_holder > .right{}
+.topbar > #topbar_responsive_holder > .center{}
+body .topbar div.calendar_link{}
+
+@media(max-width:1348px){
+#topbar_responsive_holder{
+    /* padding-right:196px; */
+}
+body .topbar div.calendar_link{}
+
+.topbar > #topbar_responsive_holder > .left{}
+.topbar > #topbar_responsive_holder > .right{}
+.topbar > #topbar_responsive_holder > .center{}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{}
+body.body_group .topbar > #topbar_responsive_holder > .right{}
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    
+}
+
+
+}
+
+@media(max-width:1330px){
+#topbar_responsive_holder{
+    /* padding-right:186px; */
+}
+body .topbar div.calendar_link{}
+
+.topbar > #topbar_responsive_holder > .left{}
+.topbar > #topbar_responsive_holder > .right{}
+.topbar > #topbar_responsive_holder > .center{
+    margin-left: 157px;
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{}
+body.body_group .topbar > #topbar_responsive_holder > .left{}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{}
+.topbar .center form{}
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+    margin-left: 0px!important;
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+
+}
+}
+
+@media(max-width:1315px){
+#topbar_responsive_holder{
+    /* padding-right: 186px; */
+}
+.body_searchpage #right_panel{
+    display: none!important;
+}
+.topbar > #topbar_responsive_holder > .left{}
+.topbar > #topbar_responsive_holder > .right{}
+.topbar > #topbar_responsive_holder > .center{}
+body .topbar div.calendar_link{}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{}
+.topbar .center form{}
+}
+
+@media(max-width:1310px){
+.topbar > #topbar_responsive_holder > div.right{
+}
+
+.topbar > #topbar_responsive_holder > .left{
+    margin-left: 23px;
+}
+.topbar > #topbar_responsive_holder > .right{}
+.topbar > #topbar_responsive_holder > .center{
+    margin-left: 159px;
+}
+body .topbar div.calendar_link{}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+    margin-left: 169px!important;
+}
+.topbar .center form{}
+body.body_group #topbar_responsive_holder{
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+    float: none; 
+    margin-left: 0px; };
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+    margin-left: 0px;
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+    margin-left: 0px;
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+    float: right;
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+    left: -22px;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+    margin-left: 157px;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{
+
+}
+
+body.left_panel_hidden_p2.left_panel_hidden #topbar_responsive_holder{}
+
+}
+
+@media screen and (max-width: 1298px) {
+    body.body_group .topbar > #topbar_responsive_holder > .right{}
+
+    body.body_group .topbar > #topbar_responsive_holder > .left{}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{}
+
+.topbar > #topbar_responsive_holder > .left{
+    margin-left: 24px;
+}
+.topbar > #topbar_responsive_holder > .right{
+    margin-left: 18px;
+}
+.topbar > #topbar_responsive_holder > .center{
+    margin-left: 197px;
+    width: 551px;
+}
+body .topbar div.calendar_link{}
+.topbar .center form{
+    max-width: 537px;
+}
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    
+}
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+
+}
+body.left_panel_hidden_p2.left_panel_hidden #topbar_responsive_holder{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+
+}
+body.body_group #topbar_responsive_holder{
+}
+
+}
+
+
+@media(max-width:1248px){
+.topbar > #topbar_responsive_holder > .left a{
+}
+body.body_group .topbar > #topbar_responsive_holder > .right{}
+body.left_panel_hidden_p2.left_panel_hidden #topbar_responsive_holder{
+
+}
+body.body_group .topbar > #topbar_responsive_holder > .left{}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{}
+
+.topbar > #topbar_responsive_holder > .left{}
+.topbar > #topbar_responsive_holder > .right{}
+.topbar > #topbar_responsive_holder > .center{
+    margin-left: 160px;
+}
+body .topbar div.calendar_link{}
+.topbar .center form{}
+body.body_group #topbar_responsive_holder{
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left a{margin-left:0px!important;
+}
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+    /* margin-left: 18px; */
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+    left: 0px;
+
+}
+}
+
+@media(max-width:1198px){
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+    margin-left: 0px;
+
+    margin-right: 5px;
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+    float: right!important;
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+    left: -18px;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+    float: none!important;
+    margin-left: 12px;
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{}
+
+.topbar > #topbar_responsive_holder > .left{
+    margin-left: 24px;
+    margin-right: 6px;
+}
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    
+}
+.topbar > #topbar_responsive_holder > .right{
+    margin-left: 17px;
+}
+.topbar > #topbar_responsive_holder > .center{
+    margin-left: 158px;
+    width: 542px;
+}
+body .topbar div.calendar_link{}
+.topbar .center form{
+    max-width: 537px;
+}
+body.body_group #topbar_responsive_holder{
+    padding-right: 0px;
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+    margin-left: 166px!important;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{
+    margin-left: 28px;
+
+}
+}
+
+@media(max-width:1175px){
+
+.topbar>.right .notify .notify-window{
+    left:-180px!important;
+}
+body.body_group .topbar > #topbar_responsive_holder > .right{}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{}
+
+.topbar > #topbar_responsive_holder > .left{}
+.topbar > #topbar_responsive_holder > .right{}
+.topbar > #topbar_responsive_holder > .center{}
+body .topbar div.calendar_link{}
+body#body_home .topbar #topbar_responsive_holder{
+
+}
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    
+}
+.topbar .center form{}
+body.body_group #topbar_responsive_holder{
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+    margin-left: 14px;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{
+
+}
+}
+
+@media(max-width:1120px){
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+
+}
+body.left_panel_hidden_p2.left_panel_hidden #topbar_responsive_holder{
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{}
+
+.topbar > #topbar_responsive_holder > .left{
+    margin-left: 14px;
+}
+.topbar > #topbar_responsive_holder > .right{
+    margin-left: 14px;
+}
+.topbar > #topbar_responsive_holder > .center{
+    margin-left: 0px;
+}
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    
+}
+body.body_group .topbar > #topbar_responsive_holder > .center{}
+
+body .topbar div.calendar_link{}
+body#body_home .topbar #topbar_responsive_holder{
+    width: 830px!important;
+}
+.topbar .center form{
+    max-width: 450px;
+}
+body.body_group #topbar_responsive_holder{
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+    float: none!important;
+
+    margin-right: 60px;
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+    margin-left: 0px!important;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{
+    margin-left: 16px;
+
+}
+}
+
+@media(max-width:990px){
+    div.univ_identifier{display: none;}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{}
+body.body_group .topbar > #topbar_responsive_holder > .right{}
+
+.topbar > #topbar_responsive_holder > .left{}
+.topbar > #topbar_responsive_holder > .right{
+    margin-left: 12px;
+}
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    
+}
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+    margin-left: 16px;
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+    float: none!important;
+
+    margin-left: 17px;
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+
+}
+.topbar > #topbar_responsive_holder > .center{
+    width: 444px;
+    margin-left: 1px;
+}
+body .topbar div.calendar_link{
+    right: 13px;
+}
+body#body_home .topbar #topbar_responsive_holder{}
+.topbar .center form{}
+
+
+body.body_group #topbar_responsive_holder{
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{
+
+}
+}
+
+a.calendar_link_wrap {
+
+}
+
+a.calendar_link_wrap:hover {
+    background: rgba(18,19,20,.333);
+
+}
+
+a.calendar_link_wrap h5{
+    font-size: 14.5px;
+    
+    /* font-family: Avenir; */
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.82);
+    font-weight: 200;
+    position: relative;
+    top: 8px;
+    cursor: pointer;
+    left: 1px;
+}

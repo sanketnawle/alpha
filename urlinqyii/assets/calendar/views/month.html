@@ -1,0 +1,50 @@
+﻿
+
+
+<div ng-include="getHeaderUrl()"></div>
+<div class="header row2 month">
+    <span ng-repeat="i in [] | range:7" class="grid-column">{{getDayName(i)}}</span>
+</div>
+<div class="month-view grid-view" >
+    <div class="month-grid grid" id="month-grid"></div>
+</div>
+
+
+<div id="inspect_event_popup_month" class="inspect_event_popup popup">
+    <div id="inspect_event_title"></div>
+    <div id="inspect_event_exit_button" class="popup_exit_button"></div>
+    <div class = "inspect_event_detail inspect_event_detail_when">
+        <span>When:</span>
+        <div id ="inspect_event_text" class = 'inspect_data inspect_data_oneline'></div>
+        <div id ="inspect_event_whentime" class = 'inspect_data inspect_data_oneline'></div>
+    </div>
+
+    <div class = "inspect_event_detail" id = "inspect_event_where_detail">
+        <div id ="inspect_event_where" class = 'inspect_data'></div>
+    </div>
+
+    <div class = "inspect_event_detail">
+        <div id="inspect_event_description" class = 'inspect_data'></div>
+    </div>
+
+   <!-- <div class = "inspect_event_detail">
+        <div id ="inspect_event_who" class = 'inspect_data'></div>
+    </div> -->
+
+    <div id="inspect_event_delete_button_month"><span class = "delete_icon"></span><span class = "delete_text">Delete</span></div>
+    <div id="inspect_event_edit_button" class="popup_edit_button">Edit<strong></strong></div>
+</div>
+
+<div id="create_month_day_event_popup" class="create_event_popup popup">
+    <div id="create_month_day_event_exit_button" class="popup_exit_button"></div>
+    <div id="create_month_day_event_text">Create event</div>
+    <span class = "create_event_when_label">When: </span><div id="create_month_day_event_when"></div>
+
+    <form id='create_month_day_event_form' method="post" action="/event/create">
+        <input id="create_month_day_event_input" class='popup_create_event_name_input' name="event_input" type="text" class="text_input">
+        <label for="create_month_day_event_input" class = "quick_event_label">What: </label>
+        <div class="cb-example">e.g., 11:59pm Lab report due</div>
+        <input type="submit" class="" id="create_month_day_event_button" name="create_month_day_event_button" value="Add event">
+    </form>
+
+</div>

@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='fullcalendar/fullcalendar.css' rel='stylesheet' />
+<link href='fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+    
+    <link href="http://select-box.googlecode.com/svn/tags/0.2/jquery.selectbox.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://select-box.googlecode.com/svn/tags/0.2/jquery.selectbox-0.2.min.js"></script>
+
+<script src='lib/jquery.min.js'></script>
+<script src='lib/jquery-ui.custom.min.js'></script>
+<script src='fullcalendar/fullcalendar.min.js'></script>
+<script src='md5.js'></script> 
+<link href='p0.css' rel='stylesheet' />
+    
+<script type="text/javascript" src="datetimepicker/jquery.simple-dtpicker.js"></script>
+<link type="text/css" href="datetimepicker/jquery.simple-dtpicker.css" rel="stylesheet" />
+
+<script>
+
+ $(document).ready(function() {
+
+  var date = new Date();
+  var d = date.getDate();
+  var m = date.getMonth();
+  var y = date.getFullYear();
+  var calendar = $('#calendar').fullCalendar({
+   editable: true,
+   header: {
+    left: 'prev title next',
+    center: '',
+    right: ''
+   },
+   
+   /*echo events*/                                          
+   events: "http://localhost/calendar_0118/fullcalendar/user/events.php",
+   
+   // Convert the allDay from string to boolean
+   eventRender: function(event, element, view) {
+    if (event.allDay === 'true') {
+     event.allDay = true;
+    } else {
+     event.allDay = false;
+    }
+   },
+   selectable: true,
+   selectHelper: true,
+   select: function(start, end, allDay) {
+
+    start = $.fullCalendar.formatDate(start, "yyyy/MM/dd 11:45");
+    end = $.fullCalendar.formatDate(end, "yyyy/MM/dd 11:45");
+
+    $("#button-border").hide();
+    $("#create-form").show();
+    $("#nevt-st").val(start);
+    $("#nevt-ed").val(end);                                         
+    return false;
+   } , 
+    
+                                             
+   editable: true,
+                                             
+   eventDrop: function(event, delta) {
+   start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
+   end = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
+   $.ajax({
+   url: 'http://localhost/calendar_0118/fullcalendar/user/update_events.php',
+   data: 'title='+ event.title+'&start='+ start +'&end='+ end +'&id='+ event.id ,
+   type: "POST",
+   success: function(json) {
+    alert("Updated Successfully");
+   }
+   });
+   },
+   
+   eventResize: function(event) {
+   start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
+   end = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
+   $.ajax({
+    url: 'http://localhost/calendar_0118/fullcalendar/user/update_events.php',
+    data: 'title='+ event.title+'&start='+ start +'&end='+ end +'&id='+ event.id ,
+    type: "POST",
+    success: function(json) {
+     alert("Updated Successfully");
+    }
+   });
+
+}
+,
+eventClick: function(event) {
+$(".fc-event").css("background-color","transparent");
+var tid= event.id.split(" ");
+var id= tid[1];
+$(".fc-event-container").find("."+id).parent().css("background-color","rgb(31, 188, 238)");
+geteventinfo(event);
+},
+eventMouseover: function(event){   
+var tid= event.id.split(" ");
+var id= tid[1];
+var field=$(".fc-event-container").find("."+id).parent();                                   
+if(field.css('background-color') == 'rgb(31, 188, 238)'){}else{
+field.css("background-color","rgba(31, 188, 238, 0.35)");
+}
+                                             
+},
+eventMouseout: function(event){ 
+var tid= event.id.split(" ");
+var id= tid[1];
+var field=$(".fc-event-container").find("."+id).parent();
+if(field.css('background-color') == 'rgba(31, 188, 238, 0.35)')
+    {
+        field.css("background-color","transparent");
+    }
+}                                             
+   
+});
+              
+                $(document).delegate(".button-block button","click",function(){
+                                                var $this = $(this).parent();
+                                                var $a= $(this).parents(".wrapper");
+                                                var c=0;
+                                     
+                                                
+                                                if($a.hasClass("checked")){
+                                                $a.removeClass('checked');
+                                                $a.siblings('.state').text('Incomplete');
+                                                c=0;
+                                                }else{
+                                                $a.addClass('checked');
+                                                $a.siblings('.state').text('Completed');
+                                                c=1;
+                                                }
+                                                
+                                                $this.toggleClass('canceled');
+
+                                     
+                                            /*complete-incomplete Ajax here*/
+                                     var prt=$(this).closest(".eventinfo");
+                                     
+                                     var tid=prt.find(".originalid").text();
+                                     //alert(c);
+                                     //alert(tid);
+                                     /*
+                                      
+                                      tid is the event id, which is tag id
+                                      as you can see, tag id is very useful as its uniqueness.
+                                      Here you need to use this to locate the event, and then change its status
+                                      
+                                      c is the status of its completeness, can be 0 or 1, 0 incomplete 1 complete
+                                      
+                                      $.ajax({
+                                      url: "http://127.0.0.1/PhpProject/calendar_0114/fullcalendar/user/state_events.php",
+                                      data: "&id=" + tid+"&status=" + c,
+                                      type: "POST",
+                                      error: function(json){ alert('Error'); },
+                                      success: function(json) { alert('Added Successfully'); }
+                                      });
+                                      
+                                      */
+                                                
+                                     
+                                                return false;
+                                                });   
+                   
+                   
+                   $(".dd-hover").mouseover(function(){
+                                        $("#dropdown").css("border","1px solid #008DF1");   
+                                        
+                                        $("#d-head").css("border-bottom","1px solid white");
+                                        $(".dropdown").css("display","block");
+                                        });
+                   $(".dd-hover").mouseout(function(){
+                                            $("#dropdown").css("border","1px solid #545454");   
+                                            $("#d-head").css("border-bottom","none");
+                                            $(".dropdown").css("display","none");
+                                            });
+                   
+                   
+
+                   $(document).delegate("#newevent-button","click",function(){
+                                        $("#button-border").hide();
+                                        $("#create-form").show();
+                                        return false;
+                                        });  
+                   $(document).delegate("#c-close","click",function(){
+                                        $("#create-form").hide();
+                                        $("#button-border").show();
+                                        return false;
+                                        });
+                   
+                   
+                   
+                   $(document).delegate(".dropdown","click",function(){
+                                        var a= $(this).text();
+                                        $("#currentselection").text(a);
+                                        $("#currentselection").show();
+                                        var key=$(this).first().text().split(' ').join('').toLowerCase();
+                                        
+                                        if(key!="allcalendars"){
+                                        $(".fc-event-inner").hide();
+                                        $("."+key).show();
+                                        
+                                        $("#nevt-grouptag").attr("title",a);
+                                        $("#gt-head").text(a);
+                                        }else{
+                                        $(".fc-event-inner").show();
+                                        
+                                        }
+                                        
+                                        
+                                        
+                                        return false;
+                                        }); 
+                   
+                  
+                   
+                   
+                   
+                   var mname=[1,2,3,4,5,6,7,8,9,10,11,12];
+$(document).delegate("#nevent-button","click",function(){
+                     var t= $("#nevt-title").val();
+                     var desc=$("#nevt-desc").val();
+                     
+                     var st= $("#nevt-st").val();
+                     var ed= $("#nevt-ed").val();
+                     
+                     var sy=retyear(st);
+                     var sm=retmonth(st);
+                     sm= parseInt(sm)-1;
+                     var sd=retday(st);
+                     
+                     var sh=rethour(st);
+                     var smin=retminute(st);
+                     
+                     var ey=retyear(ed);
+                     var em=retmonth(ed);
+                     em= parseInt(em)-1;
+                     var eday=retday(ed);
+                    
+                     var eh=rethour(ed);
+                     var emin=retminute(ed);
+                     var gt="";
+                     var gt= $("#nevt-grouptag").attr("title");
+                     gt=gt.split(' ').join('').toLowerCase();
+                     
+                     var m= jQuery.inArray( $("#currentmonthview").text(), mname );
+                     
+                     
+                     var idstring= sy+""+sm+""+sd+""+sh+""+smin+""+ey+""+em+""+eday+""+eh+""+emin+""+gt+""+t+""+desc;
+                     idstring=idstring.split(' ').join('').toLowerCase();
+                     idstring=md5(idstring);
+                     
+                     gt=gt+" "+idstring;
+                     
+                     
+                     var dta=new Date(sy, sm ,sd,sh,smin,0);
+                     var dtb=new Date(ey, em ,eday,eh,emin,0);
+                     
+                     
+                     if(dtb<=dta){alert("end time cannot smaller than start time");return false;}
+                     
+                     dta = dta.getFullYear() + '-' +
+                                ('00' + (dta.getMonth()+1)).slice(-2) + '-' +
+                                ('00' + dta.getDate()).slice(-2) + ' ' + 
+                                ('00' + dta.getHours()).slice(-2) + ':' + 
+                                ('00' + dta.getMinutes()).slice(-2) + ':' + 
+                                ('00' + dta.getSeconds()).slice(-2);
+                     dtb = dtb.getFullYear() + '-' +
+                                ('00' + (dtb.getMonth()+1)).slice(-2) + '-' +
+                                ('00' + dtb.getDate()).slice(-2) + ' ' + 
+                                ('00' + dtb.getHours()).slice(-2) + ':' + 
+                                ('00' + dtb.getMinutes()).slice(-2) + ':' + 
+                                ('00' + dtb.getSeconds()).slice(-2);
+                     
+                    if(t)
+                     {
+                      
+                      $.ajax({
+                      url: "http://localhost/calendar_0118/fullcalendar/user/create_events.php",
+                      data: "&id=" + gt+"&title=" + t+ "&start=" + dta+ "&end=" + dtb + "&description=" + desc,
+                      type: "POST",
+                      error: function(json){ alert('Error'); },
+                      success: function(json) { alert('Added Successfully'); }
+                            });
+                     
+                      calendar.fullCalendar('renderEvent',
+                                            {
+                                                id: gt,
+                                                title: t,
+                                                description: desc,
+                                                start: new Date(sy, sm ,sd,sh,smin),
+                                                end: new Date(ey, em ,eday,eh,emin),
+                                                allDay: true
+                                            },
+                                                  true // make the event "stick"
+                                            );
+                      
+                      }
+                      });
+                   
+                   
+                   
+               
+    function retyear(t){
+                   var t0=t.split(" ");
+                   var t1=t0[0].split("/");
+                   return t1[0];
+                   }
+    function retmonth(t){
+                   var t0=t.split(" ");
+                   var t1=t0[0].split("/");
+                   return t1[1];
+                   }
+    function retday(t){
+                   var t0=t.split(" ");
+                   var t1=t0[0].split("/");
+                   return t1[2];
+                   }  
+    function rethour(t){
+                   var t0=t.split(" ");
+                   var t1=t0[1].split(":");
+                   return t1[0];
+                   }
+    function retminute(t){
+                   var t0=t.split(" ");
+                   var t1=t0[1].split(":");
+                   return t1[1];
+                   }
+                   
+    function geteventinfo(event){
+                   
+                   $(".eventinfo").remove();
+                   //alert(event.description);
+                   
+                   var l1=(event.start.getMinutes()<10?'0':'') + event.start.getMinutes();
+                   var l2=(event.end.getMinutes()<10?'0':'') + event.end.getMinutes();
+                   
+                   var y1=event.start.getFullYear().toString().substring(2);
+                   var y2=event.end.getFullYear().toString().substring(2);
+                   
+                   var s=y1+"/"+mname[event.start.getMonth()]+"/"+event.start.getDate()+" "+event.start.getHours()+":"+l1;
+                   var e=y2+"/"+mname[event.end.getMonth()]+"/"+event.end.getDate()+" "+event.end.getHours()+":"+l2;
+                   
+                   var tg=event.id.split(" ");
+                   var tag="";
+                   if(tg[0]==""){tag="No tag";}else{tag=tg[0];}
+                   
+                   var ds="";
+                   ds=event.description;
+                   if(ds.split(" ").join("")==""){ds="none";}
+                   /*
+                    This part is for you to echo two variable arrays for the linqs
+                    one array is the user profile page links
+                    another array is the the user icon path
+                    
+                    for those who is related to this event
+                    
+                    so if you sucessfully did it
+                    
+                    please do this:
+                    http://stackoverflow.com/questions/1808108/how-to-access-php-variables-in-javascript-or-jquery-rather-than-php-echo-vari
+                    
+                    use two js variable to save the php arrays
+                    
+                    and leave the rests to me, I handle the view more function and augment the other people in this event block
+                    
+                    */
+                   
+                   
+                   $( "#event-new" ).prepend( "<div class='eventinfo'><div class='ei-head'><span class='evt-editable' id='title_"+tg[1]+"'>"+event.title+"</span><a href='' class='e-close'><img src='src/exit-btn.png'></a></div><div class='e-timeinfo'><div class='stoe'><span class='evt-editable' id='start_"+tg[1]+"'>"+s+"</span> - <span class='evt-editable' id='end_"+tg[1]+"'>"+e+"</span></div></div><div class='groupcontent'><div class='gc-head'>Group<div class='wrapper'><div class='button-block'><button type='button'><i class='mark x'></i><i class='mark xx'></i></button></div></div><span class='state'>Incomplete</span></div><div class='tags'><div class='etag'><img src='src/class-pic.png'><span class='evt-editable' id='tag_"+tg[1]+"'>"+tag+"</span></div><div class='ot'>Description</div> <div class='contenttail'><span class='evt-editable' id='description_"+tg[1]+"'>"+ds+"</span></div> </div></div><div class='eventtail'><button class='editevt'>Edit</button><button class='rmvevt' id='"+tg[1]+"'>Remove</button><span class='originalid'>"+event.id+"</span></div><div class='editor'><span class='editor-name'>test</span><a href='' onclick='return false;'><img src='src/exit-btn.png' class='editorcancel'></a><input class='editorinput nevt-input' type='text'><button class='editorok'>OK</button></div></div>" );
+                   
+                   /*<div class='contenttail'><a href=''><img src='src/jake.png'></a><div class='ct-viewmore'><a href=''>View More ></a></div></div>*/
+                   }
+                   
+                   $(document).delegate(".e-close","click",function(){
+                                        $(this).closest(".eventinfo").remove();
+                                        $(".fc-event").css("background-color","transparent");
+                                        return false;
+                                        });
+                   
+                   $(document).delegate(".fc-day","mouseover",function(){
+                                        if(!$(this).hasClass("fc-header-left")){
+                                        if(!$(this).hasClass("fc-state-highlight")){
+                                        $(this).css("background-color","#f3f3f3");
+                                        }}
+                                        });
+                   
+                   $(document).delegate(".fc-day","mouseout",function(){
+                                        if(!$(this).hasClass("fc-header-left")){
+                                        if(!$(this).hasClass("fc-state-highlight")){
+                                        $(this).css("background-color","transparent");
+                                        }}
+                                        });
+                   
+                   
+                   /*remove button click*/
+                   $(document).delegate(".rmvevt","click",function(){
+                                        del = confirm("Do you want to remove the event?"); 
+                                        if(del){
+                                        
+                                        var tid=$(this).attr("id");
+                                        var h= $("#tag_"+tid).text();
+                                        if(h=="No tag"){
+                                        h="";
+                                        }
+                                        tid=h+" "+tid;
+                                        //alert(tid);
+                                        $('#calendar').fullCalendar('removeEvents', tid);
+                                        $(this).closest(".eventinfo").remove();
+                                        
+                                        /*
+                                         ajax goes here
+                                         
+                                         var tid is the event id I used*/
+                                         
+                                         $.ajax({
+                                         type: "POST",
+                                         url: "http://localhost/calendar_0118/fullcalendar/user/delete_events.php",
+                                         data: "&id=" + tid,
+                                         success: function(json){
+                                             alert("Event removed successfully.");
+                                         }
+                                         
+                                         });
+                                         
+                                         
+                                         
+                                        
+                                        }
+                                        });
+                   
+                   
+                   $(document).click(function(e){
+                                     if($(e.target).is("td")){hacktime();}
+                                     if($(e.target).is("a")){hacktime();}
+                                     
+                                     if($(e.target).is(".datepickinput"))return;
+                                     if($(target).parents('.datepicker').length > 0) return;
+                                     $(".datepicker").hide();
+                                     
+                                     });
+                   
+                   
+                   $(document).delegate(".editevt","click",function(){
+                                        var prt=$(this).closest(".eventinfo");
+                                        prt.find(".evt-editable").addClass("evt-ready-edit");
+                                        
+                                        $(this).removeClass("editevt");
+                                        $(this).addClass("doneedit");
+                                        $(this).text("Done Edit");
+                                        
+
+                                        });
+                   
+                   $(document).delegate(".evt-ready-edit","click",function(){
+                                        
+                                        
+                                        var idx= $(this).attr("id");
+                                        var idinfo=idx.split("_");
+                                        var whattoedit=idinfo[0];
+                                        var whichtoedit=idinfo[1];
+                                        
+                                        var editor=$(this).closest(".eventinfo").find(".editor");
+                                        
+                                        editor.find(".editor-name").text("new "+whattoedit+":");
+                                        
+                                        
+                                        editor.find(".editorok").attr("id",idinfo.join("-"));
+                                        
+                                        if((whattoedit=="start")||(whattoedit=="end")){
+                                        var tedt="20"+$(this).text();
+                                        editor.find(".editorinput").addClass("datepickinput");
+                                        editor.find(".editorinput").val(tedt);
+                                        
+                                        
+                                        
+                                        
+                                        }else{
+                                        
+                                        if((whattoedit=="title")||(whattoedit=="description")){
+                                        var tedt=$(this).text();
+                                        editor.find(".editorinput").removeClass("datepickinput");
+                                        editor.find(".editorinput").val(tedt);
+                                        }
+                                        
+                                        
+                                        
+                                        }
+                                        
+                                        //moveout animation
+                                        if((whattoedit=="start")||(whattoedit=="end")||(whattoedit=="title")){
+                                        $(".editor").parent().css({position: 'relative'});
+                                        $(".editor").css({top: 5, position:'absolute'});
+                                        $(".editor").show();        
+                                        }else{
+                                        /*
+                                        $(".editor").parent().css({position: 'relative'});
+                                        $(".editor").css({top: 77, position:'absolute'});
+                                        $(".editor").show();
+                                         */
+                                        if(whattoedit=="tag"){
+                                        var tagstring= "<div class='edittag'><a href='' class='edtdropdown whitehref '><div>None</div></a><a href='' class='edtdropdown whitehref'><div>Neurochemistry</div></a><a href='' class='edtdropdown whitehref'><div>Microeconomics</div></a><a href='' class='edtdropdown whitehref'><div>American History</div></a><a href='' class='edtdropdown whitehref'><div>UR Enterprenuers</div></a><a href='' class='edtdropdown whitehref'><div class='edtg-last'>Club Soccer</div></a></div>";
+                                        
+                                        $( ".tags" ).append(tagstring);
+                                        $(".etag").css({"border-top-left-radius":"0px","border-bottom-left-radius":"0px"});
+                                        }
+                                        
+                                        if(whattoedit=="description"){
+                                        $(".editor").parent().css({position: 'relative'});
+                                        $(".editor").css({top: 145, position:'absolute'});
+                                        $(".editor").show();  
+                                        }
+                                        
+                                        }
+    
+                                        });
+                   
+                   $(document).delegate(".edtdropdown","click",function(){
+                                        var t= $(this).text().split(" ").join("").toLowerCase();
+                                        if(t=="none"){t="No tag";}
+                                        var etag=$(this).closest(".eventinfo").find(".etag");
+                                        etag.find("span").text(t);
+                                        
+                                        
+                                        $(".edittag").remove();
+                                        $(".etag").css({"border-top-left-radius":"4px","border-bottom-left-radius":"4px"});
+                                        return false;
+                                        });
+                   
+                   $(document).delegate(".editorok","click",function(){
+                                        
+                                        var idx= $(this).attr("id");
+                                        var idinfo=idx.split("-");
+                                        var whattoedit=idinfo[0];
+                                        var changed= $(this).closest(".editor").find(".editorinput").val();
+                                        
+                                        if((whattoedit=="start")||(whattoedit=="end")){
+                                            changed=changed.substring(2);
+                                        }
+                                        
+                                        if((whattoedit=="title")&&(changed.split(" ").join("")==""))
+                                        {
+                                        changed="notitle";
+                                        }
+                                        
+                                        var idd= idinfo.join("_");
+                                        
+                                        $(this).closest(".eventinfo").find("#"+idd).text(changed);
+                                    
+                                        $(".editor").hide();
+                                
+                                        });
+                   
+                   
+                   $(document).delegate(".editorcancel","click",function(){
+                                        //movein animation
+                                        
+                                        
+                                        $(".editor").hide();
+                                        
+                                        return false;
+                                        
+                                        });
+                   
+                   $(document).delegate(".doneedit","click",function(){
+                                        $(".edittag").remove();
+                                        $(".editor").hide();
+                                        
+                                        var prt=$(this).closest(".eventinfo");
+                                        
+                                        
+                                        var eid=prt.find(".rmvevt").attr("id");
+                                        
+                                        var tid=prt.find(".originalid").text();
+                                        
+                                        
+                                        var spantitle="#title_"+eid;
+                                        var spanstart="#start_"+eid;
+                                        var spanend="#end_"+eid;
+                                        var spantag="#tag_"+eid;
+                                        var spandesc="#description_"+eid;
+                                        
+                                        
+                                        
+                                        var t= $(spantitle).text();
+                                        var desc=$(spandesc).text(); 
+                                        
+                                        var st= "20"+$(spanstart).text();
+                                        var ed= "20"+$(spanend).text();
+                                        
+                                        var sy=retyear(st);
+                                        var sm=retmonth(st);
+                                        sm= parseInt(sm)-1;
+                                        var sd=retday(st);
+                                        
+                                        var sh=rethour(st);
+                                        var smin=retminute(st);
+                                        
+                                        var ey=retyear(ed);
+                                        var em=retmonth(ed);
+                                        em= parseInt(em)-1;
+                                        var eday=retday(ed);
+                                        
+                                        var eh=rethour(ed);
+                                        var emin=retminute(ed);
+                                        var gt="";
+                                        var gt= $(spantag).text();
+                                        
+                                        gt=gt.split(' ').join('').toLowerCase();
+                                        if(gt=="notag"){
+                                        gt="";
+                                        }
+                                        
+                                        var m= jQuery.inArray( $("#currentmonthview").text(), mname );
+                                        
+                                        
+                                        var idstring= sy+""+sm+""+sd+""+sh+""+smin+""+ey+""+em+""+eday+""+eh+""+emin+""+gt+""+t+""+desc;
+                                        idstring=idstring.split(' ').join('').toLowerCase();
+                                        idstring=md5(idstring);
+                                        
+                                        gt=gt+" "+idstring;
+                                        
+                                        
+                                        var dta=new Date(sy, sm ,sd,sh,smin,0);
+                                        var dtb=new Date(ey, em ,eday,eh,emin,0);
+                                        
+                                        if(dtb<=dta){alert("end time cannot smaller than start time");return false;}
+                                        
+                                        dta = dta.getFullYear() + '-' +
+                                                ('00' + (dta.getMonth()+1)).slice(-2) + '-' +
+                                                ('00' + dta.getDate()).slice(-2) + ' ' + 
+                                                ('00' + dta.getHours()).slice(-2) + ':' + 
+                                                ('00' + dta.getMinutes()).slice(-2) + ':' + 
+                                                ('00' + dta.getSeconds()).slice(-2);
+                                        
+                                        dtb = dtb.getFullYear() + '-' +
+                                                ('00' + (dtb.getMonth()+1)).slice(-2) + '-' +
+                                                ('00' + dtb.getDate()).slice(-2) + ' ' + 
+                                                ('00' + dtb.getHours()).slice(-2) + ':' + 
+                                                ('00' + dtb.getMinutes()).slice(-2) + ':' + 
+                                                ('00' + dtb.getSeconds()).slice(-2);
+                                        if(t){
+                                        
+                                        $('#calendar').fullCalendar('removeEvents', tid);
+                                        prt.find(".evt-editable").removeClass("evt-ready-edit");
+                                        
+                                        $(this).removeClass("doneedit");
+                                        $(this).addClass("editevt");
+                                        $(this).text("Edit");
+                                        
+                                                                                
+                                        calendar.fullCalendar('renderEvent',
+                                                              {
+                                                              id: gt,
+                                                              title: t,
+                                                              description: desc,
+                                                              start: new Date(sy, sm ,sd,sh,smin,0),
+                                                              end: new Date(ey, em ,eday,eh,emin,0),
+                                                              allDay: true
+                                                              },
+                                                              true // make the event "stick"
+                                                              );
+                                        
+                                        
+                                        
+                                        
+                    //update the current eventinfo with new id
+                                        $(spantitle).attr("id","title_"+idstring);
+                                        $(spanstart).attr("id","start_"+idstring);
+                                        $(spanend).attr("id","end_"+idstring);
+                                        $(spantag).attr("id","tag_"+idstring);
+                                        $(".rmvevt").attr("id",idstring);
+                                        $(".originalid").text(gt);
+                                        
+                                        /* 
+                                         ajax goes here for edit
+                                         
+                                         var gt is the new id
+                                         var tid is the old id
+                                         vat t is the new title
+                                         var dta is the new start time
+                                         var dtb is the new end time
+                                         
+                                         so it should goes like this: use old id to locate the event in database, then mutate it with new vars, don't forget to repalce the old id with new id
+                                         */
+                                         $.ajax({
+                                         type: "POST",
+                                         url: "http://localhost/calendar_0118/fullcalendar/user/update_events.php",
+                                         data: "&oldid="+ tid +"&newid=" + gt + "&title="+ t + "&start="+ dta + "&end="+ dtb +"&description="+ desc,
+                                         success: function(json){
+                                             alert(json);
+                                             
+                                         },
+                                         error: function(json){
+                                             alert(json);
+                                         }
+                                         });
+                                         
+                                         
+                                        
+                                        
+                                        }
+                                        
+                                        
+                                        });
+                   
+                   
+                   $(".gt-hover").mouseover(function(){
+                                            
+                                            $("#gt-head").css("border-bottom","1px solid white");
+                                            $(".gtdropdown").show();
+                                            });
+                   $(".gt-hover").mouseout(function(){
+                                           $("#gt-head").css("border-bottom","none");
+                                           $(".gtdropdown").hide();
+                                           });
+                   
+                   $(document).delegate(".gtdropdown","click",function(){
+                                        var a= $(this).text();
+                                        $("#gt-head").text(a);
+                                        if(a.toLowerCase()=="none"){a="";}
+                                        $("#nevt-grouptag").attr("title",a);
+                                        return false;
+                                        });
+                   
+                  
+                  $(document).delegate(".datepickinput","focus",function(){
+                                       
+                                       $(this).appendDtpicker({
+                                                                    "closeOnSelected": true,
+                                                                    "minuteInterval": 15,
+                                                                    "dateFormat": "YYYY/MM/DD h:m",
+                                                                    "calendarMouseScroll": false
+                                        });
+                                       
+                                       hacktime();
+                                       
+                                       
+                                       });
+                   
+                   
+                    
+                   
+                   function hacktime(){
+                   $(".timelist_item").each(function( index ) {
+                                        var str= $(this).text();
+                                        var st=str.split(":");
+                            if(st[1].length<=2){
+                                    if(st[0]=="00"){$(this).text("12:"+st[1]+" AM");}
+                                    if(st[0]=="01"){$(this).text("01:"+st[1]+" AM");}
+                                    if(st[0]=="02"){$(this).text("02:"+st[1]+" AM");}
+                                    if(st[0]=="03"){$(this).text("03:"+st[1]+" AM");}
+                                              if(st[0]=="04"){$(this).text("04:"+st[1]+" AM");}
+                                              if(st[0]=="05"){$(this).text("05:"+st[1]+" AM");}
+                                              if(st[0]=="06"){$(this).text("06:"+st[1]+" AM");}
+                                              if(st[0]=="07"){$(this).text("07:"+st[1]+" AM");}
+                                              if(st[0]=="08"){$(this).text("08:"+st[1]+" AM");}
+                                              if(st[0]=="09"){$(this).text("09:"+st[1]+" AM");}
+                                              if(st[0]=="10"){$(this).text("10:"+st[1]+" AM");}
+                                              if(st[0]=="11"){$(this).text("11:"+st[1]+" AM");}
+                                              
+                                              
+                                              if(st[0]=="12"){$(this).text("12:"+st[1]+" PM");}
+                                              if(st[0]=="13"){$(this).text("01:"+st[1]+" PM");}
+                                              if(st[0]=="14"){$(this).text("02:"+st[1]+" PM");}
+                                              if(st[0]=="15"){$(this).text("03:"+st[1]+" PM");}
+                                              if(st[0]=="16"){$(this).text("04:"+st[1]+" PM");}
+                                              if(st[0]=="17"){$(this).text("05:"+st[1]+" PM");}
+                                              if(st[0]=="18"){$(this).text("06:"+st[1]+" PM");}
+                                              if(st[0]=="19"){$(this).text("07:"+st[1]+" PM");}
+                                              if(st[0]=="20"){$(this).text("08:"+st[1]+" PM");}
+                                              if(st[0]=="21"){$(this).text("09:"+st[1]+" PM");}
+                                              if(st[0]=="22"){$(this).text("10:"+st[1]+" PM");}
+                                              if(st[0]=="23"){$(this).text("11:"+st[1]+" PM");}   
+                            }
+                                              
+                                  });
+                   }
+                   
+ });
+    
+
+
+</script>
+
+</head>
+<body>
+    
+<section id="banner">
+        <div id="logo"><img src="src/logo.png" ></div>
+            <div id="cicon"><a href="" class="whitehref"><img src="src/calendar-icon.png" > <span>Calendar</span></a></div>
+            
+            <div id="searchwrap">
+                <a href=""><img src="src/small-pic.png" id="uicon"></a>
+                <input type="text" id="search" placeholder="Search for courses, clubs, people"><a href=""><img src="src/search.png" id="sicon"></a>
+                <a href=""><img src="src/settings-icon.png" id="ticon"></a>
+                </div>
+</section>  
+    
+<section id="banner-bottom">
+<a href=""><div id="goback"><img src="src/back.png"></div></a>
+    
+            <!--The stuff inside dropdown is all clubs and course students in, you need to echo those html, as you can see except the head and tail column are slightly different, all other column is the same-->
+<div id="dropdown">
+    <a href="" class="bluehref dd-hover" onclick="return false;"><div id="d-head">&#9662; Your Calendars</div></a>
+    <a href="" class="dropdown whitehref dd-hover"><div id="d-0">All Calendars</div></a>
+    <a href="" class="dropdown whitehref dd-hover"><div id="d-1">Neurochemistry</div></a>
+    <a href="" class="dropdown whitehref dd-hover"><div id="d-2">Microeconomics</div></a>
+    <a href="" class="dropdown whitehref dd-hover"><div id="d-3">American History</div></a>
+    <a href="" class="dropdown whitehref dd-hover"><div id="d-4">UR Enterprenuers</div></a>
+    <a href="" class="dropdown whitehref dd-hover"><div id="d-5" class="d-last">Club Soccer</div></a>
+    
+    <img src="src/right-arrow.png" id="rightarrow">
+    <div id="currentselection"></div>
+</div>
+    
+</section>
+    
+<div id='calendar'>
+
+<div id="calendar-end"></div>
+    
+    
+    
+<div id="event-new">
+    
+    
+    
+    <div id="button-border">
+    <button id="newevent-button">Create an Event +</button>
+    </div>
+    
+    <div id="create-form">
+        <div class="cf-head">Create an Event<a href="" id="c-close"><img src="src/exit-btn.png"></a></div>
+        <input type="text" id="nevt-title" placeholder="Name your event" class="nevt-input">
+            
+            <textarea id="nevt-desc" placeholder="Event Description" class="nevt-input"></textarea>
+            <span id="sttext">Start:</span><input type="text" id="nevt-st" placeholder="Start time" class="nevt-input datepickinput">
+                <span id="edtext">End:</span><input type="text" id="nevt-ed" placeholder="End time" class="nevt-input datepickinput">
+        
+        <!--The stuff inside nevt-grouptag is all clubs and course students in, you need to echo those html, as you can see except the head and tail column are slightly different, all other column is the same-->
+        <div id="nevt-grouptag" title="">
+            <a href="" class="bluehref gt-hover" onclick="return false;"><div id="gt-head">&#9662; Group Tag</div></a>
+            <a href="" class="gtdropdown whitehref gt-hover"><div id="d-0">None</div></a>
+            <a href="" class="gtdropdown whitehref gt-hover"><div id="d-1">Neurochemistry</div></a>
+            <a href="" class="gtdropdown whitehref gt-hover"><div id="d-2">Microeconomics</div></a>
+            <a href="" class="gtdropdown whitehref gt-hover"><div id="d-3">American History</div></a>
+            <a href="" class="gtdropdown whitehref gt-hover"><div id="d-4">UR Enterprenuers</div></a>
+            <a href="" class="gtdropdown whitehref gt-hover"><div id="d-5" class="gt-last">Club Soccer</div></a>
+        </div>
+        
+                    
+        <button id="nevent-button">Create Event</button>
+        
+        <div id="tip">
+            <img src="src/tip-head.png">
+            <div id="tipcontent">Use your syllabus to make calendar events on Urlinq so you never miss an assignment again</div>
+        </div>
+    </div>
+     
+</div>
+    
+</div>
+    
+</body>
+</html>

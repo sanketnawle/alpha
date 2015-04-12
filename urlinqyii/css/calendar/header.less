@@ -1,0 +1,193 @@
+﻿@import "import/common.less";
+
+.body {
+    .grid-column {
+        width: @hundred-percent / 7;
+        padding-right: 3px;
+        text-align: right;
+        float: left;
+        font-family: Avenir;
+        text-transform: uppercase;
+        font-size: 12.8px;
+
+        &:first-child, &:last-child {
+            color: #999;
+        }
+    }
+
+    .header.row1 {
+        overflow: hidden;
+        @right-width: 125px;
+        height: @header-1-height;
+        margin-top: 5px;
+        position: absolute;
+        top: -41px;
+        left: 15px;
+        z-index: 20;
+
+        & > .left {
+            height: @hundred-percent;
+
+            & > * {
+                float: left;
+                margin-right: 6px;
+                font-size: 19px;
+                .font-avenir();
+            }
+
+            .month {
+                color: #575757;
+                line-height: 28px;
+            }
+
+            .year {                
+                line-height: 28px;
+            }
+
+            .today {
+                padding: @ideal-padding;
+                font-size: @ideal-font-size;
+                font-weight: 500;
+                border-radius:4px;
+                color: #777;
+                border: 1px solid #eee;
+                border-bottom-color: #E4E4E4;
+                background-color: #fcfcfc;
+                background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);
+                background-image: linear-gradient(#fafafa, #f8f8f8); 
+
+                &:hover,&:focus {
+                    background-color: #eee; 
+                    text-decoration:none!important; 
+                }
+                &:active{
+                    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+                    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+                    background: #EEE;
+                    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+                }
+            }
+
+            .sep {
+                height: 20px;
+                width: 1px;
+                background-color: @border-color;
+                margin-top: 5px;
+            }
+
+            .arrow {
+                background-image: url(../../assets/calendar_page_assets.png);
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                margin-top: 6px;
+
+                &.right {
+                    background-position: 0 113px;
+                    padding-left: 12px;
+
+                    &:hover {
+                        background-position: 0 129px;
+                    }
+                }
+
+                &.left {
+                    margin-left: 6px;
+                    background-position: 0 80px;
+
+                    &:hover {
+                        background-position: 0 96px;
+                    }
+                }
+            }
+        }
+    }
+
+    .header.row2 {
+        height: @header-2-height;
+        font-size: @ideal-font-size;
+        padding-top: @header-2-height - 17;
+    }
+
+    .grid-view {
+        .absolute(@header-2-height+5, 0, 0, 15px);
+        font-size: @ideal-grid-font-size;
+
+        .grid {
+            border: 1px solid #ddd;
+            border-width: 0 1px 0 0;
+
+            .grid-item {
+                width: @hundred-percent / 7;
+                float: left;
+                position: relative;
+                border: solid #ddd;
+                border-width: 1px 0 0 1px;
+                background-color: #FFF;
+
+                &:nth-of-type(7n), &:nth-of-type(7n + 1), &:nth-of-type(1) {
+                }
+
+                .grid-event {
+                    color: #000;
+                    margin-top: 2px;
+                    margin-left: -1px;
+                    padding-left: 3px;
+                    position: absolute;
+                    background-color: #FDFDFD;
+                    width: @hundred-percent + 1;
+                    font-size: @ideal-font-size - 2;
+                    box-shadow: 0 0 3px #DDD;
+                    cursor: default;
+                    .transition(all .3s);
+
+                    &:hover {
+                        background-color: #EEE;
+                    }
+
+                    &.fade {
+                        opacity: 0.15;
+                    }
+
+                    .line {
+                        .absolute(3px, auto, 3px);
+                        width: 2px;
+                        border-radius: 2px;
+                        margin-right: 3px;
+                        .color-schemes();
+                    }
+
+                    .time {
+                        margin-left: 5px;
+                        margin-right: 3px;
+                        font-weight: 600;
+
+                        &:not(.short) {
+                            font-size: @ideal-grid-font-size;
+                        }
+
+                        &.short {
+                            float: left;
+                            padding: 2px 0;
+                        }
+                    }
+
+                    .title {
+                        margin-left: 5px;
+                        padding: 2px 0;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        color: #444;
+                    }
+                }
+            }
+        }
+    }
+
+    &.day, &.semester {
+        .header .row1 .right .print {
+            display: none;
+        }
+    }
+}

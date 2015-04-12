@@ -1,0 +1,607 @@
+div.about_tab_header{
+    background: #FFF; 
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); 
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07); 
+    border-radius: 5px;
+    min-height: 357px;
+    max-height: 500px;
+    padding-bottom:16px;
+}
+
+div.about_tab_header_content{
+margin-top: 0px;
+}
+
+body.body_class div.about_tab_header{
+      min-height: 106px;
+}
+
+
+.about_header_sentence{ 
+
+    border-radius: 5px 5px 0 0;
+    
+
+    margin: 0 10px;
+    position: relative;
+    
+
+    width: 100%;
+    
+
+    height: 60px;
+}
+
+.about_header_sentence.no_underline{
+    height: auto;
+    
+    width: 99%;
+    border-bottom: none;
+}
+
+.no_underline .about_box_headers{
+    position:absolute;
+    top: -45px;
+    left: 1px;
+    color: #333;
+    text-transform: capitalize;
+    z-index: 10000;
+    font-size: 19px;
+    height: 30px;
+    padding-top: 1px;
+    font-weight: 500;  
+    font-size: 17px; -webkit-font-smoothing: antialiased; 
+    line-height: 48px;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 500; 
+    color: #333;
+    font-family: Avenir;
+}
+
+.no_underline.non_member .about_box_headers{
+top: -27px;
+display: none;
+}
+
+div.group_info_divider{ margin: 1.5rem 0; 
+    line-height: 1.2rem; font-size: 1rem; 
+    color: #555459; font-weight: 900; text-align: center; cursor: default; 
+   
+    display: block; position: relative;
+
+    height: 18px;
+    padding-bottom: 9px; margin-bottom: 14px;
+ margin-top: 10px; padding-top: 12px; margin: 0 auto; margin-left: 10px;}
+
+hr.separator{
+
+}
+
+div.group_info_divider_label{ 
+    font-weight: 400;
+    padding: 2px .15rem; 
+    letter-spacing: .5px;
+    display: inline-block; margin: 0 auto; 
+    font-size: 11.5px;
+    position: relative;
+
+    text-transform: uppercase;
+    color: #999;
+    font-family: 'Open Sans', sans-serif;
+    background: #FFF;
+    -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale; font-weight: 500; color: #333; font-family: Avenir;
+}
+
+.group_info_divider_label {}
+
+p#edit_club_description{
+
+}
+
+span.edit_icon{
+    position: absolute;
+
+    top: -10px;
+}
+
+div.group_info_data{
+    background: #FFF;
+
+    border-radius: 5px;  
+    padding: 2px;
+    margin: 0 auto;
+    width: 97%;   ;;
+    /* -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); */  
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); 
+    /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); */ 
+    /* border-bottom: 1px solid rgba(219, 219, 219, 0.49); */ 
+    /* border-right: 1px solid rgba(226, 226, 226, 0.31); */ 
+    /* border-left: 1px solid rgba(226, 226, 226, 0.3); */ position: relative; border-radius: 0 0 2px 2px; 
+    /* border-top: 1px solid rgba(215, 215, 215, 0.29); */
+    padding: 4px 3px;
+}
+
+div.group_info_divider.half_divider{
+    width: calc(99% - 140px);
+
+    display: inline-block;
+    height: 11px;
+    margin: 0 auto;
+    position: relative;
+    float: right;
+    right: -11px;
+    min-height: 27px;
+}
+
+
+div.group_info_data.open_look{
+    background: none;
+
+    -moz-box-shadow: none;    
+    position: relative;  
+    border-radius: 5px;
+    padding: 5px 7px;
+    border: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
+
+div.group_info_data.half_data{
+    width: 68%;
+    
+    display: block;
+    font-size: 14.5px;
+    padding-bottom: 4px;
+    padding-top: 0;
+    margin: 0 auto;
+    position: relative;
+    color: #121212;   font-weight: 500;
+    text-indent: 10px;
+    /* float: right; */
+    text-align: left;
+    padding-left: 72px;
+    margin-top: 10px;
+}
+
+.about_header_sentence > p{
+    margin: 0;
+
+    line-height: 40px;
+    font-size: 11.5px;
+    font-family: Avenir;
+    padding-left: 10px;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    position: relative;      
+    border-bottom: 1px solid #e2e2e2;   font-weight: 500;   font-size: 16.5px;   margin: 0 10px;   color: #444;   
+    padding: 14px 0px 2px;   -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;
+}
+
+
+p.about_box_headers{
+font-weight: 500;
+font-family: Avenir;
+float: left;
+font-size: 15px;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+display: inline-block;
+}
+
+div.admin_text_data_box{
+
+}
+
+div.admin_text_data_box div.admin_name{
+    
+}
+
+.floatRight{
+    float:right;
+}
+
+.about_header_body{
+    padding: 12px 10px 0px 10px;
+}
+
+
+.floatRight > div.join_button{
+    height: 34px; color: #fff; 
+    padding-left: 6px; 
+    margin-top: -1px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 4px; 
+    z-index: 100000000;
+    width: 110px; 
+    font-size: 11.2px;
+    cursor:pointer;
+    text-transform: capitalize;
+    margin-right: 16px;
+    font-weight: bold; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    padding-right: 3px;          
+    border: 1px solid #E7E7E7; 
+    border-bottom-color: #E0E0E0; background-color: #fcfcfc; background-image: -webkit-linear-gradient(#fafafa, #f8f8f8); background-image: linear-gradient(#fafafa, #f8f8f8); 
+    color: #444!important;
+    box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+    font-size: 12px;   font-weight: 600;   -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;   color: #333;
+}
+
+div.class_description_holder{
+    font-size: 13px;
+    top: -7px;
+    color: #121212;
+    font-weight: 500;
+    margin: 0 10px;
+    max-height: 326px;
+    position: relative;
+    overflow-y: scroll;
+    display: block;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    margin-top: 14px;
+    border-top: 1px solid #dbdcdc;
+}
+
+
+div#group_about_box div.class_description_holder {
+    border: none;
+    height: 122px !important;
+    padding-top: 8px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+}
+
+#group_about_box .slimScrollDiv{
+    top: 3px;
+    margin-top: -8px;
+}
+
+div.panel.tab_about{
+    padding: 0 6px;
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 4px;
+}
+
+div.panel.tab_about div.tab_content_holder{
+    position: relative;
+    top: -10px;
+}
+
+div.member_info_holder{
+    padding: 14px 10px 10px 10px;
+
+}
+
+div.admin_photo{
+    width: 180px;
+    background-size: cover;
+    height: 150px;
+    background-repeat: no-repeat;
+    border-radius: 2.5px;
+     -webkit-transition: opacity .25s ease-in; /* For Safari 3.1 to 6.0 */
+    transition: opacity .25s ease-in;  
+    cursor:pointer;
+}
+
+div.admin_photo:hover{
+    opacity:.77;
+}
+
+span.red_time_icon{
+    border-radius: 2px; 
+    margin-top: 2px; 
+    margin-left: 5px; height: 24px; 
+    width: 23px; background-image: url(../../assets/small_icons.png); 
+    background-position: -20px -677px;
+    background-color: #F04054;
+    display: inline-block;
+
+}
+
+h4.course_credits span.time_val{
+    font-size: 13.5px; font-weight: 500; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
+    color: #333;
+
+    padding: 0px 1px 0px 8px;
+    position: relative;
+    top: -6px;
+}
+
+h4.course_credits span.time_val.two_lines{
+    text-transform: capitalize;
+    
+    display: block;
+    padding-left: 36px;
+    position: relative;
+    top: -29px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+div.join_button:hover{
+    border-color: #DAD9D9; 
+    -moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, 0.07), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); 
+    -webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, 0.07), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); 
+    box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, 0.07), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); 
+}
+
+div.join_button:active{
+-webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+-moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+background: #EEE;
+box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+}
+
+div.join_button > span{ position: relative; background-position: 0px 0px; background-size: auto; width: 8px; height: 8px; top: 0px;
+
+ margin-right: 6px; background-image: url(../../assets/gray_add_icon.png); display: inline-block;}
+
+
+div.about_header_data{
+    font-size:14.2px;
+    color:#222;
+    padding-top: 3px;
+    width: 70%;
+}
+
+div.about_header_data > p{
+
+    font-size: 14.5px;
+    text-align: right;
+    
+
+    color: #333;
+    margin: 0;
+
+    position: relative;
+    
+
+    right: 12px;
+
+    font-size: 17px;   font-weight: 500;   -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;   color: #575757;
+
+    top: 4px;
+
+}
+
+span.non_member_join_pointer{
+    background-position: -30px -47px;
+
+    /* width: 23px; */
+    /* height: 13px; */
+    position: relative;
+    top: 1px;
+    left: -4px;
+}
+
+div.about_tab_middle{
+    margin-top: 17px;
+
+}
+
+div.about_tab_middle > div{
+    display: inline-block;
+    background: #FFF; -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    border-radius: 5px;
+}
+
+div.about_tab_middle div.classic_about_box{
+    width: 100%;
+    float: right;
+    max-height: 450px;
+}
+
+div.classic_about_box .slimScrollRail{
+    background: #111111!important;
+
+    opacity: .33!important;
+}
+div.classic_about_box .slimScrollBar{
+    background: #FFF!important;
+    
+    opacity: .45!important;
+}
+
+div.about_tab_middle div.cool_members_box{
+    width: 65%;
+    display: none;
+    min-height: 450px;
+}
+
+div.cool_members_box > div > h5, div.classic_about_box > h5{
+font-family: Avenir;
+font-size: 16.5px;
+background-color: transparent;
+color: #999;
+margin-top: 0;
+margin-bottom: 0;
+position: relative;
+border-radius: 4px 4px 0px 0px;
+border-bottom: 1px solid #dbdcdc;
+font-weight: 500;
+font-size: 16.5px;
+margin: 0 10px;
+color: #444;
+padding: 14px 0px 2px;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-transform: uppercase;
+margin-bottom: 6px;
+}
+
+div.cool_members_box div.admin_about_section{
+
+}
+
+div.cool_members_box div.members_about_section{
+
+}
+
+
+#group_about_box {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    border-top-color: rgb(51, 51, 51);
+    border-top-style: none;
+    border-top-width: 0px;
+    color: rgb(51, 51, 51);
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+
+    background-color: white;
+    height: 160px;
+    margin-top: 0px;
+
+    outline-color: rgb(51, 51, 51);
+    outline-style: none;
+    outline-width: 0px;
+
+
+    width: 250px;
+    zoom: 1;
+}
+
+.group_info_divider hr{
+    position: absolute;
+    border: none;
+    width: 100%;
+    top: 23px;  
+    margin: 0;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+p#edit_club_description{
+    font-weight: 400;
+    padding: 6px .45rem;
+    letter-spacing: .5px;
+    display: inline-block;
+    border-radius: 29px;
+    margin: 0 auto;
+    font-size: 12.5px;
+    position: relative;
+    text-transform: capitalize;
+    color: #999;
+    cursor: pointer;
+    background: #fff;
+    color: #999;
+    border: 1px solid #CED0D2;
+    margin-top: -4px;
+    text-decoration: none!important;
+    line-height: 12px;
+}
+.group_textarea{
+    resize: none;
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    line-height: 17px;
+    height: 120px;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    padding: 5px 8px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+div.group_display_icon{
+    width: 119px;
+
+    margin-left: 8px;
+    display: inline-block;
+    border-radius: 1.5px;
+    float: left;
+    /* float: left; */
+    z-index: 5;
+    position: relative;
+    margin-top: 35px;     
+    position: relative;  ;
+    height: 119px;
+    border-radius: 50%;
+}
+
+a#edit_club_icon{
+    position: absolute; /* bottom: 10px; */ left: 0px; 
+    width: 120px; top: 0px; border: none; border-radius: 500px; 
+    height: 120px; background-color: rgba(18, 19, 20, 0.4); background-repeat: no-repeat; background-size: auto; display: block; 
+    background-image: url('../../assets/camera_icon.png'); 
+    background-position: 50px; opacity: 0; -moz-transition: opacity .2s linear; -webkit-transition: opacity .2s linear; transition: opacity .2s linear;
+}
+
+a#edit_club_icon:hover{
+    opacity: 1;
+
+}
+
+a#edit_club_icon:active{
+    
+}
+
+
+span.photo_edit_icon{
+    position: relative;
+
+}
+
+h4.group_name_text{
+    margin: 0;
+    
+    display: inline-block;
+    font-size: 22px;
+    height: 74px;
+    width: calc(90% - 92px);
+    color: #555;
+    font-weight: 300;
+    margin-top: 10px;
+    line-height: 63px;
+    padding-left: 17px;
+}
+
+.group_info_divider_label:hover > p{
+    opacity: 1!important;
+}
+
+.group_info_divider_label > p:hover{
+    color:#029acf;
+    text-decoration: underline;
+}
+
+p#edit_club_name{
+    top: -27px;
+position: absolute;
+text-transform: capitalize;
+left: 7px;
+color: #575757;
+    opacity: 0;
+    display: none;
+}
+
+div.design_circle_border_accent{
+    background: rgba(0, 0, 0, 0.07);
+    
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    left: 0px;
+    top: 28px;
+    border-radius: 100%;
+    z-index: 1;
+}
+
+p#edit_club_mission{
+    font-weight: 400; padding: 2px .45rem; letter-spacing: .5px; display: inline-block; 
+    text-decoration: none!important;
+    margin: 0 auto; 
+    font-size: 12.5px; position: relative; 
+    text-transform: capitalize; 
+    border-radius: 109px;
+    color: #999; 
+    cursor: pointer; 
+    margin-top: -2px;
+    border: 1px solid #CED0D2;
+}
+
+#edit_club_description span.edit_icon{
+    
+}

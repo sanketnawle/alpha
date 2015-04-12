@@ -1,0 +1,25 @@
+#input_dropdown {
+
+    width: 200px;
+    height: 400px;
+
+
+    overflow-y: scroll;
+
+    display: none;
+
+
+}
+
+
+.dropdown_item {
+    height: 40px;
+    background-color: white;
+    cursor: pointer;
+    overflow: hidden;
+
+}
+
+.dropdown_item:hover{
+    background-color: grey;
+}

@@ -1,0 +1,604 @@
+
+
+<!--<script src="{{base_url}}/js/profile/profile.js"></script>-->
+<!--<link href='{{base_url}}/css/profile/profile.css' rel='stylesheet' type='text/css'>-->
+
+<div id="profile_background_overlay">
+    <div id="profile_wrapper" data-user_id={{user_id}}>
+        <div id="profile_foreground_overlay"></div>
+        <div id="modal_header">
+
+
+            {{#if professor}}
+            <div id="modal_controls" class = "student_modal_controls_professor">
+
+                <a class="close_modal"></a>
+                <div class = "help_div dark">
+                    <div class = "wedge"></div>
+                    <div class = "box">Press Esc to close</div>
+                </div>
+            </div>
+
+
+            {{else}}
+            <div id="modal_controls" class = "student_modal_controls_student">
+
+                <a class="close_modal"></a>
+                <div class = "help_div dark">
+                    <div class = "wedge"></div>
+                    <div class = "box">Press Esc to close</div>
+                </div>                
+            </div>
+
+            {{/if}}
+
+            <div id="department_circles"></div>
+
+
+
+
+
+            <div id="showcase_wrapper">
+
+
+                <div class="showcase_controls">
+                    <div class="showcase_arrow right" href=""></div>
+                    <div class="showcase_arrow left" href=""></div>
+                </div>
+
+                <div class="showcase_items">
+
+                    {{#each showcase}}
+                    <div class="showcase_item{{center}}" showcase_index="{{index}}" file_id = {{id}}
+                         {{#if url}} style="background-image: url({{preview}})" {{/if}}>
+                        <div class="showcase_info">
+                            <div class="showcase_label" style="background-color:{{color}}">
+                                {{#if url}}
+                                <div class="showcase_url">{{link}}</div>
+                                <button type="button" onclick = "window.open('{{link}}')" class="download_showcase_button link">
+                                    <i class="link_button_icon"></i>
+                                </button>
+                                {{else}}
+                                <a href="/alpha/urlinqyii/profile/downloadShowcase/?file_id={{id}}">
+                                    <button type="button" class="download_showcase_button">
+                                        <i class="download_button_icon"></i>
+                                    </button>
+                                </a>
+                                <div class="showcase_type">.{{type}}</div>
+                                {{/if}}
+
+
+                            </div>
+                            <div class="showcase_text">
+                                {{#if ../own_profile}}
+                                    <div class="showcase_title ">
+                                        {{title}}&nbsp;
+                                        <button class="edit_showcase_button edit">
+                                        </button>
+                                    </div>
+
+                                    <input class="edit_showcase_title showcase_edit_field">
+                                    <div class="showcase_description">
+                                        {{description}}&nbsp;
+                                    </div>
+                                    <textarea class="edit_showcase_description showcase_edit_field"></textarea>
+                                    <button class="edit_showcase_button cancel">
+                                    </button>
+                                    <button class="edit_showcase_button submit">
+                                    </button>
+                                {{else}}
+                                    <div class="showcase_title ">
+                                        {{title}}
+                                    </div>
+                                    <div class="showcase_description">
+                                        {{description}}
+                                    </div>
+                                {{/if}}
+                            </div>
+
+                        </div>
+                        {{#if ../own_profile}}
+                        <div class="showcase_delete"><a></a></div>
+                        {{/if}}
+
+                    </div>
+                    {{/each}}
+                </div>
+
+                {{#if own_profile}}
+                    {{#if showcase}}
+                    <button class="add_showcase_button update_showcase_button" type="button"><span></span>Update your Showcase</button>
+                    {{else}}
+                    <div class = "add_showcase_text empty"><p>Share research, projects, or what you've been reading</p></div>
+                    <button  class="add_showcase_button empty" type="button">Add your Showcase</button>
+                    {{/if}}
+                    <div id="add_showcase_form">
+                        <form id="add_showcase">
+
+                            <h5 class = "update_showcase_header">Add your Showcase</h5>
+                            <input type="text" id="title_entry" name="title_entry" placeholder="Enter a title">
+                            <textarea id="desc_entry" name="desc_entry" placeholder="Add a description..."></textarea>
+
+                            <button type="button" id="upload_link_button" ><i></i>Upload File</button>
+                            <div id="upload_file_name"></div>
+                            <div style='height: 0px;width:0px; overflow:hidden;'>
+                                <input id="upfile" type="file" value="upload"/>
+                            </div>
+                            <div id="showcase_submit">
+                                <span id="cancel_showcase_form"></span>
+                                <input type="submit" id="create_showcase_form" value="+ Add this Showcase">
+                            </div>
+                        </form>
+                    </div>
+                {{/if}}
+               <!-- <div class="edit-showcase-form">
+                    <span>Editing this Showcase</span>
+                    <input id="showcase-name-edit" name="showcase-name" placeholder="change title">
+                    <input id="showcase-link-edit" name="showcase-link" placeholder="change description">
+                    <div class="edit-form-bottom">
+                        <span>Cancel</span>
+
+                        <div class="add-showcase-button" id="edit-from-submit">
+                            <button type="button">Done Editing</button>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+
+        </div>
+        <div id="main_bar">
+            <div id="profile_picture_wrapper">
+                <div id="profile_picture" style='background-image: url("{{profile_pic}}")'></div>
+                {{#if own_profile}}
+                <button type="button" id="change_picture_button">Change photo</button>
+                <div style="height: 0px;width:0px; overflow:hidden;">
+                    <input id="picture_upfile" type="file" value="upload"/>
+                </div>
+                <button type="button" id="edit_profile_button" class="edit_or_follow_button not_editing">Edit Profile</button>
+                {{else}}
+                    {{#if is_following}}
+                    <button type="button" id="follow_button" class="edit_or_follow_button following">
+                        <span class = "follow_icon_profile_page"></span>Following
+                    </button>
+                    {{else}}
+                    <button type="button" id="follow_button" class="edit_or_follow_button">
+                        <span class = "follow_icon_profile_page"></span>Follow
+                    </button>
+                    {{/if}}
+                {{/if}}
+                <div id="cancel_edit_button"></div>
+            </div>
+            <div id="name_info_wrapper">
+                <div id="name_info">
+                    {{#if professor}}Professor {{firstname}} {{lastname}}
+                    {{else}} 
+                         {{firstname}} {{lastname}} 
+                         {{#if year_truncated}}
+                         <span class = "class_year">'{{year_truncated}}</span>
+                         {{/if}}
+                    {{/if}}</div>
+                {{#if professor}}
+                    {{#if office_hours}}
+                        <div id="office_hours_info"><span class = "office_hours_label">Office Hours:</span> {{office_hours}}</div>
+                    {{/if}}
+                {{else}}
+                    {{#if year_name}}
+                    <div id="year_info">{{year_name}} at {{school}}</div>
+                    {{else}}
+                    <div id="year_info">{{school}}</div>
+                    {{/if}}
+                {{/if}}
+            </div>
+            <div id="profile_tab_bar">
+                <div class="profile_tab feed active" data-panel_id="1">
+                    <div class="profile_tab_content">
+
+                        <div class="profile_tab_text">Feed</div>
+                    </div>
+
+                </div>
+
+                <div class="profile_tab classes" data-panel_id="2">
+                    <div class="profile_tab_content">
+
+                        <div class="profile_tab_text">Classes <span class="profile_tab_amount">{{num_classes}}</span></div>
+                    </div>
+
+                </div>
+
+                <div class="profile_tab clubs" data-panel_id="3">
+                    <div class="profile_tab_content">
+
+                        <div class="profile_tab_text">Groups <span class="profile_tab_amount">{{num_clubs}}</span></div>
+                    </div>
+
+                </div>
+
+                <div class="profile_tab Followers" data-panel_id="4">
+                    <div class="profile_tab_content">
+
+                        <div class="profile_tab_text">Followers <span id="num_followers" class="profile_tab_amount">{{num_followers}}</span></div>
+                    </div>
+
+                </div>
+
+                <div class="profile_tab Following" data-panel_id="5">
+                    <div class="profile_tab_content">
+
+                        <div class="profile_tab_text">Following <span id="num_following" class="profile_tab_amount">{{num_following}}</span></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="main_content">
+            <div id = "mock_left_bar"></div>
+            <div id = "left_info_bar">
+                <h2 id="academic_header" class="headers">Academic Information</h2>
+                <div class="info_section" id = "bio_section">
+                    <div class="info_label" id = "bio_label">
+                        Biography:
+                    </div>
+                    <div class="info_name" id="bio">{{bio}}</div>
+                    <textarea maxlength="240" type="text" class="edit_field" id="bio_input" cols="29"  rows="1" wrap="hard"></textarea>
+                </div>
+                <div class="info_section" id = "school_section">
+                    <div class="info_label" id = "school_label">
+                        School:
+                    </div>
+                    <a href="{{base_url}}/school/{{school_id}}" class="info_name" id="school_name">{{school}}</a>
+                    <select class="edit_field dropdown" id="school_dropdown"></select>
+                </div>
+
+                <div class="info_section" id = "department_section">
+                    <div class="info_label" id = "department_label" style="text-transform: capitalize;">
+                        {{department_front_end_name}}:
+                    </div>
+                    <a href="{{base_url}}/department/{{department_id}}" class="info_name" id="department_name">{{department}} {{department_tag}}</a>
+                    <select class="edit_field dropdown" id="department_dropdown"></select>
+                </div>
+
+                {{#if professor}}
+                    <div class="info_section" id = "office_section">
+                        <div class="info_label" id = "office_label">
+                            Office Location:
+                        </div>
+                        <div class="info_name" id="office_location">{{office_location}}</div>
+                        <input type="text" class="edit_field" id="office_input">
+                    </div>
+
+                    <div class="info_section" id = "hours_section">
+                        <div class="info_label" id = "hours_label">
+                            Office Hours:
+                        </div>
+                        <div class="info_name" id="office_hours">{{office_hours}}</div>
+                        <button class="add_field_button" id="add_hours_button" style="display: none;"></button>
+                        <div class="office_hours_input_group">
+                            <select class = "edit_field day_of_week">
+                                <option value="Mon">Monday</option>
+                                <option value="Tue">Tuesday</option>
+                                <option value="Wed">Wednesday</option>
+                                <option value="Thu">Thursday</option>
+                                <option value="Fri">Friday</option>
+                                <option value="Sat">Saturday</option>
+                                <option value="Sun">Sunday</option>
+                            </select>
+                            <input placeholder="Start time" class = "edit_field start_time time_input">
+                            <em class="event_time_to_arrow" style="display: none;"></em>
+                            <input placeholder="End time" class = "edit_field end_time time_input">
+
+                        </div>
+
+
+                    </div>
+                {{else}}
+                    <div class="info_section" id = "major_section">
+                        <div class="info_label inline" id = "major_label">
+                            Major:
+                        </div>
+                        <button class="add_field_button" id="add_major_button" style="display: none;"></button>
+                        {{#each majors}}
+                        <div class="info_name major">{{name}}</div>
+                        {{/each}}
+                        <div class="info_name undeclared" style="display:none">Undeclared</div>
+                        <input type="text" class="edit_field major">
+                        <!--<input type="text" class="edit_field major" placeholder="double major">
+                        <input type="text" class="edit_field major" placeholder="triple major">-->
+                    </div>
+                    <div class="info_section" id = "minor_section">
+                        <div class="info_label inline" id = "minor_label">
+                            Minor:
+                        </div>
+                        <button class="add_field_button" id="add_minor_button" style="display: none;"></button>
+                        {{#each minors}}
+                        <div class="info_name minor">{{name}}</div>
+                        {{/each}}
+                        <input type="text" class="edit_field minor">
+                        <!--<input type="text" class="edit_field minor">
+                        <button class="delete_field_button delete_minor_button"></button>
+                        <input type="text" class="edit_field minor">
+                        <button class="delete_field_button delete_minor_button"></button>-->
+                    </div>
+
+                    <div class="info_section" id = "level_section">
+                        <div class="info_label" id = "level_label">
+                            Academic Level:
+                        </div>
+                        <div class="info_name" id="level_name">{{year_name}}</div>
+                        <select class="edit_field dropdown" id="level_dropdown">
+                            <option value="Freshman">Freshman</option>
+                            <option value="Sophomore">Sophomore</option>
+                            <option value="Junior">Junior</option>
+                            <option value="Senior">Senior</option>
+                            <option value="Master">Master</option>
+                            <option value="PhD">PhD</option>
+                        </select>
+                    </div>
+                    <div class="info_section" id = "year_section">
+                        <div class="info_label" id = "year_label">
+                            Year of Graduation:
+                        </div>
+                        <div class="info_name" id="year">{{grad_year}}</div>
+                        <select class="edit_field dropdown" id="year_dropdown">
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                        </select>
+                    </div>
+                {{/if}}
+                <div class="info_section" id = "research_section">
+                    <div class="info_label inline" id = "research_label">
+                        Research Interests:
+                    </div>
+                    <button class="add_field_button" id="add_research_button" style="display: none;"></button>
+                    {{#each research}}
+                    <div class="info_name research">{{name}}</div>
+                    {{/each}}
+                    <input type="text" class="edit_field research">
+                    <!--<input type="text" class="edit_field research">
+                    <input type="text" class="edit_field research">-->
+                </div>
+
+
+                <h2 id="account_header" class="headers">Account Information</h2>
+                <div class="info_section account" id = "name_section">
+                    <div class="info_label" id = "name_label">
+                        Full Name:
+                    </div>
+                    <input type="text" class="edit_field" id="name_input">
+                </div>
+                <div class="info_section account" id = "email_section">
+                    <div class="info_label" id = "email_label">
+                        School Email:
+                    </div>
+                    <input type="text" class="edit_field" id="email_input">
+                </div>
+                <div class="info_section account" id = "gender_section">
+                    <div class="info_label" id = "gender_label">
+                        Gender:
+                    </div>
+                    <input id="radio_male" type="radio" name="gender" class="edit_field gender" value="M">Male
+                    <input id="radio_female"type="radio" name="gender" class="edit_field gender" value="F">Female
+                </div>
+            </div>
+            <div id = "tab_contents">
+                <div class="profile_panel active" id="profile_panel_1"> <!-- feed -->
+                    <div id = "profile_fbar_wrapper"></div>
+
+                    <div id = "profile_feed_wrapper">
+                        <div class='feed-tab-content'>
+                            <div class='group_feed_wrap'>
+                                <div id="profile_posts"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile_panel" id="profile_panel_2"> <!-- classes -->
+                    <input id="classes_search_bar" class="search_bar groups" placeholder="Search {{firstname}}'s classes">
+                    {{#if classes}}
+                    <div class="groups_wrapper">
+                        {{#each classes}}
+                            <div class = "group_box" data-name="{{course_name}}" data-type="class" data-id="{{class_id}}">
+                                <a class = "group_link" href="{{../base_url}}/class/{{class_id}}">
+                                    <div class = "float_Left group_image" style="background-image: url('{{class_picture}}');">
+                                    </div>
+                                </a>
+                                <div class = "group_box_main_info">
+                                    <a class = "group_link" href="{{../base_url}}/class/{{class_id}}">{{course_name}}</a>
+                                    <div class = "float_Right">
+                                        <span class = "group_type"></span>
+                                    </div>
+                                </div>
+                                <div class = "group_box_secondary_info_section">
+                                    <div class= "info_line indent">Section: {{section}}</div>
+                                    <div class= "info_line indent">Department of <a class = "department_link" href="{{department_link}}">{{department_name}}</a></div>
+                                    <div class = "info_line info_about">{{description}}</div>
+                                </div>
+
+
+
+                                <div class='ui dropdown step_6_card_r1_choice group_privacy_dropdown' style="display: none;">
+                                    <div class='text'>{{class_user.privacy}}</div>
+                                    <i class='dropdown icon'></i>
+                                    <div class='menu admin_type_menu'>
+                                        <div class='item' data-value='public'>Public</div>
+                                        <div class='item' data-value='only_me'>Only me</div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+                </div>
+
+                <div class="profile_panel" id="profile_panel_3"> <!-- clubs -->
+                    <input id="clubs_search_bar" class="search_bar groups" placeholder="Search {{firstname}}'s clubs">
+                    {{#if clubs}}
+                    <div class="groups_wrapper">
+                        {{#each clubs}}
+                        <div class = "group_box" data-name="{{club_name}}" data-type="club" data-id="{{club_id}}">
+                            <a class = "group_link" href="{{../base_url}}/club/{{club_id}}">
+                                <div class = "float_Left group_image" style="background-image: url('{{club_picture}}');">
+                                </div>
+                            </a>
+                            <div class = "group_box_main_info">
+                                <a class = "group_link" href="{{../base_url}}/club/{{club_id}}">{{club_name}}</a>
+                                <div class = "float_Right">
+                                    <span class = "group_type"></span>
+                                </div>
+                            </div>
+                            <div class = "group_box_secondary_info_section">
+                                <div class= "info_line indent"><a href="http://{{website}}">{{website}}</a></div>
+                                <div class= "info_line indent">{{member_count}} Members</div>
+                                <div class = "info_line info_about">{{description}}</div>
+                            </div>
+
+
+                            <div class='ui dropdown step_6_card_r1_choice group_privacy_dropdown' style="display: none;">
+                                <div class='text'>{{group_user.privacy}}</div>
+                                <i class='dropdown icon'></i>
+                                <div class='menu admin_type_menu'>
+                                    <div class='item' data-value='public'>Public</div>
+                                    <div class='item' data-value='only_me'>Only me</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+                </div>
+
+                <div class="profile_panel" id="profile_panel_4"> <!-- followers -->
+                    <input id="followers_search_bar" class="search_bar users" placeholder="Search {{firstname}}'s followers">
+                    {{#if followers}}
+                    <div class="user_wrapper" id="followers_list">
+                        {{#each followers}}
+                        <div class = "members_card_wrapper" data-user_id='{{user_id}}' data-name="{{user_name}}">
+                            <div class = "members_card admin normal_size">
+                                <div class = "members_card_img" data-user_id='{{user_id}}' style="background-image: url({{profile_pic}});">
+
+                                    {{#if professor}}
+                                    <span class = "title">Professor</span>
+                                    {{else}}
+                                        {{#if admin}}
+                                        <span class = "title">Administrator</span>
+                                        {{else}}
+                                        <span class = "title">Student</span>
+                                        {{/if}}
+                                    {{/if}}
+
+
+                                </div>
+                                <div class = "user_main_info">
+                                    <a class = "name profile_link" data-user_id='{{user_id}}'>{{user_name}}</a>
+                                </div>
+                                <div class = "user_more_info">
+                                    <a class = "department_link">{{user_department}}</a>
+                                </div>
+                                {{#if own_profile}}
+                                    <div class = "user_card_button_holder">
+                                        <div class = "follow_button_wrapper following_wrapper">
+                                            <div class = "user_follow_button profile own_profile">Me</div>
+                                        </div>
+                                    </div>
+                                {{else}}
+                                <div class = "user_card_button_holder">
+
+
+                                    <div class = "follow_button_wrapper following_wrapper">
+                                        {{#if is_following}}
+                                        <div class = "user_follow_button profile following">Following</div>
+                                        {{else}}
+                                        <div class = "user_follow_button profile">Follow</div>
+                                        {{/if}}
+                                        <a href="mailto:{{email}}">
+                                            <div class = "user_message_button message_active">
+                                                <em class = "white_message_icon"></em>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+
+                </div>
+                <div class="profile_panel" id="profile_panel_5"> <!-- following -->
+                    <input id="following_search_bar" class="search_bar users" placeholder="Search users {{firstname}} follows">
+                    {{#if following}}
+                    <div class="user_wrapper" id="following_list">
+                        {{#each following}}
+                        <div class = "members_card_wrapper" data-user_id='{{user_id}}' data-name="{{user_name}}">
+                            <div class = "members_card admin normal_size">
+                                <div class = "members_card_img profile_link" data-user_id='{{user_id}}' style="background-image: url({{profile_pic}});">
+
+                                    {{#if professor}}
+                                    <span class = "title">Professor</span>
+                                    {{else}}
+                                    {{#if admin}}
+                                    <span class = "title">Administrator</span>
+                                    {{else}}
+                                    <span class = "title">Student</span>
+                                    {{/if}}
+                                    {{/if}}
+
+
+                                </div>
+                                <div class = "user_main_info">
+                                    <a class = "name profile_link" data-user_id='{{user_id}}'>{{user_name}}</a>
+                                </div>
+                                <div class = "user_more_info">
+                                    <a class = "department_link">{{user_department}}</a>
+                                </div>
+                                {{#if own_profile}}
+                                <div class = "user_card_button_holder">
+                                    <div class = "follow_button_wrapper following_wrapper">
+                                        <div class = "user_follow_button profile own_profile">Me</div>
+                                    </div>
+                                </div>
+                                {{else}}
+                                <div class = "user_card_button_holder">
+
+                                    <div class = "follow_button_wrapper following_wrapper">
+                                        {{#if is_following}}
+                                        <div class = "user_follow_button profile following">Following</div>
+                                        {{else}}
+                                        <div class = "user_follow_button profile">Follow</div>
+                                        {{/if}}
+                                        <a href="mailto:{{email}}">
+                                            <div class = "user_message_button message_active">
+                                                <em class = "white_message_icon"></em>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class = "empty_gap">
+    </div>
+
+        <div id = "class_privacy_tooltip" class="help-div fbar_helpers">
+            <div class="help-box">Edit privacy</div>
+            <div class="help-wedge">
+        </div>
+</div>
+

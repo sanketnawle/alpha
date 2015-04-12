@@ -1,0 +1,115 @@
+﻿@import "import/common.less";
+
+.body {
+    @timestrip-width: 50px;
+    @hour-height: 50px;
+
+    .header.row2.week {
+        padding-left: @timestrip-width + 15;
+        margin-right: 15px;
+    }
+
+    .scroll-view {
+        .absolute(@header-2-height + 5,3px,0,0);
+        position: absolute !important;
+        height: auto !important;
+    }
+
+    .week-view {
+        overflow: auto;
+        right: 12px;
+        height: auto !important;
+        top: 0;
+
+        .time-strip {
+            float: left;
+            width: @timestrip-width;
+            background-color: #FFF;
+
+            .time {
+                text-align: right;
+                height: @hour-height;
+                font-size:11.8px;
+                font-family:Avenir;
+                padding: 0 5px;
+            }
+        }
+
+        .week-grid {
+            overflow: hidden;
+            border-left: 1px solid @border-color;
+            margin-left: @timestrip-width;
+
+            .time-line {
+                .absolute(0, 1px, auto, 6px, 200);
+                border-top: 1px solid @time-line-color;
+                margin-left: @timestrip-width + 1;
+            }
+
+            .grid-item {
+                height: @hour-height;
+            }
+
+            .grid-event {
+                z-index: 170;
+            }
+
+            .grid-item:nth-of-type(7n + 1), .body .grid-view .grid .grid-item:nth-of-type(1){
+                border-left:none;
+            }
+        }
+    }
+
+  #create_week_day_event_popup {
+
+
+    #create_week_day_event_button {
+      float: left;
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+
+      height: 35px;
+      width: 100px;
+
+      border-radius: 4px;
+      color: #FFF;
+      background: #45a8cf;
+      border: 1px solid #1d99cf;
+      box-shadow: inset 0 1px 1px #3bc0d8, inset 0 -1px 1px #49baec, 0 0 1px #fafafa, 0 0 1px #ffffff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  }
+
+
+  #inspect_event_popup_week {
+
+      #inspect_event_title {
+        width: 80%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+
+
+      #inspect_event_delete_button_week {
+        float: left;
+        width: 50px;
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+
+      }
+
+      #inspect_event_delete_button_week:hover{
+        cursor: pointer;
+      }
+
+      #inspect_event_edit_button {
+
+      }
+
+    }
+}

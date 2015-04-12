@@ -1,0 +1,186 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+
+<script src = "../js/tbcal_notification.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/tbcal_notification.css">
+
+</head>
+<body>
+	<div>
+		<div class='calnoti_window'>
+			<div class='calnoti_head'>
+				<span class = "cal_noti_see">Calendar Notifications</span>
+				<a class = "seen_all">Mark as Seen</a>
+			</div>
+			<div class='tabs'>
+				<div class = "past_events_tab tab-first tab inactive_pe_tab">
+					Complete <b class = "little-glyph complete"></b>
+				</div>
+				<div class = "past_events_tab tab inactive_pe_tab">
+					Incomplete <b class = "little-glyph incomplete"></b>
+				</div>
+			</div>
+
+			<div class='calnoti_content'>
+				<div class = "ui_scrollableWrap">
+					<div class = "ui_scrollableBody">
+						<ul class = "calnoti_list">
+							<li class = "calnoti_gen calnoti_daily calnoti_unseen">
+								<div class = "noti_anchorcontainer">
+									<div class='noti_remove'>
+										<div class='remove_icon'></div>
+										<div class = "card-tag">
+											<div class = "tag-wedge"></div>
+											<div class = "tag-box">
+												<span>Hide</span>
+											</div>									
+										</div>
+									</div>
+									<a class = "calnoti_a">
+										<div class = "calnoti_left">
+											<div class = "calnoti_daybox">
+												<div class = "daybox_month">
+													JUN
+												</div>
+												<div class = "daybox_day">
+													11
+												</div>
+											</div>
+										</div>
+										<div class = "calnoti_right">
+											<p class = "dailyhead"><span class = "day_title">Wednesday</span></p>
+											<p class = "events_today">You have 22 events in your calendar for today.</p>
+										</div>
+									</a>
+								</div>
+							</li>
+							<li class = "calnoti_gen calnoti_2hrs">
+								<div class = "noti_anchorcontainer">
+									<div class='noti_remove'>
+										<div class='remove_icon'></div>
+										<div class = "card-tag">
+											<div class = "tag-wedge"></div>
+											<div class = "tag-box">
+												<span>Hide</span>
+											</div>									
+										</div>
+									</div>									
+									<a class = "calnoti_a">
+										<div class = "calnoti_left">
+											<div class = "calnoti_upcoming">
+												<div class = "hrs_text">
+													2
+												</div>
+												<div class = "hrs_text2">
+													HOURS
+												</div>												
+											</div>
+										</div>
+										<div class = "calnoti_right">
+											<div class = "fade reminder_textwrap">
+												<p>2 Hours until your event Microeconomics Studying</p>
+											</div>
+											<div class = "event_btns">
+												<button class='smaller_btn'>
+													Complete
+												</button>
+											</div>
+										</div>
+									</a>
+								</div>
+							</li>
+							<li class = "calnoti_gen calnoti_invite">
+								<div class = "noti_anchorcontainer">
+									<div class='noti_remove'>
+										<div class='remove_icon'></div>
+										<div class = "card-tag">
+											<div class = "tag-wedge"></div>
+											<div class = "tag-box">
+												<span>Hide</span>
+											</div>									
+										</div>
+									</div>									
+									<a class = "calnoti_a">
+										<div class = "calnoti_left">
+											<div class = "calnoti_inviter">
+											
+											</div>
+										</div>
+										<div class = "calnoti_right">
+											<div class = "invite_text">
+												<p>Ross Kopelman invited you to join the event NYU Club Fair</p>
+											</div>
+											<div class = "event_btns">
+												<button title = "Add this Event to My Calendar">Add to Cal</button>
+											</div>
+										</div>
+
+									</a>
+								</div>
+							</li>	
+							<li class = "calnoti_gen calnoti_groupadd">
+								<div class = "noti_anchorcontainer">
+									<div class='noti_remove'>
+										<div class='remove_icon'></div>
+										<div class = "card-tag">
+											<div class = "tag-wedge"></div>
+											<div class = "tag-box">
+												<span>Hide</span>
+											</div>									
+										</div>
+									</div>
+									<a class = "calnoti_a">
+										<div class = "calnoti_left">
+											<div class = "calnoti_group">
+											
+											</div>
+										</div>
+										<div class = "calnoti_right">
+										</div>
+									</a>
+								</div>
+							</li>
+							<li class = "calnoti_gen calnoti_exam">
+								<div class = "noti_anchorcontainer">
+									<div class='noti_remove'>
+										<div class='remove_icon'></div>
+										<div class = "card-tag">
+											<div class = "tag-wedge"></div>
+											<div class = "tag-box">
+												<span>Hide</span>
+											</div>									
+										</div>
+									</div>									
+									<a class = "calnoti_a">
+										<div class = "calnoti_left">
+											<div class = "calnoti_exam">
+												<div class = "calnoti_exam_text">
+													Exam
+												</div>
+											</div>
+										</div>
+										<div class = "calnoti_right">
+										</div>
+									</a>
+								</div>
+							</li>																											
+						</ul>
+					</div>
+				</div>
+
+			</div>
+			<div class = "calnoti_footer">
+				<a>
+					<span>See Calendar</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</body>
+
+
+</html>
