@@ -147,9 +147,9 @@ div.header form#login {
 
 button#mobile-login-btn {
   display:block;
-  background: rgba(255, 255, 255, 0.81);
-  color: #029acf!important;
-  border: 1px solid #029acf;
+  background: rgba(255, 255, 255, 0.58);
+  color: #777!important;
+  border: none;
 }
 
 button#mobile-login-btn:hover{
@@ -538,7 +538,7 @@ ul.color-border li:nth-child(5)
 }
 
 .mobile-background-color{
-    background: rgba(2, 154, 207, 0.41);
+    background: rgba(9, 10, 10, 0.11);
   
     z-index: 1;
     height: 60rem;   width: 100%;

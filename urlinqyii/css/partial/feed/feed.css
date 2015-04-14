@@ -619,9 +619,9 @@ div.html5-info-bar.ytp-can-shar {
     overflow: hidden;
     margin: 0 auto;
     border-radius: 2.5px;
-    border: 7px solid #fff;
+    border: 2px solid #f7f7f7;
     padding:0px!important;
-    left: -23px;
+    left: -19px;
     position: relative;
     margin-bottom: 10px;
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px 2px rgba(0, 0, 0, 0.1);   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px 2px rgba(0, 0, 0, 0.1);
@@ -647,8 +647,8 @@ div.html5-info-bar.ytp-can-shar {
     width: 550px;
     box-shadow: none;
     border: none !important;
-    margin-left: -23px;
-    border: 7px solid #fff!important;
+    margin-left: -18px;
+    border: 2px solid #f7f7f7!important;
     border-radius: 2.5px;
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);   
     -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px 2px rgba(0, 0, 0, 0.1);   
@@ -656,7 +656,7 @@ div.html5-info-bar.ytp-can-shar {
 }
 
 .comment_msg #embedly_video_box.embedly_box{
-    margin-left: -64px!important;
+    margin-left: -60px!important;
 }
 
 #embedly_video_box .embedly_box:hover {

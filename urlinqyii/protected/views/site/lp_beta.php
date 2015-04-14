@@ -31,7 +31,7 @@
     ga('send', 'pageview');
   </script>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
-  <title>Urlinq</title>
+  <title>Welcome to Urlinq - Login, or Sign up</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
   <meta name="google-site-verification" content="qv_TWutBCtliggYTCBDzJeXCNfJ3Dd3L5SkIhBSxm5Y" />
   <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta.css" />
@@ -976,14 +976,56 @@
       </ul>
 
     </div>
-    <div class = "desktop_only_panel">
-      <div class = "angled_background"></div>
-      <div class = "angled_background angled_background_2">
-        <div class = "blur_bg_angled"></div>
-        <div class = "blur_bg_color_angled"></div>
-      </div>
+
+
+
+
+    <div class = "desktop_only_panel" id = "desktop_only_panel_1">
+      <div class = "section_meta_header">What does the university need?</div>
+      <div class = "section_header">Social communication tools are in every part of our lives but education. The 21st century University needs collaborative tools to create the modern academic experience. Faster, stronger, better.</div>
+        <div class = "section_header">A learning network should allow students and teachers alike to connect directly to resources, activities, and people. On the go, and from your desktop.</div>
+        <div class = "feature_explanations">
+
+          <div class = "item_feature">
+            <div class = "feature_title">Planner</div>
+            <div class = "feature_summary">Extends your academic scheduling abilities</div>
+          </div>
+
+          <div class = "item_feature">
+            <div class = "feature_title">Learning Network</div>
+            <div class = "feature_summary">Organized class, club, and department activity + resources</div>
+          </div>          
+
+          <div class = "item_feature">
+            <div class = "feature_title">U Chat</div>
+            <div class = "feature_summary">Academically driven communication and discovery</div>
+          </div>
+
+
+
+        </div>
+        <div class="ur_carousel">
+            <div class = "ur_carousel_controller carousel_wrapper">
+              <div class = "carousel_option carousel_option_active"></div>
+              <div class = "carousel_option"></div>
+              <div class = "carousel_option"></div>
+            </div>
+            <div class = "ur_scrollable_item iphone_screenshot product_screenshot"></div>
+<!--             <div class = "ur_scrollable_item iphone_screenshot product_screenshot"></div>
+ -->
+        </div>
+        <div class="data-rings">
+          <div class="data-ring outer-mid"></div>
+          <div class="data-ring inner-mid"></div>
+          <div class="data-ring inner-center"></div>
+          <div class="data-ring inner"></div>
+        </div>
+
     </div>
 
+    <div class = "desktop_only_panel desktop_only_panel_2" id = "desktop_only_panel_2">
+      <div class = "feature_icons"></div>
+    </div>
     <div class="mobile_panel_5 big_pic"></div>
     <div class="mobile_panel_1 mobile_only_panel">
       <div class="mobile_wrap">
@@ -1090,10 +1132,27 @@
     <div class="signup-container">
       <div class="signup_border_fake">
       </div>
+
       <div class="signup_after_tabs">
         <div class="after_tab active after_tab_3" data-tab_id="3">
           <h4>Join now</h4>
         </div>  
+              <p class = "marketing_blurb">Enjoy an innovative set of tools that will augment the way you learn and teach. Join the most collaborative academic experience today.</p>
+
+        <div class = "scroll_down_trigger" id ="scroll_down_trigger_1" data-scroll_pointer = "first_scroll">
+          <div class = "help-div" id ="help-2">
+            <div class ="help-wedge">
+
+            </div>
+            <div class = "help-box">
+              What tools?
+            </div>
+          </div> 
+        </div>
+
+<!--         <div class="after_tab jump_tab_1">
+          <h4>What is Urlinq?</h4>
+        </div>       -->    
 <!--         <div class="after_tab jump_tab">
           <h4>Learn more</h4><em></em>
         </div>
@@ -1236,7 +1295,7 @@
       <div class="signup-form-wrap other_panel active" id="other_panel_3">
         <div class="header-sec">
           <div class="header-sec-left">
-            <h4 class="header">Sign Up <span><span>Your Link to the University</span></h4>
+            <h4 class="header">Welcome to Urlinq <span><span>Your Link to the University</span></h4>
           </div>
           <div class="header-sec-right">
             <div class="time-to-signup" style="font-size:20px;">your link to the university</div>

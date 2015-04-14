@@ -1,3 +1,5 @@
+
+
 $(function() {
 	$("input.email").keyup(function() {
 		var input = document.getElementById("email").value;
@@ -22,13 +24,25 @@ $(function() {
 		}
 	});
 
-
-
     $(window).scroll(function() {
+    	var window_height = $(window).height(); 
         var y=$(this).scrollTop()*0.002;
         var opacityShift = y*1;
+        var y2=$(this).scrollTop()*0.0085;
+        var opacityShift2 = y2*1;        
         $("div.mobile_wrap_primary").css({"opacity":1-opacityShift});
+        $("div#scroll_down_trigger_1").css({"opacity":1-opacityShift2});
+
+        if($(this).scrollTop() > 150){
+
+        }
     });
+
+	$("#scroll_down_trigger_1").click(function() {
+	    $('html,body').animate({
+	        scrollTop: $("#desktop_only_panel_1").offset().top},
+	        'slow');
+	});
 
 	$("input#beta_testing_email").focus(function() {
 		$(this).addClass("beta_email_focused");
